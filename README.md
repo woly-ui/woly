@@ -1,7 +1,6 @@
-# 🐣 Rollup starter with Typescript
+# 🐣 Woly
 
-Build your module into a clean, typed and cross-platform package.  
-It's just works. Only key featurs.
+Development kit to create UI library
 
 ## Usage
 
@@ -9,7 +8,3 @@ It's just works. Only key featurs.
 `yarn lint` check for errors `src/**.ts`
 `yarn story` - start dev server on `http://localhost:6006`  
 `yarn story-build` - build storybook for deployment
-
-## Features
-
-- [ ] Check import global styles
