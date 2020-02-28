@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { text, select } from '@storybook/addon-knobs';
+import { text, boolean, select } from '@storybook/addon-knobs';
 
 import {
   Button as WolyButton,
@@ -24,8 +24,8 @@ type ButtonSizesProps = {
 
 const ButtonTypes: ButtonTypesProps = {
   primary: 'primary',
-  ghost: 'ghost',
   warning: 'warning',
+  link: 'link',
 };
 
 const ButtonSizes: ButtonSizesProps = {
@@ -38,7 +38,7 @@ export const Button = () => {
   const sizes = select('Size', ButtonSizes, 'normal');
 
   return (
-    <WolyButton type={types} size={sizes}>
+    <WolyButton type={types} size={sizes} ghost={boolean('Ghost', false)}>
       {text('Text', 'Sign In')}
     </WolyButton>
   );
@@ -53,7 +53,7 @@ export const Password = () => {
 };
 
 export const Title = () => {
-  const levels = select('Level', [1, 2, 4, 5, 6], 1);
+  const levels = select('Level', [1, 2, 3], 1);
   return (
     <WolyTitle as="h1" level={levels}>
       H{levels} Title

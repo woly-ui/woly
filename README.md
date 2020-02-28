@@ -1,6 +1,8 @@
-# 🐣 Woly
+# 🐣 Woly UI development kit
 
-Development kit to create UI library
+[![Storybook](https://cdn.jsdelivr.net/gh/storybookjs/brand@master/badge/badge-storybook.svg)](https://woly-ui.github.io/woly/) ![Node CI](https://github.com/woly-ui/woly/workflows/Node%20CI/badge.svg?branch=master)
+
+Create your own UI/UX library.
 
 ## Usage
 

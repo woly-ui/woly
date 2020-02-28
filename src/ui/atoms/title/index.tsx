@@ -1,22 +1,28 @@
 import styled from 'styled-components';
 
 type TitleProps = {
-  level: 1 | 2 | 3 | 4 | 5;
+  level: 1 | 2 | 3;
 };
 
 const map = (props: TitleProps) => ({
   'data-size': props.level,
 });
 
-export const Title = styled.div.attrs(map)<any>`
+export const Title: any = styled.div.attrs(map)`
   &[data-size='1'] {
-    font-size: 4.2rem;
+    font-size: var(--h1-font-size);
+    line-height: var(--h1-line-height);
   }
 
   &[data-size='2'] {
-    font-size: 3rem;
+    font-size: var(--h2-font-size);
+    line-height: var(--h2-line-height);
   }
 
-  line-height: 1.2;
+  &[data-size='3'] {
+    font-size: var(--h3-font-size);
+    line-height: var(--h3-line-height);
+  }
+
   color: var(--title-color);
 `;

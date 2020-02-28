@@ -1,12 +1,13 @@
 import * as React from 'react';
 import styled from 'styled-components';
 
-export type ButtonTypes = 'primary' | 'ghost' | 'warning';
+export type ButtonTypes = 'primary' | 'warning' | 'link';
 export type ButtonSizes = 'normal' | 'small';
 
 type ButtonProps = {
   type?: ButtonTypes;
   size?: ButtonSizes;
+  ghost?: boolean;
   className?: string;
   onClick?: (e: React.SyntheticEvent) => void;
 };
@@ -14,6 +15,7 @@ type ButtonProps = {
 export const Button: React.FC<ButtonProps> = ({
   type = 'primary',
   size = 'normal',
+  ghost = false,
   className,
   children,
   onClick,
@@ -23,64 +25,69 @@ export const Button: React.FC<ButtonProps> = ({
       className={className}
       onClick={onClick}
       type="submit"
-      size={size}
       styleType={type}
+      styleSize={size}
+      ghost={ghost}
     >
       {children}
     </WolyButton>
   );
 };
 
-const buttonStyles = {
-  primary: `
-    background-color: var(--primary);
-    color: var(--primary-text);`,
-  ghost: `
-    background-color: transparent;
-    color: var(--ghost-text);`,
-  warning: `
-    background-color: var(--warning);
-    color: var(--warning-text);`,
-};
-
-const buttonSizes = {
-  normal: `
-    font-size: 1.8rem;
-    line-height: 4.2rem;
-    padding: 0 24px;
-    `,
-  small: `
-    font-size: 1.2rem;
-    line-height: 2.7rem;
-    padding: 0 14px;
-    `,
-};
-
-type WolyButtonProps = {
+type TitleProps = {
   styleType: ButtonTypes;
-  size: ButtonSizes;
+  styleSize: ButtonSizes;
+  ghost: boolean;
 };
 
-const WolyButton = styled.button<WolyButtonProps>`
-  ${(p) => buttonStyles[p.styleType]}
-  ${(p) => buttonSizes[p.size]}
+const map = (props: TitleProps) => ({
+  'data-type': props.styleType,
+  'data-size': props.styleSize,
+  'data-ghost': props.ghost,
+});
 
-  ${(p) =>
-    p.size === 'small' &&
-    p.styleType === 'ghost' &&
-    `
-    border: 1px solid var(--ghost-border);
+const WolyButton: any = styled.button.attrs(map)`
+  &[data-type='primary'] {
+    background-color: var(--primary);
+    color: var(--primary-text);
+    border: var(--primary-border);
+
+    &[data-ghost='true'] {
+      background-color: var(--ghost);
+      color: var(--primary-ghost-text);
+      border: var(--primary-ghost-border);
+    }
+  }
+
+  &[data-type='warning'] {
+    background-color: var(--warning);
+    color: var(--warning-text);
+    border: var(--warning-border);
+
+    &[data-ghost='true'] {
+      background-color: var(--ghost);
+      color: var(--warning-ghost-text);
+      border: var(--warning-ghost-border);
+    }
+  }
+
+  &[data-type='link'] {
+    background-color: var(--ghost);
     color: var(--ghost-text);
-  `}
+    border: 1px solid var(--ghost);
+  }
 
-  ${(p) =>
-    p.size === 'small' &&
-    p.styleType === 'warning' &&
-    `
-    background-color: transparent;
-    border: 1px solid var(--warning);
-    color: var(--warning);
-  `}
+  &[data-size='small'] {
+    font-size: var(--button-font-size-small);
+    line-height: var(--button-height-small);
+    padding: 0 14px;
+  }
 
-  border-radius: 3px;
+  &[data-size='normal'] {
+    font-size: var(--button-font-size-normal);
+    line-height: var(--button-height-normal);
+    padding: 0 24px;
+  }
+
+  border-radius: var(--button-border-radius);
 `;

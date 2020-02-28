@@ -8,9 +8,9 @@ export const Block: React.FC<BlockProps> = ({ className, children }) => {
 };
 
 const WolyBlock = styled.div`
-  padding: 30px 42px;
-  border-radius: 3px;
-  box-shadow: 0 3px 12px -3px var(--border-color);
-  border: 1px solid var(--border-color);
-  background-color: #ffffff;
+  padding: var(--block-padding);
+  border-radius: var(--block-border-radius);
+  box-shadow: var(--block-shadow);
+  border: var(--block-border);
+  background-color: var(--block-bg);
 `;

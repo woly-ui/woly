@@ -15,7 +15,7 @@ type InputProps = {
 export const Input: React.FC<InputProps> = ({
   value,
   placeholder,
-  type,
+  type = 'text',
   name,
   className,
   onChange,
@@ -61,9 +61,8 @@ const ShowPass = styled.div<{ isVisible: boolean }>`
 `;
 
 const WolyInput = styled.input`
-  font-size: 3.6rem;
-  line-height: 48px;
-  font-weight: 300;
+  font-size: var(--input-font-size);
+  line-height: var(--input-line-height);
   color: var(--text-color);
 
   &::placeholder {

@@ -1,7 +1,6 @@
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import alias from '@rollup/plugin-alias';
-import url from '@rollup/plugin-url';
 
 import babel from 'rollup-plugin-babel';
 import typescript from 'rollup-plugin-typescript2';
@@ -32,7 +31,6 @@ export default {
     ...Object.keys(pkg.peerDependencies || {}),
   ],
   plugins: [
-    url(),
     alias({
       entries: {
         '~': './src',

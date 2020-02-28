@@ -11,7 +11,7 @@
   "scripts": {
     "build": "rm -rf dist && rollup -c",
     "lint": "eslint --ext .ts,.tsx src",
-    "story": "start-storybook -s ./public,./static -p 6006 --debug-webpack",
+    "story": "start-storybook -s ./public,./static -p 6006",
     "story-build": "build-storybook -c .storybook"
   },
   "peerDependencies": {
@@ -61,8 +61,7 @@
     "storybook-dark-mode": "^0.2.0",
     "styled-normalize": "^8.0.7",
     "ts-loader": "^6.2.1",
-    "typescript": "^3.7.4",
-    "url-loader": "^3.0.0"
+    "typescript": "^3.7.4"
   },
   "dependencies": {
     "styled-components": "^5.0.1"
