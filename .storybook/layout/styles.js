@@ -38,15 +38,15 @@ const globals = css`
     /* types */
     --primary: var(--black);
     --primary-text: var(--white);
-    --primary-border: 1px solid var(--black);
+    --primary-border: var(--black);
     --primary-ghost-text: var(--black);
     --primary-ghost-border: var(--black);
 
     --warning: var(--coral);
     --warning-text: var(--white);
-    --warning-border: 1px solid var(--coral);
+    --warning-border: var(--coral);
     --warning-ghost-text: var(--coral);
-    --warning-ghost-border: 1px solid var(--coral);
+    --warning-ghost-border: var(--coral);
 
     --ghost: transparent;
     --ghost-border: var(--border-color);

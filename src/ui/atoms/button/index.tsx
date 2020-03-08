@@ -1,80 +1,43 @@
-import * as React from 'react';
-import styled from 'styled-components';
+import styled, { StyledComponent } from 'styled-components';
 
-export type ButtonTypes = 'primary' | 'warning' | 'link';
-export type ButtonSizes = 'normal' | 'small';
+export type ButtonVariants = 'default' | 'primary' | 'warning' | 'text';
+export type ButtonSizes = 'default' | 'small';
 
 type ButtonProps = {
-  type?: ButtonTypes;
+  variant?: ButtonVariants;
   size?: ButtonSizes;
-  ghost?: boolean;
-  className?: string;
-  onClick?: (e: React.SyntheticEvent) => void;
 };
 
-export const Button: React.FC<ButtonProps> = ({
-  type = 'primary',
-  size = 'normal',
-  ghost = false,
-  className,
-  children,
-  onClick,
-}) => {
-  return (
-    <WolyButton
-      className={className}
-      onClick={onClick}
-      type="submit"
-      styleType={type}
-      styleSize={size}
-      ghost={ghost}
-    >
-      {children}
-    </WolyButton>
-  );
-};
-
-type TitleProps = {
-  styleType: ButtonTypes;
-  styleSize: ButtonSizes;
-  ghost: boolean;
-};
-
-const map = (props: TitleProps) => ({
-  'data-type': props.styleType,
-  'data-size': props.styleSize,
-  'data-ghost': props.ghost,
+const map = (properties: ButtonProps) => ({
+  'data-variant': properties.variant,
+  'data-size': properties.size,
 });
 
-const WolyButton: any = styled.button.attrs(map)`
-  &[data-type='primary'] {
+type Styled<P extends {}> = StyledComponent<any, P>;
+
+export const Button: Styled<ButtonProps> = styled.button.attrs(map)`
+  border-radius: var(--button-border-radius);
+  border: 1px solid transparent;
+
+  &[data-variant='default'] {
+    background-color: var(--ghost);
+    color: var(--primary-ghost-text);
+    border-color: var(--primary-ghost-border);
+  }
+  &[data-variant='primary'] {
     background-color: var(--primary);
     color: var(--primary-text);
-    border: var(--primary-border);
-
-    &[data-ghost='true'] {
-      background-color: var(--ghost);
-      color: var(--primary-ghost-text);
-      border: var(--primary-ghost-border);
-    }
+    border-color: var(--primary-border);
   }
-
-  &[data-type='warning'] {
+  &[data-variant='warning'] {
     background-color: var(--warning);
     color: var(--warning-text);
-    border: var(--warning-border);
-
-    &[data-ghost='true'] {
-      background-color: var(--ghost);
-      color: var(--warning-ghost-text);
-      border: var(--warning-ghost-border);
-    }
+    border-color: var(--warning-border);
   }
-
-  &[data-type='link'] {
+  &[data-variant='text'] {
     background-color: var(--ghost);
     color: var(--ghost-text);
-    border: 1px solid var(--ghost);
+    border-color: var(--ghost);
   }
 
   &[data-size='small'] {
@@ -82,12 +45,9 @@ const WolyButton: any = styled.button.attrs(map)`
     line-height: var(--button-height-small);
     padding: 0 14px;
   }
-
-  &[data-size='normal'] {
+  &[data-size='default'] {
     font-size: var(--button-font-size-normal);
     line-height: var(--button-height-normal);
     padding: 0 24px;
   }
-
-  border-radius: var(--button-border-radius);
 `;

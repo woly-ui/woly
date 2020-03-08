@@ -3,9 +3,9 @@ import styled from 'styled-components';
 
 type BlockProps = { className?: string };
 
-export const Block: React.FC<BlockProps> = ({ className, children }) => {
-  return <WolyBlock className={className}>{children}</WolyBlock>;
-};
+export const Block: React.FC<BlockProps> = ({ className, children }) => (
+  <WolyBlock className={className}>{children}</WolyBlock>
+);
 
 const WolyBlock = styled.div`
   padding: var(--block-padding);

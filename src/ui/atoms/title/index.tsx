@@ -4,8 +4,8 @@ type TitleProps = {
   level: 1 | 2 | 3;
 };
 
-const map = (props: TitleProps) => ({
-  'data-size': props.level,
+const map = (properties: any) => ({
+  'data-size': properties.level,
 });
 
 export const Title: any = styled.div.attrs(map)`

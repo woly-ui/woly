@@ -10,10 +10,11 @@
   ],
   "scripts": {
     "build": "rm -rf dist && rollup -c",
-    "lint": "eslint --ext .ts,.tsx src",
-    "story": "start-storybook -s ./public,./static -p 6006",
+    "lint": "eslint --ext .ts,.tsx src stories",
+    "start": "start-storybook -s ./public,./static -p 6006",
     "story-build": "build-storybook -c .storybook",
-    "test": "echo 'No tests provided'"
+    "test": "echo 'No tests provided'",
+    "commit": "git-cz"
   },
   "peerDependencies": {
     "react": "^16.11.0",
@@ -21,12 +22,15 @@
     "styled-components": "^5.0.1"
   },
   "devDependencies": {
+    "@atomix/eslint-config-react": "^8.0.0",
     "@babel/core": "^7.8.3",
     "@babel/plugin-proposal-class-properties": "^7.8.3",
     "@babel/plugin-proposal-object-rest-spread": "^7.8.3",
     "@babel/preset-env": "^7.8.3",
     "@babel/preset-react": "^7.8.3",
     "@babel/preset-typescript": "^7.8.3",
+    "@commitlint/cli": "8.2.0",
+    "@commitlint/config-conventional": "8.2.0",
     "@rollup/plugin-alias": "^2.2.0",
     "@rollup/plugin-commonjs": "^11.0.1",
     "@rollup/plugin-node-resolve": "^7.0.0",
@@ -47,10 +51,17 @@
     "@typescript-eslint/parser": "^2.16.0",
     "babel-loader": "^8.0.6",
     "babel-plugin-module-resolver": "^4.0.0",
+    "commitizen": "4.0.3",
+    "cz-conventional-changelog": "3.0.2",
     "eslint": "^6.6.0",
+    "eslint-config-prettier": "^3.1.2",
+    "eslint-plugin-import": "^2.19.1",
+    "eslint-plugin-jsx-a11y": "^6.2.1",
     "eslint-plugin-prettier": "^3.1.2",
     "eslint-plugin-react": "^7.18.3",
+    "eslint-plugin-unicorn": "^14.0.1",
     "file-loader": "^5.1.0",
+    "husky": "3.1.0",
     "prettier": "^1.19.1",
     "react-docgen-typescript-loader": "^3.6.0",
     "rollup": "^1.26.2",
@@ -66,5 +77,10 @@
   },
   "dependencies": {
     "styled-components": "^5.0.1"
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
   }
 }
