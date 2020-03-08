@@ -82,10 +82,6 @@ const globals = css`
     -webkit-font-smoothing: antialiased;
   }
 
-  button {
-    border: 0;
-  }
-
   input {
     border: 0;
     background-color: transparent;

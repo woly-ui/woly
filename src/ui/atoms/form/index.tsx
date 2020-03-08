@@ -1,19 +1,19 @@
 import * as React from 'react';
 
-type MessageFormProps = {
-  handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
+type FormProps = {
+  onSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
 };
 
-export const Form: React.FC<MessageFormProps> = ({
-  handleSubmit,
-  children,
-}) => {
-  const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    if (handleSubmit) {
-      handleSubmit(event);
-    }
-  };
+export const Form: React.FC<FormProps> = ({ onSubmit, children }) => {
+  const handleSubmit = React.useCallback(
+    (event: React.FormEvent<HTMLFormElement>) => {
+      event.preventDefault();
+      if (onSubmit) {
+        onSubmit(event);
+      }
+    },
+    [onSubmit],
+  );
 
-  return <form onSubmit={onSubmit}>{children}</form>;
+  return <form onSubmit={handleSubmit}>{children}</form>;
 };

@@ -1,19 +1,21 @@
 import styled, { StyledComponent } from 'styled-components';
 
-export type ButtonVariants = 'default' | 'primary' | 'warning' | 'text';
+export type ButtonVariants = 'default' | 'primary' | 'destructive' | 'text';
 export type ButtonSizes = 'default' | 'small';
 
 type ButtonProps = {
   variant?: ButtonVariants;
   size?: ButtonSizes;
+  text: string;
 };
 
 const map = (properties: ButtonProps) => ({
-  'data-variant': properties.variant,
-  'data-size': properties.size,
+  'data-variant': properties.variant ?? 'default',
+  'data-size': properties.size ?? 'default',
+  children: properties.text,
 });
 
-type Styled<P extends {}> = StyledComponent<any, P>;
+type Styled<P extends object> = StyledComponent<'button', {}, P>;
 
 export const Button: Styled<ButtonProps> = styled.button.attrs(map)`
   border-radius: var(--button-border-radius);
@@ -29,7 +31,7 @@ export const Button: Styled<ButtonProps> = styled.button.attrs(map)`
     color: var(--primary-text);
     border-color: var(--primary-border);
   }
-  &[data-variant='warning'] {
+  &[data-variant='destructive'] {
     background-color: var(--warning);
     color: var(--warning-text);
     border-color: var(--warning-border);
