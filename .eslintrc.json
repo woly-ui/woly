@@ -50,6 +50,12 @@
         "import/no-extraneous-dependencies": "off",
         "import/no-default-export": "off"
       }
+    },
+    {
+      "files": ["./rollup.config.js"],
+      "rules": {
+        "import/no-default-export": "off"
+      }
     }
   ]
 }

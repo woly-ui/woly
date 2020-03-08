@@ -1,6 +1,6 @@
 {
-  "name": "rollup-starter",
-  "version": "0.0.1",
+  "name": "woly",
+  "version": "0.0.0",
   "main": "./dist/common.js",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -68,6 +68,7 @@
     "rollup-plugin-babel": "^4.3.3",
     "rollup-plugin-eslint": "^7.0.0",
     "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-react-svg": "^3.0.3",
     "rollup-plugin-terser": "^5.1.2",
     "rollup-plugin-typescript2": "^0.25.3",
     "storybook-dark-mode": "^0.2.0",

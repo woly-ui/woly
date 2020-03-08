@@ -5,10 +5,11 @@ import alias from '@rollup/plugin-alias';
 import babel from 'rollup-plugin-babel';
 import typescript from 'rollup-plugin-typescript2';
 
+import reactSvg from 'rollup-plugin-react-svg';
 import { eslint } from 'rollup-plugin-eslint';
 import { terser } from 'rollup-plugin-terser';
 
-import pkg from './package.json';
+import Package from './package.json';
 
 const extensions = ['.ts', '.tsx', '.json'];
 
@@ -27,8 +28,8 @@ export default {
     },
   ],
   external: [
-    ...Object.keys(pkg.dependencies || {}),
-    ...Object.keys(pkg.peerDependencies || {}),
+    ...Object.keys(Package.dependencies || {}),
+    ...Object.keys(Package.peerDependencies || {}),
   ],
   plugins: [
     alias({
@@ -37,8 +38,11 @@ export default {
       },
       resolve: extensions,
     }),
-    eslint(),
+    eslint({ exclude: /node_modules|.svg$/ }),
     typescript({ rollupCommonJSResolveHack: true, clean: true }),
+    reactSvg({
+      jsx: false,
+    }),
     babel({
       extensions,
       exclude: 'node_modules/**',
