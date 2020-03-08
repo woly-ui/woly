@@ -4,6 +4,8 @@ on:
   push:
     tags:
       - 'v*'
+    branches:
+      - '*'
 
 jobs:
   build:
@@ -51,9 +53,7 @@ jobs:
         run: yarn build
 
       - name: Publish to NPM
+        uses: primer/publish@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
-        run: |
-          echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > .npmrc
-          npm publish
+          NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
