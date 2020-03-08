@@ -12,7 +12,8 @@
     "build": "rm -rf dist && rollup -c",
     "lint": "eslint --ext .ts,.tsx src",
     "story": "start-storybook -s ./public,./static -p 6006",
-    "story-build": "build-storybook -c .storybook"
+    "story-build": "build-storybook -c .storybook",
+    "test": "echo 'No tests provided'"
   },
   "peerDependencies": {
     "react": "^16.11.0",
