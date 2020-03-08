@@ -1,0 +1,17 @@
+'@atoms':
+  - src/ui/atoms/**/*
+  - src/atoms/**/*
+
+'@molecules':
+  - src/ui/molecules/**/*
+  - src/molecules/**/*
+
+'@organisms':
+  - src/ui/organisms/**/*
+  - src/organisms/**/*
+
+lib:
+  - src/lib/**/*
+
+configuration:
+  - ./*
