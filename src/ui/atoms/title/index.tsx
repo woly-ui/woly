@@ -30,15 +30,18 @@ export const Title: Styled<Props> = styled(make)`
   &[data-level='1'] {
     font-size: var(--h1-font-size);
     line-height: var(--h1-line-height);
+    margin-bottom: 5rem;
   }
 
   &[data-level='2'] {
     font-size: var(--h2-font-size);
     line-height: var(--h2-line-height);
+    margin-bottom: 4rem;
   }
 
   &[data-level='3'] {
     font-size: var(--h3-font-size);
     line-height: var(--h3-line-height);
+    margin-bottom: 3rem;
   }
 `;
