@@ -1,9 +1,10 @@
 import styled from 'styled-components';
 
 export const Block = styled.div`
-  padding: var(--block-padding);
-  border-radius: var(--block-border-radius);
-  box-shadow: var(--block-shadow);
-  border: var(--block-border);
   background-color: var(--block-bg);
+  border-radius: var(--block-border-radius);
+  border: var(--block-border);
+  box-shadow: var(--block-shadow);
+  box-sizing: border-box;
+  padding: var(--block-padding);
 `;
