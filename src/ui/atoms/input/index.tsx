@@ -11,7 +11,7 @@ type InputProps = {
   name?: string;
   disabled?: boolean;
   className?: string;
-  onChange: (e: React.SyntheticEvent) => void;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
 export const Input: React.FC<InputProps> = ({
