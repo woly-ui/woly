@@ -50,7 +50,6 @@ const ButtonWrap = styled.div`
 `;
 
 const ShowPass = styled.div`
-  background-image: url(${closedEyeIcon});
   background-size: cover;
   bottom: -6px;
   cursor: pointer;
@@ -62,7 +61,6 @@ const ShowPass = styled.div`
   width: 24px;
 
   &[data-visible='true'] {
-    background-image: url(${openEyeIcon});
   }
 `;
 
