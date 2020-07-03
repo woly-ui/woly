@@ -9,15 +9,17 @@ export const Title = () => {
   const content = text('Content', 'Example heading');
   const levels = [1, 2, 3];
 
+  const TitleCom = woly.Title as any;
+
   return (
     <div>
       {levels.map((level) => (
         <div key={level}>
           <span style={{ fontSize: '1.6rem' }}>Level {level}</span>
           <span>
-            <woly.Title as={`h${level}`} level={level}>
+            <TitleCom as={`h${level}`} level={level}>
               {content}
-            </woly.Title>
+            </TitleCom>
           </span>
         </div>
       ))}

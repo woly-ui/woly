@@ -1,48 +1,69 @@
 import * as React from 'react';
+import styled from 'styled-components';
 import { text } from '@storybook/addon-knobs';
+import { action } from '@storybook/addon-actions';
 
-import * as woly from '../../..';
-import { ButtonVariants, ButtonSizes } from '.';
+import * as button from '.';
 
 export default { title: 'Atoms' };
 
-type Mapped<T extends string> = Record<T, T>;
-
-export const Button = () => {
+export const buttons = () => {
   const content = text('Text', 'Sign In');
-  const variants: ButtonVariants[] = [
-    'default',
-    'primary',
-    'destructive',
-    'text',
-  ];
-  const sizes: ButtonSizes[] = ['default', 'small'];
+  const onClick = action('click');
 
   return (
-    <table>
-      <tr key="heading-key">
-        <td style={{ fontSize: '1.6rem' }}>variant\size</td>
-        {sizes.map((size) => (
-          <td key={size} style={{ fontSize: '1.6rem' }}>
-            {size}
-          </td>
-        ))}
-      </tr>
-      {variants.map((variant) => (
-        <tr key={variant}>
-          <td style={{ fontSize: '1.6rem' }}>{variant}</td>
-          {sizes.map((size) => (
-            <td key={size}>
-              <woly.Button
-                key={variant + size}
-                variant={variant}
-                size={size}
-                text={content}
-              />
-            </td>
-          ))}
-        </tr>
-      ))}
-    </table>
+    <>
+      <div>
+        <pre style={{ fontSize: '1rem' }}>
+          {`
+          import { button } from 'woly'
+
+          <button.Primary text="${content}" />
+          `}
+        </pre>
+      </div>
+      <table>
+        <thead>
+          <tr key="heading-key">
+            <Head>Kind</Head>
+            <Head>Preview</Head>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <Cell>Primary</Cell>
+            <Preview>
+              <button.Primary onClick={onClick} text={content} />
+            </Preview>
+          </tr>
+          <tr>
+            <Cell>Secondary</Cell>
+            <Preview>
+              <button.Secondary onClick={onClick} text={content} />
+            </Preview>
+          </tr>
+          <tr>
+            <Cell>Destructive</Cell>
+            <Preview>
+              <button.Destructive onClick={onClick} text={content} />
+            </Preview>
+          </tr>
+        </tbody>
+      </table>
+    </>
   );
 };
+
+const Cell = styled.td`
+  font-size: 1rem;
+  padding: 1rem;
+`;
+
+const Head = styled(Cell)`
+  font-weight: bold;
+`;
+
+const Preview = styled(Cell)`
+  padding: 2rem;
+  border: 1px dashed var(--borders, rgb(200, 200, 200));
+`;

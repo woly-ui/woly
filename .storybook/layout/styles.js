@@ -2,9 +2,12 @@ import { createGlobalStyle, css } from 'styled-components';
 import { normalize } from 'styled-normalize';
 
 import { fonts } from './fonts';
+import { common, light, dark } from '../../src/ui/themes';
 
 const globals = css`
   :root {
+    font-size: 14px;
+
     /* common */
     --primary-font: 'TT Interfaces', serif;
     --text-color: var(--black);
@@ -55,21 +58,21 @@ const globals = css`
     --input-font-size: 3.6rem;
     --input-line-height: 4.8rem;
 
-    /* button styles */
-    --button-border-radius: 3px;
+    ${common}
 
-    /* button normal */
-    --button-font-size-normal: 1.8rem;
-    --button-height-normal: 4.2rem;
+    @media screen and (prefers-color-scheme: light) {
+      ${light}
+    }
 
-    /* button small */
-    --button-font-size-small: 1.2rem;
-    --button-height-small: 2.7rem;
+    @media screen and (prefers-color-scheme: dark) {
+      ${dark}
+    }
   }
 
   body,
   html {
-    color: var(--text-color);
+    color: var(--canvas-text);
+    background-color: var(--canvas-bg);
     font-family: var(--primary-font);
     font-size: 62.5%;
     font-weight: 400;

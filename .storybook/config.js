@@ -36,5 +36,5 @@ addDecorator(withKnobs);
 
 addDecorator((storyFn, context) => withConsole()(storyFn)(context));
 
-configure(require.context('../stories', true, /\.stories\.tsx$/), module);
+// configure(require.context('../stories', true, /\.stories\.tsx$/), module);
 configure(require.context('../src', true, /story\.tsx$/), module);

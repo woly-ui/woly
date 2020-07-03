@@ -13,7 +13,7 @@ export const Form = () => (
         placeholder="email"
         value={text('Text', 'display name')}
       />
-      <woly.Button text="Sign in" />
+      {/* <woly.Button text="Sign in" /> */}
     </woly.Form>
   </woly.Block>
 );

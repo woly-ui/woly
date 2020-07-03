@@ -1,8 +1,6 @@
 import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
 
-type Styled<P extends {}> = StyledComponent<any, {}, P>;
-
 interface Props {
   level?: 1 | 2 | 3;
 }
@@ -24,7 +22,7 @@ const make = (properties: InnerProps) => {
   );
 };
 
-export const Title: Styled<Props> = styled(make)`
+export const Title = styled(make)`
   color: var(--title-color);
 
   &[data-level='1'] {
