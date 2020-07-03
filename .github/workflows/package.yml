@@ -9,11 +9,12 @@ on:
 
 jobs:
   build:
+    name: build and test
     runs-on: ubuntu-latest
 
     strategy:
       matrix:
-        node-version: ['13', '12', '10', '8']
+        node-version: ['14', '12']
 
     steps:
       - uses: actions/checkout@v2
@@ -26,7 +27,7 @@ jobs:
           node-version: ${{ matrix.node }}
 
       - name: Install Dependencies
-        run: yarn install
+        run: yarn install --frozen-lockfile
 
       - name: Build
         run: yarn build
