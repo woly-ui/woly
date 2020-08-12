@@ -1,5 +1,7 @@
 {
   "name": "@woly/calendar",
+  "version": "0.1.0",
+  "description": "Date and time components for Woly React library",
   "main": "calendar.js",
   "module": "calendar.mjs",
   "jsnext:main": "calendar.mjs",
@@ -15,31 +17,55 @@
   },
   "files": [
     "README.md",
-    "calendar.d.ts",
+    "LICENSE",
+    "calendar.js",
+    "calendar.js.map",
     "calendar.mjs",
-    "calendar.js"
+    "calendar.mjs.map",
+    "calendar.d.ts"
   ],
+  "keywords": [
+    "component",
+    "components",
+    "design",
+    "library",
+    "react-component",
+    "react",
+    "system",
+    "ui",
+    "woly",
+    "calendar",
+    "date",
+    "time"
+  ],
+  "dependencies": {},
   "peerDependencies": {
     "react": "^16.11.0",
     "styled-components": "^5.0.1",
-    "woly": "*"
+    "woly": "^0.1.11"
   },
-  "dependencies": {},
+  "scripts": {},
   "author": {
     "name": "Sergey Sova",
     "email": "mail@sergeysova.com",
     "url": "https://sova.dev"
   },
+  "engines": {
+    "node": ">=8.0.0"
+  },
+  "sideEffects": false,
   "contributors": [],
   "repository": {
     "type": "git",
-    "url": "https://github.com/woly-ui/woly",
-    "directory": "packages/calendar"
+    "url": "https://github.com/woly-ui/woly"
   },
   "homepage": "https://github.com/woly-ui/woly",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/woly-ui/woly/issues",
     "email": "woly@sergeysova.com"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

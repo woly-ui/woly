@@ -72,8 +72,8 @@ const getModules = (name) => ({
   typings: `${name}.d.ts`,
   exports: {
     '.': {
-      require: `${name}./.js`,
-      default: `${name}./.mjs`,
+      require: `./${name}.js`,
+      default: `./${name}.mjs`,
     },
     [`./${name}.mjs`]: `./${name}.mjs`,
     './package.json': './package.json',

@@ -1,3 +1,4 @@
+const debug = require('debug')('woly:tasks');
 const fs = require('fs-extra');
 const execa = require('execa');
 
@@ -7,14 +8,17 @@ const { writePackageJson, directory } = require('./library');
 const copyLicense = (libraryName) =>
   massCopy('.', `dist/${libraryName}`, ['LICENSE']);
 
-const generatePackageJson = (libraryName) => () =>
-  writePackageJson(
+const generatePackageJson = (libraryName) => () => {
+  debug('running generatePackageJson', libraryName);
+  return writePackageJson(
     `packages/${libraryName}/package.json`,
     packages[libraryName],
   );
+};
 
 function massCopy(from, to, targets) {
   return () => {
+    debug('running massCopy', targets, 'from', from, '->', to);
     const jobs = [];
     for (const target of targets) {
       jobs.push([directory(from, target), directory(to, target)]);
@@ -25,18 +29,26 @@ function massCopy(from, to, targets) {
 }
 
 /* eslint-disable no-console */
-
-const onCatch = (error) => {
-  console.error(error);
-};
 function publishScript(libraryName) {
+  const onCatch = (error) => {
+    debug('failed publishScript', libraryName);
+    console.error(error);
+  };
+
   return async (config) => {
     const tag = config.next ? 'next' : 'latest';
+    const dry = config.dryRun;
+
+    debug('running publishScript', libraryName, { tag, dry });
     try {
-      const { stdout, stderr } = await execa('npm', ['publish', '--tag', tag], {
-        cwd: `${process.cwd()}/dist/${libraryName}`,
-        env: process.env,
-      });
+      const { stdout, stderr } = await execa(
+        'npm',
+        ['publish', '--tag', tag, dry ? '--dry-run' : ''],
+        {
+          cwd: `${process.cwd()}/dist/${libraryName}`,
+          env: process.env,
+        },
+      );
       console.log(stdout);
       console.error(stderr);
     } catch (error) {

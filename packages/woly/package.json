@@ -1,5 +1,7 @@
 {
   "name": "woly",
+  "version": "0.1.11",
+  "description": "Exhaustive component library for React",
   "main": "woly.js",
   "module": "woly.mjs",
   "jsnext:main": "woly.mjs",
@@ -15,30 +17,51 @@
   },
   "files": [
     "README.md",
-    "woly.d.ts",
+    "LICENSE",
+    "woly.js",
+    "woly.js.map",
     "woly.mjs",
-    "woly.js"
+    "woly.mjs.map",
+    "woly.d.ts"
   ],
+  "keywords": [
+    "component",
+    "components",
+    "design",
+    "library",
+    "react-component",
+    "react",
+    "system",
+    "ui",
+    "woly"
+  ],
+  "dependencies": {},
   "peerDependencies": {
     "react": "^16.11.0",
     "styled-components": "^5.0.1"
   },
-  "dependencies": {},
+  "scripts": {},
   "author": {
     "name": "Sergey Sova",
     "email": "mail@sergeysova.com",
     "url": "https://sova.dev"
   },
+  "engines": {
+    "node": ">=8.0.0"
+  },
+  "sideEffects": false,
   "contributors": [],
   "repository": {
     "type": "git",
-    "url": "https://github.com/woly-ui/woly",
-    "directory": "packages/woly"
+    "url": "https://github.com/woly-ui/woly"
   },
   "homepage": "https://github.com/woly-ui/woly",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/woly-ui/woly/issues",
     "email": "woly@sergeysova.com"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
