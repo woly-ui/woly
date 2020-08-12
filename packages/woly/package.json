@@ -1,0 +1,44 @@
+{
+  "name": "woly",
+  "main": "woly.js",
+  "module": "woly.mjs",
+  "jsnext:main": "woly.mjs",
+  "types": "woly.d.ts",
+  "typings": "woly.d.ts",
+  "exports": {
+    ".": {
+      "require": "./woly.js",
+      "default": "./woly.mjs"
+    },
+    "./woly.mjs": "./woly.mjs",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "README.md",
+    "woly.d.ts",
+    "woly.mjs",
+    "woly.js"
+  ],
+  "peerDependencies": {
+    "react": "^16.11.0",
+    "styled-components": "^5.0.1"
+  },
+  "dependencies": {},
+  "author": {
+    "name": "Sergey Sova",
+    "email": "mail@sergeysova.com",
+    "url": "https://sova.dev"
+  },
+  "contributors": [],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/woly-ui/woly",
+    "directory": "packages/woly"
+  },
+  "homepage": "https://github.com/woly-ui/woly",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/woly-ui/woly/issues",
+    "email": "woly@sergeysova.com"
+  }
+}

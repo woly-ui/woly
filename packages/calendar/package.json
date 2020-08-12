@@ -1,0 +1,45 @@
+{
+  "name": "@woly/calendar",
+  "main": "calendar.js",
+  "module": "calendar.mjs",
+  "jsnext:main": "calendar.mjs",
+  "types": "calendar.d.ts",
+  "typings": "calendar.d.ts",
+  "exports": {
+    ".": {
+      "require": "./calendar.js",
+      "default": "./calendar.mjs"
+    },
+    "./calendar.mjs": "./calendar.mjs",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "README.md",
+    "calendar.d.ts",
+    "calendar.mjs",
+    "calendar.js"
+  ],
+  "peerDependencies": {
+    "react": "^16.11.0",
+    "styled-components": "^5.0.1",
+    "woly": "*"
+  },
+  "dependencies": {},
+  "author": {
+    "name": "Sergey Sova",
+    "email": "mail@sergeysova.com",
+    "url": "https://sova.dev"
+  },
+  "contributors": [],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/woly-ui/woly",
+    "directory": "packages/calendar"
+  },
+  "homepage": "https://github.com/woly-ui/woly",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/woly-ui/woly/issues",
+    "email": "woly@sergeysova.com"
+  }
+}

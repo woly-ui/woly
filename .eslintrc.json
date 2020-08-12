@@ -4,41 +4,46 @@
     "es6": true,
     "es2017": true
   },
-  "extends": [
-    "eslint:recommended",
-    "plugin:react/recommended",
-    "plugin:@typescript-eslint/eslint-recommended",
-    "plugin:@typescript-eslint/recommended",
-    "plugin:@typescript-eslint/recommended-requiring-type-checking",
-    "plugin:@typescript-eslint/eslint-plugin/recommended",
-    "plugin:@typescript-eslint/eslint-plugin/eslint-recommended",
-    "@atomix/eslint-config-react",
-    "plugin:prettier/recommended"
-  ],
-  "parser": "@typescript-eslint/parser",
-  "parserOptions": {
-    "project": "tsconfig.json",
-    "createDefaultProgram": true,
-    "tsconfigRootDir": "./"
-  },
-  "plugins": [
-    "react",
-    "@typescript-eslint",
-    "@typescript-eslint/eslint-plugin"
-  ],
+  "extends": ["eslint:recommended", "plugin:react/recommended"],
+  "plugins": ["react"],
   "rules": {
     "import/extensions": "off",
-    "@typescript-eslint/explicit-function-return-type": "off",
     "react/jsx-filename-extension": [
       1,
       {
         "extensions": [".ts", ".tsx", ".ttf", ".svg"]
       }
     ],
-    "react/prop-types": "off",
-    "@typescript-eslint/no-use-before-define": "off"
+    "react/prop-types": "off"
   },
   "overrides": [
+    {
+      "files": ["**.ts", "**.tsx"],
+      "extends": [
+        "plugin:@typescript-eslint/eslint-recommended",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:@typescript-eslint/recommended-requiring-type-checking",
+        "plugin:@typescript-eslint/eslint-plugin/recommended",
+        "plugin:@typescript-eslint/eslint-plugin/eslint-recommended",
+        "@atomix/eslint-config-react",
+        "plugin:prettier/recommended"
+      ],
+      "parser": "@typescript-eslint/parser",
+      "parserOptions": {
+        "project": "tsconfig.json",
+        "createDefaultProgram": true,
+        "tsconfigRootDir": "./"
+      },
+      "plugins": ["@typescript-eslint", "@typescript-eslint/eslint-plugin"],
+      "rules": {
+        "@typescript-eslint/explicit-function-return-type": "off",
+        "@typescript-eslint/no-use-before-define": "off"
+      }
+    },
+    {
+      "files": ["**.js"],
+      "extends": ["@atomix/eslint-config-react", "plugin:prettier/recommended"]
+    },
     {
       "files": [
         "./stories/**/*.tsx",
@@ -52,9 +57,10 @@
       }
     },
     {
-      "files": ["./rollup.config.js"],
+      "files": ["./rollup.config.js", "./build/**"],
       "rules": {
-        "import/no-default-export": "off"
+        "import/no-default-export": "off",
+        "import/no-extraneous-dependencies": "off"
       }
     }
   ]

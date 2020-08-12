@@ -13,44 +13,46 @@ import Package from './package.json';
 
 const extensions = ['.ts', '.tsx', '.json'];
 
-export default {
-  input: 'src',
-  output: [
-    {
-      file: 'dist/common.js',
-      format: 'cjs',
-      sourcemap: true,
-    },
-    {
-      file: 'dist/index.js',
-      format: 'esm',
-      sourcemap: true,
-    },
-  ],
-  external: [
-    ...Object.keys(Package.dependencies || {}),
-    ...Object.keys(Package.peerDependencies || {}),
-  ],
-  plugins: [
-    alias({
-      entries: {
-        '~': './src',
+export default [
+  {
+    input: 'packages/woly',
+    output: [
+      {
+        file: 'dist/common.js',
+        format: 'cjs',
+        sourcemap: true,
       },
-      resolve: extensions,
-    }),
-    eslint({ exclude: /node_modules|.svg$/ }),
-    typescript({ rollupCommonJSResolveHack: true, clean: true }),
-    reactSvg({
-      jsx: false,
-    }),
-    babel({
-      extensions,
-      exclude: 'node_modules/**',
-    }),
-    resolve({
-      extensions,
-    }),
-    commonjs(),
-    terser(),
-  ],
-};
+      {
+        file: 'dist/index.js',
+        format: 'esm',
+        sourcemap: true,
+      },
+    ],
+    external: [
+      ...Object.keys(Package.dependencies || {}),
+      ...Object.keys(Package.peerDependencies || {}),
+    ],
+    plugins: [
+      alias({
+        entries: {
+          '~': './src',
+        },
+        resolve: extensions,
+      }),
+      eslint({ exclude: /node_modules|.svg$/ }),
+      typescript({ rollupCommonJSResolveHack: true, clean: true }),
+      reactSvg({
+        jsx: false,
+      }),
+      babel({
+        extensions,
+        exclude: 'node_modules/**',
+      }),
+      resolve({
+        extensions,
+      }),
+      commonjs(),
+      terser(),
+    ],
+  },
+];
