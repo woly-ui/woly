@@ -9,4 +9,5 @@ export const common = css`
   --line-height: 1.2rem;
   --spacing-vertical: 0.4rem;
   --spacing-horizontal: 0.8rem;
+  --padding: 4px 9px;
 `;
