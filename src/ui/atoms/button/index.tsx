@@ -1,3 +1,4 @@
+/* eslint-disable react/button-has-type */
 import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
 
@@ -23,20 +24,40 @@ export type ButtonSizes = 'default' | 'small';
 
 interface Props {
   text: React.ReactNode;
+  left?: React.ReactNode;
+  right?: React.ReactNode;
   children?: never;
+  type?: 'button' | 'submit' | 'reset';
 }
 
-const map = (properties: Props) => ({
-  children: properties.text,
-});
+const Button = (p: Props & { className?: string }) => (
+  <button className={p.className} type={p.type || 'button'} {...p}>
+    {p.left && <span data-icon="left">{p.left}</span>}
+    <span>{p.text}</span>
+    {p.right && <span data-icon="right">{p.right}</span>}
+  </button>
+);
 
-export const Base = styled.button.attrs(map)`
+export const Base = styled(Button)`
+  --vertical: calc(1px * var(--component-level) * var(--main-level));
+  --horizontal: calc(
+    var(--const-m) + (1px * var(--main-level)) + var(--vertical)
+  );
+  --line-height: 24px;
+  --gap: calc(
+    (1px * var(--main-level)) +
+      (1px * var(--main-level) * var(--component-level))
+  );
+
+  display: flex;
+  flex-wrap: nowrap;
   border-radius: var(--rounding, 4px);
-  font-size: var(--font-size, 1rem);
-  line-height: var(--line-height, 1.4rem);
-  padding: var(--spacing-vertical, 1rem) var(--spacing-horizontal, 0.4rem);
+  font-size: var(--font-size, 15px);
+  line-height: var(--line-height, 24px);
+  padding: var(--vertical, 1rem) var(--horizontal, 0.4rem);
 
-  border: 1px solid var(--button-borders, #000000);
+  /* border: 1px solid var(--button-borders, #000000); */
+  border: none;
   background-color: var(--button-background, #000000);
   color: var(--button-color, #ffffff);
 
@@ -45,6 +66,15 @@ export const Base = styled.button.attrs(map)`
   &:active {
     border-color: var(--button-borders, #000000);
     outline: none;
+  }
+
+  & [data-icon] {
+    width: var(--line-height, 24px);
+    height: var(--line-height, 24px);
+  }
+
+  & > *:not(:first-child) {
+    margin-left: var(--gap);
   }
 ` as StyledComponent<'button', {}, Props>;
 
