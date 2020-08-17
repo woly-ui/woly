@@ -9,15 +9,15 @@ categories:
 
   - title: Atoms
     labels:
-      - @atoms
+      - '@atoms'
 
   - title: Molecules
     labels:
-      - @molecules
+      - '@molecules'
 
   - title: Organisms
     labels:
-      - @organisms
+      - '@organisms'
 
   - title: Bug Fixes
     labels:
