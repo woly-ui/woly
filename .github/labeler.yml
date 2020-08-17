@@ -9,9 +9,15 @@
 '@organisms':
   - src/ui/organisms/**/*
   - src/organisms/**/*
+  
+packages:
+  - packages/**/*
 
 lib:
   - src/lib/**/*
+  
+build:
+  - build/**/*
 
 configuration:
   - ./*
