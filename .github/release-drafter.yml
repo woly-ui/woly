@@ -28,6 +28,8 @@ categories:
     labels:
       - lib
       - configuration
+      - packages
+      - build
 
 change-template: '- $TITLE #$NUMBER (@$AUTHOR)'
 template: |
