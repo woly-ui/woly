@@ -9,7 +9,6 @@ import styled, { StyledComponent } from 'styled-components';
  */
 
 type Props = {
-  icon: string;
   onClick: (event: React.SyntheticEvent) => void;
 };
 
@@ -24,16 +23,16 @@ const ButtonFloating: React.FC<Props & { className?: string }> = (
   }, []);
 
   return (
-    <button
-      type="button"
-      className={className}
-      onClick={onClickHandler}
-      {...p}
-    />
+    <button type="button" className={className} onClick={onClickHandler}>
+      {p.children}
+    </button>
   );
 };
 
 export const Base = styled(ButtonFloating)`
+  display: flex;
+  align-content: center;
+  justify-content: center;
   position: fixed;
   cursor: pointer;
   right: var(--bf-position-right, 0);
@@ -42,7 +41,5 @@ export const Base = styled(ButtonFloating)`
   height: var(--bf-size, 70px);
   border: 0;
   border-radius: 50%;
-  background: var(--bf-background-color, #000)
-    ${(properties) => `url(${properties.icon})`} no-repeat center;
-  background-size: 50%;
+  background-color: var(--bf-background-color, #000);
 ` as StyledComponent<'button', {}, Props>;
