@@ -1,6 +1,6 @@
 {
   "name": "@woly/calendar",
-  "version": "0.1.0",
+  "version": "0.1.0-1",
   "description": "Date and time components for Woly React library",
   "main": "calendar.js",
   "module": "calendar.mjs",
@@ -42,7 +42,7 @@
   "peerDependencies": {
     "react": "^16.11.0",
     "styled-components": "^5.0.1",
-    "woly": "^0.1.11"
+    "woly": "^0.1.11-1"
   },
   "scripts": {},
   "author": {
@@ -57,7 +57,8 @@
   "contributors": [],
   "repository": {
     "type": "git",
-    "url": "https://github.com/woly-ui/woly"
+    "url": "https://github.com/woly-ui/woly",
+    "directory": "packages/calendar"
   },
   "homepage": "https://github.com/woly-ui/woly",
   "license": "MIT",

@@ -29,7 +29,7 @@ function massCopy(from, to, targets) {
 }
 
 /* eslint-disable no-console */
-function publishScript(libraryName) {
+function publishScript(libraryName, npmPackage = libraryName) {
   const onCatch = (error) => {
     debug('failed publishScript', libraryName);
     console.error(error);

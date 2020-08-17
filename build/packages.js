@@ -39,8 +39,8 @@ const keywords = [
 ];
 
 const version = {
-  woly: '0.1.11',
-  calendar: '0.1.0',
+  woly: '0.1.11-1',
+  calendar: '0.1.0-1',
 };
 
 const cjs = (name) => [`${name}.js`, `${name}.js.map`];
@@ -108,5 +108,6 @@ const calendar = {
   },
   ...common,
 };
+calendar.repository.directory = 'packages/calendar';
 
 module.exports = { woly, calendar };
