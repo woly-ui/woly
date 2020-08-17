@@ -30,6 +30,7 @@ categories:
       - configuration
       - packages
       - build
+      - dependencies
 
 change-template: '- $TITLE #$NUMBER (@$AUTHOR)'
 template: |
