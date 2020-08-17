@@ -9,7 +9,7 @@ import styled, { StyledComponent } from 'styled-components';
  */
 
 type Props = {
-  onClick: (event: React.SyntheticEvent) => void;
+  onClick: React.MouseEventHandler<HTMLButtonElement>;
 };
 
 const ButtonFloating: React.FC<Props & { className?: string }> = (
