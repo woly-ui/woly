@@ -10,21 +10,24 @@ import styled, { StyledComponent } from 'styled-components';
 
 type Props = {
   onClick: React.MouseEventHandler<HTMLButtonElement>;
+  icon: React.ReactNode;
 };
 
-const ButtonFloating: React.FC<Props & { className?: string }> = (
-  p,
-  { className },
-) => {
+const ButtonFloating: React.FC<Props & { className?: string }> = ({
+  className,
+  icon,
+  onClick,
+  ...p
+}) => {
   const onClickHandler = React.useCallback((event) => {
     event.preventDefault();
 
-    p.onClick(event);
+    onClick(event);
   }, []);
 
   return (
-    <button type="button" className={className} onClick={onClickHandler}>
-      {p.children}
+    <button type="button" className={className} onClick={onClickHandler} {...p}>
+      {icon}
     </button>
   );
 };
