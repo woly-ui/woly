@@ -1,3 +1,6 @@
+name-template: 'v$RESOLVED_VERSION ✨'
+tag-template: 'v$RESOLVED_VERSION'
+
 categories:
 
   - title: BREAKING CHANGES
@@ -29,3 +32,15 @@ categories:
 change-template: '- $TITLE #$NUMBER (@$AUTHOR)'
 template: |
   $CHANGES
+
+version-resolver:
+  major:
+    labels:
+      - 'major'
+  minor:
+    labels:
+      - 'minor'
+  patch:
+    labels:
+      - 'patch'
+  default: patch
