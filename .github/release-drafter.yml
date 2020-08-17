@@ -1,0 +1,31 @@
+categories:
+
+  - title: BREAKING CHANGES
+    labels:
+      - BREAKING CHANGE
+
+  - title: Atoms
+    labels:
+      - @atoms
+
+  - title: Molecules
+    labels:
+      - @molecules
+
+  - title: Organisms
+    labels:
+      - @organisms
+
+  - title: Bug Fixes
+    labels:
+      - fix
+      - bug
+
+  - title: Internal
+    labels:
+      - lib
+      - configuration
+
+change-template: '- $TITLE #$NUMBER (@$AUTHOR)'
+template: |
+  $CHANGES
