@@ -1,20 +1,26 @@
 import * as React from 'react';
-import styled from 'styled-components';
+import styled, { StyledComponent } from 'styled-components';
 
-import { Branch } from '../../../lib/branch';
-import { closedEyeIcon, openEyeIcon } from '../../../static/icons';
+/**
+ * --color
+ * --input-border-color
+ * --input-width
+ * --font-size
+ * --spacing-vertical
+ * --spacing-horizontal
+ * --rounding
+ */
 
 type InputProps = {
-  value: HTMLInputElement['value'];
+  value?: HTMLInputElement['value'];
   placeholder?: string;
-  type?: HTMLInputElement['type'];
-  name?: string;
+  type: 'text' | 'password' | 'email';
+  name: string;
   disabled?: boolean;
-  className?: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => unknown;
 };
 
-export const Input: React.FC<InputProps> = ({
+const Input: React.FC<InputProps & { className: string }> = ({
   value,
   placeholder,
   type = 'text',
@@ -22,56 +28,25 @@ export const Input: React.FC<InputProps> = ({
   disabled,
   className,
   onChange,
-}) => {
-  const [isPassVisible, showPass] = React.useState(false);
-  const togglePass = React.useCallback(() => showPass((is) => !is), []);
+}) => (
+  <input
+    name={name}
+    type={type}
+    value={value}
+    placeholder={placeholder}
+    className={className}
+    disabled={disabled}
+    onChange={onChange}
+  />
+);
 
-  return (
-    <ButtonWrap>
-      <WolyInput
-        className={className}
-        disabled={disabled}
-        name={name}
-        onChange={onChange}
-        placeholder={placeholder}
-        type={isPassVisible && type === 'password' ? 'text' : type}
-        value={value}
-      />
-      <Branch if={type === 'password'}>
-        <ShowPass data-visible={isPassVisible} onClick={togglePass} />
-      </Branch>
-    </ButtonWrap>
-  );
-};
+export const Base = styled(Input)`
+  --input-width: 100%;
+  --input-border-color: #d5d5dc;
 
-const ButtonWrap = styled.div`
-  position: relative;
-  display: block;
-`;
-
-const ShowPass = styled.div`
-  background-size: cover;
-  bottom: -6px;
-  cursor: pointer;
-  height: 24px;
-  margin: auto 0;
-  position: absolute;
-  right: 0;
-  top: 0;
-  width: 24px;
-
-  &[data-visible='true'] {
-  }
-`;
-
-const WolyInput = styled.input`
-  box-sizing: border-box;
-  color: var(--text-color);
-  font-size: var(--input-font-size);
-  line-height: var(--input-line-height);
-  width: 100%;
-
-  &::placeholder {
-    color: var(--conch);
-  }
-`;
+  width: var(--input-width);
+  border-radius: var(--rounding, 3px);
+  border: solid 1px var(--input-border-color);
+  padding: var(--spacing-vertical, 1rem) var(--spacing-horizontal, 0.4rem);
+  font-size: var(--font-size, 1rem);
+` as StyledComponent<'input', {}, InputProps>;

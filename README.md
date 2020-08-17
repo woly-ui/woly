@@ -7,5 +7,5 @@ Create your own UI/UX library.
 ## Usage
 
 `yarn build` builds the application to `dist/`
-`yarn story` - start dev server on `http://localhost:6006`
+`yarn start` - start dev server on `http://localhost:6006`
 `yarn story-build` - build storybook
