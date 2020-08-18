@@ -3,28 +3,28 @@ tag-template: 'v$RESOLVED_VERSION'
 
 categories:
 
-  - title: BREAKING CHANGES
+  - title: 🔴 BREAKING CHANGES
     labels:
       - BREAKING CHANGE
 
-  - title: Atoms
+  - title: 🧩 Atoms
     labels:
       - '@atoms'
 
-  - title: Molecules
+  - title: 🧩 Molecules
     labels:
       - '@molecules'
 
-  - title: Organisms
+  - title: 🧩 Organisms
     labels:
       - '@organisms'
 
-  - title: Bug Fixes
+  - title: 🐞 Bug Fixes
     labels:
       - fix
       - bug
 
-  - title: Internal
+  - title: 🪐 Internal
     labels:
       - lib
       - configuration
