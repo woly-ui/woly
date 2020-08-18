@@ -76,7 +76,7 @@ export const Base = styled(Button)`
   & > *:not(:first-child) {
     margin-left: var(--gap);
   }
-` as StyledComponent<'button', {}, Props>;
+` as StyledComponent<'button', Record<string, unknown>, Props>;
 
 export const Primary = styled(Base)`
   --button-borders: var(--primary-bg);

@@ -49,4 +49,4 @@ export const Base = styled(Input)`
   border: solid 1px var(--input-border-color);
   padding: var(--spacing-vertical, 1rem) var(--spacing-horizontal, 0.4rem);
   font-size: var(--font-size, 1rem);
-` as StyledComponent<'input', {}, InputProps>;
+` as StyledComponent<'input', Record<string, unknown>, InputProps>;
