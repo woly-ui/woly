@@ -1,6 +1,7 @@
 import * as React from 'react';
 
 interface BranchProps {
+  /* eslint-disable-next-line @typescript-eslint/ban-types */
   if: boolean | string | number | object | Function;
 }
 
