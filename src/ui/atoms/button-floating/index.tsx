@@ -19,11 +19,14 @@ const ButtonFloating: React.FC<Props & { className?: string }> = ({
   onClick,
   ...p
 }) => {
-  const onClickHandler = React.useCallback((event) => {
-    event.preventDefault();
+  const onClickHandler = React.useCallback(
+    (event: React.MouseEvent<HTMLButtonElement>) => {
+      event.preventDefault();
 
-    onClick(event);
-  }, []);
+      onClick(event);
+    },
+    [],
+  );
 
   return (
     <button type="button" className={className} onClick={onClickHandler} {...p}>
@@ -45,4 +48,4 @@ export const Base = styled(ButtonFloating)`
   border: 0;
   border-radius: 50%;
   background-color: var(--bf-background-color, #000);
-` as StyledComponent<'button', {}, Props>;
+` as StyledComponent<'button', Record<string, unknown>, Props>;
