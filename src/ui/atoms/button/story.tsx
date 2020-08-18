@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import { text } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
+import { text } from '@storybook/addon-knobs';
 
 import * as button from '.';
 

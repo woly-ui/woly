@@ -14,7 +14,7 @@ export const Base = styled.span.attrs(map)`
   line-height: var(--line-height, 1.2rem);
   padding: var(--padding, 1rem);
   color: var(--label-color, #000000);
-` as StyledComponent<'span', {}, LabelProps>;
+` as StyledComponent<'span', Record<string, unknown>, LabelProps>;
 
 export const Primary = styled(Base)`
   --label-color: var(--color);

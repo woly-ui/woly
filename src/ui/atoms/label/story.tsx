@@ -1,7 +1,8 @@
 import * as React from 'react';
-import { text } from '@storybook/addon-knobs';
-import * as label from '.';
 import styled from 'styled-components';
+import { text } from '@storybook/addon-knobs';
+
+import * as label from '.';
 
 export default { title: 'Atoms' };
 

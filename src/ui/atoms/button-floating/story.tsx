@@ -1,11 +1,13 @@
 import * as React from 'react';
-import { ReactComponent as ClosedEyeIcon } from '../../../static/icons/closed-eye.svg';
 
 import * as bf from '.';
+import { ReactComponent as ClosedEyeIcon } from '../../../static/icons/closed-eye.svg';
 
 export default { title: 'Atoms' };
 
-const noop = () => undefined;
+const noop = () => {
+  // noop
+};
 
 export const buttonFloating = () => (
   <div>
