@@ -5,7 +5,9 @@ import { ReactComponent as ClosedEyeIcon } from '../../../static/icons/closed-ey
 
 export default { title: 'Atoms' };
 
-const noop = () => undefined;
+const noop = () => {
+  // noop
+};
 
 export const buttonFloating = () => (
   <div>
