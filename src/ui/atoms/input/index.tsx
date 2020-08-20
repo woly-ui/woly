@@ -11,14 +11,14 @@ import styled, { StyledComponent } from 'styled-components';
  * --rounding
  */
 
-type InputProps = {
+interface InputProps {
   value?: HTMLInputElement['value'];
   placeholder?: string;
   type: 'text' | 'password' | 'email';
   name: string;
   disabled?: boolean;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => unknown;
-};
+}
 
 const Input: React.FC<InputProps & { className: string }> = ({
   value,
@@ -45,8 +45,10 @@ export const Base = styled(Input)`
   --input-border-color: #d5d5dc;
 
   width: var(--input-width);
-  border-radius: var(--rounding, 3px);
-  border: solid 1px var(--input-border-color);
   padding: var(--spacing-vertical, 1rem) var(--spacing-horizontal, 0.4rem);
+
   font-size: var(--font-size, 1rem);
+
+  border: solid 1px var(--input-border-color);
+  border-radius: var(--rounding, 3px);
 ` as StyledComponent<'input', Record<string, unknown>, InputProps>;

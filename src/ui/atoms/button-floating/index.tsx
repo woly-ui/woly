@@ -8,10 +8,10 @@ import styled, { StyledComponent } from 'styled-components';
  * --bf-position-right
  */
 
-type Props = {
+interface Props {
   onClick: React.MouseEventHandler<HTMLButtonElement>;
   icon: React.ReactNode;
-};
+}
 
 const ButtonFloating: React.FC<Props & { className?: string }> = ({
   className,
@@ -25,7 +25,7 @@ const ButtonFloating: React.FC<Props & { className?: string }> = ({
 
       onClick(event);
     },
-    [],
+    [onClick],
   );
 
   return (
@@ -36,16 +36,18 @@ const ButtonFloating: React.FC<Props & { className?: string }> = ({
 };
 
 export const Base = styled(ButtonFloating)`
+  position: fixed;
+  right: var(--bf-position-right, 0);
+  bottom: var(--bf-position-bottom, 0);
+
   display: flex;
   align-content: center;
   justify-content: center;
-  position: fixed;
-  cursor: pointer;
-  right: var(--bf-position-right, 0);
-  bottom: var(--bf-position-bottom, 0);
   width: var(--bf-size, 70px);
   height: var(--bf-size, 70px);
+
+  background-color: var(--bf-background-color, #000);
   border: 0;
   border-radius: 50%;
-  background-color: var(--bf-background-color, #000);
+  cursor: pointer;
 ` as StyledComponent<'button', Record<string, unknown>, Props>;

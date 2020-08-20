@@ -9,5 +9,5 @@ interface BranchProps {
 export const Branch: React.FC<BranchProps> = ({ if: value, children }) => {
   const [thenBranch, elseBranch] = React.Children.toArray(children);
   const result = value ? thenBranch : elseBranch;
-  return <>{result}</> || <></>;
+  return <>{result}</>;
 };
