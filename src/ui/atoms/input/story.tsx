@@ -5,7 +5,7 @@ import * as woly from '.';
 
 export default { title: 'Atoms/Input' };
 
-const noop = () => undefined;
+const noop = () => {};
 
 export const Input = () => (
   <woly.Base
