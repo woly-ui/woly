@@ -7,6 +7,7 @@ const analyze = require('rollup-plugin-visualizer');
 const commonjs = require('@rollup/plugin-commonjs');
 const json = require('@rollup/plugin-json');
 const { nodeResolve } = require('@rollup/plugin-node-resolve');
+const typescript = require('rollup-plugin-typescript2');
 
 const { directory } = require('./library');
 const babelConfig = require('./babel');
@@ -81,7 +82,7 @@ function getPlugins(name, { isEsm = false } = {}) {
     }),
     terser: terser(
       minifyConfig({
-        beautify: !!process.env.PRETTIFY,
+        beautify: Boolean(process.env.PRETTIFY),
         inline: !name.endsWith('.umd'),
       }),
     ),
@@ -90,6 +91,9 @@ function getPlugins(name, { isEsm = false } = {}) {
       entries: {
         woly: directory('src/woly'),
       },
+    }),
+    typescript: typescript({
+      tsconfigDefaults: { noEmit: true, declaration: true },
     }),
   };
 }
@@ -115,6 +119,7 @@ async function createEsCjs(
   const esmList = [
     esmPlugins.resolve,
     esmPlugins.json,
+    esmPlugins.typescript,
     esmPlugins.babel,
     esmPlugins.sizeSnapshot,
     esmPlugins.terser,

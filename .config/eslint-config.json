@@ -19,6 +19,13 @@
       "rules": {
         "import/no-anonymous-default-export": "off"
       }
+    },
+    {
+      "files": ["build/**"],
+      "rules": {
+        "import/no-extraneous-dependencies": "off",
+        "import/no-default-export": "off"
+      }
     }
   ]
 }

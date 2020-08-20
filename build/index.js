@@ -12,7 +12,7 @@ const woly = [
   massCopy('.', 'dist/woly', ['README.md']),
   massCopy('packages/woly', 'dist/woly', ['package.json']),
   buildWoly,
-  publishScript('woly'),
+  // publishScript('woly'), // TODO: fix to correctly publish
 ];
 
 const calendar = [

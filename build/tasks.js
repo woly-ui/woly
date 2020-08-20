@@ -41,14 +41,18 @@ function publishScript(libraryName, npmPackage = libraryName) {
 
     debug('running publishScript', libraryName, { tag, dry });
     try {
-      const { stdout, stderr } = await execa(
-        'npm',
-        ['publish', '--tag', tag, dry ? '--dry-run' : ''],
-        {
-          cwd: `${process.cwd()}/dist/${libraryName}`,
-          env: process.env,
-        },
-      );
+      const command = [
+        'publish',
+        '--tag',
+        tag,
+        dry ? '--dry-run' : undefined,
+      ].filter(Boolean);
+      const cwd = `${process.cwd()}/dist/${libraryName}`;
+
+      debug('run > npm ', command.join(' '), { cwd });
+
+      const { stdout, stderr } = await execa('npm', command, { cwd });
+
       console.log(stdout);
       console.error(stderr);
     } catch (error) {

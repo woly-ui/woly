@@ -1,6 +1,6 @@
 {
   "name": "woly",
-  "version": "0.1.10",
+  "private": true,
   "license": "MIT",
   "scripts": {
     "build": "rm -rf dist && node build",

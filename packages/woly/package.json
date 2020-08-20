@@ -1,6 +1,6 @@
 {
   "name": "woly",
-  "version": "0.1.11-1",
+  "version": "0.1.11-3",
   "description": "Exhaustive component library for React",
   "main": "woly.js",
   "module": "woly.mjs",

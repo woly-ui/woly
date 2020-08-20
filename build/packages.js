@@ -39,7 +39,7 @@ const keywords = [
 ];
 
 const version = {
-  woly: '0.1.11-1',
+  woly: '0.1.11-3',
   calendar: '0.1.0-1',
 };
 
