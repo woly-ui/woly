@@ -20,6 +20,8 @@ Env variables:
 - `DEBUG=woly:*` - shows debug lines
 - `NEXT=true` - publishes version to the `next` npm dist-tag
 - `DRY_RUN=true` - runs `npm publish` with `--dry-run` parameter
+- `PACKAGE=name` - build only `name` package
+- `PACKAGES=first,second` - build only `first` and `second` packages
 
 Example:
 

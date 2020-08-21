@@ -1,10 +1,11 @@
+/* eslint-disable unicorn/no-nested-ternary */
 const {
   copyLicense,
   generatePackageJson,
   massCopy,
-  publishScript,
+  // publishScript,
 } = require('./tasks');
-const { buildWoly } = require('./builder');
+const { buildWoly, buildCalendar } = require('./builder');
 
 const woly = [
   generatePackageJson('woly'),
@@ -20,7 +21,8 @@ const calendar = [
   copyLicense('calendar'),
   massCopy('packages/calendar', 'dist/calendar', ['README.md']),
   massCopy('packages/calendar', 'dist/calendar', ['package.json']),
-  publishScript('calendar', '@woly/calendar'),
+  buildCalendar,
+  // publishScript('calendar', '@woly/calendar'),
 ];
 
 main();
@@ -29,6 +31,11 @@ function main() {
   const config = {
     next: Boolean(process.env.NEXT),
     dryRun: Boolean(process.env.DRY_RUN),
+    packages: process.env.PACKAGE
+      ? [process.env.PACKAGE.trim()]
+      : process.env.PACKAGES
+      ? process.env.PACKAGES.split(',').map((p) => p.trim())
+      : undefined,
   };
 
   /* eslint-disable no-console */
@@ -37,11 +44,15 @@ function main() {
 
   Promise.all([
     run({ tasks: woly, name: 'woly', config }),
-    // run({ tasks: calendar, name: 'calendar', config }),
+    run({ tasks: calendar, name: 'calendar', config }),
   ]);
 }
 
 function run({ tasks, name, config }) {
+  if (config.packages && !config.packages.includes(name)) {
+    return;
+  }
+
   /* eslint-disable no-console */
   return tasks
     .reduce((p, task) => p.then(() => task(config)), Promise.resolve())

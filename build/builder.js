@@ -28,7 +28,22 @@ function buildWoly() {
   ]);
 }
 
-module.exports = { buildWoly };
+function buildCalendar() {
+  const name = 'calendar';
+
+  return Promise.all([
+    createEsCjs(name, {
+      dir: directory(`dist/${name}`),
+      file: {
+        cjs: `${name}.js`,
+        es: `${name}.mjs`,
+      },
+      inputExtension: 'ts',
+    }),
+  ]);
+}
+
+module.exports = { buildWoly, buildCalendar };
 
 const compatTarget = {
   browsers: [

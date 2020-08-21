@@ -42,7 +42,7 @@
   "peerDependencies": {
     "react": "^16.11.0",
     "styled-components": "^5.0.1",
-    "woly": "^0.1.11-1"
+    "woly": "^0.1.11-4"
   },
   "scripts": {},
   "author": {

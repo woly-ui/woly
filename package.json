@@ -68,6 +68,7 @@
     "fs-extra": "^9.0.1",
     "husky": "4.2.5",
     "import-sort-style-sova": "^0.1.0",
+    "inquirer": "^7.3.3",
     "lint-staged": "^10.2.11",
     "prettier": "^2.0.5",
     "prettier-plugin-import-sort": "^0.0.4",

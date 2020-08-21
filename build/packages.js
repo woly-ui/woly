@@ -1,3 +1,5 @@
+const versions = require('../versions.json');
+
 const common = {
   scripts: {},
   author: {
@@ -38,11 +40,6 @@ const keywords = [
   'woly',
 ];
 
-const version = {
-  woly: '0.1.11-3',
-  calendar: '0.1.0-1',
-};
-
 const cjs = (name) => [`${name}.js`, `${name}.js.map`];
 const esm = (name) => [`${name}.mjs`, `${name}.mjs.map`];
 const types = (name) => [`${name}.d.ts`];
@@ -61,7 +58,7 @@ const dependsPeer = {
 };
 
 const dependsOnWoly = {
-  woly: `^${version.woly}`,
+  woly: `^${versions.woly}`,
 };
 
 const getModules = (name) => ({
@@ -82,7 +79,7 @@ const getModules = (name) => ({
 
 const woly = {
   name: 'woly',
-  version: version.woly,
+  version: versions.woly,
   description: 'Exhaustive component library for React',
   ...getModules('woly'),
   files: getFiles('woly'),
@@ -96,7 +93,7 @@ const woly = {
 
 const calendar = {
   name: '@woly/calendar',
-  version: version.calendar,
+  version: versions.calendar,
   description: 'Date and time components for Woly React library',
   ...getModules('calendar'),
   files: getFiles('calendar'),
