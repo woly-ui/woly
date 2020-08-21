@@ -7,7 +7,7 @@
     "lint": "yarn lint:code && yarn lint:style && yarn format",
     "lint:code": "eslint --fix --ext .ts,.tsx src",
     "lint:style": "stylelint src/**/*.{js,css,ts,tsx} --fix",
-    "format": "prettier --write 'src/**/**.{ts,tsx,js}'",
+    "format": "prettier --write '{src,build,.storybook,packages}/**/**.{ts,tsx,js}'",
     "start": "start-storybook -s ./public,./static -p 6006",
     "story-build": "build-storybook -c .storybook",
     "test": "echo 'No tests provided'",

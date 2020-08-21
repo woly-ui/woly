@@ -1,4 +1,5 @@
 const { babel } = require('@rollup/plugin-babel');
+const { nodeResolve } = require('@rollup/plugin-node-resolve');
 const { rollup } = require('rollup');
 const { sizeSnapshot } = require('rollup-plugin-size-snapshot');
 const { terser } = require('rollup-plugin-terser');
@@ -6,7 +7,6 @@ const alias = require('@rollup/plugin-alias');
 const analyze = require('rollup-plugin-visualizer');
 const commonjs = require('@rollup/plugin-commonjs');
 const json = require('@rollup/plugin-json');
-const { nodeResolve } = require('@rollup/plugin-node-resolve');
 const typescript = require('@wessberg/rollup-plugin-ts');
 
 const { directory } = require('./library');
