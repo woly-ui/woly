@@ -7,7 +7,7 @@ const analyze = require('rollup-plugin-visualizer');
 const commonjs = require('@rollup/plugin-commonjs');
 const json = require('@rollup/plugin-json');
 const { nodeResolve } = require('@rollup/plugin-node-resolve');
-const typescript = require('rollup-plugin-typescript2');
+const typescript = require('@wessberg/rollup-plugin-ts');
 
 const { directory } = require('./library');
 const babelConfig = require('./babel');
@@ -18,9 +18,10 @@ function buildWoly() {
 
   return Promise.all([
     createEsCjs(name, {
+      dir: directory(`dist/${name}`),
       file: {
-        cjs: directory(`dist/${name}/${name}.js`),
-        es: directory(`dist/${name}/${name}.mjs`),
+        cjs: `${name}.js`,
+        es: `${name}.mjs`,
       },
       inputExtension: 'ts',
     }),
@@ -92,15 +93,13 @@ function getPlugins(name, { isEsm = false } = {}) {
         woly: directory('src/woly'),
       },
     }),
-    typescript: typescript({
-      tsconfigDefaults: { noEmit: true, declaration: true },
-    }),
+    typescript: typescript({ tsconfig: 'tsconfig.json' }),
   };
 }
 
 async function createEsCjs(
   name,
-  { file: { es, cjs }, input = 'index', inputExtension = 'js' },
+  { dir, file: { es, cjs }, input = 'index', inputExtension = 'js' },
 ) {
   const cjsPlugins = getPlugins(input === 'index' ? name : input);
   const cjsList = [
@@ -127,17 +126,24 @@ async function createEsCjs(
     esmPlugins.analyzerJson,
   ];
 
+  const tsPlugins = getPlugins(input === 'index' ? name : input, {
+    isEsm: true,
+  });
+  const tsList = [tsPlugins.resolve, tsPlugins.typescript];
+
+  const inputFile = directory(`packages/${name}/${input}.${inputExtension}`);
+
   const [cjsBuild, esmBuild] = await Promise.all([
     rollup({
       onwarn,
-      input: directory(`packages/${name}/${input}.${inputExtension}`),
+      input: inputFile,
       external: externals,
       plugins: cjsList,
     }),
     es &&
       rollup({
         onwarn,
-        input: directory(`packages/${name}/${input}.${inputExtension}`),
+        input: inputFile,
         external: externals,
         plugins: esmList,
       }),
@@ -145,7 +151,7 @@ async function createEsCjs(
 
   await Promise.all([
     cjsBuild.write({
-      file: cjs,
+      file: `${dir}/${cjs}`,
       format: 'cjs',
       freeze: false,
       name,
@@ -155,7 +161,7 @@ async function createEsCjs(
     }),
     es &&
       esmBuild.write({
-        file: es,
+        file: `${dir}/${es}`,
         format: 'es',
         freeze: false,
         name,
