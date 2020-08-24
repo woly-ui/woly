@@ -1,11 +1,9 @@
 import * as React from 'react';
-import { configure, addDecorator, addParameters } from '@storybook/react';
-
+import { addDecorator, addParameters, configure } from '@storybook/react';
 import { configureActions } from '@storybook/addon-actions';
-import { withKnobs } from '@storybook/addon-knobs';
-import { withConsole } from '@storybook/addon-console';
-
 import { themes } from '@storybook/theming';
+import { withConsole } from '@storybook/addon-console';
+import { withKnobs } from '@storybook/addon-knobs';
 
 import { Styles } from './layout/styles';
 import { Wrap } from './layout/template';

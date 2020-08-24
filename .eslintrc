@@ -1,0 +1,39 @@
+{
+  "extends": [
+    "@eslint-kit/base",
+    "@eslint-kit/typescript",
+    "@eslint-kit/node",
+    "@eslint-kit/react",
+    "@eslint-kit/prettier",
+    "./.config/eslint-config"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  },
+  "settings": {
+    "import/parsers": {
+      "@typescript-eslint/parser": [".ts", ".tsx"]
+    },
+    "import/resolver": {
+      "typescript": {
+        "project": "./tsconfig.json"
+      }
+    }
+  },
+  "rules": {
+    "import/order": "off"
+    // "import/order": [
+    //   "warn",
+    //   {
+    //     "groups": [
+    //       "builtin",
+    //       ["external", "internal"],
+    //       "parent",
+    //       "sibling",
+    //       "index"
+    //     ]
+    //   }
+    // ]
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "rules": {
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/no-use-before-define": "off",
+    "no-use-before-define": "off",
+    "unicorn/filename-case": ["error", { "case": "kebabCase" }],
+    "unicorn/no-nested-ternary": "error",
+    "unicorn/prevent-abbreviations": [
+      "error",
+      {
+        "extendDefaultWhitelist": true
+      }
+    ],
+    "import/export": "off"
+  },
+  "overrides": [
+    {
+      "files": ["**/story.tsx", "**/stories.tsx"],
+      "rules": {
+        "import/no-anonymous-default-export": "off"
+      }
+    },
+    {
+      "files": ["build/**"],
+      "rules": {
+        "import/no-extraneous-dependencies": "off",
+        "import/no-default-export": "off"
+      }
+    }
+  ]
+}

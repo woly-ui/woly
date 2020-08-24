@@ -1,0 +1,68 @@
+{
+  "name": "woly",
+  "version": "0.1.11-4",
+  "description": "Exhaustive component library for React",
+  "main": "woly.js",
+  "module": "woly.mjs",
+  "jsnext:main": "woly.mjs",
+  "types": "woly.d.ts",
+  "typings": "woly.d.ts",
+  "exports": {
+    ".": {
+      "require": "./woly.js",
+      "default": "./woly.mjs"
+    },
+    "./woly.mjs": "./woly.mjs",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "README.md",
+    "LICENSE",
+    "woly.js",
+    "woly.js.map",
+    "woly.mjs",
+    "woly.mjs.map",
+    "woly.d.ts"
+  ],
+  "keywords": [
+    "component",
+    "components",
+    "design",
+    "library",
+    "react-component",
+    "react",
+    "system",
+    "ui",
+    "woly"
+  ],
+  "dependencies": {},
+  "peerDependencies": {
+    "react": "^16.11.0",
+    "styled-components": "^5.0.1"
+  },
+  "scripts": {},
+  "author": {
+    "name": "Sergey Sova",
+    "email": "mail@sergeysova.com",
+    "url": "https://sova.dev"
+  },
+  "engines": {
+    "node": ">=8.0.0"
+  },
+  "sideEffects": false,
+  "contributors": [],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/woly-ui/woly",
+    "directory": "packages/calendar"
+  },
+  "homepage": "https://github.com/woly-ui/woly",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/woly-ui/woly/issues",
+    "email": "woly@sergeysova.com"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

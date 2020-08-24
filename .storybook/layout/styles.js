@@ -1,8 +1,8 @@
 import { createGlobalStyle, css } from 'styled-components';
 import { normalize } from 'styled-normalize';
 
+import { common, dark, light } from '../../src/ui/themes';
 import { fonts } from './fonts';
-import { common, light, dark } from '../../src/ui/themes';
 
 const globals = css`
   :root {
@@ -28,7 +28,7 @@ const globals = css`
     --block-shadow: 0 3px 12px -3px var(--border-color);
 
     /* titles */
-    --title-color: var(--black)
+    --title-color: var(--black);
     --title-height: 1.2rem;
 
     --h1-font-size: 4.2rem;
@@ -71,26 +71,28 @@ const globals = css`
 
   body,
   html {
-    color: var(--canvas-text);
-    background-color: var(--canvas-bg);
-    font-family: var(--primary-font);
-    font-size: 62.5%;
-    font-weight: 400;
-    height: 100%;
-    line-height: 1.4;
-    margin-left: auto;
-    margin-right: auto;
-    min-width: 320px;
     width: 100%;
+    min-width: 320px;
+    height: 100%;
+    margin-right: auto;
+    margin-left: auto;
+
+    color: var(--canvas-text);
+    font-weight: 400;
+    font-size: 62.5%;
+    font-family: var(--primary-font);
+    line-height: 1.4;
+
+    background-color: var(--canvas-bg);
     -webkit-font-smoothing: antialiased;
   }
 
   input {
-    border: 0;
     background-color: transparent;
+    border: 0;
     outline: none;
 
-    &[type="text"] {
+    &[type='text'] {
       font-weight: 300;
     }
   }
