@@ -7,10 +7,10 @@ import styled, { StyledComponent } from 'styled-components';
  * --bi-rounding
  */
 
-type Props = {
+interface Props {
   onClick: React.MouseEventHandler<HTMLButtonElement>;
   icon: React.ReactNode;
-};
+}
 
 const ButtonIcon: React.FC<Props & { className?: string }> = ({
   className,
@@ -24,7 +24,7 @@ const ButtonIcon: React.FC<Props & { className?: string }> = ({
 
       onClick(event);
     },
-    [],
+    [onClick],
   );
 
   return (
