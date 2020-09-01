@@ -93,6 +93,7 @@
     "typescript": "^3.9.7"
   },
   "dependencies": {
+    "@svgr/webpack": "^5.4.0",
     "react": "^16.13.1",
     "styled-components": "^5.1.1"
   },
