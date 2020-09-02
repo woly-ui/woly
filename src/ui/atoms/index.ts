@@ -4,6 +4,7 @@ export * as buttonIcon from './button-icon';
 export * as chip from './chip';
 export * as input from './input';
 export * as label from './label';
+export * as menuList from './menu-list';
 export * as notification from './notification';
 export * as popover from './popover';
 export * as surface from './surface';
