@@ -1,0 +1,61 @@
+---
+name: chip
+category: atoms
+package: 'woly'
+---
+
+​
+import \* as chip from './index';
+​
+Chip is used for categorizing or markup.
+​
+
+## Using chips
+
+Chips can be used inside input or as tags.
+​
+
+### Installation
+
+​
+
+```shell
+npm install woly
+# or
+yarn add woly
+```
+
+​
+
+### Usage
+
+​
+
+```tsx
+import { chip } from 'woly';
+const Example = () => (
+  <chip.Base
+    icon={<Icon onClick={(event) => console.info('Icon clicked')} />}
+    text="Chip"
+    onClick={(event) => console.info('Chip clicked')}
+  />
+);
+```
+
+​
+
+### Kinds
+
+​
+| Name | Description |
+| ------------- | ----------------------------------------------------------- |
+| `Base` | Base chip, useful for creating new chips |
+
+### Props
+
+​
+| Name | Type | Default | Description |
+| ------- | ------------------------------- | ---------- | ---------------------------------------------------------- |
+| `text` | `React.ReactNode` | | Text inside chip |
+| `icon` | `React.ReactNode` | `null` | Icon to show on the right side of the text |
+| `onClick` | `React.MouseEventHandler<HTMLButtonElement>` | `null` | Callback when chip is clicked |
