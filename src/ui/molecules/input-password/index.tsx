@@ -1,8 +1,8 @@
 import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
 
-import { ReactComponent as ClosedEyeIcon } from '../../../static/icons/closed-eye.svg';
-import { ReactComponent as OpenedEyeIcon } from '../../../static/icons/opened-eye.svg';
+import ClosedEyeIcon from '../../../static/icons/closed-eye.svg';
+import OpenedEyeIcon from '../../../static/icons/opened-eye.svg';
 import { input } from '../../atoms';
 
 interface InputPasswordProps {

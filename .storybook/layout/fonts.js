@@ -27,6 +27,4 @@ export const fonts = css`
     font-style: normal;
     src: url('${InterfacesBoldTTF}') format('truetype');
   }
-
-
 `;
