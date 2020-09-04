@@ -1,0 +1,57 @@
+---
+name: popover
+category: atoms
+package: 'woly'
+---
+
+​
+import \* as popover from './index';
+​
+Popover is a modal window.
+​
+
+## Using popover
+
+​Popover is used when you want to show the content in the same window. It creates the floating layer over the current page to get user feedback or display information.
+
+You can use Popover with Surface component.
+
+### Installation
+
+​
+
+```shell
+npm install woly
+# or
+yarn add woly
+```
+
+​
+
+### Usage
+
+​
+
+```tsx
+import { popover } from 'woly';
+const Example = () => (
+  <popover.Base isOpen={isOpen}>Popover content</popover.Base>
+);
+```
+
+​
+
+### Kinds
+
+​
+| Name | Description |
+| ------------- | ----------------------------------------------------------- |
+| `Base` | Base popover |
+
+### Props
+
+​
+| Name | Type | Default | Description |
+| ------- | ------------------------------- | ---------- | ---------------------------------------------------------- |
+| `isOpen` | `boolean` | | Whether the component is visible or not |
+| `...` | `object` | `{}` | Other props passed to the component
