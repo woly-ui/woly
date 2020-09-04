@@ -6,5 +6,8 @@
   ],
   "*.css": [
     "stylelint --fix"
+  ],
+  "*.{md,mdx}": [
+    "prettier --write"
   ]
 }
