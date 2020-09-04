@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import * as bf from '.';
-import { ReactComponent as ClosedEyeIcon } from '../../../static/icons/closed-eye.svg';
+import ClosedEyeIcon from '../../../static/icons/closed-eye.svg';
 
 export default { title: 'Atoms' };
 

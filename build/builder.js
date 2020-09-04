@@ -8,6 +8,7 @@ const analyze = require('rollup-plugin-visualizer');
 const commonjs = require('@rollup/plugin-commonjs');
 const json = require('@rollup/plugin-json');
 const typescript = require('@wessberg/rollup-plugin-ts');
+const reactSvg = require('rollup-plugin-react-svg');
 
 const { directory } = require('./library');
 const babelConfig = require('./babel');
@@ -109,6 +110,7 @@ function getPlugins(name, { isEsm = false } = {}) {
       },
     }),
     typescript: typescript({ tsconfig: 'tsconfig.json' }),
+    reactSvg: reactSvg(),
   };
 }
 
@@ -125,6 +127,7 @@ async function createEsCjs(
     cjsPlugins.terser,
     cjsPlugins.analyzer,
     cjsPlugins.analyzerJson,
+    cjsPlugins.reactSvg,
   ];
 
   const esmPlugins = getPlugins(input === 'index' ? name : input, {
@@ -139,12 +142,8 @@ async function createEsCjs(
     esmPlugins.terser,
     esmPlugins.analyzer,
     esmPlugins.analyzerJson,
+    cjsPlugins.reactSvg,
   ];
-
-  const tsPlugins = getPlugins(input === 'index' ? name : input, {
-    isEsm: true,
-  });
-  const tsList = [tsPlugins.resolve, tsPlugins.typescript];
 
   const inputFile = directory(`packages/${name}/${input}.${inputExtension}`);
 
