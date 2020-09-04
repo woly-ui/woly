@@ -70,7 +70,7 @@
     "import-sort-style-sova": "^0.1.0",
     "inquirer": "^7.3.3",
     "lint-staged": "^10.2.11",
-    "prettier": "^2.0.5",
+    "prettier": "^2.1.1",
     "prettier-plugin-import-sort": "^0.0.4",
     "react-docgen-typescript-loader": "^3.6.0",
     "react-dom": "^16.13.1",
