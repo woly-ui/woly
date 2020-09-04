@@ -7,6 +7,10 @@ on:
     branches:
       - '*'
 
+  pull_request:
+    branches:
+      - '*'
+
 jobs:
   build:
     name: build and test
@@ -38,27 +42,27 @@ jobs:
       - name: Test
         run: yarn test
 
-  publish:
-    if: false
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          persist-credentials: false
+  # publish:
+  #   if: false
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #       with:
+  #         persist-credentials: false
 
-      - name: Set Node.js
-        uses: actions/setup-node@master
-        with:
-          node-version: '12'
+  #     - name: Set Node.js
+  #       uses: actions/setup-node@master
+  #       with:
+  #         node-version: '12'
 
-      - name: Install Dependencies
-        run: yarn install
+  #     - name: Install Dependencies
+  #       run: yarn install
 
-      - name: Build
-        run: yarn build
+  #     - name: Build
+  #       run: yarn build
 
-      - name: Publish to NPM
-        uses: primer/publish@v2.0.0
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+  #     - name: Publish to NPM
+  #       uses: primer/publish@v2.0.0
+  #       env:
+  #         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  #         NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
