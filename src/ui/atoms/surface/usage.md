@@ -1,0 +1,50 @@
+---
+name: surface
+category: atoms
+package: 'woly'
+---
+
+​
+import \* as surface from './index';
+​
+Surface is a simple layer that contains information.
+
+## Using surface
+
+​Surface can be used inside Popover or Sidebar.
+
+### Installation
+
+​
+
+```shell
+npm install woly
+# or
+yarn add woly
+```
+
+​
+
+### Usage
+
+​
+
+```tsx
+import { surface } from 'woly';
+const Example = () => <surface.Base>Surface content</surface.Base>;
+```
+
+​
+
+### Kinds
+
+​
+| Name | Description |
+| ------------- | ----------------------------------------------------------- |
+| `Base` | Base surface |
+​
+
+### Props
+
+​
+Pass any content as a children property within Surface component.
