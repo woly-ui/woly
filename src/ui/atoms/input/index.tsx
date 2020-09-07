@@ -28,6 +28,7 @@ const Input: React.FC<InputProps & { className: string }> = ({
   disabled,
   className,
   onChange,
+  ...p
 }) => (
   <input
     name={name}
@@ -37,15 +38,21 @@ const Input: React.FC<InputProps & { className: string }> = ({
     className={className}
     disabled={disabled}
     onChange={onChange}
+    {...p}
   />
 );
 
 export const Base = styled(Input)`
   --input-width: 100%;
   --input-border-color: #d5d5dc;
+  --vertical: calc(1px * var(--component-level) * var(--main-level));
+  --horizontal: calc(
+    var(--const-m) + (1px * var(--main-level)) + var(--vertical)
+  );
+  box-sizing: border-box;
 
   width: var(--input-width);
-  padding: var(--spacing-vertical, 1rem) var(--spacing-horizontal, 0.4rem);
+  padding: var(--vertical, 1rem) var(--horizontal, 0.4rem);
 
   font-size: var(--font-size, 1rem);
 
