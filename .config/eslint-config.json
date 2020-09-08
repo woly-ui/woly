@@ -17,7 +17,8 @@
     {
       "files": ["**/story.tsx", "**/stories.tsx"],
       "rules": {
-        "import/no-anonymous-default-export": "off"
+        "import/no-anonymous-default-export": "off",
+        "import/no-unresolved": "off"
       }
     },
     {
