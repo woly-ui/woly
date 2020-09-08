@@ -1,0 +1,50 @@
+---
+name: checkbox
+category: atoms
+package: 'woly'
+---
+
+import * as checkbox from './index';
+
+Checkbox is used to turn on/off an option.
+
+## Using checkbox
+
+Checkbox can be provided with label using `label` component.
+
+### Installation
+
+```shell
+npm install woly
+# or
+yarn add woly
+```
+
+### Usage
+
+```tsx
+import { checkbox, label } from 'woly';
+const Example = () => (
+  <checkbox.Base
+    label={<label.Primary text="Checkbox label" />}
+    isChecked={isChecked}
+    onChange={onChange}
+    id="checkbox"
+  />
+);
+```
+
+### Kinds
+
+| Name   | Description                                                 |
+| ------ | ----------------------------------------------------------- |
+| `Base` | Base checkbox. Useful for creating a new kind of checkboxes |
+
+### Props
+
+| Name        | Type                                         | Default | Description                        |
+| ----------- | -------------------------------------------- | ------- | ---------------------------------- |
+| `id`        | `string`                                     |         | HTML id attribute                  |
+| `isChecked` | `boolean`                                    |         | Whether checkbox is checked or not |
+| `label`     | `React.ReactNode`                            | `null`  | Label component                    |
+| `onChange`  | `React.ChangeEventHandler<HTMLInputElement>` |         | Callback when checkbox is clicked  |
