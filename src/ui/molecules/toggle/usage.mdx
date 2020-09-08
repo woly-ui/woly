@@ -1,0 +1,50 @@
+---
+name: toggle
+category: atoms
+package: 'woly'
+---
+
+import * as toggle from './index';
+
+Toggle is used to switch between two different options.
+
+## Using toggle
+
+Toggle can be provided with label using `label` component.
+
+### Installation
+
+```shell
+npm install woly
+# or
+yarn add woly
+```
+
+### Usage
+
+```tsx
+import { label, toggle } from 'woly';
+const Example = () => (
+  <toggle.Base
+    label={<label.Primary text="Toggle label" />}
+    isChecked={isChecked}
+    onChange={onChange}
+    id="toggle"
+  />
+);
+```
+
+### Kinds
+
+| Name   | Description                                           |
+| ------ | ----------------------------------------------------- |
+| `Base` | Base toggle. Useful for creating a new kind of toggle |
+
+### Props
+
+| Name        | Type                                         | Default | Description                      |
+| ----------- | -------------------------------------------- | ------- | -------------------------------- |
+| `id`        | `string`                                     |         | HTML id attribute                |
+| `isChecked` | `boolean`                                    |         | Whether toggle is checked or not |
+| `label`     | `React.ReactNode`                            | `null`  | Label component                  |
+| `onChange`  | `React.ChangeEventHandler<HTMLInputElement>` |         | Callback when toggle is clicked  |
