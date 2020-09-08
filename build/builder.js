@@ -123,11 +123,11 @@ async function createEsCjs(
     cjsPlugins.resolve,
     cjsPlugins.json,
     cjsPlugins.babel,
-    cjsPlugins.sizeSnapshot,
+    cjsPlugins.reactSvg,
     cjsPlugins.terser,
+    cjsPlugins.sizeSnapshot,
     cjsPlugins.analyzer,
     cjsPlugins.analyzerJson,
-    cjsPlugins.reactSvg,
   ];
 
   const esmPlugins = getPlugins(input === 'index' ? name : input, {
@@ -137,12 +137,12 @@ async function createEsCjs(
     esmPlugins.resolve,
     esmPlugins.json,
     esmPlugins.typescript,
+    cjsPlugins.reactSvg,
     esmPlugins.babel,
-    esmPlugins.sizeSnapshot,
     esmPlugins.terser,
+    esmPlugins.sizeSnapshot,
     esmPlugins.analyzer,
     esmPlugins.analyzerJson,
-    cjsPlugins.reactSvg,
   ];
 
   const inputFile = directory(`packages/${name}/${input}.${inputExtension}`);
