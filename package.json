@@ -8,7 +8,7 @@
     "lint:code": "eslint --fix --ext .ts,.tsx src",
     "lint:style": "stylelint src/**/*.{js,css,ts,tsx} --fix",
     "format": "prettier --write '{src,build,.storybook,packages}/**/**.{ts,tsx,js}'",
-    "start": "start-storybook -s ./public,./static -p 6006",
+    "start": "gatsby develop",
     "test": "echo 'No tests provided'",
     "commit": "git-cz"
   },
@@ -56,7 +56,7 @@
     "file-loader": "^5.1.0",
     "fork-ts-checker-webpack-plugin": "^5.1.0",
     "fs-extra": "^9.0.1",
-    "gatsby": "^2.24.53",
+    "gatsby": "^2.24.54",
     "gatsby-theme-woly": "^0.1.0",
     "husky": "4.2.5",
     "import-sort-style-sova": "^0.1.0",
