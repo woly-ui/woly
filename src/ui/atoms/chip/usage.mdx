@@ -6,30 +6,15 @@ package: 'woly'
 
 import * as chip from './index';
 
-Chip is used for categorizing or markup.
+Chip is used for categorizing or markup. Chips can be used inside input or as tags.
 
-## Using chips
+### Example
 
-Chips can be used inside input or as tags.
-
-### Installation
-
-```shell
-npm install woly
-# or
-yarn add woly
-```
-
-### Usage
+<chip.Base text="Chip" onClick={(event) => console.info('Chip clicked')} />
 
 ```tsx
-import { chip } from 'woly';
 const Example = () => (
-  <chip.Base
-    icon={<Icon onClick={(event) => console.info('Icon clicked')} />}
-    text="Chip"
-    onClick={(event) => console.info('Chip clicked')}
-  />
+  <chip.Base text="Chip" onClick={(event) => console.info('Chip clicked')} />
 );
 ```
 

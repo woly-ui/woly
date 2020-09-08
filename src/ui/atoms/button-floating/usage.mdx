@@ -1,27 +1,35 @@
 ---
-name: button-floatiing
+name: button-floating
 category: atoms
 package: 'woly'
 ---
 
-import { buttonFloating } from '..';
+import * as buttonFloating from './index';
 
-ButtonFloating is placed at the bottom right side of the screen and contains an icon
+`buttonFloating` is placed at the bottom right side of the screen and contains an icon
 
-## Using button-floating
+### Example
 
-### Installation
+{' '}
 
-```shell
-npm install woly
-# or
-yarn add woly
-```
-
-### Usage
+<buttonFloating.Base
+  icon={
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+    >
+      <g fill="none" fill-rule="evenodd" stroke="#1A1A23">
+        <path d="M4 12c1.88 2.761 4.426 5 8 5s6.4-2.239 8-5M20 12c-1.88-2.761-4.426-5-8-5s-6.4 2.239-8 5" />
+        <circle cx="12" cy="12" r="3" />
+      </g>
+    </svg>
+  }
+  onClick={(event) => console.info('buttonFloating clicked')}
+/>
 
 ```tsx
-import { buttonFloating } from 'woly';
 const Example = () => (
   <buttonFloating.Base
     icon={Icon}

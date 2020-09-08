@@ -1,29 +1,18 @@
 ---
 name: button
 category: atoms
-package: 'woly'
+package: woly
 ---
 
-import { button } from '..';
+import * as button from './index';
 
 Button allows users to take actions and make choices with a single tap.
 
-## Using buttons
+## Example
 
-<button.Primary onClick={() => {}} text="Primary Button" />
-
-### Installation
-
-```shell
-npm install woly
-# or
-yarn add woly
-```
-
-### Usage
+<button.Primary text="Hello world" onClick={(event) => console.info('Hi!')} />
 
 ```tsx
-import { button } from 'woly';
 const Example = () => (
   <button.Primary text="Hello world" onClick={(event) => console.info('Hi!')} />
 );

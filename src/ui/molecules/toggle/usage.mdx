@@ -4,31 +4,26 @@ category: atoms
 package: 'woly'
 ---
 
+import * as label from '../../atoms/label';
 import * as toggle from './index';
 
-Toggle is used to switch between two different options.
+Toggle is used to switch between two different options. Toggle can be provided with label using `label` component.
 
-## Using toggle
+### Example
 
-Toggle can be provided with label using `label` component.
-
-### Installation
-
-```shell
-npm install woly
-# or
-yarn add woly
-```
-
-### Usage
+<toggle.Base
+  label={<label.Primary text="Toggle label" />}
+  isChecked
+  onChange={(e) => console.log('change', e)}
+  id="toggle"
+/>
 
 ```tsx
-import { label, toggle } from 'woly';
 const Example = () => (
   <toggle.Base
     label={<label.Primary text="Toggle label" />}
-    isChecked={isChecked}
-    onChange={onChange}
+    isChecked
+    onChange={(e) => console.log('change', e)}
     id="toggle"
   />
 );

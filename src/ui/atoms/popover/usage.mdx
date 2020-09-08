@@ -8,26 +8,15 @@ import * as popover from './index';
 
 Popover is a modal window.
 
-## Using popover
+Popover is used when you want to show the content in the same window. It creates the floating layer over the current page to get user feedback or display information. You can use Popover with Surface component.
 
-Popover is used when you want to show the content in the same window. It creates the floating layer over the current page to get user feedback or display information.
+### Example
 
-You can use Popover with Surface component.
-
-### Installation
-
-```shell
-npm install woly
-# or
-yarn add woly
-```
-
-### Usage
+<popover.Base isOpen={true}>Popover content</popover.Base>
 
 ```tsx
-import { popover } from 'woly';
 const Example = () => (
-  <popover.Base isOpen={isOpen}>Popover content</popover.Base>
+  <popover.Base isOpen={true}>Popover content</popover.Base>
 );
 ```
 

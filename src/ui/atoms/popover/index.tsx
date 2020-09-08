@@ -23,7 +23,7 @@ const Popover: React.FC<Props & { className?: string }> = ({
   ...p
 }) => {
   return (
-    <div className={className} data-isOpen={isOpen} {...p}>
+    <div className={className} data-open={isOpen} {...p}>
       {children}
     </div>
   );
@@ -43,7 +43,7 @@ export const Base = styled(Popover)`
   border-radius: var(--popover-rounding, 0);
   visibility: hidden;
 
-  &[data-isOpen='true'] {
+  &[data-open='true'] {
     visibility: visible;
   }
 `;

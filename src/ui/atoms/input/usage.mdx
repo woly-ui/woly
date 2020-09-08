@@ -6,30 +6,25 @@ package: 'woly'
 
 import * as input from './index';
 
-Input is a field to accept data from the user.
+Input is a field to accept data from the user. Input is used to create form fields that accept user input.
 
-## Using input
+### Example
 
-Input is used to create form fields that accept user input.
-
-### Installation
-
-```shell
-npm install woly
-# or
-yarn add woly
-```
-
-### Usage
+<input.Base
+  type="text"
+  name="name"
+  placeholder="Enter your name here"
+  value="Hi"
+  onChange={(event) => console.info('On input change')}
+/>
 
 ```tsx
-import { input } from 'woly';
 const Example = () => (
   <input.Base
     type="text"
     name="name"
     placeholder="Enter your name here"
-    value={value}
+    value="Hi"
     onChange={(event) => console.info('On input change')}
   />
 );

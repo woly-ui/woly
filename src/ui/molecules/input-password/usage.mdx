@@ -7,30 +7,26 @@ package: 'woly'
 import * as inputPassword from './index';
 
 InputPassword is used for a secure password entry.
-The component has a button-icon to show and hide user password.
+The component has a button-icon to show and hide user password. InputPassword can be used in an authorization form or to confirm user action.
 
-## Using inputPassword
+### Example
 
-InputPassword can be used in an authorization form or to confirm user action.
-
-### Installation
-
-```shell
-npm install woly
-# or
-yarn add woly
-```
-
-### Usage
+<inputPassword.Base
+  onChange={(e) => console.info('change', e)}
+  name="input"
+  iconHidden={<>🙉</>}
+  iconOpen={<>🙈</>}
+  value="Just a value"
+/>
 
 ```tsx
-import { inputPassword } from 'woly';
 const Example = () => (
   <inputPassword.Base
+    onChange={(e) => console.info('change', e)}
     name="input"
-    iconHidden={<IconHidden />}
-    iconOpen={<IconOpen />}
-    value={value}
+    iconHidden={<>🙉</>}
+    iconOpen={<>🙈</>}
+    value="Just a value"
   />
 );
 ```
