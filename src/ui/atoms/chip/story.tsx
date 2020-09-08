@@ -18,13 +18,29 @@ const Icon = styled.button`
   outline: none;
 `;
 
+const Global = styled.div`
+  --const-m: 6px;
+  --main-level: 3;
+`;
+
+const N = styled.div`
+  --component-level: 0;
+`;
+
+const XS = styled.div`
+  --component-level: 1;
+`;
+const S = styled.div`
+  --component-level: 2;
+`;
+
 export const chips = () => {
   const content = text('Text', 'Chip');
   const onClick = action('click');
   const onIconClick = action('onIconClick');
 
   return (
-    <>
+    <Global>
       <div>
         <pre style={{ fontSize: '1rem' }}>
           {`
@@ -45,22 +61,66 @@ export const chips = () => {
           <tr>
             <Cell>Chip with icon</Cell>
             <Preview>
-              <chip.Base
-                icon={<Icon onClick={onIconClick} />}
-                onClick={onClick}
-                text={content}
-              />
+              <N>
+                <chip.Base
+                  icon={<Icon onClick={onIconClick} />}
+                  onClick={onClick}
+                  text={content}
+                />
+              </N>
             </Preview>
           </tr>
           <tr>
             <Cell>Chip without icon</Cell>
             <Preview>
-              <chip.Base onClick={onClick} text={content} />
+              <N>
+                <chip.Base onClick={onClick} text={content} />
+              </N>
+            </Preview>
+          </tr>
+          <tr>
+            <Cell>Chip with icon</Cell>
+            <Preview>
+              <XS>
+                <chip.Base
+                  icon={<Icon onClick={onIconClick} />}
+                  onClick={onClick}
+                  text={content}
+                />
+              </XS>
+            </Preview>
+          </tr>
+          <tr>
+            <Cell>Chip without icon</Cell>
+            <Preview>
+              <XS>
+                <chip.Base onClick={onClick} text={content} />
+              </XS>
+            </Preview>
+          </tr>
+          <tr>
+            <Cell>Chip with icon</Cell>
+            <Preview>
+              <S>
+                <chip.Base
+                  icon={<Icon onClick={onIconClick} />}
+                  onClick={onClick}
+                  text={content}
+                />
+              </S>
+            </Preview>
+          </tr>
+          <tr>
+            <Cell>Chip without icon</Cell>
+            <Preview>
+              <S>
+                <chip.Base onClick={onClick} text={content} />
+              </S>
             </Preview>
           </tr>
         </tbody>
       </table>
-    </>
+    </Global>
   );
 };
 
