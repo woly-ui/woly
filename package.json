@@ -9,6 +9,7 @@
     "lint:style": "stylelint src/**/*.{js,css,ts,tsx} --fix",
     "format": "prettier --write '{src,build,.storybook,packages}/**/**.{ts,tsx,js}'",
     "start": "gatsby develop",
+    "docs:build": "gatsby build",
     "test": "echo 'No tests provided'",
     "commit": "git-cz"
   },

@@ -1,4 +1,4 @@
-name: Storybook CI
+name: Docs CD
 
 on:
   push:
@@ -23,7 +23,7 @@ jobs:
         run: yarn install
 
       - name: Build for GitHub
-        run: yarn story-build
+        run: yarn docs:build
 
       - name: Build and Deploy
         uses: JamesIves/github-pages-deploy-action@releases/v3
@@ -31,4 +31,4 @@ jobs:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BRANCH: gh-pages
-          FOLDER: storybook-static
+          FOLDER: public
