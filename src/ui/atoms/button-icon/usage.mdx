@@ -1,0 +1,53 @@
+---
+name: button-icon
+category: atoms
+package: 'woly'
+---
+
+import * as buttonIcon from './index';
+
+`buttonIcon` is a button with an icon
+
+### Example
+
+<div style={{ '--bi-background-color': 'black', '--bi-rounding': '3px' }}>
+  <buttonIcon.Base
+    icon={
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="70"
+        height="65"
+        viewBox="0 0 24 24"
+      >
+        <g fill="none" fill-rule="evenodd" stroke="#fff">
+          <path d="M4 12c1.88 2.761 4.426 5 8 5s6.4-2.239 8-5M20 12c-1.88-2.761-4.426-5-8-5s-6.4 2.239-8 5" />
+          <circle cx="12" cy="12" r="3" />
+        </g>
+      </svg>
+    }
+    onClick={(event) => console.info('buttonIcon clicked')}
+  />
+</div>
+
+```tsx
+const Example = () => (
+  <buttonIcon.Base
+    icon={Icon}
+    onClick={(event) => console.info('buttonIcon clicked')}
+  />
+);
+```
+
+### Kinds
+
+| Name   | Description              |
+| ------ | ------------------------ |
+| `Base` | Base button with an icon |
+
+### Props
+
+| Name      | Type                                         | Default | Description                                        |
+| --------- | -------------------------------------------- | ------- | -------------------------------------------------- |
+| `icon`    | `React.ReactNode`                            |         | Set the icon component inside the button           |
+| `onClick` | `React.MouseEventHandler<HTMLButtonElement>` |         | Callback when button clicked                       |
+| `...`     | `HTMLButtonElementProps`                     | `{}`    | Other props are inherited from `HTMLButtonElement` |

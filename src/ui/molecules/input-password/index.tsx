@@ -5,6 +5,12 @@ import ClosedEyeIcon from '../../../static/icons/closed-eye.svg';
 import OpenedEyeIcon from '../../../static/icons/opened-eye.svg';
 import { input } from '../../atoms';
 
+/**
+ * --input-border-color
+ * --input-border-color-focus
+ * --rounding
+ */
+
 interface InputPasswordProps {
   disabled?: boolean;
   iconHidden?: React.ReactNode;
@@ -27,10 +33,7 @@ export const InputPassword: React.FC<
   placeholder,
   value,
 }) => {
-  const [isVisible, setHidden] = React.useState(false);
-  const onClick = React.useCallback(() => {
-    setHidden(!isVisible);
-  }, [isVisible]);
+  const [isVisible, onClick] = React.useReducer((is) => !is, false);
 
   const closeEye = iconHidden ?? <ClosedEyeIcon />;
   const openEye = iconOpen ?? <OpenedEyeIcon />;
@@ -77,5 +80,6 @@ export const Base = styled(InputPassword)`
 
   input {
     border: 0;
+    outline: none;
   }
 ` as StyledComponent<'div', Record<string, unknown>, InputPasswordProps>;

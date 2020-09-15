@@ -1,6 +1,17 @@
 import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
 
+/**
+ * --toggle-width
+ * --toggle-height
+ * --toggle-rounding
+ * --toggle-unactive-background-color
+ * --toggle-active-background-color
+ * --toggle-switcher-width
+ * --toggle-switcher-height
+ * --toggle-switcher-background-color
+ */
+
 interface ToggleProps {
   id: string;
   isChecked: boolean;
