@@ -4,6 +4,7 @@ category: atoms
 package: 'woly'
 ---
 
+import { HighlightCode } from '../../../lib/highlight';
 import { InputPasswordExample } from './example';
 
 `inputPassword` is used for a secure password entry.
@@ -13,8 +14,7 @@ The component has a button-icon to show and hide user password. InputPassword ca
 
 <InputPasswordExample />
 
-```tsx
-const Example = () => (
+export const Example = `
   <inputPassword.Base
     onChange={(e) => console.info('change', e)}
     name="input"
@@ -22,8 +22,9 @@ const Example = () => (
     iconOpen={<>🙈</>}
     value="Just a value"
   />
-);
-```
+`.trim();
+
+<HighlightCode code={Example} />
 
 ### Kinds
 

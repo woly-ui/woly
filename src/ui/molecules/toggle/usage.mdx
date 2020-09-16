@@ -5,6 +5,7 @@ package: 'woly'
 ---
 
 import * as toggle from './index';
+import { HighlightCode } from '../../../lib/highlight';
 import { ToggleExample } from './example';
 
 `toggle` is used to switch between two different options. Toggle can be provided with label using `label` component.
@@ -13,16 +14,16 @@ import { ToggleExample } from './example';
 
 <ToggleExample />
 
-```tsx
-const Example = () => (
+export const Example = `
   <toggle.Base
     label={<label.Primary text="Toggle label" />}
     isChecked={false}
     onChange={(e) => console.log('change', e)}
     id="toggle"
   />
-);
-```
+`.trim();
+
+<HighlightCode code={Example} />
 
 ### Kinds
 

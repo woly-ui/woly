@@ -5,6 +5,7 @@ package: 'woly'
 ---
 
 import * as surface from './index';
+import { HighlightCode } from '../../../lib/highlight';
 import { SurfaceExample } from './example';
 
 `surface` is a simple layer that contains information. Surface can be used inside Popover or Sidebar.
@@ -13,9 +14,11 @@ import { SurfaceExample } from './example';
 
 <SurfaceExample />
 
-```tsx
-const Example = () => <surface.Base>Surface content</surface.Base>;
-```
+export const Example = `
+<surface.Base>Surface content</surface.Base>
+`.trim();
+
+<HighlightCode code={Example} />
 
 ### Kinds
 

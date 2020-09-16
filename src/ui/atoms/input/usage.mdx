@@ -4,6 +4,7 @@ category: atoms
 package: 'woly'
 ---
 
+import { HighlightCode } from '../../../lib/highlight';
 import { InputExample } from './example';
 
 `input` is a field to accept data from the user. Input is used to create form fields that accept user input.
@@ -12,8 +13,7 @@ import { InputExample } from './example';
 
 <InputExample />
 
-```tsx
-const Example = () => (
+export const Example = `
   <input.Base
     type="text"
     name="name"
@@ -21,8 +21,9 @@ const Example = () => (
     value="Hi"
     onChange={(event) => console.info('On input change')}
   />
-);
-```
+`.trim();
+
+<HighlightCode code={Example} />
 
 ### Kinds
 

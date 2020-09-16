@@ -6,6 +6,7 @@ package: woly
 
 import * as button from './index';
 import { ButtonExample } from './example';
+import { HighlightCode } from '../../../lib/highlight';
 
 `button` allows users to take actions and make choices with a single tap.
 
@@ -13,15 +14,15 @@ import { ButtonExample } from './example';
 
 <ButtonExample />
 
-```tsx
-const Example = () => (
+export const Example = `
   <button.Primary
     text="Hello world"
     onClick={(event) => console.info('Hi!')}
     left={<>⭐️</>}
   />
-);
-```
+`.trim();
+
+<HighlightCode code={Example} />
 
 ### Kinds
 

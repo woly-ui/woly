@@ -5,6 +5,7 @@ package: 'woly'
 ---
 
 import * as buttonIcon from './index';
+import { HighlightCode } from '../../../lib/highlight';
 
 `buttonIcon` is a button with an icon
 
@@ -29,14 +30,14 @@ import * as buttonIcon from './index';
   />
 </div>
 
-```tsx
-const Example = () => (
+export const Example = `
   <buttonIcon.Base
     icon={Icon}
     onClick={(event) => console.info('buttonIcon clicked')}
   />
-);
-```
+`.trim();
+
+<HighlightCode code={Example} />
 
 ### Kinds
 

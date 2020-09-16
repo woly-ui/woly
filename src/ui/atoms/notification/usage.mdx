@@ -4,6 +4,7 @@ category: atoms
 package: 'woly'
 ---
 
+import { HighlightCode } from '../../../lib/highlight';
 import { NotificationExample } from './example';
 
 `notification` display the notification message globaly.
@@ -12,11 +13,11 @@ import { NotificationExample } from './example';
 
 <NotificationExample />
 
-```tsx
-const Example = () => (
-  <notification.Base message="Your transaction has been completed" />
-);
-```
+export const Example = `
+<notification.Base message="Your transaction has been completed" />
+`.trim();
+
+<HighlightCode code={Example} />
 
 ### Kinds
 

@@ -5,6 +5,7 @@ package: 'woly'
 ---
 
 import * as menuList from './index';
+import { HighlightCode } from '../../../lib/highlight';
 
 `menuList` is a list of items related to a single object. This component can be used in menu dropdown or input autosuggestion components.
 
@@ -20,8 +21,7 @@ import * as menuList from './index';
   />
 </div>
 
-```tsx
-const Example = () => (
+export const Example = `
   <menuList.Base
     menu={[
       { id: 0, item: 'Red' },
@@ -29,8 +29,9 @@ const Example = () => (
       { id: 2, item: 'Blue' },
     ]}
   />
-);
-```
+`.trim();
+
+<HighlightCode code={Example} />
 
 ### Kinds
 

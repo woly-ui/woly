@@ -5,6 +5,7 @@ package: 'woly'
 ---
 
 import { CheckboxExample } from './example';
+import { HighlightCode } from '../../../lib/highlight';
 
 `checkbox` is used to turn on/off an option. Checkbox can be provided with label using `label` component.
 
@@ -12,16 +13,16 @@ import { CheckboxExample } from './example';
 
 <CheckboxExample />
 
-```tsx
-const Example = () => (
+export const Example = `
   <checkbox.Base
     label={<label.Primary text="Checkbox label" />}
     isChecked={true}
     onChange={(e) => console.info('change', e)}
     id="checkbox"
   />
-);
-```
+`.trim();
+
+<HighlightCode code={Example} />
 
 ### Kinds
 

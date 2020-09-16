@@ -5,6 +5,7 @@ package: 'woly'
 ---
 
 import { ChipExample } from './example';
+import { HighlightCode } from '../../../lib/highlight';
 
 `chip` is used for categorizing or markup. Chips can be used inside input or as tags.
 
@@ -12,15 +13,15 @@ import { ChipExample } from './example';
 
 <ChipExample />
 
-```tsx
-const Example = () => (
+export const Example = `
   <chip.Base
     icon={<>🎃</>}
     onClick={(event) => console.info('Chip clicked')}
     text="Chip"
   />
-);
-```
+`.trim();
+
+<HighlightCode code={Example} />
 
 ### Kinds
 

@@ -5,6 +5,7 @@ package: 'woly'
 ---
 
 import * as popover from './index';
+import { HighlightCode } from '../../../lib/highlight';
 import { PopoverExample } from './example';
 
 Popover is a modal window.
@@ -15,11 +16,11 @@ Popover is a modal window.
 
 <PopoverExample />
 
-```tsx
-const Example = () => (
+export const Example = `
   <popover.Base isOpen={true}>Popover content</popover.Base>
-);
-```
+`.trim();
+
+<HighlightCode code={Example} />
 
 ### Kinds
 

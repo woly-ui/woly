@@ -5,6 +5,7 @@ package: 'woly'
 ---
 
 import * as buttonFloating from './index';
+import { HighlightCode } from '../../../lib/highlight';
 
 `buttonFloating` is placed at the bottom right side of the screen and contains an icon
 
@@ -27,14 +28,14 @@ import * as buttonFloating from './index';
   onClick={(event) => console.info('buttonFloating clicked')}
 />
 
-```tsx
-const Example = () => (
-  <buttonFloating.Base
+export const Example = `
+<buttonFloating.Base
     icon={Icon}
     onClick={(event) => console.info('buttonFloating clicked')}
   />
-);
-```
+`.trim();
+
+<HighlightCode code={Example} />
 
 ### Kinds
 
