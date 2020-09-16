@@ -1,0 +1,45 @@
+---
+name: menuList
+category: atoms
+package: 'woly'
+---
+
+import * as menuList from './index';
+
+`menuList` is a list of items related to a single object. This component can be used in menu dropdown or input autosuggestion components.
+
+### Example
+
+<div style={{ maxWidth: '300px' }}>
+  <menuList.Base
+    menu={[
+      { id: 0, item: 'Red' },
+      { id: 1, item: 'Green' },
+      { id: 2, item: 'Blue' },
+    ]}
+  />
+</div>
+
+```tsx
+const Example = () => (
+  <menuList.Base
+    menu={[
+      { id: 0, item: 'Red' },
+      { id: 1, item: 'Green' },
+      { id: 2, item: 'Blue' },
+    ]}
+  />
+);
+```
+
+### Kinds
+
+| Name   | Description                                               |
+| ------ | --------------------------------------------------------- |
+| `Base` | Base menuList. Useful for creating a new kind of menuList |
+
+### Props
+
+| Name   | Type                     | Default | Description                |
+| ------ | ------------------------ | ------- | -------------------------- |
+| `menu` | `Array<React.ReactNode>` |         | An array of menuList items |

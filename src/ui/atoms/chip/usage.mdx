@@ -4,17 +4,21 @@ category: atoms
 package: 'woly'
 ---
 
-import * as chip from './index';
+import { ChipExample } from './example';
 
-Chip is used for categorizing or markup. Chips can be used inside input or as tags.
+`chip` is used for categorizing or markup. Chips can be used inside input or as tags.
 
 ### Example
 
-<chip.Base text="Chip" onClick={(event) => console.info('Chip clicked')} />
+<ChipExample />
 
 ```tsx
 const Example = () => (
-  <chip.Base text="Chip" onClick={(event) => console.info('Chip clicked')} />
+  <chip.Base
+    icon={<>🎃</>}
+    onClick={(event) => console.info('Chip clicked')}
+    text="Chip"
+  />
 );
 ```
 

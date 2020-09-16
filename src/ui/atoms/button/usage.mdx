@@ -5,16 +5,21 @@ package: woly
 ---
 
 import * as button from './index';
+import { ButtonExample } from './example';
 
-Button allows users to take actions and make choices with a single tap.
+`button` allows users to take actions and make choices with a single tap.
 
-## Example
+### Example
 
-<button.Primary text="Hello world" onClick={(event) => console.info('Hi!')} />
+<ButtonExample />
 
 ```tsx
 const Example = () => (
-  <button.Primary text="Hello world" onClick={(event) => console.info('Hi!')} />
+  <button.Primary
+    text="Hello world"
+    onClick={(event) => console.info('Hi!')}
+    left={<>⭐️</>}
+  />
 );
 ```
 
@@ -29,10 +34,10 @@ const Example = () => (
 
 ### Props
 
-| Name    | Type                     | Default  | Description                                                |
-| ------- | ------------------------ | -------- | ---------------------------------------------------------- |
-| `text`  | `React.ReactNode`        |          | Text appeared on the button                                |
-| `left`  | `React.ReactNode`        | `null`   | Component to show on the left side of the text (ex.: Icon) |
-| `right` | `React.ReactNode`        | `null`   | Component on the right side of the text                    |
-| `type`  | `'button'                | 'submit' | 'reset'`                                                   | `'button'` | HTML type of the button |
-| `...`   | `HTMLButtonElementProps` | `{}`     | Other props are inherited from `HTMLButtonElement`         |
+| Name    | Type                            | Default    | Description                                                |
+| ------- | ------------------------------- | ---------- | ---------------------------------------------------------- |
+| `text`  | `React.ReactNode`               |            | Text appeared on the button                                |
+| `left`  | `React.ReactNode`               | `null`     | Component to show on the left side of the text (ex.: Icon) |
+| `right` | `React.ReactNode`               | `null`     | Component on the right side of the text                    |
+| `type`  | `'button' ӏ 'submit' ӏ 'reset'` | `'button'` | HTML type of the button                                    |
+| `...`   | `HTMLButtonElementProps`        | `{}`       | Other props are inherited from `HTMLButtonElement`         |

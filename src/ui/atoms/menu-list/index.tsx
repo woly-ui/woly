@@ -1,8 +1,18 @@
 import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
 
+/**
+ * --menu-list-padding
+ * --menu-list-color
+ * --menu-list-background
+ * --rounding
+ * --shadow
+ * --menu-list-item-padding
+ * --menu-list-hover
+ */
+
 interface MenuList {
-  menu: string[];
+  menu: Array<{ item: React.ReactNode; id: string }>;
 }
 
 const MenuList: React.FC<MenuList & { className: string }> = ({
@@ -10,8 +20,8 @@ const MenuList: React.FC<MenuList & { className: string }> = ({
   className,
 }) => (
   <ul className={className}>
-    {menu.map((item, key) => (
-      <li key={key} data-type="menu-item">
+    {menu.map(({ item, id }) => (
+      <li key={id} data-type="menu-item">
         {item}
       </li>
     ))}
@@ -22,6 +32,8 @@ export const Base = styled(MenuList)`
   padding: var(--menu-list-padding, 6px 0);
 
   color: var(--menu-list-color, #1a1a23);
+
+  list-style-type: none;
 
   background-color: var(--menu-list-background, #ffffff);
   border-radius: var(--rounding, 3px);

@@ -1,6 +1,19 @@
 import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
 
+/**
+ * --notification-top
+ * --notification-right
+ * --notification-bottom
+ * --notification-left
+ * --font-size
+ * --notification-margin
+ * --notification-padding
+ * --notification-color
+ * --notification-background-color
+ * --notification-radius
+ */
+
 interface NotificationProps {
   message: React.ReactNode;
 }

@@ -29,7 +29,7 @@ const Chip: React.FC<ChipProps & { className: string }> = ({
     <button type="button" onClick={onClick} {...p}>
       {text}
     </button>
-    {icon}
+    <div>{icon}</div>
   </div>
 );
 
@@ -47,7 +47,6 @@ export const Base = styled(Chip)`
 
   padding: var(--vertical, 1rem) var(--horizontal, 0.4rem);
 
-  color: var(--chip-color, #000000);
   font-size: var(--font-size, 1rem);
 
   background-color: var(--chip-background-color, #ffffff);
@@ -61,6 +60,8 @@ export const Base = styled(Chip)`
     flex-grow: 1;
     padding: 0;
 
+    color: var(--chip-color, #000000);
+
     line-height: var(--line-height, 24px);
     text-align: left;
 
@@ -70,7 +71,9 @@ export const Base = styled(Chip)`
     outline: none;
   }
 
-  & > button:nth-child(2) {
+  & > div:last-child {
     margin-left: var(--gap, 6px);
+
+    line-height: var(--line-height, 24px);
   }
 ` as StyledComponent<'div', Record<string, unknown>, ChipProps>;

@@ -4,19 +4,13 @@ category: atoms
 package: 'woly'
 ---
 
-import * as checkbox from './index';
-import * as label from '../../atoms/label';
+import { CheckboxExample } from './example';
 
-Checkbox is used to turn on/off an option. Checkbox can be provided with label using `label` component.
+`checkbox` is used to turn on/off an option. Checkbox can be provided with label using `label` component.
 
-### Exampl
+### Example
 
-<checkbox.Base
-  label={<label.Primary text="Checkbox label" />}
-  isChecked={true}
-  onChange={(e) => console.info('change', e)}
-  id="checkbox"
-/>
+<CheckboxExample />
 
 ```tsx
 const Example = () => (

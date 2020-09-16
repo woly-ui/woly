@@ -38,7 +38,7 @@ export const Base = styled(ButtonIcon)`
   display: block;
   padding: var(--bi-padding, 0);
 
-  background-color: var(--bf-background-color, transparent);
+  background-color: var(--bi-background-color, transparent);
   border: 0;
   border-radius: var(--bi-rounding, 0);
   cursor: pointer;

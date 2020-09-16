@@ -16,8 +16,8 @@ const Checkbox: React.FC<CheckboxProps & { className: string }> = ({
   onChange,
 }) => (
   <div className={className}>
-    {label && <div>{label}</div>}
     <input type="checkbox" onChange={onChange} id={id} checked={isChecked} />
+    {label && <div>{label}</div>}
   </div>
 );
 

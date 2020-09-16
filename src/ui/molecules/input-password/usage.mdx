@@ -4,20 +4,14 @@ category: atoms
 package: 'woly'
 ---
 
-import * as inputPassword from './index';
+import { InputPasswordExample } from './example';
 
-InputPassword is used for a secure password entry.
+`inputPassword` is used for a secure password entry.
 The component has a button-icon to show and hide user password. InputPassword can be used in an authorization form or to confirm user action.
 
 ### Example
 
-<inputPassword.Base
-  onChange={(e) => console.info('change', e)}
-  name="input"
-  iconHidden={<>🙉</>}
-  iconOpen={<>🙈</>}
-  value="Just a value"
-/>
+<InputPasswordExample />
 
 ```tsx
 const Example = () => (
