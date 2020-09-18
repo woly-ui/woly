@@ -2,6 +2,7 @@ import * as React from 'react';
 import styled from 'styled-components';
 
 import * as button from './index';
+import { ArrowLeft, MoreIcon, SearchIcon } from '../../../static/icons';
 import { Global, block } from '../../../lib/box-styles';
 
 export const ButtonExample: React.FC = () => (
@@ -9,26 +10,53 @@ export const ButtonExample: React.FC = () => (
     <Global>
       <div>
         <block.S>
-          <button.Primary left={<>🌴</>} text="Button S" />
+          <button.Primary
+            right={
+              <IconWrapper>
+                <MoreIcon />
+              </IconWrapper>
+            }
+            text="Button S"
+          />
         </block.S>
         <block.M>
-          <button.Secondary left={<>🧠</>} text="Button M" />
+          <button.Secondary left={<ArrowLeft />} text="Button M" />
         </block.M>
         <block.L>
-          <button.Destructive right={<>✖</>} text="Button L" />
+          <button.Destructive
+            right={
+              <IconWrapper>
+                <SearchIcon />
+              </IconWrapper>
+            }
+            text="Button L"
+          />
         </block.L>
       </div>
       <div>
         <block.XS>
-          <button.Primary right={<>👍🏻</>} text="Button XS" />
+          <button.Primary
+            right={
+              <IconWrapper>
+                <SearchIcon />
+              </IconWrapper>
+            }
+            left={<>⭐️</>}
+            text="Button XS"
+          />
         </block.XS>
         <block.N>
-          <button.Primary right={<>⭐️</>} left={<>⭐️</>} text="Button N" />
+          <button.Primary text="Button N" />
         </block.N>
       </div>
     </Global>
   </Inputs>
 );
+export const IconWrapper = styled.div`
+  path {
+    fill: #fff;
+  }
+`;
 
 export const Inputs = styled.div`
   --primary-bg: #6ab547;

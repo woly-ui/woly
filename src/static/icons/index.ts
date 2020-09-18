@@ -1,5 +1,6 @@
-import closeIcon from './close-small.svg';
-import closedEyeIcon from './closed-eye.svg';
-import openEyeIcon from './opened-eye.svg';
-
-export { closeIcon, closedEyeIcon, openEyeIcon };
+export { default as ArrowLeft } from './arrow-left.svg';
+export { default as CloseIcon } from './close-small.svg';
+export { default as ClosedEyeIcon } from './closed-eye.svg';
+export { default as MoreIcon } from './more.svg';
+export { default as OpenEyeIcon } from './opened-eye.svg';
+export { default as SearchIcon } from './search.svg';

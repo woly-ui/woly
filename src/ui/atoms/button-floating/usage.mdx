@@ -5,32 +5,23 @@ package: 'woly'
 ---
 
 import * as buttonFloating from './index';
+import { SearchIcon } from '../../../static/icons/';
 
 `buttonFloating` is placed at the bottom right side of the screen and contains an icon
 
 ### Example
 
-<buttonFloating.Base
-  icon={
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="70"
-      height="65"
-      viewBox="0 0 24 24"
-    >
-      <g fill="none" fill-rule="evenodd" stroke="#fff">
-        <path d="M4 12c1.88 2.761 4.426 5 8 5s6.4-2.239 8-5M20 12c-1.88-2.761-4.426-5-8-5s-6.4 2.239-8 5" />
-        <circle cx="12" cy="12" r="3" />
-      </g>
-    </svg>
-  }
-  onClick={(event) => console.info('buttonFloating clicked')}
-/>
+<div style={{ '--bf-background-color': 'skyblue' }}>
+  <buttonFloating.Base
+    icon={<SearchIcon />}
+    onClick={(event) => console.info('buttonFloating clicked')}
+  />
+</div>
 
 ```tsx
 const Example = () => (
   <buttonFloating.Base
-    icon={Icon}
+    icon={<Icon />}
     onClick={(event) => console.info('buttonFloating clicked')}
   />
 );

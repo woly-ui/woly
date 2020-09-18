@@ -72,6 +72,8 @@ export const Base = styled(Chip)`
   }
 
   & > div:last-child {
+    display: flex;
+    align-items: center;
     margin-left: var(--gap, 6px);
 
     line-height: var(--line-height, 24px);

@@ -41,7 +41,7 @@ export const Base = styled(ButtonFloating)`
   bottom: var(--bf-position-bottom, 0);
 
   display: flex;
-  align-content: center;
+  align-items: center;
   justify-content: center;
   width: var(--bf-size, 70px);
   height: var(--bf-size, 70px);
