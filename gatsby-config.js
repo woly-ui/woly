@@ -7,5 +7,13 @@ module.exports = {
       resolve: `gatsby-theme-woly`,
       options: { components: `src` },
     },
+    {
+      resolve: 'gatsby-plugin-react-svg',
+      options: {
+        rule: {
+          include: /icons/,
+        },
+      },
+    },
   ],
 };

@@ -1,17 +1,13 @@
 import * as React from 'react';
-import styled from 'styled-components';
 
 import * as inputPassword from '.';
+import { ClosedEyeIcon, OpenEyeIcon } from '../../../static/icons';
 
 export const InputPasswordExample: React.FC = () => (
   <inputPassword.Base
     onChange={() => console.info('change')}
     name="input"
-    iconHidden={<ToggleButton>🙉</ToggleButton>}
-    iconOpen={<ToggleButton>🙈</ToggleButton>}
+    iconHidden={<ClosedEyeIcon />}
+    iconOpen={<OpenEyeIcon />}
   />
 );
-
-export const ToggleButton = styled.div`
-  font-size: 30px;
-`;

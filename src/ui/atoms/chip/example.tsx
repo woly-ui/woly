@@ -2,6 +2,7 @@ import * as React from 'react';
 import styled from 'styled-components';
 
 import * as chip from './index';
+import { CloseIcon } from '../../../static/icons';
 import { Global, block } from '../../../lib/box-styles';
 
 export const ChipExample: React.FC = () => (
@@ -16,14 +17,14 @@ export const ChipExample: React.FC = () => (
       <block.N>
         <Chip
           text="Chip N"
-          icon={<>🎃</>}
+          icon={<CloseIcon />}
           onClick={() => console.info('Chip clicked')}
         />
       </block.N>
       <block.XS>
         <Chip
           text="Chip XS"
-          icon={<>🎃</>}
+          icon={<CloseIcon />}
           onClick={() => console.info('Chip clicked')}
         />
       </block.XS>
