@@ -9,7 +9,7 @@
     "lint:style": "stylelint src/**/*.{js,css,ts,tsx} --fix",
     "format": "prettier --write '{src,build,.storybook,packages}/**/**.{ts,tsx,js}'",
     "start": "gatsby develop",
-    "docs:build": "gatsby build",
+    "docs:build": "gatsby build --prefix-paths",
     "test": "echo 'No tests provided'",
     "commit": "git-cz"
   },
@@ -59,7 +59,7 @@
     "fs-extra": "^9.0.1",
     "gatsby": "^2.24.54",
     "gatsby-plugin-react-svg": "^3.0.0",
-    "gatsby-theme-woly": "^0.3.0",
+    "gatsby-theme-woly": "^0.2.0",
     "husky": "4.2.5",
     "import-sort-style-sova": "^0.1.0",
     "inquirer": "^7.3.3",
