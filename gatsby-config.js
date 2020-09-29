@@ -2,6 +2,7 @@ module.exports = {
   siteMetadata: {
     siteUrl: `https://woly-ui.github.io/woly/`,
   },
+  pathPrefix: `/woly`,
   plugins: [
     {
       resolve: `gatsby-theme-woly`,
