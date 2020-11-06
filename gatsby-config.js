@@ -1,8 +1,7 @@
 module.exports = {
   siteMetadata: {
-    siteUrl: `https://woly-ui.github.io/woly/`,
+    siteUrl: `https://woly.sova.dev/`,
   },
-  pathPrefix: `/woly`,
   plugins: [
     {
       resolve: `gatsby-theme-woly`,
