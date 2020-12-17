@@ -4,39 +4,40 @@ category: atoms
 package: 'woly'
 ---
 
-import * as buttonFloating from './index';
+import { ButtonFloating } from './index';
 import { SearchIcon } from '../../../static/icons/';
 
-`buttonFloating` is placed at the bottom right side of the screen and contains an icon
+`ButtonFloating` is placed at the bottom right side of the screen and contains an icon
 
 ### Example
 
 <div style={{ '--bf-background-color': 'skyblue' }}>
-  <buttonFloating.Base
+  <ButtonFloating
     icon={<SearchIcon />}
-    onClick={(event) => console.info('buttonFloating clicked')}
+    onClick={(event) => console.info('ButtonFloating clicked')}
   />
 </div>
 
 ```tsx
 const Example = () => (
-  <buttonFloating.Base
+  <ButtonFloating
     icon={<Icon />}
-    onClick={(event) => console.info('buttonFloating clicked')}
+    onClick={(event) => console.info('ButtonFloating clicked')}
   />
 );
 ```
 
 ### Kinds
 
-| Name   | Description                                              |
-| ------ | -------------------------------------------------------- |
-| `Base` | Base round button at the bottom right side of the screen |
+| Name             | Description                                              |
+| ---------------- | -------------------------------------------------------- |
+| `ButtonFloating` | Base round button at the bottom right side of the screen |
 
 ### Props
 
-| Name      | Type                                         | Default | Description                                        |
-| --------- | -------------------------------------------- | ------- | -------------------------------------------------- |
-| `icon`    | `React.ReactNode`                            |         | Set the icon component inside the button           |
-| `onClick` | `React.MouseEventHandler<HTMLButtonElement>` |         | Callback when button clicked                       |
-| `...`     | `HTMLButtonElementProps`                     | `{}`    | Other props are inherited from `HTMLButtonElement` |
+| Name      | Type                                         | Default     | Description                                        |
+| --------- | -------------------------------------------- | ----------- | -------------------------------------------------- |
+| `icon`    | `React.ReactNode`                            |             | Set the icon component inside the button           |
+| `onClick` | `React.MouseEventHandler<HTMLButtonElement>` |             | Callback when button clicked                       |
+| `variant` | `string`                                     | `'default'` | Variant prop to style ButtonFloating component     |
+| `...`     | `HTMLButtonElement`                          | `{}`        | Other props are inherited from `HTMLButtonElement` |
