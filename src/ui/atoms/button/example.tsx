@@ -1,8 +1,8 @@
 import * as React from 'react';
 import styled from 'styled-components';
 
-import * as button from './index';
 import { ArrowLeft, MoreIcon, SearchIcon } from '../../../static/icons';
+import { Button } from './index';
 import { Global, block } from '../../../lib/box-styles';
 
 export const ButtonExample: React.FC = () => (
@@ -10,7 +10,7 @@ export const ButtonExample: React.FC = () => (
     <Global>
       <div>
         <block.S>
-          <button.Primary
+          <Button
             right={
               <IconWrapper>
                 <MoreIcon />
@@ -20,10 +20,10 @@ export const ButtonExample: React.FC = () => (
           />
         </block.S>
         <block.M>
-          <button.Secondary left={<ArrowLeft />} text="Button M" />
+          <Button left={<ArrowLeft />} text="Button M" />
         </block.M>
         <block.L>
-          <button.Destructive
+          <Button
             right={
               <IconWrapper>
                 <SearchIcon />
@@ -35,7 +35,7 @@ export const ButtonExample: React.FC = () => (
       </div>
       <div>
         <block.XS>
-          <button.Primary
+          <Button
             right={
               <IconWrapper>
                 <SearchIcon />
@@ -46,7 +46,7 @@ export const ButtonExample: React.FC = () => (
           />
         </block.XS>
         <block.N>
-          <button.Primary text="Button N" />
+          <Button text="Button N" />
         </block.N>
       </div>
     </Global>

@@ -1,4 +1,4 @@
-export * as button from './button';
+export { Button } from './button';
 export * as buttonFloating from './button-floating';
 export * as buttonIcon from './button-icon';
 export * as chip from './chip';

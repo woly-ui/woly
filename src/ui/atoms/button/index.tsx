@@ -11,34 +11,33 @@ export type ButtonSizes = 'default' | 'small';
  * --line-height
  * --spacing-vertical
  * --spacing-horizontal
- *
- * --primary-bg — color of the background
- * --primary-text — color of the text
- *
- * --secondary-bg
- * --secondary-text
- *
- * --destructive-bg
- * --destructive-text
  */
 
-interface Props {
-  text: React.ReactNode;
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  children?: never;
+  className?: string;
   left?: React.ReactNode;
   right?: React.ReactNode;
-  children?: never;
-  type?: 'button' | 'submit' | 'reset';
+  text: React.ReactNode;
+  variant?: string;
 }
 
-const Button = (p: Props & { className?: string }) => (
-  <button className={p.className} type={p.type || 'button'} {...p}>
-    {p.left && <span data-icon="left">{p.left}</span>}
-    <span>{p.text}</span>
-    {p.right && <span data-icon="right">{p.right}</span>}
+const ButtonBase: React.FC<ButtonProps> = ({
+  left,
+  right,
+  text,
+  type = 'button',
+  variant = 'default',
+  ...p
+}) => (
+  <button type={type} data-variant={variant} {...p}>
+    {left && <span data-icon="left">{left}</span>}
+    <span>{text}</span>
+    {right && <span data-icon="right">{right}</span>}
   </button>
 );
 
-export const Base = styled(Button)`
+export const Button = styled(ButtonBase)`
   --vertical: calc(1px * var(--component-level) * var(--main-level));
   --horizontal: calc(
     var(--const-m) + (1px * var(--main-level)) + var(--vertical)
@@ -51,15 +50,17 @@ export const Base = styled(Button)`
 
   display: flex;
   flex-wrap: nowrap;
-  border-radius: var(--rounding, 4px);
+  padding: var(--vertical, 1rem) var(--horizontal, 0.4rem);
+
+  color: var(--button-color, #ffffff);
   font-size: var(--font-size, 15px);
   line-height: var(--line-height, 24px);
-  padding: var(--vertical, 1rem) var(--horizontal, 0.4rem);
+
+  background-color: var(--button-background, #000000);
 
   /* border: 1px solid var(--button-borders, #000000); */
   border: none;
-  background-color: var(--button-background, #000000);
-  color: var(--button-color, #ffffff);
+  border-radius: var(--rounding, 4px);
 
   &:hover,
   &:focus,
@@ -76,22 +77,4 @@ export const Base = styled(Button)`
   & > *:not(:first-child) {
     margin-left: var(--gap);
   }
-` as StyledComponent<'button', Record<string, unknown>, Props>;
-
-export const Primary = styled(Base)`
-  --button-borders: var(--primary-bg);
-  --button-background: var(--primary-bg);
-  --button-color: var(--primary-text);
-`;
-
-export const Secondary = styled(Base)`
-  --button-borders: var(--secondary-bg);
-  --button-background: var(--secondary-bg);
-  --button-color: var(--secondary-text);
-`;
-
-export const Destructive = styled(Base)`
-  --button-borders: var(--destructive-bg);
-  --button-background: var(--destructive-bg);
-  --button-color: var(--destructive-text);
-`;
+` as StyledComponent<'button', Record<string, unknown>, ButtonProps>;
