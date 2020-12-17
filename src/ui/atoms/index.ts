@@ -1,6 +1,6 @@
 export { Button } from './button';
 export { ButtonFloating } from './button-floating';
-export * as buttonIcon from './button-icon';
+export { ButtonIcon } from './button-icon';
 export * as chip from './chip';
 export * as input from './input';
 export * as label from './label';
