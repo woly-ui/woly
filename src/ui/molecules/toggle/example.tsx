@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled from 'styled-components';
 
-import { label, toggle } from '../..';
+import { Label, toggle } from '../..';
 
 export const ToggleExample: React.FC = () => {
   const [isConfirmOn, onConfirmClick] = React.useReducer((on) => !on, false);
@@ -10,13 +10,13 @@ export const ToggleExample: React.FC = () => {
   return (
     <ToggleWrapper>
       <Toggle
-        label={<Label text="Confirm" />}
+        label={<LabelBase text="Confirm" />}
         isChecked={isConfirmOn}
         onChange={onConfirmClick}
         id="toggleConfirm"
       />
       <Toggle
-        label={<Label text="Subscribe" />}
+        label={<LabelBase text="Subscribe" />}
         isChecked={isSubscribeOn}
         onChange={onSubscribeClick}
         id="toggleSubscribe"
@@ -33,6 +33,6 @@ export const ToggleWrapper = styled.div`
   padding: 40px 0;
 `;
 
-export const Label = styled(label.Primary)`
+const LabelBase = styled(Label)`
   --padding: 15px 0;
 `;

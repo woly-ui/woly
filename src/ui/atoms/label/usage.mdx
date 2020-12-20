@@ -4,26 +4,28 @@ category: atoms
 package: 'woly'
 ---
 
-import * as label from './index';
+import { Label } from './index';
 
-`label` is a description text for located near interactive component. Label can be passed as a property to a Checkbox or a Toggle component.
+`Label` is a description text for located near interactive component. Label can be passed as a property to a Checkbox or a Toggle component.
 
 ### Example
 
-<label.Base text="Simple label" />
+<Label text="Simple label" />
 
 ```tsx
-const Example = () => <label.Base text="Simple label" />;
+const Example = () => <Label text="Simple label" />;
 ```
 
 ### Kinds
 
-| Name   | Description                                         |
-| ------ | --------------------------------------------------- |
-| `Base` | Base label. Useful for creating a new kind of label |
+| Name    | Description                                         |
+| ------- | --------------------------------------------------- |
+| `Label` | Base label. Useful for creating a new kind of label |
 
 ### Props
 
-| Name   | Type              | Default | Description |
-| ------ | ----------------- | ------- | ----------- |
-| `text` | `React.ReactNode` |         | Label text  |
+| Name      | Type               | Default     | Description                                       |
+| --------- | ------------------ | ----------- | ------------------------------------------------- |
+| `text`    | `React.ReactNode`  |             | Label text                                        |
+| `variant` | `string`           | `'default'` | Variant prop to style Input component             |
+| `...`     | `HTMLLabelElement` | `{}`        | Other props are inherited from `HTMLLabelElement` |

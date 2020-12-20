@@ -8,16 +8,18 @@ import styled, { StyledComponent } from 'styled-components';
  * --label-color
  */
 
-interface LabelProps {
+interface LabelProps extends React.LabelHTMLAttributes<HTMLLabelElement> {
   text: React.ReactNode;
   children?: never;
+  variant?: string;
 }
 
 const map = (properties: LabelProps) => ({
   children: properties.text,
+  'data-variant': properties.variant || 'default',
 });
 
-export const Base = styled.span.attrs(map)`
+export const Label = styled.span.attrs(map)`
   display: block;
   padding: var(--padding, 1rem);
 
@@ -25,7 +27,3 @@ export const Base = styled.span.attrs(map)`
   font-size: var(--font-size, 1rem);
   line-height: var(--line-height, 1.2rem);
 ` as StyledComponent<'span', Record<string, unknown>, LabelProps>;
-
-export const Primary = styled(Base)`
-  --label-color: var(--color);
-`;
