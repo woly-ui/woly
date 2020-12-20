@@ -6,7 +6,7 @@ package: 'woly'
 
 import { ChipExample } from './example';
 
-`chip` is used for categorizing or markup. Chips can be used inside input or as tags.
+`Chip` is used for categorizing or markup. Chips can be used inside input or as tags.
 
 ### Example
 
@@ -14,7 +14,7 @@ import { ChipExample } from './example';
 
 ```tsx
 const Example = () => (
-  <chip.Base
+  <Chip
     icon={<CloseIcon />}
     onClick={(event) => console.info('Chip clicked')}
     text="Chip"
@@ -26,12 +26,14 @@ const Example = () => (
 
 | Name   | Description                              |
 | ------ | ---------------------------------------- |
-| `Base` | Base chip, useful for creating new chips |
+| `Chip` | Base chip, useful for creating new chips |
 
 ### Props
 
-| Name      | Type                                         | Default | Description                                |
-| --------- | -------------------------------------------- | ------- | ------------------------------------------ |
-| `text`    | `React.ReactNode`                            |         | Text inside chip                           |
-| `icon`    | `React.ReactNode`                            | `null`  | Icon to show on the right side of the text |
-| `onClick` | `React.MouseEventHandler<HTMLButtonElement>` | `null`  | Callback when chip is clicked              |
+| Name      | Type                                         | Default     | Description                                        |
+| --------- | -------------------------------------------- | ----------- | -------------------------------------------------- |
+| `text`    | `React.ReactNode`                            |             | Text inside chip                                   |
+| `icon`    | `React.ReactNode`                            | `null`      | Icon to show on the right side of the text         |
+| `onClick` | `React.MouseEventHandler<HTMLButtonElement>` | `null`      | Callback when chip is clicked                      |
+| `variant` | `string`                                     | `'default'` | Variant prop to style Chip component               |
+| `...`     | `HTMLButtonElement`                          | `{}`        | Other props are inherited from `HTMLButtonElement` |

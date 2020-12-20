@@ -1,7 +1,7 @@
 export { Button } from './button';
 export { ButtonFloating } from './button-floating';
 export { ButtonIcon } from './button-icon';
-export * as chip from './chip';
+export { Chip } from './chip';
 export * as input from './input';
 export * as label from './label';
 export * as menuList from './menu-list';
