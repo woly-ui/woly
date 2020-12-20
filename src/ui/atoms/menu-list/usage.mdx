@@ -4,14 +4,14 @@ category: atoms
 package: 'woly'
 ---
 
-import * as menuList from './index';
+import { MenuList } from './index';
 
-`menuList` is a list of items related to a single object. This component can be used in menu dropdown or input autosuggestion components.
+`MenuList` is a list of items related to a single object. This component can be used in menu dropdown or input autosuggestion components.
 
 ### Example
 
 <div style={{ maxWidth: '300px' }}>
-  <menuList.Base
+  <MenuList
     menu={[
       { id: 0, item: 'Red' },
       { id: 1, item: 'Green' },
@@ -22,7 +22,7 @@ import * as menuList from './index';
 
 ```tsx
 const Example = () => (
-  <menuList.Base
+  <MenuList
     menu={[
       { id: 0, item: 'Red' },
       { id: 1, item: 'Green' },
@@ -34,12 +34,13 @@ const Example = () => (
 
 ### Kinds
 
-| Name   | Description                                               |
-| ------ | --------------------------------------------------------- |
-| `Base` | Base menuList. Useful for creating a new kind of menuList |
+| Name       | Description                                               |
+| ---------- | --------------------------------------------------------- |
+| `MenuList` | Base MenuList. Useful for creating a new kind of MenuList |
 
 ### Props
 
-| Name   | Type                     | Default | Description                |
-| ------ | ------------------------ | ------- | -------------------------- |
-| `menu` | `Array<React.ReactNode>` |         | An array of menuList items |
+| Name      | Type                     | Default     | Description                              |
+| --------- | ------------------------ | ----------- | ---------------------------------------- |
+| `menu`    | `Array<React.ReactNode>` |             | An array of menuList items               |
+| `variant` | `string`                 | `'default'` | Variant prop to style MenuList component |
