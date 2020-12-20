@@ -3,7 +3,7 @@ import styled, { StyledComponent } from 'styled-components';
 
 import ClosedEyeIcon from '../../../static/icons/closed-eye.svg';
 import OpenedEyeIcon from '../../../static/icons/opened-eye.svg';
-import { input } from '../../atoms';
+import { Input } from '../../atoms';
 
 /**
  * --input-border-color
@@ -40,7 +40,7 @@ export const InputPassword: React.FC<
 
   return (
     <div className={className}>
-      <input.Base
+      <Input
         disabled={disabled}
         name={name}
         onChange={onChange}

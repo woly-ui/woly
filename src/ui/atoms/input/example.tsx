@@ -1,14 +1,14 @@
 import * as React from 'react';
 import styled from 'styled-components';
 
-import * as input from './index';
 import { Global, block } from '../../../lib/box-styles';
+import { Input } from './index';
 
 export const InputExample: React.FC = () => (
   <Inputs>
     <Global>
       <block.S>
-        <input.Base
+        <Input
           type="text"
           name="name"
           placeholder="Enter your name here"
@@ -16,7 +16,7 @@ export const InputExample: React.FC = () => (
         />
       </block.S>
       <block.M>
-        <input.Base
+        <Input
           type="text"
           name="name"
           placeholder="Enter your name here"
@@ -24,7 +24,7 @@ export const InputExample: React.FC = () => (
         />
       </block.M>
       <block.L>
-        <input.Base
+        <Input
           type="text"
           name="name"
           placeholder="Enter your name here"
@@ -36,7 +36,7 @@ export const InputExample: React.FC = () => (
 );
 
 export const Inputs = styled.div`
-  ${input.Base} {
+  ${Input} {
     margin: 10px 0;
   }
 `;
