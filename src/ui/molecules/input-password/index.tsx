@@ -12,6 +12,7 @@ import { Input } from '../../atoms';
  */
 
 interface InputPasswordProps {
+  className?: string;
   disabled?: boolean;
   iconHidden?: React.ReactNode;
   iconOpen?: React.ReactNode;
@@ -19,11 +20,10 @@ interface InputPasswordProps {
   onChange: React.ChangeEventHandler<HTMLInputElement>;
   placeholder?: string;
   value?: HTMLInputElement['value'];
+  variant?: string;
 }
 
-export const InputPassword: React.FC<
-  InputPasswordProps & { className: string }
-> = ({
+export const InputPasswordBase: React.FC<InputPasswordProps> = ({
   className,
   disabled,
   iconHidden,
@@ -32,6 +32,7 @@ export const InputPassword: React.FC<
   onChange,
   placeholder,
   value,
+  variant = 'default',
 }) => {
   const [isVisible, onClick] = React.useReducer((is) => !is, false);
 
@@ -39,7 +40,7 @@ export const InputPassword: React.FC<
   const openEye = iconOpen ?? <OpenedEyeIcon />;
 
   return (
-    <div className={className}>
+    <div className={className} data-variant={variant}>
       <Input
         disabled={disabled}
         name={name}
@@ -55,7 +56,7 @@ export const InputPassword: React.FC<
   );
 };
 
-export const Base = styled(InputPassword)`
+export const InputPassword = styled(InputPasswordBase)`
   position: relative;
 
   display: flex;
