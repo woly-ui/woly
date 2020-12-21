@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled from 'styled-components';
 
-import { Label, checkbox } from '../..';
+import { Checkbox, Label } from '../..';
 
 export const CheckboxExample: React.FC = () => {
   const [isPassportChecked, onPassportClick] = React.useReducer(
@@ -18,19 +18,19 @@ export const CheckboxExample: React.FC = () => {
     <>
       Travel packing checklist:
       <Checkboxes>
-        <Checkbox
+        <CheckboxPrimary
           label={<Label text="passport" />}
           isChecked={isPassportChecked}
           onChange={onPassportClick}
           id="checkbox"
         />
-        <Checkbox
+        <CheckboxPrimary
           label={<Label text="money" />}
           isChecked={isMoneyChecked}
           onChange={onMoneyClick}
           id="checkbox"
         />
-        <Checkbox
+        <CheckboxPrimary
           label={<Label text="tickets" />}
           isChecked={isTicketsChecked}
           onChange={onTicketsClick}
@@ -59,6 +59,6 @@ export const ButtonWrapper = styled.div`
   --component-level: 2;
 `;
 
-const Checkbox = styled(checkbox.Base)`
+const CheckboxPrimary = styled(Checkbox)`
   --padding: 5px;
 `;
