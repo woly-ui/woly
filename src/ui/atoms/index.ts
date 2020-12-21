@@ -5,6 +5,6 @@ export { Chip } from './chip';
 export { Input } from './input';
 export { Label } from './label';
 export { MenuList } from './menu-list';
-export * as notification from './notification';
+export { Notification } from './notification';
 export * as popover from './popover';
 export * as surface from './surface';

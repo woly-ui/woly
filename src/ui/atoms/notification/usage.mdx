@@ -6,7 +6,7 @@ package: 'woly'
 
 import { NotificationExample } from './example';
 
-`notification` display the notification message globaly.
+`Notification` display the notification message globaly.
 
 ### Example
 
@@ -14,18 +14,19 @@ import { NotificationExample } from './example';
 
 ```tsx
 const Example = () => (
-  <notification.Base message="Your transaction has been completed" />
+  <Notification message="Your transaction has been completed" />
 );
 ```
 
 ### Kinds
 
-| Name   | Description                                                       |
-| ------ | ----------------------------------------------------------------- |
-| `Base` | Base notification. Useful for creating a new kind of notificaiton |
+| Name           | Description                                                       |
+| -------------- | ----------------------------------------------------------------- |
+| `Notification` | Base notification. Useful for creating a new kind of notificaiton |
 
 ### Props
 
-| Name      | Type              | Default | Description                                |
-| --------- | ----------------- | ------- | ------------------------------------------ |
-| `message` | `React.ReactNode` |         | Message that will be shown in notification |
+| Name      | Type              | Default     | Description                                  |
+| --------- | ----------------- | ----------- | -------------------------------------------- |
+| `message` | `React.ReactNode` |             | Message that will be shown in notification   |
+| `variant` | `string`          | `'default'` | Variant prop to style Notification component |
