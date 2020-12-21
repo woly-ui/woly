@@ -9,7 +9,15 @@ import styled from 'styled-components';
  * --rounding
  */
 
-export const Base = styled.div`
+interface SurfaceProps {
+  variant?: string;
+}
+
+const map = (properties: SurfaceProps) => ({
+  'data-variant': properties.variant || 'default',
+});
+
+export const Surface = styled.div.attrs(map)`
   padding: var(--padding, 1rem);
 
   background-color: var(--surface-background, #ffffff);

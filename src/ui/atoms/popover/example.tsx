@@ -1,21 +1,21 @@
 import * as React from 'react';
 import styled from 'styled-components';
 
-import { Button, Popover, surface } from '..';
+import { Button, Popover, Surface } from '..';
 
 export const PopoverExample: React.FC = () => {
   const [isOpen, onClick] = React.useReducer((is) => !is, false);
   return (
     <>
       <PopoverPrimary isOpen={isOpen}>
-        <surface.Base>
+        <Surface>
           <Content>
             Popover is open
             <ButtonWrapper>
               <Button text="close popover" onClick={onClick} />
             </ButtonWrapper>
           </Content>
-        </surface.Base>
+        </Surface>
       </PopoverPrimary>
       <Button text="toggle popover" onClick={onClick} />
     </>

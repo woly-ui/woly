@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled from 'styled-components';
 
-import { Button, Popover, surface } from '..';
+import { Button, Popover, Surface } from '..';
 
 export const SurfaceExample: React.FC = () => {
   const [isOpen, onClick] = React.useReducer((is) => !is, false);
@@ -9,14 +9,14 @@ export const SurfaceExample: React.FC = () => {
   return (
     <>
       <PopoverPrimary isOpen={isOpen}>
-        <surface.Base>
+        <Surface>
           <Content>
             This is surface
             <ButtonWrapper>
               <Button text="close" onClick={onClick} />
             </ButtonWrapper>
           </Content>
-        </surface.Base>
+        </Surface>
       </PopoverPrimary>
       <Button text="show surface" onClick={onClick} />
     </>

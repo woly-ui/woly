@@ -7,4 +7,4 @@ export { Label } from './label';
 export { MenuList } from './menu-list';
 export { Notification } from './notification';
 export { Popover } from './popover';
-export * as surface from './surface';
+export { Surface } from './surface';
