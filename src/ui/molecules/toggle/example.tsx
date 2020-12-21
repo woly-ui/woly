@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled from 'styled-components';
 
-import { Label, toggle } from '../..';
+import { Label, Toggle } from '../..';
 
 export const ToggleExample: React.FC = () => {
   const [isConfirmOn, onConfirmClick] = React.useReducer((on) => !on, false);
@@ -9,13 +9,13 @@ export const ToggleExample: React.FC = () => {
 
   return (
     <ToggleWrapper>
-      <Toggle
+      <TogglePrimary
         label={<LabelBase text="Confirm" />}
         isChecked={isConfirmOn}
         onChange={onConfirmClick}
         id="toggleConfirm"
       />
-      <Toggle
+      <TogglePrimary
         label={<LabelBase text="Subscribe" />}
         isChecked={isSubscribeOn}
         onChange={onSubscribeClick}
@@ -25,7 +25,7 @@ export const ToggleExample: React.FC = () => {
   );
 };
 
-const Toggle = styled(toggle.Base)`
+const TogglePrimary = styled(Toggle)`
   --toggle-active-background-color: var(--accent);
 `;
 

@@ -4,10 +4,10 @@ category: atoms
 package: 'woly'
 ---
 
-import * as toggle from './index';
+import { Toggle } from './index';
 import { ToggleExample } from './example';
 
-`toggle` is used to switch between two different options. Toggle can be provided with label using `label` component.
+`Toggle` is used to switch between two different options. Toggle can be provided with label using `Label` component.
 
 ### Example
 
@@ -15,8 +15,8 @@ import { ToggleExample } from './example';
 
 ```tsx
 const Example = () => (
-  <toggle.Base
-    label={<label.Primary text="Toggle label" />}
+  <Toggle
+    label={<Label text="Toggle label" />}
     isChecked={false}
     onChange={(e) => console.log('change', e)}
     id="toggle"
@@ -26,15 +26,17 @@ const Example = () => (
 
 ### Kinds
 
-| Name   | Description                                           |
-| ------ | ----------------------------------------------------- |
-| `Base` | Base toggle. Useful for creating a new kind of toggle |
+| Name     | Description                                           |
+| -------- | ----------------------------------------------------- |
+| `Toggle` | Base toggle. Useful for creating a new kind of toggle |
 
 ### Props
 
-| Name        | Type                                         | Default | Description                      |
-| ----------- | -------------------------------------------- | ------- | -------------------------------- |
-| `id`        | `string`                                     |         | HTML id attribute                |
-| `isChecked` | `boolean`                                    |         | Whether toggle is checked or not |
-| `label`     | `React.ReactNode`                            | `null`  | Label component                  |
-| `onChange`  | `React.ChangeEventHandler<HTMLInputElement>` |         | Callback when toggle is clicked  |
+| Name        | Type                                         | Default     | Description                                       |
+| ----------- | -------------------------------------------- | ----------- | ------------------------------------------------- |
+| `id`        | `string`                                     |             | HTML id attribute                                 |
+| `isChecked` | `boolean`                                    |             | Whether toggle is checked or not                  |
+| `label`     | `React.ReactNode`                            | `null`      | Label component                                   |
+| `onChange`  | `React.ChangeEventHandler<HTMLInputElement>` |             | Callback when toggle is clicked                   |
+| `variant`   | `string`                                     | `'default'` | Variant prop to style Toggle component            |
+| `...`       | `HTMLInputElement`                           | `{}`        | Other props are inherited from `HTMLInputElement` |

@@ -12,30 +12,40 @@ import styled, { StyledComponent } from 'styled-components';
  * --toggle-switcher-background-color
  */
 
-interface ToggleProps {
+interface ToggleProps extends React.InputHTMLAttributes<HTMLInputElement> {
+  className?: string;
   id: string;
   isChecked: boolean;
   label?: React.ReactNode;
   onChange: React.ChangeEventHandler<HTMLInputElement>;
+  variant?: string;
 }
 
-const Toggle: React.FC<ToggleProps & { className: string }> = ({
+const ToggleBase: React.FC<ToggleProps> = ({
   className,
   id,
   isChecked,
   label,
   onChange,
+  variant = 'default',
+  ...p
 }) => (
-  <div className={className}>
+  <div className={className} data-variant={variant}>
     {label && <div>{label}</div>}
     <label htmlFor={id}>
-      <input type="checkbox" onChange={onChange} id={id} checked={isChecked} />
+      <input
+        checked={isChecked}
+        id={id}
+        onChange={onChange}
+        type="checkbox"
+        {...p}
+      />
       <span />
     </label>
   </div>
 );
 
-export const Base = styled(Toggle)`
+export const Toggle = styled(ToggleBase)`
   position: relative;
 
   display: flex;
