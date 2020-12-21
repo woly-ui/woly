@@ -9,27 +9,26 @@ import { PopoverExample } from './example';
 
 Popover is a modal window.
 
-`popover` is used when you want to show the content in the same window. It creates the floating layer over the current page to get user feedback or display information. You can use Popover with Surface component.
+`Popover` is used when you want to show the content in the same window. It creates the floating layer over the current page to get user feedback or display information. You can use Popover with Surface component.
 
 ### Example
 
 <PopoverExample />
 
 ```tsx
-const Example = () => (
-  <popover.Base isOpen={true}>Popover content</popover.Base>
-);
+const Example = () => <Popover isOpen={true}>Popover content</Popover>;
 ```
 
 ### Kinds
 
-| Name   | Description  |
-| ------ | ------------ |
-| `Base` | Base popover |
+| Name      | Description  |
+| --------- | ------------ |
+| `Popover` | Base popover |
 
 ### Props
 
-| Name     | Type      | Default | Description                             |
-| -------- | --------- | ------- | --------------------------------------- |
-| `isOpen` | `boolean` |         | Whether the component is visible or not |
-| `...`    | `object`  | `{}`    | Other props passed to the component     |
+| Name      | Type      | Default     | Description                             |
+| --------- | --------- | ----------- | --------------------------------------- |
+| `isOpen`  | `boolean` |             | Whether the component is visible or not |
+| `variant` | `string`  | `'default'` | Variant prop to style Popover component |
+| `...`     | `object`  | `{}`        | Other props passed to the component     |

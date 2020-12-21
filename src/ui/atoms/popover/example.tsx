@@ -1,23 +1,23 @@
 import * as React from 'react';
 import styled from 'styled-components';
 
-import { button, popover, surface } from '..';
+import { Button, Popover, surface } from '..';
 
 export const PopoverExample: React.FC = () => {
   const [isOpen, onClick] = React.useReducer((is) => !is, false);
   return (
     <>
-      <Popover isOpen={isOpen}>
+      <PopoverPrimary isOpen={isOpen}>
         <surface.Base>
           <Content>
             Popover is open
             <ButtonWrapper>
-              <button.Primary text="close popover" onClick={onClick} />
+              <Button text="close popover" onClick={onClick} />
             </ButtonWrapper>
           </Content>
         </surface.Base>
-      </Popover>
-      <button.Primary text="toggle popover" onClick={onClick} />
+      </PopoverPrimary>
+      <Button text="toggle popover" onClick={onClick} />
     </>
   );
 };
@@ -32,7 +32,7 @@ export const ButtonWrapper = styled.div`
   padding-top: 30px;
 `;
 
-const Popover = styled(popover.Base)`
+const PopoverPrimary = styled(Popover)`
   --popover-position-top: 0;
   --popover-position-right: 0;
   --popover-position-left: 0;

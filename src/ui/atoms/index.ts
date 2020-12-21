@@ -6,5 +6,5 @@ export { Input } from './input';
 export { Label } from './label';
 export { MenuList } from './menu-list';
 export { Notification } from './notification';
-export * as popover from './popover';
+export { Popover } from './popover';
 export * as surface from './surface';

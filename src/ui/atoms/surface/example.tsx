@@ -1,24 +1,24 @@
 import * as React from 'react';
 import styled from 'styled-components';
 
-import { button, popover, surface } from '..';
+import { Button, Popover, surface } from '..';
 
 export const SurfaceExample: React.FC = () => {
   const [isOpen, onClick] = React.useReducer((is) => !is, false);
 
   return (
     <>
-      <Popover isOpen={isOpen}>
+      <PopoverPrimary isOpen={isOpen}>
         <surface.Base>
           <Content>
             This is surface
             <ButtonWrapper>
-              <button.Primary text="close" onClick={onClick} />
+              <Button text="close" onClick={onClick} />
             </ButtonWrapper>
           </Content>
         </surface.Base>
-      </Popover>
-      <button.Primary text="show surface" onClick={onClick} />
+      </PopoverPrimary>
+      <Button text="show surface" onClick={onClick} />
     </>
   );
 };
@@ -37,7 +37,7 @@ export const ButtonWrapper = styled.div`
   --component-level: 2;
 `;
 
-const Popover = styled(popover.Base)`
+const PopoverPrimary = styled(Popover)`
   --popover-position-top: 0;
   --popover-position-right: 0;
   --popover-position-left: 0;
