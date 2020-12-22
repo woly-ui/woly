@@ -6,7 +6,7 @@ package: 'woly'
 
 import { CheckboxExample } from './example';
 
-`checkbox` is used to turn on/off an option. Checkbox can be provided with label using `label` component.
+`Checkbox` is used to turn on/off an option. Checkbox can be provided with label using `Label` component.
 
 ### Example
 
@@ -14,8 +14,8 @@ import { CheckboxExample } from './example';
 
 ```tsx
 const Example = () => (
-  <checkbox.Base
-    label={<label.Primary text="Checkbox label" />}
+  <Checkbox
+    label={<Label text="Checkbox label" />}
     isChecked={true}
     onChange={(e) => console.info('change', e)}
     id="checkbox"
@@ -25,15 +25,16 @@ const Example = () => (
 
 ### Kinds
 
-| Name   | Description                                                 |
-| ------ | ----------------------------------------------------------- |
-| `Base` | Base checkbox. Useful for creating a new kind of checkboxes |
+| Name       | Description                                                 |
+| ---------- | ----------------------------------------------------------- |
+| `Checkbox` | Base checkbox. Useful for creating a new kind of checkboxes |
 
 ### Props
 
-| Name        | Type                                         | Default | Description                        |
-| ----------- | -------------------------------------------- | ------- | ---------------------------------- |
-| `id`        | `string`                                     |         | HTML id attribute                  |
-| `isChecked` | `boolean`                                    |         | Whether checkbox is checked or not |
-| `label`     | `React.ReactNode`                            | `null`  | Label component                    |
-| `onChange`  | `React.ChangeEventHandler<HTMLInputElement>` |         | Callback when checkbox is clicked  |
+| Name        | Type                                         | Default     | Description                              |
+| ----------- | -------------------------------------------- | ----------- | ---------------------------------------- |
+| `id`        | `string`                                     |             | HTML id attribute                        |
+| `isChecked` | `boolean`                                    |             | Whether checkbox is checked or not       |
+| `label`     | `React.ReactNode`                            | `null`      | Label component                          |
+| `onChange`  | `React.ChangeEventHandler<HTMLInputElement>` |             | Callback when checkbox is clicked        |
+| `variant`   | `string`                                     | `'default'` | Variant prop to style Checkbox component |

@@ -8,34 +8,40 @@ import styled, { StyledComponent } from 'styled-components';
  * --bf-position-right
  */
 
-interface Props {
-  onClick: React.MouseEventHandler<HTMLButtonElement>;
+interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  className?: string;
   icon: React.ReactNode;
+  onClick: React.MouseEventHandler<HTMLButtonElement>;
+  variant?: string;
 }
 
-const ButtonFloating: React.FC<Props & { className?: string }> = ({
-  className,
+const ButtonFloatingBase: React.FC<Props> = ({
   icon,
   onClick,
+  variant = 'default',
   ...p
 }) => {
   const onClickHandler = React.useCallback(
     (event: React.MouseEvent<HTMLButtonElement>) => {
       event.preventDefault();
-
       onClick(event);
     },
     [onClick],
   );
 
   return (
-    <button type="button" className={className} onClick={onClickHandler} {...p}>
+    <button
+      type="button"
+      data-variant={variant}
+      onClick={onClickHandler}
+      {...p}
+    >
       {icon}
     </button>
   );
 };
 
-export const Base = styled(ButtonFloating)`
+export const ButtonFloating = styled(ButtonFloatingBase)`
   position: fixed;
   right: var(--bf-position-right, 0);
   bottom: var(--bf-position-bottom, 0);

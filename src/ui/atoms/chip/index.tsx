@@ -11,21 +11,24 @@ import styled, { StyledComponent } from 'styled-components';
  * --chip-focus — color of the focus
  */
 
-interface ChipProps {
+interface ChipProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children?: never;
+  className?: string;
   icon?: React.ReactNode;
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
   text: string;
+  variant?: string;
 }
 
-const Chip: React.FC<ChipProps & { className: string }> = ({
+const ChipBase: React.FC<ChipProps> = ({
   className,
   icon,
   onClick,
   text,
+  variant = 'default',
   ...p
 }) => (
-  <div className={className}>
+  <div className={className} data-variant={variant}>
     <button type="button" onClick={onClick} {...p}>
       {text}
     </button>
@@ -33,7 +36,7 @@ const Chip: React.FC<ChipProps & { className: string }> = ({
   </div>
 );
 
-export const Base = styled(Chip)`
+export const Chip = styled(ChipBase)`
   --vertical: calc(1px * var(--component-level) * var(--main-level));
   --horizontal: calc(
     var(--const-m) + (1px * var(--main-level)) + var(--vertical)

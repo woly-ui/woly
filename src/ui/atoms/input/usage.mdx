@@ -6,7 +6,7 @@ package: 'woly'
 
 import { InputExample } from './example';
 
-`input` is a field to accept data from the user. Input is used to create form fields that accept user input.
+`Input` is a field to accept data from the user. Input is used to create form fields that accept user input.
 
 ### Example
 
@@ -14,7 +14,7 @@ import { InputExample } from './example';
 
 ```tsx
 const Example = () => (
-  <input.Base
+  <Input
     type="text"
     name="name"
     placeholder="Enter your name here"
@@ -26,17 +26,17 @@ const Example = () => (
 
 ### Kinds
 
-| Name   | Description                              |
-| ------ | ---------------------------------------- |
-| `Base` | Useful for creating a new kind of inputs |
+| Name    | Description                              |
+| ------- | ---------------------------------------- |
+| `Input` | Useful for creating a new kind of inputs |
 
 ### Props
 
-| Name          | Type                                                  | Default | Description                                  |
-| ------------- | ----------------------------------------------------- | ------- | -------------------------------------------- |
-| `type`        | `"text" ӏ "password" ӏ "email"`                       | `text`  | HTML type of the input                       |
-| `name`        | `string`                                              |         | Name attribute specifies a name of the input |
-| `value`       | `HTMLInputElement['value']`                           | `null`  | Value of input field                         |
-| `placeholder` | `string`                                              | `null`  | Text that appears when there is no value set |
-| `onChange`    | `(e: React.ChangeEvent<HTMLInputElement>) => unknown` |         | Callback when user input                     |
-| `disabled`    | `boolean`                                             | `null`  | Whether the input is disabled                |
+| Name       | Type                                                  | Default     | Description                                       |
+| ---------- | ----------------------------------------------------- | ----------- | ------------------------------------------------- |
+| `type`     | `"text" ӏ "password" ӏ "email"`                       | `text`      | HTML type of the input                            |
+| `name`     | `string`                                              |             | Name attribute specifies a name of the input      |
+| `value`    | `HTMLInputElement['value']`                           | `null`      | Value of input field                              |
+| `onChange` | `(e: React.ChangeEvent<HTMLInputElement>) => unknown` |             | Callback when user input                          |
+| `variant`  | `string`                                              | `'default'` | Variant prop to style Input component             |
+| `...`      | `HTMLInputElement`                                    | `{}`        | Other props are inherited from `HTMLInputElement` |

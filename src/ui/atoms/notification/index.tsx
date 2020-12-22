@@ -15,19 +15,22 @@ import styled, { StyledComponent } from 'styled-components';
  */
 
 interface NotificationProps {
+  className?: string;
   message: React.ReactNode;
+  variant?: string;
 }
 
-const Notification: React.FC<NotificationProps & { className: string }> = ({
-  message,
+const NotificationBase: React.FC<NotificationProps> = ({
   className,
+  message,
+  variant = 'default',
 }) => (
-  <div className={className}>
+  <div className={className} data-variant={variant}>
     <div>{message}</div>
   </div>
 );
 
-export const Base = styled(Notification)`
+export const Notification = styled(NotificationBase)`
   position: fixed;
   top: var(--notification-top, 24px);
   right: var(--notification-right, 0);

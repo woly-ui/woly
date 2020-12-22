@@ -1,3 +1,3 @@
-export * as checkbox from './checkbox';
-export * as inputPassword from './input-password';
-export * as toggle from './toggle';
+export { Checkbox } from './checkbox';
+export { InputPassword } from './input-password';
+export { Toggle } from './toggle';

@@ -6,7 +6,7 @@ package: 'woly'
 
 import { InputPasswordExample } from './example';
 
-`inputPassword` is used for a secure password entry.
+`InputPassword` is used for a secure password entry.
 The component has a button-icon to show and hide user password. InputPassword can be used in an authorization form or to confirm user action.
 
 ### Example
@@ -15,7 +15,7 @@ The component has a button-icon to show and hide user password. InputPassword ca
 
 ```tsx
 const Example = () => (
-  <inputPassword.Base
+  <InputPassword
     onChange={(e) => console.info('change', e)}
     name="input"
     iconHidden={<OpenEyeIcon />}
@@ -27,17 +27,18 @@ const Example = () => (
 
 ### Kinds
 
-| Name   | Description                                                         |
-| ------ | ------------------------------------------------------------------- |
-| `Base` | Base inputPassword. Useful for creating a new kind of inputPassword |
+| Name            | Description                                                         |
+| --------------- | ------------------------------------------------------------------- |
+| `InputPassword` | Base inputPassword. Useful for creating a new kind of inputPassword |
 
 ### Props
 
-| Name         | Type                                         | Default | Description                        |
-| ------------ | -------------------------------------------- | ------- | ---------------------------------- |
-| `disabled`   | `boolean`                                    | `null`  | HTML disabled attribute            |
-| `iconHidden` | `React.ReactNode`                            | `null`  | Replace base icon to hide password |
-| `iconOpen`   | `React.ReactNode`                            | `null`  | Replace base icon to show password |
-| `name`       | `string`                                     |         | HTML name attribute                |
-| `onChange`   | `React.ChangeEventHandler<HTMLInputElement>` |         | Callback when input is changed     |
-| `value`      | `HTMLInputElement['value']`                  | `null`  | HTML value attribute               |
+| Name         | Type                                         | Default     | Description                                   |
+| ------------ | -------------------------------------------- | ----------- | --------------------------------------------- |
+| `disabled`   | `boolean`                                    | `null`      | HTML disabled attribute                       |
+| `iconHidden` | `React.ReactNode`                            | `null`      | Replace base icon to hide password            |
+| `iconOpen`   | `React.ReactNode`                            | `null`      | Replace base icon to show password            |
+| `name`       | `string`                                     |             | HTML name attribute                           |
+| `onChange`   | `React.ChangeEventHandler<HTMLInputElement>` |             | Callback when input is changed                |
+| `value`      | `HTMLInputElement['value']`                  | `null`      | HTML value attribute                          |
+| `variant`    | `string`                                     | `'default'` | Variant prop to style InputPassword component |

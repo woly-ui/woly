@@ -11,38 +11,33 @@ import styled, { StyledComponent } from 'styled-components';
  * --rounding
  */
 
-interface InputProps {
-  value?: HTMLInputElement['value'];
-  placeholder?: string;
+interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   type: 'text' | 'password' | 'email';
   name: string;
-  disabled?: boolean;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => unknown;
+  className?: string;
+  variant?: string;
 }
 
-const Input: React.FC<InputProps & { className: string }> = ({
-  value,
-  placeholder,
-  type = 'text',
-  name,
-  disabled,
+const InputBase: React.FC<InputProps> = ({
   className,
+  name,
   onChange,
+  type = 'text',
+  variant = 'default',
   ...p
 }) => (
   <input
-    name={name}
-    type={type}
-    value={value}
-    placeholder={placeholder}
     className={className}
-    disabled={disabled}
+    data-variant={variant}
+    name={name}
     onChange={onChange}
+    type={type}
     {...p}
   />
 );
 
-export const Base = styled(Input)`
+export const Input = styled(InputBase)`
   --input-width: 100%;
   --input-border-color: #d5d5dc;
   --vertical: calc(1px * var(--component-level) * var(--main-level));

@@ -4,25 +4,28 @@ category: atoms
 package: 'woly'
 ---
 
-import * as surface from './index';
+import { Surface } from './index';
 import { SurfaceExample } from './example';
 
-`surface` is a simple layer that contains information. Surface can be used inside Popover or Sidebar.
+`Surface` is a simple layer that contains information. Surface can be used inside Popover or Sidebar.
 
 ### Example
 
 <SurfaceExample />
 
 ```tsx
-const Example = () => <surface.Base>Surface content</surface.Base>;
+const Example = () => <Surface>Surface content</Surface>;
 ```
 
 ### Kinds
 
-| Name   | Description  |
-| ------ | ------------ |
-| `Base` | Base surface |
+| Name      | Description  |
+| --------- | ------------ |
+| `Surface` | Base surface |
 
 ### Props
 
-Pass any content as a children property within Surface component.
+| Name       | Type              | Default     | Description                                                       |
+| ---------- | ----------------- | ----------- | ----------------------------------------------------------------- |
+| `variant`  | `string`          | `'default'` | Variant prop to style Popover component                           |
+| `children` | `React.ReactNode` |             | Pass any content as a children property within Surface component. |

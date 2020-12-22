@@ -3,7 +3,7 @@ import styled, { StyledComponent } from 'styled-components';
 
 import ClosedEyeIcon from '../../../static/icons/closed-eye.svg';
 import OpenedEyeIcon from '../../../static/icons/opened-eye.svg';
-import { input } from '../../atoms';
+import { Input } from '../../atoms';
 
 /**
  * --input-border-color
@@ -12,6 +12,7 @@ import { input } from '../../atoms';
  */
 
 interface InputPasswordProps {
+  className?: string;
   disabled?: boolean;
   iconHidden?: React.ReactNode;
   iconOpen?: React.ReactNode;
@@ -19,11 +20,10 @@ interface InputPasswordProps {
   onChange: React.ChangeEventHandler<HTMLInputElement>;
   placeholder?: string;
   value?: HTMLInputElement['value'];
+  variant?: string;
 }
 
-export const InputPassword: React.FC<
-  InputPasswordProps & { className: string }
-> = ({
+export const InputPasswordBase: React.FC<InputPasswordProps> = ({
   className,
   disabled,
   iconHidden,
@@ -32,6 +32,7 @@ export const InputPassword: React.FC<
   onChange,
   placeholder,
   value,
+  variant = 'default',
 }) => {
   const [isVisible, onClick] = React.useReducer((is) => !is, false);
 
@@ -39,8 +40,8 @@ export const InputPassword: React.FC<
   const openEye = iconOpen ?? <OpenedEyeIcon />;
 
   return (
-    <div className={className}>
-      <input.Base
+    <div className={className} data-variant={variant}>
+      <Input
         disabled={disabled}
         name={name}
         onChange={onChange}
@@ -55,7 +56,7 @@ export const InputPassword: React.FC<
   );
 };
 
-export const Base = styled(InputPassword)`
+export const InputPassword = styled(InputPasswordBase)`
   position: relative;
 
   display: flex;

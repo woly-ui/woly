@@ -12,14 +12,17 @@ import styled, { StyledComponent } from 'styled-components';
  */
 
 interface MenuList {
+  className?: string;
   menu: Array<{ item: React.ReactNode; id: string }>;
+  variant?: string;
 }
 
-const MenuList: React.FC<MenuList & { className: string }> = ({
-  menu,
+const MenuListBase: React.FC<MenuList> = ({
   className,
+  menu,
+  variant = 'default',
 }) => (
-  <ul className={className}>
+  <ul className={className} data-variant={variant}>
     {menu.map(({ item, id }) => (
       <li key={id} data-type="menu-item">
         {item}
@@ -28,7 +31,7 @@ const MenuList: React.FC<MenuList & { className: string }> = ({
   </ul>
 );
 
-export const Base = styled(MenuList)`
+export const MenuList = styled(MenuListBase)`
   padding: var(--menu-list-padding, 6px 0);
 
   color: var(--menu-list-color, #1a1a23);

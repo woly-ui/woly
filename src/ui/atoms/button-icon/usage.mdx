@@ -4,10 +4,10 @@ category: atoms
 package: 'woly'
 ---
 
-import * as buttonIcon from './index';
+import { ButtonIcon } from './index';
 import { OpenEyeIcon, SearchIcon } from '../../../static/icons/';
 
-`buttonIcon` is a button with an icon
+`ButtonIcon` is a button with an icon
 
 ### Example
 
@@ -19,9 +19,9 @@ import { OpenEyeIcon, SearchIcon } from '../../../static/icons/';
       margin: '5px',
     }}
   >
-    <buttonIcon.Base
+    <ButtonIcon
       icon={<SearchIcon />}
-      onClick={(event) => console.info('buttonIcon clicked')}
+      onClick={(event) => console.info('ButtonIcon clicked')}
     />
   </div>
   <div
@@ -31,30 +31,31 @@ import { OpenEyeIcon, SearchIcon } from '../../../static/icons/';
       margin: '5px',
     }}
   >
-    <buttonIcon.Base
+    <ButtonIcon
       icon={<OpenEyeIcon />}
-      onClick={(event) => console.info('buttonIcon clicked')}
+      onClick={(event) => console.info('ButtonIcon clicked')}
     />
   </div>
 </div>
 
 ```tsx
-<buttonIcon.Base
+<ButtonIcon
   icon={<Icon />}
-  onClick={(event) => console.info('buttonIcon clicked')}
+  onClick={(event) => console.info('ButtonIcon clicked')}
 />
 ```
 
 ### Kinds
 
-| Name   | Description              |
-| ------ | ------------------------ |
-| `Base` | Base button with an icon |
+| Name         | Description              |
+| ------------ | ------------------------ |
+| `ButtonIcon` | Base button with an icon |
 
 ### Props
 
-| Name      | Type                                         | Default | Description                                        |
-| --------- | -------------------------------------------- | ------- | -------------------------------------------------- |
-| `icon`    | `React.ReactNode`                            |         | Set the icon component inside the button           |
-| `onClick` | `React.MouseEventHandler<HTMLButtonElement>` |         | Callback when button clicked                       |
-| `...`     | `HTMLButtonElementProps`                     | `{}`    | Other props are inherited from `HTMLButtonElement` |
+| Name      | Type                                         | Default     | Description                                        |
+| --------- | -------------------------------------------- | ----------- | -------------------------------------------------- |
+| `icon`    | `React.ReactNode`                            |             | Set the icon component inside the button           |
+| `onClick` | `React.MouseEventHandler<HTMLButtonElement>` |             | Callback when button clicked                       |
+| `variant` | `string`                                     | `'default'` | Variant prop to style ButtonIcon component         |
+| `...`     | `HTMLButtonElement`                          | `{}`        | Other props are inherited from `HTMLButtonElement` |

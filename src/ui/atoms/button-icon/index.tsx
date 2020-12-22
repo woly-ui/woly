@@ -7,34 +7,40 @@ import styled, { StyledComponent } from 'styled-components';
  * --bi-rounding
  */
 
-interface Props {
-  onClick: React.MouseEventHandler<HTMLButtonElement>;
+interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  className?: string;
   icon: React.ReactNode;
+  onClick: React.MouseEventHandler<HTMLButtonElement>;
+  variant?: string;
 }
 
-const ButtonIcon: React.FC<Props & { className?: string }> = ({
-  className,
+const ButtonIconBase: React.FC<Props> = ({
   icon,
   onClick,
+  variant = 'default',
   ...p
 }) => {
   const onClickHandler = React.useCallback(
     (event: React.MouseEvent<HTMLButtonElement>) => {
       event.preventDefault();
-
       onClick(event);
     },
     [onClick],
   );
 
   return (
-    <button type="button" className={className} onClick={onClickHandler} {...p}>
+    <button
+      data-variant={variant}
+      onClick={onClickHandler}
+      type="button"
+      {...p}
+    >
       {icon}
     </button>
   );
 };
 
-export const Base = styled(ButtonIcon)`
+export const ButtonIcon = styled(ButtonIconBase)`
   display: block;
   padding: var(--bi-padding, 0);
 

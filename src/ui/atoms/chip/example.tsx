@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled from 'styled-components';
 
-import * as chip from './index';
+import { Chip } from './index';
 import { CloseIcon } from '../../../static/icons';
 import { Global, block } from '../../../lib/box-styles';
 
@@ -31,12 +31,6 @@ export const ChipExample: React.FC = () => (
     </Global>
   </Chips>
 );
-
-export const Chip = styled(chip.Base)`
-  --chip-background-color: #6ab547;
-  --chip-color: #ffffff;
-  --chip-focus: #d5d5dc;
-`;
 
 export const Chips = styled.div`
   ${Global} {

@@ -13,23 +13,26 @@ import styled from 'styled-components';
  */
 
 interface Props {
+  className?: string;
   isOpen: boolean;
+  variant?: string;
 }
 
-const Popover: React.FC<Props & { className?: string }> = ({
-  isOpen,
+const PopoverBase: React.FC<Props> = ({
   children,
   className,
+  isOpen,
+  variant = 'default',
   ...p
 }) => {
   return (
-    <div className={className} data-open={isOpen} {...p}>
+    <div className={className} data-open={isOpen} data-variant={variant} {...p}>
       {children}
     </div>
   );
 };
 
-export const Base = styled(Popover)`
+export const Popover = styled(PopoverBase)`
   position: absolute;
   top: var(--popover-position-top, auto);
   right: var(--popover-position-right, auto);

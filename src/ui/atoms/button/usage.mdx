@@ -4,10 +4,9 @@ category: atoms
 package: woly
 ---
 
-import * as button from './index';
 import { ButtonExample } from './example';
 
-`button` allows users to take actions and make choices with a single tap.
+`Button` allows users to take actions and make choices with a single tap.
 
 ### Example
 
@@ -15,7 +14,7 @@ import { ButtonExample } from './example';
 
 ```tsx
 const Example = () => (
-  <button.Primary
+  <Button
     text="Hello world"
     onClick={(event) => console.info('Hi!')}
     left={<Icon />}
@@ -25,19 +24,16 @@ const Example = () => (
 
 ### Kinds
 
-| Name          | Description                                                 |
-| ------------- | ----------------------------------------------------------- |
-| `Base`        | Useful for creating a new kind of buttons                   |
-| `Primary`     | Main button on the page or surface (form, modal)            |
-| `Secondary`   | Button with less priority, most useful button               |
-| `Destructive` | Button that delete something, or do irreversible operations |
+| Name     | Description                               |
+| -------- | ----------------------------------------- |
+| `Button` | Useful for creating a new kind of buttons |
 
 ### Props
 
-| Name    | Type                            | Default    | Description                                                |
-| ------- | ------------------------------- | ---------- | ---------------------------------------------------------- |
-| `text`  | `React.ReactNode`               |            | Text appeared on the button                                |
-| `left`  | `React.ReactNode`               | `null`     | Component to show on the left side of the text (ex.: Icon) |
-| `right` | `React.ReactNode`               | `null`     | Component on the right side of the text                    |
-| `type`  | `'button' ӏ 'submit' ӏ 'reset'` | `'button'` | HTML type of the button                                    |
-| `...`   | `HTMLButtonElementProps`        | `{}`       | Other props are inherited from `HTMLButtonElement`         |
+| Name      | Type                | Default     | Description                                                |
+| --------- | ------------------- | ----------- | ---------------------------------------------------------- |
+| `text`    | `React.ReactNode`   |             | Text appeared on the button                                |
+| `left`    | `React.ReactNode`   | `null`      | Component to show on the left side of the text (ex.: Icon) |
+| `right`   | `React.ReactNode`   | `null`      | Component on the right side of the text                    |
+| `variant` | `string`            | `'default'` | Variant prop to style Input component                      |
+| `...`     | `HTMLButtonElement` | `{}`        | Other props are inherited from `HTMLButtonElement`         |
