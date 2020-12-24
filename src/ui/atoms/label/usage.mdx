@@ -4,13 +4,17 @@ category: atoms
 package: 'woly'
 ---
 
+import { Global } from '../../../lib/box-styles';
 import { Label } from './index';
 
 `Label` is a description text for located near interactive component. Label can be passed as a property to a Checkbox or a Toggle component.
 
 ### Example
 
-<Label text="Simple label" />
+<Global>
+  <Label text="Simple label" />
+  <Label text="Destructive label" variant="destructive" />
+</Global>
 
 ```tsx
 const Example = () => <Label text="Simple label" />;
