@@ -1,28 +1,25 @@
 import styled from 'styled-components';
+import { Variant } from 'lib/types';
 
 /**
- * --surface-background
- * --surface-border-width
- * --surface-border-color
- * --surface-box-shadow
- * --padding
- * --rounding
+ * --woly-surface-background
+ * --woly-surface-border-width
+ * --woly-surface-border-color
+ * --woly-surface-box-shadow
+ * --woly-padding
+ * --woly-rounding
  */
 
-interface SurfaceProps {
-  variant?: string;
-}
-
-const map = (properties: SurfaceProps) => ({
+const map = (properties: Variant) => ({
   'data-variant': properties.variant || 'default',
 });
 
 export const Surface = styled.div.attrs(map)`
-  padding: var(--padding, 1rem);
+  padding: var(--woly-padding, 1rem);
 
-  background-color: var(--surface-background, #ffffff);
-  border-color: var(--surface-border-color, #000000);
-  border-width: var(--surface-border-width, 0);
-  border-radius: var(--rounding, 3px);
-  box-shadow: var(--surface-box-shadow, none);
+  background-color: var(--woly-surface-background, #ffffff);
+  border-color: var(--woly-surface-border-color, #000000);
+  border-width: var(--woly-surface-border-width, 0);
+  border-radius: var(--woly-rounding, 3px);
+  box-shadow: var(--woly-surface-box-shadow, none);
 `;
