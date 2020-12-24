@@ -5,6 +5,8 @@ export const Global = styled.div`
   --woly-main-level: 3;
   --woly-input-border-color: #d5d5dc;
   --woly-label-padding: 10px 0;
+  --woly-checkbox-padding: 0 0 0 15px;
+
   --primary: #6ab547;
 
   [data-variant='default'] {

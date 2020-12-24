@@ -1,5 +1,6 @@
 import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
+import { Variant } from 'lib/types';
 
 interface CheckboxProps {
   className?: string;
@@ -7,10 +8,9 @@ interface CheckboxProps {
   isChecked: boolean;
   label?: React.ReactNode;
   onChange: React.ChangeEventHandler<HTMLInputElement>;
-  variant?: string;
 }
 
-const CheckboxBase: React.FC<CheckboxProps> = ({
+const CheckboxBase: React.FC<CheckboxProps & Variant> = ({
   className,
   id,
   isChecked,
@@ -31,6 +31,6 @@ export const Checkbox = styled(CheckboxBase)`
   align-items: center;
 
   & > div {
-    padding-right: 15px;
+    padding: var(--woly-checkbox-padding);
   }
-` as StyledComponent<'div', Record<string, unknown>, CheckboxProps>;
+` as StyledComponent<'div', Record<string, unknown>, CheckboxProps & Variant>;
