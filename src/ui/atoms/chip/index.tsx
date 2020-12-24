@@ -1,14 +1,15 @@
 import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
+import { Variant } from 'lib/types';
 
 /**
- * --rounding 
- * --font-size
- * --padding
+ * --woly-rounding 
+ * --woly-font-size
+ * --woly-padding
 
- * --chip-background-color — color of the background
- * --chip-color — color of the text
- * --chip-focus — color of the focus
+ * --woly-chip-background-color — color of the background
+ * --woly-chip-color — color of the text
+ * --woly-chip-focus — color of the focus
  */
 
 interface ChipProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -17,10 +18,9 @@ interface ChipProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   icon?: React.ReactNode;
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
   text: string;
-  variant?: string;
 }
 
-const ChipBase: React.FC<ChipProps> = ({
+const ChipBase: React.FC<ChipProps & Variant> = ({
   className,
   icon,
   onClick,
@@ -37,11 +37,11 @@ const ChipBase: React.FC<ChipProps> = ({
 );
 
 export const Chip = styled(ChipBase)`
-  --vertical: calc(1px * var(--component-level) * var(--main-level));
+  --vertical: calc(1px * var(--woly-component-level) * var(--woly-main-level));
   --horizontal: calc(
-    var(--const-m) + (1px * var(--main-level)) + var(--vertical)
+    var(--woly-const-m) + (1px * var(--woly-main-level)) + var(--vertical)
   );
-  --line-height: 24px;
+  --woly-line-height: 24px;
   --gap: 6px;
 
   display: flex;
@@ -50,27 +50,27 @@ export const Chip = styled(ChipBase)`
 
   padding: var(--vertical, 1rem) var(--horizontal, 0.4rem);
 
-  font-size: var(--font-size, 1rem);
+  font-size: var(--woly-font-size, 1rem);
 
-  background-color: var(--chip-background-color, #ffffff);
-  border-radius: var(--rounding, 4px);
+  background-color: var(--woly-chip-background-color, #ffffff);
+  border-radius: var(--woly-rounding, 4px);
 
   &:focus {
-    background-color: var(--chip-focus, #d5d5dc);
+    background-color: var(--woly-chip-focus, #d5d5dc);
   }
 
   & > button:first-child {
     flex-grow: 1;
     padding: 0;
 
-    color: var(--chip-color, #000000);
+    color: var(--woly-chip-color, #000000);
 
-    line-height: var(--line-height, 24px);
+    line-height: var(--woly-line-height, 24px);
     text-align: left;
 
     background-color: transparent;
     border: 0;
-    border-radius: var(--rounding, 4px);
+    border-radius: var(--woly-rounding, 4px);
     outline: none;
   }
 
@@ -79,6 +79,6 @@ export const Chip = styled(ChipBase)`
     align-items: center;
     margin-left: var(--gap, 6px);
 
-    line-height: var(--line-height, 24px);
+    line-height: var(--woly-line-height, 24px);
   }
-` as StyledComponent<'div', Record<string, unknown>, ChipProps>;
+` as StyledComponent<'div', Record<string, unknown>, ChipProps & Variant>;

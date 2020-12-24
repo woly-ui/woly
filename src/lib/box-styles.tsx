@@ -9,6 +9,7 @@ export const Global = styled.div`
     --woly-button-color: black;
     --woly-button-background: lightgray;
     --woly-bf-background-color: var(--primary);
+    --woly-chip-background-color: lightgrey;
   }
 
   [data-variant='primary'] {
@@ -17,6 +18,8 @@ export const Global = styled.div`
     --woly-bf-background-color: var(--primary);
     --woly-bi-background-color: var(--primary);
     --woly-bi-rounding: 3px;
+    --woly-chip-background-color: var(--primary);
+    --woly-chip-color: white;
   }
 
   [data-variant='secondary'] {
@@ -25,6 +28,7 @@ export const Global = styled.div`
     --woly-button-borders: #000000;
     --woly-bi-background-color: #ffeb3b;
     --woly-bi-rounding: 3px;
+    --woly-chip-background-color: #ffeb3b;
   }
 
   [data-variant='destructive'] {
