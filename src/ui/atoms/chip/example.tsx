@@ -9,21 +9,29 @@ export const ChipExample: React.FC = () => (
   <Chips>
     <Global>
       <block.N>
-        <Chip text="Chip N" onClick={() => console.info('Chip clicked')} />
+        <Chip
+          text="Chip primary N"
+          variant="primary"
+          onClick={() => console.info('Chip clicked')}
+        />
       </block.N>
       <block.XS>
-        <Chip text="Chip XS" onClick={() => console.info('Chip clicked')} />
+        <Chip
+          text="Chip secondary XS"
+          variant="secondary"
+          onClick={() => console.info('Chip clicked')}
+        />
       </block.XS>
       <block.N>
         <Chip
-          text="Chip N"
+          text="Chip default N"
           icon={<CloseIcon />}
           onClick={() => console.info('Chip clicked')}
         />
       </block.N>
       <block.XS>
         <Chip
-          text="Chip XS"
+          text="Chip default XS"
           icon={<CloseIcon />}
           onClick={() => console.info('Chip clicked')}
         />
