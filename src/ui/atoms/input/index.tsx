@@ -1,14 +1,13 @@
 import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
+import { Variant } from 'lib/types';
 
 /**
- * --color
- * --input-border-color
- * --input-width
- * --font-size
- * --spacing-vertical
- * --spacing-horizontal
- * --rounding
+ * --woly-color
+ * --woly-input-border-color
+ * --woly-input-width
+ * --woly-font-size
+ * --woly-rounding
  */
 
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
@@ -16,10 +15,9 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   name: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => unknown;
   className?: string;
-  variant?: string;
 }
 
-const InputBase: React.FC<InputProps> = ({
+const InputBase: React.FC<InputProps & Variant> = ({
   className,
   name,
   onChange,
@@ -38,19 +36,18 @@ const InputBase: React.FC<InputProps> = ({
 );
 
 export const Input = styled(InputBase)`
-  --input-width: 100%;
-  --input-border-color: #d5d5dc;
-  --vertical: calc(1px * var(--component-level) * var(--main-level));
+  --woly-input-width: 100%;
+  --vertical: calc(1px * var(--woly-component-level) * var(--woly-main-level));
   --horizontal: calc(
-    var(--const-m) + (1px * var(--main-level)) + var(--vertical)
+    var(--woly-const-m) + (1px * var(--woly-main-level)) + var(--woly-vertical)
   );
   box-sizing: border-box;
 
-  width: var(--input-width);
+  width: var(--woly-input-width);
   padding: var(--vertical, 1rem) var(--horizontal, 0.4rem);
 
-  font-size: var(--font-size, 1rem);
+  font-size: var(--woly-font-size, 1rem);
 
-  border: solid 1px var(--input-border-color);
-  border-radius: var(--rounding, 3px);
-` as StyledComponent<'input', Record<string, unknown>, InputProps>;
+  border: solid 1px var(--woly-input-border-color);
+  border-radius: var(--woly-rounding, 3px);
+` as StyledComponent<'input', Record<string, unknown>, InputProps & Variant>;

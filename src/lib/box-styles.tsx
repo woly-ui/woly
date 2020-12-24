@@ -3,6 +3,8 @@ import styled from 'styled-components';
 export const Global = styled.div`
   --woly-const-m: 6px;
   --woly-main-level: 3;
+  --woly-input-border-color: #d5d5dc;
+
   --primary: #6ab547;
 
   [data-variant='default'] {
@@ -20,6 +22,7 @@ export const Global = styled.div`
     --woly-bi-rounding: 3px;
     --woly-chip-background-color: var(--primary);
     --woly-chip-color: white;
+    --woly-input-border-color: var(--primary);
   }
 
   [data-variant='secondary'] {
