@@ -11,7 +11,7 @@ export const InputExample: React.FC = () => (
         <Input
           type="text"
           name="name"
-          placeholder="Enter your name here"
+          placeholder="Input S"
           onChange={() => console.info('On input change')}
         />
       </block.S>
@@ -19,16 +19,18 @@ export const InputExample: React.FC = () => (
         <Input
           type="text"
           name="name"
-          placeholder="Enter your name here"
+          placeholder="Input M disabled"
           onChange={() => console.info('On input change')}
+          disabled
         />
       </block.M>
       <block.L>
         <Input
           type="text"
           name="name"
-          placeholder="Enter your name here"
+          placeholder="Input L primary"
           onChange={() => console.info('On input change')}
+          variant="primary"
         />
       </block.L>
     </Global>
