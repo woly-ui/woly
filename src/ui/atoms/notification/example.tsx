@@ -12,6 +12,7 @@ export const NotificationExample: React.FC = () => {
         <Button
           onClick={onClick}
           text={isVisible ? 'hide notification' : 'show notification'}
+          variant="primary"
         />
       </block.S>
       <NotificationWrapper isVisible={isVisible}>
