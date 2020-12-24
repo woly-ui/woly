@@ -23,6 +23,14 @@ export const Global = styled.div`
     --woly-chip-background-color: var(--primary);
     --woly-chip-color: white;
     --woly-input-border-color: var(--primary);
+
+    --woly-popover-position-top: 0;
+    --woly-popover-position-right: 0;
+    --woly-popover-position-left: 0;
+    --woly-popover-position-bottom: 0;
+    --woly-popover-background: #00000063;
+    --woly-popover-spacing-vertical: 300px;
+    --woly-popover-spacing-horizontal: 300px;
   }
 
   [data-variant='secondary'] {
