@@ -3,15 +3,18 @@ import styled from 'styled-components';
 export const Global = styled.div`
   --woly-const-m: 6px;
   --woly-main-level: 3;
+  --primary: #6ab547;
 
   [data-variant='default'] {
     --woly-button-color: black;
     --woly-button-background: lightgray;
+    --woly-bf-background-color: var(--primary);
   }
 
   [data-variant='primary'] {
     --woly-button-color: white;
-    --woly-button-background: #6ab547;
+    --woly-button-background: var(--primary);
+    --woly-bf-background-color: var(--primary);
   }
 
   [data-variant='secondary'] {

@@ -1,21 +1,21 @@
 import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
+import { Variant } from 'lib/types';
 
 /**
- * --bf-background-color
- * --bf-size
- * --bf-position-bottom
- * --bf-position-right
+ * --woly-bf-background-color
+ * --woly-bf-size
+ * --woly-bf-position-bottom
+ * --woly-bf-position-right
  */
 
 interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string;
   icon: React.ReactNode;
   onClick: React.MouseEventHandler<HTMLButtonElement>;
-  variant?: string;
 }
 
-const ButtonFloatingBase: React.FC<Props> = ({
+const ButtonFloatingBase: React.FC<Props & Variant> = ({
   icon,
   onClick,
   variant = 'default',
@@ -43,17 +43,17 @@ const ButtonFloatingBase: React.FC<Props> = ({
 
 export const ButtonFloating = styled(ButtonFloatingBase)`
   position: fixed;
-  right: var(--bf-position-right, 0);
-  bottom: var(--bf-position-bottom, 0);
+  right: var(--woly-bf-position-right, 0);
+  bottom: var(--woly-bf-position-bottom, 0);
 
   display: flex;
   align-items: center;
   justify-content: center;
-  width: var(--bf-size, 70px);
-  height: var(--bf-size, 70px);
+  width: var(--woly-bf-size, 70px);
+  height: var(--woly-bf-size, 70px);
 
-  background-color: var(--bf-background-color, #000);
+  background-color: var(--woly-bf-background-color, #000);
   border: 0;
   border-radius: 50%;
   cursor: pointer;
-` as StyledComponent<'button', Record<string, unknown>, Props>;
+` as StyledComponent<'button', Record<string, unknown>, Props & Variant>;
