@@ -9,19 +9,6 @@ export const ButtonExample: React.FC = () => (
   <Inputs>
     <Global>
       <div>
-        <block.S>
-          <Button
-            right={
-              <IconWrapper>
-                <MoreIcon />
-              </IconWrapper>
-            }
-            text="Button S"
-          />
-        </block.S>
-        <block.M>
-          <Button left={<ArrowLeft />} text="Button M" />
-        </block.M>
         <block.L>
           <Button
             right={
@@ -29,24 +16,39 @@ export const ButtonExample: React.FC = () => (
                 <SearchIcon />
               </IconWrapper>
             }
-            text="Button L"
+            variant="primary"
+            text="Button L Primary"
           />
         </block.L>
+        <block.M>
+          <Button
+            text="Button M Secondary"
+            variant="secondary"
+            right={
+              <IconWrapper>
+                <MoreIcon />
+              </IconWrapper>
+            }
+          />
+        </block.M>
+        <block.S>
+          <Button text="Button S Destructive" variant="destructive" />
+        </block.S>
       </div>
       <div>
         <block.XS>
           <Button
+            left={<>⭐️</>}
             right={
               <IconWrapper>
                 <SearchIcon />
               </IconWrapper>
             }
-            left={<>⭐️</>}
             text="Button XS"
           />
         </block.XS>
         <block.N>
-          <Button text="Button N" />
+          <Button text="Button N" left={<ArrowLeft />} />
         </block.N>
       </div>
     </Global>
@@ -59,11 +61,6 @@ export const IconWrapper = styled.div`
 `;
 
 export const Inputs = styled.div`
-  --primary-bg: #6ab547;
-  --secondary-bg: var(--base);
-  --secondary-text: #333;
-  --destructive-bg: var(--accent);
-
   button {
     margin: 10px;
   }
