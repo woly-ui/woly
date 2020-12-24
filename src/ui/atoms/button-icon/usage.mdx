@@ -5,43 +5,35 @@ package: 'woly'
 ---
 
 import { ButtonIcon } from './index';
+import { Global } from '../../../lib/box-styles';
 import { OpenEyeIcon, SearchIcon } from '../../../static/icons/';
 
 `ButtonIcon` is a button with an icon
 
 ### Example
 
-<div style={{ display: 'flex' }}>
+<Global>
   <div
-    style={{
-      '--bi-background-color': 'bisque',
-      '--bi-rounding': '3px',
-      margin: '5px',
-    }}
+    style={{ display: 'flex', width: ' 60px', justifyContent: 'space-between' }}
   >
     <ButtonIcon
       icon={<SearchIcon />}
       onClick={(event) => console.info('ButtonIcon clicked')}
+      variant="primary"
     />
-  </div>
-  <div
-    style={{
-      '--bi-background-color': '#ffeb3b',
-      '--bi-rounding': '3px',
-      margin: '5px',
-    }}
-  >
     <ButtonIcon
       icon={<OpenEyeIcon />}
       onClick={(event) => console.info('ButtonIcon clicked')}
+      variant="secondary"
     />
   </div>
-</div>
+</Global>
 
 ```tsx
 <ButtonIcon
   icon={<Icon />}
   onClick={(event) => console.info('ButtonIcon clicked')}
+  variant="primary"
 />
 ```
 
