@@ -1,20 +1,20 @@
 import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
+import { Variant } from 'lib/types';
 
 /**
- * --bi-background-color
- * --bi-padding
- * --bi-rounding
+ * --woly-bi-background-color
+ * --woly-bi-padding
+ * --woly-bi-rounding
  */
 
 interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string;
   icon: React.ReactNode;
   onClick: React.MouseEventHandler<HTMLButtonElement>;
-  variant?: string;
 }
 
-const ButtonIconBase: React.FC<Props> = ({
+const ButtonIconBase: React.FC<Props & Variant> = ({
   icon,
   onClick,
   variant = 'default',
@@ -42,10 +42,10 @@ const ButtonIconBase: React.FC<Props> = ({
 
 export const ButtonIcon = styled(ButtonIconBase)`
   display: block;
-  padding: var(--bi-padding, 0);
+  padding: var(--woly-bi-padding, 0);
 
-  background-color: var(--bi-background-color, transparent);
+  background-color: var(--woly-bi-background-color, transparent);
   border: 0;
-  border-radius: var(--bi-rounding, 0);
+  border-radius: var(--woly-bi-rounding, 0);
   cursor: pointer;
-` as StyledComponent<'button', Record<string, unknown>, Props>;
+` as StyledComponent<'button', Record<string, unknown>, Props & Variant>;

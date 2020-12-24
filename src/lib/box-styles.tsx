@@ -15,12 +15,16 @@ export const Global = styled.div`
     --woly-button-color: white;
     --woly-button-background: var(--primary);
     --woly-bf-background-color: var(--primary);
+    --woly-bi-background-color: var(--primary);
+    --woly-bi-rounding: 3px;
   }
 
   [data-variant='secondary'] {
     --woly-button-color: white;
     --woly-button-background: grey;
     --woly-button-borders: #000000;
+    --woly-bi-background-color: #ffeb3b;
+    --woly-bi-rounding: 3px;
   }
 
   [data-variant='destructive'] {
