@@ -1,26 +1,26 @@
 import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
+import { Variant } from 'lib/types';
 
 /**
- * --notification-top
- * --notification-right
- * --notification-bottom
- * --notification-left
- * --font-size
- * --notification-margin
- * --notification-padding
- * --notification-color
- * --notification-background-color
- * --notification-radius
+ * --woly-notification-top
+ * --woly-notification-right
+ * --woly-notification-bottom
+ * --woly-notification-left
+ * --woly-font-size
+ * --woly-notification-margin
+ * --woly-notification-padding
+ * --woly-notification-color
+ * --woly-notification-background-color
+ * --woly-notification-radius
  */
 
 interface NotificationProps {
   className?: string;
   message: React.ReactNode;
-  variant?: string;
 }
 
-const NotificationBase: React.FC<NotificationProps> = ({
+const NotificationBase: React.FC<NotificationProps & Variant> = ({
   className,
   message,
   variant = 'default',
@@ -32,22 +32,26 @@ const NotificationBase: React.FC<NotificationProps> = ({
 
 export const Notification = styled(NotificationBase)`
   position: fixed;
-  top: var(--notification-top, 24px);
-  right: var(--notification-right, 0);
-  bottom: var(--notification-bottom, unset);
-  left: var(--notification-left, 0);
+  top: var(--woly-notification-top, 24px);
+  right: var(--woly-notification-right, 0);
+  bottom: var(--woly-notification-bottom, unset);
+  left: var(--woly-notification-left, 0);
 
-  font-size: var(--font-size, 1rem);
+  font-size: var(--woly-font-size, 1rem);
 
   div {
     width: fit-content;
-    margin: var(--notification-margin, 5px auto);
-    padding: var(--notification-padding, 6px 17px);
+    margin: var(--woly-notification-margin, 5px auto);
+    padding: var(--woly-notification-padding, 6px 17px);
 
-    color: var(--notification-color, #ffffff);
+    color: var(--woly-notification-color, #ffffff);
     text-align: center;
 
-    background-color: var(--notification-background-color, #1a1a23);
-    border-radius: var(--notification-radius, 1px);
+    background-color: var(--woly-notification-background-color, #1a1a23);
+    border-radius: var(--woly-notification-radius, 1px);
   }
-` as StyledComponent<'div', Record<string, unknown>, NotificationProps>;
+` as StyledComponent<
+  'div',
+  Record<string, unknown>,
+  NotificationProps & Variant
+>;
