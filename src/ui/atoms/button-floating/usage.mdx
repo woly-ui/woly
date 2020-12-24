@@ -5,18 +5,20 @@ package: 'woly'
 ---
 
 import { ButtonFloating } from './index';
+import { Global } from '../../../lib/box-styles';
 import { SearchIcon } from '../../../static/icons/';
 
 `ButtonFloating` is placed at the bottom right side of the screen and contains an icon
 
 ### Example
 
-<div style={{ '--bf-background-color': 'skyblue' }}>
+<Global>
   <ButtonFloating
     icon={<SearchIcon />}
     onClick={(event) => console.info('ButtonFloating clicked')}
+    variant="primary"
   />
-</div>
+</Global>
 
 ```tsx
 const Example = () => (
