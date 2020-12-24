@@ -4,7 +4,7 @@ export const Global = styled.div`
   --woly-const-m: 6px;
   --woly-main-level: 3;
   --woly-input-border-color: #d5d5dc;
-
+  --woly-label-padding: 10px 0;
   --primary: #6ab547;
 
   [data-variant='default'] {
@@ -37,6 +37,7 @@ export const Global = styled.div`
   [data-variant='destructive'] {
     --woly-button-color: white;
     --woly-button-background: red;
+    --woly-label-color: red;
   }
 `;
 
