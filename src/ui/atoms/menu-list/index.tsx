@@ -1,23 +1,23 @@
 import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
+import { Variant } from 'lib/types';
 
 /**
- * --menu-list-padding
- * --menu-list-color
- * --menu-list-background
- * --rounding
- * --shadow
- * --menu-list-item-padding
- * --menu-list-hover
+ * --woly-menu-list-padding
+ * --woly-menu-list-color
+ * --woly-menu-list-background
+ * --woly-rounding
+ * --woly-shadow
+ * --woly-menu-list-item-padding
+ * --woly-menu-list-hover
  */
 
 interface MenuList {
   className?: string;
   menu: Array<{ item: React.ReactNode; id: string }>;
-  variant?: string;
 }
 
-const MenuListBase: React.FC<MenuList> = ({
+const MenuListBase: React.FC<MenuList & Variant> = ({
   className,
   menu,
   variant = 'default',
@@ -32,23 +32,23 @@ const MenuListBase: React.FC<MenuList> = ({
 );
 
 export const MenuList = styled(MenuListBase)`
-  padding: var(--menu-list-padding, 6px 0);
+  padding: var(--woly-menu-list-padding, 6px 0);
 
-  color: var(--menu-list-color, #1a1a23);
+  color: var(--woly-menu-list-color, #1a1a23);
 
   list-style-type: none;
 
-  background-color: var(--menu-list-background, #ffffff);
-  border-radius: var(--rounding, 3px);
-  box-shadow: var(--shadow, 0 0 8px 0 #efefef);
+  background-color: var(--woly-menu-list-background, #ffffff);
+  border-radius: var(--woly-rounding, 3px);
+  box-shadow: var(--woly-shadow, 0 0 8px 0 #efefef);
 
   li[data-type='menu-item'] {
-    padding: var(--menu-list-item-padding, 8px 18px);
+    padding: var(--woly-menu-list-item-padding, 8px 18px);
 
     &:hover,
     &:focus {
-      background-color: var(--menu-list-hover, #f8f8fa);
+      background-color: var(--woly-menu-list-hover, #f8f8fa);
       cursor: pointer;
     }
   }
-` as StyledComponent<'ul', Record<string, unknown>, MenuList>;
+` as StyledComponent<'ul', Record<string, unknown>, MenuList & Variant>;
