@@ -1,9 +1,8 @@
 import * as React from 'react';
 import styled from 'styled-components';
-
-import { ArrowLeft, MoreIcon, SearchIcon } from '../../../static/icons';
-import { Button } from './index';
-import { Global, block } from '../../../lib/box-styles';
+import { ArrowLeft, MoreIcon, SearchIcon } from 'icons';
+import { Button } from 'ui';
+import { Global, block } from 'box-styles';
 
 export const ButtonExample: React.FC = () => (
   <Inputs>

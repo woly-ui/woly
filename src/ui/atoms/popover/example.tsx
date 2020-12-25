@@ -1,8 +1,7 @@
 import * as React from 'react';
 import styled from 'styled-components';
-
-import { Button, Popover, Surface } from '..';
-import { Global } from '../../../lib/box-styles';
+import { Button, Popover, Surface } from 'ui';
+import { Global } from 'box-styles';
 
 export const PopoverExample: React.FC = () => {
   const [isOpen, onClick] = React.useReducer((is) => !is, false);

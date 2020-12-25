@@ -1,9 +1,8 @@
 import * as React from 'react';
 import styled from 'styled-components';
-
-import { Chip } from './index';
-import { CloseIcon } from '../../../static/icons';
-import { Global, block } from '../../../lib/box-styles';
+import { Chip } from 'ui';
+import { CloseIcon } from 'icons';
+import { Global, block } from 'box-styles';
 
 export const ChipExample: React.FC = () => (
   <Chips>

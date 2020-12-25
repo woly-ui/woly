@@ -18,7 +18,11 @@
     "import/resolver": {
       "typescript": {
         "project": "./tsconfig.json"
-      }
+      },
+      "alias": [
+        ["box-styles", "./src/lib/box-styles"],
+        ["icons", "./src/static/icons"]
+      ]
     }
   },
   "rules": {
