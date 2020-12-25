@@ -19,7 +19,10 @@
     "baseUrl": "./src",
     "typeRoots": ["./node_modules/@types"],
     "paths": {
-      "~/": ["./"]
+      "~/": ["./"],
+      "box-styles": ["lib/box-styles"],
+      "icons": ["static/icons"],
+      "ui": ["ui/"]
     }
   },
   "exclude": ["./node_modules", "./dist", "./.storybook"]

@@ -1,8 +1,7 @@
 import * as React from 'react';
 import styled from 'styled-components';
-
-import { Button, Notification } from '../index';
-import { Global, block } from '../../../lib/box-styles';
+import { Button, Notification } from 'ui';
+import { Global, block } from 'box-styles';
 
 export const NotificationExample: React.FC = () => {
   const [isVisible, onClick] = React.useReducer((is) => !is, false);

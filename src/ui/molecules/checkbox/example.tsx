@@ -1,8 +1,7 @@
 import * as React from 'react';
 import styled from 'styled-components';
-
-import { Checkbox, Label } from '../..';
-import { Global } from '../../../lib/box-styles';
+import { Checkbox, Label } from 'ui';
+import { Global } from 'box-styles';
 
 export const CheckboxExample: React.FC = () => {
   const [isPassportChecked, onPassportClick] = React.useReducer(

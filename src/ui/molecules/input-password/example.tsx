@@ -1,8 +1,7 @@
 import * as React from 'react';
-
-import { ClosedEyeIcon, OpenEyeIcon } from '../../../static/icons';
-import { Global } from '../../../lib/box-styles';
-import { InputPassword } from '.';
+import { ClosedEyeIcon, OpenedEyeIcon } from 'icons';
+import { Global } from 'box-styles';
+import { InputPassword } from 'ui';
 
 export const InputPasswordExample: React.FC = () => (
   <Global>
@@ -10,7 +9,7 @@ export const InputPasswordExample: React.FC = () => (
       onChange={() => console.info('change')}
       name="input"
       iconHidden={<ClosedEyeIcon />}
-      iconOpen={<OpenEyeIcon />}
+      iconOpen={<OpenedEyeIcon />}
     />
   </Global>
 );

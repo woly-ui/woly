@@ -4,9 +4,9 @@ category: atoms
 package: 'woly'
 ---
 
-import { ButtonIcon } from './index';
-import { Global } from '../../../lib/box-styles';
-import { OpenEyeIcon, SearchIcon } from '../../../static/icons/';
+import { ButtonIcon } from 'ui';
+import { Global } from 'box-styles';
+import { OpenedEyeIcon, SearchIcon } from 'icons';
 
 `ButtonIcon` is a button with an icon
 
@@ -22,7 +22,7 @@ import { OpenEyeIcon, SearchIcon } from '../../../static/icons/';
       variant="primary"
     />
     <ButtonIcon
-      icon={<OpenEyeIcon />}
+      icon={<OpenedEyeIcon />}
       onClick={(event) => console.info('ButtonIcon clicked')}
       variant="secondary"
     />

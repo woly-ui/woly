@@ -1,8 +1,7 @@
 import * as React from 'react';
 import styled from 'styled-components';
-
-import { Global, block } from '../../../lib/box-styles';
-import { Input } from './index';
+import { Global, block } from 'box-styles';
+import { Input } from 'ui';
 
 export const InputExample: React.FC = () => (
   <Inputs>

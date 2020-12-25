@@ -1,8 +1,7 @@
 import * as React from 'react';
 import styled from 'styled-components';
-
-import { Global } from '../../../lib/box-styles';
-import { Label, Toggle } from '../../index';
+import { Global } from 'box-styles';
+import { Label, Toggle } from 'ui';
 
 export const ToggleExample: React.FC = () => {
   const [isConfirmOn, onConfirmClick] = React.useReducer((on) => !on, false);
