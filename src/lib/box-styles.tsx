@@ -33,6 +33,8 @@ export const Global = styled.div`
     --woly-popover-background: #00000063;
     --woly-popover-spacing-vertical: 300px;
     --woly-popover-spacing-horizontal: 300px;
+
+    --woly-toggle-active-background-color: var(--accent);
   }
 
   [data-variant='secondary'] {

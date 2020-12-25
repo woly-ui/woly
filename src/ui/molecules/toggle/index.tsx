@@ -1,15 +1,16 @@
 import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
+import { Variant } from 'lib/types';
 
 /**
- * --toggle-width
- * --toggle-height
- * --toggle-rounding
- * --toggle-unactive-background-color
- * --toggle-active-background-color
- * --toggle-switcher-width
- * --toggle-switcher-height
- * --toggle-switcher-background-color
+ * --woly-toggle-width
+ * --woly-toggle-height
+ * --woly-toggle-rounding
+ * --woly-toggle-unactive-background-color
+ * --woly-toggle-active-background-color
+ * --woly-toggle-switcher-width
+ * --woly-toggle-switcher-height
+ * --woly-toggle-switcher-background-color
  */
 
 interface ToggleProps extends React.InputHTMLAttributes<HTMLInputElement> {
@@ -18,10 +19,9 @@ interface ToggleProps extends React.InputHTMLAttributes<HTMLInputElement> {
   isChecked: boolean;
   label?: React.ReactNode;
   onChange: React.ChangeEventHandler<HTMLInputElement>;
-  variant?: string;
 }
 
-const ToggleBase: React.FC<ToggleProps> = ({
+const ToggleBase: React.FC<ToggleProps & Variant> = ({
   className,
   id,
   isChecked,
@@ -58,8 +58,8 @@ export const Toggle = styled(ToggleBase)`
   label {
     position: relative;
 
-    width: var(--toggle-width, 42px);
-    height: var(--toggle-height, 24px);
+    width: var(--woly-toggle-width, 42px);
+    height: var(--woly-toggle-height, 24px);
   }
 
   label > input {
@@ -72,24 +72,25 @@ export const Toggle = styled(ToggleBase)`
   label > span {
     position: absolute;
 
-    width: var(--toggle-width, 42px);
-    height: var(--toggle-height, 24px);
+    width: var(--woly-toggle-width, 42px);
+    height: var(--woly-toggle-height, 24px);
 
-    background-color: var(--toggle-unactive-background-color, #d5d5dc);
-    border-radius: var(--toggle-rounding, 12px);
+    background-color: var(--woly-toggle-unactive-background-color, #d5d5dc);
+    border-radius: var(--woly-toggle-rounding, 12px);
     cursor: pointer;
 
     &:before {
       position: absolute;
 
-      width: var(--toggle-switcher-width, 12px);
-      height: var(--toggle-switcher-height, 12px);
+      width: var(--woly-toggle-switcher-width, 12px);
+      height: var(--woly-toggle-switcher-height, 12px);
       margin: calc(
-        var(--toggle-height, 24px) / 2 - var(--toggle-switcher-height, 12px) / 2
+        var(--woly-toggle-height, 24px) / 2 -
+          var(--woly-toggle-switcher-height, 12px) / 2
       );
 
-      background-color: var(--toggle-switcher-background-color, #ffffff);
-      border-radius: var(--toggle-rounding, 12px);
+      background-color: var(--woly-toggle-switcher-background-color, #ffffff);
+      border-radius: var(--woly-toggle-rounding, 12px);
       cursor: pointer;
 
       content: '';
@@ -97,10 +98,10 @@ export const Toggle = styled(ToggleBase)`
   }
 
   label > input:checked + span {
-    background-color: var(--toggle-active-background-color, #d5d5dc);
+    background-color: var(--woly-toggle-active-background-color, #d5d5dc);
   }
 
   label > input:checked + span:before {
     right: 0;
   }
-` as StyledComponent<'div', Record<string, unknown>, ToggleProps>;
+` as StyledComponent<'div', Record<string, unknown>, ToggleProps & Variant>;
