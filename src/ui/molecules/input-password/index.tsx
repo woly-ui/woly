@@ -1,14 +1,15 @@
 import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
+import { Variant } from 'lib/types';
 
 import ClosedEyeIcon from '../../../static/icons/closed-eye.svg';
 import OpenedEyeIcon from '../../../static/icons/opened-eye.svg';
 import { Input } from '../../atoms';
 
 /**
- * --input-border-color
- * --input-border-color-focus
- * --rounding
+ * --woly-input-border-color
+ * --woly-input-border-color-focus
+ * --woly-rounding
  */
 
 interface InputPasswordProps {
@@ -20,10 +21,9 @@ interface InputPasswordProps {
   onChange: React.ChangeEventHandler<HTMLInputElement>;
   placeholder?: string;
   value?: HTMLInputElement['value'];
-  variant?: string;
 }
 
-export const InputPasswordBase: React.FC<InputPasswordProps> = ({
+export const InputPasswordBase: React.FC<InputPasswordProps & Variant> = ({
   className,
   disabled,
   iconHidden,
@@ -62,8 +62,8 @@ export const InputPassword = styled(InputPasswordBase)`
   display: flex;
   align-items: center;
 
-  border: solid 1px var(--input-border-color, #d5d5dc);
-  border-radius: var(--rounding, 3px);
+  border: solid 1px var(--woly-input-border-color, #d5d5dc);
+  border-radius: var(--woly-rounding, 3px);
 
   button {
     margin: 0;
@@ -76,11 +76,15 @@ export const InputPassword = styled(InputPasswordBase)`
 
   &:focus,
   &:hover {
-    border: solid 1px var(--input-border-color-focus, #a9aab3);
+    border: solid 1px var(--woly-input-border-color-focus, #a9aab3);
   }
 
   input {
     border: 0;
     outline: none;
   }
-` as StyledComponent<'div', Record<string, unknown>, InputPasswordProps>;
+` as StyledComponent<
+  'div',
+  Record<string, unknown>,
+  InputPasswordProps & Variant
+>;
