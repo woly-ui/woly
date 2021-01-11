@@ -12,6 +12,11 @@ export const ChipExample: React.FC = () => (
           text="Chip primary N"
           variant="primary"
           onClick={() => console.info('Chip clicked')}
+          icon={
+            <IconWrapper>
+              <CloseIcon />
+            </IconWrapper>
+          }
         />
       </block.N>
       <block.XS>
@@ -19,19 +24,18 @@ export const ChipExample: React.FC = () => (
           text="Chip secondary XS"
           variant="secondary"
           onClick={() => console.info('Chip clicked')}
+          icon={<CloseIcon />}
         />
       </block.XS>
       <block.N>
         <Chip
           text="Chip default N"
-          icon={<CloseIcon />}
           onClick={() => console.info('Chip clicked')}
         />
       </block.N>
       <block.XS>
         <Chip
           text="Chip default XS"
-          icon={<CloseIcon />}
           onClick={() => console.info('Chip clicked')}
         />
       </block.XS>
@@ -46,5 +50,13 @@ export const Chips = styled.div`
   }
   ${Chip} {
     margin: 0 10px 0 0;
+  }
+`;
+
+export const IconWrapper = styled.div`
+  line-height: 0;
+
+  svg > path {
+    fill: #ffffff;
   }
 `;

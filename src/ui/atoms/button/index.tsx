@@ -10,8 +10,24 @@ export type ButtonSizes = 'default' | 'small';
  * --woly-rounding — in pixels
  * --woly-font-size
  * --woly-line-height
- * --woly-button-color
- * --woly-button-background
+ * --woly-border-width
+ *
+ * --woly-background
+ * --woly-border
+ * --woly-color
+ *
+ * --woly-background-hover
+ * --woly-border-hover
+ * --woly-color-hover
+ *
+ * --woly-background-focus
+ * --woly-border-focus
+ * --woly-color-focus
+ *
+ * --woly-background-disabled
+ * --woly-border-disabled
+ * --woly-color-disabled
+ *
  */
 
 export interface ButtonProps
@@ -52,20 +68,39 @@ export const Button = styled(ButtonBase)`
   flex-wrap: nowrap;
   padding: var(--vertical, 1rem) var(--horizontal, 0.4rem);
 
-  color: var(--woly-button-color, #ffffff);
+  color: var(--woly-color, #ffffff);
   font-size: var(--woly-font-size, 15px);
   line-height: var(--woly-line-height, 24px);
 
-  background-color: var(--woly-button-background, #000000);
+  background-color: var(--woly-background, #000000);
 
-  /* border: 1px solid var(--button-borders, #000000); */
-  border: none;
+  border-color: var(--woly-border, #000000);
+  border-style: solid;
+  border-width: var(--woly-border-width, 0);
   border-radius: var(--woly-rounding, 4px);
 
-  &:hover,
+  &:hover {
+    color: var(--woly-color-hover, #ffffff);
+
+    background-color: var(--woly-background-hover, #000000);
+    border-color: var(--woly-border-hover, #000000);
+    outline: none;
+  }
+
   &:focus,
   &:active {
-    border-color: var(--button-borders, #000000);
+    color: var(--woly-color-focus, #ffffff);
+
+    background-color: var(--woly-background-focus, #000000);
+    border-color: var(--woly-border-focus, #000000);
+    outline: none;
+  }
+
+  &:disabled {
+    color: var(--woly-color-disabled, #ffffff);
+
+    background-color: var(--woly-background-disabled, #000000);
+    border-color: var(--woly-border-disabled, #000000);
     outline: none;
   }
 

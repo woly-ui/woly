@@ -4,31 +4,72 @@ import { Global } from 'box-styles';
 import { Label, Toggle } from 'ui';
 
 export const ToggleExample: React.FC = () => {
-  const [isConfirmOn, onConfirmClick] = React.useReducer((on) => !on, false);
-  const [isSubscribeOn, onSubscribeClick] = React.useReducer((on) => !on, true);
-
+  const [sqOne, sqOneClick] = React.useReducer((on) => !on, false);
+  const [sqTwo, sqTwoClick] = React.useReducer((on) => !on, true);
+  const [roundOne, roundOneClick] = React.useReducer((on) => !on, false);
+  const [roundTwo, roundTwoClick] = React.useReducer((on) => !on, true);
+  const [labelOne, labelOneClick] = React.useReducer((on) => !on, false);
+  const [labelTwo, labelTwoClick] = React.useReducer((on) => !on, true);
   return (
     <Global>
-      <ToggleWrapper>
-        <Toggle
-          label={<Label text="Confirm" />}
-          isChecked={isConfirmOn}
-          onChange={onConfirmClick}
-          id="toggleConfirm"
-          variant="primary"
-        />
-        <Toggle
-          label={<Label text="Subscribe" />}
-          isChecked={isSubscribeOn}
-          onChange={onSubscribeClick}
-          id="toggleSubscribe"
-          variant="primary"
-        />
-      </ToggleWrapper>
+      <AllToggles>
+        <ToggleWrapper>
+          <Toggle
+            isChecked={sqOne}
+            onChange={sqOneClick}
+            id="sqOne"
+            variant="square"
+          />
+          <Toggle
+            isChecked={sqTwo}
+            onChange={sqTwoClick}
+            id="sqTwo"
+            variant="square"
+          />
+        </ToggleWrapper>
+        <ToggleWrapper>
+          <Toggle
+            isChecked={roundOne}
+            onChange={roundOneClick}
+            id="roundOne"
+            variant="round"
+          />
+          <Toggle
+            isChecked={roundTwo}
+            onChange={roundTwoClick}
+            id="roundTwo"
+            variant="round"
+          />
+        </ToggleWrapper>
+        <ToggleWrapper>
+          <Toggle
+            label={<Label text="Label" variant="base" />}
+            isChecked={labelOne}
+            onChange={labelOneClick}
+            id="labelOne"
+            variant="round"
+          />
+          <Toggle
+            label={<Label text="Label" variant="base" />}
+            isChecked={labelTwo}
+            onChange={labelTwoClick}
+            id="labelTwo"
+            variant="round"
+          />
+        </ToggleWrapper>
+      </AllToggles>
     </Global>
   );
 };
 
 export const ToggleWrapper = styled.div`
-  padding: 40px 0;
+  padding: 0 40px 0 0;
+
+  & > * {
+    padding: 10px 0;
+  }
+`;
+
+export const AllToggles = styled.div`
+  display: flex;
 `;

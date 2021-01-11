@@ -1,58 +1,104 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import { ArrowLeft, MoreIcon, SearchIcon } from 'icons';
+import { ArrowLeft, SearchIcon } from 'icons';
 import { Button } from 'ui';
 import { Global, block } from 'box-styles';
 
 export const ButtonExample: React.FC = () => (
   <Inputs>
     <Global>
-      <div>
+      <Buttons>
         <block.L>
-          <Button
-            right={
-              <IconWrapper>
-                <SearchIcon />
-              </IconWrapper>
-            }
-            variant="primary"
-            text="Button L Primary"
-          />
+          <Button variant="primary" text="Button" />
+          <Button variant="secondary" text="Button" />
+          <Button variant="primary" text="Button" disabled />
         </block.L>
         <block.M>
           <Button
-            text="Button M Secondary"
-            variant="secondary"
-            right={
-              <IconWrapper>
-                <MoreIcon />
-              </IconWrapper>
-            }
-          />
-        </block.M>
-        <block.S>
-          <Button text="Button S Destructive" variant="destructive" />
-        </block.S>
-      </div>
-      <div>
-        <block.XS>
-          <Button
-            left={<>⭐️</>}
+            variant="primary"
+            text="Button"
             right={
               <IconWrapper>
                 <SearchIcon />
               </IconWrapper>
             }
-            text="Button XS"
           />
+          <Button
+            variant="secondary"
+            text="Button"
+            right={
+              <IconSecondaryWrapper>
+                <SearchIcon />
+              </IconSecondaryWrapper>
+            }
+          />
+          <Button
+            variant="primary"
+            text="Button"
+            right={
+              <IconDisabledWrapper>
+                <SearchIcon />
+              </IconDisabledWrapper>
+            }
+            disabled
+          />
+        </block.M>
+        <block.S>
+          <Button
+            variant="primary"
+            text="Button"
+            left={
+              <IconWrapper>
+                <ArrowLeft />
+              </IconWrapper>
+            }
+          />
+          <Button
+            variant="secondary"
+            text="Button"
+            left={
+              <IconSecondaryWrapper>
+                <ArrowLeft />
+              </IconSecondaryWrapper>
+            }
+          />
+          <Button
+            variant="primary"
+            text="Button"
+            disabled
+            left={
+              <IconDisabledWrapper>
+                <ArrowLeft />
+              </IconDisabledWrapper>
+            }
+          />
+        </block.S>
+        <block.XS>
+          <Button variant="primary" text="Button" />
+          <Button variant="secondary" text="Button" />
+          <Button variant="primary" text="Button" disabled />
         </block.XS>
         <block.N>
-          <Button text="Button N" left={<ArrowLeft />} />
+          <Button variant="primary" text="Button" />
+          <Button variant="secondary" text="Button" />
+          <Button variant="primary" text="Button" disabled />
         </block.N>
-      </div>
+      </Buttons>
     </Global>
   </Inputs>
 );
+export const IconSecondaryWrapper = styled.div`
+  path {
+    fill: #683aef;
+  }
+`;
+
+export const IconDisabledWrapper = styled.div`
+  path {
+    fill: #a39bb2;
+  }
+`;
+
 export const IconWrapper = styled.div`
   path {
     fill: #fff;
@@ -60,11 +106,35 @@ export const IconWrapper = styled.div`
 `;
 
 export const Inputs = styled.div`
-  button {
-    margin: 10px;
+  ${block.L} > button {
+    margin-bottom: 30px;
+  }
+
+  ${block.M} > button {
+    margin-bottom: 36px;
+  }
+
+  ${block.S} > button {
+    margin-bottom: 42px;
+  }
+
+  ${block.XS} > button {
+    margin-bottom: 48px;
+  }
+
+  ${block.N} > button {
+    margin-bottom: 54px;
+  }
+
+  div {
+    padding-right: 40px;
   }
 
   & > div {
     display: flex;
   }
+`;
+
+export const Buttons = styled.div`
+  display: flex;
 `;

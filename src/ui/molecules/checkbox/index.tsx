@@ -25,12 +25,26 @@ const CheckboxBase: React.FC<CheckboxProps & Variant> = ({
 );
 
 export const Checkbox = styled(CheckboxBase)`
+  --vertical: calc(1px * var(--woly-component-level) * var(--woly-main-level));
+  --horizontal: calc(
+    var(--woly-const-m) + (1px * var(--woly-main-level)) + var(--vertical)
+  );
+  --gap: calc(
+    (1px * var(--woly-main-level)) +
+      (1px * var(--woly-main-level) * var(--woly-component-level))
+  );
+
   position: relative;
 
   display: flex;
   align-items: center;
+  padding: var(--vertical, 1rem) var(--horizontal, 0.4rem);
+
+  input {
+    margin: 0;
+  }
 
   & > div {
-    padding: var(--woly-checkbox-padding);
+    padding-left: var(--gap, 1rem);
   }
 ` as StyledComponent<'div', Record<string, unknown>, CheckboxProps & Variant>;

@@ -15,7 +15,10 @@ export const NotificationExample: React.FC = () => {
         />
       </block.S>
       <NotificationWrapper isVisible={isVisible}>
-        <Notification message="Your transaction has been completed" />
+        <Notification
+          message="Your transaction has been completed"
+          variant="base"
+        />
       </NotificationWrapper>
     </Global>
   );

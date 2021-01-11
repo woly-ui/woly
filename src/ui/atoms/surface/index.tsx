@@ -2,12 +2,14 @@ import styled from 'styled-components';
 import { Variant } from 'lib/types';
 
 /**
- * --woly-surface-background
- * --woly-surface-border-width
- * --woly-surface-border-color
- * --woly-surface-box-shadow
+ * --woly-border-width
+ * --woly-box-shadow
  * --woly-padding
  * --woly-rounding
+ *
+ * --woly-surface
+ * --woly-border
+ *
  */
 
 const map = (properties: Variant) => ({
@@ -17,9 +19,10 @@ const map = (properties: Variant) => ({
 export const Surface = styled.div.attrs(map)`
   padding: var(--woly-padding, 1rem);
 
-  background-color: var(--woly-surface-background, #ffffff);
-  border-color: var(--woly-surface-border-color, #000000);
-  border-width: var(--woly-surface-border-width, 0);
+  background-color: var(--woly-surface, #ffffff);
+  border-color: var(--woly-border, #000000);
+  border-style: solid;
+  border-width: var(--woly-border-width, 0);
   border-radius: var(--woly-rounding, 3px);
-  box-shadow: var(--woly-surface-box-shadow, none);
+  box-shadow: var(--woly-box-shadow, none);
 `;

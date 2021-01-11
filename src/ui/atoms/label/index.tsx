@@ -3,9 +3,8 @@ import { Variant } from 'lib/types';
 
 /**
  * --woly-font-size
- * --woly-line-height
- * --woly-padding
  * --woly-label-color
+ * --woly-line-height
  */
 
 interface LabelProps extends React.LabelHTMLAttributes<HTMLLabelElement> {
@@ -20,9 +19,8 @@ const map = (properties: LabelProps & Variant) => ({
 
 export const Label = styled.span.attrs(map)`
   display: block;
-  padding: var(--woly-label-padding, 1rem);
 
-  color: var(--woly-label-color, #000000);
+  color: var(--woly-color, #000000);
   font-size: var(--woly-font-size, 1rem);
   line-height: var(--woly-line-height, 1.2rem);
 ` as StyledComponent<'span', Record<string, unknown>, LabelProps & Variant>;
