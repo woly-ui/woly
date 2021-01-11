@@ -10,9 +10,12 @@ import { Variant } from 'lib/types';
  * --woly-font-size
  * --woly-notification-margin
  * --woly-notification-padding
- * --woly-notification-color
- * --woly-notification-background-color
- * --woly-notification-radius
+ *
+ * --woly-rounding
+ * --woly-background
+ * --woly-color
+ * --woly-border
+ * --woly-border-width
  */
 
 interface NotificationProps {
@@ -44,11 +47,14 @@ export const Notification = styled(NotificationBase)`
     margin: var(--woly-notification-margin, 5px auto);
     padding: var(--woly-notification-padding, 6px 17px);
 
-    color: var(--woly-notification-color, #ffffff);
+    color: var(--woly-color, #ffffff);
     text-align: center;
 
-    background-color: var(--woly-notification-background-color, #1a1a23);
-    border-radius: var(--woly-notification-radius, 1px);
+    background-color: var(--woly-background, #1a1a23);
+    border-color: var(--woly-border, var(--woly-background, #1a1a23));
+    border-style: solid;
+    border-width: var(--woly-border-width, 0);
+    border-radius: var(--woly-rounding, 1px);
   }
 ` as StyledComponent<
   'div',

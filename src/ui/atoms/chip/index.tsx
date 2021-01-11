@@ -3,13 +3,27 @@ import styled, { StyledComponent } from 'styled-components';
 import { Variant } from 'lib/types';
 
 /**
- * --woly-rounding 
+ * --woly-rounding — in pixels
  * --woly-font-size
- * --woly-padding
-
- * --woly-chip-background-color — color of the background
- * --woly-chip-color — color of the text
- * --woly-chip-focus — color of the focus
+ * --woly-line-height
+ * --woly-border-width
+ *
+ * --woly-background
+ * --woly-border
+ * --woly-color
+ *
+ * --woly-background-hover
+ * --woly-border-hover
+ * --woly-color-hover
+ *
+ * --woly-background-focus
+ * --woly-border-focus
+ * --woly-color-focus
+ *
+ * --woly-background-disabled
+ * --woly-border-disabled
+ * --woly-color-disabled
+ *
  */
 
 interface ChipProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -28,12 +42,18 @@ const ChipBase: React.FC<ChipProps & Variant> = ({
   variant = 'default',
   ...p
 }) => (
-  <div className={className} data-variant={variant}>
-    <button type="button" onClick={onClick} {...p}>
+  <>
+    <button
+      type="button"
+      onClick={onClick}
+      className={className}
+      data-variant={variant}
+      {...p}
+    >
       {text}
+      <span data-icon="right-icon">{icon}</span>
     </button>
-    <div>{icon}</div>
-  </div>
+  </>
 );
 
 export const Chip = styled(ChipBase)`
@@ -50,35 +70,48 @@ export const Chip = styled(ChipBase)`
 
   padding: var(--vertical, 1rem) var(--horizontal, 0.4rem);
 
-  font-size: var(--woly-font-size, 1rem);
+  color: var(--woly-color, #ffffff);
 
-  background-color: var(--woly-chip-background-color, #ffffff);
+  font-size: var(--woly-font-size, 12px);
+  line-height: var(--woly-line-height, 12px);
+
+  background-color: var(--woly-background, #000000);
+  border-color: var(--woly-border, #000000);
+  border-style: solid;
+  border-width: var(--woly-border-width, 0);
+
   border-radius: var(--woly-rounding, 4px);
 
-  &:focus {
-    background-color: var(--woly-chip-focus, #d5d5dc);
-  }
+  &:hover {
+    color: var(--woly-color-hover, #ffffff);
 
-  & > button:first-child {
-    flex-grow: 1;
-    padding: 0;
-
-    color: var(--woly-chip-color, #000000);
-
-    line-height: var(--woly-line-height, 24px);
-    text-align: left;
-
-    background-color: transparent;
-    border: 0;
-    border-radius: var(--woly-rounding, 4px);
+    background-color: var(--woly-background-hover, #000000);
+    border-color: var(--woly-border-hover, #000000);
     outline: none;
   }
 
-  & > div:last-child {
+  &:focus,
+  &:active {
+    color: var(--woly-color-focus, #ffffff);
+
+    background-color: var(--woly-background-focus, #000000);
+    border-color: var(--woly-border-focus, #000000);
+    outline: none;
+  }
+
+  &:disabled {
+    color: var(--woly-color-disabled, #ffffff);
+
+    background-color: var(--woly-background-disabled, #000000);
+    border-color: var(--woly-border-disabled, #000000);
+    outline: none;
+  }
+
+  & [data-icon] {
     display: flex;
     align-items: center;
     margin-left: var(--gap, 6px);
 
-    line-height: var(--woly-line-height, 24px);
+    line-height: var(--woly-line-height, 12px);
   }
 ` as StyledComponent<'div', Record<string, unknown>, ChipProps & Variant>;

@@ -7,9 +7,16 @@ import OpenedEyeIcon from '../../../static/icons/opened-eye.svg';
 import { Input } from '../../atoms';
 
 /**
- * --woly-input-border-color
- * --woly-input-border-color-focus
+ * --woly-border
+ * --woly-border-focus
+ * --woly-border-disabled
+ * --woly-border-width
  * --woly-rounding
+ *
+ * --woly-background
+ * --woly-background-diabled
+ * --woly-color
+ * --woly-color-disabled
  */
 
 interface InputPasswordProps {
@@ -40,7 +47,7 @@ export const InputPasswordBase: React.FC<InputPasswordProps & Variant> = ({
   const openEye = iconOpen ?? <OpenedEyeIcon />;
 
   return (
-    <div className={className} data-variant={variant}>
+    <div className={className} data-variant={variant} data-disabled={disabled}>
       <Input
         disabled={disabled}
         name={name}
@@ -49,7 +56,7 @@ export const InputPasswordBase: React.FC<InputPasswordProps & Variant> = ({
         type={isVisible ? 'text' : 'password'}
         value={value}
       />
-      <button type="button" onClick={onClick}>
+      <button type="button" onClick={onClick} disabled={disabled}>
         {isVisible ? closeEye : openEye}
       </button>
     </div>
@@ -57,12 +64,20 @@ export const InputPasswordBase: React.FC<InputPasswordProps & Variant> = ({
 };
 
 export const InputPassword = styled(InputPasswordBase)`
+  --gap: calc(
+    (1px * var(--woly-main-level)) +
+      (1px * var(--woly-main-level) * var(--woly-component-level))
+  );
   position: relative;
 
   display: flex;
   align-items: center;
 
-  border: solid 1px var(--woly-input-border-color, #d5d5dc);
+  background-color: var(--woly-background, transparent);
+
+  border-color: var(--woly-border, var(--woly-background, #000000));
+  border-style: solid;
+  border-width: var(--woly-border-width, 1px);
   border-radius: var(--woly-rounding, 3px);
 
   button {
@@ -74,14 +89,25 @@ export const InputPassword = styled(InputPasswordBase)`
     outline: none;
   }
 
-  &:focus,
-  &:hover {
-    border: solid 1px var(--woly-input-border-color-focus, #a9aab3);
+  &:focus-within {
+    border-color: var(--woly-border-focus, #a9aab3);
   }
 
   input {
+    padding-right: var(--gap, 0.4rem);
+
     border: 0;
     outline: none;
+  }
+
+  &[data-disabled='true'] {
+    color: var(--woly-color-disabled, #ffffff);
+
+    background: var(--woly-background-disabled, #ffffff);
+    border-color: var(
+      --woly-border-disabled,
+      var(--woly-background-disabled, #000000)
+    );
   }
 ` as StyledComponent<
   'div',

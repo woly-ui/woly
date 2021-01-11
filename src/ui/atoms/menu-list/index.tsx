@@ -8,8 +8,10 @@ import { Variant } from 'lib/types';
  * --woly-menu-list-background
  * --woly-rounding
  * --woly-shadow
- * --woly-menu-list-item-padding
- * --woly-menu-list-hover
+ * --woly-canvas
+ * --woly-background-hover
+ * --woly-color
+ * --woly-color-hover
  */
 
 interface MenuList {
@@ -32,23 +34,31 @@ const MenuListBase: React.FC<MenuList & Variant> = ({
 );
 
 export const MenuList = styled(MenuListBase)`
-  padding: var(--woly-menu-list-padding, 6px 0);
+  --vertical: calc(1px * var(--woly-component-level) * var(--woly-main-level));
+  --horizontal: calc(
+    var(--woly-const-m) + (1px * var(--woly-main-level)) + var(--vertical)
+  );
 
-  color: var(--woly-menu-list-color, #1a1a23);
+  padding: var(--woly-menu-list-padding, 3px 0);
+
+  color: var(--woly-color, #1a1a23);
 
   list-style-type: none;
 
-  background-color: var(--woly-menu-list-background, #ffffff);
+  background-color: var(--woly-canvas, #ffffff);
   border-radius: var(--woly-rounding, 3px);
   box-shadow: var(--woly-shadow, 0 0 8px 0 #efefef);
 
   li[data-type='menu-item'] {
-    padding: var(--woly-menu-list-item-padding, 8px 18px);
+    padding: var(--vertical, 1rem) var(--horizontal, 0.4rem);
+
+    cursor: pointer;
 
     &:hover,
     &:focus {
-      background-color: var(--woly-menu-list-hover, #f8f8fa);
-      cursor: pointer;
+      color: var(--woly-color-hover, #1a1a23);
+
+      background-color: var(--woly-background-hover, #f8f8fa);
     }
   }
 ` as StyledComponent<'ul', Record<string, unknown>, MenuList & Variant>;

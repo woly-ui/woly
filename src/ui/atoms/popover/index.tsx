@@ -3,7 +3,6 @@ import styled, { StyledComponent } from 'styled-components';
 import { Variant } from 'lib/types';
 
 /**
- * --woly-popover-rounding
  * --woly-popover-spacing-vertical
  * --woly-popover-spacing-horizontal
  * --woly-popover-position-top
@@ -31,16 +30,15 @@ const PopoverBase: React.FC<Props & Variant> = ({
 
 export const Popover = styled(PopoverBase)`
   position: absolute;
-  top: var(--woly-popover-position-top, auto);
-  right: var(--woly-popover-position-right, auto);
-  bottom: var(--woly-popover-position-bottom, auto);
-  left: var(--woly-popover-position-left, auto);
+  top: var(--woly-popover-position-top, 0);
+  right: var(--woly-popover-position-right, 0);
+  bottom: var(--woly-popover-position-bottom, 0);
+  left: var(--woly-popover-position-left, 0);
 
-  padding: var(--woly-popover-spacing-vertical, 0)
-    var(--woly-popover-spacing-horizontal, 0);
+  padding: var(--woly-popover-spacing-vertical, 300px)
+    var(--woly-popover-spacing-horizontal, 300px);
 
-  background: var(--woly-popover-background, #fff);
-  border-radius: var(--woly-popover-rounding, 0);
+  background: var(--woly-popover-background, #00000063);
   visibility: hidden;
 
   &[data-open='true'] {

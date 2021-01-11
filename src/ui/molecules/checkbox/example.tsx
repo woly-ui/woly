@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import { Checkbox, Label } from 'ui';
-import { Global } from 'box-styles';
+import { Global, block } from 'box-styles';
 
 export const CheckboxExample: React.FC = () => {
   const [isPassportChecked, onPassportClick] = React.useReducer(
@@ -17,7 +17,7 @@ export const CheckboxExample: React.FC = () => {
   return (
     <Global>
       Travel packing checklist:
-      <Checkboxes>
+      <block.L>
         <Checkbox
           label={<Label text="passport" />}
           isChecked={isPassportChecked}
@@ -36,14 +36,10 @@ export const CheckboxExample: React.FC = () => {
           onChange={onTicketsClick}
           id="checkbox"
         />
-      </Checkboxes>
+      </block.L>
     </Global>
   );
 };
-
-export const Checkboxes = styled.div`
-  padding-top: 10px;
-`;
 
 export const Content = styled.div`
   display: flex;

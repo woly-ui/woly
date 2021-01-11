@@ -4,21 +4,24 @@ category: atoms
 package: 'woly'
 ---
 
+import { Global, block } from 'box-styles';
 import { MenuList } from 'ui';
 
 `MenuList` is a list of items related to a single object. This component can be used in menu dropdown or input autosuggestion components.
 
 ### Example
 
-<div style={{ maxWidth: '300px' }}>
-  <MenuList
-    menu={[
-      { id: 0, item: 'Red' },
-      { id: 1, item: 'Green' },
-      { id: 2, item: 'Blue' },
-    ]}
-  />
-</div>
+<Global style={{ maxWidth: '300px' }}>
+  <block.M>
+    <MenuList
+      menu={[
+        { id: 0, item: 'Red' },
+        { id: 1, item: 'Green' },
+        { id: 2, item: 'Blue' },
+      ]}
+    />
+  </block.M>
+</Global>
 
 ```tsx
 const Example = () => (
