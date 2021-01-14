@@ -18,11 +18,31 @@ const CheckboxBase: React.FC<CheckboxProps & Variant> = ({
   onChange,
   variant = 'default',
 }) => (
-  <div className={className} data-variant={variant}>
+  <CheckboxWrapper htmlFor={id} className={className} data-variant={variant}>
     <input type="checkbox" onChange={onChange} id={id} checked={isChecked} />
-    {label && <div>{label}</div>}
-  </div>
+    {label && <span>{label}</span>}
+  </CheckboxWrapper>
 );
+
+export const CheckboxWrapper = styled.label`
+  --vertical: calc(1px * var(--woly-component-level) * var(--woly-main-level));
+  --horizontal: calc(
+    var(--woly-const-m) + (1px * var(--woly-main-level)) + var(--vertical)
+  );
+  --gap: calc(
+    (1px * var(--woly-main-level)) +
+      (1px * var(--woly-main-level) * var(--woly-component-level))
+  );
+
+  display: flex;
+  padding: var(--vertical, 1rem) var(--horizontal, 0.4rem);
+
+  cursor: pointer;
+
+  & > *:not(:first-child) {
+    margin-left: var(--gap);
+  }
+`;
 
 export const Checkbox = styled(CheckboxBase)`
   --vertical: calc(1px * var(--woly-component-level) * var(--woly-main-level));
