@@ -4,34 +4,13 @@ category: atoms
 package: 'woly'
 ---
 
-import { ButtonIcon } from 'ui';
-import { Global } from 'box-styles';
-import { OpenedEyeIcon, SearchIcon } from 'icons';
-
 `ButtonIcon` is a button with an icon
 
 ### Example
 
-<Global>
-  <div
-    style={{
-      display: 'flex',
-      width: ' 100px',
-      justifyContent: 'space-between',
-    }}
-  >
-    <ButtonIcon
-      icon={<SearchIcon />}
-      onClick={(event) => console.info('ButtonIcon clicked')}
-      variant="primary"
-    />
-    <ButtonIcon
-      icon={<OpenedEyeIcon />}
-      onClick={(event) => console.info('ButtonIcon clicked')}
-      variant="secondary"
-    />
-  </div>
-</Global>
+import { ButtonIconExample } from './example';
+
+<ButtonIconExample />
 
 ```tsx
 <ButtonIcon

@@ -5,7 +5,7 @@ import { Variant } from 'lib/types';
 /**
  * --woly-font-size
  * --woly-rounding
- *
+ * --woly-line-height
  * --woly-background
  * --woly-background-disabled
  * --woly-border
@@ -47,6 +47,7 @@ export const Input = styled(InputBase)`
   --horizontal: calc(
     var(--woly-const-m) + (1px * var(--woly-main-level)) + var(--vertical)
   );
+
   box-sizing: border-box;
 
   width: var(--woly-input-width);
@@ -55,6 +56,7 @@ export const Input = styled(InputBase)`
   color: var(--woly-color, #000000);
 
   font-size: var(--woly-font-size, 1rem);
+  line-height: var(--woly-line-height, 24px);
 
   background: var(--woly-background, transparent);
   border-color: var(--woly-border, var(--woly-background, #000000));

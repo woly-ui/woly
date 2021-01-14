@@ -8,7 +8,7 @@ export const InputExample: React.FC = () => (
     <Global>
       <InputWrappers>
         <Inputs>
-          <span>Block L</span>
+          <span>Large</span>
           <block.L>
             <Input
               type="text"
@@ -35,7 +35,7 @@ export const InputExample: React.FC = () => (
           </block.L>
         </Inputs>
         <Inputs>
-          <span>Block M</span>
+          <span>Normal</span>
           <block.M>
             <Input
               type="text"
@@ -62,7 +62,7 @@ export const InputExample: React.FC = () => (
           </block.M>
         </Inputs>
         <Inputs>
-          <span>Block S</span>
+          <span>Small</span>
           <block.S>
             <Input
               type="text"
@@ -98,15 +98,15 @@ export const Inputs = styled.div`
   margin: 0 80px 0 0;
 
   ${block.S} > ${Input} {
-    margin: 0 0 42px 0;
+    margin: 0 0 48px 0;
   }
 
   ${block.M} > ${Input} {
-    margin: 0 0 36px 0;
+    margin: 0 0 42px 0;
   }
 
   ${block.L} > ${Input} {
-    margin: 0 0 30px 0;
+    margin: 0 0 36px 0;
   }
 
   span {

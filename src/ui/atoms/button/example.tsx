@@ -5,107 +5,105 @@ import { Button } from 'ui';
 import { Global, block } from 'box-styles';
 
 export const ButtonExample: React.FC = () => (
-  <Inputs>
-    <Global>
-      <Buttons>
-        <block.L>
-          <Button variant="primary" text="Button" />
-          <Button variant="secondary" text="Button" />
-          <Button variant="primary" text="Button" disabled />
-        </block.L>
-        <block.M>
-          <Button
-            variant="primary"
-            text="Button"
-            right={
-              <IconWrapper>
-                <SearchIcon />
-              </IconWrapper>
-            }
-          />
-          <Button
-            variant="secondary"
-            text="Button"
-            right={
-              <IconSecondaryWrapper>
-                <SearchIcon />
-              </IconSecondaryWrapper>
-            }
-          />
-          <Button
-            variant="primary"
-            text="Button"
-            right={
-              <IconDisabledWrapper>
-                <SearchIcon />
-              </IconDisabledWrapper>
-            }
-            disabled
-          />
-        </block.M>
-        <block.S>
-          <Button
-            variant="primary"
-            text="Button"
-            left={
-              <IconWrapper>
-                <ArrowLeft />
-              </IconWrapper>
-            }
-          />
-          <Button
-            variant="secondary"
-            text="Button"
-            left={
-              <IconSecondaryWrapper>
-                <ArrowLeft />
-              </IconSecondaryWrapper>
-            }
-          />
-          <Button
-            variant="primary"
-            text="Button"
-            disabled
-            left={
-              <IconDisabledWrapper>
-                <ArrowLeft />
-              </IconDisabledWrapper>
-            }
-          />
-        </block.S>
-        <block.XS>
-          <Button variant="primary" text="Button" />
-          <Button variant="secondary" text="Button" />
-          <Button variant="primary" text="Button" disabled />
-        </block.XS>
-        <block.N>
-          <Button variant="primary" text="Button" />
-          <Button variant="secondary" text="Button" />
-          <Button variant="primary" text="Button" disabled />
-        </block.N>
-      </Buttons>
-    </Global>
-  </Inputs>
+  <Global>
+    <Buttons>
+      <block.L>
+        <span>Large</span>
+
+        <Button variant="primary" text="Button" />
+        <Button variant="secondary" text="Button" />
+        <Button variant="primary" text="Button" disabled />
+      </block.L>
+      <block.M>
+        <span>Normal</span>
+        <Button
+          variant="primary"
+          text="Button"
+          right={
+            <IconWrapper>
+              <SearchIcon />
+            </IconWrapper>
+          }
+        />
+        <Button
+          variant="secondary"
+          text="Button"
+          right={
+            <IconSecondaryWrapper>
+              <SearchIcon />
+            </IconSecondaryWrapper>
+          }
+        />
+        <Button
+          variant="primary"
+          text="Button"
+          right={
+            <IconDisabledWrapper>
+              <SearchIcon />
+            </IconDisabledWrapper>
+          }
+          disabled
+        />
+      </block.M>
+      <block.S>
+        <span>Small</span>
+        <Button
+          variant="primary"
+          text="Button"
+          left={
+            <IconWrapper>
+              <ArrowLeft />
+            </IconWrapper>
+          }
+        />
+        <Button
+          variant="secondary"
+          text="Button"
+          left={
+            <IconSecondaryWrapper>
+              <ArrowLeft />
+            </IconSecondaryWrapper>
+          }
+        />
+        <Button
+          variant="primary"
+          text="Button"
+          disabled
+          left={
+            <IconDisabledWrapper>
+              <ArrowLeft />
+            </IconDisabledWrapper>
+          }
+        />
+      </block.S>
+    </Buttons>
+  </Global>
 );
-export const IconSecondaryWrapper = styled.div`
-  path {
-    fill: #683aef;
-  }
-`;
-
-export const IconDisabledWrapper = styled.div`
-  path {
-    fill: #a39bb2;
-  }
-`;
-
 export const IconWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   path {
     fill: #fff;
   }
 `;
 
-export const Inputs = styled.div`
+export const IconSecondaryWrapper = styled(IconWrapper)`
+  path {
+    fill: #683aef;
+  }
+`;
+
+export const IconDisabledWrapper = styled(IconWrapper)`
+  path {
+    fill: #a39bb2;
+  }
+`;
+
+export const Buttons = styled.div`
+  display: flex;
+
   ${block.L} > button {
     margin-bottom: 30px;
   }
@@ -118,23 +116,13 @@ export const Inputs = styled.div`
     margin-bottom: 42px;
   }
 
-  ${block.XS} > button {
-    margin-bottom: 48px;
-  }
-
-  ${block.N} > button {
-    margin-bottom: 54px;
-  }
-
-  div {
-    padding-right: 40px;
+  ${block.S} > span, ${block.M} > span, ${block.L} > span {
+    padding-bottom: 20px;
   }
 
   & > div {
     display: flex;
+    flex-direction: column;
+    padding-right: 40px;
   }
-`;
-
-export const Buttons = styled.div`
-  display: flex;
 `;
