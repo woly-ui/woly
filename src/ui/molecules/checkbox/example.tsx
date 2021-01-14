@@ -28,13 +28,13 @@ export const CheckboxExample: React.FC = () => {
           label={<Label text="money" />}
           isChecked={isMoneyChecked}
           onChange={onMoneyClick}
-          id="checkbox"
+          id="checkbox2"
         />
         <Checkbox
           label={<Label text="tickets" />}
           isChecked={isTicketsChecked}
           onChange={onTicketsClick}
-          id="checkbox"
+          id="checkbox3"
         />
       </block.L>
     </Global>
