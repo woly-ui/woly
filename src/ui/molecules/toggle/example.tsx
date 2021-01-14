@@ -1,6 +1,6 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import { Global } from 'box-styles';
+import { Global, block } from 'box-styles';
 import { Label, Toggle } from 'ui';
 
 export const ToggleExample: React.FC = () => {
@@ -70,6 +70,6 @@ export const ToggleWrapper = styled.div`
   }
 `;
 
-export const AllToggles = styled.div`
+export const AllToggles = styled(block.S)`
   display: flex;
 `;

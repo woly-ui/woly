@@ -33,8 +33,8 @@ const ToggleBase: React.FC<ToggleProps & Variant> = ({
   ...p
 }) => (
   <div className={className} data-variant={variant}>
-    {label && <div>{label}</div>}
-    <label htmlFor={id}>
+    <label htmlFor={id} style={{ display: 'flex' }}>
+      {label && <span style={{ cursor: 'pointer' }}>{label}</span>}
       <input
         checked={isChecked}
         id={id}
@@ -42,12 +42,19 @@ const ToggleBase: React.FC<ToggleProps & Variant> = ({
         type="checkbox"
         {...p}
       />
-      <span />
+      <span data-checkbox>
+        <span />
+      </span>
     </label>
   </div>
 );
 
 export const Toggle = styled(ToggleBase)`
+  --gap: calc(
+    (1px * var(--woly-main-level)) +
+      (1px * var(--woly-main-level) * var(--woly-component-level))
+  );
+
   position: relative;
 
   display: flex;
@@ -57,7 +64,7 @@ export const Toggle = styled(ToggleBase)`
     padding-right: 15px;
   }
 
-  label {
+  span[data-checkbox] {
     position: relative;
 
     width: var(--woly-toggle-width, 42px);
@@ -68,7 +75,7 @@ export const Toggle = styled(ToggleBase)`
     display: none;
   }
 
-  label > span {
+  span[data-checkbox] > span {
     position: absolute;
 
     width: var(--woly-toggle-width, 42px);
@@ -99,12 +106,16 @@ export const Toggle = styled(ToggleBase)`
     }
   }
 
-  label > input:checked + span {
+  input:checked + span[data-checkbox] > span {
     background-color: var(--woly-background, #d5d5dc);
     border-color: var(--woly-border-focus, var(--woly-background, #000000));
   }
 
-  label > input:checked + span:before {
+  input:checked + span[data-checkbox] > span :before {
     right: 0;
+  }
+
+  label > *:not(:first-child) {
+    margin-left: var(--gap);
   }
 ` as StyledComponent<'div', Record<string, unknown>, ToggleProps & Variant>;
