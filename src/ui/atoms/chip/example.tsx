@@ -5,9 +5,44 @@ import { CloseIcon } from 'icons';
 import { Global, block } from 'box-styles';
 
 export const ChipExample: React.FC = () => (
-  <Chips>
-    <Global>
+  <Global>
+    <Chips>
+      <block.XS>
+        <span>Extra small</span>
+        <Chip
+          text="Chip secondary XS"
+          variant="primary"
+          onClick={() => console.info('Chip clicked')}
+          icon={
+            <IconWrapper>
+              <CloseIcon />
+            </IconWrapper>
+          }
+        />
+        <Chip
+          text="Chip secondary XS"
+          variant="secondary"
+          onClick={() => console.info('Chip clicked')}
+          icon={
+            <IconSecondaryWrapper>
+              <CloseIcon />
+            </IconSecondaryWrapper>
+          }
+        />
+        <Chip
+          text="Chip secondary XS"
+          variant="primary"
+          onClick={() => console.info('Chip clicked')}
+          icon={
+            <IconDisabledWrapper>
+              <CloseIcon />
+            </IconDisabledWrapper>
+          }
+          disabled
+        />
+      </block.XS>
       <block.N>
+        <span>None</span>
         <Chip
           text="Chip primary N"
           variant="primary"
@@ -18,45 +53,72 @@ export const ChipExample: React.FC = () => (
             </IconWrapper>
           }
         />
-      </block.N>
-      <block.XS>
         <Chip
-          text="Chip secondary XS"
+          text="Chip primary N"
           variant="secondary"
           onClick={() => console.info('Chip clicked')}
-          icon={<CloseIcon />}
+          icon={
+            <IconSecondaryWrapper>
+              <CloseIcon />
+            </IconSecondaryWrapper>
+          }
         />
-      </block.XS>
-      <block.N>
         <Chip
-          text="Chip default N"
+          text="Chip primary N"
+          variant="primary"
           onClick={() => console.info('Chip clicked')}
+          icon={
+            <IconDisabledWrapper>
+              <CloseIcon />
+            </IconDisabledWrapper>
+          }
+          disabled
         />
       </block.N>
-      <block.XS>
-        <Chip
-          text="Chip default XS"
-          onClick={() => console.info('Chip clicked')}
-        />
-      </block.XS>
-    </Global>
-  </Chips>
+    </Chips>
+  </Global>
 );
 
 export const Chips = styled.div`
-  ${Global} {
-    display: flex;
-    flex-direction: row;
-  }
+  display: flex;
+  flex-direction: row;
+
   ${Chip} {
     margin: 0 10px 0 0;
+  }
+
+  ${block.XS} > button {
+    margin-bottom: 26px;
+  }
+
+  ${block.N} > button {
+    margin-bottom: 32px;
+  }
+
+  ${block.XS} > span, ${block.N} > span {
+    display: block;
+    padding-bottom: 20px;
   }
 `;
 
 export const IconWrapper = styled.div`
-  line-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   svg > path {
     fill: #ffffff;
+  }
+`;
+
+export const IconSecondaryWrapper = styled(IconWrapper)`
+  svg > path {
+    fill: #683aef;
+  }
+`;
+
+export const IconDisabledWrapper = styled(IconWrapper)`
+  svg > path {
+    fill: #a39bb2;
   }
 `;

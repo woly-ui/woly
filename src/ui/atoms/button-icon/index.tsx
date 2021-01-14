@@ -5,6 +5,7 @@ import { Variant } from 'lib/types';
 /**
  * --woly-rounding
  * --woly-border-width
+ * --woly-line-height
  *
  * --woly-background
  * --woly-border
@@ -46,7 +47,7 @@ const ButtonIconBase: React.FC<Props & Variant> = ({
       type="button"
       {...p}
     >
-      {icon}
+      <span>{icon}</span>
     </button>
   );
 };
@@ -56,11 +57,11 @@ export const ButtonIcon = styled(ButtonIconBase)`
   --horizontal: calc(
     var(--woly-const-m) + (1px * var(--woly-main-level)) + var(--vertical)
   );
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-  display: block;
   padding: var(--vertical, 0.4rem) var(--horizontal, 0.4rem);
-
-  line-height: 0px;
 
   background-color: var(--woly-background, transparent);
   border-color: var(--woly-border, #000000);
@@ -69,6 +70,14 @@ export const ButtonIcon = styled(ButtonIconBase)`
 
   border-radius: var(--woly-rounding, 4px);
   cursor: pointer;
+
+  span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--woly-line-height, 24px);
+    height: var(--woly-line-height, 24px);
+  }
 
   &:hover {
     background-color: var(--woly-background-hover, #000000);

@@ -16,6 +16,7 @@ import { Variant } from 'lib/types';
  * --woly-color
  * --woly-border
  * --woly-border-width
+ * --woly-line-height
  */
 
 interface NotificationProps {
@@ -41,6 +42,7 @@ export const Notification = styled(NotificationBase)`
   left: var(--woly-notification-left, 0);
 
   font-size: var(--woly-font-size, 1rem);
+  line-height: var(--woly-line-height, 24px);
 
   div {
     width: fit-content;

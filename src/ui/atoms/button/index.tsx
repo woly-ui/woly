@@ -105,6 +105,9 @@ export const Button = styled(ButtonBase)`
   }
 
   & [data-icon] {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: var(--woly-line-height, 24px);
     height: var(--woly-line-height, 24px);
   }

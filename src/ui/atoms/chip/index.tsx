@@ -61,7 +61,6 @@ export const Chip = styled(ChipBase)`
   --horizontal: calc(
     var(--woly-const-m) + (1px * var(--woly-main-level)) + var(--vertical)
   );
-  --woly-line-height: 24px;
   --gap: 6px;
 
   display: flex;
@@ -73,7 +72,7 @@ export const Chip = styled(ChipBase)`
   color: var(--woly-color, #ffffff);
 
   font-size: var(--woly-font-size, 12px);
-  line-height: var(--woly-line-height, 12px);
+  line-height: var(--woly-line-height, 24px);
 
   background-color: var(--woly-background, #000000);
   border-color: var(--woly-border, #000000);
@@ -112,6 +111,6 @@ export const Chip = styled(ChipBase)`
     align-items: center;
     margin-left: var(--gap, 6px);
 
-    line-height: var(--woly-line-height, 12px);
+    line-height: var(--woly-line-height, 24px);
   }
 ` as StyledComponent<'div', Record<string, unknown>, ChipProps & Variant>;

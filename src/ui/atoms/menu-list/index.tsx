@@ -12,6 +12,7 @@ import { Variant } from 'lib/types';
  * --woly-background-hover
  * --woly-color
  * --woly-color-hover
+ * --woly-line-height
  */
 
 interface MenuList {
@@ -51,6 +52,8 @@ export const MenuList = styled(MenuListBase)`
 
   li[data-type='menu-item'] {
     padding: var(--vertical, 1rem) var(--horizontal, 0.4rem);
+
+    line-height: var(--woly-line-height, 24px);
 
     cursor: pointer;
 
