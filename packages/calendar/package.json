@@ -1,6 +1,6 @@
 {
   "name": "@woly/calendar",
-  "version": "0.1.0-1",
+  "version": "0.1.0-2",
   "description": "Date and time components for Woly React library",
   "main": "calendar.js",
   "module": "calendar.mjs",
@@ -42,7 +42,7 @@
   "peerDependencies": {
     "react": "^16.11.0",
     "styled-components": "^5.0.1",
-    "woly": "^0.2.0"
+    "woly": "^0.3.0"
   },
   "scripts": {},
   "author": {
