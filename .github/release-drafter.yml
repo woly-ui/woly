@@ -1,4 +1,24 @@
 categories:
+  - title: 🧩 Atoms
+    labels:
+      - '@atoms'
+
+  - title: 🧩 Molecules
+    labels:
+      - '@molecules'
+
+  - title: 🧩 Organisms
+    labels:
+      - '@organisms'
+
+  - title: 🪐 Internal
+    labels:
+      - lib
+      - configuration
+      - packages
+      - build
+      - dependencies
+
   - title: '⚠️ Breaking changes'
     label: 'BREAKING CHANGES'
 
