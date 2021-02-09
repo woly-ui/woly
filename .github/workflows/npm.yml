@@ -42,7 +42,7 @@ jobs:
     strategy:
       matrix:
         package: ['woly', 'calendar']
-    
+
     steps:
       - uses: actions/checkout@v2
         with:
@@ -59,10 +59,11 @@ jobs:
       - name: Build
         run: yarn build
 
-      - name: Publish woly to NPM
-        uses: primer/publish@3.0.0
-        with:
-          dir: 'dist/${{ matrix.package }}'
+      - name: Create NPM config
+        run: npm config set //registry.npmjs.org/:_authToken $NPM_TOKEN
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+
+      - name: Publish theme to NPM
+        working-directory: 'dist/${{ matrix.package }}'
+        run: npm publish
