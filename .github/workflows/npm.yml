@@ -4,11 +4,11 @@ on:
   workflow_dispatch:
     inputs:
       woly:
-        description: 'Set "yes" to run publish'
+        description: '[woly] Set "yes" to publish'
         required: true
         default: 'no'
       calendar:
-        description: 'Set "yes" to run publish'
+        description: '[calendar] Set "yes" to run publish'
         required: true
         default: 'no'
 
