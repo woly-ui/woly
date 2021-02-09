@@ -1,17 +1,20 @@
 name: Publish Package CI
 
 on:
-  release:
-    types: [published]
+  workflow_dispatch:
+    inputs:
+      woly:
+        description: 'Set "yes" to run publish'
+        required: true
+        default: 'no'
+      calendar:
+        description: 'Set "yes" to run publish'
+        required: true
+        default: 'no'
 
 jobs:
-  build:
-    name: build and test
+  publish:
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: ['14', '12', '15']
 
     steps:
       - uses: actions/checkout@v2
@@ -19,15 +22,12 @@ jobs:
           persist-credentials: false
 
       - name: Set Node.js
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v2
         with:
-          node-version: ${{ matrix.node }}
+          node-version: '14'
 
       - name: Install Dependencies
         run: yarn install --frozen-lockfile
-
-      - name: Lint
-        run: yarn lint
 
       - name: Build
         run: yarn build
@@ -35,35 +35,17 @@ jobs:
       - name: Test
         run: yarn test
 
-  publish:
-    needs: build
-    runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        package: ['woly', 'calendar']
-
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          persist-credentials: false
-
-      - name: Set Node.js
-        uses: actions/setup-node@v1
-        with:
-          node-version: '14'
-
-      - name: Install Dependencies
-        run: yarn install
-
-      - name: Build
-        run: yarn build
-
       - name: Create NPM config
         run: npm config set //registry.npmjs.org/:_authToken $NPM_TOKEN
         env:
           NPM_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
 
-      - name: Publish theme to NPM
-        working-directory: 'dist/${{ matrix.package }}'
+      - name: Publish woly to NPM
+        if: github.events.inputs.woly == 'yes'
+        working-directory: 'dist/woly'
+        run: npm publish
+
+      - name: Publish calendar to NPM
+        if: github.events.inputs.calendar == 'yes'
+        working-directory: 'dist/calendar'
         run: npm publish
