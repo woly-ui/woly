@@ -41,11 +41,11 @@ jobs:
           NPM_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
 
       - name: Publish woly to NPM
-        if: github.events.inputs.woly == 'yes'
+        if: github.event.inputs.woly == 'yes'
         working-directory: 'dist/woly'
         run: npm publish
 
       - name: Publish calendar to NPM
-        if: github.events.inputs.calendar == 'yes'
+        if: github.event.inputs.calendar == 'yes'
         working-directory: 'dist/calendar'
         run: npm publish
