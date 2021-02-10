@@ -7,7 +7,7 @@ Create your own UI/UX library.
 ## Usage
 
 - `yarn commit` - run commit wizard, all commits **should be** created with this command
-- `yarn start` - start dev server on `http://localhost:6006`
+- `yarn start` - start dev server on `http://localhost:8000`
 - `yarn story-build` - build storybook
 - `yarn lint` - runs eslint, prettier and stylelint and fixes source code
 
