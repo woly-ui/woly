@@ -103,5 +103,15 @@
     ".js": {
       "style": "sova"
     }
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": "eslint --cache --fix",
+    "*.css": "stylelint --fix",
+    "*.{ts,tsx,js}": "prettier --write"
   }
 }
