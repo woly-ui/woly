@@ -100,7 +100,6 @@ export const Button = styled(ButtonBase)`
 
   &:disabled {
     color: var(--woly-color-disabled, #ffffff);
-
     background-color: var(--woly-background-disabled, #000000);
     border-color: var(--woly-border-disabled, #000000);
     outline: none;
