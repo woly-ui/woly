@@ -64,7 +64,7 @@ export const InputPasswordBase: React.FC<InputPasswordProps & Variant> = ({
 };
 
 export const InputPassword = styled(InputPasswordBase)`
-  --gap: calc(
+  --woly-gap: calc(
     (1px * var(--woly-main-level)) +
       (1px * var(--woly-main-level) * var(--woly-component-level))
   );
@@ -83,7 +83,6 @@ export const InputPassword = styled(InputPasswordBase)`
   button {
     margin: 0;
     padding: 0;
-
     background-color: transparent;
     border: 0;
     outline: none;
@@ -94,15 +93,13 @@ export const InputPassword = styled(InputPasswordBase)`
   }
 
   input {
-    padding-right: var(--gap, 0.4rem);
-
+    padding-right: var(--woly-gap, 6.4px);
     border: 0;
     outline: none;
   }
 
   &[data-disabled='true'] {
     color: var(--woly-color-disabled, #ffffff);
-
     background: var(--woly-background-disabled, #ffffff);
     border-color: var(
       --woly-border-disabled,

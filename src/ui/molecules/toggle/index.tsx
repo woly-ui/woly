@@ -50,7 +50,7 @@ const ToggleBase: React.FC<ToggleProps & Variant> = ({
 );
 
 export const Toggle = styled(ToggleBase)`
-  --gap: calc(
+  --woly-gap: calc(
     (1px * var(--woly-main-level)) +
       (1px * var(--woly-main-level) * var(--woly-component-level))
   );
@@ -66,7 +66,6 @@ export const Toggle = styled(ToggleBase)`
 
   span[data-checkbox] {
     position: relative;
-
     width: var(--woly-toggle-width, 42px);
     height: var(--woly-toggle-height, 24px);
   }
@@ -116,6 +115,6 @@ export const Toggle = styled(ToggleBase)`
   }
 
   label > *:not(:first-child) {
-    margin-left: var(--gap);
+    margin-left: var(--woly-gap);
   }
 ` as StyledComponent<'div', Record<string, unknown>, ToggleProps & Variant>;

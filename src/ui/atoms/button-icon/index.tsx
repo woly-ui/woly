@@ -53,15 +53,20 @@ const ButtonIconBase: React.FC<Props & Variant> = ({
 };
 
 export const ButtonIcon = styled(ButtonIconBase)`
-  --vertical: calc(1px * var(--woly-component-level) * var(--woly-main-level));
-  --horizontal: calc(
-    var(--woly-const-m) + (1px * var(--woly-main-level)) + var(--vertical)
+  --woly-vertical: calc(
+    1px * var(--woly-component-level) * var(--woly-main-level)
   );
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  --woly-horizontal: calc(
+    var(--woly-const-m) + (1px * var(--woly-main-level)) + var(--woly-vertical)
+  );
+  --woly-gap: calc(
+    (1px * var(--woly-main-level)) +
+      (1px * var(--woly-main-level) * var(--woly-component-level))
+  );
 
-  padding: var(--vertical, 0.4rem) var(--horizontal, 0.4rem);
+  display: flex;
+  flex-wrap: nowrap;
+  padding: var(--woly-vertical, 6.4px) var(--woly-horizontal, 6.4px);
 
   background-color: var(--woly-background, transparent);
   border-color: var(--woly-border, #000000);
@@ -96,5 +101,8 @@ export const ButtonIcon = styled(ButtonIconBase)`
     background-color: var(--woly-background-disabled, #000000);
     border-color: var(--woly-border-disabled, #000000);
     outline: none;
+  }
+  & > *:not(:first-child) {
+    margin-left: var(--woly-gap);
   }
 ` as StyledComponent<'button', Record<string, unknown>, Props & Variant>;

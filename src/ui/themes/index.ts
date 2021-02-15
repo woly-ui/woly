@@ -5,9 +5,9 @@ export { dark } from './dark';
 
 export const common = css`
   --woly-rounding: 3px;
-  --woly-font-size: 1rem;
-  --woly-line-height: 1.2rem;
-  --spacing-vertical: 0.4rem;
-  --spacing-horizontal: 0.8rem;
+  --woly-font-size: 16px;
+  --woly-line-height: 19.2px;
+  --woly-spacing-vertical: 6.4px;
+  --woly-spacing-horizontal: 12.8px;
   --woly-padding: 4px 9px;
 `;

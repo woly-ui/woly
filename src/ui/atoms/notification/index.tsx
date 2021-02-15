@@ -41,7 +41,7 @@ export const Notification = styled(NotificationBase)`
   bottom: var(--woly-notification-bottom, unset);
   left: var(--woly-notification-left, 0);
 
-  font-size: var(--woly-font-size, 1rem);
+  font-size: var(--woly-font-size, 16px);
   line-height: var(--woly-line-height, 24px);
 
   div {

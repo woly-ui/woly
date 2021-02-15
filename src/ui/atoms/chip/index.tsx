@@ -61,13 +61,13 @@ export const Chip = styled(ChipBase)`
   --horizontal: calc(
     var(--woly-const-m) + (1px * var(--woly-main-level)) + var(--vertical)
   );
-  --gap: 6px;
+  --woly-gap: 6px;
 
   display: flex;
   align-items: center;
   justify-content: space-between;
 
-  padding: var(--vertical, 1rem) var(--horizontal, 0.4rem);
+  padding: var(--vertical, 16px) var(--horizontal, 6.4px);
 
   color: var(--woly-color, #ffffff);
 
@@ -109,7 +109,7 @@ export const Chip = styled(ChipBase)`
   & [data-icon] {
     display: flex;
     align-items: center;
-    margin-left: var(--gap, 6px);
+    margin-left: var(--woly-gap, 6px);
 
     line-height: var(--woly-line-height, 24px);
   }

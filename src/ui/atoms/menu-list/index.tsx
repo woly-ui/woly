@@ -35,9 +35,11 @@ const MenuListBase: React.FC<MenuList & Variant> = ({
 );
 
 export const MenuList = styled(MenuListBase)`
-  --vertical: calc(1px * var(--woly-component-level) * var(--woly-main-level));
-  --horizontal: calc(
-    var(--woly-const-m) + (1px * var(--woly-main-level)) + var(--vertical)
+  --woly-vertical: calc(
+    1px * var(--woly-component-level) * var(--woly-main-level)
+  );
+  --woly-horizontal: calc(
+    var(--woly-const-m) + (1px * var(--woly-main-level)) + var(--woly-vertical)
   );
 
   padding: var(--woly-menu-list-padding, 3px 0);
@@ -51,7 +53,7 @@ export const MenuList = styled(MenuListBase)`
   box-shadow: var(--woly-shadow, 0 0 8px 0 #efefef);
 
   li[data-type='menu-item'] {
-    padding: var(--vertical, 1rem) var(--horizontal, 0.4rem);
+    padding: var(--woly-vertical, 16px) var(--woly-horizontal, 6.4px);
 
     line-height: var(--woly-line-height, 24px);
 
