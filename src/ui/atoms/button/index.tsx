@@ -55,18 +55,20 @@ const ButtonBase: React.FC<ButtonProps & Variant> = ({
 );
 
 export const Button = styled(ButtonBase)`
-  --vertical: calc(1px * var(--woly-component-level) * var(--woly-main-level));
-  --horizontal: calc(
-    var(--woly-const-m) + (1px * var(--woly-main-level)) + var(--vertical)
+  --woly-vertical: calc(
+    1px * var(--woly-component-level) * var(--woly-main-level)
   );
-  --gap: calc(
+  --woly-horizontal: calc(
+    var(--woly-const-m) + (1px * var(--woly-main-level)) + var(--woly-vertical)
+  );
+  --woly-gap: calc(
     (1px * var(--woly-main-level)) +
       (1px * var(--woly-main-level) * var(--woly-component-level))
   );
 
   display: flex;
   flex-wrap: nowrap;
-  padding: var(--vertical, 1rem) var(--horizontal, 0.4rem);
+  padding: var(--woly-vertical, 16px) var(--woly-horizontal, 6.4px);
 
   color: var(--woly-color, #ffffff);
   font-size: var(--woly-font-size, 15px);
@@ -113,6 +115,6 @@ export const Button = styled(ButtonBase)`
   }
 
   & > *:not(:first-child) {
-    margin-left: var(--gap);
+    margin-left: var(--woly-gap);
   }
 ` as StyledComponent<'button', Record<string, unknown>, ButtonProps & Variant>;

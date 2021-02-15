@@ -43,19 +43,21 @@ const InputBase: React.FC<InputProps & Variant> = ({
 
 export const Input = styled(InputBase)`
   --woly-input-width: 100%;
-  --vertical: calc(1px * var(--woly-component-level) * var(--woly-main-level));
-  --horizontal: calc(
-    var(--woly-const-m) + (1px * var(--woly-main-level)) + var(--vertical)
+  --woly-vertical: calc(
+    1px * var(--woly-component-level) * var(--woly-main-level)
+  );
+  --woly-horizontal: calc(
+    var(--woly-const-m) + (1px * var(--woly-main-level)) + var(--woly-vertical)
   );
 
   box-sizing: border-box;
 
   width: var(--woly-input-width);
-  padding: var(--vertical, 1rem) var(--horizontal, 0.4rem);
+  padding: var(--woly-vertical, 16px) var(--woly-horizontal, 6.4px);
 
   color: var(--woly-color, #000000);
 
-  font-size: var(--woly-font-size, 1rem);
+  font-size: var(--woly-font-size, 16px);
   line-height: var(--woly-line-height, 24px);
 
   background: var(--woly-background, transparent);

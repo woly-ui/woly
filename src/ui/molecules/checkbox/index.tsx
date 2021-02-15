@@ -35,7 +35,7 @@ export const CheckboxWrapper = styled.label`
   );
 
   display: flex;
-  padding: var(--vertical, 1rem) var(--horizontal, 0.4rem);
+  padding: var(--vertical, 16px) var(--horizontal, 6.4px);
 
   cursor: pointer;
 
@@ -45,11 +45,13 @@ export const CheckboxWrapper = styled.label`
 `;
 
 export const Checkbox = styled(CheckboxBase)`
-  --vertical: calc(1px * var(--woly-component-level) * var(--woly-main-level));
-  --horizontal: calc(
-    var(--woly-const-m) + (1px * var(--woly-main-level)) + var(--vertical)
+  --woly-vertical: calc(
+    1px * var(--woly-component-level) * var(--woly-main-level)
   );
-  --gap: calc(
+  --woly-horizontal: calc(
+    var(--woly-const-m) + (1px * var(--woly-main-level)) + var(--woly-vertical)
+  );
+  --woly-gap: calc(
     (1px * var(--woly-main-level)) +
       (1px * var(--woly-main-level) * var(--woly-component-level))
   );
@@ -58,13 +60,13 @@ export const Checkbox = styled(CheckboxBase)`
 
   display: flex;
   align-items: center;
-  padding: var(--vertical, 1rem) var(--horizontal, 0.4rem);
+  padding: var(--woly-vertical, 16px) var(--woly-horizontal, 6.4px);
 
   input {
     margin: 0;
   }
 
   & > div {
-    padding-left: var(--gap, 1rem);
+    padding-left: var(--woly-gap, 16px);
   }
 ` as StyledComponent<'div', Record<string, unknown>, CheckboxProps & Variant>;

@@ -21,6 +21,6 @@ export const Label = styled.span.attrs(map)`
   display: block;
 
   color: var(--woly-color, #000000);
-  font-size: var(--woly-font-size, 1rem);
-  line-height: var(--woly-line-height, 1.2rem);
+  font-size: var(--woly-font-size, 16px);
+  line-height: var(--woly-line-height, 19.2px);
 ` as StyledComponent<'span', Record<string, unknown>, LabelProps & Variant>;

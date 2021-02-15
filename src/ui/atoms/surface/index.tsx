@@ -17,7 +17,7 @@ const map = (properties: Variant) => ({
 });
 
 export const Surface = styled.div.attrs(map)`
-  padding: var(--woly-padding, 1rem);
+  padding: var(--woly-padding, 16px);
 
   background-color: var(--woly-surface, #ffffff);
   border-color: var(--woly-border, #000000);
