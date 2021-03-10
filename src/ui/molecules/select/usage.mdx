@@ -1,0 +1,49 @@
+---
+name: select
+category: molecules
+package: 'woly'
+---
+
+import { SelectExample } from './example';
+
+`Select` component to select value from options.
+
+### Example
+
+<SelectExample />
+
+```tsx
+const Example = () => (
+  <Select
+    icon={<ArrowDown />}
+    onChange={onChange}
+    options={[
+      { name: 'Toyota', value: 'Toyota' },
+      { name: 'Opel', value: 'Opel' },
+      { name: 'BMW', value: 'BMW' },
+    ]}
+    selected={value}
+    variant="base"
+  />
+);
+```
+
+### Kinds
+
+| Name     | Description                                                      |
+| -------- | ---------------------------------------------------------------- |
+| `Select` | Base Select. Useful for creating a new kind of Select components |
+
+### Props
+
+| Name            | Type                                              | Default     | Description                                      |
+| --------------- | ------------------------------------------------- | ----------- | ------------------------------------------------ |
+| `icon`          | `React.ReactElement`                              | `null`      | Component to show on the right side of select    |
+| `isVisible`     | `boolean`                                         | `null`      | Set visibility of options dropdown               |
+| `isDisabled`    | `boolean`                                         | `null`      | HTML disabled attribute                          |
+| `options`       | `Array<SelectOptionProps>`                        |             | An array of select options                       |
+| `selected`      | `SelectOptionProps`                               |             | Selected option                                  |
+| `setSelected`   | `(event: React.MouseEvent<HTMLElement>) => void;` |             | Handler that sets selected option                |
+| `setVisibility` | `() => void`                                      |             | Handler that sets visibility of options dropdown |
+| `props`         | `React.SelectHTMLAttributes<HTMLSelectElement> `  |             | Select HTML attributes                           |
+| `variant`       | `string`                                          | `'default'` | Variant prop to style InputPassword component    |
