@@ -52,7 +52,7 @@ export const Global = styled.div`
 
   [data-variant='base'] {
     --woly-border-width: 1px;
-
+    --woly-rounding: 0;
     --woly-background: #ffffff;
     --woly-border: #a39bb2;
     --woly-color: #000000;
