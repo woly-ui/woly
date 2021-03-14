@@ -7,10 +7,62 @@ import { Global, block } from 'box-styles';
 export const ChipExample: React.FC = () => (
   <Global>
     <Chips>
-      <block.XS>
-        <span>Extra small</span>
+      <block.S>
+        <span>Small</span>
         <Chip
-          text="Chip secondary XS"
+          label="Chip primary S"
+          role="button"
+          variant="primary"
+          tabIndex={0}
+          onClick={() => console.info('Chip clicked')}
+          icon={
+            <IconWrapper>
+              <CloseIcon />
+            </IconWrapper>
+          }
+        />
+        <Chip
+          label="Chip secondary S"
+          role="button"
+          variant="secondary"
+          tabIndex={0}
+          onClick={() => console.info('Chip clicked')}
+          icon={
+            <IconSecondaryWrapper>
+              <CloseIcon />
+            </IconSecondaryWrapper>
+          }
+        />
+        <Chip
+          label="Chip disabled S"
+          role="button"
+          variant="primary"
+          tabIndex={0}
+          onClick={() => console.info('Chip clicked')}
+          icon={
+            <IconDisabledWrapper>
+              <CloseIcon />
+            </IconDisabledWrapper>
+          }
+          disabled
+        />
+        <Chip
+          label="Chip without icon S"
+          role="div"
+          variant="primary"
+         />
+        <Chip
+          label="Disabled chip without icon S"
+          role="div"
+          variant="primary"
+          disabled
+        />
+      </block.S>
+      <block.XS>
+        <span>Extra Small</span>
+        <Chip
+          label="Chip primary XS"
+          role="button"
           variant="primary"
           onClick={() => console.info('Chip clicked')}
           icon={
@@ -20,8 +72,10 @@ export const ChipExample: React.FC = () => (
           }
         />
         <Chip
-          text="Chip secondary XS"
+          label="Chip secondary XS"
+          role="button"
           variant="secondary"
+          tabIndex={0}
           onClick={() => console.info('Chip clicked')}
           icon={
             <IconSecondaryWrapper>
@@ -30,51 +84,30 @@ export const ChipExample: React.FC = () => (
           }
         />
         <Chip
-          text="Chip secondary XS"
+          label="Chip disabled XS"
+          role="button"
           variant="primary"
+          tabIndex={0}
           onClick={() => console.info('Chip clicked')}
           icon={
             <IconDisabledWrapper>
               <CloseIcon />
             </IconDisabledWrapper>
           }
+          disabled
+        />
+        <Chip
+          label="Chip without icon XS"
+          role="div"
+          variant="primary"
+        />
+        <Chip
+          label="Disabled chip without icon XS"
+          role="div"
+          variant="primary"
           disabled
         />
       </block.XS>
-      <block.N>
-        <span>None</span>
-        <Chip
-          text="Chip primary N"
-          variant="primary"
-          onClick={() => console.info('Chip clicked')}
-          icon={
-            <IconWrapper>
-              <CloseIcon />
-            </IconWrapper>
-          }
-        />
-        <Chip
-          text="Chip primary N"
-          variant="secondary"
-          onClick={() => console.info('Chip clicked')}
-          icon={
-            <IconSecondaryWrapper>
-              <CloseIcon />
-            </IconSecondaryWrapper>
-          }
-        />
-        <Chip
-          text="Chip primary N"
-          variant="primary"
-          onClick={() => console.info('Chip clicked')}
-          icon={
-            <IconDisabledWrapper>
-              <CloseIcon />
-            </IconDisabledWrapper>
-          }
-          disabled
-        />
-      </block.N>
     </Chips>
   </Global>
 );
@@ -87,15 +120,15 @@ export const Chips = styled.div`
     margin: 0 10px 0 0;
   }
 
-  ${block.XS} > button {
+  ${block.S} > div {
     margin-bottom: 26px;
   }
 
-  ${block.N} > button {
+  ${block.XS} > div {
     margin-bottom: 32px;
   }
 
-  ${block.XS} > span, ${block.N} > span {
+  ${block.S} > span, ${block.XS} > span {
     display: block;
     padding-bottom: 20px;
   }
@@ -107,7 +140,7 @@ export const IconWrapper = styled.div`
   justify-content: center;
 
   svg > path {
-    fill: #ffffff;
+    fill: #683aef;
   }
 `;
 
