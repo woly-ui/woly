@@ -18,7 +18,6 @@ import { Variant } from 'lib/types';
 
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   className?: string;
-  label?: React.ReactNode;
   name: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => unknown;
   type: 'text' | 'password' | 'email';
@@ -26,43 +25,16 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
 
 const InputBase: React.FC<InputProps & Variant> = ({
   className,
-  label,
   name,
   onChange,
   type = 'text',
   variant = 'default',
   ...p
 }) => (
-  <InputWrapper data-variant={variant}>
-    <input
-      className={className}
-      data-variant={variant}
-      name={name}
-      onChange={onChange}
-      type={type}
-      {...p}
-    />
-    {label && <span>{label}</span>}
-  </InputWrapper>
+  <div data-variant={variant} className={className}>
+    <input name={name} onChange={onChange} type={type} {...p} />
+  </div>
 );
-
-export const InputWrapper = styled.div`
-  --woly-vertical: calc(
-    1px * var(--woly-component-level) * var(--woly-main-level)
-  );
-
-  --woly-width: 100%;
-  width: var(--woly-width);
-
-  padding: var(--woly-vertical, 16px) 0;
-
-  span {
-    font-size: var(--woly-font-size, 12px);
-    line-height: var(--woly-line-height, 15px);
-
-    color: var(--woly-error-text, #000000);
-}
-`
 
 export const Input = styled(InputBase)`
   --woly-vertical: calc(
@@ -72,8 +44,10 @@ export const Input = styled(InputBase)`
     var(--woly-const-m) + (1px * var(--woly-main-level)) + var(--woly-vertical)
   );
 
+  --woly-width: 100%;
+  width: var(--woly-width);
+
   box-sizing: border-box;
-  padding: var(--woly-vertical, 16px) var(--woly-horizontal, 6.4px);
 
   color: var(--woly-color, #000000);
 
@@ -81,18 +55,25 @@ export const Input = styled(InputBase)`
   line-height: var(--woly-line-height, 24px);
 
   background: var(--woly-background, transparent);
-  border-color: var(--woly-border, var(--woly-background, #000000));
-  border-style: solid;
 
-  border-width: var(--woly-border-width, 1px);
-  border-radius: var(--woly-rounding, 3px);
+  input {
+    border-color: var(--woly-border, var(--woly-background, #000000));
+    border-style: solid;
 
-  &:focus {
+    border-width: var(--woly-border-width, 1px);
+    border-radius: var(--woly-rounding, 3px);
+
+    padding: var(--woly-vertical, 16px) var(--woly-horizontal, 6.4px);
+
+    outline: none;
+  }
+
+  input:focus {
     border-color: var(--woly-border-focus, #000000);
     outline: none;
   }
 
-  &:disabled {
+  input:disabled {
     color: var(--woly-color-disabled, #ffffff);
 
     background: var(--woly-background-disabled, #ffffff);

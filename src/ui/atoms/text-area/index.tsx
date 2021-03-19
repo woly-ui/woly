@@ -20,7 +20,6 @@ interface TextAreaProps
   className?: string;
   cols?: number;
   disabled?: boolean;
-  label?: React.ReactNode;
   maxLength?: number;
   minlength?: number;
   name: string;
@@ -34,13 +33,14 @@ interface TextAreaProps
   textareaRef?: any;
   value?: string;
   wrap?: string;
+  container?: React.ReactNode;
 }
 
 const TextAreaBase: React.FC<TextAreaProps & Variant> = ({
   className,
   cols,
+  container,
   disabled,
-  label,
   maxLength,
   minlength,
   name,
@@ -58,14 +58,13 @@ const TextAreaBase: React.FC<TextAreaProps & Variant> = ({
   ...p
 }) => {
   return (
-    <TextAreaWrapper
+    <div
+      className={className}
       data-overflow={overflow}
       data-resize={resize}
       data-variant={variant}
      >
-      {label && <span>{label}</span>}
       <textarea
-        className={className}
         cols={cols}
         data-variant={variant}
         disabled={disabled}
@@ -81,53 +80,23 @@ const TextAreaBase: React.FC<TextAreaProps & Variant> = ({
         wrap={wrap}
         {...p}
       />
-      <Containrer>
+      <div data-block="container">
         {textError && <span>{textError}</span>}
         {maxLength && (
           <p>
             {value?.length}/{maxLength}
           </p>
         )}
-      </Containrer>
-    </TextAreaWrapper>
+      </div>
+    </div>
   );
 };
 
-export const TextAreaWrapper = styled.div`
-  --woly-vertical: calc(
-    1px * var(--woly-component-level) * var(--woly-main-level)
-  );
-
-  --woly-width: 100%;
-  width: var(--woly-width);
-
-  padding: var(--woly-vertical, 16px) 0;
-`;
-
-export const Containrer = styled.div`
-  display: flex;
-  justify-content: flex-end;
-
-  p {
-    margin: 0;
-
-    font-size: var(--woly-font-size, 12px);
-    line-height: var(--woly-line-height, 15px);
-
-    color: var(--woly-count-color, #000000);
-  }
-
-  span {
-    flex-grow: 1;
-
-    font-size: var(--woly-font-size, 12px);
-    line-height: var(--woly-line-height, 15px);
-
-    color: var(--woly-error-text, #000000);
-  }
-`;
-
 export const TextArea = styled(TextAreaBase)`
+--woly-width: 100%;
+    width: var(--woly-width);
+    
+textarea{
   --woly-vertical: calc(
     1px * var(--woly-component-level) * var(--woly-main-level)
   );
@@ -136,12 +105,8 @@ export const TextArea = styled(TextAreaBase)`
   );
 
   padding: var(--woly-vertical, 16px) var(--woly-horizontal, 6.4px);
-  resize: ${(p) => p.resize};
-
-  color: var(--woly-color, #000000);
-
-  overflow: ${(p) => p.overflow};
-
+  
+  border: none;
   font-size: var(--woly-font-size, 16px);
   line-height: var(--woly-line-height, 24px);
   background: var(--woly-background, transparent);
@@ -149,13 +114,13 @@ export const TextArea = styled(TextAreaBase)`
   border-style: solid;
   border-width: var(--woly-border-width, 1px);
   border-radius: var(--woly-rounding, 3px);
-  ::placeholder,
-  :-ms-input-placeholder,
-  ::-ms-input-placeholder {
-    color: var(--woly-color, #000000);
-    font-size: var(--woly-font-size, 16px);
-    padding: var(--woly-vertical, 16px) var(--woly-horizontal, 6.4px);
-  }
+}
+  
+  resize: ${(p) => p.resize};
+
+  color: var(--woly-color, #000000);
+
+  overflow: ${(p) => p.overflow};
 
   &:focus,
   &:active {
@@ -170,5 +135,28 @@ export const TextArea = styled(TextAreaBase)`
       --woly-border-disabled,
       var(--woly-background-disabled, #000000)
     );
+  }
+
+  [data-block="container"]{
+    display: flex;
+    justify-content: flex-end;
+    
+    p {
+      margin: 0;
+    
+      font-size: var(--woly-font-size, 12px);
+      line-height: var(--woly-line-height, 15px);
+    
+      color: var(--woly-hint-color, #000000);
+    }
+    
+    span {
+      flex-grow: 1;
+    
+      font-size: var(--woly-font-size, 12px);
+      line-height: var(--woly-line-height, 15px);
+    
+      color: var(--woly-error-text, #000000);
+    }
   }
 ` as StyledComponent<'textarea',Record<string, unknown>,TextAreaProps & Variant>;
