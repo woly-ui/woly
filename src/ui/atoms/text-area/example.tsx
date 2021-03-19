@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import { Global, block } from 'box-styles';
-import { Label, TextArea } from 'ui';
+import { TextArea } from 'ui';
 
 export const TextAreaExample: React.FC = () => {
   const [valueL, setValueL] = React.useState('');
@@ -26,7 +26,6 @@ export const TextAreaExample: React.FC = () => {
           <p>Large</p>
           <block.L>
             <TextArea
-              label={<Label text="Textarea without resize and overflow"/>}
               name="name"
               placeholder="Disabled"
               onChange={() => console.info('On textarea change')}
@@ -36,7 +35,6 @@ export const TextAreaExample: React.FC = () => {
               overflow="hidden"
             />
             <TextArea
-              label={<Label text="Textarea with maxLength"/>}
               name="name"
               className="resize"
               placeholder="Default"
@@ -49,7 +47,6 @@ export const TextAreaExample: React.FC = () => {
               overflow="auto"
             />
             <TextArea
-              label={<Label text="Textarea with maxLength and errortext"/>}
               name="name"
               placeholder="Error"
               onChange={(event: React.ChangeEvent<HTMLTextAreaElement>) =>
@@ -67,7 +64,6 @@ export const TextAreaExample: React.FC = () => {
           <p>Normal</p>
           <block.M>
             <TextArea
-              label={<Label text="Label content"/>}
               name="name"
               placeholder="Disabled"
               onChange={() => console.info('On textarea change')}
@@ -77,7 +73,6 @@ export const TextAreaExample: React.FC = () => {
               overflow="hidden"
             />
             <TextArea
-              label={<Label text="Textarea with colms, rows and overflowX"/>}
               name="name"
               placeholder="Default"
               onChange={(event: React.ChangeEvent<HTMLTextAreaElement>) =>
@@ -85,14 +80,12 @@ export const TextAreaExample: React.FC = () => {
               }
               variant="base"
               value={valueN}
-              maxLength={50}
               rows={2}
               cols={20}
               wrap="off"
               overflow="auto"
             />
             <TextArea
-              label={<Label text="Label content"/>}
               name="name"
               placeholder="Error"
               onChange={() => console.info('On textarea change')}
@@ -105,7 +98,6 @@ export const TextAreaExample: React.FC = () => {
           <p>Small</p>
           <block.S>
             <TextArea
-              label={<Label text="Simple disabled without resize"/>}
               name="name"
               placeholder="Disabled"
               onChange={() => console.info('On textarea change')}
@@ -114,7 +106,6 @@ export const TextAreaExample: React.FC = () => {
               resize="none"
             />
             <TextArea
-              label={<Label text="Simple textarea"/>}
               name="name"
               onChange={(event: React.ChangeEvent<HTMLTextAreaElement>) => {
                 setCurrentValue(event.target.value);
@@ -122,11 +113,8 @@ export const TextAreaExample: React.FC = () => {
               placeholder="Default"
               ref={textareaRef}
               value={currentValue}
-              resize="auto"
-              overflow="hidden"
             />
             <TextArea
-              label={<Label text="Textarea without error"/>}
               name="name"
               placeholder="Error"
               onChange={() => console.info('On textarea change')}

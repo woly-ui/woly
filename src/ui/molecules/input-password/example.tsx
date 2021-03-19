@@ -33,7 +33,7 @@ export const InputPasswordExample: React.FC = () => (
 export const Inputs = styled.div`
   max-width: 300px;
 
-  div {
+  ${InputPassword} {
     margin-bottom: 20px;
   }
 `;
