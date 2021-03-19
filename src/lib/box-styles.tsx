@@ -16,6 +16,7 @@ export const Global = styled.div`
     --woly-background: var(--woly-primary);
     --woly-border: var(--woly-primary);
     --woly-color: #ffffff;
+    --woly-count-color: #c4c4c4;
 
     --woly-background-hover: var(--woly-primary-hover);
     --woly-border-hover: var(--woly-primary-hover);
@@ -36,6 +37,7 @@ export const Global = styled.div`
     --woly-background: #ffffff;
     --woly-border: var(--woly-primary);
     --woly-color: var(--woly-primary);
+    --woly-count-color: #c4c4c4;
 
     --woly-background-hover: #ffffff;
     --woly-border-hover: var(--woly-primary-hover);
@@ -56,6 +58,7 @@ export const Global = styled.div`
     --woly-background: #ffffff;
     --woly-border: #a39bb2;
     --woly-color: #000000;
+    --woly-count-color: #c4c4c4;
 
     --woly-border-focus: var(--woly-primary);
 
@@ -68,10 +71,12 @@ export const Global = styled.div`
     --woly-border-width: 1px;
 
     --woly-background: #ffffff;
-    --woly-border: #a39bb2;
+    --woly-border: #eb5656;
     --woly-color: #000000;
 
     --woly-border-focus: #eb5656;
+    --woly-error-text: #eb5656;
+    --woly-count-color: #c4c4c4;
 
     --woly-background-disabled: var(--woly-primary-disabled);
     --woly-border-disabled: var(--woly-primary-disabled);

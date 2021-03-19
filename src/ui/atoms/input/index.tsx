@@ -17,32 +17,54 @@ import { Variant } from 'lib/types';
  */
 
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
-  type: 'text' | 'password' | 'email';
+  className?: string;
+  label?: React.ReactNode;
   name: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => unknown;
-  className?: string;
+  type: 'text' | 'password' | 'email';
 }
 
 const InputBase: React.FC<InputProps & Variant> = ({
   className,
+  label,
   name,
   onChange,
   type = 'text',
   variant = 'default',
   ...p
 }) => (
-  <input
-    className={className}
-    data-variant={variant}
-    name={name}
-    onChange={onChange}
-    type={type}
-    {...p}
-  />
+  <InputWrapper data-variant={variant}>
+    <input
+      className={className}
+      data-variant={variant}
+      name={name}
+      onChange={onChange}
+      type={type}
+      {...p}
+    />
+    {label && <span>{label}</span>}
+  </InputWrapper>
 );
 
+export const InputWrapper = styled.div`
+  --woly-vertical: calc(
+    1px * var(--woly-component-level) * var(--woly-main-level)
+  );
+
+  --woly-width: 100%;
+  width: var(--woly-width);
+
+  padding: var(--woly-vertical, 16px) 0;
+
+  span {
+    font-size: var(--woly-font-size, 12px);
+    line-height: var(--woly-line-height, 15px);
+
+    color: var(--woly-error-text, #000000);
+}
+`
+
 export const Input = styled(InputBase)`
-  --woly-input-width: 100%;
   --woly-vertical: calc(
     1px * var(--woly-component-level) * var(--woly-main-level)
   );
@@ -51,8 +73,6 @@ export const Input = styled(InputBase)`
   );
 
   box-sizing: border-box;
-
-  width: var(--woly-input-width);
   padding: var(--woly-vertical, 16px) var(--woly-horizontal, 6.4px);
 
   color: var(--woly-color, #000000);

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import { Global, block } from 'box-styles';
-import { Input } from 'ui';
+import { Input, Label } from 'ui';
 
 export const InputExample: React.FC = () => (
   <form autoComplete="off">
@@ -31,6 +31,7 @@ export const InputExample: React.FC = () => (
               placeholder="Error"
               onChange={() => console.info('On input change')}
               variant="error"
+              label={<Label text="Error text" />}
             />
           </block.L>
         </Inputs>
@@ -58,6 +59,7 @@ export const InputExample: React.FC = () => (
               placeholder="Error"
               onChange={() => console.info('On input change')}
               variant="error"
+              label={<Label text="Error text" />}
             />
           </block.M>
         </Inputs>
@@ -85,6 +87,7 @@ export const InputExample: React.FC = () => (
               placeholder="Error"
               onChange={() => console.info('On input change')}
               variant="error"
+              label={<Label text="Error text" />}
             />
           </block.S>
         </Inputs>
