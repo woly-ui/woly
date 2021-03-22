@@ -44,7 +44,7 @@ export const Global = styled.div`
     --woly-border-hover: var(--woly-primary-hover);
     --woly-color-hover: var(--woly-primary-hover);
 
-    --woly-background-focus: #ffffff;
+    --woly-background-focus: #ac8fff;
     --woly-border-focus: var(--woly-primary-focus);
     --woly-color-focus: var(--woly-primary-focus);
 
