@@ -29,17 +29,15 @@ interface TextAreaProps
   placeholder?: string;
   resize?: string;
   rows?: number;
-  textError?: string;
   textareaRef?: any;
+  textError?: string;
   value?: string;
   wrap?: string;
-  container?: React.ReactNode;
 }
 
 const TextAreaBase: React.FC<TextAreaProps & Variant> = ({
   className,
   cols,
-  container,
   disabled,
   maxLength,
   minlength,
@@ -50,14 +48,13 @@ const TextAreaBase: React.FC<TextAreaProps & Variant> = ({
   placeholder,
   resize,
   rows,
-  textError,
   textareaRef,
+  textError,
   value,
   variant = 'default',
   wrap,
   ...p
-}) => {
-  return (
+}) => (
     <div
       className={className}
       data-overflow={overflow}
@@ -90,11 +87,11 @@ const TextAreaBase: React.FC<TextAreaProps & Variant> = ({
       </div>
     </div>
   );
-};
 
 export const TextArea = styled(TextAreaBase)`
 --woly-width: 100%;
-    width: var(--woly-width);
+  
+  width: var(--woly-width);
     
 textarea{
   --woly-vertical: calc(
@@ -125,7 +122,6 @@ textarea{
   &:focus,
   &:active {
     border-color: var(--woly-border-focus, #000000);
-    outline: none;
   }
 
   &:disabled {
