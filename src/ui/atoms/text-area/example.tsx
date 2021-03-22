@@ -111,6 +111,7 @@ export const TextAreaExample: React.FC = () => {
                 setCurrentValue(event.target.value);
               }}
               placeholder="Default"
+              variant="base"
               textareaRef={textareaRef}
               value={currentValue}
             />
