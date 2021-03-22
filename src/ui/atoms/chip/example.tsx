@@ -10,103 +10,115 @@ export const ChipExample: React.FC = () => (
       <block.S>
         <span>Small</span>
         <Chip
-          label="Chip primary S"
-          role="button"
           variant="primary"
-          tabIndex={0}
           onClick={() => console.info('Chip clicked')}
-          icon={
+          action={
             <IconWrapper>
               <CloseIcon />
             </IconWrapper>
           }
-        />
+          onActionClick={() => console.info('ActionIcon clicked')}>
+          Chip with close S
+        </Chip>
         <Chip
-          label="Chip secondary S"
-          role="button"
           variant="secondary"
-          tabIndex={0}
           onClick={() => console.info('Chip clicked')}
-          icon={
-            <IconSecondaryWrapper>
+          action={
+            <IconWrapper>
               <CloseIcon />
-            </IconSecondaryWrapper>
+            </IconWrapper>
           }
-        />
+          onActionClick={() => console.info('ActionIcon clicked')}>
+          Chip with close S
+        </Chip>
         <Chip
-          label="Chip disabled S"
-          role="button"
           variant="primary"
-          tabIndex={0}
-          onClick={() => console.info('Chip clicked')}
-          icon={
-            <IconDisabledWrapper>
+          action={
+            <IconWrapper>
               <CloseIcon />
-            </IconDisabledWrapper>
+            </IconWrapper>
           }
-          disabled
-        />
+          onActionClick={() => console.info('ActionIcon clicked')}>
+          Chip with icon S
+        </Chip>
         <Chip
-          label="Chip without icon S"
-          role="div"
-          variant="primary"
-         />
-        <Chip
-          label="Disabled chip without icon S"
-          role="div"
-          variant="primary"
-          disabled
-        />
+          variant="secondary"
+          action={
+            <IconWrapper>
+              <CloseIcon />
+            </IconWrapper>
+          }
+          onActionClick={() => console.info('ActionIcon clicked')}>
+          Chip with icon S
+        </Chip>
+        <Chip variant="secondary" onClick={() => console.info('Chip clicked')}>
+          Chip with text S
+        </Chip>
+        <Chip variant="primary" onClick={() => console.info('Chip clicked')}>
+          Chip with text S
+        </Chip>
+        <Chip variant="primary">Chip without icon S</Chip>
+        <Chip variant="primary" disabled>
+          Disabled chip S
+        </Chip>
       </block.S>
       <block.XS>
         <span>Extra Small</span>
         <Chip
-          label="Chip primary XS"
-          role="button"
           variant="primary"
           onClick={() => console.info('Chip clicked')}
-          icon={
+          action={
             <IconWrapper>
               <CloseIcon />
             </IconWrapper>
           }
-        />
+          onActionClick={() => console.info('ActionIcon clicked')}
+        >
+          Chip with close XS
+        </Chip>
         <Chip
-          label="Chip secondary XS"
-          role="button"
           variant="secondary"
-          tabIndex={0}
           onClick={() => console.info('Chip clicked')}
-          icon={
-            <IconSecondaryWrapper>
+          action={
+            <IconWrapper>
               <CloseIcon />
-            </IconSecondaryWrapper>
+            </IconWrapper>
           }
-        />
+          onActionClick={() => console.info('ActionIcon clicked')}>
+          Chip with close XS
+        </Chip>
         <Chip
-          label="Chip disabled XS"
-          role="button"
           variant="primary"
-          tabIndex={0}
-          onClick={() => console.info('Chip clicked')}
-          icon={
-            <IconDisabledWrapper>
+          action={
+            <IconWrapper>
               <CloseIcon />
-            </IconDisabledWrapper>
+            </IconWrapper>
           }
-          disabled
-        />
+          onActionClick={() => console.info('ActionIcon clicked')}>
+          Chip with icon XS
+        </Chip>
         <Chip
-          label="Chip without icon XS"
-          role="div"
-          variant="primary"
-        />
-        <Chip
-          label="Disabled chip without icon XS"
-          role="div"
-          variant="primary"
-          disabled
-        />
+          variant="secondary"
+          action={
+            <IconWrapper>
+              <CloseIcon />
+            </IconWrapper>
+          }
+          onActionClick={() => console.info('ActionIcon clicked')}>
+          Chip with icon XS
+        </Chip>
+        <Chip variant="secondary" onClick={() => console.info('Chip clicked')}>
+          Chip with text XS
+        </Chip>
+        <Chip variant="primary" onClick={() => console.info('Chip clicked')}>
+          Chip with text XS
+        </Chip>
+        <Chip variant="primary">
+          Chip without icon XS
+        </Chip>
+        <Chip variant="primary" disabled>
+          Disabled chip XS
+        </Chip>
       </block.XS>
     </Chips>
   </Global>

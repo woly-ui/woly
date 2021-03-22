@@ -26,45 +26,46 @@ import { Variant } from 'lib/types';
  *
  */
 
-interface ChipProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  children?: never;
+interface ChipProps {
+  action?: React.ReactNode;
+  children?: string;
   className?: string;
-  icon?: React.ReactNode;
-  label: string;
-  role: 'button' | 'div';
   disabled?: boolean;
-  tabIndex?: number;
-  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  onActionClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  onClick?: (event: React.MouseEvent<HTMLDivElement>) => void;
 }
 
 const ChipBase: React.FC<ChipProps & Variant> = ({
+  action,
+  children,
   className,
-  icon,
-  label,
-  variant = 'default',
-  role = 'button',
   disabled,
-  tabIndex,
-  onClick
+  onActionClick,
+  onClick,
+  variant = 'default',
 }) => {
+  const divRole = onClick ? 'button' : 'div';
+  const divTabIndex = onClick ? 1 : 0 ;
   return(
     <div className={className} data-disabled={disabled}>
       <div
-        role={role}
+        data-block="label"
         data-variant={variant}
-        tabIndex={tabIndex}
+        onClick={onClick}
+        role={divRole}
+        tabIndex={divTabIndex}
        >
-        {label}
+        {children}
       </div>
-      { role === 'button' && 
+      { action && 
         <button
-          data-variant={variant}
-          onClick={onClick}
-          type="button" 
           data-icon="right"
+          data-variant={variant}
           disabled={disabled}
+          onClick={onActionClick}
+          type="button" 
         >
-          {icon}
+          {action}
         </button>}
     </div>
   )
@@ -75,17 +76,16 @@ export const Chip = styled(ChipBase)`
   --woly-horizontal: calc(
     var(--woly-const-m) + (1px * var(--woly-main-level)) + var(--woly-vertical)
   );
-  --woly-gap: 6px;
+  --woly-gap: 9px;
   --woly-line-height: 24px;
   --woly-right-offset: calc(var(--woly-line-height) + var(--woly-gap));
-
+  
   position: relative;
 
   [role] {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: var(--woly-vertical, 16px) var(--woly-horizontal, 6.4px);
+    justify-content: ${(props) => (props.action ? "space-between" : "center")};
 
     color: var(--woly-color, #ffffff);
 
@@ -99,7 +99,8 @@ export const Chip = styled(ChipBase)`
 
     border-radius: var(--woly-rounding, 4px);
 
-    padding-right: var(--woly-right-offset);
+    padding: var(--woly-vertical, 16px) var(--woly-horizontal, 6px);
+    padding-right: ${(props) => (props.action && "var(--woly-right-offset)")};
   }
 
   [role]:hover {
@@ -111,8 +112,8 @@ export const Chip = styled(ChipBase)`
     cursor: pointer;
   }
 
-  [role]:focus,
-  [role]:active {
+  [role='button']:focus,
+  [role='button']:active {
     color: var(--woly-color-focus, #ffffff);
 
     background-color: var(--woly-background-focus, #000000);
@@ -142,13 +143,11 @@ export const Chip = styled(ChipBase)`
     justify-content: center;
     position: absolute;
     cursor: pointer;
-    right: var(--woly-gap, 6px);
+    right: var(--woly-gap, 9px);
     z-index: 1;
     top: 50%;
     transform: translateY(-50%);
-    margin: 0 var(--woly-gap, 6px);
-    width: var(--woly-line-height, 24px);
-    height: var(--woly-line-height, 24px);
-    line-height: var(--woly-line-height, 24px);
+    width: var(--woly-line-height, 12px);
+    height: var(--woly-line-height, 12px);
   }
 ` as StyledComponent<'div', Record<string, unknown>, ChipProps & Variant>;

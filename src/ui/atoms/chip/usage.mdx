@@ -15,11 +15,12 @@ import { ChipExample } from './example';
 ```tsx
 const Example = () => (
   <Chip
-    icon={<CloseIcon />}
-    onClick={(event) => console.info('Chip clicked')}
-    text="Chip"
-    variant="primary"
-  />
+    variant="secondary"
+    onClick={() => console.info('Chip clicked')}
+    action={<CloseIcon />}
+    onActionClick={() => console.info('ActionIcon clicked')}>
+    Chip with close XS
+  </Chip>
 );
 ```
 
@@ -31,10 +32,11 @@ const Example = () => (
 
 ### Props
 
-| Name      | Type                                         | Default     | Description                                        |
-| --------- | -------------------------------------------- | ----------- | -------------------------------------------------- |
-| `text`    | `React.ReactNode`                            |             | Text inside chip                                   |
-| `icon`    | `React.ReactNode`                            | `null`      | Icon to show on the right side of the text         |
-| `onClick` | `React.MouseEventHandler<HTMLButtonElement>` | `null`      | Callback when chip is clicked                      |
-| `variant` | `string`                                     | `'default'` | Variant prop to style Chip component               |
-| `...`     | `HTMLButtonElement`                          | `{}`        | Other props are inherited from `HTMLButtonElement` |
+| Name            | Type                                         | Default     | Description                                        |
+| ----------------| -------------------------------------------- | ----------- | -------------------------------------------------- |
+| `children`      | `string`                                     |             | Text inside chip                                   |
+| `action`        | `React.ReactNode`                            | `null`      | Icon to show on the right side of the text         |
+| `onActionClick` | `React.MouseEvent<HTMLButtonElement>`        | `null`      | Callback when chip is clicked                      |
+| `onClick`       | `React.MouseEvent<HTMLDivElement>`           | `null`      | Callback when chip is clicked                      |
+| `variant`       | `string`                                     | `'default'` | Variant prop to style Chip component               |
+| `...`           | `HTMLButtonElement`                          | `{}`        | Other props are inherited from `HTMLButtonElement` |
