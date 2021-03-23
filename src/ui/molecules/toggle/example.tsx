@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import { Global, block } from 'box-styles';
-import { Label, Toggle } from 'ui';
+import { Toggle } from 'ui';
 
 export const ToggleExample: React.FC = () => {
   const [sqOne, sqOneClick] = React.useReducer((on) => !on, false);
@@ -43,14 +43,12 @@ export const ToggleExample: React.FC = () => {
         </ToggleWrapper>
         <ToggleWrapper>
           <Toggle
-            label={<Label text="Label" variant="base" />}
             isChecked={labelOne}
             onChange={labelOneClick}
             id="labelOne"
             variant="round"
           />
           <Toggle
-            label={<Label text="Label" variant="base" />}
             isChecked={labelTwo}
             onChange={labelTwoClick}
             id="labelTwo"
