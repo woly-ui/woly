@@ -1,7 +1,7 @@
 import * as React from 'react';
-import styled from 'styled-components';
-import { Checkbox, Label } from 'ui';
+import { Checkbox } from 'ui';
 import { Global, block } from 'box-styles';
+import { CheckIcon } from 'icons';
 
 export const CheckboxExample: React.FC = () => {
   const [isPassportChecked, onPassportClick] = React.useReducer(
@@ -19,30 +19,29 @@ export const CheckboxExample: React.FC = () => {
       Travel packing checklist:
       <block.L>
         <Checkbox
-          label={<Label text="passport" />}
-          isChecked={isPassportChecked}
+          text="passport"
+          isChecked
           onChange={onPassportClick}
           id="checkbox"
+          icon={<CheckIcon />}
+          disabled
         />
         <Checkbox
-          label={<Label text="money" />}
+          text="money"
           isChecked={isMoneyChecked}
           onChange={onMoneyClick}
           id="checkbox2"
+          icon={<CheckIcon />}
         />
         <Checkbox
-          label={<Label text="tickets" />}
-          isChecked={isTicketsChecked}
+          text="tickets"
+          isChecked={false}
           onChange={onTicketsClick}
           id="checkbox3"
+          icon={<CheckIcon />}
+          disabled
         />
       </block.L>
     </Global>
   );
 };
-
-export const Content = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;

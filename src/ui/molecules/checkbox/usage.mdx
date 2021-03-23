@@ -15,10 +15,12 @@ import { CheckboxExample } from './example';
 ```tsx
 const Example = () => (
   <Checkbox
-    label={<Label text="Checkbox label" />}
+    icon={<Icon />}
+    id="checkbox"
     isChecked={true}
     onChange={(e) => console.info('change', e)}
-    id="checkbox"
+    text="Checkbox text"
+    variant="base"
   />
 );
 ```
@@ -31,10 +33,11 @@ const Example = () => (
 
 ### Props
 
-| Name        | Type                                         | Default     | Description                              |
-| ----------- | -------------------------------------------- | ----------- | ---------------------------------------- |
-| `id`        | `string`                                     |             | HTML id attribute                        |
-| `isChecked` | `boolean`                                    |             | Whether checkbox is checked or not       |
-| `label`     | `React.ReactNode`                            | `null`      | Label component                          |
-| `onChange`  | `React.ChangeEventHandler<HTMLInputElement>` |             | Callback when checkbox is clicked        |
-| `variant`   | `string`                                     | `'default'` | Variant prop to style Checkbox component |
+| Name        | Type                                         | Default     | Description                                         |
+| ----------- | -------------------------------------------- | ----------- | --------------------------------------------------- |
+| `icon`      | `React.ReactNode`                            |             | Set the icon component inside the checkbox          |
+| `id`        | `string`                                     |             | HTML id attribute                                   |
+| `isChecked` | `boolean`                                    |             | Whether checkbox is checked or not                  |
+| `text`      | `string`                                     |             | Text component                                      |
+| `onChange`  | `React.ChangeEventHandler<HTMLInputElement>` |             | Callback when checkbox is clicked                   |
+| `variant`   | `string`                                     | `'default'` | Variant prop to style Checkbox component            |
