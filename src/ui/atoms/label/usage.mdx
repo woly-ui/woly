@@ -7,12 +7,12 @@ package: 'woly'
 import { Global } from 'box-styles';
 import { Label } from 'ui';
 
-`Label` is a description text for located near interactive component. Label can be passed as a property to a Checkbox or a Toggle component.
+`Label` is a description text for located near interactive component.
 
 ### Example
 
 <Global>
-  <Label text="Base label" variant="base" />
+  <Label variant="base">Base label</Label>
 </Global>
 
 ```tsx
@@ -27,8 +27,8 @@ const Example = () => <Label text="Base label" variant="base" />;
 
 ### Props
 
-| Name      | Type               | Default     | Description                                       |
-| --------- | ------------------ | ----------- | ------------------------------------------------- |
-| `text`    | `React.ReactNode`  |             | Label text                                        |
-| `variant` | `string`           | `'default'` | Variant prop to style Input component             |
-| `...`     | `HTMLLabelElement` | `{}`        | Other props are inherited from `HTMLLabelElement` |
+| Name          | Type               | Default     | Description                                                                   |
+| ------------- | ------------------ | ----------- | ----------------------------------------------------------------------------- |
+| `children`    | `React.ReactNode`  |             | Label content                                                                   |
+| `variant`     | `string`           | `'default'` | Variant prop to style Input component                                         |
+| `...`         | `HTMLLabelElement` | `{}`        | Other props are inherited from `HTMLLabelElement`                             |
