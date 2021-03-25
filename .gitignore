@@ -166,3 +166,7 @@ dist
 
 stats
 .size-snapshot.json
+
+cypress/screenshots
+cypress/videos
+cypress/downloads
