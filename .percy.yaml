@@ -1,0 +1,7 @@
+version: 2
+static:
+  baseUrl: /
+snapshot:
+  widths:
+    - 1024
+  minHeight: 1024
