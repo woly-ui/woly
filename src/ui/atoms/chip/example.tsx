@@ -4,6 +4,28 @@ import { Chip } from 'ui';
 import { CloseIcon } from 'icons';
 import { Global, block } from 'box-styles';
 
+/**
+ * Variants             | Icon            | Action
+ * Size     | Disabled  | False  | True   | False   | True
+ * ---------|-----------|--------|--------|---------|-------
+ * Small    | False     |
+ *          | True      |
+ *
+ * Normal   | False     |
+ *          | True      |
+ */
+
+const configuration = {
+  vertical: {
+    icon: [false, true],
+    action: [false, true],
+  },
+  horizontal: {
+    size: ['small', 'normal'],
+    disabled: [false, true],
+  },
+};
+
 export const ChipExample: React.FC = () => (
   <Global>
     <Chips>

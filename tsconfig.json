@@ -24,7 +24,7 @@
       "icons": ["static/icons"],
       "ui": ["ui/"]
     },
-    "types": ["cypress", "@percy/cypress"]
+    "types": ["cypress", "@percy/cypress", "cypress-real-events"]
   },
   "exclude": ["./node_modules", "./dist", "./.storybook"]
 }
