@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import { ArrowLeft, SearchIcon } from 'icons';
 import { Button } from 'ui';
 import { Global, block } from 'box-styles';
-
 /**
  * Button
  *                                  | Icon
@@ -135,7 +134,7 @@ const renderSize = ({ size, variant, icon }: any) => {
   return <>{items}</>;
 };
 
-export const ButtonExample_: React.FC = () => (
+export const ButtonExample: React.FC = () => (
   <>
     <Global>
       <div data-cypress="button">
@@ -150,8 +149,6 @@ export const ButtonExample_: React.FC = () => (
     </Global>
   </>
 );
-
-export const;
 
 export const ButtonExample_old: React.FC = () => (
   <Global>

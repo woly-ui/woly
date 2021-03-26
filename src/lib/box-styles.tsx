@@ -1,3 +1,4 @@
+import React from 'react';
 import styled from 'styled-components';
 
 export const Global = styled.div`
@@ -134,3 +135,39 @@ const H = styled(Block)`
 `;
 
 export const block = { N, XS, S, M, L, XL, H };
+
+export const Playground: React.FC<{
+  size: keyof typeof block;
+  direction: 'vertical' | 'horizontal';
+}> = ({ size = 'M', direction = 'horizontal', children }) => {
+  const Wrapper = block[size];
+  return (
+    <Global>
+      <Wrapper>
+        <Container data-dir={direction}>{children}</Container>
+      </Wrapper>
+    </Global>
+  );
+};
+
+const Container = styled.div`
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+
+  &[data-dir='vertical'] {
+    flex-direction: column;
+
+    & > * + * {
+      margin-top: 0.5rem;
+    }
+  }
+
+  &[data-dir='horizontal'] {
+    flex-direction: row;
+
+    & > * + * {
+      margin-left: 0.5rem;
+    }
+  }
+`;
