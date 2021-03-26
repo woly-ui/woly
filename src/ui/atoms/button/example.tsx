@@ -4,6 +4,59 @@ import { ArrowLeft, SearchIcon } from 'icons';
 import { Button } from 'ui';
 import { Global, block } from 'box-styles';
 
+/**
+ * Button
+ *                                  | Icon
+ * Variant   | Size     | Disabled  | Left   | Right   | Both
+ * ---------------------|-----------|--------|---------|--------
+ * Primary     Large    | False     |
+ *                      | True      |
+ *
+ *             Normal   | False     |
+ *                      | True      |
+ *
+ *             Small    | False     |
+ *                      | True      |
+ *
+ * Secondary   Large    | False     |
+ *                      | True      |
+ *
+ *             Normal   | False     |
+ *                      | True      |
+ *
+ *             Small    | False     |
+ *                      | True      |
+ */
+
+const configuration = {
+  vertical: {
+    icon: ['left', 'right', 'both'],
+  },
+  horizontal: {
+    variant: ['primary', 'secondary'],
+    size: ['large', 'normal', 'small'],
+    disabled: [false, true],
+  },
+};
+
+/**
+ * @example
+ * configuration = {
+ *   vertical: {
+ *     left: [true, false],
+ *     right: [true, false],
+ *   },
+ * }
+ *
+ *
+ * | Left
+ * | True             | False
+ * |------------------|-----------------
+ * | Right            | Right
+ * | True   | False   | True   | False
+ * |--------|---------|--------|--------
+ */
+
 const properties = {
   size: ['large', 'normal', 'small'],
   variant: ['primary', 'secondary'],
@@ -61,15 +114,17 @@ const renderItem = ({ size, variant, icon }: any) => {
   }
 
   return (
-    <Wrapper>
-      <Button {...props} />
-    </Wrapper>
+    <Container>
+      <Wrapper data-element-variant={`${size}-${variant}-${icon}`}>
+        <Button {...props} />
+      </Wrapper>
+    </Container>
   );
 };
 
 const renderSize = ({ size, variant, icon }: any) => {
-  const label = <span>{size}</span>;
   const items = [];
+  items.push(...size.map((a: string) => <Label>{a}</Label>));
   for (const a of icon) {
     for (const b of variant) {
       for (const c of size) {
@@ -80,7 +135,7 @@ const renderSize = ({ size, variant, icon }: any) => {
   return <>{items}</>;
 };
 
-export const ButtonExample: React.FC = () => (
+export const ButtonExample_: React.FC = () => (
   <>
     <Global>
       <div data-cypress="button">
@@ -96,7 +151,9 @@ export const ButtonExample: React.FC = () => (
   </>
 );
 
-export const ButtonExample_: React.FC = () => (
+export const;
+
+export const ButtonExample_old: React.FC = () => (
   <Global>
     <div data-cypress="button">
       <Grid>
@@ -179,7 +236,15 @@ export const IconDisabledWrapper = styled(IconWrapper)`
   }
 `;
 
+const Label = styled.span`
+  text-transform: capitalize;
+`;
+
 export const Grid = styled.div`
   display: grid;
   grid-gap: 1rem;
+`;
+
+const Container = styled.div`
+  padding: 5px;
 `;

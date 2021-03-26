@@ -3,6 +3,16 @@ import styled from 'styled-components';
 import { Global, block } from 'box-styles';
 import { Label, Toggle } from 'ui';
 
+const configuration = {
+  vertical: {
+    value: [false, true],
+  },
+  horizontal: {
+    size: ['small', 'normal', 'large'],
+    disabled: [false, true],
+  },
+};
+
 export const ToggleExample: React.FC = () => {
   const [sqOne, sqOneClick] = React.useReducer((on) => !on, false);
   const [sqTwo, sqTwoClick] = React.useReducer((on) => !on, true);
