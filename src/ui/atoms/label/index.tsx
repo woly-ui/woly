@@ -11,12 +11,14 @@ import { Variant } from 'lib/types';
 interface LabelProps extends React.LabelHTMLAttributes<HTMLLabelElement> {
   children: React.ReactNode;
 }
-const LabelBase: React.FC<LabelProps & Variant> = ({
-  children,
-  variant = 'default',
-}) => <label data-variant={variant}>{children}</label>;
 
-export const Label = styled(LabelBase)`
+const map = (properties: LabelProps & Variant) => ({
+  children: properties.children,
+  'data-variant': properties.variant || 'default',
+});
+
+export const Label = styled.div.attrs(map)`
+  
   --vertical: calc(1px * var(--woly-component-level) * var(--woly-main-level));
   --horizontal: calc(
     var(--woly-const-m) + (1px * var(--woly-main-level)) + var(--vertical)
@@ -24,9 +26,7 @@ export const Label = styled(LabelBase)`
 
   padding: var(--woly-vertical, 6px) var(--woly-horizontal, 6px);
 
-  display: block;
-
   color: var(--woly-color, #000000);
   font-size: var(--woly-font-size, 15px);
   line-height: var(--woly-line-height, 24px);
-` as StyledComponent<'span', Record<string, unknown>, LabelProps & Variant>;
+` as StyledComponent<'div', Record<string, unknown>, LabelProps & Variant>;

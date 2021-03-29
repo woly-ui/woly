@@ -7,7 +7,17 @@ package: 'woly'
 import { Global } from 'box-styles';
 import { Label } from 'ui';
 
-`Label` is a description text for located near interactive component.
+The Label component lets you add captions for other elements in your project, such as other UI components that don't have their own labels.
+Users who click or tap the label activate the associated element. 
+
+The label text is not only visually associated with its corresponding text input; 
+it is programmatically associated with it too. 
+This means that, for example, a screen reader will read out the label when the user is focused on the form input, 
+making it easier for an assistive technology user to understand what data should be entered.
+
+You can click the associated label to focus/activate the input, as well as the input itself. 
+This increased hit area provides an advantage to anyone trying to activate the input, including those using a touch-screen device.
+
 
 ### Example
 
