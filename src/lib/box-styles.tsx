@@ -142,13 +142,38 @@ export const Playground: React.FC<{
 }> = ({ size = 'M', direction = 'horizontal', children }) => {
   const Wrapper = block[size];
   return (
-    <Global>
-      <Wrapper>
-        <Container data-dir={direction}>{children}</Container>
-      </Wrapper>
-    </Global>
+    <Frame>
+      <Global>
+        <Wrapper>
+          <Container data-dir={direction}>{children}</Container>
+        </Wrapper>
+      </Global>
+    </Frame>
   );
 };
+
+const Frame = styled.div`
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  padding: 1rem;
+  overflow: auto;
+
+  border: 2px solid var(--base, rgb(246, 248, 250));
+  border-radius: 4px;
+  border-bottom-right-radius: 0;
+
+  border-bottom-left-radius: 0;
+
+  resize: both;
+
+  & + .prism-code {
+    margin-top: 0;
+
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+`;
 
 const Container = styled.div`
   display: flex;
