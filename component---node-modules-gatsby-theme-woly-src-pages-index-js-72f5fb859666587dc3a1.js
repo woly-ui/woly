@@ -1,2 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[4],{iqAA:function(n,e,t){"use strict";t.r(e),t.d(e,"default",(function(){return r}));var u=t("q1tI"),a=t.n(u),i=t("IWfH");function r(){return a.a.createElement(i.a,null,"Homepage in a user's site")}}}]);
-//# sourceMappingURL=component---node-modules-gatsby-theme-woly-src-pages-index-js-72f5fb859666587dc3a1.js.map

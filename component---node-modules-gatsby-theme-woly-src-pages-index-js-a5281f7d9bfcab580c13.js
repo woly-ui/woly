@@ -1,0 +1,2 @@
+(self.webpackChunkwoly=self.webpackChunkwoly||[]).push([[414],{6535:function(e,n,u){"use strict";u.r(n),u.d(n,{default:function(){return l}});var t=u(7294),r=u(2977);function l(){return t.createElement(r.A,null,"Homepage in a user's site")}}}]);
+//# sourceMappingURL=component---node-modules-gatsby-theme-woly-src-pages-index-js-a5281f7d9bfcab580c13.js.map
