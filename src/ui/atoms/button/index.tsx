@@ -34,23 +34,20 @@ export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children?: never;
   className?: string;
-  left?: React.ReactNode;
-  right?: React.ReactNode;
+  icon?: React.ReactNode;
   text: React.ReactNode;
 }
 
 const ButtonBase: React.FC<ButtonProps & Variant> = ({
-  left,
-  right,
+  icon,
   text,
   type = 'button',
   variant = 'default',
   ...p
 }) => (
   <button type={type} data-variant={variant} {...p}>
-    {left && <span data-icon="left">{left}</span>}
-    <span>{text}</span>
-    {right && <span data-icon="right">{right}</span>}
+    {icon && <span data-icon="left">{icon}</span>}
+    <span data-text>{text}</span>
   </button>
 );
 
@@ -61,14 +58,14 @@ export const Button = styled(ButtonBase)`
   --woly-horizontal: calc(
     var(--woly-const-m) + (1px * var(--woly-main-level)) + var(--woly-vertical)
   );
-  --woly-gap: calc(
-    (1px * var(--woly-main-level)) +
-      (1px * var(--woly-main-level) * var(--woly-component-level))
-  );
+  --woly-gap: var(--woly-vertical, 6px);
+  --woly-compensate: var(--woly-const-m);
 
+  box-sizing: border-box;
   display: flex;
   flex-wrap: nowrap;
-  padding: var(--woly-vertical, 16px) var(--woly-horizontal, 6.4px);
+  padding: var(--woly-vertical, 16px) 0;
+  justify-content: center;
 
   color: var(--woly-color, #ffffff);
   font-size: var(--woly-font-size, 15px);
@@ -80,27 +77,54 @@ export const Button = styled(ButtonBase)`
   border-style: solid;
   border-width: var(--woly-border-width, 0);
   border-radius: var(--woly-rounding, 4px);
+  outline: none;
+
+  [data-icon] {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--woly-line-height, 24px);
+    height: var(--woly-line-height, 24px);
+    padding: 0 0 0 calc(var(--woly-horizontal) - var(--woly-compensate));
+  }
+
+  [data-text] {
+    padding: 0 var(--woly-horizontal, 6px);
+  }
+
+  span[data-icon='left'] + span[data-text] {
+    padding-left: var(--woly-gap, 6px);
+  }
+
+  svg > path {
+    fill: var(--woly-color, #ffffff);
+  }
 
   &:hover {
     color: var(--woly-color-hover, #ffffff);
-
     background-color: var(--woly-background-hover, #000000);
     border-color: var(--woly-border-hover, #000000);
-    outline: none;
+    svg > path {
+      fill: var(--woly-color-hover, #ffffff);
+    }
   }
 
   &:active {
-    color: var(--woly-color-focus, #ffffff);
-
-    background-color: var(--woly-background-focus, #000000);
-    border-color: var(--woly-border-focus, #000000);
-    outline: none;
+    color: var(--woly-color-active, #ffffff);
+    background-color: var(--woly-background-active, #000000);
+    border-color: var(--woly-border-active, #000000);
+    svg > path {
+      fill: var(--woly-color-active, #ffffff);
+    }
   }
 
-  &:focus,
-  &:focus-visible {
-    outline: none;
-    box-shadow: 0 0 10px -1px var(--woly-background);
+  &:focus {
+    color: var(--woly-color-focus, #ffffff);
+    background-color: var(--woly-background-focus, #000000);
+    border-color: var(--woly-border-focus, #000000);
+    svg > path {
+      fill: var(--woly-color-focus, #ffffff);
+    }
   }
 
   &:disabled {
@@ -108,18 +132,8 @@ export const Button = styled(ButtonBase)`
 
     background-color: var(--woly-background-disabled, #000000);
     border-color: var(--woly-border-disabled, #000000);
-    outline: none;
-  }
-
-  & [data-icon] {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: var(--woly-line-height, 24px);
-    height: var(--woly-line-height, 24px);
-  }
-
-  & > *:not(:first-child) {
-    margin-left: var(--woly-gap);
+    svg > path {
+      fill: var(--woly-color-disabled, #ffffff);
+    }
   }
 ` as StyledComponent<'button', Record<string, unknown>, ButtonProps & Variant>;
