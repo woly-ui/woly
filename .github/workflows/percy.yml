@@ -1,0 +1,27 @@
+name: Percy CI
+
+on:
+  pull_request:
+  push:
+
+jobs:
+  percy:
+    runs-on: ubuntu-latest
+    if: 'false'
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          persist-credentials: false
+
+      - name: Set Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Install Dependencies
+        run: yarn install --frozen-lockfile
+        env:
+          CYPRESS_CACHE_FOLDER: ~/.cache/cypress
+          CYPRESS_CRASH_REPORTS: '0'
+          PERCY_TOKEN: '${{ secrets.PERCY_TOKEN }}'

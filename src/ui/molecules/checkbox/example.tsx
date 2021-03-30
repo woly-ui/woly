@@ -15,29 +15,31 @@ export const CheckboxExample: React.FC = () => {
 
   return (
     <Global>
-      Travel packing checklist:
-      <block.L>
-        <Checkbox
-          text="passport"
-          isChecked
-          onChange={onPassportClick}
-          id="checkbox"
-          disabled
-        />
-        <Checkbox
-          text="money"
-          isChecked={isMoneyChecked}
-          onChange={onMoneyClick}
-          id="checkbox2"
-        />
-        <Checkbox
-          text="tickets"
-          isChecked={false}
-          onChange={onTicketsClick}
-          id="checkbox3"
-          disabled
-        />
-      </block.L>
+      <div data-cypress="checkbox">
+        <span>Travel packing checklist: </span>
+        <block.L>
+          <Checkbox
+            text="passport"
+            isChecked
+            onChange={onPassportClick}
+            id="checkbox"
+            disabled
+          />
+          <Checkbox
+            text="money"
+            isChecked={isMoneyChecked}
+            onChange={onMoneyClick}
+            id="checkbox2"
+          />
+          <Checkbox
+            text="tickets"
+            isChecked={false}
+            onChange={onTicketsClick}
+            id="checkbox3"
+            disabled
+          />
+        </block.L>
+      </div>
     </Global>
   );
 };

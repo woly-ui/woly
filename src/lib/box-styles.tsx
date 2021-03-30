@@ -1,3 +1,4 @@
+import React from 'react';
 import styled from 'styled-components';
 
 export const Global = styled.div`
@@ -16,6 +17,7 @@ export const Global = styled.div`
     --woly-background: var(--woly-primary);
     --woly-border: var(--woly-primary);
     --woly-color: #ffffff;
+    --woly-hint-color: #c4c4c4;
 
     --woly-background-hover: var(--woly-primary-hover);
     --woly-border-hover: var(--woly-primary-hover);
@@ -36,6 +38,7 @@ export const Global = styled.div`
     --woly-background: #ffffff;
     --woly-border: var(--woly-primary);
     --woly-color: var(--woly-primary);
+    --woly-hint-color: #c4c4c4;
 
     --woly-background-hover: #ffffff;
     --woly-border-hover: var(--woly-primary-hover);
@@ -56,6 +59,7 @@ export const Global = styled.div`
     --woly-background: #ffffff;
     --woly-border: #a39bb2;
     --woly-color: #000000;
+    --woly-hint-color: #c4c4c4;
 
     --woly-border-focus: var(--woly-primary);
 
@@ -68,10 +72,12 @@ export const Global = styled.div`
     --woly-border-width: 1px;
 
     --woly-background: #ffffff;
-    --woly-border: #a39bb2;
+    --woly-border: #eb5656;
     --woly-color: #000000;
 
     --woly-border-focus: #eb5656;
+    --woly-error-text: #eb5656;
+    --woly-hint-color: #c4c4c4;
 
     --woly-background-disabled: var(--woly-primary-disabled);
     --woly-border-disabled: var(--woly-primary-disabled);
@@ -129,3 +135,64 @@ const H = styled(Block)`
 `;
 
 export const block = { N, XS, S, M, L, XL, H };
+
+export const Playground: React.FC<{
+  size: keyof typeof block;
+  direction: 'vertical' | 'horizontal';
+}> = ({ size = 'M', direction = 'horizontal', children }) => {
+  const Wrapper = block[size];
+  return (
+    <Frame>
+      <Global>
+        <Wrapper>
+          <Container data-dir={direction}>{children}</Container>
+        </Wrapper>
+      </Global>
+    </Frame>
+  );
+};
+
+const Frame = styled.div`
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  padding: 1rem;
+  overflow: auto;
+
+  border: 2px solid var(--base, rgb(246, 248, 250));
+  border-radius: 4px;
+  border-bottom-right-radius: 0;
+
+  border-bottom-left-radius: 0;
+
+  resize: both;
+
+  & + .prism-code {
+    margin-top: 0;
+
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+`;
+
+const Container = styled.div`
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+
+  &[data-dir='vertical'] {
+    flex-direction: column;
+
+    & > * + * {
+      margin-top: 0.5rem;
+    }
+  }
+
+  &[data-dir='horizontal'] {
+    flex-direction: row;
+
+    & > * + * {
+      margin-left: 0.5rem;
+    }
+  }
+`;

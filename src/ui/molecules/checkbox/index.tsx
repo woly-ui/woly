@@ -49,17 +49,17 @@ export const Checkbox = styled(CheckboxBase)`
 
   user-select: none;
 
-  [data-block="container"] {
+  [data-block='container'] {
     display: flex;
     align-items: center;
 
     input:checked ~ [data-block='checkmark'] {
-      svg > rect{
-        fill: var(--woly-color,#B0A3F4);
+      svg > rect {
+        fill: var(--woly-color, #b0a3f4);
       }
     }
-    
-    [data-block="checkmark"]{
+
+    [data-block='checkmark'] {
       position: relative;
 
       width: var(--woly-checkbox-width);
@@ -71,15 +71,16 @@ export const Checkbox = styled(CheckboxBase)`
 
       margin-right: var(--woly---woly-gap, 15px);
 
-        svg > rect{
-          stroke: var(--woly-color,#C4C4C4);
-          fill: none;
-        }
+      svg > rect {
+        stroke: var(--woly-color, #c4c4c4);
+        stroke-width: 1.5px;
+        fill: none;
+      }
 
-       &:hover,
-       &:focus {
-        svg > rect{
-         stroke: var(--woly-color,#B0A3F4);
+      &:hover,
+      &:focus {
+        svg > rect {
+          stroke: var(--woly-color, #b0a3f4);
         }
       }
     }
@@ -89,18 +90,18 @@ export const Checkbox = styled(CheckboxBase)`
     pointer-events: none;
 
     [data-block='text'] {
-      color: var(--woly-color, #E4E4E4);
+      color: var(--woly-color, #e4e4e4);
     }
 
-    [data-block="checkmark"]{
-      svg > rect{
-        stroke: var(--woly-color,#E4E4E4);
+    [data-block='checkmark'] {
+      svg > rect {
+        stroke: var(--woly-color, #e4e4e4);
       }
     }
 
     input:checked ~ [data-block='checkmark'] {
-      svg > rect{
-        fill: var(--woly-color,#E4E4E4);
+      svg > rect {
+        fill: var(--woly-color, #e4e4e4);
       }
     }
   }

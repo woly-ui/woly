@@ -5,6 +5,8 @@ package: 'woly'
 ---
 
 import { CheckboxExample } from './example';
+import { Checkbox } from './index';
+import { Playground, block } from 'box-styles'
 
 Checkboxes allow you to setup selectable options for your users - either to toggle a single setting on or off, or to allow for multiple choices.
 
@@ -20,19 +22,10 @@ Use a checkbox when the user has to stop before performing an action. Checkbox w
 
 ### Example
 
-<CheckboxExample />
+<Playground>
+  <CheckboxExample variant="base"/>
+</Playground>
 
-```tsx
-const Example = () => (
-  <Checkbox
-    id="checkbox"
-    isChecked={true}
-    onChange={(e) => console.info('change', e)}
-    text="Checkbox text"
-    variant="base"
-  />
-);
-```
 
 ### Kinds
 

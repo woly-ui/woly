@@ -89,7 +89,6 @@ export const Button = styled(ButtonBase)`
     outline: none;
   }
 
-  &:focus,
   &:active {
     color: var(--woly-color-focus, #ffffff);
 
@@ -98,8 +97,15 @@ export const Button = styled(ButtonBase)`
     outline: none;
   }
 
+  &:focus,
+  &:focus-visible {
+    outline: none;
+    box-shadow: 0 0 10px -1px var(--woly-background);
+  }
+
   &:disabled {
     color: var(--woly-color-disabled, #ffffff);
+
     background-color: var(--woly-background-disabled, #000000);
     border-color: var(--woly-border-disabled, #000000);
     outline: none;

@@ -17,10 +17,10 @@ import { Variant } from 'lib/types';
  */
 
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
-  type: 'text' | 'password' | 'email';
+  className?: string;
   name: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => unknown;
-  className?: string;
+  type: 'text' | 'password' | 'email';
 }
 
 const InputBase: React.FC<InputProps & Variant> = ({
@@ -31,18 +31,12 @@ const InputBase: React.FC<InputProps & Variant> = ({
   variant = 'default',
   ...p
 }) => (
-  <input
-    className={className}
-    data-variant={variant}
-    name={name}
-    onChange={onChange}
-    type={type}
-    {...p}
-  />
+  <div data-variant={variant} className={className}>
+    <input name={name} onChange={onChange} type={type} {...p} />
+  </div>
 );
 
 export const Input = styled(InputBase)`
-  --woly-input-width: 100%;
   --woly-vertical: calc(
     1px * var(--woly-component-level) * var(--woly-main-level)
   );
@@ -50,10 +44,10 @@ export const Input = styled(InputBase)`
     var(--woly-const-m) + (1px * var(--woly-main-level)) + var(--woly-vertical)
   );
 
-  box-sizing: border-box;
+  --woly-width: 100%;
+  width: var(--woly-width);
 
-  width: var(--woly-input-width);
-  padding: var(--woly-vertical, 16px) var(--woly-horizontal, 6.4px);
+  box-sizing: border-box;
 
   color: var(--woly-color, #000000);
 
@@ -61,18 +55,25 @@ export const Input = styled(InputBase)`
   line-height: var(--woly-line-height, 24px);
 
   background: var(--woly-background, transparent);
-  border-color: var(--woly-border, var(--woly-background, #000000));
-  border-style: solid;
 
-  border-width: var(--woly-border-width, 1px);
-  border-radius: var(--woly-rounding, 3px);
+  input {
+    border-color: var(--woly-border, var(--woly-background, #000000));
+    border-style: solid;
 
-  &:focus {
+    border-width: var(--woly-border-width, 1px);
+    border-radius: var(--woly-rounding, 3px);
+
+    padding: var(--woly-vertical, 16px) var(--woly-horizontal, 6.4px);
+
+    outline: none;
+  }
+
+  input:focus {
     border-color: var(--woly-border-focus, #000000);
     outline: none;
   }
 
-  &:disabled {
+  input:disabled {
     color: var(--woly-color-disabled, #ffffff);
 
     background: var(--woly-background-disabled, #ffffff);

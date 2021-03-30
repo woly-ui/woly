@@ -1,10 +1,10 @@
 const { babel } = require('@rollup/plugin-babel');
 const { nodeResolve } = require('@rollup/plugin-node-resolve');
 const { rollup } = require('rollup');
-const { sizeSnapshot } = require('rollup-plugin-size-snapshot');
+// const { sizeSnapshot } = require('rollup-plugin-size-snapshot');
 const { terser } = require('rollup-plugin-terser');
 const alias = require('@rollup/plugin-alias');
-const analyze = require('rollup-plugin-visualizer');
+// const analyze = require('rollup-plugin-visualizer');
 const commonjs = require('@rollup/plugin-commonjs');
 const json = require('@rollup/plugin-json');
 const typescript = require('@wessberg/rollup-plugin-ts');
@@ -22,7 +22,7 @@ function buildWoly() {
       dir: directory(`dist/${name}`),
       file: {
         cjs: `${name}.js`,
-        es: `${name}.mjs`,
+        // es: `${name}.mjs`,
       },
       inputExtension: 'ts',
     }),
@@ -37,7 +37,7 @@ function buildCalendar() {
       dir: directory(`dist/${name}`),
       file: {
         cjs: `${name}.js`,
-        es: `${name}.mjs`,
+        // es: `${name}.mjs`,
       },
       inputExtension: 'ts',
     }),
@@ -85,18 +85,18 @@ function getPlugins(name, { isEsm = false } = {}) {
         }),
     commonjs: commonjs({ extensions }),
     resolve: nodeResolve({ extensions }),
-    sizeSnapshot: sizeSnapshot({ printInfo: false }),
-    analyzer: analyze({
-      filename: `stats/${name}.html`,
-      title: `${name} size report`,
-      sourcemap: true,
-      template: 'treemap',
-    }),
-    analyzerJson: analyze({
-      sourcemap: true,
-      json: true,
-      filename: `stats/${name}.json`,
-    }),
+    // sizeSnapshot: sizeSnapshot({ printInfo: false }),
+    // analyzer: analyze({
+    //   filename: `stats/${name}.html`,
+    //   title: `${name} size report`,
+    //   sourcemap: true,
+    //   template: 'treemap',
+    // }),
+    // analyzerJson: analyze({
+    //   sourcemap: true,
+    //   json: true,
+    //   filename: `stats/${name}.json`,
+    // }),
     terser: terser(
       minifyConfig({
         beautify: Boolean(process.env.PRETTIFY),
@@ -125,9 +125,9 @@ async function createEsCjs(
     cjsPlugins.babel,
     cjsPlugins.reactSvg,
     cjsPlugins.terser,
-    cjsPlugins.sizeSnapshot,
-    cjsPlugins.analyzer,
-    cjsPlugins.analyzerJson,
+    // cjsPlugins.sizeSnapshot,
+    // cjsPlugins.analyzer,
+    // cjsPlugins.analyzerJson,
   ];
 
   const esmPlugins = getPlugins(input === 'index' ? name : input, {
@@ -140,9 +140,9 @@ async function createEsCjs(
     cjsPlugins.reactSvg,
     esmPlugins.babel,
     esmPlugins.terser,
-    esmPlugins.sizeSnapshot,
-    esmPlugins.analyzer,
-    esmPlugins.analyzerJson,
+    // esmPlugins.sizeSnapshot,
+    // esmPlugins.analyzer,
+    // esmPlugins.analyzerJson,
   ];
 
   const inputFile = directory(`packages/${name}/${input}.${inputExtension}`);

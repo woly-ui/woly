@@ -15,7 +15,6 @@ import { ToggleExample } from './example';
 ```tsx
 const Example = () => (
   <Toggle
-    label={<Label text="Toggle label" />}
     isChecked={false}
     onChange={(e) => console.log('change', e)}
     id="toggle"
@@ -36,7 +35,6 @@ const Example = () => (
 | ----------- | -------------------------------------------- | ----------- | ------------------------------------------------- |
 | `id`        | `string`                                     |             | HTML id attribute                                 |
 | `isChecked` | `boolean`                                    |             | Whether toggle is checked or not                  |
-| `label`     | `React.ReactNode`                            | `null`      | Label component                                   |
 | `onChange`  | `React.ChangeEventHandler<HTMLInputElement>` |             | Callback when toggle is clicked                   |
 | `variant`   | `string`                                     | `'default'` | Variant prop to style Toggle component            |
 | `...`       | `HTMLInputElement`                           | `{}`        | Other props are inherited from `HTMLInputElement` |
