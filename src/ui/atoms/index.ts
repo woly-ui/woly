@@ -8,3 +8,4 @@ export { MenuList } from './menu-list';
 export { Notification } from './notification';
 export { Popover } from './popover';
 export { Surface } from './surface';
+export { TextArea } from './text-area';

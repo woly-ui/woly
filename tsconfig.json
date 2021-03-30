@@ -4,7 +4,7 @@
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
-    "isolatedModules": true,
+    "isolatedModules": false,
     "jsx": "react",
     "lib": ["dom", "dom.iterable", "esnext"],
     "module": "esnext",
@@ -23,7 +23,8 @@
       "box-styles": ["lib/box-styles"],
       "icons": ["static/icons"],
       "ui": ["ui/"]
-    }
+    },
+    "types": ["cypress", "@percy/cypress", "cypress-real-events"]
   },
   "exclude": ["./node_modules", "./dist", "./.storybook"]
 }

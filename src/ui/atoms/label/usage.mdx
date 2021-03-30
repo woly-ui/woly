@@ -4,8 +4,9 @@ category: atoms
 package: 'woly'
 ---
 
-import { Global } from 'box-styles';
-import { Label } from 'ui';
+import { LabelExample } from './example';
+import { Playground, block } from 'box-styles'
+import { Label } from './index';
 
 The Label component lets you add captions for other elements in your project, such as other UI components that don't have their own labels.
 Users who click or tap the label activate the associated element. 
@@ -21,13 +22,19 @@ This increased hit area provides an advantage to anyone trying to activate the i
 
 ### Example
 
-<Global>
+<Playground>
   <Label variant="base">Base label</Label>
-</Global>
+</Playground>
 
-```tsx
-const Example = () => <Label text="Base label" variant="base" />;
-```
+<!-- <LabelExample /> -->
+
+### Variants
+
+Error variant can be used to focus user attention on error.
+
+<Playground>
+  <Label variant="error">Error label</Label>
+</Playground>
 
 ### Kinds
 
@@ -39,6 +46,5 @@ const Example = () => <Label text="Base label" variant="base" />;
 
 | Name          | Type               | Default     | Description                                                                   |
 | ------------- | ------------------ | ----------- | ----------------------------------------------------------------------------- |
-| `children`    | `React.ReactNode`  |             | Label content                                                                   |
-| `variant`     | `string`           | `'default'` | Variant prop to style Input component                                         |
+|`variant`     | `string`           | `'default'` | Variant prop to style Input component                                          |
 | `...`         | `HTMLLabelElement` | `{}`        | Other props are inherited from `HTMLLabelElement`                             |

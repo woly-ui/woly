@@ -64,11 +64,21 @@ export const InputPasswordBase: React.FC<InputPasswordProps & Variant> = ({
 };
 
 export const InputPassword = styled(InputPasswordBase)`
+  --woly-vertical: calc(
+    1px * var(--woly-component-level) * var(--woly-main-level)
+  );
+  --woly-horizontal: calc(
+    var(--woly-const-m) + (1px * var(--woly-main-level)) + var(--woly-vertical)
+  );
+
   --woly-gap: calc(
     (1px * var(--woly-main-level)) +
       (1px * var(--woly-main-level) * var(--woly-component-level))
   );
-  position: relative;
+
+  padding: var(--woly-vertical, 16px) var(--woly-horizontal, 6.4px);
+
+  box-sizing: border-box;
 
   display: flex;
   align-items: center;
@@ -93,6 +103,9 @@ export const InputPassword = styled(InputPasswordBase)`
   }
 
   input {
+    --woly-width: 100%;
+    width: var(--woly-width);
+
     padding-right: var(--woly-gap, 6.4px);
     border: 0;
     outline: none;
