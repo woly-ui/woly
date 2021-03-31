@@ -40,7 +40,7 @@ const ToggleBase: React.FC<ToggleProps & Variant> = ({
         {...p}
       />
       <span data-checkbox>
-        <span/>
+        <span />
       </span>
     </label>
   </div>

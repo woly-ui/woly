@@ -4,36 +4,106 @@ category: atoms
 package: 'woly'
 ---
 
-import { Global, block } from 'box-styles';
+import { Playground, block } from 'box-styles'
 import { MenuList } from 'ui';
+import { InfoIcon, Check } from 'icons';
 
-`MenuList` is a list of items related to a single object. This component can be used in menu dropdown or input autosuggestion components.
+`MenuList` is a list of items related to a single object. 
+A MenuLis displays a list of choices on a temporary surface. It appears when the user interacts with a button, or other control.
+This component can be used in menu dropdown or input autosuggestion components.
+
+Simple menus open over the anchor element by default. 
+When close to a screen edge, simple menus vertically realign to make sure that all menu items are completely visible.
+
+MenuItem
+This component defines a selectable item in a MenuList. It should only be used as a descendant of a MenuList. 
+It does not need to be a direct child of the MenuList component.
 
 ### Example
 
-<Global style={{ maxWidth: '300px' }}>
-  <block.M>
-    <MenuList
+<Playground>
+  <MenuList
       menu={[
-        { id: 0, item: 'Red' },
-        { id: 1, item: 'Green' },
-        { id: 2, item: 'Blue' },
+        { id: 0, text: 'Red' },
+        { id: 1, text: 'Green' },
+        { id: 2, text: 'Blue' },
       ]}
     />
-  </block.M>
-</Global>
+</Playground>
 
-```tsx
-const Example = () => (
-  <MenuList
-    menu={[
-      { id: 0, item: 'Red' },
-      { id: 1, item: 'Green' },
-      { id: 2, item: 'Blue' },
-    ]}
-  />
-);
-```
+<!-- <MenuListExample /> -->
+
+### Icons
+
+MenuList items can consist icon on the left side or the right. Use icons on the both sides is not recommended.
+
+  <Playground>
+    <MenuList
+      menu={[
+        { left: <InfoIcon/>, id: 0, text: 'Red' },
+        { left: <InfoIcon/>, id: 1, text: 'Green' },
+        { left: <InfoIcon/>, id: 2, text: 'Blue' },
+      ]}
+    />
+    <MenuList
+      menu={[
+        {  id: 0, text: 'Red', right: <Check/> },
+        {  id: 1, text: 'Green', right: <Check/> },
+        {  id: 2, text: 'Blue', right: <Check/> },
+      ]}
+    />
+    <MenuList
+      menu={[
+        { left: <InfoIcon/>, id: 0, text: 'Red', right: <Check/> },
+        { left: <InfoIcon/>, id: 1, text: 'Green', right: <Check/> },
+        { left: <InfoIcon/>, id: 2, text: 'Blue', right: <Check/> },
+      ]}
+    />
+     <MenuList
+      menu={[
+        { left: <InfoIcon/>, id: 0, text: 'Red', right: <Check/> },
+        { left: <InfoIcon/>, id: 1, text: 'Green', right: <Check/> },
+        { left: <InfoIcon/>, id: 2, text: 'Blue', right: <Check/> },
+      ]}
+      disabled
+    />
+ </Playground>
+
+ ### Sizes
+
+Size controlled by the `component-level` block property not from the props.
+
+<Playground>
+  <block.S>
+    <MenuList
+      menu={[
+        { left: <InfoIcon/>, id: 0, text: 'Red' },
+        { left: <InfoIcon/>, id: 1, text: 'Green' },
+        { left: <InfoIcon/>, id: 2, text: 'Blue' },
+      ]}
+    />
+  </block.S>
+  <block.L>
+    <MenuList
+      menu={[
+        { left: <InfoIcon/>, id: 0, text: 'Red' },
+        { left: <InfoIcon/>, id: 1, text: 'Green' },
+        { left: <InfoIcon/>, id: 2, text: 'Blue' },
+      ]}
+    />
+  </block.L>
+  <block.XL>
+    <MenuList
+      menu={[
+        { left: <InfoIcon/>, id: 0, text: 'Red' },
+        { left: <InfoIcon/>, id: 1, text: 'Green' },
+        { left: <InfoIcon/>, id: 2, text: 'Blue' },
+      ]}
+    />
+  </block.XL>
+</Playground>
+
+
 
 ### Kinds
 
