@@ -44,72 +44,78 @@ const ChipBase: React.FC<ChipProps & Variant> = ({
   onClick,
   variant = 'default',
 }) => {
-  const divRole = onClick ? 'button' : 'div';
-  const divTabIndex = onClick ? 1 : 0 ;
-  return(
+  const chipRole = onClick ? 'button' : 'div';
+  const chipTabIndex = onClick ? 1 : 0;
+
+  return (
     <div className={className} data-disabled={disabled}>
       <div
         data-block="label"
         data-variant={variant}
         onClick={onClick}
-        role={divRole}
-        tabIndex={divTabIndex}
-       >
+        role={chipRole}
+        tabIndex={chipTabIndex}
+      >
         {children}
       </div>
-      { action && 
+      {action && (
         <button
+          data-block="label"
           data-icon="right"
           data-variant={variant}
           disabled={disabled}
           onClick={onActionClick}
-          type="button" 
+          type="button"
         >
           {action}
-        </button>}
+        </button>
+      )}
     </div>
-  )
+  );
 };
 
 export const Chip = styled(ChipBase)`
-  --woly-vertical: calc(1px * var(--woly-component-level) * var(--woly-main-level));
+  --woly-vertical: calc(
+    1px * var(--woly-component-level) * var(--woly-main-level)
+  );
   --woly-horizontal: calc(
     var(--woly-const-m) + (1px * var(--woly-main-level)) + var(--woly-vertical)
   );
   --woly-gap: 9px;
   --woly-line-height: 24px;
   --woly-right-offset: calc(var(--woly-line-height) + var(--woly-gap));
-  
+
   position: relative;
 
   [role] {
     display: flex;
     align-items: center;
-    justify-content: ${(props) => (props.action ? "space-between" : "center")};
+    justify-content: ${(props) => (props.action ? 'space-between' : 'center')};
 
     color: var(--woly-color, #ffffff);
 
     font-size: var(--woly-font-size, 12px);
     line-height: var(--woly-line-height, 24px);
 
-    background-color: var(--woly-background, #000000);
+    background-color: var(--woly-background, #B0A3F4);
     border-color: var(--woly-border, #000000);
     border-style: solid;
-    border-width: var(--woly-border-width, 0);
+    border-width: var(--woly-border-width, 0px);
 
-    border-radius: var(--woly-rounding, 4px);
+    border-radius: var(--woly-rounding, 3px);
 
-    padding: var(--woly-vertical, 16px) var(--woly-horizontal, 6px);
-    padding-right: ${(props) => (props.action && "var(--woly-right-offset)")};
+    padding: var(--woly-vertical, 0px) var(--woly-horizontal, 9px); 
+    padding-right: ${(props) => props.action && 'var(--woly-right-offset)'};
+
+    outline: none;
   }
 
-  [role]:hover {
+  [role='button']:hover {
     color: var(--woly-color-hover, #ffffff);
 
     background-color: var(--woly-background-hover, #000000);
     border-color: var(--woly-border-hover, #000000);
     outline: none;
-    cursor: pointer;
   }
 
   [role='button']:focus,
@@ -121,19 +127,20 @@ export const Chip = styled(ChipBase)`
     outline: none;
   }
 
-  
   &[data-disabled='true'] [role] {
     color: var(--woly-color-disabled, #ffffff);
-    background: var(--woly-background-disabled, #ffffff);
-    border-color: var(
-      --woly-border-disabled,
-      var(--woly-background-disabled, #000000)
-    );
+    background: var(--woly-background-disabled, #f5f5f5);
+    border: none;
+
     outline: none;
     pointer-events: none;
+
+    svg > path {
+      fill: var(--woly-color, #c0c0c0);
+    }
   }
 
-  &[data-disabled='true'] [data-icon]{
+  &[data-disabled='true'] [data-icon] {
     pointer-events: none;
   }
 
@@ -141,13 +148,39 @@ export const Chip = styled(ChipBase)`
     display: flex;
     align-items: center;
     justify-content: center;
+
     position: absolute;
-    cursor: pointer;
-    right: var(--woly-gap, 9px);
-    z-index: 1;
     top: 50%;
     transform: translateY(-50%);
-    width: var(--woly-line-height, 12px);
-    height: var(--woly-line-height, 12px);
+    z-index: 1;
+
+    right: var(--woly-gap, 9px);
+    
+    width: var(--woly-line-height, 24px);
+    height: var(--woly-line-height, 24px);
+
+    border-radius: 3px; 
+    border-color: transparent;
+    background: transparent;
+
+    outline: none;
+
+    svg > path {
+      fill: var(--woly-color, #ffffff);
+    }
+
+    &:hover{
+      background: #9381F1;
+      opacity: 0.3;
+    }
+
+    &:active{
+      background: #9381F1;
+    }
+
+    &:focus{
+      background: #9381F1;
+      border: 1.5px solid #9381F1;
+    }
   }
 ` as StyledComponent<'div', Record<string, unknown>, ChipProps & Variant>;

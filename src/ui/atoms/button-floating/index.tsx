@@ -4,8 +4,6 @@ import { Variant } from 'lib/types';
 
 /**
  * --woly-bf-size
- * --woly-bf-position-bottom
- * --woly-bf-position-right
  *
  * --woly-background
  * --woly-border
@@ -53,10 +51,6 @@ const ButtonFloatingBase: React.FC<Props & Variant> = ({
 };
 
 export const ButtonFloating = styled(ButtonFloatingBase)`
-  position: fixed;
-  right: var(--woly-bf-position-right, 0);
-  bottom: var(--woly-bf-position-bottom, 0);
-
   display: flex;
   align-items: center;
   justify-content: center;

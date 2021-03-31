@@ -4,6 +4,28 @@ import { Chip } from 'ui';
 import { CloseIcon } from 'icons';
 import { Global, block } from 'box-styles';
 
+/**
+ * Variants             | Icon            | Action
+ * Size     | Disabled  | False  | True   | False   | True
+ * ---------|-----------|--------|--------|---------|-------
+ * Small    | False     |
+ *          | True      |
+ *
+ * Normal   | False     |
+ *          | True      |
+ */
+
+const configuration = {
+  vertical: {
+    icon: [false, true],
+    action: [false, true],
+  },
+  horizontal: {
+    size: ['small', 'normal'],
+    disabled: [false, true],
+  },
+};
+
 export const ChipExample: React.FC = () => (
   <Global>
     <Chips>
@@ -17,55 +39,12 @@ export const ChipExample: React.FC = () => (
               <CloseIcon />
             </IconWrapper>
           }
-          onActionClick={() => console.info('ActionIcon clicked')}>
-          Chip with close S
+          onActionClick={() => console.info('ActionIcon clicked')}
+        >
+          Click chip and icon S
         </Chip>
         <Chip
           variant="secondary"
-          onClick={() => console.info('Chip clicked')}
-          action={
-            <IconWrapper>
-              <CloseIcon />
-            </IconWrapper>
-          }
-          onActionClick={() => console.info('ActionIcon clicked')}>
-          Chip with close S
-        </Chip>
-        <Chip
-          variant="primary"
-          action={
-            <IconWrapper>
-              <CloseIcon />
-            </IconWrapper>
-          }
-          onActionClick={() => console.info('ActionIcon clicked')}>
-          Chip with icon S
-        </Chip>
-        <Chip
-          variant="secondary"
-          action={
-            <IconWrapper>
-              <CloseIcon />
-            </IconWrapper>
-          }
-          onActionClick={() => console.info('ActionIcon clicked')}>
-          Chip with icon S
-        </Chip>
-        <Chip variant="secondary" onClick={() => console.info('Chip clicked')}>
-          Chip with text S
-        </Chip>
-        <Chip variant="primary" onClick={() => console.info('Chip clicked')}>
-          Chip with text S
-        </Chip>
-        <Chip variant="primary">Chip without icon S</Chip>
-        <Chip variant="primary" disabled>
-          Disabled chip S
-        </Chip>
-      </block.S>
-      <block.XS>
-        <span>Extra Small</span>
-        <Chip
-          variant="primary"
           onClick={() => console.info('Chip clicked')}
           action={
             <IconWrapper>
@@ -74,52 +53,9 @@ export const ChipExample: React.FC = () => (
           }
           onActionClick={() => console.info('ActionIcon clicked')}
         >
-          Chip with close XS
+          Click chip and icon S
         </Chip>
-        <Chip
-          variant="secondary"
-          onClick={() => console.info('Chip clicked')}
-          action={
-            <IconWrapper>
-              <CloseIcon />
-            </IconWrapper>
-          }
-          onActionClick={() => console.info('ActionIcon clicked')}>
-          Chip with close XS
-        </Chip>
-        <Chip
-          variant="primary"
-          action={
-            <IconWrapper>
-              <CloseIcon />
-            </IconWrapper>
-          }
-          onActionClick={() => console.info('ActionIcon clicked')}>
-          Chip with icon XS
-        </Chip>
-        <Chip
-          variant="secondary"
-          action={
-            <IconWrapper>
-              <CloseIcon />
-            </IconWrapper>
-          }
-          onActionClick={() => console.info('ActionIcon clicked')}>
-          Chip with icon XS
-        </Chip>
-        <Chip variant="secondary" onClick={() => console.info('Chip clicked')}>
-          Chip with text XS
-        </Chip>
-        <Chip variant="primary" onClick={() => console.info('Chip clicked')}>
-          Chip with text XS
-        </Chip>
-        <Chip variant="primary">
-          Chip without icon XS
-        </Chip>
-        <Chip variant="primary" disabled>
-          Disabled chip XS
-        </Chip>
-      </block.XS>
+      </block.S>
     </Chips>
   </Global>
 );

@@ -63,18 +63,18 @@ const dependsOnWoly = {
 
 const getModules = (name) => ({
   main: `${name}.js`,
-  module: `${name}.mjs`,
-  'jsnext:main': `${name}.mjs`,
+  // module: `${name}.mjs`,
+  // 'jsnext:main': `${name}.mjs`,
   types: `${name}.d.ts`,
   typings: `${name}.d.ts`,
-  exports: {
-    '.': {
-      require: `./${name}.js`,
-      default: `./${name}.mjs`,
-    },
-    [`./${name}.mjs`]: `./${name}.mjs`,
-    './package.json': './package.json',
-  },
+  // exports: {
+  //   '.': {
+  //     require: `./${name}.js`,
+  //     default: `./${name}.mjs`,
+  //   },
+  //   [`./${name}.mjs`]: `./${name}.mjs`,
+  //   './package.json': './package.json',
+  // },
 });
 
 const woly = {

@@ -1,20 +1,10 @@
 {
   "name": "woly",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Exhaustive component library for React",
   "main": "woly.js",
-  "module": "woly.mjs",
-  "jsnext:main": "woly.mjs",
   "types": "woly.d.ts",
   "typings": "woly.d.ts",
-  "exports": {
-    ".": {
-      "require": "./woly.js",
-      "default": "./woly.mjs"
-    },
-    "./woly.mjs": "./woly.mjs",
-    "./package.json": "./package.json"
-  },
   "files": [
     "README.md",
     "LICENSE",

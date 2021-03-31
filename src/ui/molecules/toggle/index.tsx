@@ -19,7 +19,6 @@ interface ToggleProps extends React.InputHTMLAttributes<HTMLInputElement> {
   className?: string;
   id: string;
   isChecked: boolean;
-  label?: React.ReactNode;
   onChange: React.ChangeEventHandler<HTMLInputElement>;
 }
 
@@ -27,14 +26,12 @@ const ToggleBase: React.FC<ToggleProps & Variant> = ({
   className,
   id,
   isChecked,
-  label,
   onChange,
   variant = 'default',
   ...p
 }) => (
   <div className={className} data-variant={variant}>
-    <label htmlFor={id} style={{ display: 'flex' }}>
-      {label && <span style={{ cursor: 'pointer' }}>{label}</span>}
+    <label htmlFor={id}>
       <input
         checked={isChecked}
         id={id}
