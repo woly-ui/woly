@@ -74,6 +74,8 @@ export const Global = styled.div`
     --woly-background: #ffffff;
     --woly-border: #eb5656;
     --woly-color: #000000;
+    --woly-label-color: #eb5656;
+    --woly-checkbox-color: #eb5656;
 
     --woly-border-focus: #eb5656;
     --woly-error-text: #eb5656;

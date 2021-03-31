@@ -1,3 +1,4 @@
+import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
 import { Variant } from 'lib/types';
 
@@ -8,19 +9,22 @@ import { Variant } from 'lib/types';
  */
 
 interface LabelProps extends React.LabelHTMLAttributes<HTMLLabelElement> {
-  text: React.ReactNode;
-  children?: never;
+  children: React.ReactNode;
 }
 
 const map = (properties: LabelProps & Variant) => ({
-  children: properties.text,
   'data-variant': properties.variant || 'default',
 });
 
-export const Label = styled.span.attrs(map)`
-  display: block;
+export const Label = styled.label.attrs(map)`
+  --vertical: calc(1px * var(--woly-component-level) * var(--woly-main-level));
+  --horizontal: calc(
+    var(--woly-const-m) + (1px * var(--woly-main-level)) + var(--vertical)
+  );
 
-  color: var(--woly-color, #000000);
-  font-size: var(--woly-font-size, 16px);
-  line-height: var(--woly-line-height, 19.2px);
-` as StyledComponent<'span', Record<string, unknown>, LabelProps & Variant>;
+  padding: var(--woly-vertical, 6px) var(--woly-horizontal, 6px);
+
+  color: var(--woly-label-color, #000000);
+  font-size: var(--woly-font-size, 15px);
+  line-height: var(--woly-line-height, 24px);
+` as StyledComponent<'label', Record<string, unknown>, LabelProps & Variant>;

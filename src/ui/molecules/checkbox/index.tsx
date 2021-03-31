@@ -1,6 +1,6 @@
 import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
-import { CheckIcon } from 'icons';
+import { CheckIcon, UnCheckIcon } from 'icons';
 import { Variant } from 'lib/types';
 
 interface CheckboxProps {
@@ -22,11 +22,12 @@ const CheckboxBase: React.FC<CheckboxProps & Variant> = ({
   variant = 'default',
 }) => (
   <label htmlFor={id} className={className} data-variant={variant}>
-    <div data-block="container" data-disabled={disabled}>
+    <span data-block="container" data-disabled={disabled}>
       <input type="checkbox" id={id} checked={isChecked} onChange={onChange} />
-      <span data-block="checkmark">{<CheckIcon />}</span>
+      <span data-block="checkmark-unchecked">{<UnCheckIcon />}</span>
+      <span data-block="checkmark-checked">{<CheckIcon />}</span>
       {text && <span data-block="text">{text}</span>}
-    </div>
+    </span>
   </label>
 );
 
@@ -53,38 +54,43 @@ export const Checkbox = styled(CheckboxBase)`
     display: flex;
     align-items: center;
 
-    input:checked ~ [data-block='checkmark'] {
-      svg > rect {
-        fill: var(--woly-color, #b0a3f4);
-      }
-    }
-
-    [data-block='checkmark'] {
-      position: relative;
-
+    [data-block='checkmark-checked'],
+    [data-block='checkmark-unchecked'] {
       width: var(--woly-checkbox-width);
       height: var(--woly-checkbox-height);
 
-      display: flex;
       align-items: center;
       justify-content: center;
 
       margin-right: var(--woly---woly-gap, 15px);
+  }
 
+    [data-block='checkmark-unchecked']{
+      display: block;
+    }
+
+    [data-block='checkmark-checked'] {
+      display: none;
+    }
+
+    input:checked ~ [data-block='checkmark-checked'] {
+      display: block;
+    }
+
+    input:checked ~ [data-block='checkmark-unchecked']{
+      display: none;
+    }
+
+   [data-block='checkmark-unchecked']{
+    &:hover,
+    &:focus {
       svg > rect {
-        stroke: var(--woly-color, #c4c4c4);
-        stroke-width: 1.5px;
-        fill: none;
-      }
-
-      &:hover,
-      &:focus {
-        svg > rect {
-          stroke: var(--woly-color, #b0a3f4);
+        stroke: var(--woly-color, #b0a3f4);
         }
       }
     }
   }
+  
 
   [data-disabled='true'] {
     pointer-events: none;
@@ -93,17 +99,30 @@ export const Checkbox = styled(CheckboxBase)`
       color: var(--woly-color, #e4e4e4);
     }
 
-    [data-block='checkmark'] {
+    [data-block='checkmark-unchecked']{
+      display: block;
+
       svg > rect {
-        stroke: var(--woly-color, #e4e4e4);
+        stroke: var(--woly-checkbox-color, #e4e4e4);
       }
     }
 
-    input:checked ~ [data-block='checkmark'] {
-      svg > rect {
-        fill: var(--woly-color, #e4e4e4);
+    [data-block='checkmark-checked'] {
+      display: none;
+    }
+
+    input:checked ~ [data-block='checkmark-checked'] {
+      display: block;
+
+      svg > rect{
+        fill: var( --woly-checkbox-color, #e4e4e4);
       }
     }
+
+    input:checked ~ [data-block='checkmark-unchecked']{
+      display: none;
+    }
+
   }
 
   [data-block='text'] {
