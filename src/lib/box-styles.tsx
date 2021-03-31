@@ -153,6 +153,22 @@ export const Playground: React.FC<{
   );
 };
 
+type StateType = {
+  change: (value: any) => any;
+  children: (value: any, change: any) => void;
+  initial: any;
+};
+
+export const State = ({ initial, change, children }: StateType) => {
+  const [value, setValue] = React.useState(initial);
+
+  const onChange = React.useCallback(() => {
+    setValue(change(value));
+  }, [change, value]);
+
+  return <>{children(value, onChange)}</>;
+};
+
 const Frame = styled.div`
   box-sizing: border-box;
   width: 100%;
@@ -196,4 +212,41 @@ const Container = styled.div`
       margin-left: 0.5rem;
     }
   }
+`;
+
+export const Content = styled.div`
+  padding: 16px;
+`;
+
+export const FormBlock = styled.div`
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+`;
+
+export const Aside = styled.div`
+  height: 100%;
+  width: 0;
+  top: 0;
+  left: 0;
+  position: absolute;
+  overflow-x: hidden;
+  transition: 0.5s;
+  display: flex;
+
+  li {
+    text-decoration: none;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+  }
+`;
+
+export const Menu = styled.ul`
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  padding: 100px 30px;
+  box-sizing: border-box;
 `;
