@@ -24,8 +24,8 @@ const CheckboxBase: React.FC<CheckboxProps & Variant> = ({
   <label htmlFor={id} className={className} data-variant={variant}>
     <span data-block="container" data-disabled={disabled}>
       <input type="checkbox" id={id} checked={isChecked} onChange={onChange} />
-      <span data-block="checkmark-unchecked">{<UnCheckIcon />}</span>
-      <span data-block="checkmark-checked">{<CheckIcon />}</span>
+      <span data-checkmark="unchecked"><UnCheckIcon /></span>
+      <span data-checkmark="checked"><CheckIcon /></span>
       {text && <span data-block="text">{text}</span>}
     </span>
   </label>
@@ -54,8 +54,7 @@ export const Checkbox = styled(CheckboxBase)`
     display: flex;
     align-items: center;
 
-    [data-block='checkmark-checked'],
-    [data-block='checkmark-unchecked'] {
+    [data-checkmark] {
       width: var(--woly-checkbox-width);
       height: var(--woly-checkbox-height);
 
@@ -63,34 +62,33 @@ export const Checkbox = styled(CheckboxBase)`
       justify-content: center;
 
       margin-right: var(--woly---woly-gap, 15px);
-  }
+    }
 
-    [data-block='checkmark-unchecked']{
+    [data-checkmark='unchecked'] {
       display: block;
     }
 
-    [data-block='checkmark-checked'] {
+    [data-checkmark='checked'] {
       display: none;
     }
 
-    input:checked ~ [data-block='checkmark-checked'] {
+    input:checked ~ [data-checkmark='checked'] {
       display: block;
     }
 
-    input:checked ~ [data-block='checkmark-unchecked']{
+    input:checked ~ [data-checkmark='unchecked'] {
       display: none;
     }
 
-   [data-block='checkmark-unchecked']{
-    &:hover,
-    &:focus {
-      svg > rect {
-        stroke: var(--woly-color, #b0a3f4);
+    [data-checkmark='unchecked'] {
+      &:hover,
+      &:focus {
+        svg > rect {
+          stroke: var(--woly-color, #b0a3f4);
         }
       }
     }
   }
-  
 
   [data-disabled='true'] {
     pointer-events: none;
@@ -99,30 +97,29 @@ export const Checkbox = styled(CheckboxBase)`
       color: var(--woly-color, #e4e4e4);
     }
 
-    [data-block='checkmark-unchecked']{
+    [data-checkmark='unchecked'] {
       display: block;
 
       svg > rect {
-        stroke: var(--woly-checkbox-color, #e4e4e4);
+        stroke: var(--woly-canvas-color, #e4e4e4);
       }
     }
 
-    [data-block='checkmark-checked'] {
+    [data-checkmark='checked'] {
       display: none;
     }
 
-    input:checked ~ [data-block='checkmark-checked'] {
+    input:checked ~ [data-checkmark='checked'] {
       display: block;
 
-      svg > rect{
-        fill: var( --woly-checkbox-color, #e4e4e4);
+      svg > rect {
+        fill: var(--woly-canvas-color, #e4e4e4);
       }
     }
 
-    input:checked ~ [data-block='checkmark-unchecked']{
+    input:checked ~ [data-checkmark='unchecked'] {
       display: none;
     }
-
   }
 
   [data-block='text'] {
