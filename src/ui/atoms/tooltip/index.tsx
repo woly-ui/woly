@@ -40,13 +40,15 @@ const TooltipBase: React.FC<TooltipProps & Variant> = ({
   }, [position, ref]);
 
   React.useEffect(() => {
+    if (typeof window === 'undefined' || !window.document) return;
+
     setPosition(position);
     document.addEventListener('scroll', onScroll);
 
     return () => {
       document.removeEventListener('scroll', onScroll);
     };
-  }, [position, document, ref]);
+  }, [position, ref]);
 
   return (
     <div
