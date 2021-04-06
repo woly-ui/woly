@@ -13,31 +13,28 @@
   },
   "settings": {
     "import/parsers": {
-      "@typescript-eslint/parser": [".ts", ".tsx"]
+      "@typescript-eslint/parser": [
+        ".ts",
+        ".tsx"
+      ]
     },
     "import/resolver": {
       "typescript": {
         "project": "./tsconfig.json"
       },
       "alias": [
-        ["box-styles", "./src/lib/box-styles"],
-        ["icons", "./src/static/icons"]
+        [
+          "box-styles",
+          "./src/lib/box-styles"
+        ],
+        [
+          "icons",
+          "./src/static/icons"
+        ]
       ]
     }
   },
   "rules": {
     "import/order": "off"
-    // "import/order": [
-    //   "warn",
-    //   {
-    //     "groups": [
-    //       "builtin",
-    //       ["external", "internal"],
-    //       "parent",
-    //       "sibling",
-    //       "index"
-    //     ]
-    //   }
-    // ]
   }
 }

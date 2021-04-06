@@ -31,6 +31,7 @@ interface ChipProps {
   children?: string;
   className?: string;
   disabled?: boolean;
+  icon?: React.ReactNode;
   onActionClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
   onClick?: (event: React.MouseEvent<HTMLDivElement>) => void;
 }
@@ -40,13 +41,13 @@ const ChipBase: React.FC<ChipProps & Variant> = ({
   children,
   className,
   disabled,
+  icon,
   onActionClick,
   onClick,
   variant = 'default',
 }) => {
   const chipRole = onClick ? 'button' : 'div';
   const chipTabIndex = onClick ? 1 : 0;
-
   return (
     <div className={className} data-disabled={disabled}>
       <div
@@ -56,20 +57,23 @@ const ChipBase: React.FC<ChipProps & Variant> = ({
         role={chipRole}
         tabIndex={chipTabIndex}
       >
+        {icon && <div data-icon="left">{icon}</div>}
         {children}
+        {action && (
+          <>
+            <button
+              data-icon="right"
+              data-variant={variant}
+              disabled={disabled}
+              onClick={onActionClick}
+              type="button"
+            >
+              {action}
+            </button>
+            <div data-type="stub"></div>
+          </>
+        )}
       </div>
-      {action && (
-        <button
-          data-block="label"
-          data-icon="right"
-          data-variant={variant}
-          disabled={disabled}
-          onClick={onActionClick}
-          type="button"
-        >
-          {action}
-        </button>
-      )}
     </div>
   );
 };
@@ -81,106 +85,116 @@ export const Chip = styled(ChipBase)`
   --woly-horizontal: calc(
     var(--woly-const-m) + (1px * var(--woly-main-level)) + var(--woly-vertical)
   );
-  --woly-gap: 9px;
   --woly-line-height: 24px;
-  --woly-right-offset: calc(var(--woly-line-height) + var(--woly-gap));
 
   position: relative;
 
+  box-sizing: border-box;
+
+  display: flex;
+  align-items: center;
+
+  background-color: var(--woly-background, #b0a3f4);
+  color: var(--woly-color, #ffffff);
+
+  border-radius: var(--woly-rounding, 3px);
+
   [role] {
-    display: flex;
-    align-items: center;
-    justify-content: ${(props) => (props.action ? 'space-between' : 'center')};
+    width: 100%;
 
-    color: var(--woly-color, #ffffff);
-
-    font-size: var(--woly-font-size, 12px);
-    line-height: var(--woly-line-height, 24px);
-
-    background-color: var(--woly-background, #B0A3F4);
-    border-color: var(--woly-border, #000000);
-    border-style: solid;
-    border-width: var(--woly-border-width, 0px);
-
-    border-radius: var(--woly-rounding, 3px);
-
-    padding: var(--woly-vertical, 0px) var(--woly-horizontal, 9px); 
-    padding-right: ${(props) => props.action && 'var(--woly-right-offset)'};
-
-    outline: none;
-  }
-
-  [role='button']:hover {
-    color: var(--woly-color-hover, #ffffff);
-
-    background-color: var(--woly-background-hover, #000000);
-    border-color: var(--woly-border-hover, #000000);
-    outline: none;
-  }
-
-  [role='button']:focus,
-  [role='button']:active {
-    color: var(--woly-color-focus, #ffffff);
-
-    background-color: var(--woly-background-focus, #000000);
-    border-color: var(--woly-border-focus, #000000);
-    outline: none;
-  }
-
-  &[data-disabled='true'] [role] {
-    color: var(--woly-color-disabled, #ffffff);
-    background: var(--woly-background-disabled, #f5f5f5);
-    border: none;
-
-    outline: none;
-    pointer-events: none;
-
-    svg > path {
-      fill: var(--woly-color, #c0c0c0);
-    }
-  }
-
-  &[data-disabled='true'] [data-icon] {
-    pointer-events: none;
-  }
-
-  [data-icon] {
     display: flex;
     align-items: center;
     justify-content: center;
 
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 1;
+    font-size: var(--woly-font-size, 12px);
+    line-height: var(--woly-line-height, 20px);
 
-    right: var(--woly-gap, 9px);
-    
+    border-radius: var(--woly-rounding, 3px);
+
+    padding: 0 var(--woly-horizontal, 6px);
+
+    outline: none;
+  }
+
+  [role='button']:active {
+    color: var(--woly-color-focus, #ffffff);
+    background-color: var(--woly-background-focus, #9381f1);
+    border-color: var(--woly-border-focus, transparent);
+  }
+
+  [role='button']:focus {
+    box-shadow: 0 0 0 1px var(--woly-border-focus, #9381f1);
+  }
+
+  [role='button']:hover {
+    color: var(--woly-color-hover, #ffffff);
+    background-color: var(--woly-background-hover, #9381f1);
+    opacity: 0.5;
+    border-color: var(--woly-border-hover, transparent);
+    outline: none;
+  }
+
+  &[data-disabled='true'] {
+    color: var(--woly-color-disabled, #c0c0c0);
+    background: var(--woly-background-disabled, #f5f5f5);
+    border-color: var(--woly-background-disabled, transparent);
+    pointer-events: none;
+
+    [data-icon] {
+      svg > path {
+        fill: var(--woly-color, #c0c0c0);
+      }
+    }
+  }
+
+  [data-icon],
+  [data-type='stub'] {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     width: var(--woly-line-height, 24px);
     height: var(--woly-line-height, 24px);
 
-    border-radius: 3px; 
-    border-color: transparent;
-    background: transparent;
+    background: var(--woly-background-disabled, transparent);
+    border-radius: var(--woly-rounding, 3px);
+
+    border-color: var(--woly-border, transparent);
+    border-style: solid;
+    border-width: var(--woly-border-width, 0);
+    border-radius: var(--woly-rounding, 3px);
 
     outline: none;
 
     svg > path {
       fill: var(--woly-color, #ffffff);
     }
+  }
 
-    &:hover{
-      background: #9381F1;
-      opacity: 0.3;
+  [data-type='stub'] {
+    visibility: hidden;
+    position: static;
+    flex-shrink: 0;
+  }
+
+  [data-icon='right'] {
+    position: absolute;
+    right: 0;
+    z-index: 1;
+    top: 50%;
+    transform: translateY(-50%);
+
+    &:hover {
+      background-color: var(--woly-background-hover, #9381f1);
+      opacity: 0.5;
     }
 
-    &:active{
-      background: #9381F1;
+    &:active {
+      background-color: var(--woly-background-hover, #9381f1);
     }
 
-    &:focus{
-      background: #9381F1;
-      border: 1.5px solid #9381F1;
+    &:focus {
+      box-shadow: 0 0 0 1px var(--woly-border-focus, #9381f1);
     }
   }
 ` as StyledComponent<'div', Record<string, unknown>, ChipProps & Variant>;
