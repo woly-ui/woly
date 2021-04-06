@@ -21,6 +21,7 @@
       },
       "alias": [
         ["box-styles", "./src/lib/box-styles"],
+        ["lib", "./src/lib"],
         ["icons", "./src/static/icons"]
       ]
     }

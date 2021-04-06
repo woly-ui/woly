@@ -3,9 +3,9 @@ import styled, { StyledComponent } from 'styled-components';
 import { Variant } from 'lib/types';
 
 /**
- * --woly-menu-list-padding
- * --woly-menu-list-color
- * --woly-menu-list-background
+ * --woly-list-padding
+ * --woly-list-color
+ * --woly-list-background
  * --woly-rounding
  * --woly-shadow
  * --woly-canvas
@@ -15,26 +15,26 @@ import { Variant } from 'lib/types';
  * --woly-line-height
  */
 
-interface MenuList {
+interface List {
   className?: string;
-  disabled?: boolean;
-  menu: Array<{
+  list: Array<{
     left?: React.ReactNode;
     right?: React.ReactNode;
     text: React.ReactNode;
     id: string;
+    disabled?: boolean;
+    onClick?: React.MouseEventHandler<HTMLLIElement>;
   }>;
 }
 
-const MenuListBase: React.FC<MenuList & Variant> = ({
+const ListBase: React.FC<List & Variant> = ({
   className,
-  disabled,
-  menu,
+  list,
   variant = 'default',
 }) => (
-  <ul className={className} data-variant={variant} data-disabled={disabled}>
-    {menu.map(({ left, right, text, id }) => (
-      <li key={id} data-type="menu-item">
+  <ul className={className} data-variant={variant}>
+    {list.map(({ left, right, text, id, disabled, onClick }) => (
+      <li key={id} data-type="list-item" data-disabled={disabled} onClick={onClick}>
         {left && <span data-icon="left">{left}</span>}
         <span data-block="content">{text}</span>
         {right && <span data-icon="right">{right}</span>}
@@ -43,7 +43,7 @@ const MenuListBase: React.FC<MenuList & Variant> = ({
   </ul>
 );
 
-export const MenuList = styled(MenuListBase)`
+export const List = styled(ListBase)`
   --woly-vertical: calc(
     1px * var(--woly-component-level) * var(--woly-main-level)
   );
@@ -51,7 +51,7 @@ export const MenuList = styled(MenuListBase)`
     var(--woly-const-m) + (1px * var(--woly-main-level)) + var(--woly-vertical)
   );
 
-  --woly-width: 324px;
+  --woly-width: 100%;
   width: var(--woly-width);
 
   box-sizing: border-box;
@@ -65,7 +65,7 @@ export const MenuList = styled(MenuListBase)`
   border-radius: var(--woly-rounding, 3px);
   box-shadow: var(--woly-shadow, 3px 3px 8px rgba(11, 31, 53, 0.04));
 
-  li[data-type='menu-item'] {
+  li[data-type='list-item'] {
     display: flex;
     flex: 1;
     align-items: center;
@@ -77,7 +77,7 @@ export const MenuList = styled(MenuListBase)`
 
     cursor: pointer;
 
-    [data-block="content"]{
+    [data-block='content'] {
       flex: 1;
     }
 
@@ -92,15 +92,14 @@ export const MenuList = styled(MenuListBase)`
       border-width: var(--woly-border-width, 1.5px);
     }
 
-  }
-  
-  &[data-disabled='true'] {
-    pointer-events: none;
-    color: var(--woly-color-disabled, #c4c4c4);
-    
-    [data-type='menu-item'] [data-icon] {
-      svg > path {
-      fill: var(--woly-canvas, #c4c4c4);
+    &[data-disabled='true'] {
+      pointer-events: none;
+      color: var(--woly-color-disabled, #c4c4c4);
+
+      [data-icon] {
+        svg > path {
+          fill: var(--woly-canvas, #c4c4c4);
+        }
       }
     }
   }
@@ -109,7 +108,7 @@ export const MenuList = styled(MenuListBase)`
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-shrink:0;
+    flex-shrink: 0;
 
     width: var(--woly-line-height, 24px);
     height: var(--woly-line-height, 24px);
@@ -119,4 +118,4 @@ export const MenuList = styled(MenuListBase)`
       fill: var(--woly-color-disabled, #000000);
     }
   }
-` as StyledComponent<'ul', Record<string, unknown>, MenuList & Variant>;
+` as StyledComponent<'ul', Record<string, unknown>, List & Variant>;

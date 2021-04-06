@@ -4,20 +4,37 @@ category: atoms
 package: 'woly'
 ---
 
-import { Global } from 'box-styles';
-import { Label } from 'ui';
+import { LabelExample } from './example';
+import { Playground, block } from 'box-styles'
+import { Label } from './index';
 
-`Label` is a description text for located near interactive component. Label can be passed as a property to a Checkbox or a Toggle component.
+The Label component lets you add captions for other elements in your project, such as other UI components that don't have their own labels.
+Users who click or tap the label activate the associated element. 
+
+The label text is not only visually associated with its corresponding text input; 
+it is programmatically associated with it too. 
+This means that, for example, a screen reader will read out the label when the user is focused on the form input, 
+making it easier for an assistive technology user to understand what data should be entered.
+
+You can click the associated label to focus/activate the input, as well as the input itself. 
+This increased hit area provides an advantage to anyone trying to activate the input, including those using a touch-screen device.
+
 
 ### Example
 
-<Global>
-  <Label text="Base label" variant="base" />
-</Global>
+<Playground>
+  <Label variant="base">Base label</Label>
+</Playground>
 
-```tsx
-const Example = () => <Label text="Base label" variant="base" />;
-```
+<!-- <LabelExample /> -->
+
+### Variants
+
+Error variant can be used to focus user attention on error.
+
+<Playground>
+  <Label variant="error">Error label</Label>
+</Playground>
 
 ### Kinds
 
@@ -27,8 +44,7 @@ const Example = () => <Label text="Base label" variant="base" />;
 
 ### Props
 
-| Name      | Type               | Default     | Description                                       |
-| --------- | ------------------ | ----------- | ------------------------------------------------- |
-| `text`    | `React.ReactNode`  |             | Label text                                        |
-| `variant` | `string`           | `'default'` | Variant prop to style Input component             |
-| `...`     | `HTMLLabelElement` | `{}`        | Other props are inherited from `HTMLLabelElement` |
+| Name          | Type               | Default     | Description                                                                   |
+| ------------- | ------------------ | ----------- | ----------------------------------------------------------------------------- |
+|`variant`     | `string`           | `'default'` | Variant prop to style Input component                                          |
+| `...`         | `HTMLLabelElement` | `{}`        | Other props are inherited from `HTMLLabelElement`                             |
