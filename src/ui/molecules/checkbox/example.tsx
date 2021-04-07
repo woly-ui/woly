@@ -1,6 +1,5 @@
 import * as React from 'react';
-import styled from 'styled-components';
-import { Checkbox, Label } from 'ui';
+import { Checkbox } from 'ui';
 import { Global, block } from 'box-styles';
 
 export const CheckboxExample: React.FC = () => {
@@ -16,33 +15,31 @@ export const CheckboxExample: React.FC = () => {
 
   return (
     <Global>
-      Travel packing checklist:
-      <block.L>
-        <Checkbox
-          label={<Label text="passport" />}
-          isChecked={isPassportChecked}
-          onChange={onPassportClick}
-          id="checkbox"
-        />
-        <Checkbox
-          label={<Label text="money" />}
-          isChecked={isMoneyChecked}
-          onChange={onMoneyClick}
-          id="checkbox2"
-        />
-        <Checkbox
-          label={<Label text="tickets" />}
-          isChecked={isTicketsChecked}
-          onChange={onTicketsClick}
-          id="checkbox3"
-        />
-      </block.L>
+      <div data-cypress="checkbox">
+        <span>Travel packing checklist: </span>
+        <block.L>
+          <Checkbox
+            text="passport"
+            isChecked
+            onChange={onPassportClick}
+            id="checkbox"
+            disabled
+          />
+          <Checkbox
+            text="money"
+            isChecked={isMoneyChecked}
+            onChange={onMoneyClick}
+            id="checkbox2"
+          />
+          <Checkbox
+            text="tickets"
+            isChecked={false}
+            onChange={onTicketsClick}
+            id="checkbox3"
+            disabled
+          />
+        </block.L>
+      </div>
     </Global>
   );
 };
-
-export const Content = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
