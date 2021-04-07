@@ -4,7 +4,7 @@ export { ButtonIcon } from './button-icon';
 export { Chip } from './chip';
 export { Input } from './input';
 export { Label } from './label';
-export { MenuList } from './menu-list';
+export { List } from './list';
 export { Notification } from './notification';
 export { Popover } from './popover';
 export { Surface } from './surface';
