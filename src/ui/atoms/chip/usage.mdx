@@ -4,24 +4,100 @@ category: atoms
 package: 'woly'
 ---
 
-import { ChipExample } from './example';
+import { Chip } from './index';
+import { CloseIcon, PlusIcon } from 'icons';
+import { Playground, block } from 'box-styles'
 
-`Chip` is used for categorizing or markup. Chips can be used inside input or as tags.
+`Chip` is used for categorizing or markup. 
+Chips allow users to enter information, make selections, filter content, or trigger actions. 
+While buttons are expected to appear consistently and with familiar calls to action, chips should appear dynamically as a group of multiple interactive elements.
+
+Chips support content labeling for accessibility and are readable by most screen readers, such as TalkBack. 
+Text rendered in chips is automatically provided to accessibility services. Additional content labels are usually unnecessary.
+
+When a chip can be removed a special cancel icon will appear at the far right to indicate this. 
+The Remove Icon override provides the means to trigger this functionality.
+
+
+When using a Chip, the obround will automatically size itself to fit the content and you only need to adjust the size of the instance accordingly. 
+If the Chip is used as an action trigger for related content avoid using it in scenarios where there is only one available action, 
+or for configurations presenting only one selectable option.
+
+As a standalone component, the most common use will be in some form of input, so some of the behaviour demonstrated here is not shown in context.
 
 ### Example
 
-<ChipExample />
+<Playground>
+  <Chip variant="default">Simple Chip</Chip>
+</Playground>
 
-```tsx
-const Example = () => (
+### Clickable
+
+Chip can be a sipmple component or can be clickable component. 
+
+In case when chip is clickable, it defined change appearance on focus, hover, and click.
+
+If chip consists another clickable component (eg button), this property defined will display a component which changes appearance on hover.
+
+<Playground>
+  <Chip variant="default" onClick={() => console.info('click')}>
+    Cklicked Chip
+  </Chip>
   <Chip
-    icon={<CloseIcon />}
-    onClick={(event) => console.info('Chip clicked')}
-    text="Chip"
-    variant="primary"
-  />
-);
-```
+    variant="default"
+    action={<CloseIcon />}
+    onActionClick={() => console.info('ActionIcon clicked')}
+  >
+    Cklicked Icon
+  </Chip>
+  <Chip
+    variant="default"
+    onClick={() => console.info('click')}
+    action={<CloseIcon />}
+    onActionClick={() => console.info('ActionIcon clicked')}
+    disabled
+  >
+    Disabled Chip
+  </Chip>
+</Playground>
+
+### Icons/Buttons
+
+Chip can be used with icon on the left side or button on the right side. 
+
+Even chip can be used with both options.
+
+<Playground>
+  <Chip variant="default" icon={<PlusIcon />}>
+    Chip with Icon
+  </Chip>
+  <Chip 
+    variant="default" 
+    icon={<PlusIcon />}
+    onClick={() => console.info('click')}
+  >
+    Cklicked Chip
+  </Chip>
+  <Chip
+    variant="default"
+    icon={<PlusIcon />}
+    onClick={() => console.info('click')}
+    action={<CloseIcon />}
+    onActionClick={() => console.info('ActionIcon clicked')}
+  >
+    Cklicked Icon
+  </Chip>
+  <Chip
+    variant="default"
+    icon={<PlusIcon />}
+    onClick={() => console.info('click')}
+    action={<CloseIcon />}
+    onActionClick={() => console.info('ActionIcon clicked')}
+    disabled
+  >
+    Disabled Chip
+  </Chip>
+</Playground>
 
 ### Kinds
 
@@ -31,10 +107,11 @@ const Example = () => (
 
 ### Props
 
-| Name      | Type                                         | Default     | Description                                        |
-| --------- | -------------------------------------------- | ----------- | -------------------------------------------------- |
-| `text`    | `React.ReactNode`                            |             | Text inside chip                                   |
-| `icon`    | `React.ReactNode`                            | `null`      | Icon to show on the right side of the text         |
-| `onClick` | `React.MouseEventHandler<HTMLButtonElement>` | `null`      | Callback when chip is clicked                      |
-| `variant` | `string`                                     | `'default'` | Variant prop to style Chip component               |
-| `...`     | `HTMLButtonElement`                          | `{}`        | Other props are inherited from `HTMLButtonElement` |
+| Name            | Type                                         | Default     | Description                                        |
+| ----------------| -------------------------------------------- | ----------- | -------------------------------------------------- |
+| `children`      | `string`                                     |             | Text inside chip                                   |
+| `action`        | `React.ReactNode`                            | `null`      | Icon to show on the right side of the text         |
+| `onActionClick` | `React.MouseEvent<HTMLButtonElement>`        | `null`      | Callback when chip is clicked                      |
+| `onClick`       | `React.MouseEvent<HTMLDivElement>`           | `null`      | Callback when chip is clicked                      |
+| `variant`       | `string`                                     | `'default'` | Variant prop to style Chip component               |
+| `...`           | `HTMLButtonElement`                          | `{}`        | Other props are inherited from `HTMLButtonElement` |

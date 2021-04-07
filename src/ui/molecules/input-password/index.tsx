@@ -114,10 +114,11 @@ export const InputPassword = styled(InputPasswordBase)`
   &[data-disabled='true'] {
     color: var(--woly-color-disabled, #ffffff);
     background: var(--woly-background-disabled, #ffffff);
-    border-color: var(
-      --woly-border-disabled,
-      var(--woly-background-disabled, #000000)
-    );
+    border-color: var(--woly-background-disabled, #000000);
+  }
+
+  & > *:not(:first-child) {
+    margin-left: var(--woly-gap);
   }
 ` as StyledComponent<
   'div',
