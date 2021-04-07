@@ -21,6 +21,7 @@
     "paths": {
       "~/": ["./"],
       "box-styles": ["lib/box-styles"],
+      "lib": ["lib/"],
       "icons": ["static/icons"],
       "ui": ["ui/"]
     },

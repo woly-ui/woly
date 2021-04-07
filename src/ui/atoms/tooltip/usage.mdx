@@ -1,0 +1,45 @@
+---
+name: tooltip
+category: atoms
+package: 'woly'
+---
+
+import { TooltipExample } from './example';
+
+`Tooltip` is used when you want to show addition information near component.
+Tooltip message is visible when user hover over component that is passed as a children to `Tooltip`.
+
+### Example
+
+<TooltipExample />
+
+```tsx
+const Example = () =>
+    <Tooltip
+        message="this is a tooltip message"
+        variant="primary"
+        position="bottom"
+    >
+        <Button
+            text="Hello world"
+            onClick={() => console.info('Hi!')}
+            variant="primary"
+        />
+    </Tooltip>
+```
+
+### Kinds
+
+| Name      | Description  |
+| --------- | ------------ |
+| `Tooltip` | Base tooltip |
+
+### Props
+
+| Name       | Type                                  | Default     | Description                                          |
+| ---------- | ------------------------------------- | ----------- | ---------------------------------------------------- |
+| `children` | `React.ReactElement`                  |             | The tooltip will be visible near `children` on hover |
+| `message`  | `string`                              |             | Message to show near component                       |
+| `position` | `"top" ӏ "left" ӏ"bottom" ӏ "right" ` |             | Width of tooltip block                               |
+| `variant`  | `string`                              | `'default'` | Variant prop to style Tooltip component              |
+| `width`    | `number`                              |             | Width of tooltip block                               |
