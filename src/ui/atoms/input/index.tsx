@@ -77,9 +77,6 @@ export const Input = styled(InputBase)`
     color: var(--woly-color-disabled, #ffffff);
 
     background: var(--woly-background-disabled, #ffffff);
-    border-color: var(
-      --woly-border-disabled,
-      var(--woly-background-disabled, #000000)
-    );
+    border-color: var(--woly-background-disabled, #000000);
   }
 ` as StyledComponent<'input', Record<string, unknown>, InputProps & Variant>;
