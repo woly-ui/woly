@@ -57,8 +57,8 @@ const TooltipBase: React.FC<TooltipProps & Variant> = ({
       data-variant={variant}
       ref={ref}
     >
-      <div data-tooltip>{message}</div>
       <div data-element>{children}</div>
+      <div data-tooltip>{message}</div>
     </div>
   );
 };
