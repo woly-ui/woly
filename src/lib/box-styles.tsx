@@ -5,6 +5,7 @@ export const Global = styled.div`
   --woly-const-m: 6px;
   --woly-main-level: 3;
   --woly-line-height: 24px;
+  font-family: 'Helvetica Neue';
 
   [data-variant='primary'] {
     --woly-background: #b0a3f4;
@@ -76,7 +77,7 @@ export const Global = styled.div`
 
     --woly-border-focus: #eb5656;
     --woly-error-text: #eb5656;
-    --woly-hint-color: #c4c4c4;
+    --woly-hint-color: #ff9097;
 
     --woly-background-disabled: #c0c0c0;
     --woly-border-disabled: #c0c0c0;
@@ -262,4 +263,9 @@ export const Menu = styled.ul`
   width: 200px;
   height: 100%;
   padding: 100px 30px;
+`;
+
+export const Line = styled.div`
+  display: flex;
+  align-items: baseline;
 `;
