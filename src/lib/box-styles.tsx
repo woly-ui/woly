@@ -170,6 +170,19 @@ export const State = ({ initial, change, children }: StateType) => {
   return <>{children(value, onChange)}</>;
 };
 
+export const StateEvent = ({ initial, change, children }: StateType) => {
+  const [value, setValue] = React.useState(initial);
+
+  const onChange = React.useCallback(
+    (event) => {
+      setValue(change(event));
+    },
+    [change],
+  );
+
+  return <>{children(value, onChange)}</>;
+};
+
 const Frame = styled.div`
   box-sizing: border-box;
   width: 100%;
