@@ -20,7 +20,7 @@ import { InputContainer, InputElement } from '../../elements/quarks';
 
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   className?: string;
-  disabled?: boolean;
+  isDisabled?: boolean;
   left?: React.ReactNode;
   name: string;
   onChange: React.ChangeEventHandler<HTMLInputElement>;
@@ -32,7 +32,7 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
 
 const InputBase: React.FC<InputProps & Variant> = ({
   className,
-  disabled,
+  isDisabled,
   left,
   name,
   onChange,
@@ -44,7 +44,7 @@ const InputBase: React.FC<InputProps & Variant> = ({
 }) => (
   <InputContainer
     className={className}
-    disabled={disabled}
+    isDisabled={isDisabled}
     variant={variant}
     left={left}
     right={right}

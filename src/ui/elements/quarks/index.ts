@@ -1,2 +1,2 @@
 export { InputContainer } from './input-container';
-export { InputElement } from './input';
+export { InputElement } from './input-element';

@@ -20,7 +20,7 @@ interface InputContainerProps
   extends React.InputHTMLAttributes<HTMLInputElement> {
   left?: React.ReactNode;
   className?: string;
-  disabled?: boolean;
+  isDisabled?: boolean;
   right?: React.ReactNode;
 }
 
@@ -28,11 +28,11 @@ const InputContainerBase: React.FC<InputContainerProps & Variant> = ({
   left,
   className,
   children,
-  disabled,
+  isDisabled,
   right,
   variant = 'default',
 }) => (
-  <div className={className} data-variant={variant} data-disabled={disabled}>
+  <div className={className} data-variant={variant} data-disabled={isDisabled}>
     {left && <span data-icon="left">{left}</span>}
     <div data-block="content">{children}</div>
     {right && <span data-icon="right">{right}</span>}

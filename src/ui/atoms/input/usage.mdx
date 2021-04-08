@@ -74,7 +74,7 @@ Disabled text fields are uneditable. They have less opacity so that they appear 
     name="name"
     placeholder="Enter your name here"
     onChange={(event) => console.info('On input change')}
-    disabled
+    isDisabled
   />
 </Playground>
 
@@ -85,7 +85,7 @@ Disabled text fields are uneditable. They have less opacity so that they appear 
     name="name"
     placeholder="Enter your name here"
     onChange={(event) => console.info('On input change')}
-    disabled
+    isDisabled
   />
 </Playground>
 
@@ -189,6 +189,26 @@ Error variant can be used to focus user attention on error.
     placeholder="Enter your name here"
     onChange={(event) => console.info('On input change')}
   />
+</Playground>
+
+### Password input
+<Playground>
+ <State initial={false} change={(i) => !i}>
+    {(value, change) => (
+      <Input
+        right={
+          <ButtonIcon
+            onClick={change}
+            icon={value ? <ClosedEyeIcon/> : <OpenedEyeIcon/>}
+          />
+        }
+        type={value ? 'text' : 'password'}
+        name="name"
+        placeholder="Enter your password here"
+        onChange={(event) => console.info('On input change')}
+      />
+  )}
+  </State>
 </Playground>
 
 ### Kinds
