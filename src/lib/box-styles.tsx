@@ -5,6 +5,7 @@ export const Global = styled.div`
   --woly-const-m: 6px;
   --woly-main-level: 3;
   --woly-line-height: 24px;
+  font-family: 'Helvetica Neue';
 
   [data-variant='primary'] {
     --woly-background: #b0a3f4;
