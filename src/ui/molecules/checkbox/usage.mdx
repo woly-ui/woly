@@ -4,7 +4,6 @@ category: atoms
 package: 'woly'
 ---
 
-import { CheckboxExample } from './example';
 import { Checkbox } from './index';
 import { Playground, block } from 'box-styles'
 
@@ -26,14 +25,12 @@ Use a checkbox when the user has to stop before performing an action. Checkbox w
   <Checkbox variant="default"/>
 </Playground>
 
-<!-- <CheckboxExample /> -->
-
 ### Variants
 
 Error and primary/secondary variants are should be used to focus user attention.
 
 <Playground>
-  <Checkbox text="Attention" variant="error" isChecked disabled/>
+  <Checkbox text="Attention" variant="error" isChecked/>
   <Checkbox text="Alternative action" variant="secondary" />
   <Checkbox text="Disabled" variant="default" disabled isChecked/>
 </Playground>

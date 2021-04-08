@@ -5,107 +5,102 @@ export const Global = styled.div`
   --woly-const-m: 6px;
   --woly-main-level: 3;
   --woly-line-height: 24px;
-
-  --woly-primary: #683aef;
-  --woly-primary-hover: #ac8fff;
-  --woly-primary-focus: #3c218b;
-  --woly-primary-disabled: #f4f2f7;
+  --woly-font-size: 15px;
 
   [data-variant='primary'] {
-    --woly-border-width: 2px;
+    --woly-border-width: 1.5px;
 
-    --woly-background: var(--woly-primary);
-    --woly-border: var(--woly-primary);
+    --woly-background: #b0a3f4;
+    --woly-border: #b0a3f4;
     --woly-color: #ffffff;
     --woly-hint-color: #c4c4c4;
 
-    --woly-background-hover: var(--woly-primary-hover);
-    --woly-border-hover: var(--woly-primary-hover);
+    --woly-background-hover: #c9c0f8;
+    --woly-border-hover: #c9c0f8;
     --woly-color-hover: #ffffff;
 
-    --woly-background-focus: var(--woly-primary-focus);
-    --woly-border-focus: var(--woly-primary-focus);
+    --woly-background-focus: #9381f1;
+    --woly-border-focus: #9381f1;
     --woly-color-focus: #ffffff;
 
-    --woly-background-disabled: var(--woly-primary-disabled);
-    --woly-border-disabled: var(--woly-primary-disabled);
-    --woly-color-disabled: #a39bb2;
+    --woly-background-active: #b0a3f4;
+    --woly-border-active: #9381f1;
+    --woly-color-active: #ffffff;
+
+    --woly-background-disabled: #f5f5f5;
+    --woly-border-disabled: #f5f5f5;
+    --woly-color-disabled: #c0c0c0;
   }
 
   [data-variant='secondary'] {
-    --woly-border-width: 2px;
+    --woly-border-width: 1.5px;
 
     --woly-background: #ffffff;
-    --woly-border: var(--woly-primary);
-    --woly-color: var(--woly-primary);
+    --woly-border: #b0a3f4;
+    --woly-color: #b0a3f4;
     --woly-hint-color: #c4c4c4;
 
     --woly-background-hover: #ffffff;
-    --woly-border-hover: var(--woly-primary-hover);
-    --woly-color-hover: var(--woly-primary-hover);
+    --woly-border-hover: #c9c0f8;
+    --woly-color-hover: #c9c0f8;
 
     --woly-background-focus: #ffffff;
-    --woly-border-focus: var(--woly-primary-focus);
-    --woly-color-focus: var(--woly-primary-focus);
+    --woly-border-focus: #9381f1;
+    --woly-color-focus: #9381f1;
 
-    --woly-background-disabled: var(--woly-primary-disabled);
-    --woly-border-disabled: var(--woly-primary-disabled);
+    --woly-background-disabled: #c0c0c0;
+    --woly-border-disabled: #c0c0c0;
     --woly-color-disabled: #a39bb2;
   }
 
   [data-variant='base'] {
-    --woly-border-width: 1px;
+    --woly-border-width: 1.5px;
     --woly-rounding: 0;
     --woly-background: #ffffff;
     --woly-border: #a39bb2;
     --woly-color: #000000;
     --woly-hint-color: #c4c4c4;
 
-    --woly-border-focus: var(--woly-primary);
+    --woly-border-focus: #b0a3f4;
 
-    --woly-background-disabled: var(--woly-primary-disabled);
-    --woly-border-disabled: var(--woly-primary-disabled);
+    --woly-background-disabled: #c0c0c0;
+    --woly-border-disabled: #c0c0c0;
     --woly-color-disabled: #a39bb2;
   }
 
   [data-variant='error'] {
-    --woly-border-width: 1px;
+    --woly-border-width: 1.5px;
 
     --woly-background: #ffffff;
     --woly-border: #eb5656;
-    --woly-color: #000000;
+    --woly-color: #eb5656;
     --woly-label-color: #eb5656;
-    --woly-canvas-color: #eb5656;
+    --woly-canvas: #eb5656;
 
     --woly-border-focus: #eb5656;
     --woly-error-text: #eb5656;
     --woly-hint-color: #c4c4c4;
 
-    --woly-background-disabled: var(--woly-primary-disabled);
-    --woly-border-disabled: var(--woly-primary-disabled);
+    --woly-background-disabled: #c0c0c0;
+    --woly-border-disabled: #c0c0c0;
     --woly-color-disabled: #a39bb2;
   }
 
   [data-variant='square'] {
     --woly-rounding: 3px;
     --woly-canvas: #f4f2f7;
-    --woly-background: var(--woly-primary);
+    --woly-background: #b0a3f4;
   }
 
   [data-variant='round'] {
     --woly-rounding: 30px;
     --woly-canvas: #f4f2f7;
-    --woly-background: var(--woly-primary);
+    --woly-background: #b0a3f4;
   }
 `;
 
 const Block = styled.div`
-  & > * + * {
-    --woly-gap: calc(
-      (1px * var(--woly-main-level)) +
-        (1px * var(--woly-main-level) * var(--woly-component-level))
-    );
-  }
+  --woly-font-size: 15px;
 `;
 
 const N = styled(Block)`
@@ -126,14 +121,17 @@ const M = styled(Block)`
 
 const L = styled(Block)`
   --woly-component-level: 4;
+  --woly-font-size: 18px;
 `;
 
 const XL = styled(Block)`
   --woly-component-level: 5;
+  --woly-font-size: 21px;
 `;
 
 const H = styled(Block)`
   --woly-component-level: 6;
+  --woly-font-size: 21px;
 `;
 
 export const block = { N, XS, S, M, L, XL, H };
@@ -166,6 +164,19 @@ export const State = ({ initial, change, children }: StateType) => {
   const onChange = React.useCallback(() => {
     setValue(change(value));
   }, [change, value]);
+
+  return <>{children(value, onChange)}</>;
+};
+
+export const StateEvent = ({ initial, change, children }: StateType) => {
+  const [value, setValue] = React.useState(initial);
+
+  const onChange = React.useCallback(
+    (event) => {
+      setValue(change(event));
+    },
+    [change],
+  );
 
   return <>{children(value, onChange)}</>;
 };

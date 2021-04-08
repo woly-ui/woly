@@ -1,3 +1,4 @@
+export { default as ArrowDown } from './arrow.svg';
 export { default as ArrowLeft } from './arrow-left.svg';
 export { default as Check } from './check.svg';
 export { default as CheckIcon } from './icon_check.svg';
