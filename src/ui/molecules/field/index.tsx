@@ -19,14 +19,14 @@ import { Label } from '../../atoms';
 
 interface FieldProps {
   className?: string;
-  disabled?: boolean;
+  isDisabled?: boolean;
   label?: React.ReactNode;
   row?: boolean;
 }
 
 export const FieldBase: React.FC<FieldProps & Variant> = ({
   className,
-  disabled,
+  isDisabled,
   label,
   variant = 'default',
   children,
@@ -35,7 +35,7 @@ export const FieldBase: React.FC<FieldProps & Variant> = ({
   <div
     className={className}
     data-variant={variant}
-    data-disabled={disabled}
+    data-disabled={isDisabled}
     data-row={row}
   >
     <div data-field="label">{label && <Label>{label}</Label>}</div>
@@ -51,9 +51,10 @@ export const Field = styled(FieldBase)`
     var(--woly-const-m) + (1px * var(--woly-main-level)) + var(--woly-vertical)
   );
 
+  --woly-width: 100%;
+
   padding: var(--woly-vertical, 16px) var(--woly-horizontal, 6.4px);
 
-  --woly-width: 100%;
   width: var(--woly-width);
 
   box-sizing: border-box;

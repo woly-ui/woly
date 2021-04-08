@@ -47,13 +47,14 @@ or also as a label of group of component, eg checkbox or radiobutton groups.
       <Checkbox text="Item text" variant="secondary" />
       <Checkbox text="Item text" variant="secondary" />
     </Field>
-    <Field label='Label for a standalone component' variant="default" disabled>
+    <Field label='Label for a standalone component' variant="default">
       <TextArea
         name="name"
         placeholder="TextArea"
         onChange={() => console.info('On textarea change')}
         variant="base"
         overflow="hidden"
+        disabled
       />
     </Field>
 </Playground> 
@@ -127,8 +128,9 @@ Labels and children component can be replaced in row
 
 ### Props
 
-| Name      | Type                | Default     | Description                                                |
-| --------- | ------------------- | ----------- | ---------------------------------------------------------- |
-| label   | React.ReactNode   |             | Text appeared on the button                                    |
-| variant | string            | 'default' | Variant prop to style component                                  |
-| ...     | HTMLButtonElement | {}        | Other props are inherited from HTMLButtonElement                 |
+| Name      | Type                  | Default     | Description                                                      |
+| --------- | --------------------- | ----------- | ---------------------------------------------------------------- |
+| `label`   | React.ReactNode       |             | Text appeared on the button                                      |
+| `row`     | boolean               |             | The row attribute specifies direction of label and component     |
+| `variant` | string                | 'default'   | Variant prop to style component                                  |
+| ...       | HTMLButtonElement     | {}          | Other props are inherited from HTMLButtonElement                 |
