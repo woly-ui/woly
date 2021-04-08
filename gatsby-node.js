@@ -8,6 +8,7 @@ exports.onCreateWebpackConfig = ({ actions }) => {
         lib: path.resolve(__dirname, './src/lib/'),
         icons: path.resolve(__dirname, './src/static/icons/'),
         ui: path.resolve(__dirname, './src/ui/'),
+        lib: path.resolve(__dirname, './src/lib/'),
       },
     },
   });
