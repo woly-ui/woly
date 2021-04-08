@@ -21,6 +21,7 @@ export const SurfaceExample: React.FC = () => {
       <block.S>
         <Button text="show surface" onClick={onClick} variant="primary" />
       </block.S>
+      <Button text="close" onClick={() => {}} />
     </Global>
   );
 };
