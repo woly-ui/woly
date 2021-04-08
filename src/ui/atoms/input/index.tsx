@@ -2,6 +2,8 @@ import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
 import { Variant } from 'lib/types';
 
+import { InputContainer, InputElement } from '../../elements/quarks';
+
 /**
  * --woly-font-size
  * --woly-rounding
@@ -18,68 +20,52 @@ import { Variant } from 'lib/types';
 
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   className?: string;
+  disabled?: boolean;
+  left?: React.ReactNode;
   name: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => unknown;
+  onChange: React.ChangeEventHandler<HTMLInputElement>;
+  placeholder?: string;
+  right?: React.ReactNode;
   type: 'text' | 'password' | 'email';
+  value?: HTMLInputElement['value'];
 }
 
 const InputBase: React.FC<InputProps & Variant> = ({
   className,
+  disabled,
+  left,
   name,
   onChange,
-  type = 'text',
+  placeholder,
+  right,
+  type,
+  value,
   variant = 'default',
-  ...p
 }) => (
-  <div data-variant={variant} className={className}>
-    <input name={name} onChange={onChange} type={type} {...p} />
-  </div>
+  <InputContainer
+    className={className}
+    disabled={disabled}
+    variant={variant}
+    left={left}
+    right={right}
+  >
+    <InputElement
+      name={name}
+      onChange={onChange}
+      placeholder={placeholder}
+      type={type}
+      value={value}
+    />
+  </InputContainer>
 );
 
 export const Input = styled(InputBase)`
-  --woly-vertical: calc(
-    1px * var(--woly-component-level) * var(--woly-main-level)
-  );
-  --woly-horizontal: calc(
-    var(--woly-const-m) + (1px * var(--woly-main-level)) + var(--woly-vertical)
+  --woly-gap: calc(
+    (1px * var(--woly-main-level)) +
+      (1px * var(--woly-main-level) * var(--woly-component-level))
   );
 
-  --woly-width: 100%;
-  width: var(--woly-width);
-
-  box-sizing: border-box;
-
-  color: var(--woly-color, #000000);
-
-  font-size: var(--woly-font-size, 16px);
-  line-height: var(--woly-line-height, 24px);
-
-  background: var(--woly-background, transparent);
-
-  input {
-    border-color: var(--woly-border, var(--woly-background, #000000));
-    border-style: solid;
-
-    border-width: var(--woly-border-width, 1px);
-    border-radius: var(--woly-rounding, 3px);
-
-    padding: var(--woly-vertical, 16px) var(--woly-horizontal, 6.4px);
-
-    outline: none;
+  & > *:not(:first-child) {
+    margin-left: var(--woly-gap);
   }
-
-  input:focus {
-    border-color: var(--woly-border-focus, #000000);
-    outline: none;
-  }
-
-  input:disabled {
-    color: var(--woly-color-disabled, #ffffff);
-
-    background: var(--woly-background-disabled, #ffffff);
-    border-color: var(
-      --woly-border-disabled,
-      var(--woly-background-disabled, #000000)
-    );
-  }
-` as StyledComponent<'input', Record<string, unknown>, InputProps & Variant>;
+` as StyledComponent<'div', Record<string, unknown>, InputProps & Variant>;

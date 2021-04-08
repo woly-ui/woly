@@ -4,25 +4,190 @@ category: atoms
 package: 'woly'
 ---
 
-import { InputExample } from './example';
+import { Input } from './index';
+import { InfoIcon, ClosedEyeIcon, OpenedEyeIcon } from 'icons';
+
+import { Playground, block, State } from 'box-styles'
+
+import { ButtonIcon } from '../../atoms';
 
 `Input` is a field to accept data from the user. Input is used to create form fields that accept user input.
+They typically appear in forms and dialogs.
+
+Inputs requiring certain data formats such as numbers, e-mail addresses or passwords are declared accordingly. 
+This makes it easier for the user to enter information using a virtual keyboard.
+
+When a input is active or contains an error, the input’s border color and thickness vary.
+
+## Placeholder text (Hint text)
+
+Placeholder text rests in the input field until the user starts entering text. 
+It may contain an action or an example, such as a phone number or email address.
+
+## Helper text
+
+Helper text gives context about a field’s input, such as how the input will be used.
+
+It should be visible either persistently or only on focus.
+
+Specs:
+
+- Left justified
+- On a single line if possible, or with text wrapping (if multiple lines)
+
+
+## Error message
+
+When input isn’t accepted, text fields can display an error message below the input line, with instructions on how to fix the error. 
+Until the error is fixed, the error replaces the helper text.
+
+An error message should appear on a single line, if possible.
+
+##Character or word counter
+
+Use character or word counters where there is a character or word limit.
+
+Specs:
+
+- Right justified
+- Displayed as a ratio of characters used and the character limit (formatted as: characters used / character limit)
+
 
 ### Example
 
-<InputExample />
-
-```tsx
-const Example = () => (
+<Playground>
   <Input
     type="text"
     name="name"
     placeholder="Enter your name here"
-    value="Hi"
     onChange={(event) => console.info('On input change')}
   />
-);
-```
+</Playground>
+
+### Disabled
+
+Disabled text fields are uneditable. They have less opacity so that they appear less tappable.
+
+<Playground>
+  <Input
+    type="text"
+    name="name"
+    placeholder="Enter your name here"
+    onChange={(event) => console.info('On input change')}
+    disabled
+  />
+</Playground>
+
+<Playground>
+  <Input
+    left={<InfoIcon />}
+    type="text"
+    name="name"
+    placeholder="Enter your name here"
+    onChange={(event) => console.info('On input change')}
+    disabled
+  />
+</Playground>
+
+### Icons 
+
+Inputs can be combined with an icon on the left side or the right. Use icons on the both sides is not recommended.
+
+<Playground>
+  <Input
+    left={<InfoIcon />}
+    type="text"
+    name="name"
+    placeholder="Enter your name here"
+    onChange={(event) => console.info('On input change')}
+  />
+</Playground>
+
+<Playground>
+  <Input
+    type="text"
+    name="name"
+    placeholder="Enter your name here"
+    onChange={(event) => console.info('On input change')}
+    right={<InfoIcon />}
+  />
+</Playground>
+
+<Playground>
+  <Input
+    left={<InfoIcon />}
+    type="text"
+    name="name"
+    placeholder="Enter your name here"
+    onChange={(event) => console.info('On input change')}
+    right={<InfoIcon />}
+  />
+</Playground>
+
+Icons can also be touch targets for nested components. 
+
+<Playground>
+  <Input 
+    left={
+      <ButtonIcon
+        icon={<InfoIcon />}
+        onClick={() => console.info('ButtonIcon clicked')}
+      />
+    }
+    type="text"
+    name="name"
+    placeholder="Enter your name here"
+    onChange={(event) => console.info('On input change')}
+  />
+</Playground>
+<Playground>
+  <Input 
+    right={
+      <ButtonIcon
+        icon={<InfoIcon />}
+        onClick={() => console.info('ButtonIcon clicked')}
+      />
+    }
+    type="text"
+    name="name"
+    placeholder="Enter your name here"
+    onChange={(event) => console.info('On input change')}
+  />
+</Playground>
+<Playground>
+   <Input 
+    left={
+      <ButtonIcon
+        icon={<InfoIcon />}
+        onClick={() => console.info('ButtonIcon clicked')}
+      />
+    }
+    type="text"
+    name="name"
+    placeholder="Enter your name here"
+    onChange={(event) => console.info('On input change')}
+    right={
+      <ButtonIcon
+        icon={<InfoIcon />}
+        onClick={() => console.info('ButtonIcon clicked')}
+      />
+    }
+  />
+</Playground>
+
+### Variants
+
+<Playground>
+  <Input
+    variant="error"
+    left={<InfoIcon />}
+    type="text"
+    name="name"
+    value="Error"
+    placeholder="Enter your name here"
+    onChange={(event) => console.info('On input change')}
+  />
+</Playground>
 
 ### Kinds
 
@@ -32,11 +197,13 @@ const Example = () => (
 
 ### Props
 
-| Name       | Type                                                  | Default     | Description                                       |
-| ---------- | ----------------------------------------------------- | ----------- | ------------------------------------------------- |
-| `type`     | `"text" ӏ "password" ӏ "email"`                       | `text`      | HTML type of the input                            |
-| `name`     | `string`                                              |             | Name attribute specifies a name of the input      |
-| `value`    | `HTMLInputElement['value']`                           | `null`      | Value of input field                              |
-| `onChange` | `(e: React.ChangeEvent<HTMLInputElement>) => unknown` |             | Callback when user input                          |
-| `variant`  | `string`                                              | `'default'` | Variant prop to style Input component             |
-| `...`      | `HTMLInputElement`                                    | `{}`        | Other props are inherited from `HTMLInputElement` |
+| Name       | Type                                                  | Default     | Description                                                 |
+| ---------- | ----------------------------------------------------- | ----------- | ----------------------------------------------------------- |
+| `type`     | `"text" ӏ "password" ӏ "email"`                       | `text`      | HTML type of the input                                      |
+| `name`     | `string`                                              |             | Name attribute specifies a name of the input                |
+| `value`    | `HTMLInputElement['value']`                           | `null`      | Value of input field                                        |
+| `onChange` | `(e: React.ChangeEvent<HTMLInputElement>) => unknown` |             | Callback when user input                                    |
+| `variant`  | `string`                                              | `'default'` | Variant prop to style Input component                       |
+| `left`     | `React.ReactNode`                                     |             | Component to show on the left side of the text (ex.: Icon)  |
+| `right`    | `React.ReactNode`                                     |             | Component to show on the right side of the text (ex.: Icon) |
+| `...`      | `HTMLInputElement`                                    | `{}`        | Other props are inherited from `HTMLInputElement`           |

@@ -14,7 +14,7 @@ export const InputPasswordExample: React.FC = () => (
           name="input"
           onChange={() => console.info('change')}
           placeholder="Disabled"
-          variant="base"
+          variant="default"
           disabled
         />
         <InputPassword
