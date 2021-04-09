@@ -4,10 +4,9 @@ interface GetSelectHandlersProps extends EnterProps {
 
 interface EnterProps {
   isOpen: boolean;
+  onChange: React.EventHandler<React.SyntheticEvent>;
   selectNode: HTMLElement;
   setIsOpen: () => void;
-  onChange: React.EventHandler<React.SyntheticEvent>;
-  event: React.KeyboardEvent;
 }
 
 const LI_TAG = 'LI';
@@ -28,25 +27,24 @@ const onArrowUp = (dropdownNode: HTMLElement) => () => {
   }
 };
 
-const onEnter = ({ isOpen, selectNode, setIsOpen, onChange, event }: EnterProps) => () => {
+const onEnter = ({ isOpen, onChange, selectNode, setIsOpen }: EnterProps) => (
+  event: React.SyntheticEvent<Element, Event>,
+) => {
   if (isOpen && document.activeElement?.tagName === LI_TAG) {
     onChange(event);
   }
-
   setIsOpen();
   selectNode.focus();
 };
 
-export const selectHandlersGet = ({
-  selectNode,
+export const keyHandlerGet = ({
   dropdownNode,
-  setIsOpen,
   isOpen,
   onChange,
-  event,
+  selectNode,
+  setIsOpen,
 }: GetSelectHandlersProps) => ({
-  onArrowDown: onArrowDown(dropdownNode),
-  onArrowUp: onArrowUp(dropdownNode),
-  onEnter: onEnter({ isOpen, setIsOpen, selectNode, onChange, event }),
-  onShiftArrowDown: setIsOpen,
+  arrowDown: onArrowDown(dropdownNode),
+  arrowUp: onArrowUp(dropdownNode),
+  enter: onEnter({ selectNode, setIsOpen, isOpen, onChange }),
 });
