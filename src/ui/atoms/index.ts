@@ -2,6 +2,7 @@ export { Button } from './button';
 export { ButtonFloating } from './button-floating';
 export { ButtonIcon } from './button-icon';
 export { Chip } from './chip';
+export { HeaderPanel } from './header-panel';
 export { Input } from './input';
 export { Label } from './label';
 export { List } from './list';
