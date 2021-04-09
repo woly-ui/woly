@@ -8,10 +8,10 @@ import { Playground, block, State } from 'box-styles';
 import { Field, Input, InputPassword, Toggle, Checkbox, TextArea } from 'ui';
 import { ClosedEyeIcon, OpenedEyeIcon } from 'icons';
 
-Field is a master component that will make it easy to modify the label based on the field settings 
+`Field` is a master component that will make it easy to modify the label based on the field settings 
 It’s common for fields to have different settings that are usually displayed in the label.
 
-Label
+### Label
 
 Field labels display the type of input a field requires. 
 Every field component should have a label.
@@ -25,14 +25,14 @@ The input line indicates where to enter text, displayed below the label.
 ### Example
 
 <Playground>
-   <Field label="Label">
-      <Input
-        variant="default"
-        name="name"
-        onChange={(event) => console.info('On input change')}
-        placeholder="Placeholder"
-        type="text"/>
-    </Field>
+  <Field label="Label">
+    <Input
+      variant="default"
+      name="name"
+      onChange={(event) => console.info('On input change')}
+      placeholder="Placeholder"
+      type="text"/>
+  </Field>
 </Playground>
 
 ### Labels
@@ -41,96 +41,89 @@ Labels can be used in case for a standalone component, in common it will be eg i
 
 or also as a label of group of component, eg checkbox or radiobutton groups.
 
-<Playground>
+<Playground size="S">
   <Field label="Label of group">
-      <Checkbox text="Item text" variant="secondary" />
-      <Checkbox text="Item text" variant="secondary" />
-      <Checkbox text="Item text" variant="secondary" />
-    </Field>
-    <Field label='Label for a standalone component' variant="default">
-      <TextArea
-        name="name"
-        placeholder="TextArea"
-        onChange={() => console.info('On textarea change')}
-        variant="base"
-        overflow="hidden"
-        disabled
-      />
-    </Field>
+    <Checkbox text="Item text" variant="default" />
+    <Checkbox text="Item text" variant="default" />
+    <Checkbox text="Item text" variant="default" />
+  </Field>
+</Playground> 
+<Playground size="S">
+  <Field label='Label for a standalone component' variant="default">
+    <TextArea
+      name="name"
+      placeholder="TextArea"
+      onChange={() => console.info('On textarea change')}
+      variant="default"
+      overflow="hidden"
+      isDisabled
+    />
+  </Field>
+  <Field label='Label for input'>
+    <InputPassword
+      iconHidden={<ClosedEyeIcon />}
+      iconOpen={<OpenedEyeIcon />}
+      name="input"
+      onChange={() => console.info('change')}
+      placeholder="Enter password"
+      variant="default"    
+    />
+  </Field>
 </Playground> 
 
 Labels and children component can be replaced in row
-<Playground>
-  <block.M>
-    <Field label='Label of set' row>
-      <Checkbox text="Item text" variant="secondary" />
-      <Checkbox text="Item text" variant="secondary" />
-      <Checkbox text="Item text" variant="secondary" />
-    </Field>
-  </block.M>
+<Playground size="S">
+  <Field label='Label of set' isRow>
+    <Checkbox text="Item text" variant="default" />
+    <Checkbox text="Item text" variant="default" />
+    <Checkbox text="Item text" variant="default" />
+  </Field>
   <State initial={false} change={(i) => !i}>
     {(value, change) => (
-      <block.M>
-        <Field label='Label of item' row>
-          <Toggle
-            isChecked={value}
-            onChange={change}
-            id="roundOne"
-            variant="round"/>
-        </Field>
-      </block.M>
+      <Field label='Label of item' isRow>
+        <Toggle
+          isChecked={value}
+          onChange={change}
+          id="roundOne"
+          variant="round"/>
+      </Field>
     )}
   </State>
 </Playground>
 
  or in column variants
 
-<Playground>
-  <block.M>
-    <Field label='Label of set'>
-      <Checkbox text="Item text" variant="secondary" />
-      <Checkbox text="Item text" variant="secondary" />
-      <Checkbox text="Item text" variant="secondary" />
+<Playground size="S">
+  <Field label='Label of set'>
+      <Checkbox text="Item text" variant="default" />
+      <Checkbox text="Item text" variant="default" />
+      <Checkbox text="Item text" variant="default" />
     </Field>
-  </block.M>
-  <block.L>
-    <Field label='Label for input'>
-      <InputPassword
-        iconHidden={<ClosedEyeIcon />}
-        iconOpen={<OpenedEyeIcon />}
-        name="input"
-        onChange={() => console.info('change')}
-        placeholder="Enter password"
-        variant="default"    
-      />
-    </Field>
-    </block.L>
-    <State initial={false} change={(i) => !i}>
+  <State initial={false} change={(i) => !i}>
     {(value, change) => (
-      <block.M>
-        <Field label='Label of item'>
-          <Toggle
-            isChecked={value}
-            onChange={change}
-            id="roundOne"
-            variant="round"/>
-        </Field>
-      </block.M>
+      <Field label='Label of item'>
+        <Toggle
+          isChecked={value}
+          onChange={change}
+          id="roundOne"
+          variant="round"/>
+      </Field>
     )}
   </State>
 </Playground>
 
 ### Kinds 
 
-| Name       | Description                                               |
-| ---------- | --------------------------------------------------------- |
-| Field    | Base Field. Useful for creating a new kind of Field         |
+| Name       | Description                                                 |
+| ---------- | ----------------------------------------------------------- |
+| `Field `   | Base Field. Useful for creating a new kind of Field         |
 
 ### Props
 
-| Name      | Type                  | Default     | Description                                                      |
-| --------- | --------------------- | ----------- | ---------------------------------------------------------------- |
-| `label`   | React.ReactNode       |             | Text appeared on the button                                      |
-| `row`     | boolean               |             | The row attribute specifies direction of label and component     |
-| `variant` | string                | 'default'   | Variant prop to style component                                  |
-| ...       | HTMLButtonElement     | {}          | Other props are inherited from HTMLButtonElement                 |
+| Name          | Type                  | Default     | Description                                                      |
+| ------------- | --------------------- | ----------- | ---------------------------------------------------------------- |
+| `isDisabled`  | `boolean`             |             | HTML disabled attribute                                          |
+| `children`    | `React.ReactNode`     |             | Trigger element of Popover                                       |
+| `label`       | `React.ReactNode`     |             | Text appeared on the button                                      |
+| `isRow`       | `boolean`             |             | The row attribute specifies direction of label and component     |
+| `variant`     | `string`              | `'default'` | Variant prop to style component                                  |

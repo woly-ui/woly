@@ -6,6 +6,5 @@ export { Input } from './input';
 export { Label } from './label';
 export { List } from './list';
 export { Notification } from './notification';
-export { Popover } from './popover';
 export { Surface } from './surface';
 export { TextArea } from './text-area';

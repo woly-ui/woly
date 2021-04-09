@@ -19,7 +19,7 @@ interface TextAreaProps
   extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
   className?: string;
   cols?: number;
-  disabled?: boolean;
+  isDisabled?: boolean;
   maxLength?: number;
   minlength?: number;
   name: string;
@@ -30,7 +30,6 @@ interface TextAreaProps
   resize?: string;
   rows?: number;
   textareaRef?: any;
-  textError?: string;
   value?: string;
   wrap?: string;
 }
@@ -38,7 +37,7 @@ interface TextAreaProps
 const TextAreaBase: React.FC<TextAreaProps & Variant> = ({
   className,
   cols,
-  disabled,
+  isDisabled,
   maxLength,
   minlength,
   name,
@@ -49,11 +48,9 @@ const TextAreaBase: React.FC<TextAreaProps & Variant> = ({
   resize,
   rows,
   textareaRef,
-  textError,
   value,
   variant = 'default',
   wrap,
-  ...p
 }) => (
   <div
     className={className}
@@ -64,7 +61,7 @@ const TextAreaBase: React.FC<TextAreaProps & Variant> = ({
     <textarea
       cols={cols}
       data-variant={variant}
-      disabled={disabled}
+      disabled={isDisabled}
       maxLength={maxLength}
       minLength={minlength}
       name={name}
@@ -75,45 +72,35 @@ const TextAreaBase: React.FC<TextAreaProps & Variant> = ({
       rows={rows}
       value={value}
       wrap={wrap}
-      {...p}
     />
-    <div data-block="container">
-      {textError && <span>{textError}</span>}
-      {maxLength && (
-        <p>
-          {value?.length}/{maxLength}
-        </p>
-      )}
-    </div>
   </div>
 );
 
 export const TextArea = styled(TextAreaBase)`
+  --woly-vertical: calc(
+    1px * var(--woly-component-level) * var(--woly-main-level)
+  );
+  --woly-horizontal: calc(
+    var(--woly-const-m) + (1px * var(--woly-main-level)) + var(--woly-vertical)
+  );
+
   --woly-width: 100%;
 
   width: var(--woly-width);
 
   textarea {
-    --woly-vertical: calc(
-      1px * var(--woly-component-level) * var(--woly-main-level)
-    );
-    --woly-horizontal: calc(
-      var(--woly-const-m) + (1px * var(--woly-main-level)) +
-        var(--woly-vertical)
-    );
-
-    padding: var(--woly-vertical, 16px) var(--woly-horizontal, 6.4px);
+    padding: var(--woly-vertical, 12px) var(--woly-horizontal, 21px);
 
     border: none;
     outline: none;
 
-    font-size: var(--woly-font-size, 16px);
-    line-height: var(--woly-line-height, 24px);
+    font-size: var(--woly-font-size, 15px);
+    line-height: var(--woly-line-height, 21px);
 
     background: var(--woly-background, transparent);
-    border-color: var(--woly-border, var(--woly-background, #000000));
+    border-color: var(--woly-border, #000000);
     border-style: solid;
-    border-width: var(--woly-border-width, 1px);
+    border-width: var(--woly-border-width, 1.5px);
     border-radius: var(--woly-rounding, 3px);
   }
 
@@ -130,35 +117,11 @@ export const TextArea = styled(TextAreaBase)`
   }
 
   textarea:disabled {
-    color: var(--woly-color-disabled, #ffffff);
-    background: var(--woly-background-disabled, #ffffff);
-    border-color: var(
-      --woly-border-disabled,
-      var(--woly-background-disabled, #000000)
-    );
-  }
+    pointer-events: none;
 
-  [data-block='container'] {
-    display: flex;
-    justify-content: flex-end;
-
-    p {
-      margin: 0;
-
-      font-size: var(--woly-font-size, 12px);
-      line-height: var(--woly-line-height, 15px);
-
-      color: var(--woly-hint-color, #000000);
-    }
-
-    span {
-      flex-grow: 1;
-
-      font-size: var(--woly-font-size, 12px);
-      line-height: var(--woly-line-height, 15px);
-
-      color: var(--woly-error-text, #000000);
-    }
+    color: var(--woly-color-disabled, #c0c0c0);
+    background: var(--woly-background-disabled, #f5f5f5);
+    border-color: var(--woly-border-disabled, #c0c0c0);
   }
 ` as StyledComponent<
   'textarea',

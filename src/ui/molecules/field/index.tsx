@@ -20,28 +20,30 @@ import { Label } from '../../atoms';
 interface FieldProps {
   className?: string;
   isDisabled?: boolean;
+  isRow?: boolean;
   label?: React.ReactNode;
-  row?: boolean;
 }
 
 export const FieldBase: React.FC<FieldProps & Variant> = ({
+  children,
   className,
   isDisabled,
+  isRow,
   label,
   variant = 'default',
-  children,
-  row,
-}) => (
-  <div
-    className={className}
-    data-variant={variant}
-    data-disabled={isDisabled}
-    data-row={row}
-  >
-    <div data-field="label">{label && <Label>{label}</Label>}</div>
-    <div data-field="content">{children}</div>
-  </div>
-);
+}) => {
+  return (
+    <div
+      className={className}
+      data-disabled={isDisabled}
+      data-row={isRow}
+      data-variant={variant}
+    >
+      <div data-field="label">{label && <Label>{label}</Label>}</div>
+      <div data-field="content">{children}</div>
+    </div>
+  );
+};
 
 export const Field = styled(FieldBase)`
   --woly-vertical: calc(
@@ -51,11 +53,7 @@ export const Field = styled(FieldBase)`
     var(--woly-const-m) + (1px * var(--woly-main-level)) + var(--woly-vertical)
   );
 
-  --woly-width: 100%;
-
-  padding: var(--woly-vertical, 16px) var(--woly-horizontal, 6.4px);
-
-  width: var(--woly-width);
+  padding-bottom: var(--woly-vertical, 6px) 0;
 
   box-sizing: border-box;
 
@@ -64,7 +62,7 @@ export const Field = styled(FieldBase)`
   }
 
   [data-field='content'] {
-    width: 100%;
+    width: var(--woly-width);
   }
 
   &[data-row='true'] {
@@ -72,17 +70,11 @@ export const Field = styled(FieldBase)`
     align-items: center;
 
     [data-field='label'] {
-      padding: 0 var(--woly-horizontal, 6.4px);
+      padding: 0 var(--woly-horizontal, 6px);
     }
   }
 
   &:focus-within {
     border-color: var(--woly-border-focus, #9381f1);
-  }
-
-  &[data-disabled='true'] {
-    [data-field='label'] {
-      color: var(--woly-color-disabled, #c0c0c0);
-    }
   }
 ` as StyledComponent<'div', Record<string, unknown>, FieldProps & Variant>;
