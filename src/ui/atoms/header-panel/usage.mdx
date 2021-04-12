@@ -1,5 +1,5 @@
 ---
-name: headerpanel
+name: header-panel
 category: atoms
 package: 'woly'
 ---
@@ -11,64 +11,64 @@ import { CloseIcon } from 'icons';
 `HeaderPanel` is a navigation component that displays information and actions relating to the current screen.
 
 <Playground>
-     <HeaderPanel>Hello! It`s a HeaderPanel</HeaderPanel>
+    <div style={{marginBottom: "10px"}}>
+        <HeaderPanel>Hello! It`s a HeaderPanel</HeaderPanel>
+    </div>
 </Playground>
  
 ### Example
 
-
-
 <Playground>
-  <State initial={false} change={(i) => !i}>
-    {(value, change) => (
-      <block.S>
-        <HeaderPanel>
-          <div style={{paddingRight: "10px"}}>
-            <Button onClick={change} text="Sign in" variant="primary" />
-          </div>
-          <div>
-            <b><a href="" target="" style={{paddingRight: "10px"}}>This is a link</a></b>
-            <b><a href="" target="" style={{paddingRight: "10px"}}>This is a link</a></b>
-            <b><a href="" target="" >This is a link</a></b>
-          </div>
-        </HeaderPanel>
-        <div 
-          style={{
-            position: 'absolute',
-                visibility: value ? 'visible' : 'hidden',
-                width: value ? '250px' : '0',
-                marginTop: '20px',
-             
-          }}>
-            <Surface>
-              <FormBlock>
-                <Label variant="base">Name</Label>
-                  <Input
-                    name="name"
-                    onChange={(event) => console.info('On input change')}
-                    placeholder="Ivan Ivanov"
-                    type="text"
-                    variant="base"
-                  />
-                <Label variant="base">Password</Label>
-                  <Input
-                    name="password"
-                    onChange={(event) => console.info('On input change')}
-                    type="password"
-                    variant="base"
-                  />
-                  <Button
-                    style={{ marginTop: '20px' }}
-                    onClick={() => {}}
-                    text="Sign in"
-                    variant="primary"
-                  />
-              </FormBlock>
-            </Surface>
-          </div>
-        </block.S>
-      )}
-   </State>
+    <State initial={false} change={(i) => !i}>
+        {(value, change) => (
+        <block.S style={{marginBottom: "10px"}}>
+            <HeaderPanel>
+                <div style={{paddingRight: "10px"}}>
+                    <Button onClick={change} text="Sign in" variant="primary" />
+                </div>
+                <div>
+                    <b><a href="" target="" style={{paddingRight: "10px"}}>This is a link</a></b>
+                    <b><a href="" target="" style={{paddingRight: "10px"}}>This is a link</a></b>
+                    <b><a href="" target="" >This is a link</a></b>
+                </div>
+            </HeaderPanel>
+            <div 
+            style={{
+                position: 'absolute',
+                    visibility: value ? 'visible' : 'hidden',
+                    width: value ? '250px' : '0',
+                    marginTop: '20px',
+                
+            }}>
+                <Surface>
+                <FormBlock>
+                    <Label variant="base">Name</Label>
+                    <Input
+                        name="name"
+                        onChange={(event) => console.info('On input change')}
+                        placeholder="Ivan Ivanov"
+                        type="text"
+                        variant="base"
+                    />
+                    <Label variant="base">Password</Label>
+                    <Input
+                        name="password"
+                        onChange={(event) => console.info('On input change')}
+                        type="password"
+                        variant="base"
+                    />
+                    <Button
+                        style={{ marginTop: '20px' }}
+                        onClick={() => {}}
+                        text="Sign in"
+                        variant="primary"
+                    />
+                </FormBlock>
+                </Surface>
+            </div>
+            </block.S>
+        )}
+    </State>
 </Playground>
 
 ### Kinds
