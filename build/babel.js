@@ -43,9 +43,7 @@ const common = {
   overrides: [
     {
       test(filename) {
-        return (
-          filename && (filename.endsWith('.tsx') || filename.endsWith('.ts'))
-        );
+        return filename && (filename.endsWith('.tsx') || filename.endsWith('.ts'));
       },
       presets: [
         [

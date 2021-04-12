@@ -8,27 +8,27 @@ import { Playground, block } from 'box-styles'
 import { List } from 'ui';
 import { InfoIcon, Check } from 'icons';
 
-`List` is a list of items related to a single object. 
+`List` is a list of items related to a single object.
 A List displays a list of choices on a temporary surface. It appears when the user interacts with a button, or other control.
 This component can be used in list dropdown or input autosuggestion components.
 
-Simple lists open over the anchor element by default. 
+Simple lists open over the anchor element by default.
 When close to a screen edge, simple lists vertically realign to make sure that all list items are completely visible.
 
 ListItem
-This component defines a selectable item in a List. It should only be used as a descendant of a List. 
+This component defines a selectable item in a List. It should only be used as a descendant of a List.
 It does not need to be a direct child of the List component.
 
 ### Example
 
 <Playground>
   <List
-      list={[
-        { id: 0, text: 'Red' },
-        { id: 1, text: 'Green' },
-        { id: 2, text: 'Blue' },
-      ]}
-    />
+    list={[
+      { id: 0, text: 'Red' },
+      { id: 1, text: 'Green' },
+      { id: 2, text: 'Blue' },
+    ]}
+  />
 </Playground>
 
 <!-- <ListExample /> -->
@@ -37,38 +37,63 @@ It does not need to be a direct child of the List component.
 
 listList items can consist icon on the left side or the right. Use icons on the both sides is not recommended.
 
-  <Playground>
-    <List
-      list={[
-        { left: <InfoIcon/>, id: 0, text: 'Red', onClick: () => alert('Item clicked') },
-        { left: <InfoIcon/>, id: 1, text: 'Green' },
-        { left: <InfoIcon/>, id: 2, text: 'Blue' },
-      ]}
-    />
-    <List
-      list={[
-        {  id: 0, text: 'Red', right: <Check/> },
-        {  id: 1, text: 'Green', right: <Check/> },
-        {  id: 2, text: 'Blue', right: <Check/> },
-      ]}
-    />
-    <List
-      list={[
-        { left: <InfoIcon/>, id: 0, text: 'Red', right: <Check/>, onClick: () => alert('Item clicked')},
-        { left: <InfoIcon/>, id: 1, text: 'Green', right: <Check/> },
-        { left: <InfoIcon/>, id: 2, text: 'Blue', right: <Check/> },
-      ]}
-    />
-     <List
-      list={[
-        { left: <InfoIcon/>, id: 0, text: 'Red', right: <Check/>, disabled: true },
-        { left: <InfoIcon/>, id: 1, text: 'Green', right: <Check/> },
-        { left: <InfoIcon/>, id: 2, text: 'Blue', right: <Check/>, disabled: true },
-      ]}
-    />
- </Playground>
+{' '}
 
- ### Sizes
+<Playground>
+  <List
+    list={[
+      {
+        left: <InfoIcon />,
+        id: 0,
+        text: 'Red',
+        onClick: () => alert('Item clicked'),
+      },
+      { left: <InfoIcon />, id: 1, text: 'Green' },
+      { left: <InfoIcon />, id: 2, text: 'Blue' },
+    ]}
+  />
+  <List
+    list={[
+      { id: 0, text: 'Red', right: <Check /> },
+      { id: 1, text: 'Green', right: <Check /> },
+      { id: 2, text: 'Blue', right: <Check /> },
+    ]}
+  />
+  <List
+    list={[
+      {
+        left: <InfoIcon />,
+        id: 0,
+        text: 'Red',
+        right: <Check />,
+        onClick: () => alert('Item clicked'),
+      },
+      { left: <InfoIcon />, id: 1, text: 'Green', right: <Check /> },
+      { left: <InfoIcon />, id: 2, text: 'Blue', right: <Check /> },
+    ]}
+  />
+  <List
+    list={[
+      {
+        left: <InfoIcon />,
+        id: 0,
+        text: 'Red',
+        right: <Check />,
+        disabled: true,
+      },
+      { left: <InfoIcon />, id: 1, text: 'Green', right: <Check /> },
+      {
+        left: <InfoIcon />,
+        id: 2,
+        text: 'Blue',
+        right: <Check />,
+        disabled: true,
+      },
+    ]}
+  />
+</Playground>
+
+### Sizes
 
 Size controlled by the `component-level` block property not from the props.
 
@@ -76,43 +101,41 @@ Size controlled by the `component-level` block property not from the props.
   <block.S>
     <List
       list={[
-        { left: <InfoIcon/>, id: 0, text: 'Red' },
-        { left: <InfoIcon/>, id: 1, text: 'Green' },
-        { left: <InfoIcon/>, id: 2, text: 'Blue' },
+        { left: <InfoIcon />, id: 0, text: 'Red' },
+        { left: <InfoIcon />, id: 1, text: 'Green' },
+        { left: <InfoIcon />, id: 2, text: 'Blue' },
       ]}
     />
   </block.S>
   <block.L>
     <List
       list={[
-        { left: <InfoIcon/>, id: 0, text: 'Red' },
-        { left: <InfoIcon/>, id: 1, text: 'Green' },
-        { left: <InfoIcon/>, id: 2, text: 'Blue' },
+        { left: <InfoIcon />, id: 0, text: 'Red' },
+        { left: <InfoIcon />, id: 1, text: 'Green' },
+        { left: <InfoIcon />, id: 2, text: 'Blue' },
       ]}
     />
   </block.L>
   <block.XL>
     <List
       list={[
-        { left: <InfoIcon/>, id: 0, text: 'Red' },
-        { left: <InfoIcon/>, id: 1, text: 'Green' },
-        { left: <InfoIcon/>, id: 2, text: 'Blue' },
+        { left: <InfoIcon />, id: 0, text: 'Red' },
+        { left: <InfoIcon />, id: 1, text: 'Green' },
+        { left: <InfoIcon />, id: 2, text: 'Blue' },
       ]}
     />
   </block.XL>
 </Playground>
 
-
-
 ### Kinds
 
-| Name       | Description                                               |
-| ---------- | --------------------------------------------------------- |
-| `List`      | Base List. Useful for creating a new kind of List        |
+| Name   | Description                                       |
+| ------ | ------------------------------------------------- |
+| `List` | Base List. Useful for creating a new kind of List |
 
 ### Props
 
 | Name      | Type                     | Default     | Description                          |
-| --------- | ------------------------ | ----------- | -------------------------------------|
+| --------- | ------------------------ | ----------- | ------------------------------------ |
 | `list`    | `Array<React.ReactNode>` |             | An array of List items               |
 | `variant` | `string`                 | `'default'` | Variant prop to style List component |

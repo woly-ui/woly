@@ -24,9 +24,7 @@ const PopoverBase: React.FC<Props & Variant> = ({
   const ref = React.useRef<HTMLDivElement>(null);
 
   const [isVisible, setVisibility] = React.useReducer((is) => !is, isOpen);
-  const [popoverPosition, setPosition] = React.useState<PopoverPositionType>(
-    'bottom',
-  );
+  const [popoverPosition, setPosition] = React.useState<PopoverPositionType>('bottom');
 
   const onScroll = React.useCallback(() => {
     if (ref.current === null) return;
@@ -93,8 +91,7 @@ const PopoverBase: React.FC<Props & Variant> = ({
 
 export const Popover = styled(PopoverBase)`
   --woly-gap: calc(
-    (1px * var(--woly-main-level)) +
-      (1px * var(--woly-main-level) * var(--woly-component-level))
+    (1px * var(--woly-main-level)) + (1px * var(--woly-main-level) * var(--woly-component-level))
   );
   --popover-position: calc(100% + 4px + var(--woly-gap, 10px));
   position: relative;

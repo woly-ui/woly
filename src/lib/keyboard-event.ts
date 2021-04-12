@@ -16,13 +16,9 @@ interface HandlerType {
   [key: string]: () => void;
 }
 
-const camelCase = (string: string) =>
-  string.charAt(0).toLowerCase() + string.slice(1);
+const camelCase = (string: string) => string.charAt(0).toLowerCase() + string.slice(1);
 
-export const keyboardEventHandle = ({
-  event,
-  eventHandlers,
-}: KeyboardEventProps) => {
+export const keyboardEventHandle = ({ event, eventHandlers }: KeyboardEventProps) => {
   const { shiftKey } = event;
   const key = camelCase(event.key);
   const { onArrowDown, onArrowUp, onEnter, onShiftArrowDown } = eventHandlers;
@@ -37,8 +33,7 @@ export const keyboardEventHandle = ({
     arrowDown: onShiftArrowDown,
   };
 
-  if (!keyHandler.hasOwnProperty(key) && !shiftKeyHandler.hasOwnProperty(key))
-    return;
+  if (!keyHandler.hasOwnProperty(key) && !shiftKeyHandler.hasOwnProperty(key)) return;
 
   if (shiftKey) {
     shiftKeyHandler[key]();

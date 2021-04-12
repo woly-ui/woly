@@ -15,8 +15,7 @@ import { Variant } from 'lib/types';
  * --woly-color-disabled
  *
  */
-interface TextAreaProps
-  extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
+interface TextAreaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
   className?: string;
   cols?: number;
   disabled?: boolean;
@@ -55,12 +54,7 @@ const TextAreaBase: React.FC<TextAreaProps & Variant> = ({
   wrap,
   ...p
 }) => (
-  <div
-    className={className}
-    data-overflow={overflow}
-    data-resize={resize}
-    data-variant={variant}
-  >
+  <div className={className} data-overflow={overflow} data-resize={resize} data-variant={variant}>
     <textarea
       cols={cols}
       data-variant={variant}
@@ -94,17 +88,13 @@ export const TextArea = styled(TextAreaBase)`
   width: var(--woly-width);
 
   textarea {
-    --woly-vertical: calc(
-      1px * var(--woly-component-level) * var(--woly-main-level)
-    );
+    --woly-vertical: calc(1px * var(--woly-component-level) * var(--woly-main-level));
     --woly-horizontal: calc(
-      var(--woly-const-m) + (1px * var(--woly-main-level)) +
-        var(--woly-vertical)
+      var(--woly-const-m) + (1px * var(--woly-main-level)) + var(--woly-vertical)
     );
 
     padding: var(--woly-vertical, 16px) var(--woly-horizontal, 6.4px);
 
-    border: none;
     outline: none;
 
     font-size: var(--woly-font-size, 16px);
@@ -132,10 +122,7 @@ export const TextArea = styled(TextAreaBase)`
   textarea:disabled {
     color: var(--woly-color-disabled, #ffffff);
     background: var(--woly-background-disabled, #ffffff);
-    border-color: var(
-      --woly-border-disabled,
-      var(--woly-background-disabled, #000000)
-    );
+    border-color: var(--woly-border-disabled, var(--woly-background-disabled, #000000));
   }
 
   [data-block='container'] {
@@ -160,8 +147,4 @@ export const TextArea = styled(TextAreaBase)`
       color: var(--woly-error-text, #000000);
     }
   }
-` as StyledComponent<
-  'textarea',
-  Record<string, unknown>,
-  TextAreaProps & Variant
->;
+` as StyledComponent<'textarea', Record<string, unknown>, TextAreaProps & Variant>;

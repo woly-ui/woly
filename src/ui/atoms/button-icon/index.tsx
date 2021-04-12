@@ -41,27 +41,19 @@ const ButtonIconBase: React.FC<Props & Variant> = ({
   );
 
   return (
-    <button
-      data-variant={variant}
-      onClick={onClickHandler}
-      type="button"
-      {...p}
-    >
+    <button data-variant={variant} onClick={onClickHandler} type="button" {...p}>
       <span>{icon}</span>
     </button>
   );
 };
 
 export const ButtonIcon = styled(ButtonIconBase)`
-  --woly-vertical: calc(
-    1px * var(--woly-component-level) * var(--woly-main-level)
-  );
+  --woly-vertical: calc(1px * var(--woly-component-level) * var(--woly-main-level));
   --woly-horizontal: calc(
     var(--woly-const-m) + (1px * var(--woly-main-level)) + var(--woly-vertical)
   );
   --woly-gap: calc(
-    (1px * var(--woly-main-level)) +
-      (1px * var(--woly-main-level) * var(--woly-component-level))
+    (1px * var(--woly-main-level)) + (1px * var(--woly-main-level) * var(--woly-component-level))
   );
 
   display: flex;

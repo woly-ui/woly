@@ -51,12 +51,7 @@ const TooltipBase: React.FC<TooltipProps & Variant> = ({
   }, [position, ref]);
 
   return (
-    <div
-      className={className}
-      data-position={tooltipPosition}
-      data-variant={variant}
-      ref={ref}
-    >
+    <div className={className} data-position={tooltipPosition} data-variant={variant} ref={ref}>
       <div data-element>{children}</div>
       <div data-tooltip>{message}</div>
     </div>
@@ -65,8 +60,7 @@ const TooltipBase: React.FC<TooltipProps & Variant> = ({
 
 export const Tooltip = styled(TooltipBase)`
   --woly-gap: calc(
-    (1px * var(--woly-main-level)) +
-      (1px * var(--woly-main-level) * var(--woly-component-level))
+    (1px * var(--woly-main-level)) + (1px * var(--woly-main-level) * var(--woly-component-level))
   );
 
   --tooltip-position: calc(100% + 4px + var(--woly-gap, 10px));
@@ -114,8 +108,7 @@ export const Tooltip = styled(TooltipBase)`
       height: 0;
       border-style: solid;
       border-width: 4px 3px 0 3px;
-      border-color: var(--woly-background, #ffffff) transparent transparent
-        transparent;
+      border-color: var(--woly-background, #ffffff) transparent transparent transparent;
       position: absolute;
     }
 

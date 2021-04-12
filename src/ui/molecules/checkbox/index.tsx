@@ -24,23 +24,24 @@ const CheckboxBase: React.FC<CheckboxProps & Variant> = ({
   <label htmlFor={id} className={className} data-variant={variant}>
     <span data-block="container" data-disabled={disabled}>
       <input type="checkbox" id={id} checked={isChecked} onChange={onChange} />
-      <span data-checkmark="unchecked"><UnCheckIcon /></span>
-      <span data-checkmark="checked"><CheckIcon /></span>
+      <span data-checkmark="unchecked">
+        <UnCheckIcon />
+      </span>
+      <span data-checkmark="checked">
+        <CheckIcon />
+      </span>
       {text && <span data-block="text">{text}</span>}
     </span>
   </label>
 );
 
 export const Checkbox = styled(CheckboxBase)`
-  --woly-vertical: calc(
-    1px * var(--woly-component-level) * var(--woly-main-level)
-  );
+  --woly-vertical: calc(1px * var(--woly-component-level) * var(--woly-main-level));
   --woly-horizontal: calc(
     var(--woly-const-m) + (1px * var(--woly-main-level)) + var(--woly-vertical)
   );
   --woly-gap: calc(
-    (1px * var(--woly-main-level)) +
-      (1px * var(--woly-main-level) * var(--woly-component-level))
+    (1px * var(--woly-main-level)) + (1px * var(--woly-main-level) * var(--woly-component-level))
   );
 
   --woly-checkbox-width: 24px;

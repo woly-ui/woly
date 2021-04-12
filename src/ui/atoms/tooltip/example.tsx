@@ -9,32 +9,14 @@ export const TooltipExample: React.FC = () => (
   <Global>
     <TooltipWrapper>
       <block.S>
-        <Tooltip
-          message="Подсказка может быть написана в две строки и более"
-          position="bottom"
-        >
-          <Button
-            onClick={() => console.info('Hi!')}
-            text="Button"
-            variant="primary"
-          />
+        <Tooltip message="Подсказка может быть написана в две строки и более" position="bottom">
+          <Button onClick={() => console.info('Hi!')} text="Button" variant="primary" />
         </Tooltip>
         <Tooltip message="Подсказка" position="top" id="tooltip-top">
-          <Button
-            onClick={() => console.info('Hi!')}
-            text="Button"
-            variant="primary"
-          />
+          <Button onClick={() => console.info('Hi!')} text="Button" variant="primary" />
         </Tooltip>
-        <Tooltip
-          message="Подсказка может быть написана в две строки"
-          position="left"
-        >
-          <Button
-            onClick={() => console.info('Hi!')}
-            text="Button"
-            variant="primary"
-          />
+        <Tooltip message="Подсказка может быть написана в две строки" position="left">
+          <Button onClick={() => console.info('Hi!')} text="Button" variant="primary" />
         </Tooltip>
         <Tooltip message="Подсказка" position="right" variant="primary">
           <Input
