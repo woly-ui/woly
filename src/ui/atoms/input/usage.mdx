@@ -4,25 +4,16 @@ category: atoms
 package: 'woly'
 ---
 
-import { InputExample } from './example';
+import { Input } from './index';
+import { Playground } from 'box-styles';
 
 `Input` is a field to accept data from the user. Input is used to create form fields that accept user input.
 
 ### Example
 
-<InputExample />
-
-```tsx
-const Example = () => (
-  <Input
-    type="text"
-    name="name"
-    placeholder="Enter your name here"
-    value="Hi"
-    onChange={(event) => console.info('On input change')}
-  />
-);
-```
+<Playground>
+  <Input variant="primary" />
+</Playground>
 
 ### Kinds
 
