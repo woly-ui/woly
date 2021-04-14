@@ -6,35 +6,12 @@ import { Variant } from 'lib/types';
 export type ButtonVariants = 'default' | 'primary' | 'destructive' | 'text';
 export type ButtonSizes = 'default' | 'small';
 
-/**
- * --woly-rounding — in pixels
- * --woly-font-size
- * --woly-line-height
- * --woly-border-width
- *
- * --woly-background
- * --woly-border
- * --woly-color
- *
- * --woly-background-hover
- * --woly-border-hover
- * --woly-color-hover
- *
- * --woly-background-focus
- * --woly-border-focus
- * --woly-color-focus
- *
- * --woly-background-disabled
- * --woly-border-disabled
- * --woly-color-disabled
- *
- */
-
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children?: never;
   className?: string;
   icon?: React.ReactNode;
   text: React.ReactNode;
+  outlined?: boolean;
 }
 
 const ButtonBase: React.FC<ButtonProps & Variant> = ({
@@ -42,95 +19,93 @@ const ButtonBase: React.FC<ButtonProps & Variant> = ({
   text,
   type = 'button',
   variant = 'default',
+  outlined = false,
   ...p
 }) => (
-  <button type={type} data-variant={variant} {...p}>
+  <button type={type} data-outlined={outlined} data-variant={variant} {...p}>
     {icon && <span data-icon="left">{icon}</span>}
     <span data-text>{text}</span>
   </button>
 );
 
 export const Button = styled(ButtonBase)`
-  --woly-vertical: calc(1px * var(--woly-component-level) * var(--woly-main-level));
-  --woly-horizontal: calc(
-    var(--woly-const-m) + (1px * var(--woly-main-level)) + var(--woly-vertical)
+  --local-vertical: calc(1px * var(--woly-component-level) * var(--woly-main-level));
+  --local-horizontal: calc(
+    var(--woly-const-m) + (1px * var(--woly-main-level)) + var(--local-vertical)
   );
-  --woly-gap: var(--woly-vertical, 6px);
-  --woly-compensate: var(--woly-const-m);
+  --local-gap: var(--local-vertical);
+  --local-compensate: var(--woly-const-m);
+
+  --local-text-color: var(--woly-shape-text-default);
+  --local-shape-color: var(--woly-shape-default);
+  --local-border-color: var(--woly-shape-default);
 
   box-sizing: border-box;
   display: flex;
   flex-wrap: nowrap;
-  padding: var(--woly-vertical, 16px) 0;
+  padding: var(--local-vertical) 0;
   justify-content: center;
 
-  color: var(--woly-color, #ffffff);
-  font-size: var(--woly-font-size, 15px);
-  line-height: var(--woly-line-height, 24px);
+  color: var(--local-text-color);
+  font-size: var(--woly-font-size);
+  line-height: var(--woly-line-height);
 
-  background-color: var(--woly-background, #000000);
-
-  border-color: var(--woly-border, #000000);
+  background-color: var(--local-shape-color);
+  border-color: var(--local-border-color);
   border-style: solid;
-  border-width: var(--woly-border-width, 0);
-  border-radius: var(--woly-rounding, 4px);
+  border-width: var(--woly-border-width);
+  border-radius: var(--woly-rounding);
   outline: none;
 
+  &[data-outlined='true'] {
+    background-color: transparent;
+    color: var(--local-shape-color);
+    svg > path {
+      fill: var(--local-shape-color);
+    }
+  }
+
   [data-icon] {
+    --local-icon-size: var(--woly-line-height);
     display: flex;
     align-items: center;
     justify-content: center;
-    width: var(--woly-line-height, 24px);
-    height: var(--woly-line-height, 24px);
-    padding: 0 0 0 calc(var(--woly-horizontal) - var(--woly-compensate));
+    width: var(--local-icon-size);
+    height: var(--local-icon-size);
+    padding: 0 0 0 calc(var(--local-horizontal) - var(--local-compensate));
   }
 
   [data-text] {
-    padding: 0 var(--woly-horizontal, 6px);
+    padding: 0 var(--local-horizontal);
   }
 
   span[data-icon='left'] + span[data-text] {
-    padding-left: var(--woly-gap, 6px);
+    padding-left: var(--local-gap);
   }
 
   svg > path {
-    fill: var(--woly-color, #ffffff);
+    fill: var(--local-text-color);
   }
 
   &:hover {
-    color: var(--woly-color-hover, #ffffff);
-    background-color: var(--woly-background-hover, #000000);
-    border-color: var(--woly-border-hover, #000000);
-    svg > path {
-      fill: var(--woly-color-hover, #ffffff);
-    }
+    --local-text-color: var(--woly-shape-text-hover);
+    --local-border-color: var(--woly-shape-hover);
+    --local-shape-color: var(--woly-shape-hover);
   }
 
   &:active {
-    color: var(--woly-color-active, #ffffff);
-    background-color: var(--woly-background-active, #000000);
-    border-color: var(--woly-border-active, #000000);
-    svg > path {
-      fill: var(--woly-color-active, #ffffff);
-    }
+    --local-text-color: var(--woly-shape-text-active);
+    --local-border-color: var(--woly-shape-active);
+    --local-shape-color: var(--woly-shape-active);
   }
 
   &:focus {
-    color: var(--woly-color-focus, #ffffff);
-    background-color: var(--woly-background-focus, #000000);
-    border-color: var(--woly-border-focus, #000000);
-    svg > path {
-      fill: var(--woly-color-focus, #ffffff);
-    }
+    box-shadow: 0 0 0 1.5px var(--woly-focus);
   }
 
   &:disabled {
-    color: var(--woly-color-disabled, #ffffff);
-
-    background-color: var(--woly-background-disabled, #000000);
-    border-color: var(--woly-border-disabled, #000000);
-    svg > path {
-      fill: var(--woly-color-disabled, #ffffff);
-    }
+    --local-text-color: var(--woly-shape-text-disabled);
+    --local-border-color: var(--woly-shape-disabled);
+    --local-shape-color: var(--woly-shape-disabled);
   }
 ` as StyledComponent<'button', Record<string, unknown>, ButtonProps & Variant>;

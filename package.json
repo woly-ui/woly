@@ -30,6 +30,7 @@
     "@eslint-kit/eslint-config-node": "^2.0.0",
     "@eslint-kit/eslint-config-prettier": "^2.0.0",
     "@eslint-kit/eslint-config-react": "^2.1.0",
+    "@eslint-kit/eslint-config-react-new-jsx-transform": "^1.0.0",
     "@eslint-kit/eslint-config-typescript": "^3.2.0",
     "@rollup/plugin-alias": "^3.1.2",
     "@rollup/plugin-babel": "^5.2.3",
@@ -43,7 +44,7 @@
     "@types/styled-components": "^5.1.7",
     "@types/webpack": "^4.41.26",
     "@typescript-eslint/eslint-plugin": "^4.15.0",
-    "@typescript-eslint/parser": "^4.15.0",
+    "@typescript-eslint/parser": "4.15.0",
     "@wessberg/rollup-plugin-ts": "^1.3.8",
     "babel-loader": "^8.2.2",
     "babel-plugin-module-resolver": "^4.1.0",
@@ -53,7 +54,7 @@
     "debug": "^4.3.1",
     "eslint": "7.10.0",
     "eslint-import-resolver-alias": "^1.1.2",
-    "eslint-import-resolver-typescript": "^2.3.0",
+    "eslint-import-resolver-typescript": "2.3.0",
     "eslint-plugin-import": "^2.22.1",
     "execa": "^5.0.0",
     "file-loader": "^6.2.0",
@@ -66,7 +67,7 @@
     "import-sort-style-sova": "^0.1.0",
     "inquirer": "^7.3.3",
     "lint-staged": "^10.5.4",
-    "prettier": "^2.2.1",
+    "prettier": "2.2.1",
     "prettier-plugin-import-sort": "^0.0.6",
     "react-docgen-typescript": "^1.21.0",
     "react-is": "^17.0.1",
@@ -75,7 +76,7 @@
     "rollup-plugin-babel": "^4.4.0",
     "rollup-plugin-eslint": "^7.0.0",
     "rollup-plugin-node-resolve": "^5.2.0",
-    "rollup-plugin-react-svg": "^3.0.3",
+    "rollup-plugin-react-svg": "p^3.0.3",
     "rollup-plugin-size-snapshot": "^0.12.0",
     "rollup-plugin-terser": "^7.0.2",
     "rollup-plugin-visualizer": "^4.2.0",
@@ -97,6 +98,10 @@
     "commitizen": {
       "path": "cz-conventional-changelog"
     }
+  },
+  "resolutions": {
+    "gatsby/eslint-plugin-import": "2.21.2",
+    "gatsby/@typescript-eslint/eslint-plugin": "4.15.0"
   },
   "importSort": {
     ".tsx, .ts": {
