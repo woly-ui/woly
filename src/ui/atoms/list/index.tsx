@@ -30,7 +30,12 @@ interface List {
 const ListBase: React.FC<List & Variant> = ({ className, list, variant = 'default' }) => (
   <ul className={className} data-variant={variant}>
     {list.map(({ left, right, text, id, disabled, onClick }) => (
-      <li key={id} data-type="list-item" data-disabled={disabled} onClick={onClick}>
+      <li
+        key={id}
+        data-type="list-item"
+        data-disabled={disabled}
+        onClick={onClick}
+      >
         {left && <span data-icon="left">{left}</span>}
         <span data-block="content">{text}</span>
         {right && <span data-icon="right">{right}</span>}

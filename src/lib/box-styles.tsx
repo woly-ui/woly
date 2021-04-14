@@ -269,3 +269,11 @@ export const Line = styled.div`
   display: flex;
   align-items: baseline;
 `;
+        
+export const Modal = styled.div`
+  z-index: 1;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+`;
