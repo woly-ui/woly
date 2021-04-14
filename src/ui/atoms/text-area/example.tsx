@@ -29,8 +29,8 @@ export const TextAreaExample: React.FC = () => {
               name="name"
               placeholder="Disabled"
               onChange={() => console.info('On textarea change')}
-              variant="base"
-              disabled
+              variant="default"
+              isDisabled
               resize="none"
               overflow="hidden"
             />
@@ -55,7 +55,6 @@ export const TextAreaExample: React.FC = () => {
               variant="error"
               maxLength={100}
               value={valueE}
-              textError="Error text"
               overflow="hidden"
             />
           </block.L>
@@ -67,8 +66,8 @@ export const TextAreaExample: React.FC = () => {
               name="name"
               placeholder="Disabled"
               onChange={() => console.info('On textarea change')}
-              variant="base"
-              disabled
+              variant="default"
+              isDisabled
               resize="none"
               overflow="hidden"
             />
@@ -90,7 +89,6 @@ export const TextAreaExample: React.FC = () => {
               placeholder="Error"
               onChange={() => console.info('On textarea change')}
               variant="error"
-              textError="Error text"
             />
           </block.M>
         </TextAreas>
@@ -101,8 +99,8 @@ export const TextAreaExample: React.FC = () => {
               name="name"
               placeholder="Disabled"
               onChange={() => console.info('On textarea change')}
-              variant="base"
-              disabled
+              variant="default"
+              isDisabled
               resize="none"
             />
             <TextArea
