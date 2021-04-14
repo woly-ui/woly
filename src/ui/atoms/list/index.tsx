@@ -27,11 +27,7 @@ interface List {
   }>;
 }
 
-const ListBase: React.FC<List & Variant> = ({
-  className,
-  list,
-  variant = 'default',
-}) => (
+const ListBase: React.FC<List & Variant> = ({ className, list, variant = 'default' }) => (
   <ul className={className} data-variant={variant}>
     {list.map(({ left, right, text, id, disabled, onClick }) => (
       <li
@@ -49,26 +45,39 @@ const ListBase: React.FC<List & Variant> = ({
 );
 
 export const List = styled(ListBase)`
-  --woly-vertical: calc(
-    1px * var(--woly-component-level) * var(--woly-main-level)
-  );
+  --woly-vertical: calc(1px * var(--woly-component-level) * var(--woly-main-level));
   --woly-horizontal: calc(
     var(--woly-const-m) + (1px * var(--woly-main-level)) + var(--woly-vertical)
   );
 
   --woly-width: 100%;
-  width: var(--woly-width);
 
   box-sizing: border-box;
+  width: var(--woly-width);
 
   padding: 0;
 
-  list-style-type: none;
-
   color: var(--woly-color, #000000);
+
+  list-style-type: none;
   background-color: var(--woly-canvas, #ffffff);
   border-radius: var(--woly-rounding, 3px);
   box-shadow: var(--woly-shadow, 3px 3px 8px rgba(11, 31, 53, 0.04));
+
+  [data-icon] {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+
+    width: var(--woly-line-height, 24px);
+    height: var(--woly-line-height, 24px);
+    padding-right: 6px;
+
+    svg > path {
+      fill: var(--woly-color-disabled, #000000);
+    }
+  }
 
   li[data-type='list-item'] {
     display: flex;
@@ -98,29 +107,15 @@ export const List = styled(ListBase)`
     }
 
     &[data-disabled='true'] {
-      pointer-events: none;
       color: var(--woly-color-disabled, #c4c4c4);
+
+      pointer-events: none;
 
       [data-icon] {
         svg > path {
           fill: var(--woly-canvas, #c4c4c4);
         }
       }
-    }
-  }
-
-  & [data-icon] {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-
-    width: var(--woly-line-height, 24px);
-    height: var(--woly-line-height, 24px);
-    padding-right: 6px;
-
-    svg > path {
-      fill: var(--woly-color-disabled, #000000);
     }
   }
 ` as StyledComponent<'ul', Record<string, unknown>, List & Variant>;

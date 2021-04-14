@@ -44,13 +44,7 @@ const cjs = (name) => [`${name}.js`, `${name}.js.map`];
 const esm = (name) => [`${name}.mjs`, `${name}.mjs.map`];
 const types = (name) => [`${name}.d.ts`];
 
-const getFiles = (name) => [
-  'README.md',
-  'LICENSE',
-  ...cjs(name),
-  ...esm(name),
-  ...types(name),
-];
+const getFiles = (name) => ['README.md', 'LICENSE', ...cjs(name), ...esm(name), ...types(name)];
 
 const dependsPeer = {
   react: '^16.11.0',

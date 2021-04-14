@@ -5,6 +5,7 @@ export const Global = styled.div`
   --woly-const-m: 6px;
   --woly-main-level: 3;
   --woly-line-height: 24px;
+  font-family: 'Helvetica Neue';
 
   [data-variant='primary'] {
     --woly-background: #b0a3f4;
@@ -228,34 +229,46 @@ export const Content = styled.div`
 `;
 
 export const FormBlock = styled.div`
-  padding: 20px;
   display: flex;
   flex-direction: column;
+  padding: 20px;
 `;
 
 export const Aside = styled.div`
-  height: 100%;
-  width: 0;
+  position: absolute;
   top: 0;
   left: 0;
-  position: absolute;
-  overflow-x: hidden;
-  transition: 0.5s;
+
   display: flex;
+  width: 0;
+  height: 100%;
+  overflow-x: hidden;
+
+  transition: 0.5s;
 
   li {
-    text-decoration: none;
-    color: #818181;
     display: block;
+
+    color: #818181;
+    text-decoration: none;
+
     transition: 0.3s;
   }
 `;
 
 export const Menu = styled.ul`
-  height: 100%;
   display: flex;
   flex-direction: column;
-  width: 200px;
-  padding: 100px 30px;
   box-sizing: border-box;
+  width: 200px;
+  height: 100%;
+  padding: 100px 30px;
+`;
+
+export const Modal = styled.div`
+  z-index: 1;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 `;

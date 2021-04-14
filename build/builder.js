@@ -46,7 +46,7 @@ function buildCalendar() {
 
 module.exports = { buildWoly, buildCalendar };
 
-const compatTarget = {
+const _compatTarget = {
   browsers: [
     'Chrome 47',
     'last 2 Firefox versions',
@@ -56,13 +56,7 @@ const compatTarget = {
   ],
 };
 
-const externals = [
-  '@woly/calendar',
-  'react-dom',
-  'react',
-  'styled-components',
-  'woly',
-];
+const externals = ['@woly/calendar', 'react-dom', 'react', 'styled-components', 'woly'];
 
 const extensions = ['.js', '.mjs', '.ts', '.tsx'];
 
@@ -186,10 +180,7 @@ async function createEsCjs(
 }
 
 function onwarn(warning, rollupWarn) {
-  if (
-    warning.code !== 'CIRCULAR_DEPENDENCY' &&
-    warning.code !== 'NON_EXISTENT_EXPORT'
-  ) {
+  if (warning.code !== 'CIRCULAR_DEPENDENCY' && warning.code !== 'NON_EXISTENT_EXPORT') {
     rollupWarn(warning);
   }
 }
