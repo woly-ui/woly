@@ -163,11 +163,11 @@ export const Playground: React.FC<{
   );
 };
 
-type StateType = {
+interface StateType {
   change: (value: any) => any;
   children: (value: any, change: any) => React.ElementType;
   initial: any;
-};
+}
 
 export const State = ({ initial, change, children }: StateType) => {
   const [value, setValue] = React.useState(initial);
