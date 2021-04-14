@@ -27,6 +27,8 @@ export const Global = styled.div`
     --woly-background-disabled: #f5f5f5;
     --woly-border-disabled: #f5f5f5;
     --woly-color-disabled: #c0c0c0;
+    --woly-text-disabled: #e4e4e4;
+    --woly-fill-disabled: #e4e4e4;
   }
 
   [data-variant='secondary'] {
@@ -48,6 +50,8 @@ export const Global = styled.div`
     --woly-background-disabled: #c0c0c0;
     --woly-border-disabled: #c0c0c0;
     --woly-color-disabled: #a39bb2;
+    --woly-text-disabled: #e4e4e4;
+    --woly-fill-disabled: #e4e4e4;
   }
 
   [data-variant='base'] {
@@ -63,6 +67,8 @@ export const Global = styled.div`
     --woly-background-disabled: #c0c0c0;
     --woly-border-disabled: #c0c0c0;
     --woly-color-disabled: #a39bb2;
+    --woly-text-disabled: #e4e4e4;
+    --woly-fill-disabled: #e4e4e4;
   }
 
   [data-variant='error'] {
@@ -81,6 +87,8 @@ export const Global = styled.div`
     --woly-background-disabled: #c0c0c0;
     --woly-border-disabled: #c0c0c0;
     --woly-color-disabled: #a39bb2;
+    --woly-text-disabled: #e4e4e4;
+    --woly-fill-disabled: #e4e4e4;
   }
 
   [data-variant='square'] {

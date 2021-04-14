@@ -113,14 +113,14 @@ export const Checkbox = styled(CheckboxBase)`
     [data-checkmark='unchecked'] {
       &:hover {
         svg > rect {
-          stroke: var(--woly-color, #b0a3f4);
+          stroke: var(--woly-background, #b0a3f4);
         }
       }
 
       &:focus,
       &:active {
         svg > rect {
-          stroke: var(--woly-color, #9381f1);
+          stroke: var(--woly-background-focus, #9381f1);
         }
       }
     }
@@ -128,14 +128,14 @@ export const Checkbox = styled(CheckboxBase)`
     [data-checkmark='checked'] {
       &:hover {
         svg > rect {
-          fill: var(--woly-color, #c9c0f8);
+          fill: var(--woly-border-hover, #c9c0f8);
         }
       }
 
       &:focus,
       &:active {
         svg > rect {
-          fill: var(--woly-color, #9381f1);
+          fill: var(--woly-background-focus, #9381f1);
         }
       }
     }
@@ -145,7 +145,7 @@ export const Checkbox = styled(CheckboxBase)`
     pointer-events: none;
 
     [data-block='text'] {
-      color: var(--woly-color, #e4e4e4);
+      color: var(--woly-text-disabled, #e4e4e4);
     }
 
     [data-checkmark='unchecked'],
@@ -155,7 +155,7 @@ export const Checkbox = styled(CheckboxBase)`
       justify-content: center;
 
       svg > rect {
-        fill: var(--woly-canvas-color, #e4e4e4);
+        fill: var(--woly-fill-disabled, #e4e4e4);
       }
     }
 
