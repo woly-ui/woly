@@ -2,32 +2,45 @@ import React from 'react';
 import styled from 'styled-components';
 
 export const Global = styled.div`
+  --palette-snow-1000: #000000;
+  --palette-snow-500: #c0c0c0;
+  --palette-snow-100: #f5f5f5;
+  --palette-snow-0: #ffffff;
+  --palette-lavender-500: #9381f1;
+
+  /* should be rewritten to formulas */
+  --woly-line-height: 24px;
+  --woly-border-width: 1.5px;
+  --woly-rounding: 4px;
+  --woly-font-size: 15px;
+
   --woly-const-m: 6px;
   --woly-main-level: 3;
-  --woly-line-height: 24px;
-  font-family: 'Helvetica Neue';
+
+  --woly-neutral: var(--palette-snow-500);
+  --woly-focus: #9381f1;
+  --woly-background: #ffffff;
 
   [data-variant='primary'] {
-    --woly-background: #b0a3f4;
-    --woly-border: #b0a3f4;
-    --woly-color: #ffffff;
-    --woly-hint-color: #c4c4c4;
+    --woly-shape-default: #b0a3f4;
+    --woly-shape-disabled: #e5e5e5;
+    --woly-shape-hover: #c9c0f8;
+    --woly-shape-active: #b0a3f4;
 
-    --woly-background-hover: #c9c0f8;
-    --woly-border-hover: #c9c0f8;
-    --woly-color-hover: #ffffff;
+    --woly-shape-text-default: var(--palette-snow-0);
+    --woly-shape-text-disabled: var(--palette-snow-0);
+    --woly-shape-text-hover: var(--palette-snow-0);
+    --woly-shape-text-active: var(--palette-snow-0);
 
-    --woly-background-focus: #9381f1;
-    --woly-border-focus: #9381f1;
-    --woly-color-focus: #ffffff;
+    --woly-canvas-default: transparent;
+    --woly-canvas-disabled: var(--palete-snow-100);
+    --woly-canvas-hover: var(--palette-snow-500);
+    --woly-canvas-active: var(--palette-snow-500);
 
-    --woly-background-active: #b0a3f4;
-    --woly-border-active: #9381f1;
-    --woly-color-active: #ffffff;
-
-    --woly-background-disabled: #f5f5f5;
-    --woly-border-disabled: #f5f5f5;
-    --woly-color-disabled: #c0c0c0;
+    --woly-canvas-text-default: var(--palette-snow-1000);
+    --woly-canvas-text-disabled: var(--woly-snow-500);
+    --woly-canvas-text-hover: var(--woly-snow-500);
+    --woly-canvas-text-active: var(--woly-snow-500);
   }
 
   [data-variant='secondary'] {
@@ -150,11 +163,11 @@ export const Playground: React.FC<{
   );
 };
 
-type StateType = {
+interface StateType {
   change: (value: any) => any;
-  children: (value: any, change: any) => void;
+  children: (value: any, change: any) => React.ElementType;
   initial: any;
-};
+}
 
 export const State = ({ initial, change, children }: StateType) => {
   const [value, setValue] = React.useState(initial);
@@ -269,7 +282,7 @@ export const Line = styled.div`
   display: flex;
   align-items: baseline;
 `;
-        
+
 export const Modal = styled.div`
   z-index: 1;
   position: fixed;
