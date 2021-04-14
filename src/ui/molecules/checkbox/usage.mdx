@@ -5,7 +5,7 @@ package: 'woly'
 ---
 
 import { Checkbox } from './index';
-import { Playground } from 'box-styles'
+import { Playground, State } from 'box-styles'
 
 Checkboxes allow you to setup selectable options for your users - either to toggle a single setting on or off, or to allow for multiple choices.
 
@@ -22,20 +22,33 @@ Use a checkbox when the user has to stop before performing an action. Checkbox w
 ### Example
 
 <Playground>
-  <Checkbox isChecked variant="default" />
-  <Checkbox isChecked={false} variant="default" />
+  <State initial={false} change={(i) => !i}>
+    {(value, change) => (
+      <Checkbox checked={value} id="simple" onChange={change} text="Simple" variant="default" />
+    )}
+  </State>
 </Playground>
-
-<!-- <CheckboxExample /> -->
 
 ### Variants
 
 Error and primary/secondary variants are should be used to focus user attention.
 
-<Playground>
-  <Checkbox text="Attention" variant="error" isChecked disabled />
-  <Checkbox text="Alternative action" variant="secondary" isChecked={false} />
-  <Checkbox text="Disabled" variant="default" disabled isChecked />
+<Playground size="S">
+  <State initial={false} change={(i) => !i}>
+    {(value, change) => (
+      <>
+        <Checkbox checked disabled text="Attention" variant="error" />
+        <Checkbox
+          checked={value}
+          id="secondary"
+          onChange={change}
+          text="Secondary"
+          variant="secondary"
+        />
+        <Checkbox checked disabled text="Disabled" variant="default" />
+      </>
+    )}
+  </State>
 </Playground>
 
 ### Kinds
@@ -46,10 +59,12 @@ Error and primary/secondary variants are should be used to focus user attention.
 
 ### Props
 
-| Name        | Type                                         | Default     | Description                              |
-| ----------- | -------------------------------------------- | ----------- | ---------------------------------------- |
-| `id`        | `string`                                     |             | HTML id attribute                        |
-| `isChecked` | `boolean`                                    |             | Whether checkbox is checked or not       |
-| `text`      | `string`                                     |             | Text component                           |
-| `onChange`  | `React.ChangeEventHandler<HTMLInputElement>` |             | Callback when checkbox is clicked        |
-| `variant`   | `string`                                     | `'default'` | Variant prop to style Checkbox component |
+| Name        | Type                                         | Default     | Description                                                                  |
+| ----------- | -------------------------------------------- | ----------- | ---------------------------------------------------------------------------- |
+| `id`        | `string`                                     |             | HTML id attribute                                                            |
+| `disabled`  | `boolean`                                    |             | HTML disabled attribute                                                      |
+| `checked`   | `boolean`                                    |             | Whether checkbox is checked or not                                           |
+| `text`      | `string`                                     |             | Text component                                                               |
+| `onKeyDown` |                                              |             | The onKeydown event occurs when the user is pressing a key (on the keyboard) |
+| `onChange`  | `React.ChangeEventHandler<HTMLInputElement>` |             | Callback when checkbox is clicked                                            |
+| `variant`   | `string`                                     | `'default'` | Variant prop to style Checkbox component                                     |

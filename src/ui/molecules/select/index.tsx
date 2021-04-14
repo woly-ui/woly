@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
 import { Variant } from 'lib/types';
-import { keyboardEventHandle, selectHandlersGet } from 'lib';
+import { keyHandlerGet, keyboardEventHandle } from 'lib';
 
 /**
  * --woly-border
@@ -59,19 +59,19 @@ export const SelectBase: React.FC<SelectProps & Variant> = ({
       }
 
       event.preventDefault();
-
-      const eventHandlers = selectHandlersGet({
+      const kh = keyHandlerGet({
         dropdownNode,
-        event,
         isOpen,
         onChange,
         selectNode,
         setIsOpen,
       });
+      const shiftKeyHandler = { arrowDown: setIsOpen };
 
       keyboardEventHandle({
         event,
-        eventHandlers,
+        keyHandler: kh,
+        shiftKeyHandler,
       });
     },
     [selectRef, dropdownRef, isOpen, onChange],
@@ -120,12 +120,10 @@ export const Select = styled(SelectBase)`
   --woly-horizontal: calc(
     var(--woly-const-m) + (1px * var(--woly-main-level)) + var(--woly-vertical)
   );
-
   position: relative;
   align-items: center;
   outline: none;
   cursor: pointer;
-
   &:focus > div[data-selected],
   &:active > div[data-selected] {
     border-color: var(--woly-background-focus, #1f68f5);
@@ -134,59 +132,47 @@ export const Select = styled(SelectBase)`
       fill: var(--woly-color-focus, #c4c4c4);
     }
   }
-
   &[data-open='true'] > div[data-selected] {
     border-color: var(--woly-border-focus, #b0a3f4);
   }
-
   svg > path {
     fill: var(--woly-color, #000000);
   }
-
   &[data-disabled='true'] {
     pointer-events: none;
-
     svg > path {
       fill: var(--woly-color-disabled, #c4c4c4);
     }
-
     div[data-selected] {
       background: var(--woly-background-disabled, #ffffff);
       border-color: var(--woly-border-disabled, var(--woly-background-disabled, #c4c4c4));
       color: var(--woly-color-disabled, #c4c4c4);
     }
   }
-
   div[data-selected] {
     display: flex;
     align-items: center;
     padding: var(--woly-vertical, 16px) var(--woly-horizontal, 6.4px);
     background: var(--woly-canvas, #ffffff);
-
     border-color: var(--woly-border, var(--woly-background, #f8f7f7));
     border-style: solid;
     border-width: var(--woly-border-width, 1.5px);
     border-radius: var(--woly-rounding, 3px);
     box-sizing: border-box;
-
     color: var(--woly-color, #000000);
-
     div {
       width: 225px;
     }
   }
-
   span[data-icon='true'] {
     transform: rotate(180deg);
   }
-
   span[data-icon='false'] {
     display: flex;
     flex-direction: column;
     justify-content: center;
     height: 100%;
   }
-
   ul {
     display: none;
     position: absolute;
@@ -202,19 +188,16 @@ export const Select = styled(SelectBase)`
     margin-top: 6px;
     box-shadow: 3px 3px 9px rgba(57, 57, 57, 0.12);
   }
-
   ul[data-visible='true'] {
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
   }
-
   li {
     padding: var(--woly-vertical, 16px) var(--woly-horizontal, 6.4px);
     line-height: var(--woly-line-height, 24px);
     color: var(--woly-color, #000000);
     cursor: pointer;
-
     &:hover,
     &:focus,
     &:active {
@@ -223,7 +206,6 @@ export const Select = styled(SelectBase)`
       background-color: var(--woly-background-hover, #f8f8fa);
     }
   }
-
   div:not(:first-child) {
     margin-top: var(--woly-gap);
   }
