@@ -77,7 +77,7 @@ export const Global = styled.div`
 
     --woly-border-focus: #eb5656;
     --woly-error-text: #eb5656;
-    --woly-hint-color: #c4c4c4;
+    --woly-hint-color: #ff9097;
 
     --woly-background-disabled: #c0c0c0;
     --woly-border-disabled: #c0c0c0;
@@ -265,6 +265,11 @@ export const Menu = styled.ul`
   padding: 100px 30px;
 `;
 
+export const Line = styled.div`
+  display: flex;
+  align-items: baseline;
+`;
+        
 export const Modal = styled.div`
   z-index: 1;
   position: fixed;
