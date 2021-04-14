@@ -6,7 +6,7 @@
     "unicorn/filename-case": ["error", { "case": "kebabCase" }],
     "unicorn/no-nested-ternary": "error",
     "unicorn/prevent-abbreviations": [
-      "error",
+      "off",
       {
         "extendDefaultWhitelist": true
       }

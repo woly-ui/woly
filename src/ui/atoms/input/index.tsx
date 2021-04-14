@@ -57,13 +57,17 @@ export const Input = styled(InputBase)`
     }
 
     &:focus {
-      --local-border-color: var(--woly-shape-active);
+      --local-border-color: var(--woly-focus);
       box-shadow: 0 0 0 2px var(--woly-focus);
       outline: none;
     }
 
     &:hover {
       --local-border-color: var(--woly-shape-hover);
+    }
+
+    &::placeholder {
+      color: var(--woly-canvas-text-disabled);
     }
   }
 ` as StyledComponent<'input', Record<string, unknown>, InputProps & Variant>;
