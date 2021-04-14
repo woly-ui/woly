@@ -263,3 +263,11 @@ export const Menu = styled.ul`
   height: 100%;
   padding: 100px 30px;
 `;
+
+export const Modal = styled.div`
+  z-index: 1;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+`;

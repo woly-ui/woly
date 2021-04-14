@@ -1,0 +1,72 @@
+---
+name: backdrop
+category: atoms
+package: 'woly'
+---
+
+import { Content, Playground, block, State, FormBlock, Aside, Menu, Modal } from 'box-styles'
+import { Surface, Button, Input, Label, ButtonIcon, Backdrop } from 'ui'
+import { CloseIcon } from 'icons';
+
+`Backdrop` is a dark layer that covers full screen. It can be used in Modal windows or Aside menu panel.
+
+### Example
+
+Modal based on `Backdrop`.
+
+<Playground>
+  <State initial={false} change={(i) => !i}>
+    {(value, change) => (
+      <>
+        <Button onClick={change} text="Open modal" />
+        <Modal style={{ visibility: value ? 'visible' : 'hidden' }}>
+          <Surface style={{ display: 'flex', flexDirection: 'column', padding: '20px 30px' }}>
+            <div style={{ position: 'absolute', top: '0', right: '0' }}>
+              <ButtonIcon icon={<CloseIcon />} onClick={change} variant="secondary" />
+            </div>
+            <h3>Add new user</h3>
+            <p>
+              <label>
+                <span>Name</span>
+                <Input
+                  type="text"
+                  name="name"
+                  placeholder="Enter your name here"
+                  onChange={(event) => console.info('On input name change')}
+                />
+              </label>
+            </p>
+            <label>
+              <span>Email</span>
+              <Input
+                type="email"
+                name="email"
+                placeholder="Enter your email here"
+                onChange={(event) => console.info('On input email change')}
+              />
+            </label>
+            <p>
+              <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                <Button onClick={change} text="Save" variant="primary" />
+                <Button onClick={change} text="Cancel" />
+              </div>
+            </p>
+          </Surface>
+        </Modal>
+        <Backdrop style={{ visibility: value ? 'visible' : 'hidden' }} onClick={change} />
+      </>
+    )}
+  </State>
+</Playground>
+
+### Kinds
+
+| Name       | Description   |
+| ---------- | ------------- |
+| `Backdrop` | Base backdrop |
+
+### Props
+
+| Name      | Type     | Default     | Description                              |
+| --------- | -------- | ----------- | ---------------------------------------- |
+| `variant` | `string` | `'default'` | Variant prop to style Backdrop component |
