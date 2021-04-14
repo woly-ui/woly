@@ -64,16 +64,13 @@ export const InputPasswordBase: React.FC<InputPasswordProps & Variant> = ({
 };
 
 export const InputPassword = styled(InputPasswordBase)`
-  --woly-vertical: calc(
-    1px * var(--woly-component-level) * var(--woly-main-level)
-  );
+  --woly-vertical: calc(1px * var(--woly-component-level) * var(--woly-main-level));
   --woly-horizontal: calc(
     var(--woly-const-m) + (1px * var(--woly-main-level)) + var(--woly-vertical)
   );
 
   --woly-gap: calc(
-    (1px * var(--woly-main-level)) +
-      (1px * var(--woly-main-level) * var(--woly-component-level))
+    (1px * var(--woly-main-level)) + (1px * var(--woly-main-level) * var(--woly-component-level))
   );
 
   padding: var(--woly-vertical, 16px) var(--woly-horizontal, 6.4px);
@@ -120,8 +117,4 @@ export const InputPassword = styled(InputPasswordBase)`
   & > *:not(:first-child) {
     margin-left: var(--woly-gap);
   }
-` as StyledComponent<
-  'div',
-  Record<string, unknown>,
-  InputPasswordProps & Variant
->;
+` as StyledComponent<'div', Record<string, unknown>, InputPasswordProps & Variant>;

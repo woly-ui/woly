@@ -70,7 +70,7 @@ const ChipBase: React.FC<ChipProps & Variant> = ({
             >
               {action}
             </button>
-            <div data-type="stub"></div>
+            <div data-type="stub" />
           </>
         )}
       </div>
@@ -79,9 +79,7 @@ const ChipBase: React.FC<ChipProps & Variant> = ({
 };
 
 export const Chip = styled(ChipBase)`
-  --woly-vertical: calc(
-    1px * var(--woly-component-level) * var(--woly-main-level)
-  );
+  --woly-vertical: calc(1px * var(--woly-component-level) * var(--woly-main-level));
   --woly-horizontal: calc(
     var(--woly-const-m) + (1px * var(--woly-main-level)) + var(--woly-vertical)
   );
@@ -157,7 +155,6 @@ export const Chip = styled(ChipBase)`
     height: var(--woly-line-height, 24px);
 
     background: var(--woly-background-disabled, transparent);
-    border-radius: var(--woly-rounding, 3px);
 
     border-color: var(--woly-border, transparent);
     border-style: solid;

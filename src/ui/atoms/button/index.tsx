@@ -30,8 +30,7 @@ export type ButtonSizes = 'default' | 'small';
  *
  */
 
-export interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children?: never;
   className?: string;
   icon?: React.ReactNode;
@@ -52,9 +51,7 @@ const ButtonBase: React.FC<ButtonProps & Variant> = ({
 );
 
 export const Button = styled(ButtonBase)`
-  --woly-vertical: calc(
-    1px * var(--woly-component-level) * var(--woly-main-level)
-  );
+  --woly-vertical: calc(1px * var(--woly-component-level) * var(--woly-main-level));
   --woly-horizontal: calc(
     var(--woly-const-m) + (1px * var(--woly-main-level)) + var(--woly-vertical)
   );

@@ -7,10 +7,7 @@ const oppositePosition: { [key: string]: PositionProps } = {
   top: 'bottom',
 };
 
-export function positionRelativeGet(
-  node: Element,
-  position: PositionProps,
-): PositionProps {
+export function positionRelativeGet(node: Element, position: PositionProps): PositionProps {
   const child = node.lastChild as Element;
 
   if (child === null) {

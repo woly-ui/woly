@@ -4,7 +4,6 @@ category: atoms
 package: woly
 ---
 
-import { ButtonExample } from './example';
 import { Button } from './index'
 import { Playground, block } from 'box-styles'
 import { PlusIcon, SearchIcon } from 'icons';
@@ -16,7 +15,7 @@ import { PlusIcon, SearchIcon } from 'icons';
 <Playground>
   <Button
     icon={<SearchIcon />}
-    onClick={(event) => alert('Hi!')}
+    onClick={() => alert('Hi!')}
     text="Just a button"
     variant="primary"
   />
@@ -39,12 +38,7 @@ Button can be used with icon on the left side.
 
 <Playground>
   <Button text="Icon on the left" variant="primary" icon={<PlusIcon />} />
-  <Button
-    text="Disabled button"
-    variant="primary"
-    icon={<SearchIcon />}
-    disabled
-  />
+  <Button text="Disabled button" variant="primary" icon={<SearchIcon />} disabled />
 </Playground>
 
 ### Sizes

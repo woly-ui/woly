@@ -15,8 +15,7 @@ import { Variant } from 'lib/types';
  * --woly-color-disabled
  *
  */
-interface TextAreaProps
-  extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
+interface TextAreaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
   className?: string;
   cols?: number;
   isDisabled?: boolean;
@@ -52,12 +51,7 @@ const TextAreaBase: React.FC<TextAreaProps & Variant> = ({
   variant = 'default',
   wrap,
 }) => (
-  <div
-    className={className}
-    data-overflow={overflow}
-    data-resize={resize}
-    data-variant={variant}
-  >
+  <div className={className} data-overflow={overflow} data-resize={resize} data-variant={variant}>
     <textarea
       cols={cols}
       data-variant={variant}
@@ -91,7 +85,6 @@ export const TextArea = styled(TextAreaBase)`
   textarea {
     padding: var(--woly-vertical, 12px) var(--woly-horizontal, 21px);
 
-    border: none;
     outline: none;
 
     font-size: var(--woly-font-size, 15px);
@@ -123,8 +116,4 @@ export const TextArea = styled(TextAreaBase)`
     background: var(--woly-background-disabled, #f5f5f5);
     border-color: var(--woly-border-disabled, #c0c0c0);
   }
-` as StyledComponent<
-  'textarea',
-  Record<string, unknown>,
-  TextAreaProps & Variant
->;
+` as StyledComponent<'textarea', Record<string, unknown>, TextAreaProps & Variant>;

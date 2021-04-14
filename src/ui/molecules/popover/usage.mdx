@@ -4,7 +4,7 @@ category: molecules
 package: 'woly'
 ---
 
-import { Playground, block, State } from 'box-styles'
+import { Playground, block } from 'box-styles'
 import { ButtonIcon, Popover, Button, List } from 'ui';
 import { SearchIcon } from 'icons';
 
@@ -22,9 +22,7 @@ If you scroll to the bottom of page and there is no place for Popover to show it
     <div style={{ padding: '0 10px' }}>
       <Popover
         isOpen={false}
-        content={
-          <div style={{ padding: '30px 50px' }}>Hello! This is Popover!</div>
-        }
+        content={<div style={{ padding: '30px 50px' }}>Hello! This is Popover!</div>}
       >
         <Button text="Open Popover" onClick={() => {}} variant="primary" />
       </Popover>

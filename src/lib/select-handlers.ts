@@ -28,13 +28,7 @@ const onArrowUp = (dropdownNode: HTMLElement) => () => {
   }
 };
 
-const onEnter = ({
-  isOpen,
-  selectNode,
-  setIsOpen,
-  onChange,
-  event,
-}: EnterProps) => () => {
+const onEnter = ({ isOpen, selectNode, setIsOpen, onChange, event }: EnterProps) => () => {
   if (isOpen && document.activeElement?.tagName === LI_TAG) {
     onChange(event);
   }

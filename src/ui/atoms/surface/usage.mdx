@@ -40,7 +40,7 @@ Sign in form based on `Surface`.
               <Label variant="base">Name</Label>
               <Input
                 name="name"
-                onChange={(event) => console.info('On input change')}
+                onChange={() => console.info('On input change')}
                 placeholder="Ivan Ivanov"
                 type="text"
                 variant="base"
@@ -48,7 +48,7 @@ Sign in form based on `Surface`.
               <Label variant="base">Password</Label>
               <Input
                 name="password"
-                onChange={(event) => console.info('On input change')}
+                onChange={() => console.info('On input change')}
                 type="password"
                 variant="base"
               />
@@ -73,9 +73,7 @@ Aside menu based on `Surface`.
 <Playground>
   <State initial={false} change={(i) => !i}>
     {(value, change) => (
-      <block.S
-        style={{ paddingLeft: '320px', position: 'relative', height: '300px' }}
-      >
+      <block.S style={{ paddingLeft: '320px', position: 'relative', height: '300px' }}>
         <ButtonIcon
           onClick={change}
           variant="secondary"

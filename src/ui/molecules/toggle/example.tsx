@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { Global, block } from 'box-styles';
 import { Toggle } from 'ui';
 
+/*
 const configuration = {
   vertical: {
     value: [false, true],
@@ -12,6 +13,7 @@ const configuration = {
     disabled: [false, true],
   },
 };
+*/
 
 export const ToggleExample: React.FC = () => {
   const [sqOne, sqOneClick] = React.useReducer((on) => !on, false);
@@ -24,46 +26,16 @@ export const ToggleExample: React.FC = () => {
     <Global>
       <AllToggles>
         <ToggleWrapper>
-          <Toggle
-            isChecked={sqOne}
-            onChange={sqOneClick}
-            id="sqOne"
-            variant="square"
-          />
-          <Toggle
-            isChecked={sqTwo}
-            onChange={sqTwoClick}
-            id="sqTwo"
-            variant="square"
-          />
+          <Toggle isChecked={sqOne} onChange={sqOneClick} id="sqOne" variant="square" />
+          <Toggle isChecked={sqTwo} onChange={sqTwoClick} id="sqTwo" variant="square" />
         </ToggleWrapper>
         <ToggleWrapper>
-          <Toggle
-            isChecked={roundOne}
-            onChange={roundOneClick}
-            id="roundOne"
-            variant="round"
-          />
-          <Toggle
-            isChecked={roundTwo}
-            onChange={roundTwoClick}
-            id="roundTwo"
-            variant="round"
-          />
+          <Toggle isChecked={roundOne} onChange={roundOneClick} id="roundOne" variant="round" />
+          <Toggle isChecked={roundTwo} onChange={roundTwoClick} id="roundTwo" variant="round" />
         </ToggleWrapper>
         <ToggleWrapper>
-          <Toggle
-            isChecked={labelOne}
-            onChange={labelOneClick}
-            id="labelOne"
-            variant="round"
-          />
-          <Toggle
-            isChecked={labelTwo}
-            onChange={labelTwoClick}
-            id="labelTwo"
-            variant="round"
-          />
+          <Toggle isChecked={labelOne} onChange={labelOneClick} id="labelOne" variant="round" />
+          <Toggle isChecked={labelTwo} onChange={labelTwoClick} id="labelTwo" variant="round" />
         </ToggleWrapper>
       </AllToggles>
     </Global>

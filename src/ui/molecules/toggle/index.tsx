@@ -32,13 +32,7 @@ const ToggleBase: React.FC<ToggleProps & Variant> = ({
 }) => (
   <div className={className} data-variant={variant}>
     <label htmlFor={id}>
-      <input
-        checked={isChecked}
-        id={id}
-        onChange={onChange}
-        type="checkbox"
-        {...p}
-      />
+      <input checked={isChecked} id={id} onChange={onChange} type="checkbox" {...p} />
       <span data-checkbox>
         <span />
       </span>
@@ -48,8 +42,7 @@ const ToggleBase: React.FC<ToggleProps & Variant> = ({
 
 export const Toggle = styled(ToggleBase)`
   --woly-gap: calc(
-    (1px * var(--woly-main-level)) +
-      (1px * var(--woly-main-level) * var(--woly-component-level))
+    (1px * var(--woly-main-level)) + (1px * var(--woly-main-level) * var(--woly-component-level))
   );
 
   position: relative;
@@ -90,8 +83,7 @@ export const Toggle = styled(ToggleBase)`
       width: var(--woly-toggle-switcher-width, 12px);
       height: var(--woly-toggle-switcher-height, 12px);
       margin: calc(
-        var(--woly-toggle-height, 24px) / 2 -
-          var(--woly-toggle-switcher-height, 12px) / 2
+        var(--woly-toggle-height, 24px) / 2 - var(--woly-toggle-switcher-height, 12px) / 2
       );
 
       background-color: var(--woly-toggle-switcher-background-color, #ffffff);
