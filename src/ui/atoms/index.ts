@@ -1,3 +1,4 @@
+export { Backdrop } from './backdrop';
 export { Button } from './button';
 export { ButtonFloating } from './button-floating';
 export { ButtonIcon } from './button-icon';
