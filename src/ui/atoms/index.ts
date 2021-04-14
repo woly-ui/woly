@@ -8,3 +8,4 @@ export { List } from './list';
 export { Notification } from './notification';
 export { Surface } from './surface';
 export { TextArea } from './text-area';
+export { Tooltip } from './tooltip';
