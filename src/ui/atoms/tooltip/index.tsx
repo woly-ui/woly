@@ -121,7 +121,7 @@ export const Tooltip = styled(TooltipBase)`
     bottom: var(--tooltip-position);
 
     &::after {
-      bottom: -4px;
+      bottom: calc(-4px - var(--woly-border-width, 0px));
       left: 12px;
       transform: initial;
     }
@@ -131,7 +131,7 @@ export const Tooltip = styled(TooltipBase)`
     top: var(--tooltip-position);
     &::after {
       bottom: initial;
-      top: -4px;
+      top: calc(-4px - var(--woly-border-width, 0px));
       left: 12px;
       transform: rotate(180deg);
     }
@@ -139,18 +139,20 @@ export const Tooltip = styled(TooltipBase)`
 
   &[data-position='left'] > [data-tooltip] {
     right: var(--tooltip-position);
+    top: 0;
     &::after {
       top: 12px;
-      right: -5px;
+      right: calc(-5px - var(--woly-border-width, 0px));
       transform: rotate(-90deg);
     }
   }
 
   &[data-position='right'] > [data-tooltip] {
     left: var(--tooltip-position);
+    top: 0;
     &::after {
       top: 12px;
-      left: -7px;
+      left: calc(-5px - var(--woly-border-width, 0px));
       right: initial;
       transform: rotate(90deg);
     }
