@@ -15089,7 +15089,7 @@ rollup-plugin-node-resolve@^5.2.0:
     resolve "^1.11.1"
     rollup-pluginutils "^2.8.1"
 
-rollup-plugin-react-svg@^3.0.3:
+rollup-plugin-react-svg@p^3.0.3:
   version "3.0.3"
   resolved "https://registry.yarnpkg.com/rollup-plugin-react-svg/-/rollup-plugin-react-svg-3.0.3.tgz#9c2b276c0847c9bae37200deaa6a5a23b0040297"
   integrity sha512-APk17eM5ojk47stksglh8Na6N3OR+3Dz42uD9iSU4ZVh3vQY6MhTGEl8JkDvC96TReC7D5l/77hduLzzBehHXw==
