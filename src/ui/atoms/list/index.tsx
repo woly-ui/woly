@@ -31,6 +31,9 @@ export const List = styled(ListBase)`
     var(--woly-const-m) + (1px * var(--woly-main-level)) + var(--local-vertical)
   );
 
+  --local-gap: var(--local-vertical);
+  --local-compensate: var(--woly-const-m);
+
   --local-color: var(--woly-canvas-text-default);
   --local-background: var(--woly-shape-text-default);
   --local-item-background: var(--woly-canvas-default);
@@ -70,34 +73,36 @@ export const List = styled(ListBase)`
     font-size: var(--woly-font-size, 15px);
     line-height: var(--woly-line-height, 24px);
 
+    color: var(--local-color);
+
     cursor: pointer;
+
+    outline: none;
+    border-radius: var(--woly-rounding);
 
     [data-block='content'] {
       flex: 1;
-      color: var(--local-color);
     }
 
     &:hover {
       --local-item-background: var(--woly-canvas-disabled);
-      border-radius: var(--woly-rounding);
     }
-
-    &:focus,
-    &:active {
-      outline: none;
+    &:focus{
       box-shadow: 0 0 0 1.5px var(--woly-focus);
-      border-radius: var(--woly-rounding);
+    }
+    &:active {
+     --local-item-background: var(--woly-focus);
+     --local-color: var( --woly-shape-text-active);
     }
 
     &[data-disabled='true'] {
-      [data-block='content'] {
-        --local-color: var(--woly-canvas-active);
-      }
+      --local-color: var(--woly-canvas-text-disabled);
+      
       pointer-events: none;
 
       [data-icon] {
         svg > path {
-          --local-color: var(--woly-canvas-active);
+          --local-color: var(--woly-canvas-text-disabled);
         }
       }
     }
