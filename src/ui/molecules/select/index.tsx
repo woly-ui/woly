@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
 import { Variant } from 'lib/types';
-import { keyboardEventHandle, selectHandlersGet } from 'lib';
+import { keyHandlerGet, keyboardEventHandle } from 'lib';
 
 /**
  * --woly-border
@@ -59,19 +59,19 @@ export const SelectBase: React.FC<SelectProps & Variant> = ({
       }
 
       event.preventDefault();
-
-      const eventHandlers = selectHandlersGet({
+      const kh = keyHandlerGet({
         dropdownNode,
-        event,
         isOpen,
         onChange,
         selectNode,
         setIsOpen,
       });
+      const shiftKeyHandler = { arrowDown: setIsOpen };
 
       keyboardEventHandle({
         event,
-        eventHandlers,
+        keyHandler: kh,
+        shiftKeyHandler,
       });
     },
     [selectRef, dropdownRef, isOpen, onChange],
