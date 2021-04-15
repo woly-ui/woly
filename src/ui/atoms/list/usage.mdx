@@ -34,18 +34,13 @@ It does not need to be a direct child of the List component.
 
 ### Icons
 
-listList items can consist icon on the left side or the right. Use icons on the both sides is not recommended.
+List items can consist icon on the left side or the right. Use icons on the both sides is not recommended.
 
 <Playground>
   <List
     variant="primary"
     list={[
-      {
-        left: <InfoIcon />,
-        id: 0,
-        text: 'Red',
-        onClick: () => alert('Item clicked'),
-      },
+      { left: <InfoIcon />, id: 0, text: 'Red' },
       { left: <InfoIcon />, id: 1, text: 'Green' },
       { left: <InfoIcon />, id: 2, text: 'Blue' },
     ]}
@@ -72,26 +67,95 @@ listList items can consist icon on the left side or the right. Use icons on the 
       { left: <InfoIcon />, id: 2, text: 'Blue', right: <Check /> },
     ]}
   />
-  <List
-    variant="primary"
-    list={[
-      {
-        left: <InfoIcon />,
-        id: 0,
-        text: 'Red',
-        right: <Check />,
-        disabled: true,
-      },
-      { left: <InfoIcon />, id: 1, text: 'Green', right: <Check /> },
-      {
-        left: <InfoIcon />,
-        id: 2,
-        text: 'Blue',
-        right: <Check />,
-        disabled: true,
-      },
-    ]}
-  />
+</Playground>
+
+List items can be clickable or not.
+
+<Playground>
+  <block.M>
+    <List
+      variant="primary"
+      list={[
+        {
+          left: <InfoIcon />,
+          id: 0,
+          text: 'Red',
+          right: <Check />,
+          onClick: () => alert('Item clicked'),
+        },
+        {
+          left: <InfoIcon />,
+          id: 1,
+          text: 'Green',
+          right: <Check />,
+          onClick: () => alert('Item clicked'),
+        },
+        {
+          left: <InfoIcon />,
+          id: 2,
+          text: 'Blue',
+          right: <Check />,
+          onClick: () => alert('Item clicked'),
+        },
+      ]}
+    />
+  </block.M>
+  <block.M>
+    <List
+      variant="primary"
+      list={[
+        {
+          left: <InfoIcon />,
+          id: 0,
+          text: 'Red',
+          right: <Check />,
+          onClick: () => alert('Item clicked'),
+        },
+        {
+          left: <InfoIcon />,
+          id: 1,
+          text: 'Green',
+          right: <Check />,
+          disabled: true,
+        },
+        {
+          left: <InfoIcon />,
+          id: 2,
+          text: 'Blue',
+          right: <Check />,
+          onClick: () => alert('Item clicked'),
+        },
+      ]}
+    />
+  </block.M>
+  <block.M>
+    <List
+      variant="primary"
+      list={[
+        {
+          left: <InfoIcon />,
+          id: 0,
+          text: 'Red',
+          right: <Check />,
+          disabled: true,
+        },
+        {
+          left: <InfoIcon />,
+          id: 1,
+          text: 'Green',
+          right: <Check />,
+          disabled: true,
+        },
+        {
+          left: <InfoIcon />,
+          id: 2,
+          text: 'Blue',
+          right: <Check />,
+          disabled: true,
+        },
+      ]}
+    />
+  </block.M>
 </Playground>
 
 ### Sizes
@@ -109,6 +173,16 @@ Size controlled by the `component-level` block property not from the props.
       ]}
     />
   </block.S>
+  <block.M>
+    <List
+      variant="primary"
+      list={[
+        { left: <InfoIcon />, id: 0, text: 'Red' },
+        { left: <InfoIcon />, id: 1, text: 'Green' },
+        { left: <InfoIcon />, id: 2, text: 'Blue' },
+      ]}
+    />
+  </block.M>
   <block.L>
     <List
       variant="primary"
@@ -129,6 +203,16 @@ Size controlled by the `component-level` block property not from the props.
       ]}
     />
   </block.XL>
+  <block.H>
+    <List
+      variant="primary"
+      list={[
+        { left: <InfoIcon />, id: 0, text: 'Red' },
+        { left: <InfoIcon />, id: 1, text: 'Green' },
+        { left: <InfoIcon />, id: 2, text: 'Blue' },
+      ]}
+    />
+  </block.H>
 </Playground>
 
 ### Kinds
