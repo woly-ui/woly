@@ -19,24 +19,30 @@ export const Global = styled.div`
   --woly-border-width: 1.5px;
   --woly-rounding: 4px;
   --woly-font-size: 15px;
+
   --woly-const-m: 6px;
   --woly-main-level: 3;
+
   --woly-neutral: var(--palette-snow-500);
   --woly-focus: var(--palette-lavender-500);
   --woly-background: var(--palette-snow-0);
+  
   [data-variant='primary'] {
     --woly-shape-default: var(--palette-lavender-300);
     --woly-shape-disabled: var(--palette-snow-300);
     --woly-shape-hover: var(--palette-lavender-100);
     --woly-shape-active: var(--palette-lavender-300);
+
     --woly-shape-text-default: var(--palette-snow-0);
     --woly-shape-text-disabled: var(--palette-snow-0);
     --woly-shape-text-hover: var(--palette-snow-0);
     --woly-shape-text-active: var(--palette-snow-0);
+
     --woly-canvas-default: transparent;
     --woly-canvas-disabled: var(--palete-snow-100);
     --woly-canvas-hover: var(--palette-snow-500);
     --woly-canvas-active: var(--palette-snow-500);
+
     --woly-canvas-text-default: var(--palette-snow-1000);
     --woly-canvas-text-disabled: var(--woly-snow-500);
     --woly-canvas-text-hover: var(--woly-snow-500);
