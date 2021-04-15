@@ -27,13 +27,13 @@ export const Global = styled.div`
     --woly-shape-text-hover: var(--palette-snow-0);
     --woly-shape-text-active: var(--palette-snow-0);
     --woly-canvas-default: transparent;
-    --woly-canvas-disabled: var(--palete-snow-100);
+    --woly-canvas-disabled: var(--palette-snow-100);
     --woly-canvas-hover: var(--palette-snow-500);
     --woly-canvas-active: var(--palette-snow-500);
     --woly-canvas-text-default: var(--palette-snow-1000);
-    --woly-canvas-text-disabled: var(--woly-snow-500);
-    --woly-canvas-text-hover: var(--woly-snow-500);
-    --woly-canvas-text-active: var(--woly-snow-500);
+    --woly-canvas-text-disabled: var(--palette-snow-500);
+    --woly-canvas-text-hover: var(--palette-snow-500);
+    --woly-canvas-text-active: var(--palette-snow-500);
   }
   [data-variant='secondary'] {
     --woly-border-width: 2px;
