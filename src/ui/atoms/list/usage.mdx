@@ -23,6 +23,7 @@ It does not need to be a direct child of the List component.
 
 <Playground>
   <List
+    variant="primary"
     list={[
       { id: 0, text: 'Red' },
       { id: 1, text: 'Green' },
@@ -31,16 +32,13 @@ It does not need to be a direct child of the List component.
   />
 </Playground>
 
-<!-- <ListExample /> -->
-
 ### Icons
 
 listList items can consist icon on the left side or the right. Use icons on the both sides is not recommended.
 
-{' '}
-
 <Playground>
   <List
+    variant="primary"
     list={[
       {
         left: <InfoIcon />,
@@ -53,6 +51,7 @@ listList items can consist icon on the left side or the right. Use icons on the 
     ]}
   />
   <List
+    variant="primary"
     list={[
       { id: 0, text: 'Red', right: <Check /> },
       { id: 1, text: 'Green', right: <Check /> },
@@ -60,6 +59,7 @@ listList items can consist icon on the left side or the right. Use icons on the 
     ]}
   />
   <List
+    variant="primary"
     list={[
       {
         left: <InfoIcon />,
@@ -73,6 +73,7 @@ listList items can consist icon on the left side or the right. Use icons on the 
     ]}
   />
   <List
+    variant="primary"
     list={[
       {
         left: <InfoIcon />,
@@ -100,6 +101,7 @@ Size controlled by the `component-level` block property not from the props.
 <Playground>
   <block.S>
     <List
+      variant="primary"
       list={[
         { left: <InfoIcon />, id: 0, text: 'Red' },
         { left: <InfoIcon />, id: 1, text: 'Green' },
@@ -109,6 +111,7 @@ Size controlled by the `component-level` block property not from the props.
   </block.S>
   <block.L>
     <List
+      variant="primary"
       list={[
         { left: <InfoIcon />, id: 0, text: 'Red' },
         { left: <InfoIcon />, id: 1, text: 'Green' },
@@ -118,6 +121,7 @@ Size controlled by the `component-level` block property not from the props.
   </block.L>
   <block.XL>
     <List
+      variant="primary"
       list={[
         { left: <InfoIcon />, id: 0, text: 'Red' },
         { left: <InfoIcon />, id: 1, text: 'Green' },
