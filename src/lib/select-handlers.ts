@@ -13,17 +13,17 @@ const LI_TAG = 'LI';
 
 const onArrowDown = (dropdownNode: HTMLElement) => () => {
   if (document.activeElement?.tagName === LI_TAG) {
-    (document.activeElement.nextElementSibling as HTMLElement)?.focus();
+    (document.activeElement.nextElementSibling as HTMLElement).focus();
   } else {
-    (dropdownNode.firstChild as HTMLElement)?.focus();
+    (dropdownNode.firstChild as HTMLElement).focus();
   }
 };
 
 const onArrowUp = (dropdownNode: HTMLElement) => () => {
   if (document.activeElement?.tagName === LI_TAG) {
-    (document.activeElement?.previousElementSibling as HTMLElement)?.focus();
+    (document.activeElement.previousElementSibling as HTMLElement).focus();
   } else {
-    (dropdownNode.lastChild as HTMLElement)?.focus();
+    (dropdownNode.lastChild as HTMLElement).focus();
   }
 };
 

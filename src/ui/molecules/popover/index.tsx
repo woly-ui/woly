@@ -39,7 +39,7 @@ const PopoverBase: React.FC<Props & Variant> = ({
     (event) => {
       if (isVisible && ref.current === null) return;
 
-      const trigger = ref?.current;
+      const trigger = ref.current;
       if (isVisible && !trigger?.contains(event.target)) {
         setVisibility();
       }

@@ -30,7 +30,7 @@ export const InputExample: React.FC = () => (
               name="name"
               placeholder="Error"
               onChange={() => console.info('On input change')}
-              variant="error"
+              variant="danger"
             />
           </block.L>
         </Inputs>
@@ -57,7 +57,7 @@ export const InputExample: React.FC = () => (
               name="name"
               placeholder="Error"
               onChange={() => console.info('On input change')}
-              variant="error"
+              variant="danger"
             />
           </block.M>
         </Inputs>
@@ -84,7 +84,7 @@ export const InputExample: React.FC = () => (
               name="name"
               placeholder="Error"
               onChange={() => console.info('On input change')}
-              variant="error"
+              variant="danger"
             />
           </block.S>
         </Inputs>

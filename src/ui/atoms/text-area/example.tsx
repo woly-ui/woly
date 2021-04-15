@@ -29,8 +29,8 @@ export const TextAreaExample: React.FC = () => {
               name="name"
               placeholder="Disabled"
               onChange={() => console.info('On textarea change')}
-              variant="base"
-              disabled
+              variant="default"
+              isDisabled
               resize="none"
               overflow="hidden"
             />
@@ -52,10 +52,9 @@ export const TextAreaExample: React.FC = () => {
               onChange={(event: React.ChangeEvent<HTMLTextAreaElement>) =>
                 setValueE(event.target.value)
               }
-              variant="error"
+              variant="danger"
               maxLength={100}
               value={valueE}
-              textError="Error text"
               overflow="hidden"
             />
           </block.L>
@@ -67,8 +66,8 @@ export const TextAreaExample: React.FC = () => {
               name="name"
               placeholder="Disabled"
               onChange={() => console.info('On textarea change')}
-              variant="base"
-              disabled
+              variant="default"
+              isDisabled
               resize="none"
               overflow="hidden"
             />
@@ -89,8 +88,7 @@ export const TextAreaExample: React.FC = () => {
               name="name"
               placeholder="Error"
               onChange={() => console.info('On textarea change')}
-              variant="error"
-              textError="Error text"
+              variant="danger"
             />
           </block.M>
         </TextAreas>
@@ -101,8 +99,8 @@ export const TextAreaExample: React.FC = () => {
               name="name"
               placeholder="Disabled"
               onChange={() => console.info('On textarea change')}
-              variant="base"
-              disabled
+              variant="default"
+              isDisabled
               resize="none"
             />
             <TextArea
@@ -119,7 +117,7 @@ export const TextAreaExample: React.FC = () => {
               name="name"
               placeholder="Error"
               onChange={() => console.info('On textarea change')}
-              variant="error"
+              variant="danger"
             />
           </block.S>
         </TextAreas>

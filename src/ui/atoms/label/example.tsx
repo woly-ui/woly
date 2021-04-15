@@ -8,7 +8,7 @@ export const LabelExample: React.FC = () => (
     <div data-cypress="label">
       <Grid>
         <Label variant="base">Base Label</Label>
-        <Label variant="error">Error Label</Label>
+        <Label variant="danger">Error Label</Label>
       </Grid>
     </div>
   </Global>

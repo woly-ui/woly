@@ -76,26 +76,44 @@ export const Checkbox = styled(CheckboxBase)`
   --local-width: 24px;
   --local-height: 24px;
 
-  padding: var(--local-vertical, 6.4px) var(--local-horizontal, 6.4px);
+  --local-text-color: var(--woly-canvas-text-default);
+  --local-background-color: var(--woly-shape-default);
+
+  padding: var(--local-vertical) var(--local-horizontal);
 
   user-select: none;
   outline: none;
 
   &:focus [data-checkmark] > svg,
   &:active [data-checkmark] > svg {
-    box-shadow: 0 0 0 1.5px var(--woly-border, #9381f1);
-    border-radius: var(--woly-rounding, 3px);
+    box-shadow: 0 0 0 1.5px var(--woly-focus);
+    border-radius: var(--woly-rounding);
   }
 
   [data-block='container'] {
     display: flex;
     align-items: center;
 
+    outline: none;
+
+    [data-block='text'] {
+      color: var(--local-text-color);
+      font-size: var(--woly-font-size, 12px);
+      line-height: var(--woly-line-height, 24px);
+    }
+
+    input {
+      position: absolute;
+      opacity: 0;
+      height: 0;
+      width: 0;
+    }
+
     [data-checkmark] {
       width: var(--local-width);
       height: var(--local-height);
 
-      margin-right: var(--local-gap, 15px);
+      margin-right: var(--local-gap);
     }
 
     [data-checkmark='unchecked'],
@@ -103,6 +121,23 @@ export const Checkbox = styled(CheckboxBase)`
       display: flex;
       align-items: center;
       justify-content: center;
+    }
+
+    input:checked ~ [data-checkmark='checked'] {
+      svg > rect {
+        fill: var(--local-background-color);
+      }
+      &:hover {
+        svg > rect {
+          --local-background-color: var(--woly-shape-hover);
+        }
+      }
+      &:focus,
+      &:active {
+        svg > rect {
+          fill: var(--woly-focus);
+        }
+      }
     }
 
     [data-checkmark='checked'],
@@ -113,29 +148,14 @@ export const Checkbox = styled(CheckboxBase)`
     [data-checkmark='unchecked'] {
       &:hover {
         svg > rect {
-          stroke: var(--woly-background, #b0a3f4);
+          stroke: var(--woly-shape-default);
         }
       }
 
       &:focus,
       &:active {
         svg > rect {
-          stroke: var(--woly-background-focus, #9381f1);
-        }
-      }
-    }
-
-    [data-checkmark='checked'] {
-      &:hover {
-        svg > rect {
-          fill: var(--woly-border-hover, #c9c0f8);
-        }
-      }
-
-      &:focus,
-      &:active {
-        svg > rect {
-          fill: var(--woly-background-focus, #9381f1);
+          stroke: var(--woly-focus);
         }
       }
     }
@@ -145,7 +165,7 @@ export const Checkbox = styled(CheckboxBase)`
     pointer-events: none;
 
     [data-block='text'] {
-      color: var(--woly-text-disabled, #e4e4e4);
+      --local-text-color: var(--woly-shape-disabled);
     }
 
     [data-checkmark='unchecked'],
@@ -155,7 +175,7 @@ export const Checkbox = styled(CheckboxBase)`
       justify-content: center;
 
       svg > rect {
-        fill: var(--woly-fill-disabled, #e4e4e4);
+        --local-background-color: var(--woly-shape-disabled);
       }
     }
 
@@ -163,18 +183,5 @@ export const Checkbox = styled(CheckboxBase)`
     input:checked ~ [data-checkmark='unchecked'] {
       display: none;
     }
-  }
-
-  [data-block='text'] {
-    font-size: var(--woly-font-size, 12px);
-    line-height: var(--woly-line-height, 24px);
-    color: var(--woly-color, #000000);
-  }
-
-  input {
-    position: absolute;
-    opacity: 0;
-    height: 0;
-    width: 0;
   }
 ` as StyledComponent<'div', Record<string, unknown>, CheckboxProps & Variant>;
