@@ -2,88 +2,92 @@ import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
 import { Variant } from 'lib/types';
 
-/**
- * --woly-rounding
- * --woly-border-width
- * --woly-line-height
- *
- * --woly-background
- * --woly-border
- *
- * --woly-background-hover
- * --woly-border-hover
- *
- * --woly-background-focus
- * --woly-border-focus
- *
- * --woly-background-disabled
- * --woly-border-disabled
- */
-
 interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string;
   icon: React.ReactNode;
   onClick: React.MouseEventHandler<HTMLButtonElement>;
+  filled?: boolean;
 }
 
 const ButtonIconBase: React.FC<Props & Variant> = ({
   icon,
   onClick,
+  filled = false,
   variant = 'default',
   ...p
 }) => (
-  <button data-variant={variant} onClick={onClick} type="button" {...p}>
-    <span>{icon}</span>
+  <button data-filled={filled} data-variant={variant} onClick={onClick} type="button" {...p}>
+    <span data-icon>{icon}</span>
   </button>
 );
 
 export const ButtonIcon = styled(ButtonIconBase)`
-  --woly-vertical: calc(1px * var(--woly-component-level) * var(--woly-main-level));
-  --woly-horizontal: calc(
-    var(--woly-const-m) + (1px * var(--woly-main-level)) + var(--woly-vertical)
-  );
-  --woly-gap: calc(
-    (1px * var(--woly-main-level)) + (1px * var(--woly-main-level) * var(--woly-component-level))
-  );
+  --local-shape-color: var(--woly-canvas-default);
+  --local-icon-size: var(--woly-line-height);
+  --local-icon-color: var(--woly-canvas-text-default);
+  --local-padding: calc(1px * var(--woly-component-level) * var(--woly-main-level));
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: nowrap;
-  padding: var(--woly-vertical, 6.4px) var(--woly-horizontal, 6.4px);
-
-  background-color: var(--woly-background, transparent);
-  border-color: var(--woly-border, #000000);
-  border-style: solid;
-  border-width: var(--woly-border-width, 0);
-
+  border: var(--woly-border) solid var(--local-shape-color);
   border-radius: var(--woly-rounding, 4px);
   cursor: pointer;
+  padding: var(--local-padding);
+  background: var(--local-shape-color);
+  outline: none;
 
-  span {
-    width: var(--woly-line-height, 24px);
-    height: var(--woly-line-height, 24px);
+  [data-icon] {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--local-icon-size);
+    height: var(--local-icon-size);
+
+    svg > path {
+      fill: var(--local-icon-color);
+    }
+    svg > g {
+      stroke: var(--local-icon-color);
+    }
   }
 
-  &:hover {
-    background-color: var(--woly-background-hover, #000000);
-    border-color: var(--woly-border-hover, #000000);
-    outline: none;
+  &[data-filled='true'] {
+    --local-shape-color: var(--woly-shape-default);
+    --local-icon-color: var(--woly-shape-text-default);
+
+    &:active {
+      --local-shape-color: var(--woly-focus);
+    }
+    &:focus {
+      --local-shape-color: var(--woly-shape-active);
+      box-shadow: 0 0 0 var(--woly-border-width) var(--woly-focus);
+    }
+    &:hover {
+      --local-shape-color: var(--woly-shape-hover);
+    }
+    &:disabled {
+      --local-shape-color: var(--woly-canvas-disabled);
+    }
   }
 
-  &:focus,
-  &:active {
-    background-color: var(--woly-background-focus, #000000);
-    border-color: var(--woly-border-focus, #000000);
-    outline: none;
+  &[data-filled='false'] {
+    &:active {
+      --local-shape-color: transparent;
+      --local-icon-color: var(--woly-focus);
+    }
+
+    &:focus {
+      --local-shape-color: transparent;
+      box-shadow: 0 0 0 var(--woly-border-width) var(--woly-focus);
+    }
+
+    &:hover {
+      --local-shape-color: transparent;
+      --local-icon-color: var(--woly-shape-hover);
+    }
   }
 
   &:disabled {
-    background-color: var(--woly-background-disabled, #000000);
-    border-color: var(--woly-border-disabled, #000000);
-    outline: none;
-  }
-  & > *:not(:first-child) {
-    margin-left: var(--woly-gap);
+    pointer-events: none;
+    --local-shape-color: transparent;
+    --local-icon-color: var(--woly-canvas-text-disabled);
   }
 ` as StyledComponent<'button', Record<string, unknown>, Props & Variant>;
