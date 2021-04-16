@@ -29,9 +29,7 @@ const FieldBase: React.FC<FieldProps & Variant> = ({
 );
 
 export const Field = styled(FieldBase)`
-  --local-vertical: calc(
-    1px * var(--woly-component-level) * var(--woly-main-level)
-  );
+  --local-vertical: calc(1px * var(--woly-component-level) * var(--woly-main-level));
   --local-horizontal: calc(
     var(--woly-const-m) + (1px * var(--woly-main-level)) + var(--local-vertical)
   );
@@ -45,7 +43,7 @@ export const Field = styled(FieldBase)`
   label {
     padding: var(--local-vertical, 6px) 0;
   }
-  
+
   &[data-row='true'] {
     display: flex;
     align-items: center;

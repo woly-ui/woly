@@ -4,13 +4,184 @@ category: atoms
 package: 'woly'
 ---
 
-import { TextAreaExample } from './example';
+import { TextArea } from './index';
+import { Playground, block, StateEvent, State } from 'box-styles';
 
-`TextArea` defines a multi-line text input control. TextArea is often used in a form, to collect user inputs like comments or reviews.
+`TextArea` defines a multi-line text input control.
 
-### Example
+TextArea is often used in a form, to collect user inputs like comments or reviews.
 
-<TextAreaExample />
+## Example
+
+<Playground>
+  <TextArea
+    name="name"
+    placeholder="Simple text-area"
+    onChange={() => console.info('On textarea change')}
+    variant="default"
+  />
+</Playground>
+
+## Variants
+
+Primary and danger variants are should be used to focus user attention.
+
+<Playground>
+  <TextArea
+    name="name"
+    placeholder="Primary"
+    onChange={() => console.info('On textarea change')}
+    variant="primary"
+  />
+  <TextArea
+    name="name"
+    placeholder="Secondary"
+    onChange={() => console.info('On textarea change')}
+    variant="secondary"
+  />
+</Playground>
+
+## Disabled
+
+This Boolean attribute indicates that the user cannot interact with the control.
+If this attribute is not specified, the control inherits its setting from the containing element;
+if there is no containing element when the disabled attribute is set, the control is enabled.
+
+<Playground>
+  <TextArea name="name" placeholder="Disabled" disabled />
+</Playground>
+
+## Resize
+
+The resize property defines if (and how) an element is resizable by the user.
+
+<Playground>
+  <div style={{ marginBottom: '60px' }}>
+    <TextArea
+      name="name"
+      placeholder="Here, the user can resize both the height and width"
+      onChange={() => console.info('On textarea change')}
+      variant="primary"
+      rows={5}
+      resize
+    />
+  </div>
+  <div style={{ marginBottom: '40px' }}>
+    <TextArea
+      name="name"
+      placeholder="Oops! You can't resize this textarea"
+      onChange={() => console.info('On textarea change')}
+      variant="primary"
+    />
+  </div>
+</Playground>
+
+## Cols, rows and wrap
+
+TextArea size can be controlled with number of cols and rows.
+
+### cols
+
+The visible width of the text control, in average character widths.
+If it is specified, it must be a positive integer. If it is not specified, the default value is 20.
+
+### rows
+
+The number of visible text lines for the control.
+
+### wrap
+
+Indicates how the control wraps text.
+Possible values are:
+
+- hard: The browser automatically inserts line breaks, so that each line has no more than the width of the control;
+  the cols attribute must also be specified for this to take effect.
+
+- soft: The browser ensures that all line breaks in the value consist of a CR+LF pair,
+  but does not insert any additional line breaks.
+
+- off : Like soft but changes appearance to white-space: pre so line segments exceeding cols are not wrapped
+  and the textarea becomes horizontally scrollable.
+
+<Playground>
+  <TextArea
+    name="name"
+    placeholder="Hey! Here is 20 cols and it's wrapp off"
+    onChange={() => console.info('On textarea change')}
+    variant="primary"
+    cols={20}
+    wrap="off"
+  />
+  <TextArea
+    name="name"
+    placeholder="Oops! Textarea consists only 3 rows"
+    onChange={() => console.info('On textarea change')}
+    variant="primary"
+    rows={3}
+  />
+</Playground>
+
+## Sizes
+
+Size controlled by the `component-level` block property not from the props.
+
+<Playground>
+  <block.S>
+    <TextArea
+      name="name"
+      placeholder="Primary"
+      onChange={() => console.info('On textarea change')}
+      variant="primary"
+    />
+  </block.S>
+  <block.M>
+    <TextArea
+      name="name"
+      placeholder="Primary"
+      onChange={() => console.info('On textarea change')}
+      variant="primary"
+    />
+  </block.M>
+  <block.L>
+    <TextArea
+      name="name"
+      placeholder="Primary"
+      onChange={() => console.info('On textarea change')}
+      variant="primary"
+    />
+  </block.L>
+  <block.XL>
+    <TextArea
+      name="name"
+      placeholder="Primary"
+      onChange={() => console.info('On textarea change')}
+      variant="primary"
+    />
+  </block.XL>
+</Playground>
+
+### Container
+
+TextArea can be placed inside the container. TextArea width is equal to container size.
+
+<Playground direction="horizontal">
+  <block.S>
+    <TextArea
+      name="name"
+      placeholder="Primary"
+      onChange={() => console.info('On textarea change')}
+      variant="primary"
+    />
+  </block.S>
+  <block.S>
+    <TextArea
+      name="name"
+      placeholder="Primary"
+      onChange={() => console.info('On textarea change')}
+      variant="primary"
+    />
+  </block.S>
+</Playground>
 
 ### Kinds
 
@@ -20,20 +191,20 @@ import { TextAreaExample } from './example';
 
 ### Props
 
-| Name       | Type                                                          | Default     | Description                                                                                |
-| ---------- | ------------------------------------------------------------- | ----------- | ------------------------------------------------------------------------------------------ |
-| `name`       | `string`                                                      |             | Name attribute specifies a name of the text-area                                         |
-| `isDisabled` | `boolean`                                                     | `null`      | HTML disabled attribute                                                                  |
-| `value`      | `HTMLInputElement['value']`                                   | `null`      | Value of text-area field                                                                 |
-| `onChange`   | `(e: React.ChangeEvent<HTMLInputElement>) => unknown`         |             | Callback when user text-area                                                             |
-| `onKeyDown`  | `(event: React.KeyboardEvent<HTMLTextAreaElement>) => unknown`|             | Callback when user text-area                                                             |
-| `variant`    | `string`                                                      | `'default'` | Variant prop to style TextArea component                                                 |
-| `row`        | `number`                                                      |             | Number of rows to display                                                                |
-| `cols`       | `number`                                                      |             | Number of cols to display                                                                |
-| `wrap`       | `string`                                                      |             | The wrap attribute specifies how the text in a text area is to be wrapped                |
-| `resize`     | `string`                                                      |             | The resize property defines if (and how) an element is resizable by the user             |
-| `maxLength`  | `number`                                                      |             | The maxlength attribute specifies the maximum length (in characters)                     |
-| `minLength`  | `number`                                                      |             | The minlength attribute specifies the maximum length (in characters)                     |
-| `overflow`   | `string`                                                      |             | The overflow property specifies what should happen if content overflows an element's box |
-| `placeholder`| `string`                                                      |             | The placeholder represents the placeholder text                                          |
-|`...`         | `HTMLInputElement`                                            | `{}`        | Other props are inherited from `HTMLInputElement`                                        |
+| Name          | Type                                                           | Default     | Description                                                                              |
+| ------------- | -------------------------------------------------------------- | ----------- | ---------------------------------------------------------------------------------------- |
+| `name`        | `string`                                                       |             | Name attribute specifies a name of the text-area                                         |
+| `disabled`    | `boolean`                                                      | `null`      | HTML disabled attribute                                                                  |
+| `value`       | `HTMLInputElement['value']`                                    | `null`      | Value of text-area field                                                                 |
+| `onChange`    | `(e: React.ChangeEvent<HTMLInputElement>) => unknown`          |             | Callback when user text-area                                                             |
+| `onKeyDown`   | `(event: React.KeyboardEvent<HTMLTextAreaElement>) => unknown` |             | Callback when user text-area                                                             |
+| `variant`     | `string`                                                       | `'default'` | Variant prop to style TextArea component                                                 |
+| `row`         | `number`                                                       |             | Number of rows to display                                                                |
+| `cols`        | `number`                                                       |             | Number of cols to display                                                                |
+| `wrap`        | `string`                                                       |             | The wrap attribute specifies how the text in a text area is to be wrapped                |
+| `resize`      | `string`                                                       |             | The resize property defines if (and how) an element is resizable by the user             |
+| `maxLength`   | `number`                                                       |             | The maxlength attribute specifies the maximum length (in characters)                     |
+| `minLength`   | `number`                                                       |             | The minlength attribute specifies the maximum length (in characters)                     |
+| `overflow`    | `string`                                                       |             | The overflow property specifies what should happen if content overflows an element's box |
+| `placeholder` | `string`                                                       |             | The placeholder represents the placeholder text                                          |
+| `...`         | `HTMLInputElement`                                             | `{}`        | Other props are inherited from `HTMLInputElement`                                        |
