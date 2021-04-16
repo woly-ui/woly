@@ -4,55 +4,47 @@ interface GetSelectHandlersProps extends EnterProps {
 
 interface EnterProps {
   isOpen: boolean;
+  onChange: React.EventHandler<React.SyntheticEvent>;
   selectNode: HTMLElement;
   setIsOpen: () => void;
-  onChange: React.EventHandler<React.SyntheticEvent>;
-  event: React.KeyboardEvent;
 }
 
 const LI_TAG = 'LI';
 
 const onArrowDown = (dropdownNode: HTMLElement) => () => {
   if (document.activeElement?.tagName === LI_TAG) {
-    (document.activeElement.nextElementSibling as HTMLElement)?.focus();
+    (document.activeElement.nextElementSibling as HTMLElement).focus();
   } else {
-    (dropdownNode.firstChild as HTMLElement)?.focus();
+    (dropdownNode.firstChild as HTMLElement).focus();
   }
 };
 
 const onArrowUp = (dropdownNode: HTMLElement) => () => {
   if (document.activeElement?.tagName === LI_TAG) {
-    (document.activeElement?.previousElementSibling as HTMLElement)?.focus();
+    (document.activeElement.previousElementSibling as HTMLElement).focus();
   } else {
-    (dropdownNode.lastChild as HTMLElement)?.focus();
+    (dropdownNode.lastChild as HTMLElement).focus();
   }
 };
 
-const onEnter = ({
-  isOpen,
-  selectNode,
-  setIsOpen,
-  onChange,
-  event,
-}: EnterProps) => () => {
+const onEnter = ({ isOpen, onChange, selectNode, setIsOpen }: EnterProps) => (
+  event: React.SyntheticEvent<Element, Event>,
+) => {
   if (isOpen && document.activeElement?.tagName === LI_TAG) {
     onChange(event);
   }
-
   setIsOpen();
   selectNode.focus();
 };
 
-export const selectHandlersGet = ({
-  selectNode,
+export const keyHandlerGet = ({
   dropdownNode,
-  setIsOpen,
   isOpen,
   onChange,
-  event,
+  selectNode,
+  setIsOpen,
 }: GetSelectHandlersProps) => ({
-  onArrowDown: onArrowDown(dropdownNode),
-  onArrowUp: onArrowUp(dropdownNode),
-  onEnter: onEnter({ isOpen, setIsOpen, selectNode, onChange, event }),
-  onShiftArrowDown: setIsOpen,
+  arrowDown: onArrowDown(dropdownNode),
+  arrowUp: onArrowUp(dropdownNode),
+  enter: onEnter({ selectNode, setIsOpen, isOpen, onChange }),
 });

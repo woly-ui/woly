@@ -5,20 +5,6 @@ import { Variant } from 'lib/types';
 import ClosedEyeIcon from '../../../static/icons/closed-eye.svg';
 import OpenedEyeIcon from '../../../static/icons/opened-eye.svg';
 import { ButtonIcon, Input } from '../../atoms';
-
-/**
- * --woly-border
- * --woly-border-focus
- * --woly-border-disabled
- * --woly-border-width
- * --woly-rounding
- *
- * --woly-background
- * --woly-background-diabled
- * --woly-color
- * --woly-color-disabled
- */
-
 interface InputPasswordProps {
   disabled?: boolean;
   iconHidden?: React.ReactNode;
@@ -65,15 +51,10 @@ export const InputPasswordBase: React.FC<InputPasswordProps & Variant> = ({
 
 export const InputPassword = styled(InputPasswordBase)`
   --woly-gap: calc(
-    (1px * var(--woly-main-level)) +
-      (1px * var(--woly-main-level) * var(--woly-component-level))
+    (1px * var(--woly-main-level)) + (1px * var(--woly-main-level) * var(--woly-component-level))
   );
 
   & > *:not(:first-child) {
     margin-left: var(--woly-gap);
   }
-` as StyledComponent<
-  'div',
-  Record<string, unknown>,
-  InputPasswordProps & Variant
->;
+` as StyledComponent<'div', Record<string, unknown>, InputPasswordProps & Variant>;

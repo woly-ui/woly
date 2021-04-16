@@ -1,26 +1,11 @@
 import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
 import { Variant } from 'lib/types';
-
 import { InputContainer, InputElement } from '../../elements/quarks';
-
-/**
- * --woly-font-size
- * --woly-rounding
- * --woly-line-height
- * --woly-background
- * --woly-background-disabled
- * --woly-border
- * --woly-border-focus
- * --woly-border-disabled
- * --woly-color
- * --woly-color-disabled
- *
- */
 
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   className?: string;
-  isDisabled?: boolean;
+  disabled?: boolean;
   left?: React.ReactNode;
   name: string;
   onChange: React.ChangeEventHandler<HTMLInputElement>;
@@ -32,7 +17,7 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
 
 const InputBase: React.FC<InputProps & Variant> = ({
   className,
-  isDisabled,
+  disabled,
   left,
   name,
   onChange,
@@ -44,7 +29,7 @@ const InputBase: React.FC<InputProps & Variant> = ({
 }) => (
   <InputContainer
     className={className}
-    isDisabled={isDisabled}
+    disabled={disabled}
     variant={variant}
     left={left}
     right={right}
@@ -60,12 +45,23 @@ const InputBase: React.FC<InputProps & Variant> = ({
 );
 
 export const Input = styled(InputBase)`
-  --woly-gap: calc(
+  --local-vertical: calc(1px * var(--woly-component-level) * var(--woly-main-level));
+  --local-horizontal: calc(
+    var(--woly-const-m) + (1px * var(--woly-main-level)) + var(--local-vertical)
+  );
+
+  --local-gap: calc(
     (1px * var(--woly-main-level)) +
       (1px * var(--woly-main-level) * var(--woly-component-level))
   );
+  
+  box-sizing: border-box;
+  width: 100%;
+
+  padding: var(--local-vertical) var(--local-horizontal);
 
   & > *:not(:first-child) {
     margin-left: var(--woly-gap);
   }
+
 ` as StyledComponent<'div', Record<string, unknown>, InputProps & Variant>;

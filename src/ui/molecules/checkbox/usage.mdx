@@ -5,24 +5,25 @@ package: 'woly'
 ---
 
 import { Checkbox } from './index';
-import { Playground, block } from 'box-styles'
+import { Playground } from 'box-styles'
 
 Checkboxes allow you to setup selectable options for your users - either to toggle a single setting on or off, or to allow for multiple choices.
 
-Use descriptive static text relevant to each checkbox element. 
+Use descriptive static text relevant to each checkbox element.
 
 In case of using set of checkboxes as a logical group use component 'Label' for labeling the checkbox group.
 
-Checkboxes are tiny in nature, and, thus, they can be hard to click or tap. 
+Checkboxes are tiny in nature, and, thus, they can be hard to click or tap.
 
-To enlarge the target area, let users select an option by clicking or tapping not just that small square, but also the label or associated words. 
+To enlarge the target area, let users select an option by clicking or tapping not just that small square, but also the label or associated words.
 
 Use a checkbox when the user has to stop before performing an action. Checkbox will introduce a little bit of friction and make them stop and think about the action.
 
 ### Example
 
 <Playground>
-  <Checkbox variant="default"/>
+  <Checkbox isChecked variant="default" />
+  <Checkbox isChecked={false} variant="default" />
 </Playground>
 
 ### Variants
@@ -30,9 +31,15 @@ Use a checkbox when the user has to stop before performing an action. Checkbox w
 Error and primary/secondary variants are should be used to focus user attention.
 
 <Playground>
+<<<<<<< HEAD
   <Checkbox text="Attention" variant="error" isChecked/>
   <Checkbox text="Alternative action" variant="secondary" />
   <Checkbox text="Disabled" variant="default" disabled isChecked/>
+=======
+  <Checkbox text="Attention" variant="error" isChecked disabled />
+  <Checkbox text="Alternative action" variant="secondary" isChecked={false} />
+  <Checkbox text="Disabled" variant="default" disabled isChecked />
+>>>>>>> d28cb32500dc2e033b233bfe088e02c31b68db3a
 </Playground>
 
 ### Kinds
@@ -43,10 +50,10 @@ Error and primary/secondary variants are should be used to focus user attention.
 
 ### Props
 
-| Name        | Type                                         | Default     | Description                                         |
-| ----------- | -------------------------------------------- | ----------- | --------------------------------------------------- |
-| `id`        | `string`                                     |             | HTML id attribute                                   |
-| `isChecked` | `boolean`                                    |             | Whether checkbox is checked or not                  |
-| `text`      | `string`                                     |             | Text component                                      |
-| `onChange`  | `React.ChangeEventHandler<HTMLInputElement>` |             | Callback when checkbox is clicked                   |
-| `variant`   | `string`                                     | `'default'` | Variant prop to style Checkbox component            |
+| Name        | Type                                         | Default     | Description                              |
+| ----------- | -------------------------------------------- | ----------- | ---------------------------------------- |
+| `id`        | `string`                                     |             | HTML id attribute                        |
+| `isChecked` | `boolean`                                    |             | Whether checkbox is checked or not       |
+| `text`      | `string`                                     |             | Text component                           |
+| `onChange`  | `React.ChangeEventHandler<HTMLInputElement>` |             | Callback when checkbox is clicked        |
+| `variant`   | `string`                                     | `'default'` | Variant prop to style Checkbox component |

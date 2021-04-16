@@ -1,24 +1,10 @@
 import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
 
-/**
- * --woly-font-size
- * --woly-rounding
- * --woly-line-height
- * --woly-background
- * --woly-background-disabled
- * --woly-border
- * --woly-border-focus
- * --woly-border-disabled
- * --woly-color
- * --woly-color-disabled
- *
- */
-
 interface InputElementProps
   extends React.InputHTMLAttributes<HTMLInputElement> {
   name: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => unknown;
+  onChange: React.EventHandler<React.SyntheticEvent>;
   placeholder?: string;
   type: 'text' | 'password' | 'email';
   value?: HTMLInputElement['value'];
@@ -43,14 +29,16 @@ const InputElementBase: React.FC<InputElementProps> = ({
 );
 
 export const InputElement = styled(InputElementBase)`
-  --woly-width: 100%;
-  width: var(--woly-width);
+  --local-value-color: var(--woly-canvas-text-default);
+  --local-background: var(--woly-canvas-default);
+
+  width: 100%;
 
   font-size: var(--woly-font-size, 15px);
   line-height: var(--woly-line-height, 24px);
 
-  color: var(--woly-color, #000000);
-  background: transparent;
+  color: var(--local-value-color);
+  background: var(--local-background);
 
   padding: 0;
 
@@ -60,5 +48,8 @@ export const InputElement = styled(InputElementBase)`
   &:focus,
   &:active {
     outline: none;
+  }
+  &::placeholder {
+    color: var(--woly-canvas-text-disabled);
   }
 ` as StyledComponent<'input', Record<string, unknown>, InputElementProps>;

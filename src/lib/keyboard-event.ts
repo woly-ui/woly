@@ -2,47 +2,25 @@ import React from 'react';
 
 interface KeyboardEventProps {
   event: React.KeyboardEvent;
-  eventHandlers: EventHandlersProps;
-}
-
-interface EventHandlersProps {
-  onArrowDown: () => void;
-  onArrowUp: () => void;
-  onEnter: () => void;
-  onShiftArrowDown: () => void;
+  keyHandler?: HandlerType;
+  shiftKeyHandler?: HandlerType;
 }
 
 interface HandlerType {
-  [key: string]: () => void;
+  [key: string]: (event: React.SyntheticEvent<Element, Event>) => void;
 }
 
-const camelCase = (string: string) =>
-  string.charAt(0).toLowerCase() + string.slice(1);
+const camelCase = (string: string) => string.charAt(0).toLowerCase() + string.slice(1);
 
-export const keyboardEventHandle = ({
-  event,
-  eventHandlers,
-}: KeyboardEventProps) => {
+export const keyboardEventHandle = ({ event, keyHandler, shiftKeyHandler }: KeyboardEventProps) => {
   const { shiftKey } = event;
   const key = camelCase(event.key);
-  const { onArrowDown, onArrowUp, onEnter, onShiftArrowDown } = eventHandlers;
 
-  const keyHandler: HandlerType = {
-    arrowDown: onArrowDown,
-    arrowUp: onArrowUp,
-    enter: onEnter,
-  };
+  if (key && shiftKey && shiftKeyHandler && shiftKeyHandler.hasOwnProperty(key)) {
+    shiftKeyHandler[key](event);
+  }
 
-  const shiftKeyHandler: HandlerType = {
-    arrowDown: onShiftArrowDown,
-  };
-
-  if (!keyHandler.hasOwnProperty(key) && !shiftKeyHandler.hasOwnProperty(key))
-    return;
-
-  if (shiftKey) {
-    shiftKeyHandler[key]();
-  } else {
-    keyHandler[key]();
+  if (key && keyHandler && keyHandler.hasOwnProperty(key)) {
+    keyHandler[key](event);
   }
 };

@@ -4,9 +4,11 @@
     "@eslint-kit/typescript",
     "@eslint-kit/node",
     "@eslint-kit/react",
+    "@eslint-kit/react-new-jsx-transform",
     "@eslint-kit/prettier",
     "./.config/eslint-config"
   ],
+  "root": true,
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "project": "./tsconfig.json"

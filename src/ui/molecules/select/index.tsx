@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
 import { Variant } from 'lib/types';
-import { keyboardEventHandle, selectHandlersGet } from 'lib';
+import { keyHandlerGet, keyboardEventHandle } from 'lib';
 
 /**
  * --woly-border
@@ -59,19 +59,19 @@ export const SelectBase: React.FC<SelectProps & Variant> = ({
       }
 
       event.preventDefault();
-
-      const eventHandlers = selectHandlersGet({
+      const kh = keyHandlerGet({
         dropdownNode,
-        event,
         isOpen,
         onChange,
         selectNode,
         setIsOpen,
       });
+      const shiftKeyHandler = { arrowDown: setIsOpen };
 
       keyboardEventHandle({
         event,
-        eventHandlers,
+        keyHandler: kh,
+        shiftKeyHandler,
       });
     },
     [selectRef, dropdownRef, isOpen, onChange],
@@ -103,13 +103,7 @@ export const SelectBase: React.FC<SelectProps & Variant> = ({
         tabIndex={-1}
       >
         {options.map(({ children, value }) => (
-          <li
-            data-value={value}
-            key={value}
-            onClick={onChange}
-            role="option"
-            tabIndex={-1}
-          >
+          <li data-value={value} key={value} onClick={onChange} role="option" tabIndex={-1}>
             {children}
           </li>
         ))}
@@ -120,12 +114,9 @@ export const SelectBase: React.FC<SelectProps & Variant> = ({
 
 export const Select = styled(SelectBase)`
   --woly-gap: calc(
-    (1px * var(--woly-main-level)) +
-      (1px * var(--woly-main-level) * var(--woly-component-level))
+    (1px * var(--woly-main-level)) + (1px * var(--woly-main-level) * var(--woly-component-level))
   );
-  --woly-vertical: calc(
-    1px * var(--woly-component-level) * var(--woly-main-level)
-  );
+  --woly-vertical: calc(1px * var(--woly-component-level) * var(--woly-main-level));
   --woly-horizontal: calc(
     var(--woly-const-m) + (1px * var(--woly-main-level)) + var(--woly-vertical)
   );
@@ -161,10 +152,7 @@ export const Select = styled(SelectBase)`
 
     div[data-selected] {
       background: var(--woly-background-disabled, #ffffff);
-      border-color: var(
-        --woly-border-disabled,
-        var(--woly-background-disabled, #c4c4c4)
-      );
+      border-color: var(--woly-border-disabled, var(--woly-background-disabled, #c4c4c4));
       color: var(--woly-color-disabled, #c4c4c4);
     }
   }

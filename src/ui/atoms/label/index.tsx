@@ -18,9 +18,7 @@ const map = (properties: LabelProps & Variant) => ({
 
 export const Label = styled.label.attrs(map)`
   --vertical: calc(1px * var(--woly-component-level) * var(--woly-main-level));
-  --horizontal: calc(
-    var(--woly-const-m) + (1px * var(--woly-main-level)) + var(--vertical)
-  );
+  --horizontal: calc(var(--woly-const-m) + (1px * var(--woly-main-level)) + var(--vertical));
 
   padding: var(--woly-vertical, 6px) var(--woly-horizontal, 6px);
 

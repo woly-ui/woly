@@ -36,15 +36,12 @@ const CheckboxBase: React.FC<CheckboxProps & Variant> = ({
 );
 
 export const Checkbox = styled(CheckboxBase)`
-  --woly-vertical: calc(
-    1px * var(--woly-component-level) * var(--woly-main-level)
-  );
+  --woly-vertical: calc(1px * var(--woly-component-level) * var(--woly-main-level));
   --woly-horizontal: calc(
     var(--woly-const-m) + (1px * var(--woly-main-level)) + var(--woly-vertical)
   );
   --woly-gap: calc(
-    (1px * var(--woly-main-level)) +
-      (1px * var(--woly-main-level) * var(--woly-component-level))
+    (1px * var(--woly-main-level)) + (1px * var(--woly-main-level) * var(--woly-component-level))
   );
 
   --woly-checkbox-width: 24px;
