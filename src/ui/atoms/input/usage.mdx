@@ -57,10 +57,11 @@ Specs:
 
 <Playground>
   <Input
-    type="text"
     name="name"
-    placeholder="Enter your name here"
     onChange={(event) => console.info('On input change')}
+    placeholder="Enter your name here"
+    type="text"
+    variant="primary"
   />
 </Playground>
 
@@ -70,22 +71,24 @@ Disabled text fields are uneditable. They have less opacity so that they appear 
 
 <Playground>
   <Input
-    type="text"
+    disabled
     name="name"
-    placeholder="Enter your name here"
     onChange={(event) => console.info('On input change')}
-    isDisabled
+    placeholder="Enter your name here"
+    type="text"
+    variant="primary"
   />
 </Playground>
 
 <Playground>
   <Input
-    left={<InfoIcon />}
-    type="text"
-    name="name"
-    placeholder="Enter your name here"
-    onChange={(event) => console.info('On input change')}
     disabled
+    left={<InfoIcon />}
+    name="name"
+    onChange={(event) => console.info('On input change')}
+    placeholder="Enter your name here"
+    type="text"
+    variant="primary"
   />
 </Playground>
 
@@ -99,6 +102,7 @@ Inputs can be combined with an icon on the left side or the right. Use icons on 
     type="text"
     name="name"
     placeholder="Enter your name here"
+    variant="primary"
     onChange={(event) => console.info('On input change')}
   />
 </Playground>
@@ -108,6 +112,7 @@ Inputs can be combined with an icon on the left side or the right. Use icons on 
     type="text"
     name="name"
     placeholder="Enter your name here"
+    variant="primary"
     onChange={(event) => console.info('On input change')}
     right={<InfoIcon />}
   />
@@ -119,6 +124,7 @@ Inputs can be combined with an icon on the left side or the right. Use icons on 
     type="text"
     name="name"
     placeholder="Enter your name here"
+    variant="primary"
     onChange={(event) => console.info('On input change')}
     right={<InfoIcon />}
   />
@@ -132,12 +138,14 @@ Icons can also be touch targets for nested components.
       <ButtonIcon
         icon={<InfoIcon />}
         onClick={() => console.info('ButtonIcon clicked')}
+        variant="primary"
       />
     }
     type="text"
     name="name"
     placeholder="Enter your name here"
     onChange={(event) => console.info('On input change')}
+    variant="primary"
   />
 </Playground>
 <Playground>
@@ -146,12 +154,14 @@ Icons can also be touch targets for nested components.
       <ButtonIcon
         icon={<InfoIcon />}
         onClick={() => console.info('ButtonIcon clicked')}
+        variant="primary"
       />
     }
     type="text"
     name="name"
     placeholder="Enter your name here"
     onChange={(event) => console.info('On input change')}
+    variant="primary"
   />
 </Playground>
 <Playground>
@@ -160,16 +170,19 @@ Icons can also be touch targets for nested components.
       <ButtonIcon
         icon={<InfoIcon />}
         onClick={() => console.info('ButtonIcon clicked')}
+        variant="primary"
       />
     }
     type="text"
     name="name"
     placeholder="Enter your name here"
     onChange={(event) => console.info('On input change')}
+    variant="primary"
     right={
       <ButtonIcon
         icon={<InfoIcon />}
         onClick={() => console.info('ButtonIcon clicked')}
+        variant="primary"
       />
     }
   />
@@ -187,6 +200,7 @@ Error variant can be used to focus user attention on error.
     name="name"
     value="Error"
     placeholder="Enter your name here"
+    variant="secondary"
     onChange={(event) => console.info('On input change')}
   />
 </Playground>

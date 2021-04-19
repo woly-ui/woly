@@ -4,7 +4,6 @@ import styled, { StyledComponent } from 'styled-components';
 interface InputElementProps
   extends React.InputHTMLAttributes<HTMLInputElement> {
   name: string;
-  onChange: React.EventHandler<React.SyntheticEvent>;
   placeholder?: string;
   type: 'text' | 'password' | 'email';
   value?: HTMLInputElement['value'];
@@ -12,7 +11,6 @@ interface InputElementProps
 
 const InputElementBase: React.FC<InputElementProps> = ({
   name,
-  onChange,
   placeholder,
   type = 'text',
   value,
@@ -20,7 +18,6 @@ const InputElementBase: React.FC<InputElementProps> = ({
 }) => (
   <input
     name={name}
-    onChange={onChange}
     placeholder={placeholder}
     type={type}
     value={value}

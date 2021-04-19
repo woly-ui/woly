@@ -30,13 +30,13 @@ const InputBase: React.FC<InputProps & Variant> = ({
   <InputContainer
     className={className}
     disabled={disabled}
-    variant={variant}
     left={left}
+    onChange={onChange}
     right={right}
+    variant={variant}
   >
     <InputElement
       name={name}
-      onChange={onChange}
       placeholder={placeholder}
       type={type}
       value={value}
