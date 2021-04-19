@@ -6,18 +6,18 @@ interface InputContainerProps
   extends React.InputHTMLAttributes<HTMLInputElement> {
   className?: string;
   disabled?: boolean;
-  left?: React.ReactNode;
+  leftIcon?: React.ReactNode;
   onChange: React.EventHandler<React.SyntheticEvent>;
-  right?: React.ReactNode;
+  rightIcon?: React.ReactNode;
 }
 
 const InputContainerBase: React.FC<InputContainerProps & Variant> = ({
   children,
   className,
   disabled,
-  left,
+  leftIcon,
   onChange,
-  right,
+  rightIcon,
   variant = 'default',
 }) => {
 
@@ -51,9 +51,9 @@ const InputContainerBase: React.FC<InputContainerProps & Variant> = ({
       data-variant={variant}
       onKeyDown={onKeyDown}
       tabIndex={tabIndex}>
-      {left && <span data-icon="left">{left}</span>}
+      {leftIcon && <span data-icon="left">{leftIcon}</span>}
       <div data-input="input">{children}</div>
-      {right && <span data-icon="right">{right}</span>}
+      {rightIcon && <span data-icon="right">{rightIcon}</span>}
     </div>
   );
 }

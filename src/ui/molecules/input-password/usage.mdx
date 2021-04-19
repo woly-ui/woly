@@ -4,26 +4,216 @@ category: molecules
 package: 'woly'
 ---
 
-import { InputPasswordExample } from './example';
+import { InputPassword } from './index';
+import { ClosedEyeIcon, OpenedEyeIcon, InfoIcon } from 'icons';
 
-`InputPassword` is used for a secure password entry.
-The component has a button-icon to show and hide user password. InputPassword can be used in an authorization form or to confirm user action.
+import { Playground, block, State } from 'box-styles';
+
+`InputPassword` provide a way for the user to securely enter a password
+The component icludes a button-icon that toggle to hide and show the
+password as well as a meter to show the current strength of the password.
+
+InputPassword can be used in an authorization form or to confirm user action.
 
 ### Example
 
-<InputPasswordExample />
+<Playground>
+ <State initial={false} change={(i) => !i}>
+    {(value, change) => (
+      <InputPassword
+        icon={value ? <ClosedEyeIcon/> : <OpenedEyeIcon/> }
+        onClick={change}
+        type={value ? 'text' : 'password'}
+        name="name"
+        placeholder="Enter your password here"
+        onChange={(event) => console.info('On input change')}
+        variant="primary"
+      />
+    )}
+  </State>
+</Playground>
 
-```tsx
-const Example = () => (
+### Disabled
+
+Disabled text fields are uneditable. They have less opacity so that they appear less tappable.
+
+<Playground>
   <InputPassword
-    onChange={(e) => console.info('change', e)}
-    name="input"
-    iconHidden={<OpenedEyeIcon />}
-    iconOpen={<ClosedEyeIcon />}
-    value="Just a value"
+    disabled
+    icon={<ClosedEyeIcon/>}
+    onClick={(event) => console.info('OnClick')}
+    variant="primary"
+    isabled
+    type="password"
+    name="name"
+    placeholder="Enter your password here"
+    variant="primary"
   />
-);
-```
+</Playground>
+
+### Variants
+
+Primary and secondary variants are should be used to focus user attention.
+<!-- example for secondary variant will be fixed with task FRNT-477 -->
+
+<Playground direction="vertical">
+  <State initial={false} change={(i) => !i}>
+    {(value, change) => (
+      <InputPassword
+        icon={value ? <ClosedEyeIcon/> : <OpenedEyeIcon/> }
+        onClick={change}
+        type={value ? 'text' : 'password'}
+        name="name"
+        placeholder="Enter your password here"
+        onChange={(event) => console.info('On input change')}
+        variant="primary"
+      />
+    )}
+  </State>
+  <State initial={false} change={(i) => !i}>
+    {(value, change) => (
+      <InputPassword
+        icon={value ? <ClosedEyeIcon/> : <OpenedEyeIcon/> }
+        onClick={change}
+        type={value ? 'text' : 'password'}
+        name="name"
+        placeholder="Enter your password here"
+        onChange={(event) => console.info('On input change')}
+        variant="secondary"
+      />
+    )}
+  </State>
+</Playground>
+
+Error variant can be used to focus user attention on error.
+
+<!-- example will be fixed with task FRNT-477 -->
+
+<Playground direction="vertical">
+  <State initial={false} change={(i) => !i}>
+    {(value, change) => (
+      <InputPassword
+        icon={value ? <ClosedEyeIcon/> : <OpenedEyeIcon/> }
+        onClick={change}
+        type={value ? 'text' : 'password'}
+        name="name"
+        placeholder="Enter your password here"
+        onChange={(event) => console.info('On input change')}
+        variant="error"
+      />
+    )}
+  </State>
+</Playground>
+
+### Sizes
+
+Size controlled by the `component-level` block property not from the props.
+
+<Playground direction="vertical">
+  <block.S>
+    <State initial={false} change={(i) => !i}>
+    {(value, change) => (
+      <InputPassword
+        icon={value ? <ClosedEyeIcon/> : <OpenedEyeIcon/> }
+        onClick={change}
+        variant="primary"
+        type={value ? 'text' : 'password'}
+        name="name"
+        placeholder="Enter your password here"
+        onChange={(event) => console.info('On input change')}
+        variant="primary"
+      />
+    )}
+  </State>
+  </block.S>
+  <block.M>
+    <State initial={false} change={(i) => !i}>
+    {(value, change) => (
+      <InputPassword
+        icon={value ? <ClosedEyeIcon/> : <OpenedEyeIcon/> }
+        onClick={change}
+        variant="primary"
+        type={value ? 'text' : 'password'}
+        name="name"
+        placeholder="Enter your password here"
+        onChange={(event) => console.info('On input change')}
+        variant="primary"
+      />
+    )}
+  </State>
+  </block.M>
+  <block.L>
+    <State initial={false} change={(i) => !i}>
+    {(value, change) => (
+      <InputPassword
+        icon={value ? <ClosedEyeIcon/> : <OpenedEyeIcon/> }
+        onClick={change}
+        variant="primary"
+        type={value ? 'text' : 'password'}
+        name="name"
+        placeholder="Enter your password here"
+        onChange={(event) => console.info('On input change')}
+        variant="primary"
+      />
+    )}
+  </State>
+  </block.L>
+  <block.XL>
+    <State initial={false} change={(i) => !i}>
+    {(value, change) => (
+      <InputPassword
+        icon={value ? <ClosedEyeIcon/> : <OpenedEyeIcon/> }
+        onClick={change}
+        variant="primary"
+        type={value ? 'text' : 'password'}
+        name="name"
+        placeholder="Enter your password here"
+        onChange={(event) => console.info('On input change')}
+        variant="primary"
+      />
+    )}
+  </State>
+  </block.XL>
+  <block.H>
+    <State initial={false} change={(i) => !i}>
+    {(value, change) => (
+      <InputPassword
+        icon={value ? <ClosedEyeIcon/> : <OpenedEyeIcon/> }
+        onClick={change}
+        variant="primary"
+        type={value ? 'text' : 'password'}
+        name="name"
+        placeholder="Enter your password here"
+        onChange={(event) => console.info('On input change')}
+        variant="primary"
+      />
+    )}
+  </State>
+  </block.H>
+</Playground>
+
+### Container
+
+Inputs can be placed inside the container. Input width is equal to container size.
+
+<Playground direction="vertical">
+  <block.L>
+    <State initial={false} change={(i) => !i}>
+    {(value, change) => (
+      <InputPassword
+        icon={value ? <ClosedEyeIcon/> : <OpenedEyeIcon/> }
+        onClick={change}
+        variant="primary"
+        type={value ? 'text' : 'password'}
+        name="name"
+        placeholder="Enter your password here"
+        onChange={(event) => console.info('On input change')}
+        variant="primary"
+      />
+    )}
+  </State>
+  </block.L>
+</Playground>
 
 ### Kinds
 
@@ -33,12 +223,13 @@ const Example = () => (
 
 ### Props
 
-| Name         | Type                                         | Default     | Description                                   |
-| ------------ | -------------------------------------------- | ----------- | --------------------------------------------- |
-| `disabled`   | `boolean`                                    | `null`      | HTML disabled attribute                       |
-| `iconHidden` | `React.ReactNode`                            | `null`      | Replace base icon to hide password            |
-| `iconOpen`   | `React.ReactNode`                            | `null`      | Replace base icon to show password            |
-| `name`       | `string`                                     |             | HTML name attribute                           |
-| `onChange`   | `React.ChangeEventHandler<HTMLInputElement>` |             | Callback when input is changed                |
-| `value`      | `HTMLInputElement['value']`                  | `null`      | HTML value attribute                          |
-| `variant`    | `string`                                     | `'default'` | Variant prop to style InputPassword component |
+| Name           | Type                                         | Default     | Description                                                 |
+| -------------- | -------------------------------------------- | ----------- | ----------------------------------------------------------- |
+| `disabled`     | `boolean`                                    | `null`      | HTML disabled attribute                                     |
+| `name`         | `string`                                     |             | HTML name attribute                                         |
+| `onChange`     | `React.ChangeEventHandler<HTMLInputElement>` |             | Callback when input is changed                              |
+| `value`        | `HTMLInputElement['value']`                  | `null`      | HTML value attribute                                        | 
+| `variant`      | `string`                                     | `'default'` | Variant prop to style InputPassword component               |
+| `placeholder`  | `string`                                     |             |  CSS pseudo-element represents the placeholder text         |
+| `rightIcon`    | `React.ReactNode`                            |             | Component to show on the right side of the text (ex.: Icon) |
+| `...`          | `HTMLInputElement`                           | `{}`        | Other props are inherited from `HTMLInputElement`           |

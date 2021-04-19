@@ -2,59 +2,68 @@ import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
 import { Variant } from 'lib/types';
 
-import ClosedEyeIcon from '../../../static/icons/closed-eye.svg';
-import OpenedEyeIcon from '../../../static/icons/opened-eye.svg';
-import { ButtonIcon, Input } from '../../atoms';
+import { ButtonIcon, Input } from 'ui';
+import { block } from 'box-styles';
 interface InputPasswordProps {
+  className?: string;
   disabled?: boolean;
-  iconHidden?: React.ReactNode;
-  iconOpen?: React.ReactNode;
   name: string;
-  onChange: React.ChangeEventHandler<HTMLInputElement>;
+  onChange: React.EventHandler<React.SyntheticEvent>;
   placeholder?: string;
+  type: 'text' | 'password' | 'email';
   value?: HTMLInputElement['value'];
+  icon: React.ReactNode;
+  onClick: React.EventHandler<React.SyntheticEvent>;
 }
 
 export const InputPasswordBase: React.FC<InputPasswordProps & Variant> = ({
-  disabled,
-  iconHidden,
-  iconOpen,
+  className,
+  disabled = false,
+  icon,
   name,
   onChange,
+  onClick,
   placeholder,
+  type = 'text',
   value,
   variant = 'default',
-}) => {
-  const [isVisible, onClick] = React.useReducer((is) => !is, false);
-
-  const closeEye = iconHidden ?? <ClosedEyeIcon />;
-  const openEye = iconOpen ?? <OpenedEyeIcon />;
-
-  return (
+}) => (
+  <div className={className}>
     <Input
+      className={className}
       disabled={disabled}
       name={name}
       onChange={onChange}
       placeholder={placeholder}
-      type={isVisible ? 'text' : 'password'}
+      type={type}
       value={value}
-      right={
-        <ButtonIcon
-          onClick={onClick}
-          disabled={disabled}
-          icon={isVisible ? closeEye : openEye}
-        />
+      variant={variant}
+      rightIcon={
+        <block.S>
+          <ButtonIcon
+            className={className}
+            onClick={onClick}
+            disabled={disabled}
+            icon={icon}
+            variant={variant}
+          />
+        </block.S>
       }
     />
-  );
-};
+  </div>
+);
 
 export const InputPassword = styled(InputPasswordBase)`
-  --woly-gap: calc(
-    (1px * var(--woly-main-level)) + (1px * var(--woly-main-level) * var(--woly-component-level))
+  --local-gap: calc(
+    (1px * var(--woly-main-level)) +
+      (1px * var(--woly-main-level) * var(--woly-component-level))
   );
+  
+  box-sizing: border-box;
+  width: 100%;
 
   & > *:not(:first-child) {
     margin-left: var(--woly-gap);
   }
-` as StyledComponent<'div', Record<string, unknown>, InputPasswordProps & Variant>;
+
+` as unknown as StyledComponent<'div', Record<string, unknown>, InputPasswordProps & Variant>;

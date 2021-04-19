@@ -6,33 +6,33 @@ import { InputContainer, InputElement } from '../../elements/quarks';
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   className?: string;
   disabled?: boolean;
-  left?: React.ReactNode;
+  leftIcon?: React.ReactNode;
   name: string;
-  onChange: React.ChangeEventHandler<HTMLInputElement>;
+  onChange: React.EventHandler<React.SyntheticEvent>;
   placeholder?: string;
-  right?: React.ReactNode;
+  rightIcon?: React.ReactNode;
   type: 'text' | 'password' | 'email';
   value?: HTMLInputElement['value'];
 }
 
 const InputBase: React.FC<InputProps & Variant> = ({
   className,
-  disabled,
-  left,
+  disabled = false,
+  leftIcon,
   name,
   onChange,
   placeholder,
-  right,
-  type,
+  rightIcon,
+  type = 'text',
   value,
   variant = 'default',
 }) => (
   <InputContainer
     className={className}
     disabled={disabled}
-    left={left}
+    leftIcon={leftIcon}
     onChange={onChange}
-    right={right}
+    rightIcon={rightIcon}
     variant={variant}
   >
     <InputElement
