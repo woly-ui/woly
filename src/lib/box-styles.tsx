@@ -20,7 +20,6 @@ export const Global = styled.div`
   --woly-neutral: var(--palette-snow-500);
   --woly-focus: #9381f1;
   --woly-background: #ffffff;
-  --woly-color: #000000;
 
   [data-variant='primary'] {
     --woly-shape-default: #b0a3f4;

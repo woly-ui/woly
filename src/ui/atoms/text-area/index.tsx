@@ -73,6 +73,7 @@ const TextAreaBase: React.FC<TextAreaProps & Variant> = ({
   return (
     <div
       className={className}
+      data-disabled={disabled}
       data-variant={variant}
       onKeyDown={onKeyDown}
       tabIndex={tabIndex}
@@ -83,7 +84,6 @@ const TextAreaBase: React.FC<TextAreaProps & Variant> = ({
       <textarea
         cols={cols}
         data-variant={variant}
-        disabled={disabled}
         maxLength={maxLength}
         minLength={minlength}
         name={name}
@@ -112,8 +112,6 @@ export const TextArea = styled(TextAreaBase)`
   box-sizing: border-box;
   outline: none;
 
-  background: var(--woly-background, transparent);
-
   font-size: var(--woly-font-size, 15px);
   line-height: var(--woly-line-height, 21px);
 
@@ -122,8 +120,8 @@ export const TextArea = styled(TextAreaBase)`
 
     outline: none;
 
+    background-color: var(--local-background-color);
     color: var(--local-value-color);
-    background: var(--local-background-color);
 
     border: var(--woly-border-width) solid var(--local-border-color);
     border-radius: var(--woly-rounding);
@@ -131,29 +129,32 @@ export const TextArea = styled(TextAreaBase)`
     overflow: hidden;
     resize: none;
 
-    &:focus {
-      --local-border-color: var(--woly-focus);
-      box-shadow: 0 0 0 2px var(--woly-focus);
-      outline: none;
-    }
-
-    &:active {
-      --local-border-color: var(--woly-focus);
-      box-shadow: 0 0 0 2px var(--woly-focus);
-      outline: none;
-    }
-
-    &:hover {
-      --local-border-color: var(--woly-shape-hover);
-    }
-
     &::placeholder {
       color: var(--woly-canvas-text-disabled);
     }
+  }
 
-    &:disabled {
-      pointer-events: none;
+  &:focus > textarea {
+    --local-border-color: var(--woly-focus);
+    box-shadow: 0 0 0 var(--woly-border-width) var(--woly-focus);
+    outline: none;
+  }
 
+  &:active > textarea {
+    --local-border-color: var(--woly-focus);
+    box-shadow: 0 0 0 var(--woly-border-width) var(--woly-focus);
+    outline: none;
+  }
+
+  &:hover > textarea {
+    --local-border-color: var(--woly-shape-hover);
+  }
+
+  &[data-disabled='true'] {
+    pointer-events: none;
+
+    textarea {
+      --local-background-color: var(--woly-canvas-disabled);
       --local-border-color: var(--woly-shape-disabled);
       --local-value-color: var(--woly-canvas-text-disabled);
     }
