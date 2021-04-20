@@ -1,6 +1,6 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import { Global, block } from 'box-styles';
+import { Global } from 'box-styles';
 import { Label } from 'ui';
 
 export const LabelExample: React.FC = () => (

@@ -39,12 +39,7 @@ const ButtonFloatingBase: React.FC<Props & Variant> = ({
   );
 
   return (
-    <button
-      type="button"
-      data-variant={variant}
-      onClick={onClickHandler}
-      {...p}
-    >
+    <button type="button" data-variant={variant} onClick={onClickHandler} {...p}>
       {icon}
     </button>
   );
@@ -68,28 +63,19 @@ export const ButtonFloating = styled(ButtonFloatingBase)`
 
   &:hover {
     background-color: var(--woly-background-hover, #000000);
-    border-color: var(
-      --woly-border-hover,
-      var(--woly-background-hover, #000000)
-    );
+    border-color: var(--woly-border-hover, var(--woly-background-hover, #000000));
     outline: none;
   }
 
   &:focus,
   &:active {
     background-color: var(--woly-background-focus, #000000);
-    border-color: var(
-      --woly-border-focus,
-      var(--woly-background-focus, #000000)
-    );
+    border-color: var(--woly-border-focus, var(--woly-background-focus, #000000));
     outline: none;
   }
 
   &:disabled {
     background-color: var(--woly-background-disabled, #000000);
-    border-color: var(
-      --woly-border-disabled,
-      var(--woly-background-disabled, #000000)
-    );
+    border-color: var(--woly-border-disabled, var(--woly-background-disabled, #000000));
   }
 ` as StyledComponent<'button', Record<string, unknown>, Props & Variant>;

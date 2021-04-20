@@ -1,0 +1,100 @@
+---
+name: popover
+category: molecules
+package: 'woly'
+---
+
+import { Playground, block } from 'box-styles'
+import { ButtonIcon, Popover, Button, List } from 'ui';
+import { SearchIcon } from 'icons';
+
+Popover is based on Surface and opens on click on element or custom logic.
+
+For example, Select can be created using InputContainer, Popover and List. Also, DateSelect can be created with Calendar, InputContainer and Popover.
+
+### Example
+
+You can set the top or the bottom position of Popover.
+If you scroll to the bottom of page and there is no place for Popover to show it will be automatically positioned to the top of triggered element.
+
+<Playground>
+  <div style={{ padding: '150px 0', display: 'flex' }}>
+    <div style={{ padding: '0 10px' }}>
+      <Popover
+        isOpen={false}
+        content={<div style={{ padding: '30px 50px' }}>Hello! This is Popover!</div>}
+      >
+        <Button text="Open Popover" onClick={() => {}} variant="primary" />
+      </Popover>
+    </div>
+    <Popover
+      isOpen={false}
+      position="top"
+      content={<div style={{ padding: '30px 50px' }}>This is top Popover!</div>}
+    >
+      <ButtonIcon icon={<SearchIcon />} onClick={() => {}} variant="primary" />
+    </Popover>
+  </div>
+</Playground>
+
+### Menu List
+
+<Playground>
+  <block.L>
+    <div style={{ padding: '0 0 200px', display: 'flex' }}>
+      <Popover
+        isOpen={false}
+        content={
+          <List
+            style={{ width: '100%' }}
+            list={[
+              { id: 0, text: 'Red' },
+              { id: 1, text: 'Green' },
+              { id: 2, text: 'Blue' },
+            ]}
+          />
+        }
+      >
+        <Button text="Toggle menu" onClick={() => {}} variant="primary" />
+      </Popover>
+    </div>
+  </block.L>
+</Playground>
+
+### Focusable menu
+
+<Playground>
+  <block.L>
+    <div style={{ padding: '0 0 100px', display: 'flex' }}>
+      <Popover
+        isOpen={false}
+        content={
+          <ul style={{listStyleType: 'none'}}>
+            <li><a href="">Home</a></li>
+            <li><a href="">Shop</a></li>
+            <li><a href="">About</a></li>
+          </ul>
+        }
+      >
+        <Button text="Toggle menu" onClick={() => {}} variant="primary" />
+      </Popover>
+    </div>
+
+  </block.L>
+</Playground>
+
+### Kinds
+
+| Name      | Description  |
+| --------- | ------------ |
+| `Popover` | Base popover |
+
+### Props
+
+| Name       | Type              | Default     | Description                             |
+| ---------- | ----------------- | ----------- | --------------------------------------- |
+| `children` | `React.ReactNode` |             | Trigger element of Popover              |
+| `content`  | `React.ReactNode` |             | Content of Popover                      |
+| `isOpen`   | `boolean`         | `'false'`   | Whether the component is visible or not |
+| `position` | `top or bottom`   | `'bottom'`  | Initial position of Popover             |
+| `variant`  | `string`          | `'default'` | Variant prop to style Popover component |

@@ -170,3 +170,4 @@ stats
 cypress/screenshots
 cypress/videos
 cypress/downloads
+.idea

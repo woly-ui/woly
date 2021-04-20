@@ -1,11 +1,15 @@
+export { Backdrop } from './backdrop';
 export { Button } from './button';
 export { ButtonFloating } from './button-floating';
 export { ButtonIcon } from './button-icon';
 export { Chip } from './chip';
+export { HeaderPanel } from './header-panel';
+export { Heading } from './heading';
 export { Input } from './input';
 export { Label } from './label';
 export { List } from './list';
 export { Notification } from './notification';
-export { Popover } from './popover';
 export { Surface } from './surface';
+export { Text } from './text';
 export { TextArea } from './text-area';
+export { Tooltip } from './tooltip';

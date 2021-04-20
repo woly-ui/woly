@@ -163,41 +163,16 @@ export const ButtonExample_old: React.FC = () => (
         </block.L>
         <block.M>
           <span>Normal</span>
-          <Button
-            variant="primary"
-            text="Button"
-            right={
-              <IconWrapper>
-                <SearchIcon />
-              </IconWrapper>
-            }
-          />
-          <Button
-            variant="secondary"
-            text="Button"
-            right={
-              <IconSecondaryWrapper>
-                <SearchIcon />
-              </IconSecondaryWrapper>
-            }
-          />
-          <Button
-            variant="primary"
-            text="Button"
-            right={
-              <IconDisabledWrapper>
-                <SearchIcon />
-              </IconDisabledWrapper>
-            }
-            disabled
-          />
+          <Button variant="primary" text="Button" />
+          <Button variant="secondary" text="Button" />
+          <Button variant="primary" text="Button" disabled />
         </block.M>
         <block.S>
           <span>Small</span>
           <Button
             variant="primary"
             text="Button"
-            left={
+            icon={
               <IconWrapper>
                 <ArrowLeft />
               </IconWrapper>
@@ -206,7 +181,7 @@ export const ButtonExample_old: React.FC = () => (
           <Button
             variant="secondary"
             text="Button"
-            left={
+            icon={
               <IconSecondaryWrapper>
                 <ArrowLeft />
               </IconSecondaryWrapper>
@@ -216,7 +191,7 @@ export const ButtonExample_old: React.FC = () => (
             variant="primary"
             text="Button"
             disabled
-            left={
+            icon={
               <IconDisabledWrapper>
                 <ArrowLeft />
               </IconDisabledWrapper>

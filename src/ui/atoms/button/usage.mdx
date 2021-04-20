@@ -4,10 +4,9 @@ category: atoms
 package: woly
 ---
 
-import { ButtonExample } from './example';
 import { Button } from './index'
 import { Playground, block } from 'box-styles'
-import { ArrowLeft, SearchIcon } from 'icons';
+import { PlusIcon, SearchIcon } from 'icons';
 
 `Button` allows users to take actions and make choices with a single tap.
 
@@ -15,14 +14,19 @@ import { ArrowLeft, SearchIcon } from 'icons';
 
 <Playground>
   <Button
+    icon={<SearchIcon />}
+    onClick={() => alert('Hi!')}
     text="Just a button"
     variant="primary"
-    left={<SearchIcon />}
-    onClick={(event) => alert('Hi!')}
+  />
+  <Button
+    icon={<SearchIcon />}
+    onClick={() => alert('Hi!')}
+    text="Just a button"
+    variant="primary"
+    outlined
   />
 </Playground>
-
-<!-- <ButtonExample /> -->
 
 ### Variants
 
@@ -35,17 +39,11 @@ Primary and secondary variants are should be used to focus user attention.
 
 ### Icons
 
-Button can be used with icon on the left side or the right. Use icons on the both sides is not recommended.
+Button can be used with icon on the left side.
 
 <Playground>
-  <Button text="Icon on the left" variant="primary" left={<ArrowLeft />} />
-  <Button text="Icon on the right" variant="primary" right={<SearchIcon />} />
-  <Button
-    text="Wow! Both"
-    variant="primary"
-    right={<SearchIcon />}
-    left={<ArrowLeft />}
-  />
+  <Button text="Icon on the left" variant="primary" icon={<PlusIcon />} />
+  <Button text="Disabled button" variant="primary" icon={<SearchIcon />} disabled />
 </Playground>
 
 ### Sizes
@@ -54,22 +52,40 @@ Size controlled by the `component-level` block property not from the props.
 
 <Playground>
   <block.S>
-    <Button variant="primary" text="Small" />
+    <Button variant="primary" text="Small" icon={<PlusIcon />} />
   </block.S>
   <block.M>
-    <Button variant="primary" text="Small" />
+    <Button variant="primary" text="Normal" icon={<PlusIcon />} />
   </block.M>
+  <block.L>
+    <Button variant="primary" text="Large" icon={<PlusIcon />} />
+  </block.L>
   <block.XL>
-    <Button variant="primary" text="Huge" />
+    <Button variant="primary" text="Extra Large" icon={<PlusIcon />} />
   </block.XL>
+  <block.H>
+    <Button variant="primary" text="Huge" icon={<PlusIcon />} />
+  </block.H>
+</Playground>
+
+### Container
+
+Buttons can be placed inside the container. Button width is equal to container size.
+
+<Playground direction="horizontal">
+  <block.S>
+    <Button variant="primary" text="Small" />
+  </block.S>
+  <block.S>
+    <Button variant="primary" text="Small" icon={<PlusIcon />} />
+  </block.S>
 </Playground>
 
 ### Props
 
 | Name      | Type                | Default     | Description                                                |
 | --------- | ------------------- | ----------- | ---------------------------------------------------------- |
+| `icon`    | `React.ReactNode`   | `null`      | Component to show on the left side of the text (ex.: Icon) |
 | `text`    | `React.ReactNode`   |             | Text appeared on the button                                |
-| `left`    | `React.ReactNode`   | `null`      | Component to show on the left side of the text (ex.: Icon) |
-| `right`   | `React.ReactNode`   | `null`      | Component on the right side of the text                    |
 | `variant` | `string`            | `'default'` | Variant prop to style Input component                      |
 | `...`     | `HTMLButtonElement` | `{}`        | Other props are inherited from `HTMLButtonElement`         |

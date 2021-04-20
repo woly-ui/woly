@@ -1,3 +1,6 @@
 export { Checkbox } from './checkbox';
+export { Field } from './field';
 export { InputPassword } from './input-password';
-export { Toggle } from './toggle';
+export { Popover } from './popover';
+export { Select } from './select';
+export { Switch } from './switch';

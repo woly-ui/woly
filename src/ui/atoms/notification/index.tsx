@@ -58,8 +58,4 @@ export const Notification = styled(NotificationBase)`
     border-width: var(--woly-border-width, 0);
     border-radius: var(--woly-rounding, 1px);
   }
-` as StyledComponent<
-  'div',
-  Record<string, unknown>,
-  NotificationProps & Variant
->;
+` as StyledComponent<'div', Record<string, unknown>, NotificationProps & Variant>;

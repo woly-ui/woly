@@ -40,31 +40,27 @@ const TooltipBase: React.FC<TooltipProps & Variant> = ({
   }, [position, ref]);
 
   React.useEffect(() => {
+    if (typeof window === 'undefined' || !window.document) return;
+
     setPosition(position);
     document.addEventListener('scroll', onScroll);
 
     return () => {
       document.removeEventListener('scroll', onScroll);
     };
-  }, [position, document, ref]);
+  }, [position, ref]);
 
   return (
-    <div
-      className={className}
-      data-position={tooltipPosition}
-      data-variant={variant}
-      ref={ref}
-    >
-      <div data-tooltip>{message}</div>
+    <div className={className} data-position={tooltipPosition} data-variant={variant} ref={ref}>
       <div data-element>{children}</div>
+      <div data-tooltip>{message}</div>
     </div>
   );
 };
 
 export const Tooltip = styled(TooltipBase)`
   --woly-gap: calc(
-    (1px * var(--woly-main-level)) +
-      (1px * var(--woly-main-level) * var(--woly-component-level))
+    (1px * var(--woly-main-level)) + (1px * var(--woly-main-level) * var(--woly-component-level))
   );
 
   --tooltip-position: calc(100% + 4px + var(--woly-gap, 10px));
@@ -112,8 +108,7 @@ export const Tooltip = styled(TooltipBase)`
       height: 0;
       border-style: solid;
       border-width: 4px 3px 0 3px;
-      border-color: var(--woly-background, #ffffff) transparent transparent
-        transparent;
+      border-color: var(--woly-background, #ffffff) transparent transparent transparent;
       position: absolute;
     }
 
@@ -126,7 +121,7 @@ export const Tooltip = styled(TooltipBase)`
     bottom: var(--tooltip-position);
 
     &::after {
-      bottom: -4px;
+      bottom: calc(-4px - var(--woly-border-width, 0px));
       left: 12px;
       transform: initial;
     }
@@ -136,7 +131,7 @@ export const Tooltip = styled(TooltipBase)`
     top: var(--tooltip-position);
     &::after {
       bottom: initial;
-      top: -4px;
+      top: calc(-4px - var(--woly-border-width, 0px));
       left: 12px;
       transform: rotate(180deg);
     }
@@ -144,18 +139,20 @@ export const Tooltip = styled(TooltipBase)`
 
   &[data-position='left'] > [data-tooltip] {
     right: var(--tooltip-position);
+    top: 0;
     &::after {
       top: 12px;
-      right: -5px;
+      right: calc(-5px - var(--woly-border-width, 0px));
       transform: rotate(-90deg);
     }
   }
 
   &[data-position='right'] > [data-tooltip] {
     left: var(--tooltip-position);
+    top: 0;
     &::after {
       top: 12px;
-      left: -7px;
+      left: calc(-5px - var(--woly-border-width, 0px));
       right: initial;
       transform: rotate(90deg);
     }

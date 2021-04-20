@@ -5,15 +5,11 @@ const execa = require('execa');
 const packages = require('./packages');
 const { writePackageJson, directory } = require('./library');
 
-const copyLicense = (libraryName) =>
-  massCopy('.', `dist/${libraryName}`, ['LICENSE']);
+const copyLicense = (libraryName) => massCopy('.', `dist/${libraryName}`, ['LICENSE']);
 
 const generatePackageJson = (libraryName) => () => {
   debug('running generatePackageJson', libraryName);
-  return writePackageJson(
-    `packages/${libraryName}/package.json`,
-    packages[libraryName],
-  );
+  return writePackageJson(`packages/${libraryName}/package.json`, packages[libraryName]);
 };
 
 function massCopy(from, to, targets) {
@@ -29,7 +25,7 @@ function massCopy(from, to, targets) {
 }
 
 /* eslint-disable no-console */
-function publishScript(libraryName, npmPackage = libraryName) {
+function publishScript(libraryName, _npmPackage = libraryName) {
   const onCatch = (error) => {
     debug('failed publishScript', libraryName);
     console.error(error);
@@ -41,12 +37,7 @@ function publishScript(libraryName, npmPackage = libraryName) {
 
     debug('running publishScript', libraryName, { tag, dry });
     try {
-      const command = [
-        'publish',
-        '--tag',
-        tag,
-        dry ? '--dry-run' : undefined,
-      ].filter(Boolean);
+      const command = ['publish', '--tag', tag, dry ? '--dry-run' : undefined].filter(Boolean);
       const cwd = `${process.cwd()}/dist/${libraryName}`;
 
       debug('run > npm ', command.join(' '), { cwd });

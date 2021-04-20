@@ -1,72 +1,138 @@
 import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
+import { CheckIcon, UnCheckIcon } from 'icons';
 import { Variant } from 'lib/types';
 
 interface CheckboxProps {
   className?: string;
+  disabled?: boolean;
   id: string;
   isChecked: boolean;
-  label?: React.ReactNode;
   onChange: React.ChangeEventHandler<HTMLInputElement>;
+  text?: string;
 }
 
 const CheckboxBase: React.FC<CheckboxProps & Variant> = ({
   className,
+  disabled,
   id,
   isChecked,
-  label,
   onChange,
+  text,
   variant = 'default',
 }) => (
-  <CheckboxWrapper htmlFor={id} className={className} data-variant={variant}>
-    <input type="checkbox" onChange={onChange} id={id} checked={isChecked} />
-    {label && <span>{label}</span>}
-  </CheckboxWrapper>
+  <label htmlFor={id} className={className} data-variant={variant}>
+    <span data-block="container" data-disabled={disabled}>
+      <input type="checkbox" id={id} checked={isChecked} onChange={onChange} />
+      <span data-checkmark="unchecked">
+        <UnCheckIcon />
+      </span>
+      <span data-checkmark="checked">
+        <CheckIcon />
+      </span>
+      {text && <span data-block="text">{text}</span>}
+    </span>
+  </label>
 );
 
-export const CheckboxWrapper = styled.label`
-  --vertical: calc(1px * var(--woly-component-level) * var(--woly-main-level));
-  --horizontal: calc(
-    var(--woly-const-m) + (1px * var(--woly-main-level)) + var(--vertical)
-  );
-  --gap: calc(
-    (1px * var(--woly-main-level)) +
-      (1px * var(--woly-main-level) * var(--woly-component-level))
-  );
-
-  display: flex;
-  padding: var(--vertical, 16px) var(--horizontal, 6.4px);
-
-  cursor: pointer;
-
-  & > *:not(:first-child) {
-    margin-left: var(--gap);
-  }
-`;
-
 export const Checkbox = styled(CheckboxBase)`
-  --woly-vertical: calc(
-    1px * var(--woly-component-level) * var(--woly-main-level)
-  );
+  --woly-vertical: calc(1px * var(--woly-component-level) * var(--woly-main-level));
   --woly-horizontal: calc(
     var(--woly-const-m) + (1px * var(--woly-main-level)) + var(--woly-vertical)
   );
   --woly-gap: calc(
-    (1px * var(--woly-main-level)) +
-      (1px * var(--woly-main-level) * var(--woly-component-level))
+    (1px * var(--woly-main-level)) + (1px * var(--woly-main-level) * var(--woly-component-level))
   );
 
-  position: relative;
+  --woly-checkbox-width: 24px;
+  --woly-checkbox-height: 24px;
 
-  display: flex;
-  align-items: center;
-  padding: var(--woly-vertical, 16px) var(--woly-horizontal, 6.4px);
+  padding: var(--woly-vertical, 6.4px) var(--woly-horizontal, 6.4px);
 
-  input {
-    margin: 0;
+  user-select: none;
+
+  [data-block='container'] {
+    display: flex;
+    align-items: center;
+
+    [data-checkmark] {
+      width: var(--woly-checkbox-width);
+      height: var(--woly-checkbox-height);
+
+      align-items: center;
+      justify-content: center;
+
+      margin-right: var(--woly---woly-gap, 15px);
+    }
+
+    [data-checkmark='unchecked'] {
+      display: block;
+    }
+
+    [data-checkmark='checked'] {
+      display: none;
+    }
+
+    input:checked ~ [data-checkmark='checked'] {
+      display: block;
+    }
+
+    input:checked ~ [data-checkmark='unchecked'] {
+      display: none;
+    }
+
+    [data-checkmark='unchecked'] {
+      &:hover,
+      &:focus {
+        svg > rect {
+          stroke: var(--woly-color, #b0a3f4);
+        }
+      }
+    }
   }
 
-  & > div {
-    padding-left: var(--woly-gap, 16px);
+  [data-disabled='true'] {
+    pointer-events: none;
+
+    [data-block='text'] {
+      color: var(--woly-color, #e4e4e4);
+    }
+
+    [data-checkmark='unchecked'] {
+      display: block;
+
+      svg > rect {
+        stroke: var(--woly-canvas-color, #e4e4e4);
+      }
+    }
+
+    [data-checkmark='checked'] {
+      display: none;
+    }
+
+    input:checked ~ [data-checkmark='checked'] {
+      display: block;
+
+      svg > rect {
+        fill: var(--woly-canvas-color, #e4e4e4);
+      }
+    }
+
+    input:checked ~ [data-checkmark='unchecked'] {
+      display: none;
+    }
+  }
+
+  [data-block='text'] {
+    font-size: var(--woly-font-size, 12px);
+    line-height: var(--woly-line-height, 24px);
+    color: var(--woly-color, #000000);
+  }
+
+  input {
+    position: absolute;
+    opacity: 0;
+    height: 0;
+    width: 0;
   }
 ` as StyledComponent<'div', Record<string, unknown>, CheckboxProps & Variant>;

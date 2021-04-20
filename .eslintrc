@@ -4,41 +4,43 @@
     "@eslint-kit/typescript",
     "@eslint-kit/node",
     "@eslint-kit/react",
+    "@eslint-kit/react-new-jsx-transform",
     "@eslint-kit/prettier",
     "./.config/eslint-config"
   ],
+  "root": true,
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "project": "./tsconfig.json"
   },
   "settings": {
     "import/parsers": {
-      "@typescript-eslint/parser": [".ts", ".tsx"]
+      "@typescript-eslint/parser": [
+        ".ts",
+        ".tsx"
+      ]
     },
     "import/resolver": {
       "typescript": {
         "project": "./tsconfig.json"
       },
       "alias": [
-        ["box-styles", "./src/lib/box-styles"],
-        ["lib", "./src/lib"],
-        ["icons", "./src/static/icons"]
+        [
+          "box-styles",
+          "./src/lib/box-styles"
+        ],
+        [
+          "lib",
+          "./src/lib"
+        ],
+        [
+          "icons",
+          "./src/static/icons"
+        ]
       ]
     }
   },
   "rules": {
     "import/order": "off"
-    // "import/order": [
-    //   "warn",
-    //   {
-    //     "groups": [
-    //       "builtin",
-    //       ["external", "internal"],
-    //       "parent",
-    //       "sibling",
-    //       "index"
-    //     ]
-    //   }
-    // ]
   }
 }

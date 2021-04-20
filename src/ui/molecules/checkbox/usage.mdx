@@ -4,24 +4,39 @@ category: atoms
 package: 'woly'
 ---
 
-import { CheckboxExample } from './example';
+import { Checkbox } from './index';
+import { Playground } from 'box-styles'
 
-`Checkbox` is used to turn on/off an option. Checkbox can be provided with label using `Label` component.
+Checkboxes allow you to setup selectable options for your users - either to toggle a single setting on or off, or to allow for multiple choices.
+
+Use descriptive static text relevant to each checkbox element.
+
+In case of using set of checkboxes as a logical group use component 'Label' for labeling the checkbox group.
+
+Checkboxes are tiny in nature, and, thus, they can be hard to click or tap.
+
+To enlarge the target area, let users select an option by clicking or tapping not just that small square, but also the label or associated words.
+
+Use a checkbox when the user has to stop before performing an action. Checkbox will introduce a little bit of friction and make them stop and think about the action.
 
 ### Example
 
-<CheckboxExample />
+<Playground>
+  <Checkbox isChecked variant="default" />
+  <Checkbox isChecked={false} variant="default" />
+</Playground>
 
-```tsx
-const Example = () => (
-  <Checkbox
-    label={<Label text="Checkbox label" />}
-    isChecked={true}
-    onChange={(e) => console.info('change', e)}
-    id="checkbox"
-  />
-);
-```
+<!-- <CheckboxExample /> -->
+
+### Variants
+
+Error and primary/secondary variants are should be used to focus user attention.
+
+<Playground>
+  <Checkbox text="Attention" variant="error" isChecked disabled />
+  <Checkbox text="Alternative action" variant="secondary" isChecked={false} />
+  <Checkbox text="Disabled" variant="default" disabled isChecked />
+</Playground>
 
 ### Kinds
 
@@ -35,6 +50,6 @@ const Example = () => (
 | ----------- | -------------------------------------------- | ----------- | ---------------------------------------- |
 | `id`        | `string`                                     |             | HTML id attribute                        |
 | `isChecked` | `boolean`                                    |             | Whether checkbox is checked or not       |
-| `label`     | `React.ReactNode`                            | `null`      | Label component                          |
+| `text`      | `string`                                     |             | Text component                           |
 | `onChange`  | `React.ChangeEventHandler<HTMLInputElement>` |             | Callback when checkbox is clicked        |
 | `variant`   | `string`                                     | `'default'` | Variant prop to style Checkbox component |
