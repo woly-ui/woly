@@ -1,7 +1,10 @@
 import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
+import { List } from 'ui/atoms';
 import { Variant } from 'lib/types';
 import { keyHandlerGet, keyboardEventHandle } from 'lib';
+
+import { Popover } from '../popover';
 
 /**
  * --woly-border
@@ -77,38 +80,58 @@ export const SelectBase: React.FC<SelectProps & Variant> = ({
     [selectRef, dropdownRef, isOpen, onChange],
   );
   return (
-    <div
-      className={className}
-      data-disabled={isDisabled}
-      data-open={isOpen}
-      data-select
-      data-variant={variant}
-      onBlur={onBlur}
-      onClick={setIsOpen}
-      onFocus={onFocus}
-      onKeyDown={onKeyDown}
-      ref={selectRef}
-      tabIndex={tabIndex}
+    <Popover
+      isOpen={isOpen}
+      content={
+        <ul
+          aria-activedescendant={select}
+          data-visible={isOpen}
+          ref={dropdownRef}
+          role="listbox"
+          tabIndex={-1}
+        >
+          {options.map(({ children, value }) => (
+            <li data-value={value} key={value} onClick={onChange} role="option" tabIndex={-1}>
+              {children}
+            </li>
+          ))}
+        </ul>
+      }
     >
-      <div data-selected>
-        <div>{select}</div>
-        <span data-icon={isOpen}>{icon}</span>
-      </div>
-      {/* В дальнейшем использовать Popover и List для создания выпадающего списка элементов */}
-      <ul
-        aria-activedescendant={select}
-        data-visible={isOpen}
-        ref={dropdownRef}
-        role="listbox"
-        tabIndex={-1}
+      <div
+        className={className}
+        data-disabled={isDisabled}
+        data-open={isOpen}
+        data-select
+        data-variant={variant}
+        onBlur={onBlur}
+        onClick={setIsOpen}
+        onFocus={onFocus}
+        onKeyDown={onKeyDown}
+        ref={selectRef}
+        tabIndex={tabIndex}
       >
-        {options.map(({ children, value }) => (
-          <li data-value={value} key={value} onClick={onChange} role="option" tabIndex={-1}>
-            {children}
-          </li>
-        ))}
-      </ul>
-    </div>
+        <div data-selected>
+          <div>{select}</div>
+          <span data-icon={isOpen}>{icon}</span>
+        </div>
+
+        {/* В дальнейшем использовать Popover и List для создания выпадающего списка элементов
+        <ul
+          aria-activedescendant={select}
+          data-visible={isOpen}
+          ref={dropdownRef}
+          role="listbox"
+          tabIndex={-1}
+        >
+          {options.map(({ children, value }) => (
+            <li data-value={value} key={value} onClick={onChange} role="option" tabIndex={-1}>
+              {children}
+            </li>
+          ))}
+        </ul> */}
+      </div>
+    </Popover>
   );
 };
 
