@@ -4,59 +4,70 @@ import { Variant } from 'lib/types';
 import { keyboardEventHandle } from 'lib';
 interface List {
   className?: string;
+  disabled?: boolean;
+  onChange: React.EventHandler<React.SyntheticEvent>;
   list: Array<{
     left?: React.ReactNode;
     right?: React.ReactNode;
     text: React.ReactNode;
     id: string;
     disabled?: boolean;
-    onClick: React.EventHandler<React.SyntheticEvent>;
+    onChange: React.EventHandler<React.SyntheticEvent>;
   }>;
 }
 
-const ListBase: React.FC<List & Variant> = ({ className, list, variant = 'default', ...p }) => (
-  <ul className={className} data-variant={variant}>
-    {list.map(({ left, right, text, id, disabled = 'false', onClick }) => {
-      const tabIndex = disabled ? -1 : 0;
+const ListBase: React.FC<List & Variant> = ({
+  className,
+  list,
+  variant = 'default',
+  disabled = 'false',
+  onChange
+}) => {
+  const tabIndex = disabled ? -1 : 0;
 
-      const onKeyDown = React.useCallback(
-        (event: React.KeyboardEvent) => {
-          console.log(1);
+  const onKeyDown = React.useCallback(
+    (event: React.KeyboardEvent) => {
 
-          if (event.key === 'Enter') {
-            event.preventDefault();
-          }
-          const keyHandler = {
-            enter: (event: React.SyntheticEvent<Element, Event>) => {
-              onClick(event);
-            },
-          };
-
-          keyboardEventHandle({
-            event,
-            keyHandler,
-          });
+      if (event.key === 'Enter') {
+        event.preventDefault();
+      }
+      const keyHandler = {
+        enter: (event: React.SyntheticEvent<Element, Event>) => {
+          onChange(event);
         },
-        [onClick],
-      );
+      };
 
-      return (
+      keyboardEventHandle({
+        event,
+        keyHandler,
+      });
+    },
+    [onChange],
+  );
+  return (
+    <ul
+      className={className}
+      data-variant={variant}
+      onKeyDown={onKeyDown}
+      tabIndex={tabIndex}
+      onChange={onChange}
+      role="listbox"
+    >
+      {list.map(({ left, right, text, id, onChange }) => (
         <li
           data-disabled={disabled}
           data-type="list-item"
           key={id}
-          onClick={onClick}
-          onKeyDown={onKeyDown}
-          tabIndex={tabIndex}
         >
           {left && <span data-icon="left">{left}</span>}
           <span data-text="text">{text}</span>
           {right && <span data-icon="right">{right}</span>}
         </li>
-      );
-    })}
-  </ul>
-);
+      ))}
+    </ul>
+  );
+}
+
 
 export const List = styled(ListBase)`
   --local-vertical: calc(1px * var(--woly-component-level) * var(--woly-main-level));
@@ -64,8 +75,8 @@ export const List = styled(ListBase)`
     var(--woly-const-m) + (1px * var(--woly-main-level)) + var(--local-vertical)
   );
 
-  --local-gap: var(--local-vertical);
-  --local-compensate: var(--woly-const-m);
+  --local-gap: var(--woly-const-m);
+  --local-compensate: calc(var(--woly-const-m)/2);
   --local-margin: var(--woly-border-width);
 
   --local-color: var(--woly-canvas-text-default);
@@ -76,6 +87,7 @@ export const List = styled(ListBase)`
   box-sizing: border-box;
 
   width: 100%;
+  outline: none;
 
   padding: 0;
   margin: 0;
@@ -106,13 +118,16 @@ export const List = styled(ListBase)`
       padding: 0 var(--local-horizontal);
     }
 
+    & > [data-text]:not(:only-child, :last-child ){
+      padding-right: 0;
+    }
+
     [data-icon] {
       --local-icon-size: var(--woly-line-height);
       display: flex;
       flex-shrink: 0;
       align-items: center;
       justify-content: center;
-      padding: 0 calc(var(--local-horizontal) - var(--local-compensate));
 
       width: var(--local-icon-size);
       height: var(--local-icon-size);
@@ -120,6 +135,14 @@ export const List = styled(ListBase)`
       svg > path {
         fill: var(--local-color);
       }
+    }
+
+    [data-icon='left'] {
+      padding: 0 0 0 calc(var(--local-horizontal) - var(--local-compensate));
+    }
+
+    [data-icon='right'] {
+      padding: 0 calc(var(--local-horizontal) - var(--local-compensate)) 0 0;
     }
 
     [data-icon='left'] ~ [data-text],
@@ -149,5 +172,8 @@ export const List = styled(ListBase)`
         }
       }
     }
+  }
+  &:focus {
+      box-shadow: 0 0 0 1.5px var(--woly-focus);
   }
 ` as StyledComponent<'ul', Record<string, unknown>, List & Variant>;

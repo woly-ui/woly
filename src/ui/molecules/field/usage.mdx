@@ -5,7 +5,7 @@ package: woly
 ---
 
 import { Playground, block, State } from 'box-styles';
-import { Field, Input, InputPassword, Toggle, Checkbox, TextArea } from 'ui';
+import { Field, Input, InputPassword, Switch, Checkbox, TextArea } from 'ui';
 import { ClosedEyeIcon, OpenedEyeIcon } from 'icons';
 
 `Field` is a master component that will make it easy to modify the label based on the field settings
@@ -48,8 +48,6 @@ or also as a label of group of component, eg checkbox or radiobutton groups.
     <Checkbox text="Item text" variant="default" />
     <Checkbox text="Item text" variant="default" />
   </Field>
-</Playground>
-<Playground size="S">
   <Field label="Label for a standalone component" variant="default">
     <TextArea
       name="name"
@@ -83,7 +81,11 @@ Labels and children component can be replaced in row
   <State initial={false} change={(i) => !i}>
     {(value, change) => (
       <Field label="Label of item" row>
-        <Toggle isChecked={value} onChange={change} id="roundTwo" variant="round" />
+        <Switch
+          isChecked={value}
+          onChange={change}
+          id="roundTwo"
+          variant="primary"/>
       </Field>
     )}
   </State>
@@ -100,7 +102,11 @@ or in column variants
   <State initial={false} change={(i) => !i}>
     {(value, change) => (
       <Field label="Label of item">
-        <Toggle isChecked={value} onChange={change} id="roundOne" variant="round" />
+        <Switch
+          isChecked={value}
+          onChange={change}
+          id="roundOne"
+          variant="primary"/>
       </Field>
     )}
   </State>

@@ -24,10 +24,11 @@ It does not need to be a direct child of the List component.
 <Playground>
   <List
     variant="primary"
+    onChange={() => {console.log(1)}}
     list={[
       { id: 0, text: 'Red' },
       { id: 1, text: 'Green' },
-      { id: 2, text: 'Blue' },
+      { id: 2, text: 'Blue', onClick: () => alert('Item clicked')},
     ]}
   />
 </Playground>
@@ -36,7 +37,7 @@ It does not need to be a direct child of the List component.
 
 List items can consist icon on the left side or the right. Use icons on the both sides is not recommended.
 
-<Playground>
+<Playground size="L">
   <List
     variant="primary"
     list={[
