@@ -25,7 +25,6 @@ const InputContainerBase: React.FC<InputContainerProps & Variant> = ({
 
   const onKeyDown = React.useCallback(
     (event: React.KeyboardEvent) => {
-      console.log(1);
 
       if (event.key === 'Enter') {
         event.preventDefault();
@@ -50,7 +49,8 @@ const InputContainerBase: React.FC<InputContainerProps & Variant> = ({
       data-disabled={disabled}
       data-variant={variant}
       onKeyDown={onKeyDown}
-      tabIndex={tabIndex}>
+      tabIndex={tabIndex}
+    >
       {leftIcon && <span data-icon="left">{leftIcon}</span>}
       <div data-input="input">{children}</div>
       {rightIcon && <span data-icon="right">{rightIcon}</span>}
@@ -93,6 +93,14 @@ export const InputContainer = styled(InputContainerBase)`
     color: var(--local-value-color);
     
     padding: 0 var(--local-horizontal);
+
+    input{
+      padding: 0;
+    }
+
+    &:not(:only-child, :last-child) {
+      padding-right: 0;
+    }
   }
 
   [data-icon] {
@@ -105,16 +113,22 @@ export const InputContainer = styled(InputContainerBase)`
     width: var(--local-icon-size);
     height: var(--local-icon-size);
 
-    padding: 0 calc(var(--local-horizontal) - var(--local-compensate));
-
       svg > path {
         fill: var(--local-icon-fill);
       }
   }
 
+  [data-icon='left'] {
+    padding: 0 0 0 calc(var(--local-horizontal) - var(--local-compensate));
+  }
+
+  [data-icon='right'] {
+    padding: 0 calc(var(--local-horizontal) - var(--local-compensate)) 0 0;
+  }
+
   [data-icon='left'] ~ [data-input="input"],
   [data-input="input"] ~ [data-icon='right'] {
-    padding-left: var(--local-gap);
+    padding-left: calc(var(--local-compensate) * 2);
   }
 
   &:focus {
@@ -123,9 +137,7 @@ export const InputContainer = styled(InputContainerBase)`
     outline: none;
 
     [data-icon] {
-      svg > path {
         --local-icon-fill: var(--woly-canvas-text-default);
-      }
     }
   }
 
@@ -137,9 +149,7 @@ export const InputContainer = styled(InputContainerBase)`
     --local-border-color: var(--woly-focus);
     
     [data-icon] {
-      svg > path {
-        --local-icon-fill: var(--woly-canvas-text-default);
-      }
+      --local-icon-fill: var(--woly-canvas-text-default);
     }
   }
 

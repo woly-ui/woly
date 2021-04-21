@@ -93,7 +93,7 @@ Disabled text fields are uneditable. They have less opacity so that they appear 
 
 Inputs can be combined with an icon on the left side or the right. Use icons on the both sides is not recommended.
 
-<Playground direction='vertical'>
+<Playground direction="vertical" size="L">
   <Input
     leftIcon={<InfoIcon />}
     type="text"
@@ -125,22 +125,6 @@ Icons can also be touch targets for nested components.
 
 <Playground size="L" direction="vertical">
   <Input 
-    leftIcon={
-      <block.S>
-        <ButtonIcon
-          icon={<InfoIcon />}
-          onClick={() => console.info('ButtonIcon clicked')}
-          variant="primary"
-        />
-      </block.S>
-    }
-    type="text"
-    name="name"
-    placeholder="Enter your name here"
-    onChange={(event) => console.info('On input change')}
-    variant="primary"
-  />
-  <Input 
     rightIcon={
       <block.S>
         <ButtonIcon
@@ -157,15 +141,7 @@ Icons can also be touch targets for nested components.
     variant="primary"
   />
   <Input 
-    leftIcon={
-      <block.S>
-        <ButtonIcon
-          icon={<InfoIcon />}
-          onClick={() => console.info('ButtonIcon clicked')}
-          variant="primary"
-        />
-      </block.S>
-    }
+    leftIcon={<InfoIcon />}
     type="text"
     name="name"
     placeholder="Enter your name here"

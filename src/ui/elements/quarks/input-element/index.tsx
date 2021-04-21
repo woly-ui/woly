@@ -3,21 +3,27 @@ import styled, { StyledComponent } from 'styled-components';
 
 interface InputElementProps
   extends React.InputHTMLAttributes<HTMLInputElement> {
+  className?: string;
   name: string;
+  onChange: React.EventHandler<React.SyntheticEvent>;
   placeholder?: string;
   type: 'text' | 'password' | 'email';
   value?: HTMLInputElement['value'];
 }
 
 const InputElementBase: React.FC<InputElementProps> = ({
+  className,
   name,
+  onChange,
   placeholder,
   type = 'text',
   value,
   ...p
 }) => (
   <input
+    className={className}
     name={name}
+    onChange={onChange}
     placeholder={placeholder}
     type={type}
     value={value}
@@ -42,10 +48,6 @@ export const InputElement = styled(InputElementBase)`
   border: none;
   outline: none;
 
-  &:focus,
-  &:active {
-    outline: none;
-  }
   &::placeholder {
     color: var(--woly-canvas-text-disabled);
   }

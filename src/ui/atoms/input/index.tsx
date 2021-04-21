@@ -36,7 +36,10 @@ const InputBase: React.FC<InputProps & Variant> = ({
     variant={variant}
   >
     <InputElement
+      className={className}
+      disabled={disabled}
       name={name}
+      onChange={onChange}
       placeholder={placeholder}
       type={type}
       value={value}
@@ -59,6 +62,10 @@ export const Input = styled(InputBase)`
   width: 100%;
 
   padding: var(--local-vertical) var(--local-horizontal);
+
+  &[data-disabled='true'] {
+    pointer-events: none;
+  }
 
   & > *:not(:first-child) {
     margin-left: var(--woly-gap);

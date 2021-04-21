@@ -24,7 +24,6 @@ const SwitchBase: React.FC<SwitchProps & Variant> = ({
 
   const onKeyDown = React.useCallback(
     (event: React.KeyboardEvent) => {
-      console.log(1);
 
       if (event.key === 'Enter') {
         event.preventDefault();
