@@ -4,7 +4,7 @@ category: atoms
 package: 'woly'
 ---
 
-import { Playground, block } from 'box-styles'
+import { Playground, block, StateEvent } from 'box-styles'
 import { List } from 'ui';
 import { InfoIcon, Check } from 'icons';
 
@@ -22,15 +22,18 @@ It does not need to be a direct child of the List component.
 ### Example
 
 <Playground>
-  <List
-    variant="primary"
-    onChange={() => {console.log(1)}}
-    list={[
-      { id: 0, text: 'Red' },
-      { id: 1, text: 'Green' },
-      { id: 2, text: 'Blue', onClick: () => alert('Item clicked')},
-    ]}
-  />
+  <StateEvent initial={null} change={(event) => event?.target?.dataset.value}>
+    {(value, change) => (
+      <List
+        variant="primary"
+        list={[
+          { id: 0, text: 'Red' },
+          { id: 1, text: 'Green' },
+          { id: 2, text: 'Blue', onClick: {change}},
+        ]}
+      />
+    )}
+  </StateEvent>
 </Playground>
 
 ### Icons

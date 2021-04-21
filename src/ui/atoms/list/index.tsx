@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
 import { Variant } from 'lib/types';
-import { keyboardEventHandle } from 'lib';
+import { keyHandlerList, keyboardEventHandle } from 'lib';
 interface List {
   className?: string;
   disabled?: boolean;
@@ -12,7 +12,6 @@ interface List {
     text: React.ReactNode;
     id: string;
     disabled?: boolean;
-    onChange: React.EventHandler<React.SyntheticEvent>;
   }>;
 }
 
@@ -20,29 +19,37 @@ const ListBase: React.FC<List & Variant> = ({
   className,
   list,
   variant = 'default',
-  disabled = 'false',
+  disabled = false,
   onChange
 }) => {
   const tabIndex = disabled ? -1 : 0;
+  const dropdownRef = React.useRef(null);
 
   const onKeyDown = React.useCallback(
     (event: React.KeyboardEvent) => {
+      const dropdownNode = dropdownRef.current;
 
-      if (event.key === 'Enter') {
-        event.preventDefault();
+      if (!document || !dropdownNode || event.key === 'Tab') {
+        return;
       }
-      const keyHandler = {
-        enter: (event: React.SyntheticEvent<Element, Event>) => {
-          onChange(event);
-        },
+
+      event.preventDefault();
+
+      const onEnter = (event: React.SyntheticEvent<Element, Event>) => {
+        onChange(event);
       };
+
+      const kh = keyHandlerList({
+        dropdownNode,
+        onEnter,
+      });
 
       keyboardEventHandle({
         event,
-        keyHandler,
+        keyHandler: kh,
       });
     },
-    [onChange],
+    [dropdownRef, onChange],
   );
   return (
     <ul
@@ -50,14 +57,16 @@ const ListBase: React.FC<List & Variant> = ({
       data-variant={variant}
       onKeyDown={onKeyDown}
       tabIndex={tabIndex}
-      onChange={onChange}
       role="listbox"
+      ref={dropdownRef}
     >
-      {list.map(({ left, right, text, id, onChange }) => (
+      {list.map(({ left, right, text, id }) => (
         <li
           data-disabled={disabled}
           data-type="list-item"
           key={id}
+          onClick={onChange}
+          tabIndex={-1}
         >
           {left && <span data-icon="left">{left}</span>}
           <span data-text="text">{text}</span>
