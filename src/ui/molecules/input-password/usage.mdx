@@ -5,8 +5,6 @@ package: 'woly'
 ---
 
 import { InputPassword } from './index';
-import { ClosedEyeIcon, OpenedEyeIcon, InfoIcon } from 'icons';
-
 import { Playground, block, State } from 'box-styles';
 
 `InputPassword` provide a way for the user to securely enter a password
@@ -21,9 +19,7 @@ InputPassword can be used in an authorization form or to confirm user action.
  <State initial={false} change={(i) => !i}>
     {(value, change) => (
       <InputPassword
-        icon={value ? <ClosedEyeIcon/> : <OpenedEyeIcon/> }
         onClick={change}
-        type={value ? 'text' : 'password'}
         name="name"
         placeholder="Enter your password here"
         onChange={(event) => console.info('On input change')}
@@ -40,11 +36,8 @@ Disabled text fields are uneditable. They have less opacity so that they appear 
 <Playground>
   <InputPassword
     disabled
-    icon={<ClosedEyeIcon/>}
     onClick={(event) => console.info('OnClick')}
     variant="primary"
-    isabled
-    type="password"
     name="name"
     placeholder="Enter your password here"
     variant="primary"
@@ -60,9 +53,7 @@ Primary and secondary variants are should be used to focus user attention.
   <State initial={false} change={(i) => !i}>
     {(value, change) => (
       <InputPassword
-        icon={value ? <ClosedEyeIcon/> : <OpenedEyeIcon/> }
         onClick={change}
-        type={value ? 'text' : 'password'}
         name="name"
         placeholder="Enter your password here"
         onChange={(event) => console.info('On input change')}
@@ -73,9 +64,7 @@ Primary and secondary variants are should be used to focus user attention.
   <State initial={false} change={(i) => !i}>
     {(value, change) => (
       <InputPassword
-        icon={value ? <ClosedEyeIcon/> : <OpenedEyeIcon/> }
         onClick={change}
-        type={value ? 'text' : 'password'}
         name="name"
         placeholder="Enter your password here"
         onChange={(event) => console.info('On input change')}
@@ -93,13 +82,11 @@ Error variant can be used to focus user attention on error.
   <State initial={false} change={(i) => !i}>
     {(value, change) => (
       <InputPassword
-        icon={value ? <ClosedEyeIcon/> : <OpenedEyeIcon/> }
         onClick={change}
-        type={value ? 'text' : 'password'}
         name="name"
         placeholder="Enter your password here"
         onChange={(event) => console.info('On input change')}
-        variant="error"
+        variant="danger"
       />
     )}
   </State>
@@ -114,10 +101,8 @@ Size controlled by the `component-level` block property not from the props.
     <State initial={false} change={(i) => !i}>
     {(value, change) => (
       <InputPassword
-        icon={value ? <ClosedEyeIcon/> : <OpenedEyeIcon/> }
         onClick={change}
         variant="primary"
-        type={value ? 'text' : 'password'}
         name="name"
         placeholder="Enter your password here"
         onChange={(event) => console.info('On input change')}
@@ -130,10 +115,8 @@ Size controlled by the `component-level` block property not from the props.
     <State initial={false} change={(i) => !i}>
     {(value, change) => (
       <InputPassword
-        icon={value ? <ClosedEyeIcon/> : <OpenedEyeIcon/> }
         onClick={change}
         variant="primary"
-        type={value ? 'text' : 'password'}
         name="name"
         placeholder="Enter your password here"
         onChange={(event) => console.info('On input change')}
@@ -146,10 +129,8 @@ Size controlled by the `component-level` block property not from the props.
     <State initial={false} change={(i) => !i}>
     {(value, change) => (
       <InputPassword
-        icon={value ? <ClosedEyeIcon/> : <OpenedEyeIcon/> }
         onClick={change}
         variant="primary"
-        type={value ? 'text' : 'password'}
         name="name"
         placeholder="Enter your password here"
         onChange={(event) => console.info('On input change')}
@@ -162,10 +143,8 @@ Size controlled by the `component-level` block property not from the props.
     <State initial={false} change={(i) => !i}>
     {(value, change) => (
       <InputPassword
-        icon={value ? <ClosedEyeIcon/> : <OpenedEyeIcon/> }
         onClick={change}
         variant="primary"
-        type={value ? 'text' : 'password'}
         name="name"
         placeholder="Enter your password here"
         onChange={(event) => console.info('On input change')}
@@ -178,10 +157,8 @@ Size controlled by the `component-level` block property not from the props.
     <State initial={false} change={(i) => !i}>
     {(value, change) => (
       <InputPassword
-        icon={value ? <ClosedEyeIcon/> : <OpenedEyeIcon/> }
         onClick={change}
         variant="primary"
-        type={value ? 'text' : 'password'}
         name="name"
         placeholder="Enter your password here"
         onChange={(event) => console.info('On input change')}
@@ -201,10 +178,8 @@ Inputs can be placed inside the container. Input width is equal to container siz
     <State initial={false} change={(i) => !i}>
     {(value, change) => (
       <InputPassword
-        icon={value ? <ClosedEyeIcon/> : <OpenedEyeIcon/> }
         onClick={change}
         variant="primary"
-        type={value ? 'text' : 'password'}
         name="name"
         placeholder="Enter your password here"
         onChange={(event) => console.info('On input change')}

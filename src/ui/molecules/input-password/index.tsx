@@ -4,6 +4,7 @@ import { Variant } from 'lib/types';
 
 import { ButtonIcon, Input } from 'ui';
 import { block } from 'box-styles';
+import { ClosedEyeIcon, OpenedEyeIcon, InfoIcon } from 'icons';
 interface InputPasswordProps {
   className?: string;
   disabled?: boolean;
@@ -13,45 +14,46 @@ interface InputPasswordProps {
   type: 'text' | 'password' | 'email';
   value?: HTMLInputElement['value'];
   icon: React.ReactNode;
-  onClick: React.EventHandler<React.SyntheticEvent>;
 }
 
 export const InputPasswordBase: React.FC<InputPasswordProps & Variant> = ({
   className,
   disabled = false,
-  icon,
   name,
   onChange,
-  onClick,
   placeholder,
   type = 'text',
   value,
   variant = 'default',
-}) => (
-  <div className={className}>
-    <Input
-      className={className}
-      disabled={disabled}
-      name={name}
-      onChange={onChange}
-      placeholder={placeholder}
-      type={type}
-      value={value}
-      variant={variant}
-      rightIcon={
-        <block.S>
-          <ButtonIcon
-            className={className}
-            onClick={onClick}
-            disabled={disabled}
-            icon={icon}
-            variant={variant}
-          />
-        </block.S>
-      }
-    />
-  </div>
-);
+}) => {
+  const [isVisible, onClick] = React.useReducer((is) => !is, false);
+
+  return (
+    <div className={className}>
+      <Input
+        className={className}
+        disabled={disabled}
+        name={name}
+        onChange={onChange}
+        placeholder={placeholder}
+        type={isVisible ? 'text' : 'password'}
+        value={value}
+        variant={variant}
+        rightIcon={
+          <block.S>
+            <ButtonIcon
+              className={className}
+              onClick={onClick}
+              disabled={disabled}
+              icon={isVisible ? <ClosedEyeIcon /> : <OpenedEyeIcon />}
+              variant={variant}
+            />
+          </block.S>
+        }
+      />
+    </div>
+  );
+}
 
 export const InputPassword = styled(InputPasswordBase)`
   --local-gap: calc(
