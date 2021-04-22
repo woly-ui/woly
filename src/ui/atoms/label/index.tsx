@@ -1,13 +1,6 @@
 import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
 import { Variant } from 'lib/types';
-
-/**
- * --woly-font-size
- * --woly-label-color
- * --woly-line-height
- */
-
 interface LabelProps extends React.LabelHTMLAttributes<HTMLLabelElement> {
   children: React.ReactNode;
 }

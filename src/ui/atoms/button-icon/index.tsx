@@ -31,21 +31,11 @@ const ButtonIconBase: React.FC<Props & Variant> = ({
   onClick,
   variant = 'default',
   ...p
-}) => {
-  const onClickHandler = React.useCallback(
-    (event: React.MouseEvent<HTMLButtonElement>) => {
-      event.preventDefault();
-      onClick(event);
-    },
-    [onClick],
-  );
-
-  return (
-    <button data-variant={variant} onClick={onClickHandler} type="button" {...p}>
-      <span>{icon}</span>
-    </button>
-  );
-};
+}) => (
+  <button data-variant={variant} onClick={onClick} type="button" {...p}>
+    <span>{icon}</span>
+  </button>
+);
 
 export const ButtonIcon = styled(ButtonIconBase)`
   --woly-vertical: calc(1px * var(--woly-component-level) * var(--woly-main-level));
@@ -57,6 +47,8 @@ export const ButtonIcon = styled(ButtonIconBase)`
   );
 
   display: flex;
+  align-items: center;
+  justify-content: center;
   flex-wrap: nowrap;
   padding: var(--woly-vertical, 6.4px) var(--woly-horizontal, 6.4px);
 
@@ -69,9 +61,6 @@ export const ButtonIcon = styled(ButtonIconBase)`
   cursor: pointer;
 
   span {
-    display: flex;
-    align-items: center;
-    justify-content: center;
     width: var(--woly-line-height, 24px);
     height: var(--woly-line-height, 24px);
   }
