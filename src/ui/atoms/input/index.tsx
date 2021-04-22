@@ -1,25 +1,50 @@
 import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
 import { Variant } from 'lib/types';
+import { InputContainer, InputElement } from '../../elements/quarks';
 
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   className?: string;
+  disabled?: boolean;
+  leftIcon?: React.ReactNode;
   name: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => unknown;
+  onChange: React.EventHandler<React.SyntheticEvent>;
+  placeholder?: string;
+  rightIcon?: React.ReactNode;
   type: 'text' | 'password' | 'email';
+  value?: HTMLInputElement['value'];
 }
 
 const InputBase: React.FC<InputProps & Variant> = ({
   className,
+  disabled = false,
+  leftIcon,
   name,
   onChange,
+  placeholder,
+  rightIcon,
   type = 'text',
+  value,
   variant = 'default',
-  ...p
 }) => (
-  <div data-variant={variant} className={className}>
-    <input name={name} onChange={onChange} type={type} {...p} />
-  </div>
+  <InputContainer
+    className={className}
+    disabled={disabled}
+    leftIcon={leftIcon}
+    onChange={onChange}
+    rightIcon={rightIcon}
+    variant={variant}
+  >
+    <InputElement
+      className={className}
+      disabled={disabled}
+      name={name}
+      onChange={onChange}
+      placeholder={placeholder}
+      type={type}
+      value={value}
+    />
+  </InputContainer>
 );
 
 export const Input = styled(InputBase)`
@@ -27,47 +52,12 @@ export const Input = styled(InputBase)`
   --local-horizontal: calc(
     var(--woly-const-m) + (1px * var(--woly-main-level)) + var(--local-vertical)
   );
-
-  --local-border-color: var(--woly-neutral);
-  --local-background-color: var(--woly-canvas-default);
-  --local-value-color: var(--woly-canvas-text-default);
-
+  
   box-sizing: border-box;
+  width: 100%;
 
-  color: var(--woly-canvas-text-default);
-
-  font-size: var(--woly-font-size, 16px);
-  line-height: var(--woly-line-height, 24px);
-
-  background: var(--woly-background, transparent);
-
-  input {
-    width: 100%;
-    box-sizing: border-box;
-    border: var(--woly-border-width) solid var(--local-border-color);
-    border-radius: var(--woly-rounding);
-    padding: var(--local-vertical) var(--local-horizontal);
-    background-color: var(--local-background-color);
-    outline: none;
-    color: var(--local-value-color);
-
-    &:disabled {
-      --local-border-color: var(--woly-shape-disabled);
-      --local-value-color: var(--woly-canvas-text-disabled);
-    }
-
-    &:focus {
-      --local-border-color: var(--woly-focus);
-      box-shadow: 0 0 0 2px var(--woly-focus);
-      outline: none;
-    }
-
-    &:hover {
-      --local-border-color: var(--woly-shape-hover);
-    }
-
-    &::placeholder {
-      color: var(--woly-canvas-text-disabled);
-    }
+  &[data-disabled='true'] {
+    pointer-events: none;
   }
-` as StyledComponent<'input', Record<string, unknown>, InputProps & Variant>;
+
+` as StyledComponent<'div', Record<string, unknown>, InputProps & Variant>;
