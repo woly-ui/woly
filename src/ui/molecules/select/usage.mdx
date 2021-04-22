@@ -29,6 +29,7 @@ Each option has data attribute `data-value` where value of option is saved.
           ]}
           placeholder="Choose an option"
           selected={value}
+          variant="secondary"
         />
       )}
     </StateEvent>
@@ -65,6 +66,69 @@ Or you can pass initial selected value.
                 { children: 'BMW', value: 'BMW' },
               ]}
               selected="BMW"
+              isDisabled
+            />
+          </div>
+        </div>
+      )}
+    </StateEvent>
+  </div>
+</Playground>
+
+### Variants
+
+Secondary variant should be used as default variant.
+
+<Playground size="S">
+  <div style={{ height: '150px' }}>
+    <StateEvent initial={null} change={(event) => event?.target?.dataset.value}>
+      {(value, change) => (
+        <Select
+          icon={<ArrowDown />}
+          onChange={change}
+          options={[
+            { children: 'Toyota', value: 'Toyota' },
+            { children: 'Opel', value: 'Opel' },
+            { children: 'BMW', value: 'BMW' },
+          ]}
+          placeholder="Choose an option"
+          selected={value}
+          variant="secondary"
+        />
+      )}
+    </StateEvent>
+  </div>
+</Playground>
+
+Primary and dander variants are should be used to focus used attention.
+
+<Playground size="S">
+  <div style={{ height: '150px' }}>
+    <StateEvent initial="Cats" change={(event) => event?.target?.dataset.value}>
+      {(value, change) => (
+        <div style={{ display: 'flex' }}>
+          <Select
+            icon={<ArrowDown />}
+            onChange={change}
+            options={[
+              { children: 'Cats', value: 'Cats' },
+              { children: 'Dogs', value: 'Dogs' },
+              { children: 'Birds', value: 'Birds' },
+            ]}
+            selected={value}
+            variant="primary"
+          />
+          <div style={{ marginLeft: '10px' }}>
+            <Select
+              icon={<ArrowDown />}
+              onChange={() => {}}
+              options={[
+                { children: 'Toyota', value: 'Toyota' },
+                { children: 'Opel', value: 'Opel' },
+                { children: 'BMW', value: 'BMW' },
+              ]}
+              selected="BMW"
+              variant="danger"
               isDisabled
             />
           </div>

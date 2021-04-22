@@ -113,13 +113,18 @@ export const SelectBase: React.FC<SelectProps & Variant> = ({
 };
 
 export const Select = styled(SelectBase)`
-  --woly-gap: calc(
+  --local-gap: calc(
     (1px * var(--woly-main-level)) + (1px * var(--woly-main-level) * var(--woly-component-level))
   );
-  --woly-vertical: calc(1px * var(--woly-component-level) * var(--woly-main-level));
-  --woly-horizontal: calc(
-    var(--woly-const-m) + (1px * var(--woly-main-level)) + var(--woly-vertical)
+  --local-vertical: calc(1px * var(--woly-component-level) * var(--woly-main-level));
+  --local-horizontal: calc(
+    var(--woly-const-m) + (1px * var(--woly-main-level)) + var(--local-vertical)
   );
+
+  --local-background-color: var(--woly-canvas-default);
+  --local-border-color: var(--woly-neutral);
+  --local-value-color: var(--woly-canvas-text-default);
+  --local-icon-fill: var(--woly-canvas-text-active);
 
   position: relative;
   align-items: center;
@@ -128,7 +133,10 @@ export const Select = styled(SelectBase)`
 
   &:focus > div[data-selected],
   &:active > div[data-selected] {
-    border-color: var(--woly-background-focus, #1f68f5);
+    
+    --local-border-color: var(--woly-focus);
+    box-shadow: 0 0 0 var(--woly-border-width) var(--woly-focus);
+
     color: var(--woly-color-focus, #000000);
     svg > path {
       fill: var(--woly-color-focus, #c4c4c4);
@@ -152,7 +160,7 @@ export const Select = styled(SelectBase)`
 
     div[data-selected] {
       background: var(--woly-background-disabled, #ffffff);
-      border-color: var(--woly-border-disabled, var(--woly-background-disabled, #c4c4c4));
+      border: var(--woly-border-width) solid var(--local-border-color);
       color: var(--woly-color-disabled, #c4c4c4);
     }
   }
@@ -160,16 +168,15 @@ export const Select = styled(SelectBase)`
   div[data-selected] {
     display: flex;
     align-items: center;
-    padding: var(--woly-vertical, 16px) var(--woly-horizontal, 6.4px);
-    background: var(--woly-canvas, #ffffff);
 
-    border-color: var(--woly-border, var(--woly-background, #f8f7f7));
-    border-style: solid;
-    border-width: var(--woly-border-width, 1.5px);
-    border-radius: var(--woly-rounding, 3px);
+    padding: var(--local-vertical) var(--local-horizontal);
+    background: var(--local-background-color);
+
+    border: var(--woly-border-width) solid var(--local-border-color);
+    border-radius: var(--woly-rounding);
     box-sizing: border-box;
 
-    color: var(--woly-color, #000000);
+    color: var(--local-value-color);
 
     div {
       width: 225px;

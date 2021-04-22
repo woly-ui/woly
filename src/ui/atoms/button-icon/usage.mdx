@@ -6,7 +6,7 @@ package: 'woly'
 
 import { Playground } from 'box-styles'
 import { OpenedEyeIcon, SearchIcon } from 'icons';
-import {Chip, ButtonIcon} from 'ui';
+import {ButtonIcon} from 'ui';
 
 `ButtonIcon` is a button with an icon
 
@@ -110,6 +110,36 @@ import {Chip, ButtonIcon} from 'ui';
     />
   </block.S>
 </Playground>
+
+### Variants
+
+Secondary and error variant should be used to focus user attention.
+
+<Playground>
+  <ButtonIcon
+      icon={<SearchIcon />}
+      onClick={() => console.info('ButtonIcon clicked')}
+      variant="secondary"
+    />
+    <ButtonIcon
+      icon={<SearchIcon />}
+      onClick={() => console.info('ButtonIcon clicked')}
+      variant="secondary"
+      filled
+    />
+    <ButtonIcon
+      icon={<SearchIcon />}
+      onClick={() => console.info('ButtonIcon clicked')}
+      variant="danger"
+    />
+    <ButtonIcon
+      icon={<SearchIcon />}
+      onClick={() => console.info('ButtonIcon clicked')}
+      variant="danger"
+      filled
+    />
+</Playground>
+
 
 ### Kinds
 

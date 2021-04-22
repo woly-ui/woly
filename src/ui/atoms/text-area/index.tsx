@@ -49,33 +49,11 @@ const TextAreaBase: React.FC<TextAreaProps & Variant> = ({
 
   const tabIndex = disabled ? -1 : 0;
 
-  const onKeyDown = React.useCallback(
-    (event: React.KeyboardEvent) => {
-      console.log(1);
-
-      if (event.key === 'Enter') {
-        event.preventDefault();
-      }
-      const keyHandler = {
-        enter: (event: React.SyntheticEvent<Element, Event>) => {
-          onChange(event);
-        },
-      };
-
-      keyboardEventHandle({
-        event,
-        keyHandler,
-      });
-    },
-    [onChange],
-  );
-
   return (
     <div
       className={className}
       data-disabled={disabled}
       data-variant={variant}
-      onKeyDown={onKeyDown}
       tabIndex={tabIndex}
       data-overflow={overflow}
       data-resize={resize}
@@ -104,7 +82,7 @@ export const TextArea = styled(TextAreaBase)`
     var(--woly-const-m) + (1px * var(--woly-main-level)) + var(--local-vertical)
   );
 
-  --local-border-color: var(--woly-neutral);
+  --local-border-color: var(--woly-canvas-text-hover);
   --local-background-color: var(--woly-canvas-default);
   --local-value-color: var(--woly-canvas-text-default);
 
