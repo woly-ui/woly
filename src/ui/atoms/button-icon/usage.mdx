@@ -4,15 +4,111 @@ category: atoms
 package: 'woly'
 ---
 
+import { Playground } from 'box-styles'
+import { OpenedEyeIcon, SearchIcon } from 'icons';
+import {Chip, ButtonIcon} from 'ui';
+
 `ButtonIcon` is a button with an icon
 
 ### Example
 
-import { ButtonIconExample } from './example';
-import { Playground } from 'box-styles'
-
 <Playground>
-  <ButtonIconExample />
+  <block.N>
+    <ButtonIcon
+      icon={<SearchIcon />}
+      onClick={() => console.info('ButtonIcon clicked')}
+      variant="primary"
+      filled
+    />
+  </block.N>
+  <block.N>
+    <ButtonIcon
+      icon={<OpenedEyeIcon />}
+      onClick={() => console.info('ButtonIcon clicked')}
+      variant="primary"
+    />
+  </block.N>
+  <block.N>
+    <ButtonIcon
+      icon={<SearchIcon />}
+      onClick={() => console.info('ButtonIcon clicked')}
+      variant="primary"
+      filled
+      disabled
+    />
+  </block.N>
+  <block.N>
+    <ButtonIcon
+      icon={<OpenedEyeIcon />}
+      onClick={() => console.info('ButtonIcon clicked')}
+      variant="primary"
+      disabled
+    />
+  </block.N>
+  <block.XS>
+    <ButtonIcon
+      icon={<SearchIcon />}
+      onClick={() => console.info('ButtonIcon clicked')}
+      variant="primary"
+      filled
+    />
+  </block.XS>
+  <block.XS>
+    <ButtonIcon
+      icon={<OpenedEyeIcon />}
+      onClick={() => console.info('ButtonIcon clicked')}
+      variant="primary"
+    />
+  </block.XS>
+  <block.XS>
+    <ButtonIcon
+      icon={<SearchIcon />}
+      onClick={() => console.info('ButtonIcon clicked')}
+      variant="primary"
+      filled
+      disabled
+    />
+  </block.XS>
+  <block.XS>
+    <ButtonIcon
+      icon={<OpenedEyeIcon />}
+      onClick={() => console.info('ButtonIcon clicked')}
+      variant="primary"
+      disabled
+    />
+  </block.XS>
+  <block.S>
+    <ButtonIcon
+      icon={<SearchIcon />}
+      onClick={() => console.info('ButtonIcon clicked')}
+      variant="primary"
+      filled
+    />
+  </block.S>
+  <block.S>
+    <ButtonIcon
+      icon={<OpenedEyeIcon />}
+      onClick={() => console.info('ButtonIcon clicked')}
+      variant="primary"
+    />
+  </block.S>
+  <block.S>
+    <ButtonIcon
+      icon={<SearchIcon />}
+      onClick={() => console.info('ButtonIcon clicked')}
+      variant="primary"
+      filled
+      disabled
+    />
+  </block.S>
+  <block.S>
+    <ButtonIcon
+      icon={<OpenedEyeIcon />}
+      onClick={() => console.info('ButtonIcon clicked')}
+      variant="primary"
+      disabled
+    />
+  </block.S>
 </Playground>
 
 ### Kinds
