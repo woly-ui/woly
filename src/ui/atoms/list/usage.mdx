@@ -22,14 +22,14 @@ It does not need to be a direct child of the List component.
 ### Example
 
 <Playground>
-  <StateEvent initial={null} change={(event) => event?.target?.dataset.value}>
+  <StateEvent initial={null} change={(event) => alert('Item clicked')}>
     {(value, change) => (
       <List
         variant="primary"
         list={[
-          { id: 0, text: 'Red' },
+          { id: 0, text: 'Red', disabled: true },
           { id: 1, text: 'Green' },
-          { id: 2, text: 'Blue', onClick: {change}},
+          { id: 2, text: 'Blue', onClick: change},
         ]}
       />
     )}
@@ -76,90 +76,101 @@ List items can consist icon on the left side or the right. Use icons on the both
 List items can be clickable or not.
 
 <Playground>
+   <StateEvent initial={null} change={(event) => alert('Item clicked')}>
+    {(value, change) => (
+    <>
+      <block.M>
+        <List
+          variant="primary"
+          list={[
+            {
+              left: <InfoIcon />,
+              id: 0,
+              text: 'Red',
+              right: <Check />,
+              onClick: change,
+            },
+            {
+              left: <InfoIcon />,
+              id: 1,
+              text: 'Green',
+              right: <Check />,
+              onClick: change,
+            },
+            {
+              left: <InfoIcon />,
+              id: 2,
+              text: 'Blue',
+              right: <Check />,
+              onClick: change,
+            },
+          ]}
+        />
+      </block.M>
+      <block.M>
+        <List
+          variant="primary"
+          list={[
+            {
+              left: <InfoIcon />,
+              id: 0,
+              text: 'Red',
+              right: <Check />,
+              onClick: change,
+            },
+            {
+              left: <InfoIcon />,
+              id: 1,
+              text: 'Green',
+              right: <Check />,
+              disabled: true,
+            },
+            {
+              left: <InfoIcon />,
+              id: 2,
+              text: 'Blue',
+              right: <Check />,
+              onClick: change,
+            },
+          ]}
+        />
+      </block.M>
+    </>
+   )}
+  </StateEvent>
+</Playground>
+
+### disabled
+
+<Playground>
   <block.M>
     <List
-      variant="primary"
-      list={[
-        {
-          left: <InfoIcon />,
-          id: 0,
-          text: 'Red',
-          right: <Check />,
-          onClick: () => alert('Item clicked'),
-        },
-        {
-          left: <InfoIcon />,
-          id: 1,
-          text: 'Green',
-          right: <Check />,
-          onClick: () => alert('Item clicked'),
-        },
-        {
-          left: <InfoIcon />,
-          id: 2,
-          text: 'Blue',
-          right: <Check />,
-          onClick: () => alert('Item clicked'),
-        },
-      ]}
-    />
-  </block.M>
-  <block.M>
-    <List
-      variant="primary"
-      list={[
-        {
-          left: <InfoIcon />,
-          id: 0,
-          text: 'Red',
-          right: <Check />,
-          onClick: () => alert('Item clicked'),
-        },
-        {
-          left: <InfoIcon />,
-          id: 1,
-          text: 'Green',
-          right: <Check />,
-          disabled: true,
-        },
-        {
-          left: <InfoIcon />,
-          id: 2,
-          text: 'Blue',
-          right: <Check />,
-          onClick: () => alert('Item clicked'),
-        },
-      ]}
-    />
-  </block.M>
-  <block.M>
-    <List
-      variant="primary"
-      list={[
-        {
-          left: <InfoIcon />,
-          id: 0,
-          text: 'Red',
-          right: <Check />,
-          disabled: true,
-        },
-        {
-          left: <InfoIcon />,
-          id: 1,
-          text: 'Green',
-          right: <Check />,
-          disabled: true,
-        },
-        {
-          left: <InfoIcon />,
-          id: 2,
-          text: 'Blue',
-          right: <Check />,
-          disabled: true,
-        },
-      ]}
-    />
-  </block.M>
+        variant="primary"
+        list={[
+          {
+            left: <InfoIcon />,
+            id: 0,
+            text: 'Red',
+            right: <Check />,
+            disabled: true,
+          },
+          {
+            left: <InfoIcon />,
+            id: 1,
+            text: 'Green',
+            right: <Check />,
+            disabled: true,
+          },
+          {
+            left: <InfoIcon />,
+            id: 2,
+            text: 'Blue',
+            right: <Check />,
+            disabled: true,
+          },
+        ]}
+      />
+    </block.M>
 </Playground>
 
 ### Sizes

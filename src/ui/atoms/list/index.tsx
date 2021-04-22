@@ -5,13 +5,13 @@ import { keyHandlerList, keyboardEventHandle } from 'lib';
 interface List {
   className?: string;
   disabled?: boolean;
-  onChange: React.EventHandler<React.SyntheticEvent>;
   list: Array<{
     left?: React.ReactNode;
     right?: React.ReactNode;
     text: React.ReactNode;
     id: string;
     disabled?: boolean;
+    onClick?: React.EventHandler<React.SyntheticEvent>;
   }>;
 }
 
@@ -20,7 +20,6 @@ const ListBase: React.FC<List & Variant> = ({
   list,
   variant = 'default',
   disabled = false,
-  onChange
 }) => {
   const tabIndex = disabled ? -1 : 0;
   const dropdownRef = React.useRef(null);
@@ -35,13 +34,8 @@ const ListBase: React.FC<List & Variant> = ({
 
       event.preventDefault();
 
-      const onEnter = (event: React.SyntheticEvent<Element, Event>) => {
-        onChange(event);
-      };
-
       const kh = keyHandlerList({
         dropdownNode,
-        onEnter,
       });
 
       keyboardEventHandle({
@@ -49,7 +43,7 @@ const ListBase: React.FC<List & Variant> = ({
         keyHandler: kh,
       });
     },
-    [dropdownRef, onChange],
+    [dropdownRef],
   );
   return (
     <ul
@@ -60,12 +54,12 @@ const ListBase: React.FC<List & Variant> = ({
       role="listbox"
       ref={dropdownRef}
     >
-      {list.map(({ left, right, text, id }) => (
+      {list.map(({ left, right, text, id, onClick, disabled }) => (
         <li
           data-disabled={disabled}
           data-type="list-item"
           key={id}
-          onClick={onChange}
+          onClick={onClick}
           tabIndex={-1}
         >
           {left && <span data-icon="left">{left}</span>}

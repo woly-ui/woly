@@ -4,7 +4,6 @@ interface GetSelectHandlersProps extends EnterProps {
 
 interface GetListHandlersProps extends EnterProps {
   dropdownNode: HTMLElement;
-  onEnter: (event: React.SyntheticEvent<Element, Event>) => void;
 }
 
 interface EnterProps {
@@ -20,7 +19,7 @@ const onArrowDown = (dropdownNode: HTMLElement) => () => {
   if (document.activeElement?.tagName === LI_TAG) {
     (document.activeElement?.nextElementSibling as HTMLElement).focus();
   } else {
-    (dropdownNode.firstChild as HTMLElement).focus();
+    (dropdownNode?.firstChild as HTMLElement).focus();
   }
 };
 
@@ -42,6 +41,14 @@ const onEnter = ({ isOpen, onChange, selectNode, setIsOpen }: EnterProps) => (
   selectNode.focus();
 };
 
+const onItemEnter = (dropdownNode: HTMLElement) => () => {
+  if (document.activeElement?.tagName === LI_TAG) {
+    (document?.activeElement as HTMLElement).click();
+  } else {
+    (dropdownNode?.lastChild as HTMLElement).focus();
+  }
+};
+
 export const keyHandlerGet = ({
   dropdownNode,
   isOpen,
@@ -56,9 +63,8 @@ export const keyHandlerGet = ({
 
 export const keyHandlerList = ({
   dropdownNode,
-  onEnter
 }: any) => ({
   arrowDown: onArrowDown(dropdownNode),
   arrowUp: onArrowUp(dropdownNode),
-  enter: onEnter,
+  enter: onItemEnter(dropdownNode),
 });
