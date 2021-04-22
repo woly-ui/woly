@@ -7,6 +7,7 @@ export const Global = styled.div`
   --palette-snow-100: #f5f5f5;
   --palette-snow-0: #ffffff;
   --palette-lavender-500: #9381f1;
+  --palette-dawn-300: #ff9097;
 
   /* should be rewritten to formulas */
   --woly-line-height: 24px;
@@ -20,6 +21,7 @@ export const Global = styled.div`
   --woly-neutral: var(--palette-snow-500);
   --woly-focus: #9381f1;
   --woly-background: #ffffff;
+  --woly-danger: var(--palette-dawn-300);
 
   [data-variant='primary'] {
     --woly-shape-default: #b0a3f4;
@@ -62,21 +64,26 @@ export const Global = styled.div`
 
     --woly-label-color: #ffffff;
   }
-  [data-variant='error'] {
-    --woly-border-width: 1.5px;
+  [data-variant='danger'] {
+    --woly-shape-default: var(--woly-danger);
+    --woly-shape-disabled: #e5e5e5;
+    --woly-shape-hover: var(--woly-danger);
+    --woly-shape-active: var(--woly-danger);
 
-    --woly-background: #ffffff;
-    --woly-border: #eb5656;
-    --woly-color: #eb5656;
-    --woly-label-color: #eb5656;
-    --woly-canvas: #eb5656;
+    --woly-shape-text-default: var(--palette-snow-0);
+    --woly-shape-text-disabled: var(--palette-snow-0);
+    --woly-shape-text-hover: var(--palette-snow-0);
+    --woly-shape-text-active: var(--palette-snow-0);
 
-    --woly-border-focus: #eb5656;
-    --woly-error-text: #eb5656;
-    --woly-hint-color: #ff9097;
-    --woly-background-disabled: #c0c0c0;
-    --woly-border-disabled: #c0c0c0;
-    --woly-color-disabled: #a39bb2;
+    --woly-canvas-default: transparent;
+    --woly-canvas-disabled: var(--palette-snow-100);
+    --woly-canvas-hover: var(--woly-danger);
+    --woly-canvas-active: var(--woly-danger);
+
+    --woly-canvas-text-default: var(--woly-danger);
+    --woly-canvas-text-disabled: var(--palette-snow-500);
+    --woly-canvas-text-hover: var(--woly-danger);
+    --woly-canvas-text-active: var(--woly-danger);
   }
 `;
 

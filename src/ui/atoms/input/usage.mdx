@@ -188,8 +188,6 @@ Primary and secondary variants are should be used to focus user attention.
 
 Error variant can be used to focus user attention on error.
 
-<!-- example will be fixed with task FRNT-477 -->
-
 <Playground>
   <Input
     leftIcon={<InfoIcon />}
@@ -197,8 +195,7 @@ Error variant can be used to focus user attention on error.
     onChange={(event) => console.info('On input change')}
     placeholder="Error input"
     type="text"
-    value="Error"
-    variant="Error"
+    variant="danger"
   />
 </Playground>
 
