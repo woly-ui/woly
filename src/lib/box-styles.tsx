@@ -246,3 +246,15 @@ export const Modal = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
 `;
+
+export const ColumnContent = styled.div`
+  background: var(--palette-lavender-500);
+  color: var(--palette-snow-0);
+  padding: 10px;
+  border-radius: 6px;
+  margin: 4px;
+`;
+
+export const TableContent = styled.div`
+  padding: 10px;
+`;

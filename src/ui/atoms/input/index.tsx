@@ -52,23 +52,12 @@ export const Input = styled(InputBase)`
   --local-horizontal: calc(
     var(--woly-const-m) + (1px * var(--woly-main-level)) + var(--local-vertical)
   );
-
-  --local-gap: calc(
-    (1px * var(--woly-main-level)) +
-      (1px * var(--woly-main-level) * var(--woly-component-level))
-  );
   
   box-sizing: border-box;
   width: 100%;
 
-  padding: var(--local-vertical) var(--local-horizontal);
-
   &[data-disabled='true'] {
     pointer-events: none;
-  }
-
-  & > *:not(:first-child) {
-    margin-left: var(--woly-gap);
   }
 
 ` as StyledComponent<'div', Record<string, unknown>, InputProps & Variant>;

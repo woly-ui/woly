@@ -128,7 +128,7 @@ export const InputContainer = styled(InputContainerBase)`
 
   [data-icon='left'] ~ [data-input="input"],
   [data-input="input"] ~ [data-icon='right'] {
-    padding-left: calc(var(--local-compensate) * 2);
+    padding-left: var(--local-gap);
   }
 
   &:focus {
