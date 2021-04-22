@@ -27,7 +27,7 @@ It does not need to be a direct child of the List component.
       <List
         variant="primary"
         list={[
-          { id: 0, text: 'Red', disabled: true },
+          { id: 0, text: 'Red' },
           { id: 1, text: 'Green' },
           { id: 2, text: 'Blue', onClick: change},
         ]}
@@ -73,78 +73,13 @@ List items can consist icon on the left side or the right. Use icons on the both
   />
 </Playground>
 
-List items can be clickable or not.
+List items can be clickable 
 
 <Playground>
    <StateEvent initial={null} change={(event) => alert('Item clicked')}>
     {(value, change) => (
-    <>
-      <block.M>
-        <List
-          variant="primary"
-          list={[
-            {
-              left: <InfoIcon />,
-              id: 0,
-              text: 'Red',
-              right: <Check />,
-              onClick: change,
-            },
-            {
-              left: <InfoIcon />,
-              id: 1,
-              text: 'Green',
-              right: <Check />,
-              onClick: change,
-            },
-            {
-              left: <InfoIcon />,
-              id: 2,
-              text: 'Blue',
-              right: <Check />,
-              onClick: change,
-            },
-          ]}
-        />
-      </block.M>
-      <block.M>
-        <List
-          variant="primary"
-          list={[
-            {
-              left: <InfoIcon />,
-              id: 0,
-              text: 'Red',
-              right: <Check />,
-              onClick: change,
-            },
-            {
-              left: <InfoIcon />,
-              id: 1,
-              text: 'Green',
-              right: <Check />,
-              disabled: true,
-            },
-            {
-              left: <InfoIcon />,
-              id: 2,
-              text: 'Blue',
-              right: <Check />,
-              onClick: change,
-            },
-          ]}
-        />
-      </block.M>
-    </>
-   )}
-  </StateEvent>
-</Playground>
-
-### disabled
-
-<Playground>
-  <block.M>
-    <List
+    <block.M>
+      <List
         variant="primary"
         list={[
           {
@@ -152,25 +87,85 @@ List items can be clickable or not.
             id: 0,
             text: 'Red',
             right: <Check />,
-            disabled: true,
+            onClick: change,
           },
           {
             left: <InfoIcon />,
             id: 1,
             text: 'Green',
             right: <Check />,
-            disabled: true,
+            onClick: change,
           },
           {
             left: <InfoIcon />,
             id: 2,
             text: 'Blue',
             right: <Check />,
-            disabled: true,
+            onClick: change,
           },
         ]}
       />
     </block.M>
+    )}
+  </StateEvent>
+</Playground>
+
+or not
+<Playground>
+  <block.L>
+    <List
+      variant="primary"
+      list={[
+        {
+          left: <InfoIcon />,
+          id: 0,
+          text: 'Red',
+          right: <Check />,
+        },
+        {
+          left: <InfoIcon />,
+          id: 1,
+          text: 'Green',
+          right: <Check />,
+        },
+        {
+          left: <InfoIcon />,
+          id: 2,
+          text: 'Blue',
+          right: <Check />,
+        },
+      ]}
+    />
+  </block.L>
+</Playground>
+
+### Disabled
+
+<Playground size="L">
+  <List
+    disabled
+    variant="primary"
+    list={[
+      {
+        left: <InfoIcon />,
+        id: 0,
+        text: 'Red',
+        right: <Check />,
+      },
+      {
+        left: <InfoIcon />,
+        id: 1,
+        text: 'Green',
+        right: <Check />,
+      },
+      {
+        left: <InfoIcon />,
+        id: 2,
+        text: 'Blue',
+        right: <Check />,
+      },
+    ]}
+  />
 </Playground>
 
 ### Sizes
@@ -242,3 +237,4 @@ Size controlled by the `component-level` block property not from the props.
 | --------- | ------------------------ | ----------- | ------------------------------------ |
 | `list`    | `Array<React.ReactNode>` |             | An array of List items               |
 | `variant` | `string`                 | `'default'` | Variant prop to style List component |
+| `disabled`| `boolean`                |             | Disable list                         |

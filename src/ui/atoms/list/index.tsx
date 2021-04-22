@@ -22,37 +22,38 @@ const ListBase: React.FC<List & Variant> = ({
   disabled = false,
 }) => {
   const tabIndex = disabled ? -1 : 0;
-  const dropdownRef = React.useRef(null);
+  const itemListRef = React.useRef(null);
 
   const onKeyDown = React.useCallback(
     (event: React.KeyboardEvent) => {
-      const dropdownNode = dropdownRef.current;
+      const listNode = itemListRef.current;
 
-      if (!document || !dropdownNode || event.key === 'Tab') {
+      if (!document || !listNode || event.key === 'Tab') {
         return;
       }
 
       event.preventDefault();
 
-      const kh = keyHandlerList({
-        dropdownNode,
+      const handlerList = keyHandlerList({
+        listNode,
       });
 
       keyboardEventHandle({
         event,
-        keyHandler: kh,
+        keyHandler: handlerList,
       });
     },
-    [dropdownRef],
+    [itemListRef],
   );
   return (
     <ul
       className={className}
+      data-disabled={disabled}
       data-variant={variant}
       onKeyDown={onKeyDown}
-      tabIndex={tabIndex}
+      ref={itemListRef}
       role="listbox"
-      ref={dropdownRef}
+      tabIndex={tabIndex}
     >
       {list.map(({ left, right, text, id, onClick, disabled }) => (
         <li
@@ -78,8 +79,8 @@ export const List = styled(ListBase)`
     var(--woly-const-m) + (1px * var(--woly-main-level)) + var(--local-vertical)
   );
 
-  --local-gap: var(--woly-const-m);
-  --local-compensate: calc(var(--woly-const-m)/2);
+  --local-gap: var(--local-vertical);
+  --local-compensate: var(--woly-const-m);
   --local-margin: var(--woly-border-width);
 
   --local-color: var(--woly-canvas-text-default);
@@ -157,7 +158,7 @@ export const List = styled(ListBase)`
       --local-item-background: var(--woly-canvas-disabled);
     }
     &:focus {
-      box-shadow: 0 0 0 1.5px var(--woly-focus);
+      box-shadow: 0 0 0 var(--woly-border-width) var(--woly-focus);
     }
     &:active {
       --local-item-background: var(--woly-focus);
@@ -166,17 +167,30 @@ export const List = styled(ListBase)`
 
     &[data-disabled='true'] {
       --local-color: var(--woly-canvas-text-disabled);
+      --local-item-background: var(--woly-canvas-disabled);
 
       pointer-events: none;
 
       [data-icon] {
-        svg > path {
-          --local-color: var(--woly-canvas-text-disabled);
-        }
+        --local-color: var(--woly-canvas-text-disabled);
       }
     }
   }
+  
   &:focus {
-      box-shadow: 0 0 0 1.5px var(--woly-focus);
+      box-shadow: 0 0 0 var(--woly-border-width) var(--woly-focus);
+  }
+
+  &[data-disabled='true'] {
+    pointer-events: none;
+
+    li[data-type='list-item'] {
+      --local-color: var(--woly-canvas-text-disabled);
+      --local-item-background: var(--woly-canvas-disabled);
+    }
+
+    [data-icon] {
+        --local-color: var(--woly-canvas-text-disabled);
+      }
   }
 ` as StyledComponent<'ul', Record<string, unknown>, List & Variant>;
