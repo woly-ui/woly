@@ -41,10 +41,7 @@ Or you can pass initial selected value.
 
 <Playground size="S">
   <div style={{ height: '150px' }}>
-    <StateEvent
-      initial="Cats"  
-      change={(event) => event?.target?.dataset.value}
-    >
+    <StateEvent initial="Cats" change={(event) => event?.target?.dataset.value}>
       {(value, change) => (
         <div style={{ display: 'flex' }}>
           <Select
