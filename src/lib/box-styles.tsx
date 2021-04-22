@@ -50,7 +50,8 @@ export const Global = styled.div`
   }
 
   [data-variant='secondary'] {
-    --woly-border-width: 2px;
+    --woly-border-width: 1.5px;
+
     --woly-background: #ffffff;
     --woly-border: #b0a3f4;
     --woly-color: #b0a3f4;
@@ -67,13 +68,15 @@ export const Global = styled.div`
     --woly-text-disabled: #e4e4e4;
     --woly-fill-disabled: #e4e4e4;
   }
-  [data-variant='danger'] {
-    --woly-border-width: 1px;
+  [data-variant='error'] {
+    --woly-border-width: 1.5px;
+
     --woly-background: #ffffff;
     --woly-border: #eb5656;
-    --woly-color: #000000;
+    --woly-color: #eb5656;
     --woly-label-color: #eb5656;
-    --woly-canvas-color: #eb5656;
+    --woly-canvas: #eb5656;
+
     --woly-border-focus: #eb5656;
     --woly-error-text: #eb5656;
     --woly-hint-color: #ff9097;
@@ -245,4 +248,16 @@ export const Modal = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+`;
+
+export const ColumnContent = styled.div`
+  background: var(--palette-lavender-500);
+  color: var(--palette-snow-0);
+  padding: 10px;
+  border-radius: 6px;
+  margin: 4px;
+`;
+
+export const TableContent = styled.div`
+  padding: 10px;
 `;

@@ -73,9 +73,9 @@ export const Checkbox = styled(CheckboxBase)`
     (1px * var(--woly-main-level)) + (1px * var(--woly-main-level) * var(--woly-component-level))
   );
 
-  --local-width: 24px;
-  --local-height: 24px;
-
+  --local-icon-size: 24px;
+  --local-icon-fill: var(--local-background-color);
+  --local-icon-stroke: var(--woly-shape-default);
   --local-text-color: var(--woly-canvas-text-default);
   --local-background-color: var(--woly-shape-default);
 
@@ -86,7 +86,7 @@ export const Checkbox = styled(CheckboxBase)`
 
   &:focus [data-checkmark] > svg,
   &:active [data-checkmark] > svg {
-    box-shadow: 0 0 0 1.5px var(--woly-focus);
+    box-shadow: 0 0 0 var(--woly-border-width) var(--woly-focus);
     border-radius: var(--woly-rounding);
   }
 
@@ -110,8 +110,8 @@ export const Checkbox = styled(CheckboxBase)`
     }
 
     [data-checkmark] {
-      width: var(--local-width);
-      height: var(--local-height);
+      width: var(--local-icon-size);
+      height: var(--local-icon-size);
 
       margin-right: var(--local-gap);
     }
@@ -125,18 +125,14 @@ export const Checkbox = styled(CheckboxBase)`
 
     input:checked ~ [data-checkmark='checked'] {
       svg > rect {
-        fill: var(--local-background-color);
+        fill: var(--local-icon-fill);
       }
       &:hover {
-        svg > rect {
-          --local-background-color: var(--woly-shape-hover);
-        }
+        --local-icon-fill: var(--woly-shape-hover);
       }
       &:focus,
       &:active {
-        svg > rect {
-          fill: var(--woly-focus);
-        }
+        --local-icon-fill: var(--woly-focus);
       }
     }
 
@@ -148,14 +144,14 @@ export const Checkbox = styled(CheckboxBase)`
     [data-checkmark='unchecked'] {
       &:hover {
         svg > rect {
-          stroke: var(--woly-shape-default);
+          stroke: var(--local-icon-stroke);
         }
       }
 
       &:focus,
       &:active {
         svg > rect {
-          stroke: var(--woly-focus);
+          --local-icon-stroke: var(--woly-focus);
         }
       }
     }
@@ -175,7 +171,7 @@ export const Checkbox = styled(CheckboxBase)`
       justify-content: center;
 
       svg > rect {
-        --local-background-color: var(--woly-shape-disabled);
+       fill: var(--woly-shape-disabled);
       }
     }
 

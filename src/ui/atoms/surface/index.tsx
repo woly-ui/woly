@@ -1,17 +1,6 @@
 import styled from 'styled-components';
 import { Variant } from 'lib/types';
 
-/**
- * --woly-border-width
- * --woly-box-shadow
- * --woly-padding
- * --woly-rounding
- *
- * --woly-canvas
- * --woly-border
- *
- */
-
 const map = (properties: Variant) => ({
   'data-variant': properties.variant || 'default',
 });

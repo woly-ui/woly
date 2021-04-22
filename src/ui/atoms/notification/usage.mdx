@@ -4,19 +4,30 @@ category: atoms
 package: 'woly'
 ---
 
-import { NotificationExample } from './example';
+import { Notification} from './index';
+import { Button } from 'ui';
+import { Playground, block, StateEvent, State } from 'box-styles';
 
 `Notification` display the notification message globaly.
 
 ### Example
 
-<NotificationExample />
-
-```tsx
-const Example = () => (
-  <Notification message="Your transaction has been completed" />
-);
-```
+<Playground>
+  <State initial={false} change={(i) => !i}>
+    {(value, change) => (
+      <block.S>
+        <Button
+          onClick={change}
+          text={value ? 'hide notification' : 'show notification'}
+          variant="primary"
+        />
+        <div style={{ display: value ? 'block' : 'none' }}>
+          <Notification message="Your transaction has been completed" variant="primary" />
+        </div>
+      </block.S>
+    )}
+  </State>
+</Playground>
 
 ### Kinds
 

@@ -9,12 +9,13 @@
 '@organisms':
   - src/ui/organisms/**/*
   - src/organisms/**/*
+ 
+'@templates':
+  - src/ui/templates/**/*
+  - src/templates/**/*
   
 packages:
   - packages/**/*
-
-lib:
-  - src/lib/**/*
   
 build:
   - build/**/*
