@@ -44,7 +44,8 @@ export const Global = styled.div`
   }
 
   [data-variant='secondary'] {
-    --woly-border-width: 2px;
+    --woly-border-width: 1.5px;
+
     --woly-background: #ffffff;
     --woly-border: #b0a3f4;
     --woly-color: #b0a3f4;
@@ -62,12 +63,14 @@ export const Global = styled.div`
     --woly-label-color: #ffffff;
   }
   [data-variant='error'] {
-    --woly-border-width: 1px;
+    --woly-border-width: 1.5px;
+
     --woly-background: #ffffff;
     --woly-border: #eb5656;
-    --woly-color: #000000;
+    --woly-color: #eb5656;
     --woly-label-color: #eb5656;
-    --woly-canvas-color: #eb5656;
+    --woly-canvas: #eb5656;
+
     --woly-border-focus: #eb5656;
     --woly-error-text: #eb5656;
     --woly-hint-color: #ff9097;

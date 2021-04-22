@@ -102,7 +102,7 @@ export const Checkbox = styled(CheckboxBase)`
       display: block;
 
       svg > rect {
-        stroke: var(--woly-canvas-color, #e4e4e4);
+        stroke: var(--woly-canvas, #e4e4e4);
       }
     }
 
