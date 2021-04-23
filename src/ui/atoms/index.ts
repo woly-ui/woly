@@ -11,6 +11,7 @@ export { List } from './list';
 export { Notification } from './notification';
 export { Separator } from './separator';
 export { Surface } from './surface';
+export { Table, Thead, Tbody, Tr, Td, Th } from './table';
 export { Text } from './text';
 export { TextArea } from './text-area';
 export { Tooltip } from './tooltip';
