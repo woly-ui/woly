@@ -10,7 +10,7 @@ export const Global = styled.div`
 
   /* should be rewritten to formulas */
   --woly-line-height: 24px;
-  --woly-border-width: 1.5px;
+  --woly-border-width: 2px;
   --woly-rounding: 4px;
   --woly-font-size: 15px;
 
@@ -25,7 +25,7 @@ export const Global = styled.div`
     --woly-shape-default: #b0a3f4;
     --woly-shape-disabled: #e5e5e5;
     --woly-shape-hover: #c9c0f8;
-    --woly-shape-active: #b0a3f4;
+    --woly-shape-active: var(--palette-lavender-500);
 
     --woly-shape-text-default: var(--palette-snow-0);
     --woly-shape-text-disabled: var(--palette-snow-0);
@@ -35,7 +35,7 @@ export const Global = styled.div`
     --woly-canvas-default: transparent;
     --woly-canvas-disabled: var(--palette-snow-100);
     --woly-canvas-hover: var(--palette-snow-500);
-    --woly-canvas-active: var(--palette-snow-500);
+    --woly-canvas-active: var(--palette-lavender-500);
 
     --woly-canvas-text-default: var(--palette-snow-1000);
     --woly-canvas-text-disabled: var(--palette-snow-500);

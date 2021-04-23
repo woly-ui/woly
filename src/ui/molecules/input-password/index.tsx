@@ -1,10 +1,10 @@
 import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
-import { Variant } from 'lib/types';
-
 import { ButtonIcon, Input } from 'ui';
+import { ClosedEyeIcon, InfoIcon, OpenedEyeIcon } from 'icons';
+import { Variant } from 'lib/types';
 import { block } from 'box-styles';
-import { ClosedEyeIcon, OpenedEyeIcon, InfoIcon } from 'icons';
+
 interface InputPasswordProps {
   className?: string;
   disabled?: boolean;
@@ -53,19 +53,17 @@ export const InputPasswordBase: React.FC<InputPasswordProps & Variant> = ({
       />
     </div>
   );
-}
+};
 
-export const InputPassword = styled(InputPasswordBase)`
+export const InputPassword = (styled(InputPasswordBase)`
   --local-gap: calc(
-    (1px * var(--woly-main-level)) +
-      (1px * var(--woly-main-level) * var(--woly-component-level))
+    (1px * var(--woly-main-level)) + (1px * var(--woly-main-level) * var(--woly-component-level))
   );
-  
+
   box-sizing: border-box;
   width: 100%;
 
   & > *:not(:first-child) {
     margin-left: var(--woly-gap);
   }
-
-` as unknown as StyledComponent<'div', Record<string, unknown>, InputPasswordProps & Variant>;
+` as unknown) as StyledComponent<'div', Record<string, unknown>, InputPasswordProps & Variant>;

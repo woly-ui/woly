@@ -81,11 +81,7 @@ Labels and children component can be replaced in row
   <State initial={false} change={(i) => !i}>
     {(value, change) => (
       <Field label="Label of item" row>
-        <Switch
-          isChecked={value}
-          onChange={change}
-          id="roundTwo"
-          variant="round"/>
+        <Switch isChecked={value} onChange={change} id="roundTwo" variant="round" />
       </Field>
     )}
   </State>
@@ -102,11 +98,7 @@ or in column variants
   <State initial={false} change={(i) => !i}>
     {(value, change) => (
       <Field label="Label of item">
-        <Switch
-          isChecked={value}
-          onChange={change}
-          id="roundOne"
-          variant="round"/>
+        <Switch isChecked={value} onChange={change} id="roundOne" variant="round" />
       </Field>
     )}
   </State>
