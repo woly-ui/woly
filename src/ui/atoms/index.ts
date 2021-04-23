@@ -9,6 +9,7 @@ export { Input } from './input';
 export { Label } from './label';
 export { List } from './list';
 export { Notification } from './notification';
+export { Separator } from './separator';
 export { Surface } from './surface';
 export { Text } from './text';
 export { TextArea } from './text-area';
