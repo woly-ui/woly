@@ -19,6 +19,7 @@ export const Global = styled.div`
   --woly-border-width: 1.5px;
   --woly-rounding: 4px;
   --woly-font-size: 15px;
+  --woly-shadow: 3px 3px 9px rgba(57, 57, 57, 0.12);
 
   --woly-const-m: 6px;
   --woly-main-level: 3;
@@ -26,7 +27,7 @@ export const Global = styled.div`
   --woly-neutral: var(--palette-snow-500);
   --woly-focus: var(--palette-lavender-500);
   --woly-background: var(--palette-snow-0);
-  
+
   [data-variant='primary'] {
     --woly-shape-default: var(--palette-lavender-300);
     --woly-shape-disabled: var(--palette-snow-300);
