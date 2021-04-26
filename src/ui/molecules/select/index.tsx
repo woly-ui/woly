@@ -2,18 +2,6 @@ import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
 import { Variant } from 'lib/types';
 import { keyHandlerGet, keyboardEventHandle } from 'lib';
-
-/**
- * --woly-border
- * --woly-border-focus
- * --woly-border-disabled
- * --woly-border-width
- * --woly-canvas
- * --woly-color-hover
- * --woly-background-hover
- * --woly-line-height
- */
-
 interface SelectOptionProps {
   children: React.ReactNode;
   value: string;
@@ -22,7 +10,7 @@ interface SelectOptionProps {
 interface SelectProps {
   className?: string;
   icon?: React.ReactNode;
-  isDisabled?: boolean;
+  disabled?: boolean;
   onBlur?: React.FocusEventHandler<HTMLElement>;
   onChange: React.EventHandler<React.SyntheticEvent>;
   onFocus?: React.FocusEventHandler<HTMLElement>;
@@ -34,7 +22,7 @@ interface SelectProps {
 export const SelectBase: React.FC<SelectProps & Variant> = ({
   className,
   icon,
-  isDisabled,
+  disabled,
   onBlur,
   onChange,
   onFocus,
@@ -46,7 +34,7 @@ export const SelectBase: React.FC<SelectProps & Variant> = ({
   const [isOpen, setIsOpen] = React.useReducer((is) => !is, false);
   const selectRef = React.useRef(null);
   const dropdownRef = React.useRef(null);
-  const tabIndex = isDisabled ? -1 : 0;
+  const tabIndex = disabled ? -1 : 0;
   const select = selected ?? placeholder;
 
   const onKeyDown = React.useCallback(
@@ -79,7 +67,7 @@ export const SelectBase: React.FC<SelectProps & Variant> = ({
   return (
     <div
       className={className}
-      data-disabled={isDisabled}
+      data-disabled={disabled}
       data-open={isOpen}
       data-select
       data-variant={variant}
@@ -113,9 +101,6 @@ export const SelectBase: React.FC<SelectProps & Variant> = ({
 };
 
 export const Select = styled(SelectBase)`
-  --local-gap: calc(
-    (1px * var(--woly-main-level)) + (1px * var(--woly-main-level) * var(--woly-component-level))
-  );
   --local-vertical: calc(1px * var(--woly-component-level) * var(--woly-main-level));
   --local-horizontal: calc(
     var(--woly-const-m) + (1px * var(--woly-main-level)) + var(--local-vertical)
@@ -126,44 +111,12 @@ export const Select = styled(SelectBase)`
   --local-value-color: var(--woly-canvas-text-default);
   --local-icon-fill: var(--woly-canvas-text-active);
 
+  --local-select-width: 225px;
+
   position: relative;
   align-items: center;
   outline: none;
   cursor: pointer;
-
-  &:focus > div[data-selected],
-  &:active > div[data-selected] {
-    
-    --local-border-color: var(--woly-focus);
-    box-shadow: 0 0 0 var(--woly-border-width) var(--woly-focus);
-
-    color: var(--woly-color-focus, #000000);
-    svg > path {
-      fill: var(--woly-color-focus, #c4c4c4);
-    }
-  }
-
-  &[data-open='true'] > div[data-selected] {
-    border-color: var(--woly-border-focus, #b0a3f4);
-  }
-
-  svg > path {
-    fill: var(--woly-color, #000000);
-  }
-
-  &[data-disabled='true'] {
-    pointer-events: none;
-
-    svg > path {
-      fill: var(--woly-color-disabled, #c4c4c4);
-    }
-
-    div[data-selected] {
-      background: var(--woly-background-disabled, #ffffff);
-      border: var(--woly-border-width) solid var(--local-border-color);
-      color: var(--woly-color-disabled, #c4c4c4);
-    }
-  }
 
   div[data-selected] {
     display: flex;
@@ -179,7 +132,7 @@ export const Select = styled(SelectBase)`
     color: var(--local-value-color);
 
     div {
-      width: 225px;
+      width: var(--local-select-width);
     }
   }
 
@@ -231,7 +184,37 @@ export const Select = styled(SelectBase)`
     }
   }
 
-  div:not(:first-child) {
-    margin-top: var(--woly-gap);
+  &:focus > div[data-selected],
+  &:active > div[data-selected] {
+    
+    --local-border-color: var(--woly-focus);
+    box-shadow: 0 0 0 var(--woly-border-width) var(--woly-focus);
+
+    color: var(--woly-color-focus, #000000);
+    svg > path {
+      fill: var(--woly-color-focus, #c4c4c4);
+    }
+  }
+
+  &[data-open='true'] > div[data-selected] {
+    border-color: var(--woly-border-focus, #b0a3f4);
+  }
+
+  svg > path {
+    fill: var(--woly-color, #000000);
+  }
+
+  &[data-disabled='true'] {
+    pointer-events: none;
+
+    svg > path {
+      fill: var(--woly-color-disabled, #c4c4c4);
+    }
+
+    div[data-selected] {
+      background: var(--woly-background-disabled, #ffffff);
+      border: var(--woly-border-width) solid var(--local-border-color);
+      color: var(--woly-color-disabled, #c4c4c4);
+    }
   }
 ` as StyledComponent<'div', Record<string, unknown>, SelectProps & Variant>;
