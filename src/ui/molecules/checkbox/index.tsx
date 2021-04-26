@@ -87,7 +87,6 @@ export const Checkbox = styled(CheckboxBase)`
   &:focus [data-checkmark] > svg,
   &:active [data-checkmark] > svg {
     box-shadow: 0 0 0 var(--woly-border-width) var(--woly-focus);
-    border-radius: var(--woly-rounding);
   }
 
   [data-block='container'] {
@@ -114,6 +113,10 @@ export const Checkbox = styled(CheckboxBase)`
       height: var(--local-icon-size);
 
       margin-right: var(--local-gap);
+
+      svg{
+        border-radius: var(--woly-rounding);
+      }
     }
 
     [data-checkmark='unchecked'],
@@ -164,6 +167,10 @@ export const Checkbox = styled(CheckboxBase)`
       --local-text-color: var(--woly-shape-disabled);
     }
 
+    [data-checkmark] > svg {
+      box-shadow: none;
+    }
+    
     [data-checkmark='unchecked'],
     input:checked ~ [data-checkmark='checked'] {
       display: flex;
