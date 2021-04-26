@@ -5,7 +5,7 @@ package: 'woly'
 ---
 
 import { Checkbox } from './index';
-import { Playground } from 'box-styles'
+import { Playground, State } from 'box-styles'
 
 Checkboxes allow you to setup selectable options for your users - either to toggle a single setting on or off, or to allow for multiple choices.
 
@@ -22,18 +22,60 @@ Use a checkbox when the user has to stop before performing an action. Checkbox w
 ### Example
 
 <Playground>
-  <Checkbox isChecked variant="default" />
-  <Checkbox isChecked={false} variant="default" />
+  <State initial={false} change={(i) => !i}>
+    {(value, change) => (
+      <Checkbox checked={value} id="simple" onChange={change} text="Simple" variant="primary" />
+    )}
+  </State>
+</Playground>
+
+### Size
+
+Size controlled by the `component-level` block property not from the props.
+
+<Playground>
+  <State initial={false} change={(i) => !i}>
+    {(value, change) => (
+      <>
+        <block.S>
+          <Checkbox checked={value} id="small" onChange={change} text="Small" variant="primary" />
+        </block.S>
+        <block.M>
+          <Checkbox checked={value} id="medium" onChange={change} text="Medium" variant="primary" />
+        </block.M>
+        <block.L>
+          <Checkbox checked={value} id="large" onChange={change} text="Large" variant="primary" />
+        </block.L>
+        <block.XL>
+          <Checkbox
+            checked={value}
+            id="extra"
+            onChange={change}
+            text="Extra large"
+            variant="primary"
+          />
+        </block.XL>
+        <block.H>
+          <Checkbox checked={value} id="huge" onChange={change} text="Huge" variant="primary" />
+        </block.H>
+      </>
+    )}
+  </State>
 </Playground>
 
 ### Variants
 
-Error and primary/secondary variants are should be used to focus user attention.
+Primary variant should be used to focus user attention. The disabled checkbox is unusable and un-clickable.
 
-<Playground>
-  <Checkbox text="Attention" variant="error" isChecked/>
-  <Checkbox text="Alternative action" variant="secondary" />
-  <Checkbox text="Disabled" variant="default" disabled isChecked/>
+<Playground size="S">
+  <State initial={false} change={(i) => !i}>
+    {(value, change) => (
+      <>
+        <Checkbox checked id="primary" text="Primary" variant="primary" />
+        <Checkbox checked disabled id="disabled" text="Disabled" variant="primary" />
+      </>
+    )}
+  </State>
 </Playground>
 
 ### Kinds
@@ -44,10 +86,12 @@ Error and primary/secondary variants are should be used to focus user attention.
 
 ### Props
 
-| Name        | Type                                         | Default     | Description                              |
-| ----------- | -------------------------------------------- | ----------- | ---------------------------------------- |
-| `id`        | `string`                                     |             | HTML id attribute                        |
-| `isChecked` | `boolean`                                    |             | Whether checkbox is checked or not       |
-| `text`      | `string`                                     |             | Text component                           |
-| `onChange`  | `React.ChangeEventHandler<HTMLInputElement>` |             | Callback when checkbox is clicked        |
-| `variant`   | `string`                                     | `'default'` | Variant prop to style Checkbox component |
+| Name        | Type                                         | Default     | Description                                                                  |
+| ----------- | -------------------------------------------- | ----------- | ---------------------------------------------------------------------------- |
+| `id`        | `string`                                     |             | HTML id attribute                                                            |
+| `disabled`  | `boolean`                                    |             | HTML disabled attribute                                                      |
+| `checked`   | `boolean`                                    |             | Whether checkbox is checked or not                                           |
+| `text`      | `string`                                     |             | Text component                                                               |
+| `onKeyDown` |                                              |             | The onKeydown event occurs when the user is pressing a key (on the keyboard) |
+| `onChange`  | `React.ChangeEventHandler<HTMLInputElement>` |             | Callback when checkbox is clicked                                            |
+| `variant`   | `string`                                     | `'default'` | Variant prop to style Checkbox component                                     |

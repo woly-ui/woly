@@ -1,11 +1,11 @@
-import styled from 'styled-components';
+import styled, { StyledComponent } from 'styled-components';
 
 interface GridProps {
-  columns: number;
+  columns?: number;
 }
 
 interface ColumnProps {
-  size: number;
+  size?: number;
 }
 
 const map = (properties: GridProps) => ({
@@ -20,8 +20,8 @@ export const Grid = styled.div.attrs(map)`
   display: grid;
   width: 100%;
   grid-template-columns: repeat(var(--local-columns), 1fr);
-`;
+` as StyledComponent<'div', Record<string, unknown>, GridProps>;
 
 export const Column = styled.div.attrs(columnMap)`
   grid-column: var(--local-size) span;
-`;
+` as StyledComponent<'div', Record<string, unknown>, ColumnProps>;

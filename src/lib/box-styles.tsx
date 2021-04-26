@@ -4,9 +4,14 @@ import styled from 'styled-components';
 export const Global = styled.div`
   --palette-snow-1000: #000000;
   --palette-snow-500: #c0c0c0;
+  --palette-snow-300: #e5e5e5;
   --palette-snow-100: #f5f5f5;
   --palette-snow-0: #ffffff;
+
   --palette-lavender-500: #9381f1;
+  --palette-lavender-300: #b0a3f4;
+  --palette-lavender-100: #c9c0f8;
+
   --palette-dawn-300: #ff9097;
 
   /* should be rewritten to formulas */
@@ -19,15 +24,15 @@ export const Global = styled.div`
   --woly-main-level: 3;
 
   --woly-neutral: var(--palette-snow-500);
-  --woly-focus: #9381f1;
-  --woly-background: #ffffff;
+  --woly-focus: var(--palette-lavender-500);
+  --woly-background: var(--palette-snow-0);
   --woly-danger: var(--palette-dawn-300);
-
+  
   [data-variant='primary'] {
-    --woly-shape-default: #b0a3f4;
-    --woly-shape-disabled: #e5e5e5;
-    --woly-shape-hover: #c9c0f8;
-    --woly-shape-active: #b0a3f4;
+    --woly-shape-default: var(--palette-lavender-300);
+    --woly-shape-disabled: var(--palette-snow-300);
+    --woly-shape-hover: var(--palette-lavender-100);
+    --woly-shape-active: var(--palette-lavender-300);
 
     --woly-shape-text-default: var(--palette-snow-0);
     --woly-shape-text-disabled: var(--palette-snow-0);
@@ -61,12 +66,12 @@ export const Global = styled.div`
     --woly-background-disabled: #c0c0c0;
     --woly-border-disabled: #c0c0c0;
     --woly-color-disabled: #a39bb2;
-
-    --woly-label-color: #ffffff;
+    --woly-text-disabled: #e4e4e4;
+    --woly-fill-disabled: #e4e4e4;
   }
   [data-variant='danger'] {
     --woly-shape-default: var(--woly-danger);
-    --woly-shape-disabled: #e5e5e5;
+    --woly-shape-disabled: var(--palette-snow-300);
     --woly-shape-hover: var(--woly-danger);
     --woly-shape-active: var(--woly-danger);
 
