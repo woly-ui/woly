@@ -2,8 +2,7 @@ import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
 import { Variant } from 'lib/types';
 import { keyboardEventHandle } from 'lib';
-interface InputContainerProps
-  extends React.InputHTMLAttributes<HTMLInputElement> {
+interface InputContainerProps extends React.InputHTMLAttributes<HTMLInputElement> {
   className?: string;
   disabled?: boolean;
   leftIcon?: React.ReactNode;
@@ -20,12 +19,10 @@ const InputContainerBase: React.FC<InputContainerProps & Variant> = ({
   rightIcon,
   variant = 'secondary',
 }) => {
-
   const tabIndex = disabled ? -1 : 0;
 
   const onKeyDown = React.useCallback(
     (event: React.KeyboardEvent) => {
-
       if (event.key === 'Enter') {
         event.preventDefault();
       }
@@ -56,8 +53,7 @@ const InputContainerBase: React.FC<InputContainerProps & Variant> = ({
       {rightIcon && <span data-icon="right">{rightIcon}</span>}
     </div>
   );
-}
-
+};
 
 export const InputContainer = styled(InputContainerBase)`
   --local-vertical: calc(1px * var(--woly-component-level) * var(--woly-main-level));
@@ -88,13 +84,13 @@ export const InputContainer = styled(InputContainerBase)`
   border: var(--woly-border-width) solid var(--local-border-color);
   border-radius: var(--woly-rounding);
 
-  [data-input="input"] {
+  [data-input='input'] {
     flex: 1;
     color: var(--local-value-color);
-    
+
     padding: 0 var(--local-horizontal);
 
-    input{
+    input {
       padding: 0;
     }
 
@@ -105,7 +101,7 @@ export const InputContainer = styled(InputContainerBase)`
 
   [data-icon] {
     --local-icon-size: var(--woly-line-height);
-    
+
     display: flex;
     align-items: center;
     justify-content: center;
@@ -113,9 +109,9 @@ export const InputContainer = styled(InputContainerBase)`
     width: var(--local-icon-size);
     height: var(--local-icon-size);
 
-      svg > path {
-        fill: var(--local-icon-fill);
-      }
+    svg > path {
+      fill: var(--local-icon-fill);
+    }
   }
 
   [data-icon='left'] {
@@ -126,8 +122,8 @@ export const InputContainer = styled(InputContainerBase)`
     padding: 0 calc(var(--local-horizontal) - var(--local-compensate)) 0 0;
   }
 
-  [data-icon='left'] ~ [data-input="input"],
-  [data-input="input"] ~ [data-icon='right'] {
+  [data-icon='left'] ~ [data-input='input'],
+  [data-input='input'] ~ [data-icon='right'] {
     padding-left: var(--local-gap);
   }
 
@@ -146,7 +142,7 @@ export const InputContainer = styled(InputContainerBase)`
 
   &:active {
     --local-border-color: var(--woly-focus);
-    
+
     [data-icon] {
       --local-icon-fill: var(--woly-canvas-text-default);
     }
@@ -159,8 +155,4 @@ export const InputContainer = styled(InputContainerBase)`
     --local-border-color: var(--woly-shape-disabled);
     --local-value-color: var(--woly-canvas-text-disabled);
   }
-` as StyledComponent<
-  'div',
-  Record<string, unknown>,
-  InputContainerProps & Variant
->;
+` as StyledComponent<'div', Record<string, unknown>, InputContainerProps & Variant>;

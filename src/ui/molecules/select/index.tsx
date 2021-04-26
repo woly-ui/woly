@@ -156,7 +156,7 @@ export const Select = styled(SelectBase)`
     background: var(--woly-canvas, #ffffff);
     border-color: var(--woly-border, var(--woly-background, #f8f7f7));
     border-style: solid;
-    border-width: var(--woly-border-width, 1.5px);
+    border-width: var(--woly-border-width);
     border-radius: var(--woly-rounding, 3px);
     box-sizing: border-box;
     color: var(--woly-color, #000000);
@@ -181,7 +181,7 @@ export const Select = styled(SelectBase)`
     background-color: var(--woly-canvas, #ffffff);
     border-color: var(--woly-border, var(--woly-background, #f8f7f7));
     border-style: solid;
-    border-width: var(--woly-border-width, 1px);
+    border-width: var(--woly-border-width);
     border-radius: var(--woly-rounding, 3px);
     padding: 0;
     z-index: 1;
