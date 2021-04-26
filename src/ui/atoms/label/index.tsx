@@ -6,7 +6,7 @@ interface LabelProps extends React.LabelHTMLAttributes<HTMLLabelElement> {
 }
 
 const map = (properties: LabelProps & Variant) => ({
-  'data-variant': properties.variant || 'default',
+  'data-variant': properties.variant || 'secondary',
 });
 
 export const Label = styled.label.attrs(map)`

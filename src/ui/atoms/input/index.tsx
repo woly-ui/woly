@@ -25,7 +25,7 @@ const InputBase: React.FC<InputProps & Variant> = ({
   rightIcon,
   type = 'text',
   value,
-  variant = 'default',
+  variant = 'secondary',
 }) => (
   <InputContainer
     className={className}

@@ -33,6 +33,7 @@ Modal based on `Backdrop`.
                   name="name"
                   placeholder="Enter your name here"
                   onChange={(event) => console.info('On input name change')}
+                  variant="primary"
                 />
               </label>
             </p>
@@ -43,12 +44,13 @@ Modal based on `Backdrop`.
                 name="email"
                 placeholder="Enter your email here"
                 onChange={(event) => console.info('On input email change')}
+                variant="primary"
               />
             </label>
             <p>
               <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                 <Button onClick={change} text="Save" variant="primary" />
-                <Button onClick={change} text="Cancel" />
+                <Button onClick={change} text="Cancel" variant="secondary"/>
               </div>
             </p>
           </Surface>
@@ -67,6 +69,6 @@ Modal based on `Backdrop`.
 
 ### Props
 
-| Name      | Type     | Default     | Description                              |
-| --------- | -------- | ----------- | ---------------------------------------- |
-| `variant` | `string` | `'default'` | Variant prop to style Backdrop component |
+| Name      | Type     | Default       | Description                              |
+| --------- | -------- | ------------- | ---------------------------------------- |
+| `variant` | `string` | `'secondary'` | Variant prop to style Backdrop component |

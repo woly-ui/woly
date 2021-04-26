@@ -18,7 +18,7 @@ const InputContainerBase: React.FC<InputContainerProps & Variant> = ({
   leftIcon,
   onChange,
   rightIcon,
-  variant = 'default',
+  variant = 'secondary',
 }) => {
 
   const tabIndex = disabled ? -1 : 0;

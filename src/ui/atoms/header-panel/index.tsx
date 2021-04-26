@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { Variant } from 'lib/types';
 
 const map = (properties: Variant) => ({
-  'data-variant': properties.variant || 'default',
+  'data-variant': properties.variant || 'secondary',
 });
 
 export const HeaderPanel = styled.div.attrs(map)`

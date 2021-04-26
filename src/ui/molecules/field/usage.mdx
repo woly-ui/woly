@@ -27,7 +27,7 @@ The input line indicates where to enter text, displayed below the label.
 <Playground>
   <Field label="Label">
     <Input
-      variant="default"
+      variant="secondary"
       name="name"
       onChange={(event) => console.info('On input change')}
       placeholder="Placeholder"
@@ -44,16 +44,16 @@ or also as a label of group of component, eg checkbox or radiobutton groups.
 
 <Playground size="S">
   <Field label="Label of group">
-    <Checkbox text="Item text" variant="default" />
-    <Checkbox text="Item text" variant="default" />
-    <Checkbox text="Item text" variant="default" />
+    <Checkbox text="Item text" variant="secondary" />
+    <Checkbox text="Item text" variant="secondary" />
+    <Checkbox text="Item text" variant="secondary" />
   </Field>
-  <Field label="Label for a standalone component" variant="default">
+  <Field label="Label for a standalone component" variant="secondary">
     <TextArea
       name="name"
       placeholder="TextArea"
       onChange={() => console.info('On textarea change')}
-      variant="default"
+      variant="secondary"
       overflow="hidden"
       isDisabled
     />
@@ -65,7 +65,7 @@ or also as a label of group of component, eg checkbox or radiobutton groups.
       name="input"
       onChange={() => console.info('change')}
       placeholder="Enter password"
-      variant="default"
+      variant="secondary"
     />
   </Field>
 </Playground>{' '}
@@ -74,9 +74,9 @@ Labels and children component can be replaced in row
 
 <Playground size="S">
   <Field label="Label of set" row>
-    <Checkbox text="Item text" variant="default" />
-    <Checkbox text="Item text" variant="default" />
-    <Checkbox text="Item text" variant="default" />
+    <Checkbox text="Item text" variant="secondary" />
+    <Checkbox text="Item text" variant="secondary" />
+    <Checkbox text="Item text" variant="secondary" />
   </Field>
   <State initial={false} change={(i) => !i}>
     {(value, change) => (
@@ -95,9 +95,9 @@ or in column variants
 
 <Playground size="S">
   <Field label="Label of set">
-    <Checkbox text="Item text" variant="default" />
-    <Checkbox text="Item text" variant="default" />
-    <Checkbox text="Item text" variant="default" />
+    <Checkbox text="Item text" variant="secondary" />
+    <Checkbox text="Item text" variant="secondary" />
+    <Checkbox text="Item text" variant="secondary" />
   </Field>
   <State initial={false} change={(i) => !i}>
     {(value, change) => (
@@ -120,9 +120,9 @@ or in column variants
 
 ### Props
 
-| Name       | Type              | Default     | Description                                                  |
-| ---------- | ----------------- | ----------- | ------------------------------------------------------------ |
-| `children` | `React.ReactNode` |             | Trigger element of Popover                                   |
-| `label`    | `React.ReactNode` |             | Text appeared on the button                                  |
-| `row`      | `boolean`         |             | The row attribute specifies direction of label and component |
-| `variant`  | `string`          | `'default'` | Variant prop to style component                              |
+| Name       | Type              | Default       | Description                                                  |
+| ---------- | ----------------- | ------------- | ------------------------------------------------------------ |
+| `children` | `React.ReactNode` |               | Trigger element of Popover                                   |
+| `label`    | `React.ReactNode` |               | Text appeared on the button                                  |
+| `row`      | `boolean`         |               | The row attribute specifies direction of label and component |
+| `variant`  | `string`          | `'secondary'` | Variant prop to style component                              |

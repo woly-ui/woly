@@ -16,7 +16,7 @@ interface HeadingProps extends React.LabelHTMLAttributes<HTMLLabelElement> {
 
 const map = (properties: HeadingProps & Variant) => ({
   'data-size': properties.size || 1,
-  'data-variant': properties.variant || 'default',
+  'data-variant': properties.variant || 'primary',
   'data-weight': properties.weight || 'medium',
 });
 

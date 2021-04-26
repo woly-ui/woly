@@ -27,7 +27,7 @@ interface List {
   }>;
 }
 
-const ListBase: React.FC<List & Variant> = ({ className, list, variant = 'default' }) => (
+const ListBase: React.FC<List & Variant> = ({ className, list, variant = 'secondary' }) => (
   <ul className={className} data-variant={variant}>
     {list.map(({ left, right, text, id, disabled, onClick }) => (
       <li key={id} data-type="list-item" data-disabled={disabled} onClick={onClick}>

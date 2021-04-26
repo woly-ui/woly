@@ -27,7 +27,7 @@ const TooltipBase: React.FC<TooltipProps & Variant> = ({
   className,
   message,
   position = 'top',
-  variant = 'default',
+  variant = 'secondary',
 }) => {
   const [tooltipPosition, setPosition] = React.useState<PositionProps>('top');
   const ref = React.useRef<HTMLDivElement>(null);
