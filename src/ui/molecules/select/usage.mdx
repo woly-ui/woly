@@ -5,15 +5,15 @@ package: 'woly'
 ---
 
 import { Select } from './index';
-import {block, Playground, StateEvent} from 'box-styles';
+import { block, Playground, StateEvent } from 'box-styles';
 import { ArrowDown } from 'icons';
 
-`Select` component to choose single option from list of options.
+Select component to choose single option from list of options.
 
 ### Example
 
-Use `Select` to choose one option from dropdown. You can pass `placeholder` if you don't have initial selected value.
-Each option has data attribute `data-value` where value of option is saved.
+Use Select to choose one option from dropdown. You can pass placeholder if you don't have initial selected value.
+Each option has data attribute data-value where value of option is saved.
 
 <Playground size="S">
   <div style={{ height: '150px' }}>
@@ -29,6 +29,7 @@ Each option has data attribute `data-value` where value of option is saved.
           ]}
           placeholder="Choose an option"
           selected={value}
+          variant="secondary"
         />
       )}
     </StateEvent>
@@ -65,7 +66,71 @@ Or you can pass initial selected value.
                 { children: 'BMW', value: 'BMW' },
               ]}
               selected="BMW"
-              isDisabled
+              variant="primary"
+              disabled
+            />
+          </div>
+        </div>
+      )}
+    </StateEvent>
+  </div>
+</Playground>
+
+### Variants
+
+Secondary variant should be used as default variant.
+
+<Playground size="S">
+  <div style={{ height: '150px' }}>
+    <StateEvent initial={null} change={(event) => event?.target?.dataset.value}>
+      {(value, change) => (
+        <Select
+          icon={<ArrowDown />}
+          onChange={change}
+          options={[
+            { children: 'Toyota', value: 'Toyota' },
+            { children: 'Opel', value: 'Opel' },
+            { children: 'BMW', value: 'BMW' },
+          ]}
+          placeholder="Choose an option"
+          selected={value}
+          variant="secondary"
+        />
+      )}
+    </StateEvent>
+  </div>
+</Playground>
+
+Primary and dander variants are should be used to focus used attention.
+
+<Playground size="S">
+  <div style={{ height: '150px' }}>
+    <StateEvent initial="Cats" change={(event) => event?.target?.dataset.value}>
+      {(value, change) => (
+        <div style={{ display: 'flex' }}>
+          <Select
+            icon={<ArrowDown />}
+            onChange={change}
+            options={[
+              { children: 'Cats', value: 'Cats' },
+              { children: 'Dogs', value: 'Dogs' },
+              { children: 'Birds', value: 'Birds' },
+            ]}
+            selected={value}
+            variant="primary"
+          />
+          <div style={{ marginLeft: '10px' }}>
+            <Select
+              icon={<ArrowDown />}
+              onChange={() => {}}
+              options={[
+                { children: 'Toyota', value: 'Toyota' },
+                { children: 'Opel', value: 'Opel' },
+                { children: 'BMW', value: 'BMW' },
+              ]}
+              selected="BMW"
+              variant="danger"
+              disabled
             />
           </div>
         </div>
@@ -78,25 +143,25 @@ Or you can pass initial selected value.
 
 | Name     | Description                                                      |
 | -------- | ---------------------------------------------------------------- |
-| `Select` | Base Select. Useful for creating a new kind of Select components |
+| Select   | Base Select. Useful for creating a new kind of Select components |
 
 ### Props
 
 | Name       | Type              | Default | Description                                                                |
 | ---------- | ----------------- | ------- | -------------------------------------------------------------------------- |
-| `children` | `React.ReactNode` |         | The content to show inside option. It can be string or string with an icon |
-| `value`    | `string`          |         | The value of option. Passed to option as an attribute `data-value`         |
+| children   | React.ReactNode   |         | The content to show inside option. It can be string or string with an icon |
+| value      | string            |         | The value of option. Passed to option as an attribute data-value           |
 
 # Props
 
 | Name          | Type                                       | Default     | Description                                   |
-| ------------- | ------------------------------------------ | ----------- | --------------------------------------------- |
+| ------------- | ------------------------------------------ | ----------- | ----------------------------------------------|
 | `icon`        | `React.ReactNode`                          |             | Component to show on the right side of select |
-| `isDisabled`  | `boolean`                                  |             | HTML disabled attribute                       |
+| `disabled`    | `boolean`                                  |             | HTML disabled attribute                       |
 | `onBlur`      | `React.FocusEventHandler<HTMLElement>`     |             | On blur event handler.                        |
 | `onChange`    | `React.EventHandler<React.SyntheticEvent>` |             | On change event handler.                      |
 | `onFocus`     | `React.FocusEventHandler<HTMLElement>`     |             | On focus event handler.                       |
 | `options`     | `SelectOptionProps[]`                      |             | An array of select options                    |
 | `placeholder` | `string`                                   | ''          | Placeholder for select                        |
 | `selected`    | `SelectOptionProps`                        |             | Selected option                               |
-| `variant`     | `string`                                   | `'default'` | Variant prop to style InputPassword component |
+| `variant`     | `string`                                   | 'default'   | Variant prop to style Select component        |
