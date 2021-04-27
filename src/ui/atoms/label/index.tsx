@@ -10,12 +10,14 @@ const map = (properties: LabelProps & Variant) => ({
 });
 
 export const Label = styled.label.attrs(map)`
-  --vertical: calc(1px * var(--woly-component-level) * var(--woly-main-level));
-  --horizontal: calc(var(--woly-const-m) + (1px * var(--woly-main-level)) + var(--vertical));
+  --local-vertical: calc(1px * var(--woly-component-level) * var(--woly-main-level));
+  --local-horizontal: calc(var(--woly-const-m) + (1px * var(--woly-main-level)) + var(--local-vertical));
 
-  padding: var(--woly-vertical, 6px) var(--woly-horizontal, 6px);
+  --local-color: var(--woly-canvas-text-default);
 
-  color: var(--woly-label-color, #000000);
+  padding: var(--local-vertical) var(--local-horizontal);
+
+  color: var(--local-color);
   font-size: var(--woly-font-size, 15px);
   line-height: var(--woly-line-height, 24px);
 ` as StyledComponent<'label', Record<string, unknown>, LabelProps & Variant>;

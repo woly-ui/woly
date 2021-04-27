@@ -3,7 +3,7 @@ name: Build Package CI
 on: [push]
 
 jobs:
-  publish:
+  build:
     runs-on: ubuntu-latest
 
     steps:

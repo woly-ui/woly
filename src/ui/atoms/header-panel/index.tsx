@@ -12,12 +12,17 @@ export const HeaderPanel = styled.div.attrs(map)`
   height: 100%;
   width: 100%;
 
-  padding: var(--woly-padding, 12px);
+  --local-vertical: calc(1px * var(--woly-component-level) * var(--woly-main-level));
+  --local-horizontal: calc(
+    var(--woly-const-m) + (1px * var(--woly-main-level)) + var(--local-vertical)
+  );
 
-  background-color: var(--woly-canvas, #ffffff);
-  border-color: var(--woly-border, #000000);
-  border-style: solid;
-  border-width: var(--woly-border-width, 0);
-  border-radius: var(--woly-rounding, 3px);
-  box-shadow: var(--woly-box-shadow, 3px 3px 9px rgba(57, 57, 57, 0.12));
+  --local-box-shadow: 3px 3px 9px rgba(57, 57, 57, 0.12);
+  
+  padding: var(--local-vertical) var(--local-horizontal);
+
+  background-color: var(--woly-background);
+  border: var(--woly-border-width) solid var(--woly-background);
+  border-radius: var(--woly-rounding);
+  box-shadow: var(--local-box-shadow);
 `;

@@ -75,44 +75,9 @@ List items can consist icon on the left side or the right. Use icons on the both
 
 List items can be clickable 
 
-<Playground>
+<Playground size="L">
    <StateEvent initial={null} change={(event) => alert('Item clicked')}>
     {(value, change) => (
-    <block.M>
-      <List
-        variant="primary"
-        list={[
-          {
-            left: <InfoIcon />,
-            id: 0,
-            text: 'Red',
-            right: <Check />,
-            onClick: change,
-          },
-          {
-            left: <InfoIcon />,
-            id: 1,
-            text: 'Green',
-            right: <Check />,
-            onClick: change,
-          },
-          {
-            left: <InfoIcon />,
-            id: 2,
-            text: 'Blue',
-            right: <Check />,
-            onClick: change,
-          },
-        ]}
-      />
-    </block.M>
-    )}
-  </StateEvent>
-</Playground>
-
-or not
-<Playground>
-  <block.L>
     <List
       variant="primary"
       list={[
@@ -121,22 +86,53 @@ or not
           id: 0,
           text: 'Red',
           right: <Check />,
+          onClick: change,
         },
         {
           left: <InfoIcon />,
           id: 1,
           text: 'Green',
           right: <Check />,
+          onClick: change,
         },
         {
           left: <InfoIcon />,
           id: 2,
           text: 'Blue',
           right: <Check />,
+          onClick: change,
         },
       ]}
     />
-  </block.L>
+    )}
+  </StateEvent>
+</Playground>
+
+or not
+<Playground size="L">
+  <List
+    variant="primary"
+    list={[
+      {
+        left: <InfoIcon />,
+        id: 0,
+        text: 'Red',
+        right: <Check />,
+      },
+      {
+        left: <InfoIcon />,
+        id: 1,
+        text: 'Green',
+        right: <Check />,
+      },
+      {
+        left: <InfoIcon />,
+        id: 2,
+        text: 'Blue',
+        right: <Check />,
+      },
+    ]}
+  />
 </Playground>
 
 ### Disabled
