@@ -104,7 +104,7 @@ export const TextArea = styled(TextAreaBase)`
     var(--woly-const-m) + (1px * var(--woly-main-level)) + var(--local-vertical)
   );
 
-  --local-border-color: var(--woly-neutral);
+  --local-border-color: var(--woly-canvas-text-hover);
   --local-background-color: var(--woly-canvas-default);
   --local-value-color: var(--woly-canvas-text-default);
 

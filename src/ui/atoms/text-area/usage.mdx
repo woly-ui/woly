@@ -41,6 +41,17 @@ Primary and danger variants are should be used to focus user attention.
   />
 </Playground>
 
+Error variant focus user attention on error.
+
+<Playground>
+  <TextArea
+    name="name"
+    placeholder="Primary"
+    onChange={() => console.info('On textarea change')}
+    variant="danger"
+  />
+</Playground>
+
 ## Disabled
 
 This Boolean attribute indicates that the user cannot interact with the control.
