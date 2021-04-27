@@ -1,39 +1,67 @@
 import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
-import { CheckIcon, UnCheckIcon } from 'icons';
 import { Variant } from 'lib/types';
+import { keyboardEventHandle } from 'lib';
 
 interface RadioButtonProps {
-    className?: string;
-    disabled?: boolean;
-    id: string;
-    checked: boolean;
-    onChange: React.ChangeEventHandler<HTMLInputElement>;
-    text?: string;
+  className?: string;
+  disabled?: boolean;
+  id: string;
+  checked: boolean;
+  onChange: React.EventHandler<React.SyntheticEvent>;
+  text?: string;
+  name: string;
 }
 
 const RadioButtonBase: React.FC<RadioButtonProps & Variant> = ({
-    className,
-    disabled,
-    id,
-    checked,
-    onChange,
-    text,
-    variant = 'default',
-    ...p
-}) => (
-    <label htmlFor={id} className={className} data-variant={variant}>
-        <span data-container="container" data-disabled={disabled}>
-            <span data-input="radio-input">
-                <input type="radio" id={id} checked={checked} onChange={onChange} {...p} />
-                <span data-radio="radio-control">
-                    <span data-icon></span>
-                </span>
-            </span>
-            {text && <span data-text="text">{text}</span>}
-        </span>
-    </label>
-);
+  className,
+  disabled = false,
+  id,
+  checked,
+  onChange,
+  text,
+  name,
+  variant = 'primary',
+  ...p
+}) => {
+  const tabIndex = disabled ? -1 : 0;
+
+  const onKeyDown = React.useCallback(
+    (event: React.KeyboardEvent) => {
+      if (event.key === 'Enter') {
+        event.preventDefault();
+      }
+      const keyHandler = {
+        enter: (event: React.SyntheticEvent<Element, Event>) => {
+          onChange(event);
+        },
+      };
+
+      keyboardEventHandle({
+        event,
+        keyHandler,
+      });
+    },
+    [onChange],
+  );
+
+  return (
+    <div
+      className={className}
+      data-disabled={disabled}
+      data-variant={variant}
+      onKeyDown={onKeyDown}
+      tabIndex={tabIndex}
+    >
+      <label htmlFor={id}>
+        <input checked={checked} id={id} name={name} onChange={onChange} type="radio" {...p} />
+        <span data-checkbox />
+        <span data-text>{text}</span>
+      </label>
+    </div>
+  );
+}
+
 
 export const RadioButton = styled(RadioButtonBase)`
   --local-vertical: calc(1px * var(--woly-component-level) * var(--woly-main-level));
@@ -42,99 +70,106 @@ export const RadioButton = styled(RadioButtonBase)`
   );
   --local-gap: var(--woly-const-m);
 
-  --local-size: 18px;
+  --local-radio-size: 18px;
+  --local-ellipse-size: 10px;
 
   --local-color-text: var(--woly-canvas-text-default);
-  --local-background: var(--woly-canvas-default);
+  --local-background: var(--woly-shape-text-default);
 
   --local-icon-fill: var(--woly-shape-default);
 
   --local-border-color: var(--woly-canvas-hover);
   --local-border-rounding: 50%;
-
-  width: 100%;
-  user-select: none;
+  
+  display: flex;
+  align-items: center;
   outline: none;
+  border-radius: var(--local-border-rounding);
 
-  input {
-    position: absolute;
-    opacity: 0;
-    height: 0;
-    width: 0;
-  }
+  margin-right: var(--local-vertical);
 
-  [data-container='container'] {
+  label {
     display: flex;
     align-items: center;
 
-    [data-input='radio-input'] {
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    cursor: pointer;
 
-      margin-right: var(--local-vertical);
-
-      [data-radio='radio-control'] {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        width: var(--local-size);
-        height: var(--local-size);
-
-        padding: var(--local-gap);
-
-        border: var(--woly-border-width) solid var(--local-border-color);
-        border-radius: var(--local-border-rounding);
-
-        background: var(--local-background);
-
-        &:hover {
-          --local-border-color: var(--woly-shape-hover);
-        }
-
-        &:active {
-          --local-border-color: var(--woly-focus);
-        }
-      }
+    input {
+      display: none;
+      outline: none;
     }
   }
-  [data-icon] {
+
+  [data-checkbox] {
+    display: flex;
     align-items: center;
     justify-content: center;
+   
+    width: var(--local-radio-size);
+    height: var(--local-radio-size);
 
-    width: 10px;
-    height: 10px;
-
+    background: var(--local-background);
     border-radius: var(--local-border-rounding);
-    background: var(--local-icon-fill);
-    padding: calc(var(--local-gap) - var(--woly-border-width));
+    border: var(--woly-border-width) solid var(--local-border-color);
+
+    margin-right: var(--local-gap);
   }
 
-  input:not(:checked) ~ [data-radio='radio-control'] > [data-icon] {
-    display: none;
-  }
-
-  input:checked ~ [data-radio='radio-control'] {
+  input:checked + [data-checkbox] {
     --local-border-color: var(--woly-shape-default);
+    &:before {
+      content: '';
 
-    [data-icon] {
-      display: flex;
+      width: var(--local-ellipse-size);
+      height: var(--local-ellipse-size);
 
-      &:hover {
-        --local-icon-fill: var(--woly-shape-hover);
-      }
+      background-color: var(--local-icon-fill);
+      border-radius: var(--local-border-rounding);
+    }
 
-      &:active {
-        --local-icon-fill: var(--woly-focus);
-      }
+    &:hover {
+      --local-border-color: var(--woly-shape-hover);
+      --local-icon-fill: var(--woly-shape-hover);
+    }
+
+    &:active {
+      --local-border-color: var(--woly-shape-active);
+      --local-icon-fill: var(--woly-shape-active);
     }
   }
 
-  [data-block='text'] {
-    font-size: var(--woly-font-size, 12px);
-    line-height: var(--woly-line-height, 24px);
+  &:hover {
+    --local-border-color: var(--woly-shape-hover);
+  }
 
+  &:active > label > [data-checkbox]{
+   --local-border-color: var(--woly-shape-active);
+  }
+
+  &:focus > label > [data-checkbox]{
+    box-shadow: 0 0 0 var(--woly-border-width) var(--woly-focus);
+  }
+ 
+  &[data-disabled='true'] {
+    pointer-events: none;
+
+    [data-checkbox] {
+      --local-border-color: var(--woly-shape-disabled);
+    }
+
+    input:checked + [data-checkbox] {
+      --local-border-color: var(--woly-shape-disabled);
+      --local-icon-fill: var(--woly-shape-disabled);
+    }
+
+    [data-text] {
+      --local-color-text: var(--woly-canvas-text-disabled);
+    }
+  }
+
+  [data-text] {
+    font-size: var(--woly-font-size);
+    line-height: var(--woly-line-height);
     color: var(--local-color-text);
   }
 ` as StyledComponent<'div', Record<string, unknown>, RadioButtonProps & Variant>;

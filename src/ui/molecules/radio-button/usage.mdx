@@ -18,14 +18,123 @@ When a user chooses a new item, the previous choice is automatically deselected.
 
 ### Example
 
-<Playground>
-  <State initial={false} change={(i) => !i}>
+<Playground direction='vertical'>
+  <State initial="no" change={(i) => !i}>
     {(value, change) => (
-      <RadioButton id="set-mode" checked={value} onChange={change} variant="primary" />
+      <>
+        <RadioButton 
+          name="my-input" 
+          id="yes" 
+          checked={value} 
+          onChange={change} 
+          variant="primary" 
+          text="yes" 
+        />
+        <RadioButton 
+          name="my-input" 
+          id="no" 
+          checked={value} 
+          onChange={change} 
+          variant="primary" 
+          text="no"
+        />
+      </>
     )}
   </State>
 </Playground>
 
+### Disabled
+
+Disabled radio button are uneditable. They have less opacity so that they appear less tappable.
+
+<Playground>
+  <State initial={false} change={(i) => !i}>
+    {(value, change) => (
+      <RadioButton id="one" checked disabled variant="primary" text="disabled" />
+    )}
+  </State>
+</Playground>
+
+### Variants
+
+Primary and danger variants are should be used to focus user attention.
+
+<Playground direction='vertical'>
+  <State initial="no" change={(i) => !i}>
+    {(value, change) => (
+      <>
+        <RadioButton 
+          name="my-input" 
+          id="yes" 
+          checked={value} 
+          onChange={change} 
+          variant="primary" 
+          text="yes" 
+        />
+        <RadioButton 
+          name="my-input" 
+          id="no" 
+          checked={value} 
+          onChange={change} 
+          variant="primary" 
+          text="no"
+        />
+      </>
+    )}
+  </State>
+</Playground>
+
+<Playground direction='vertical'>
+  <State initial="no" change={(i) => !i}>
+    {(value, change) => (
+      <>
+        <RadioButton 
+          name="my-input" 
+          id="yes" 
+          checked={value} 
+          onChange={change} 
+          variant="danger"
+          text="yes" 
+        />
+        <RadioButton 
+          name="my-input" 
+          id="no" 
+          checked={value} 
+          onChange={change} 
+          variant="danger"
+          text="no"
+        />
+      </>
+    )}
+  </State>
+</Playground>
+
+Secondary variant should be used as default variant
+
+<Playground direction='vertical'>
+  <State initial="no" change={(i) => !i}>
+    {(value, change) => (
+      <>
+        <RadioButton 
+          name="my-input" 
+          id="yes" 
+          checked={value} 
+          onChange={change} 
+          variant="secondary" 
+          text="yes" 
+        />
+        <RadioButton 
+          name="my-input" 
+          id="no" 
+          checked={value} 
+          onChange={change} 
+          variant="secondary" 
+          text="no"
+        />
+      </>
+    )}
+  </State>
+</Playground>
 ### Kinds
 
 | Name          | Description                                                        |
