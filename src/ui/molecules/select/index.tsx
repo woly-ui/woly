@@ -113,24 +113,17 @@ export const SelectBase: React.FC<SelectProps & Variant> = ({
 };
 
 export const Select = styled(SelectBase)`
-  --local-gap: calc(
+  --woly-gap: calc(
     (1px * var(--woly-main-level)) + (1px * var(--woly-main-level) * var(--woly-component-level))
   );
-  --local-vertical: calc(1px * var(--woly-component-level) * var(--woly-main-level));
-  --local-horizontal: calc(
-    var(--woly-const-m) + (1px * var(--woly-main-level)) + var(--local-vertical)
+  --woly-vertical: calc(1px * var(--woly-component-level) * var(--woly-main-level));
+  --woly-horizontal: calc(
+    var(--woly-const-m) + (1px * var(--woly-main-level)) + var(--woly-vertical)
   );
-
-  --local-background-color: var(--woly-canvas-default);
-  --local-border-color: var(--woly-neutral);
-  --local-value-color: var(--woly-canvas-text-default);
-  --local-icon-fill: var(--woly-canvas-text-active);
-
   position: relative;
   align-items: center;
   outline: none;
   cursor: pointer;
-
   &:focus > div[data-selected],
   &:active > div[data-selected] {
     
@@ -142,58 +135,47 @@ export const Select = styled(SelectBase)`
       fill: var(--woly-color-focus, #c4c4c4);
     }
   }
-
   &[data-open='true'] > div[data-selected] {
     border-color: var(--woly-border-focus, #b0a3f4);
   }
-
   svg > path {
     fill: var(--woly-color, #000000);
   }
-
   &[data-disabled='true'] {
     pointer-events: none;
-
     svg > path {
       fill: var(--woly-color-disabled, #c4c4c4);
     }
-
     div[data-selected] {
       background: var(--woly-background-disabled, #ffffff);
       border: var(--woly-border-width) solid var(--local-border-color);
       color: var(--woly-color-disabled, #c4c4c4);
     }
   }
-
   div[data-selected] {
     display: flex;
     align-items: center;
-
-    padding: var(--local-vertical) var(--local-horizontal);
-    background: var(--local-background-color);
-
-    border: var(--woly-border-width) solid var(--local-border-color);
-    border-radius: var(--woly-rounding);
+    padding: var(--woly-vertical, 16px) var(--woly-horizontal, 6.4px);
+    background: var(--woly-canvas, #ffffff);
+    border-color: var(--woly-border, var(--woly-background, #f8f7f7));
+    border-style: solid;
+    border-width: var(--woly-border-width, 1.5px);
+    border-radius: var(--woly-rounding, 3px);
     box-sizing: border-box;
-
-    color: var(--local-value-color);
-
+    color: var(--woly-color, #000000);
     div {
       width: 225px;
     }
   }
-
   span[data-icon='true'] {
     transform: rotate(180deg);
   }
-
   span[data-icon='false'] {
     display: flex;
     flex-direction: column;
     justify-content: center;
     height: 100%;
   }
-
   ul {
     display: none;
     position: absolute;
@@ -209,19 +191,16 @@ export const Select = styled(SelectBase)`
     margin-top: 6px;
     box-shadow: 3px 3px 9px rgba(57, 57, 57, 0.12);
   }
-
   ul[data-visible='true'] {
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
   }
-
   li {
     padding: var(--woly-vertical, 16px) var(--woly-horizontal, 6.4px);
     line-height: var(--woly-line-height, 24px);
     color: var(--woly-color, #000000);
     cursor: pointer;
-
     &:hover,
     &:focus,
     &:active {
@@ -230,7 +209,6 @@ export const Select = styled(SelectBase)`
       background-color: var(--woly-background-hover, #f8f8fa);
     }
   }
-
   div:not(:first-child) {
     margin-top: var(--woly-gap);
   }
