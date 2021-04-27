@@ -1,19 +1,23 @@
 import React from 'react';
 import styled, { Interpolation, css } from 'styled-components';
 
-type DOMTag = keyof HTMLElementTagNameMap | keyof SVGElementTagNameMap;
+// type DOMTag = keyof HTMLElementTagNameMap | keyof SVGElementTagNameMap;
 
 interface Variant<Props> {
   [caseName: string]: Interpolation<Props>;
 }
 
-type DOMProperties<Tag> = Tag extends keyof HTMLElementTagNameMap
-  ? HTMLElementTagNameMap[Tag]
-  : Tag extends keyof SVGElementTagNameMap
-  ? SVGElementTagNameMap[Tag]
-  : never;
+// type DOMProperties<Tag> = Tag extends keyof HTMLElementTagNameMap
+//   ? HTMLElementTagNameMap[Tag]
+//   : Tag extends keyof SVGElementTagNameMap
+//   ? SVGElementTagNameMap[Tag]
+//   : never;
+
+type DOMTag = keyof JSX.IntrinsicElements;
+type DOMProperties<Tag extends DOMTag> = keyof JSX.IntrinsicElements[Tag];
 
 interface Config<Tag extends DOMTag, Props, Variants extends Record<string, Variant<Props>>> {
+  // mapVariants
   attrs?: Partial<DOMProperties<Tag>>;
   variants?: Variants;
   defaults?: { [VariantKey in keyof Variants]?: keyof Variants[VariantKey] };
@@ -27,14 +31,49 @@ interface Config<Tag extends DOMTag, Props, Variants extends Record<string, Vari
 
 export function component<
   Tag extends DOMTag,
-  Props,
+  Props extends {},
   Variants extends Record<string, Variant<Props>>
 >(
   tag: Tag,
   content: Interpolation<Props> | Interpolation<Props>[],
   config: Config<Tag, Props, Variants> = {},
 ): React.FC<Props> {
-  return null as any;
+  const {
+    defaults = {},
+    variants = {},
+    compound = [],
+    // mapVariants = {},
+    attrs,
+    children: childrenComponent,
+  } = config;
+
+  const cssChunks: Interpolation<Props>[] = [];
+
+  for (const [variantName, cases] of Object.entries(variants as Variants)) {
+    for (const [caseName, interpolation] of Object.entries(cases)) {
+      cssChunks.push(
+        `&[data-${variantName}='${caseName}'] {
+            ${interpolation}
+          }
+        `,
+      );
+    }
+  }
+
+  for (const { css, ...matchers } of compound) {
+    const selector = ['&'];
+    for (const [variantName, caseName] of Object.entries(matchers)) {
+      selector.push(`[data-${variantName}="${caseName}"]`);
+    }
+    cssChunks.push(`${selector.join('')} { ${css} }`);
+  }
+
+  const d = styled[tag];
+  d;
+
+  // const tagLiteral = attrs ? styled[tag].attrs(attrs) : styled[tag];
+
+  return () => null as any;
 }
 
 const Demo = component(
@@ -43,6 +82,7 @@ const Demo = component(
     color: black;
   `,
   {
+    // mapVariants: { demo: (count) => count > 0 ? 'demo' : 'second' },
     variants: {
       demo: {
         first: css`
