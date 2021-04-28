@@ -1,8 +1,7 @@
 import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
 
-interface InputElementProps
-  extends React.InputHTMLAttributes<HTMLInputElement> {
+interface InputElementProps extends React.InputHTMLAttributes<HTMLInputElement> {
   className?: string;
   name: string;
   onChange: React.EventHandler<React.SyntheticEvent>;

@@ -27,7 +27,7 @@ export const Global = styled.div`
   --woly-focus: var(--palette-lavender-500);
   --woly-background: var(--palette-snow-0);
   --woly-danger: var(--palette-dawn-300);
-  
+
   [data-variant='primary'] {
     --woly-shape-default: var(--palette-lavender-300);
     --woly-shape-disabled: var(--palette-snow-300);
