@@ -102,10 +102,7 @@ export const Checkbox = styled(CheckboxBase)`
     }
 
     input {
-      position: absolute;
-      opacity: 0;
-      height: 0;
-      width: 0;
+      display: none;
     }
 
     [data-checkmark] {

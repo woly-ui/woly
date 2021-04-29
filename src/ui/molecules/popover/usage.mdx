@@ -5,8 +5,31 @@ package: 'woly'
 ---
 
 import { Playground, block } from 'box-styles'
-import { ButtonIcon, Popover, Button, List } from 'ui';
+import { ButtonIcon, Popover, Button, ListContainer, ListItem } from 'ui';
 import { SearchIcon } from 'icons';
+
+export const links = [
+  {
+    id: "fwed324fcse",
+    content: "John",
+    disabled: false
+  },
+  {
+    id: "fwed32q4fcss",
+    content: "Alex",
+    disabled: true
+  },
+    {
+    id: "fwed32q4fcsw",
+    content: "Michael",
+    disabled: false
+  },
+    {
+    id: "fwed32q4fcsb",
+    content: "Donald",
+    disabled: false
+  }
+];
 
 Popover is based on Surface and opens on click on element or custom logic.
 
@@ -45,14 +68,20 @@ If you scroll to the bottom of page and there is no place for Popover to show it
       <Popover
         isOpen={false}
         content={
-          <List
-            style={{ width: '100%' }}
-            list={[
-              { id: 0, text: 'Red' },
-              { id: 1, text: 'Green' },
-              { id: 2, text: 'Blue' },
-            ]}
-          />
+          <ListContainer variant="primary" style={{ width: '100%' }} as="ul">
+            {links.map(({ id, content, disabled }) => (
+              <ListItem
+                as="a"
+                disabled={disabled}
+                href={`#${id}`}
+                iconLeft={<InfoIcon />}
+                iconRight={<InfoIcon />}
+                key={id}
+                text={content}
+                variant="primary"
+              />
+            ))}
+          </ListContainer>
         }
       >
         <Button text="Toggle menu" onClick={() => {}} variant="primary" />
