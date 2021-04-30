@@ -16,7 +16,7 @@ const FieldBase: React.FC<FieldProps & Variant> = ({
   className,
   label,
   row = false,
-  variant = 'default',
+  variant = 'secondary',
 }) => (
   <div className={className} data-row={row} data-variant={variant}>
     <div data-field="label">

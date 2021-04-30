@@ -19,7 +19,7 @@ const CheckboxBase: React.FC<CheckboxProps & Variant> = ({
   checked,
   onChange,
   text,
-  variant = 'default',
+  variant = 'secondary',
 }) => {
   const tabIndex = disabled ? -1 : 0;
 
