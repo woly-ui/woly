@@ -16,7 +16,7 @@ InputPassword can be used in an authorization form or to confirm user action.
 ### Example
 
 <Playground>
- <State initial={false} change={(i) => !i}>
+  <State initial={false} change={(i) => !i}>
     {(value, change) => (
       <InputPassword
         onClick={change}
@@ -96,73 +96,73 @@ Size controlled by the `component-level` block property not from the props.
 <Playground direction="vertical">
   <block.S>
     <State initial={false} change={(i) => !i}>
-    {(value, change) => (
-      <InputPassword
-        onClick={change}
-        variant="primary"
-        name="name"
-        placeholder="Enter password"
-        onChange={(event) => console.info('On input change')}
-        variant="primary"
-      />
-    )}
-  </State>
+      {(value, change) => (
+        <InputPassword
+          onClick={change}
+          variant="primary"
+          name="name"
+          placeholder="Enter password"
+          onChange={(event) => console.info('On input change')}
+          variant="primary"
+        />
+      )}
+    </State>
   </block.S>
   <block.M>
     <State initial={false} change={(i) => !i}>
-    {(value, change) => (
-      <InputPassword
-        onClick={change}
-        variant="primary"
-        name="name"
-        placeholder="Enter password"
-        onChange={(event) => console.info('On input change')}
-        variant="primary"
-      />
-    )}
-  </State>
+      {(value, change) => (
+        <InputPassword
+          onClick={change}
+          variant="primary"
+          name="name"
+          placeholder="Enter password"
+          onChange={(event) => console.info('On input change')}
+          variant="primary"
+        />
+      )}
+    </State>
   </block.M>
   <block.L>
     <State initial={false} change={(i) => !i}>
-    {(value, change) => (
-      <InputPassword
-        onClick={change}
-        variant="primary"
-        name="name"
-        placeholder="Enter password"
-        onChange={(event) => console.info('On input change')}
-        variant="primary"
-      />
-    )}
-  </State>
+      {(value, change) => (
+        <InputPassword
+          onClick={change}
+          variant="primary"
+          name="name"
+          placeholder="Enter password"
+          onChange={(event) => console.info('On input change')}
+          variant="primary"
+        />
+      )}
+    </State>
   </block.L>
   <block.XL>
     <State initial={false} change={(i) => !i}>
-    {(value, change) => (
-      <InputPassword
-        onClick={change}
-        variant="primary"
-        name="name"
-        placeholder="Enter password"
-        onChange={(event) => console.info('On input change')}
-        variant="primary"
-      />
-    )}
-  </State>
+      {(value, change) => (
+        <InputPassword
+          onClick={change}
+          variant="primary"
+          name="name"
+          placeholder="Enter password"
+          onChange={(event) => console.info('On input change')}
+          variant="primary"
+        />
+      )}
+    </State>
   </block.XL>
   <block.H>
     <State initial={false} change={(i) => !i}>
-    {(value, change) => (
-      <InputPassword
-        onClick={change}
-        variant="primary"
-        name="name"
-        placeholder="Enter password"
-        onChange={(event) => console.info('On input change')}
-        variant="primary"
-      />
-    )}
-  </State>
+      {(value, change) => (
+        <InputPassword
+          onClick={change}
+          variant="primary"
+          name="name"
+          placeholder="Enter password"
+          onChange={(event) => console.info('On input change')}
+          variant="primary"
+        />
+      )}
+    </State>
   </block.H>
 </Playground>
 
@@ -173,17 +173,17 @@ Inputs can be placed inside the container. Input width is equal to container siz
 <Playground direction="vertical">
   <block.L>
     <State initial={false} change={(i) => !i}>
-    {(value, change) => (
-      <InputPassword
-        onClick={change}
-        variant="primary"
-        name="name"
-        placeholder="Enter password"
-        onChange={(event) => console.info('On input change')}
-        variant="primary"
-      />
-    )}
-  </State>
+      {(value, change) => (
+        <InputPassword
+          onClick={change}
+          variant="primary"
+          name="name"
+          placeholder="Enter password"
+          onChange={(event) => console.info('On input change')}
+          variant="primary"
+        />
+      )}
+    </State>
   </block.L>
 </Playground>
 
@@ -195,13 +195,13 @@ Inputs can be placed inside the container. Input width is equal to container siz
 
 ### Props
 
-| Name           | Type                                         | Default     | Description                                                 |
-| -------------- | -------------------------------------------- | ----------- | ----------------------------------------------------------- |
-| `disabled`     | `boolean`                                    | `null`      | HTML disabled attribute                                     |
-| `name`         | `string`                                     |             | HTML name attribute                                         |
-| `onChange`     | `React.ChangeEventHandler<HTMLInputElement>` |             | Callback when input is changed                              |
-| `value`        | `HTMLInputElement['value']`                  | `null`      | HTML value attribute                                        | 
-| `variant`      | `string`                                     | `'default'` | Variant prop to style InputPassword component               |
-| `placeholder`  | `string`                                     |             |  CSS pseudo-element represents the placeholder text         |
-| `rightIcon`    | `React.ReactNode`                            |             | Component to show on the right side of the text (ex.: Icon) |
-| `...`          | `HTMLInputElement`                           | `{}`        | Other props are inherited from `HTMLInputElement`           |
+| Name          | Type                                         | Default     | Description                                                 |
+| ------------- | -------------------------------------------- | ----------- | ----------------------------------------------------------- |
+| `disabled`    | `boolean`                                    | `null`      | HTML disabled attribute                                     |
+| `name`        | `string`                                     |             | HTML name attribute                                         |
+| `onChange`    | `React.ChangeEventHandler<HTMLInputElement>` |             | Callback when input is changed                              |
+| `value`       | `HTMLInputElement['value']`                  | `null`      | HTML value attribute                                        |
+| `variant`     | `string`                                     | `'default'` | Variant prop to style InputPassword component               |
+| `placeholder` | `string`                                     |             | CSS pseudo-element represents the placeholder text          |
+| `rightIcon`   | `React.ReactNode`                            |             | Component to show on the right side of the text (ex.: Icon) |
+| `...`         | `HTMLInputElement`                           | `{}`        | Other props are inherited from `HTMLInputElement`           |

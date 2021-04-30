@@ -14,14 +14,14 @@ import { ButtonIcon } from '../../atoms';
 `Input` is a field to accept data from the user. Input is used to create form fields that accept user input.
 They typically appear in forms and dialogs.
 
-Inputs requiring certain data formats such as numbers, e-mail addresses or passwords are declared accordingly. 
+Inputs requiring certain data formats such as numbers, e-mail addresses or passwords are declared accordingly.
 This makes it easier for the user to enter information using a virtual keyboard.
 
 When a input is active or contains an error, the input’s border color and thickness vary.
 
 ## Placeholder text (Hint text)
 
-Placeholder text rests in the input field until the user starts entering text. 
+Placeholder text rests in the input field until the user starts entering text.
 It may contain an action or an example, such as a phone number or email address.
 
 ## Helper text
@@ -35,10 +35,9 @@ Specs:
 - Left justified
 - On a single line if possible, or with text wrapping (if multiple lines)
 
-
 ## Error message
 
-When input isn’t accepted, text fields can display an error message below the input line, with instructions on how to fix the error. 
+When input isn’t accepted, text fields can display an error message below the input line, with instructions on how to fix the error.
 Until the error is fixed, the error replaces the helper text.
 
 An error message should appear on a single line, if possible.
@@ -51,7 +50,6 @@ Specs:
 
 - Right justified
 - Displayed as a ratio of characters used and the character limit (formatted as: characters used / character limit)
-
 
 ### Example
 
@@ -69,7 +67,7 @@ Specs:
 
 Disabled text fields are uneditable. They have less opacity so that they appear less tappable.
 
-<Playground direction='vertical'>
+<Playground direction="vertical">
   <Input
     disabled
     name="name"
@@ -89,7 +87,7 @@ Disabled text fields are uneditable. They have less opacity so that they appear 
   />
 </Playground>
 
-### Icons 
+### Icons
 
 Inputs can be combined with an icon on the left side or the right. Use icons on the both sides is not recommended.
 
@@ -121,10 +119,10 @@ Inputs can be combined with an icon on the left side or the right. Use icons on 
   />
 </Playground>
 
-Icons can also be touch targets for nested components. 
+Icons can also be touch targets for nested components.
 
 <Playground size="L" direction="vertical">
-  <Input 
+  <Input
     rightIcon={
       <block.S>
         <ButtonIcon
@@ -140,7 +138,7 @@ Icons can also be touch targets for nested components.
     onChange={(event) => console.info('On input change')}
     variant="primary"
   />
-  <Input 
+  <Input
     leftIcon={<InfoIcon />}
     type="text"
     name="name"
@@ -163,7 +161,7 @@ Icons can also be touch targets for nested components.
 
 Primary and danger variants are should be used to focus user attention.
 
-<Playground direction='vertical'>
+<Playground direction="vertical">
   <Input
     leftIcon={<InfoIcon />}
     name="name"
@@ -183,7 +181,6 @@ Primary and danger variants are should be used to focus user attention.
     onChange={(event) => console.info('On input change')}
   />
 </Playground>
-
 
 Secondary variant should be used as a default variant.
 
@@ -210,7 +207,7 @@ Size controlled by the `component-level` block property not from the props.
       placeholder="Enter your name here"
       type="text"
       variant="primary"
-  />
+    />
   </block.S>
   <block.M>
     <Input
@@ -219,7 +216,7 @@ Size controlled by the `component-level` block property not from the props.
       placeholder="Enter your name here"
       type="text"
       variant="primary"
-  />
+    />
   </block.M>
   <block.L>
     <Input
@@ -228,7 +225,7 @@ Size controlled by the `component-level` block property not from the props.
       placeholder="Enter your name here"
       type="text"
       variant="primary"
-  />
+    />
   </block.L>
   <block.XL>
     <Input
@@ -237,7 +234,7 @@ Size controlled by the `component-level` block property not from the props.
       placeholder="Enter your name here"
       type="text"
       variant="primary"
-  />
+    />
   </block.XL>
   <block.H>
     <Input
@@ -246,7 +243,7 @@ Size controlled by the `component-level` block property not from the props.
       placeholder="Enter your name here"
       type="text"
       variant="primary"
-  />
+    />
   </block.H>
 </Playground>
 
@@ -264,10 +261,10 @@ Inputs can be placed inside the container. Input width is equal to container siz
       placeholder="Enter your name here"
       variant="primary"
       onChange={(event) => console.info('On input change')}
-  />
+    />
   </block.L>
   <block.L>
-    <Input 
+    <Input
       leftIcon={<InfoIcon />}
       type="text"
       name="name"
@@ -287,7 +284,6 @@ Inputs can be placed inside the container. Input width is equal to container siz
   </block.L>
 </Playground>
 
-
 ### Kinds
 
 | Name    | Description                              |
@@ -296,15 +292,15 @@ Inputs can be placed inside the container. Input width is equal to container siz
 
 ### Props
 
-| Name           | Type                                                  | Default     | Description                                                 |
-| -------------- | ----------------------------------------------------- | ----------- | ----------------------------------------------------------- |
-| `type`         | `"text" ӏ "password" ӏ "email"`                       | `text`      | HTML type of the input                                      |
-| `name`         | `string`                                              |             | Name attribute specifies a name of the input                |
-| `value`        | `HTMLInputElement['value']`                           | `null`      | Value of input field                                        |
-| `onChange`     | `React.EventHandler<React.SyntheticEvent>;`           |             | On change event handler.                                    |
-| `variant`      | `string`                                              | `'default'` | Variant prop to style Input component                       |
-| `leftIcon`     | `React.ReactNode`                                     |             | Component to show on the left side of the text (ex.: Icon)  |
-| `disabled`     | `boolean`                                             |             | HTML disabled attribute                                     |
-| `placeholder`  | `string`                                              |             |  CSS pseudo-element represents the placeholder text         |
-|`rightIcon`     | `React.ReactNode`                                     |             | Component to show on the right side of the text (ex.: Icon) |
-| `...`          | `HTMLInputElement`                                    | `{}`        | Other props are inherited from `HTMLInputElement`           |
+| Name          | Type                                        | Default     | Description                                                 |
+| ------------- | ------------------------------------------- | ----------- | ----------------------------------------------------------- |
+| `type`        | `"text" ӏ "password" ӏ "email"`             | `text`      | HTML type of the input                                      |
+| `name`        | `string`                                    |             | Name attribute specifies a name of the input                |
+| `value`       | `HTMLInputElement['value']`                 | `null`      | Value of input field                                        |
+| `onChange`    | `React.EventHandler<React.SyntheticEvent>;` |             | On change event handler.                                    |
+| `variant`     | `string`                                    | `'default'` | Variant prop to style Input component                       |
+| `leftIcon`    | `React.ReactNode`                           |             | Component to show on the left side of the text (ex.: Icon)  |
+| `disabled`    | `boolean`                                   |             | HTML disabled attribute                                     |
+| `placeholder` | `string`                                    |             | CSS pseudo-element represents the placeholder text          |
+| `rightIcon`   | `React.ReactNode`                           |             | Component to show on the right side of the text (ex.: Icon) |
+| `...`         | `HTMLInputElement`                          | `{}`        | Other props are inherited from `HTMLInputElement`           |

@@ -18,7 +18,7 @@ export const HeaderPanel = styled.div.attrs(map)`
   );
 
   --local-box-shadow: 3px 3px 9px rgba(57, 57, 57, 0.12);
-  
+
   padding: var(--local-vertical) var(--local-horizontal);
 
   background-color: var(--woly-background);

@@ -81,11 +81,7 @@ Labels and children component can be replaced in row
   <State initial={false} change={(i) => !i}>
     {(value, change) => (
       <Field label="Label of item" row>
-        <Switch
-          isChecked={value}
-          onChange={change}
-          id="roundTwo"
-          variant="primary"/>
+        <Switch isChecked={value} onChange={change} id="roundTwo" variant="primary" />
       </Field>
     )}
   </State>
@@ -102,19 +98,15 @@ or in column variants
   <State initial={false} change={(i) => !i}>
     {(value, change) => (
       <Field label="Label of item">
-        <Switch
-          isChecked={value}
-          onChange={change}
-          id="roundOne"
-          variant="primary"/>
+        <Switch isChecked={value} onChange={change} id="roundOne" variant="primary" />
       </Field>
     )}
   </State>
 </Playground>
 
-### Variants 
+### Variants
 
-Secondary variant  should be used as a default variarnt.
+Secondary variant should be used as a default variarnt.
 
 <Playground direction="vertical">
   <Field label="Default textarea" variant="danger">
@@ -139,11 +131,7 @@ Secondary variant  should be used as a default variarnt.
   <State initial={false} change={(i) => !i}>
     {(value, change) => (
       <Field label="Default switch">
-        <Switch
-          isChecked={value}
-          onChange={change}
-          id="roundOne"
-          variant="secondary"/>
+        <Switch isChecked={value} onChange={change} id="roundOne" variant="secondary" />
       </Field>
     )}
   </State>
@@ -174,11 +162,7 @@ Error variant can be used to focus user attention on error.
   <State initial={false} change={(i) => !i}>
     {(value, change) => (
       <Field label="Switch with error">
-        <Switch
-          isChecked={value}
-          onChange={change}
-          id="roundOne"
-          variant="danger"/>
+        <Switch isChecked={value} onChange={change} id="roundOne" variant="danger" />
       </Field>
     )}
   </State>

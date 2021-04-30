@@ -126,7 +126,6 @@ export const Select = styled(SelectBase)`
   cursor: pointer;
   &:focus > div[data-selected],
   &:active > div[data-selected] {
-    
     --local-border-color: var(--woly-focus);
     box-shadow: 0 0 0 var(--woly-border-width) var(--woly-focus);
 
