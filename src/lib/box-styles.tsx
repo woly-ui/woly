@@ -2,6 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 
 export const Global = styled.div`
+  * {
+    font-family: 'Helvetica Neue', sans-serif;
+  }
+
   --palette-snow-1000: #000000;
   --palette-snow-500: #c0c0c0;
   --palette-snow-300: #e5e5e5;
@@ -27,7 +31,7 @@ export const Global = styled.div`
   --woly-focus: var(--palette-lavender-500);
   --woly-background: var(--palette-snow-0);
   --woly-danger: var(--palette-dawn-300);
-  
+
   [data-variant='primary'] {
     --woly-shape-default: var(--palette-lavender-300);
     --woly-shape-disabled: var(--palette-snow-300);
