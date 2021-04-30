@@ -37,20 +37,20 @@ Sign in form based on `Surface`.
         >
           <Surface>
             <FormBlock>
-              <Label variant="base">Name</Label>
+              <Label variant="primary">Name</Label>
               <Input
                 name="name"
                 onChange={() => console.info('On input change')}
                 placeholder="Ivan Ivanov"
                 type="text"
-                variant="base"
+                variant="primary"
               />
-              <Label variant="base">Password</Label>
+              <Label variant="primary">Password</Label>
               <Input
                 name="password"
                 onChange={() => console.info('On input change')}
                 type="password"
-                variant="base"
+                variant="primary"
               />
               <Button
                 style={{ marginTop: '20px' }}
@@ -116,7 +116,7 @@ Aside menu based on `Surface`.
 
 ### Props
 
-| Name       | Type              | Default     | Description                                                       |
-| ---------- | ----------------- | ----------- | ----------------------------------------------------------------- |
-| `variant`  | `string`          | `'default'` | Variant prop to style Popover component                           |
-| `children` | `React.ReactNode` |             | Pass any content as a children property within Surface component. |
+| Name       | Type              | Default       | Description                                                       |
+| ---------- | ----------------- | ------------- | ----------------------------------------------------------------- |
+| `variant`  | `string`          | `'secondary'` | Variant prop to style Popover component                           |
+| `children` | `React.ReactNode` |               | Pass any content as a children property within Surface component. |

@@ -44,7 +44,7 @@ const ChipBase: React.FC<ChipProps & Variant> = ({
   icon,
   onActionClick,
   onClick,
-  variant = 'default',
+  variant = 'secondary',
 }) => {
   const chipRole = onClick ? 'button' : 'div';
   const chipTabIndex = onClick ? 1 : 0;

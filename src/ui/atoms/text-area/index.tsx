@@ -33,7 +33,7 @@ const TextAreaBase: React.FC<TextAreaProps & Variant> = ({
   resize,
   rows,
   value,
-  variant = 'default',
+  variant = 'secondary',
   wrap,
   ...p
 }) => {

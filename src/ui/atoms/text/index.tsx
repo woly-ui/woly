@@ -9,7 +9,7 @@ interface TextProps extends React.LabelHTMLAttributes<HTMLLabelElement> {
 
 const map = (properties: TextProps & Variant) => ({
   'data-type': properties.type || 'subtitle',
-  'data-variant': properties.variant || 'default',
+  'data-variant': properties.variant || 'primary',
   'data-weight': properties.weight || 'regular',
 });
 

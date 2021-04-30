@@ -41,7 +41,7 @@ export const SelectBase: React.FC<SelectProps & Variant> = ({
   options,
   placeholder = '',
   selected,
-  variant = 'default',
+  variant = 'secondary',
 }) => {
   const [isOpen, setIsOpen] = React.useReducer((is) => !is, false);
   const selectRef = React.useRef(null);

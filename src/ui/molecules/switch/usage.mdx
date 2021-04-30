@@ -51,7 +51,7 @@ Switch is used to choose between two different options.
           background: value ? 'black' : 'white',
         }}
       >
-        <Label style={{ paddingRight: '20px' }} variant={value ? 'secondary' : 'default'}>
+        <Label style={{ paddingRight: '20px' }} variant={value ? 'primary' : 'secondary'}>
           Dark mode
         </Label>
         <Switch id="set-mode" checked={value} onChange={change} variant="primary" />
@@ -80,11 +80,11 @@ Error variant focus attention user on error
 
 ### Props
 
-| Name       | Type                                         | Default     | Description                                       |
-| ---------- | -------------------------------------------- | ----------- | ------------------------------------------------- |
-| `checked`  | `boolean`                                    |             | Whether switch is checked or not                  |
-| `disabled` | `boolean`                                    |             | Disable switch                                    |
-| `id`       | `string`                                     |             | HTML id attribute                                 |
-| `onChange` | `React.ChangeEventHandler<HTMLInputElement>` |             | Callback when switch is clicked                   |
-| `variant`  | `string`                                     | `'default'` | Variant prop to style Switch component            |
-| `...`      | `HTMLInputElement`                           | `{}`        | Other props are inherited from `HTMLInputElement` |
+| Name       | Type                                         | Default       | Description                                       |
+| ---------- | -------------------------------------------- | ------------- | ------------------------------------------------- |
+| `checked`  | `boolean`                                    |               | Whether switch is checked or not                  |
+| `disabled` | `boolean`                                    |               | Disable switch                                    |
+| `id`       | `string`                                     |               | HTML id attribute                                 |
+| `onChange` | `React.ChangeEventHandler<HTMLInputElement>` |               | Callback when switch is clicked                   |
+| `variant`  | `string`                                     | `'secondary'` | Variant prop to style Switch component            |
+| `...`      | `HTMLInputElement`                           | `{}`          | Other props are inherited from `HTMLInputElement` |
