@@ -7,6 +7,7 @@ export type ButtonVariants = 'default' | 'primary' | 'destructive' | 'text';
 export type ButtonSizes = 'default' | 'small';
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  children?: never;
   className?: string;
   icon?: React.ReactNode;
   text: React.ReactNode;
