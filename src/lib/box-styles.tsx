@@ -256,14 +256,6 @@ export const Line = styled.div`
   align-items: baseline;
 `;
 
-export const Modal = styled.div`
-  z-index: 1;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-`;
-
 export const ColumnContent = styled.div`
   background: var(--palette-lavender-500);
   color: var(--palette-snow-0);
