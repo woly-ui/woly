@@ -60,6 +60,18 @@ Switch is used to choose between two different options.
   </State>
 </Playground>
 
+### Variants
+
+Error variant focus attention user on error
+
+<Playground direction="horizontal">
+  <State initial={false} change={(i) => !i}>
+    {(value, change) => (
+      <Switch id="unchecked" checked={value} onChange={change} variant="danger" />
+    )}
+  </State>
+</Playground>
+
 ### Kinds
 
 | Name     | Description                                           |
