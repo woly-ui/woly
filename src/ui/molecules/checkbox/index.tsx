@@ -114,7 +114,7 @@ export const Checkbox = styled(CheckboxBase)`
 
       margin-right: var(--local-gap);
 
-      svg{
+      svg {
         border-radius: var(--woly-rounding);
       }
     }
