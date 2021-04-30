@@ -1,6 +1,7 @@
 import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
 import { Variant } from 'lib/types';
+
 import { InputContainer, InputElement } from '../../elements/quarks';
 
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
@@ -52,12 +53,11 @@ export const Input = styled(InputBase)`
   --local-horizontal: calc(
     var(--woly-const-m) + (1px * var(--woly-main-level)) + var(--local-vertical)
   );
-  
+
   box-sizing: border-box;
   width: 100%;
 
   &[data-disabled='true'] {
     pointer-events: none;
   }
-
 ` as StyledComponent<'div', Record<string, unknown>, InputProps & Variant>;
