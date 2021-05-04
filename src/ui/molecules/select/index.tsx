@@ -188,7 +188,7 @@ export const Select = styled(SelectBase)`
     padding: 0;
     z-index: 1;
     margin-top: 6px;
-    box-shadow: 3px 3px 9px rgba(57, 57, 57, 0.12);
+    box-shadow: var(--woly-shadow);
   }
   ul[data-visible='true'] {
     display: flex;
