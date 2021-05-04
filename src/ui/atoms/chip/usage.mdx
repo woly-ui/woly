@@ -27,7 +27,7 @@ As a standalone component, the most common use will be in some form of input, so
 ### Example
 
 <Playground>
-  <Chip variant="default">Simple Chip</Chip>
+  <Chip variant="primary">Simple Chip</Chip>
 </Playground>
 
 ### Clickable
@@ -39,18 +39,18 @@ In case when chip is clickable, it defined change appearance on focus, hover, an
 If chip consists another clickable component (eg button), this property defined will display a component which changes appearance on hover.
 
 <Playground>
-  <Chip variant="default" onClick={() => console.info('click')}>
+  <Chip variant="primary" onClick={() => console.info('click')}>
     Cklicked Chip
   </Chip>
   <Chip
-    variant="default"
+    variant="primary"
     action={<CloseIcon />}
     onActionClick={() => console.info('ActionIcon clicked')}
   >
     Cklicked Icon
   </Chip>
   <Chip
-    variant="default"
+    variant="primary"
     onClick={() => console.info('click')}
     action={<CloseIcon />}
     onActionClick={() => console.info('ActionIcon clicked')}
@@ -67,14 +67,14 @@ Chip can be used with icon on the left side or button on the right side.
 Even chip can be used with both options.
 
 <Playground>
-  <Chip variant="default" icon={<PlusIcon />}>
+  <Chip variant="primary" icon={<PlusIcon />}>
     Chip with Icon
   </Chip>
-  <Chip variant="default" icon={<PlusIcon />} onClick={() => console.info('click')}>
+  <Chip variant="primary" icon={<PlusIcon />} onClick={() => console.info('click')}>
     Cklicked Chip
   </Chip>
   <Chip
-    variant="default"
+    variant="primary"
     icon={<PlusIcon />}
     onClick={() => console.info('click')}
     action={<CloseIcon />}
@@ -83,7 +83,7 @@ Even chip can be used with both options.
     Cklicked Icon
   </Chip>
   <Chip
-    variant="default"
+    variant="primary"
     icon={<PlusIcon />}
     onClick={() => console.info('click')}
     action={<CloseIcon />}
@@ -102,11 +102,11 @@ Even chip can be used with both options.
 
 ### Props
 
-| Name            | Type                                  | Default     | Description                                        |
-| --------------- | ------------------------------------- | ----------- | -------------------------------------------------- |
-| `children`      | `string`                              |             | Text inside chip                                   |
-| `action`        | `React.ReactNode`                     | `null`      | Icon to show on the right side of the text         |
-| `onActionClick` | `React.MouseEvent<HTMLButtonElement>` | `null`      | Callback when chip is clicked                      |
-| `onClick`       | `React.MouseEvent<HTMLDivElement>`    | `null`      | Callback when chip is clicked                      |
-| `variant`       | `string`                              | `'default'` | Variant prop to style Chip component               |
-| `...`           | `HTMLButtonElement`                   | `{}`        | Other props are inherited from `HTMLButtonElement` |
+| Name            | Type                                  | Default       | Description                                        |
+| --------------- | ------------------------------------- | ------------- | -------------------------------------------------- |
+| `children`      | `string`                              |               | Text inside chip                                   |
+| `action`        | `React.ReactNode`                     | `null`        | Icon to show on the right side of the text         |
+| `onActionClick` | `React.MouseEvent<HTMLButtonElement>` | `null`        | Callback when chip is clicked                      |
+| `onClick`       | `React.MouseEvent<HTMLDivElement>`    | `null`        | Callback when chip is clicked                      |
+| `variant`       | `string`                              | `'secondary'` | Variant prop to style Chip component               |
+| `...`           | `HTMLButtonElement`                   | `{}`          | Other props are inherited from `HTMLButtonElement` |

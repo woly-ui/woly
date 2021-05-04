@@ -1,13 +1,6 @@
 import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
 import { Variant } from 'lib/types';
-
-/**
- * --woly-font-size
- * --woly-label-color
- * --woly-line-height
- */
-
 interface HeadingProps extends React.LabelHTMLAttributes<HTMLLabelElement> {
   children: React.ReactNode;
   size?: 1 | 2 | 3;
@@ -16,12 +9,14 @@ interface HeadingProps extends React.LabelHTMLAttributes<HTMLLabelElement> {
 
 const map = (properties: HeadingProps & Variant) => ({
   'data-size': properties.size || 1,
-  'data-variant': properties.variant || 'default',
+  'data-variant': properties.variant || 'primary',
   'data-weight': properties.weight || 'medium',
 });
 
 export const Heading = styled.span.attrs(map)`
-  color: var(--woly-color, #000000);
+  --local-color: var(--woly-canvas-text-default);
+
+  color: var(--local-color);
   font-size: 24px;
   line-height: 30px;
   font-weight: 500;

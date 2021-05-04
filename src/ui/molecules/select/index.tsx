@@ -29,7 +29,7 @@ export const SelectBase: React.FC<SelectProps & Variant> = ({
   options,
   placeholder = '',
   selected,
-  variant = 'default',
+  variant = 'secondary',
 }) => {
   const [isOpen, setIsOpen] = React.useReducer((is) => !is, false);
   const selectRef = React.useRef(null);
@@ -174,6 +174,8 @@ export const Select = styled(SelectBase)`
     
     padding: 0;
     margin-top: var(--local-gap);
+    
+    box-shadow: var(--woly-shadow);
   }
 
   ul[data-visible='true'] {

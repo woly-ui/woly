@@ -1,12 +1,6 @@
 import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
 import { Variant } from 'lib/types';
-
-/**
- * --woly-hint-color
- * --woly-color
- */
-
 interface TextProps extends React.LabelHTMLAttributes<HTMLLabelElement> {
   children: React.ReactNode;
   type?: 'L' | 'S' | 'XS' | 'M' | 'subtitle' | 'hint';
@@ -15,13 +9,15 @@ interface TextProps extends React.LabelHTMLAttributes<HTMLLabelElement> {
 
 const map = (properties: TextProps & Variant) => ({
   'data-type': properties.type || 'subtitle',
-  'data-variant': properties.variant || 'default',
+  'data-variant': properties.variant || 'primary',
   'data-weight': properties.weight || 'regular',
 });
 
 export const Text = styled.p.attrs(map)`
+  --local-color: var(--woly-canvas-text-default);
+  
   margin: 0;
-  color: var(--woly-color, #000000);
+  color: var(--local-color);
   font-size: 15px;
   line-height: 21px;
   font-weight: 400;
@@ -52,7 +48,7 @@ export const Text = styled.p.attrs(map)`
   &[data-type='hint'] {
     font-size: 12px;
     line-height: 15px;
-    color: var(--woly-hint-color, #000000);
+    color: var(--local-color);
   }
 
   &[data-type='hint'][data-weight='light'] {

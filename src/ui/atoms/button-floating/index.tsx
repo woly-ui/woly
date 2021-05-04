@@ -27,7 +27,7 @@ interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 const ButtonFloatingBase: React.FC<Props & Variant> = ({
   icon,
   onClick,
-  variant = 'default',
+  variant = 'secondary',
   ...p
 }) => {
   const onClickHandler = React.useCallback(

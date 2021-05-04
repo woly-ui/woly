@@ -18,7 +18,7 @@ const InputContainerBase: React.FC<InputContainerProps & Variant> = ({
   leftIcon,
   onChange,
   rightIcon,
-  variant = 'default',
+  variant = 'secondary',
 }) => {
 
   const tabIndex = disabled ? -1 : 0;
@@ -69,7 +69,7 @@ export const InputContainer = styled(InputContainerBase)`
   --local-compensate: var(--woly-const-m);
 
   --local-background-color: var(--woly-canvas-default);
-  --local-border-color: var(--woly-neutral);
+  --local-border-color: var(--woly-canvas-text-hover);
   --local-icon-fill: var(--woly-canvas-text-active);
   --local-value-color: var(--woly-canvas-text-default);
 
@@ -132,12 +132,11 @@ export const InputContainer = styled(InputContainerBase)`
   }
 
   &:focus {
-    --local-border-color: var(--woly-focus);
-    box-shadow: 0 0 0 2px var(--woly-focus);
+    box-shadow: 0 0 0 var(--woly-border-width) var(--woly-focus);
     outline: none;
 
     [data-icon] {
-        --local-icon-fill: var(--woly-canvas-text-default);
+      --local-icon-fill: var(--woly-canvas-text-default);
     }
   }
 

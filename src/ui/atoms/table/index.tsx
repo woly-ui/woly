@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { Variant } from 'lib/types';
 
 const map = (properties: { columns: number } & Variant) => ({
-  'data-variant': properties.variant || 'default',
+  'data-variant': properties.variant || 'secondary',
   style: { '--local-columns': properties.columns },
 });
 

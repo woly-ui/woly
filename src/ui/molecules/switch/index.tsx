@@ -17,7 +17,7 @@ const SwitchBase: React.FC<SwitchProps & Variant> = ({
   checked,
   disabled = false,
   onChange,
-  variant = 'default',
+  variant = 'secondary',
   ...p
 }) => {
   const tabIndex = disabled ? -1 : 0;
