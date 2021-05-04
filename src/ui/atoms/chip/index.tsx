@@ -121,7 +121,7 @@ export const Chip = styled(ChipBase)`
   }
 
   [role='button']:focus {
-    box-shadow: 0 0 0 1px var(--woly-border-focus, #9381f1);
+    box-shadow: 0 0 0 var(--woly-border-width) var(--woly-border-focus, #9381f1);
   }
 
   [role='button']:hover {
@@ -158,7 +158,7 @@ export const Chip = styled(ChipBase)`
 
     border-color: var(--woly-border, transparent);
     border-style: solid;
-    border-width: var(--woly-border-width, 0);
+    border-width: var(--woly-border-width);
     border-radius: var(--woly-rounding, 3px);
 
     outline: none;
@@ -191,7 +191,7 @@ export const Chip = styled(ChipBase)`
     }
 
     &:focus {
-      box-shadow: 0 0 0 1px var(--woly-border-focus, #9381f1);
+      box-shadow: 0 0 0 var(--woly-border-width) var(--woly-border-focus, #9381f1);
     }
   }
 ` as StyledComponent<'div', Record<string, unknown>, ChipProps & Variant>;

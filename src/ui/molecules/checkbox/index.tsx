@@ -178,7 +178,7 @@ export const Checkbox = styled(CheckboxBase)`
       justify-content: center;
 
       svg > rect {
-       fill: var(--woly-shape-disabled);
+        fill: var(--woly-shape-disabled);
       }
     }
 

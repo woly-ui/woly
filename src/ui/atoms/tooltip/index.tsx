@@ -88,7 +88,7 @@ export const Tooltip = styled(TooltipBase)`
     background-color: var(--woly-background, #ffffff);
     border-color: var(--woly-border, var(--woly-background, #ffffff));
     border-style: solid;
-    border-width: var(--woly-border-width, 0);
+    border-width: var(--woly-border-width);
     border-radius: var(--woly-rounding, 6px);
 
     transition: all 0.3s ease-in-out;
