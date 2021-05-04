@@ -111,12 +111,12 @@ export const Select = styled(SelectBase)`
   --local-background-input-color: var(--woly-canvas-default);
   --local-border-input-color: var(--woly-canvas-text-active);
 
-  --local-icon-fill: var(--woly-canvas-text-disabled);
+  --local-icon-fill: var(--woly-canvas-text-default);
 
   --local-list-background: var(--woly-shape-text-default);
   --local-border-list: var(--woly-canvas-default);
 
-  --local-value-color: var(--woly-canvas-text-disabled);
+  --local-value-color: var(--woly-canvas-text-default);
   --local-item-background: var(--woly-canvas-default);
 
   --local-select-width: 225px;
