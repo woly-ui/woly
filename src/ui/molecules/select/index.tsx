@@ -126,7 +126,9 @@ export const Select = styled(SelectBase)`
   cursor: pointer;
   &:focus > div[data-selected],
   &:active > div[data-selected] {
-    border-color: var(--woly-background-focus, #1f68f5);
+    --local-border-color: var(--woly-focus);
+    box-shadow: 0 0 0 var(--woly-border-width) var(--woly-focus);
+
     color: var(--woly-color-focus, #000000);
     svg > path {
       fill: var(--woly-color-focus, #c4c4c4);
@@ -145,7 +147,7 @@ export const Select = styled(SelectBase)`
     }
     div[data-selected] {
       background: var(--woly-background-disabled, #ffffff);
-      border-color: var(--woly-border-disabled, var(--woly-background-disabled, #c4c4c4));
+      border: var(--woly-border-width) solid var(--local-border-color);
       color: var(--woly-color-disabled, #c4c4c4);
     }
   }

@@ -11,7 +11,9 @@ const map = (properties: LabelProps & Variant) => ({
 
 export const Label = styled.label.attrs(map)`
   --local-vertical: calc(1px * var(--woly-component-level) * var(--woly-main-level));
-  --local-horizontal: calc(var(--woly-const-m) + (1px * var(--woly-main-level)) + var(--local-vertical));
+  --local-horizontal: calc(
+    var(--woly-const-m) + (1px * var(--woly-main-level)) + var(--local-vertical)
+  );
 
   --local-color: var(--woly-canvas-text-default);
 

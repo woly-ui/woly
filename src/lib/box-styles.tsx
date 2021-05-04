@@ -56,23 +56,25 @@ export const Global = styled.div`
   }
 
   [data-variant='secondary'] {
-    --woly-border-width: 1.5px;
+    --woly-shape-default: var(--palette-snow-500);
+    --woly-shape-disabled: var(--palette-snow-100);
+    --woly-shape-hover: var(--palette-snow-500);
+    --woly-shape-active: var(--palette-snow-500);
 
-    --woly-background: #ffffff;
-    --woly-border: #b0a3f4;
-    --woly-color: #b0a3f4;
-    --woly-hint-color: #c4c4c4;
-    --woly-background-hover: #ffffff;
-    --woly-border-hover: #c9c0f8;
-    --woly-color-hover: #c9c0f8;
-    --woly-background-focus: #ffffff;
-    --woly-border-focus: #9381f1;
-    --woly-color-focus: #9381f1;
-    --woly-background-disabled: #c0c0c0;
-    --woly-border-disabled: #c0c0c0;
-    --woly-color-disabled: #a39bb2;
-    --woly-text-disabled: #e4e4e4;
-    --woly-fill-disabled: #e4e4e4;
+    --woly-shape-text-default: var(--palette-snow-0);
+    --woly-shape-text-disabled: var(--palette-snow-0);
+    --woly-shape-text-hover: var(--palette-snow-0);
+    --woly-shape-text-active: var(--palette-snow-0);
+
+    --woly-canvas-default: transparent;
+    --woly-canvas-disabled: var(--palette-snow-100);
+    --woly-canvas-hover: var(--palette-snow-500);
+    --woly-canvas-active: var(--palette-snow-500);
+
+    --woly-canvas-text-default: var(--palette-snow-1000);
+    --woly-canvas-text-disabled: var(--palette-snow-500);
+    --woly-canvas-text-hover: var(--palette-snow-500);
+    --woly-canvas-text-active: var(--palette-snow-500);
   }
   [data-variant='danger'] {
     --woly-shape-default: var(--woly-danger);
