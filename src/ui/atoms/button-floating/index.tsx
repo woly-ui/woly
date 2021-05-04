@@ -56,7 +56,7 @@ export const ButtonFloating = styled(ButtonFloatingBase)`
   border-color: var(--woly-border, #000000);
   border-style: solid;
 
-  border-width: var(--woly-border-width, 0);
+  border-width: var(--woly-border-width);
   border-radius: 50%;
 
   cursor: pointer;

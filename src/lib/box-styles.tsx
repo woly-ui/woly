@@ -187,7 +187,7 @@ const Frame = styled.div`
   max-width: 100%;
   padding: 1rem;
   overflow: auto;
-  border: 2px solid var(--base, rgb(246, 248, 250));
+  border: 2px solid rgb(246, 248, 250);
   border-radius: 4px;
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
