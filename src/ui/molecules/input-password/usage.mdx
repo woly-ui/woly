@@ -16,7 +16,7 @@ InputPassword can be used in an authorization form or to confirm user action.
 ### Example
 
 <Playground>
- <State initial={false} change={(i) => !i}>
+  <State initial={false} change={(i) => !i}>
     {(value, change) => (
       <InputPassword
         onClick={change}
@@ -46,8 +46,7 @@ Disabled text fields are uneditable. They have less opacity so that they appear 
 
 ### Variants
 
-Primary and secondary variants are should be used to focus user attention.
-<!-- example for secondary variant will be fixed with task FRNT-476 -->
+Primary and danger variants are should be used to focus user attention.
 
 <Playground direction="vertical">
   <State initial={false} change={(i) => !i}>
@@ -61,22 +60,6 @@ Primary and secondary variants are should be used to focus user attention.
       />
     )}
   </State>
-  <State initial={false} change={(i) => !i}>
-    {(value, change) => (
-      <InputPassword
-        onClick={change}
-        name="name"
-        placeholder="Enter password"
-        onChange={(event) => console.info('On input change')}
-        variant="secondary"
-      />
-    )}
-  </State>
-</Playground>
-
-Error variant can be used to focus user attention on error.
-
-<Playground direction="vertical">
   <State initial={false} change={(i) => !i}>
     {(value, change) => (
       <InputPassword
@@ -90,6 +73,22 @@ Error variant can be used to focus user attention on error.
   </State>
 </Playground>
 
+Secondary variant should be used as a default variant.
+
+<Playground direction="vertical">
+  <State initial={false} change={(i) => !i}>
+    {(value, change) => (
+      <InputPassword
+        onClick={change}
+        name="name"
+        placeholder="Enter password"
+        onChange={(event) => console.info('On input change')}
+        variant="secondary"
+      />
+    )}
+  </State>
+</Playground>
+
 ### Sizes
 
 Size controlled by the `component-level` block property not from the props.
@@ -97,73 +96,73 @@ Size controlled by the `component-level` block property not from the props.
 <Playground direction="vertical">
   <block.S>
     <State initial={false} change={(i) => !i}>
-    {(value, change) => (
-      <InputPassword
-        onClick={change}
-        variant="primary"
-        name="name"
-        placeholder="Enter password"
-        onChange={(event) => console.info('On input change')}
-        variant="primary"
-      />
-    )}
-  </State>
+      {(value, change) => (
+        <InputPassword
+          onClick={change}
+          variant="primary"
+          name="name"
+          placeholder="Enter password"
+          onChange={(event) => console.info('On input change')}
+          variant="primary"
+        />
+      )}
+    </State>
   </block.S>
   <block.M>
     <State initial={false} change={(i) => !i}>
-    {(value, change) => (
-      <InputPassword
-        onClick={change}
-        variant="primary"
-        name="name"
-        placeholder="Enter password"
-        onChange={(event) => console.info('On input change')}
-        variant="primary"
-      />
-    )}
-  </State>
+      {(value, change) => (
+        <InputPassword
+          onClick={change}
+          variant="primary"
+          name="name"
+          placeholder="Enter password"
+          onChange={(event) => console.info('On input change')}
+          variant="primary"
+        />
+      )}
+    </State>
   </block.M>
   <block.L>
     <State initial={false} change={(i) => !i}>
-    {(value, change) => (
-      <InputPassword
-        onClick={change}
-        variant="primary"
-        name="name"
-        placeholder="Enter password"
-        onChange={(event) => console.info('On input change')}
-        variant="primary"
-      />
-    )}
-  </State>
+      {(value, change) => (
+        <InputPassword
+          onClick={change}
+          variant="primary"
+          name="name"
+          placeholder="Enter password"
+          onChange={(event) => console.info('On input change')}
+          variant="primary"
+        />
+      )}
+    </State>
   </block.L>
   <block.XL>
     <State initial={false} change={(i) => !i}>
-    {(value, change) => (
-      <InputPassword
-        onClick={change}
-        variant="primary"
-        name="name"
-        placeholder="Enter password"
-        onChange={(event) => console.info('On input change')}
-        variant="primary"
-      />
-    )}
-  </State>
+      {(value, change) => (
+        <InputPassword
+          onClick={change}
+          variant="primary"
+          name="name"
+          placeholder="Enter password"
+          onChange={(event) => console.info('On input change')}
+          variant="primary"
+        />
+      )}
+    </State>
   </block.XL>
   <block.H>
     <State initial={false} change={(i) => !i}>
-    {(value, change) => (
-      <InputPassword
-        onClick={change}
-        variant="primary"
-        name="name"
-        placeholder="Enter password"
-        onChange={(event) => console.info('On input change')}
-        variant="primary"
-      />
-    )}
-  </State>
+      {(value, change) => (
+        <InputPassword
+          onClick={change}
+          variant="primary"
+          name="name"
+          placeholder="Enter password"
+          onChange={(event) => console.info('On input change')}
+          variant="primary"
+        />
+      )}
+    </State>
   </block.H>
 </Playground>
 
@@ -174,17 +173,17 @@ Inputs can be placed inside the container. Input width is equal to container siz
 <Playground direction="vertical">
   <block.L>
     <State initial={false} change={(i) => !i}>
-    {(value, change) => (
-      <InputPassword
-        onClick={change}
-        variant="primary"
-        name="name"
-        placeholder="Enter password"
-        onChange={(event) => console.info('On input change')}
-        variant="primary"
-      />
-    )}
-  </State>
+      {(value, change) => (
+        <InputPassword
+          onClick={change}
+          variant="primary"
+          name="name"
+          placeholder="Enter password"
+          onChange={(event) => console.info('On input change')}
+          variant="primary"
+        />
+      )}
+    </State>
   </block.L>
 </Playground>
 

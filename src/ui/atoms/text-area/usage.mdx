@@ -26,7 +26,7 @@ TextArea is often used in a form, to collect user inputs like comments or review
 
 Primary and danger variants are should be used to focus user attention.
 
-<Playground>
+<Playground direction="vertical">
   <TextArea
     name="name"
     placeholder="Primary"
@@ -35,20 +35,21 @@ Primary and danger variants are should be used to focus user attention.
   />
   <TextArea
     name="name"
-    placeholder="Secondary"
+    placeholder="Error"
+    value="Error"
     onChange={() => console.info('On textarea change')}
-    variant="secondary"
+    variant="danger"
   />
 </Playground>
 
-Error variant focus user attention on error.
+Secondary variant should be used as a default variant.
 
 <Playground>
   <TextArea
     name="name"
     placeholder="Primary"
     onChange={() => console.info('On textarea change')}
-    variant="danger"
+    variant="secondary"
   />
 </Playground>
 
