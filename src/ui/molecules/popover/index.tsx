@@ -19,7 +19,7 @@ const PopoverBase: React.FC<Props & Variant> = ({
   content,
   isOpen,
   position = 'bottom',
-  variant = 'default',
+  variant = 'secondary',
 }) => {
   const ref = React.useRef<HTMLDivElement>(null);
 

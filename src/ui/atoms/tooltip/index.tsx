@@ -27,7 +27,7 @@ const TooltipBase: React.FC<TooltipProps & Variant> = ({
   className,
   message,
   position = 'top',
-  variant = 'default',
+  variant = 'secondary',
 }) => {
   const [tooltipPosition, setPosition] = React.useState<PositionProps>('top');
   const ref = React.useRef<HTMLDivElement>(null);
@@ -95,7 +95,7 @@ export const Tooltip = styled(TooltipBase)`
     z-index: 1;
     opacity: 0;
     cursor: pointer;
-    box-shadow: 3px 3px 9px rgba(57, 57, 57, 0.12);
+    box-shadow: var(--woly-shadow);
     width: max-content;
     min-width: 112px;
     max-width: 240px;

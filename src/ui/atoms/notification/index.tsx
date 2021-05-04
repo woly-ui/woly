@@ -9,7 +9,7 @@ interface NotificationProps {
 const NotificationBase: React.FC<NotificationProps & Variant> = ({
   className,
   message,
-  variant = 'default',
+  variant = 'secondary',
 }) => (
   <div className={className} data-variant={variant}>
     <div>{message}</div>

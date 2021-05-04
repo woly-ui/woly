@@ -24,7 +24,7 @@ export const InputPasswordBase: React.FC<InputPasswordProps & Variant> = ({
   placeholder,
   type = 'text',
   value,
-  variant = 'default',
+  variant = 'secondary',
 }) => {
   const [isVisible, onClick] = React.useReducer((is) => !is, false);
 

@@ -10,12 +10,15 @@ import { CloseIcon } from 'icons';
 
 `HeaderPanel` is a navigation component that displays information and actions relating to the current screen.
 
+### Example
+
 <Playground>
   <div style={{ marginBottom: '10px' }}>
     <HeaderPanel>Hello! It`s a HeaderPanel</HeaderPanel>
   </div>
 </Playground>
-### Example
+
+### Menu example
 
 <Playground>
   <State initial={false} change={(i) => !i}>
@@ -53,20 +56,20 @@ import { CloseIcon } from 'icons';
         >
           <Surface>
             <FormBlock>
-              <Label variant="base">Name</Label>
+              <Label variant="primary">Name</Label>
               <Input
                 name="name"
                 onChange={(event) => console.info('On input change')}
                 placeholder="Ivan Ivanov"
                 type="text"
-                variant="base"
+                variant="primary"
               />
-              <Label variant="base">Password</Label>
+              <Label variant="primary">Password</Label>
               <Input
                 name="password"
                 onChange={(event) => console.info('On input change')}
                 type="password"
-                variant="base"
+                variant="primary"
               />
               <Button
                 style={{ marginTop: '20px' }}
@@ -90,7 +93,7 @@ import { CloseIcon } from 'icons';
 
 ### Props
 
-| Name       | Type              | Default     | Description                                                           |
-| ---------- | ----------------- | ----------- | --------------------------------------------------------------------- |
-| `variant`  | `string`          | `'default'` | Variant prop to style HeaderPanel component                           |
-| `children` | `React.ReactNode` |             | Pass any content as a children property within HeaderPanel component. |
+| Name       | Type              | Default       | Description                                                           |
+| ---------- | ----------------- | ------------- | --------------------------------------------------------------------- |
+| `variant`  | `string`          | `'secondary'` | Variant prop to style HeaderPanel component                           |
+| `children` | `React.ReactNode` |               | Pass any content as a children property within HeaderPanel component. |

@@ -23,6 +23,7 @@ export const Global = styled.div`
   --woly-border-width: 1.5px;
   --woly-rounding: 3px;
   --woly-font-size: 15px;
+  --woly-shadow: 3px 3px 9px rgba(57, 57, 57, 0.12);
 
   --woly-const-m: 6px;
   --woly-main-level: 3;
