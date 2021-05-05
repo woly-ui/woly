@@ -269,3 +269,10 @@ export const ColumnContent = styled.div`
 export const TableContent = styled.div`
   padding: 10px;
 `;
+
+export const Form = styled.form`
+  width: 100%;
+  & > div {
+    margin-bottom: 10px;
+  }
+`;

@@ -7,7 +7,7 @@ package: 'woly'
 import { Input } from './index';
 import { InfoIcon } from 'icons';
 
-import { Playground, block, State } from 'box-styles'
+import { Playground, block, State, Form } from 'box-styles'
 
 import { ButtonIcon } from '../../atoms';
 
@@ -54,13 +54,15 @@ Specs:
 ### Example
 
 <Playground>
-  <Input
-    name="name"
-    onChange={(event) => console.info('On input change')}
-    placeholder="Enter your name here"
-    type="text"
-    variant="primary"
-  />
+  <Form autoComplete="false">
+    <Input
+      name="name"
+      onChange={(event) => console.info('On input change')}
+      placeholder="Enter your name here"
+      type="text"
+      variant="primary"
+    />
+  </Form>
 </Playground>
 
 ### Disabled
@@ -68,23 +70,25 @@ Specs:
 Disabled text fields are uneditable. They have less opacity so that they appear less tappable.
 
 <Playground direction="vertical">
-  <Input
-    disabled
-    name="name"
-    onChange={(event) => console.info('On input change')}
-    placeholder="Enter your name here"
-    type="text"
-    variant="primary"
-  />
-  <Input
-    disabled
-    leftIcon={<InfoIcon />}
-    name="name"
-    onChange={(event) => console.info('On input change')}
-    placeholder="Enter your name here"
-    type="text"
-    variant="primary"
-  />
+  <Form autoComplete="false">
+    <Input
+      disabled
+      name="name"
+      onChange={(event) => console.info('On input change')}
+      placeholder="Enter your name here"
+      type="text"
+      variant="primary"
+    />
+    <Input
+      disabled
+      leftIcon={<InfoIcon />}
+      name="name"
+      onChange={(event) => console.info('On input change')}
+      placeholder="Enter your name here"
+      type="text"
+      variant="primary"
+    />
+  </Form>
 </Playground>
 
 ### Icons
@@ -92,178 +96,55 @@ Disabled text fields are uneditable. They have less opacity so that they appear 
 Inputs can be combined with an icon on the left side or the right. Use icons on the both sides is not recommended.
 
 <Playground direction="vertical" size="L">
-  <Input
-    leftIcon={<InfoIcon />}
-    type="text"
-    name="name"
-    placeholder="Enter your name here"
-    variant="primary"
-    onChange={(event) => console.info('On input change')}
-  />
-  <Input
-    type="text"
-    name="name"
-    placeholder="Enter your name here"
-    variant="primary"
-    onChange={(event) => console.info('On input change')}
-    rightIcon={<InfoIcon />}
-  />
-  <Input
-    leftIcon={<InfoIcon />}
-    type="text"
-    name="name"
-    placeholder="Enter your name here"
-    variant="primary"
-    onChange={(event) => console.info('On input change')}
-    rightIcon={<InfoIcon />}
-  />
+  <Form autoComplete="false">
+    <Input
+      leftIcon={<InfoIcon />}
+      type="text"
+      name="name"
+      placeholder="Enter your name here"
+      variant="primary"
+      onChange={(event) => console.info('On input change')}
+    />
+    <Input
+      type="text"
+      name="name"
+      placeholder="Enter your name here"
+      variant="primary"
+      onChange={(event) => console.info('On input change')}
+      rightIcon={<InfoIcon />}
+    />
+    <Input
+      leftIcon={<InfoIcon />}
+      type="text"
+      name="name"
+      placeholder="Enter your name here"
+      variant="primary"
+      onChange={(event) => console.info('On input change')}
+      rightIcon={<InfoIcon />}
+    />
+  </Form>
 </Playground>
 
 Icons can also be touch targets for nested components.
 
 <Playground size="L" direction="vertical">
-  <Input
-    rightIcon={
-      <block.S>
-        <ButtonIcon
-          icon={<InfoIcon />}
-          onClick={() => console.info('ButtonIcon clicked')}
-          variant="primary"
-        />
-      </block.S>
-    }
-    type="text"
-    name="name"
-    placeholder="Enter your name here"
-    onChange={(event) => console.info('On input change')}
-    variant="primary"
-  />
-  <Input
-    leftIcon={<InfoIcon />}
-    type="text"
-    name="name"
-    placeholder="Enter your name here"
-    onChange={(event) => console.info('On input change')}
-    variant="primary"
-    rightIcon={
-      <block.S>
-        <ButtonIcon
-          icon={<InfoIcon />}
-          onClick={() => console.info('ButtonIcon clicked')}
-          variant="primary"
-        />
-      </block.S>
-    }
-  />
-</Playground>
-
-### Variants
-
-Primary and danger variants are should be used to focus user attention.
-
-<Playground direction="vertical">
-  <Input
-    leftIcon={<InfoIcon />}
-    name="name"
-    onChange={(event) => console.info('On input change')}
-    placeholder="Primary input"
-    type="text"
-    value="Primary"
-    variant="primary"
-  />
-  <Input
-    leftIcon={<InfoIcon />}
-    type="text"
-    name="name"
-    placeholder="Error input"
-    value="Error input"
-    variant="danger"
-    onChange={(event) => console.info('On input change')}
-  />
-</Playground>
-
-Secondary variant should be used as a default variant.
-
-<Playground>
-  <Input
-    leftIcon={<InfoIcon />}
-    name="name"
-    onChange={(event) => console.info('On input change')}
-    placeholder="Secondary input"
-    variant="secondary"
-    type="text"
-  />
-</Playground>
-
-### Sizes
-
-Size controlled by the `component-level` block property not from the props.
-
-<Playground direction="vertical">
-  <block.S>
+  <Form autoComplete="false">
     <Input
-      name="name"
-      onChange={(event) => console.info('On input change')}
-      placeholder="Enter your name here"
-      type="text"
-      variant="primary"
-    />
-  </block.S>
-  <block.M>
-    <Input
-      name="name"
-      onChange={(event) => console.info('On input change')}
-      placeholder="Enter your name here"
-      type="text"
-      variant="primary"
-    />
-  </block.M>
-  <block.L>
-    <Input
-      name="name"
-      onChange={(event) => console.info('On input change')}
-      placeholder="Enter your name here"
-      type="text"
-      variant="primary"
-    />
-  </block.L>
-  <block.XL>
-    <Input
-      name="name"
-      onChange={(event) => console.info('On input change')}
-      placeholder="Enter your name here"
-      type="text"
-      variant="primary"
-    />
-  </block.XL>
-  <block.H>
-    <Input
-      name="name"
-      onChange={(event) => console.info('On input change')}
-      placeholder="Enter your name here"
-      type="text"
-      variant="primary"
-    />
-  </block.H>
-</Playground>
-
-### Container
-
-Inputs can be placed inside the container. Input width is equal to container size.
-
-<Playground direction="vertical">
-  <block.L>
-    <Input
-      leftIcon={<InfoIcon />}
+      rightIcon={
+        <block.S>
+          <ButtonIcon
+            icon={<InfoIcon />}
+            onClick={() => console.info('ButtonIcon clicked')}
+            variant="primary"
+          />
+        </block.S>
+      }
       type="text"
       name="name"
-      value="Primary"
       placeholder="Enter your name here"
-      variant="primary"
       onChange={(event) => console.info('On input change')}
+      variant="primary"
     />
-  </block.L>
-  <block.L>
     <Input
       leftIcon={<InfoIcon />}
       type="text"
@@ -281,7 +162,291 @@ Inputs can be placed inside the container. Input width is equal to container siz
         </block.S>
       }
     />
-  </block.L>
+  </Form>
+</Playground>
+
+### Variants
+
+Primary and secondary variants are should be used to focus user attention.
+
+<!-- example for secondary variant will be fixed with task FRNT-477 -->
+
+<Playground direction="vertical">
+  <Form autoComplete="false">
+    <Input
+      leftIcon={<InfoIcon />}
+      name="name"
+      onChange={(event) => console.info('On input change')}
+      placeholder="Primary input"
+      type="text"
+      value="Primary"
+      variant="primary"
+    />
+    <Input
+      leftIcon={<InfoIcon />}
+      type="text"
+      name="name"
+      value="Secondary"
+      placeholder="Secondary input"
+      variant="secondary"
+      onChange={(event) => console.info('On input change')}
+    />
+  </Form>
+</Playground>
+
+Error variant can be used to focus user attention on error.
+
+<Playground>
+  <Form autoComplete="false">
+    <Input
+      leftIcon={<InfoIcon />}
+      name="name"
+      onChange={(event) => console.info('On input change')}
+      placeholder="Error input"
+      type="text"
+      variant="danger"
+    />
+  </Form>
+</Playground>
+
+### Sizes
+
+Size controlled by the `component-level` block property not from the props.
+
+<Playground direction="vertical">
+  <Form autoComplete="false">
+    <Input
+      disabled
+      name="name"
+      onChange={(event) => console.info('On input change')}
+      placeholder="Enter your name here"
+      type="text"
+      variant="primary"
+    />
+    <Input
+      disabled
+      leftIcon={<InfoIcon />}
+      name="name"
+      onChange={(event) => console.info('On input change')}
+      placeholder="Enter your name here"
+      type="text"
+      variant="primary"
+    />
+  </Form>
+</Playground>
+
+### Icons
+
+Inputs can be combined with an icon on the left side or the right. Use icons on the both sides is not recommended.
+
+<Playground direction="vertical" size="L">
+  <Form autoComplete="false">
+    <Input
+      leftIcon={<InfoIcon />}
+      type="text"
+      name="name"
+      placeholder="Enter your name here"
+      variant="primary"
+      onChange={(event) => console.info('On input change')}
+    />
+    <Input
+      type="text"
+      name="name"
+      placeholder="Enter your name here"
+      variant="primary"
+      onChange={(event) => console.info('On input change')}
+      rightIcon={<InfoIcon />}
+    />
+    <Input
+      leftIcon={<InfoIcon />}
+      type="text"
+      name="name"
+      placeholder="Enter your name here"
+      variant="primary"
+      onChange={(event) => console.info('On input change')}
+      rightIcon={<InfoIcon />}
+    />
+  </Form>
+</Playground>
+
+Icons can also be touch targets for nested components.
+
+<Playground size="L" direction="vertical">
+  <Form autoComplete="false">
+    <Input
+      rightIcon={
+        <block.S>
+          <ButtonIcon
+            icon={<InfoIcon />}
+            onClick={() => console.info('ButtonIcon clicked')}
+            variant="primary"
+          />
+        </block.S>
+      }
+      type="text"
+      name="name"
+      placeholder="Enter your name here"
+      onChange={(event) => console.info('On input change')}
+      variant="primary"
+    />
+    <Input
+      leftIcon={<InfoIcon />}
+      type="text"
+      name="name"
+      placeholder="Enter your name here"
+      onChange={(event) => console.info('On input change')}
+      variant="primary"
+      rightIcon={
+        <block.S>
+          <ButtonIcon
+            icon={<InfoIcon />}
+            onClick={() => console.info('ButtonIcon clicked')}
+            variant="primary"
+          />
+        </block.S>
+      }
+    />
+  </Form>
+</Playground>
+
+### Variants
+
+Primary and secondary variants are should be used to focus user attention.
+
+<!-- example for secondary variant will be fixed with task FRNT-477 -->
+
+<Playground direction="vertical">
+  <Form autoComplete="false">
+    <Input
+      leftIcon={<InfoIcon />}
+      name="name"
+      onChange={(event) => console.info('On input change')}
+      placeholder="Primary input"
+      type="text"
+      value="Primary"
+      variant="primary"
+    />
+    <Input
+      leftIcon={<InfoIcon />}
+      type="text"
+      name="name"
+      value="Secondary"
+      placeholder="Secondary input"
+      variant="secondary"
+      onChange={(event) => console.info('On input change')}
+    />
+  </Form>
+</Playground>
+
+Error variant can be used to focus user attention on error.
+
+<!-- example will be fixed with task FRNT-477 -->
+
+<Playground>
+  <Form autoComplete="false">
+    <Input
+      leftIcon={<InfoIcon />}
+      name="name"
+      onChange={(event) => console.info('On input change')}
+      placeholder="Error input"
+      type="text"
+      value="Error"
+      variant="error"
+    />
+  </Form>
+</Playground>
+
+### Sizes
+
+Size controlled by the `component-level` block property not from the props.
+
+<Playground direction="vertical">
+  <Form autoComplete="false">
+    <block.S>
+      <Input
+        name="name"
+        onChange={(event) => console.info('On input change')}
+        placeholder="Enter your name here"
+        type="text"
+        variant="primary"
+      />
+    </block.S>
+    <block.M>
+      <Input
+        name="name"
+        onChange={(event) => console.info('On input change')}
+        placeholder="Enter your name here"
+        type="text"
+        variant="primary"
+      />
+    </block.M>
+    <block.L>
+      <Input
+        name="name"
+        onChange={(event) => console.info('On input change')}
+        placeholder="Enter your name here"
+        type="text"
+        variant="primary"
+      />
+    </block.L>
+    <block.XL>
+      <Input
+        name="name"
+        onChange={(event) => console.info('On input change')}
+        placeholder="Enter your name here"
+        type="text"
+        variant="primary"
+      />
+    </block.XL>
+    <block.H>
+      <Input
+        name="name"
+        onChange={(event) => console.info('On input change')}
+        placeholder="Enter your name here"
+        type="text"
+        variant="primary"
+      />
+    </block.H>
+  </Form>
+</Playground>
+
+### Container
+
+Inputs can be placed inside the container. Input width is equal to container size.
+
+<Playground direction="vertical">
+  <Form autoComplete="false">
+    <block.L>
+      <Input
+        leftIcon={<InfoIcon />}
+        type="text"
+        name="name"
+        value="Primary"
+        placeholder="Enter your name here"
+        variant="primary"
+        onChange={(event) => console.info('On input change')}
+      />
+    </block.L>
+    <block.L>
+      <Input
+        leftIcon={<InfoIcon />}
+        type="text"
+        name="name"
+        placeholder="Enter your name here"
+        onChange={(event) => console.info('On input change')}
+        variant="primary"
+        rightIcon={
+          <block.S>
+            <ButtonIcon
+              icon={<InfoIcon />}
+              onClick={() => console.info('ButtonIcon clicked')}
+              variant="primary"
+            />
+          </block.S>
+        }
+      />
+    </block.L>
+  </Form>
 </Playground>
 
 ### Kinds
@@ -292,15 +457,16 @@ Inputs can be placed inside the container. Input width is equal to container siz
 
 ### Props
 
-| Name           | Type                                                  | Default       | Description                                                 |
-| -------------- | ----------------------------------------------------- | ------------- | ----------------------------------------------------------- |
-| `type`         | `"text" ӏ "password" ӏ "email"`                       | `text`        | HTML type of the input                                      |
-| `name`         | `string`                                              |               | Name attribute specifies a name of the input                |
-| `value`        | `HTMLInputElement['value']`                           | `null`        | Value of input field                                        |
-| `onChange`     | `React.EventHandler<React.SyntheticEvent>;`           |               | On change event handler.                                    |
-| `variant`      | `string`                                              | `'secondary'` | Variant prop to style Input component                       |
-| `leftIcon`     | `React.ReactNode`                                     |               | Component to show on the left side of the text (ex.: Icon)  |
-| `disabled`     | `boolean`                                             |               | HTML disabled attribute                                     |
-| `placeholder`  | `string`                                              |               |  CSS pseudo-element represents the placeholder text         |
-|`rightIcon`     | `React.ReactNode`                                     |               | Component to show on the right side of the text (ex.: Icon) |
-| `...`          | `HTMLInputElement`                                    | `{}`          | Other props are inherited from `HTMLInputElement`           |
+| Name           | Type                                        | Default     | Description                                                 |
+| -------------- | ------------------------------------------- | ----------- | ----------------------------------------------------------- |
+| `autocomplete` | `"on" ӏ "off"`                              | `"off"`     | Autocomplete attribute                                      |
+| `type`         | `"text" ӏ "password" ӏ "email"`             | `text`      | HTML type of the input                                      |
+| `name`         | `string`                                    |             | Name attribute specifies a name of the input                |
+| `value`        | `HTMLInputElement['value']`                 | `null`      | Value of input field                                        |
+| `onChange`     | `React.EventHandler<React.SyntheticEvent>;` |             | On change event handler.                                    |
+| `variant`      | `string`                                    | `'default'` | Variant prop to style Input component                       |
+| `leftIcon`     | `React.ReactNode`                           |             | Component to show on the left side of the text (ex.: Icon)  |
+| `disabled`     | `boolean`                                   |             | HTML disabled attribute                                     |
+| `placeholder`  | `string`                                    |             | CSS pseudo-element represents the placeholder text          |
+| `rightIcon`    | `React.ReactNode`                           |             | Component to show on the right side of the text (ex.: Icon) |
+| `...`          | `HTMLInputElement`                          | `{}`        | Other props are inherited from `HTMLInputElement`           |
