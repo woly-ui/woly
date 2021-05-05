@@ -15,8 +15,8 @@ Select component to choose single option from list of options.
 Use Select to choose one option from dropdown. You can pass placeholder if you don't have initial selected value.
 Each option has data attribute data-value where value of option is saved.
 
-<Playground size="S">
-  <div style={{ height: '150px' }}>
+<Playground>
+  <div style={{ height: '300px' }}>
     <StateEvent initial={null} change={(event) => event?.target?.dataset.value}>
       {(value, change) => (
         <Select
@@ -40,8 +40,8 @@ Each option has data attribute data-value where value of option is saved.
 
 Or you can pass initial selected value.
 
-<Playground size="S">
-  <div style={{ height: '150px' }}>
+<Playground>
+  <div style={{ width: '250px', height: '150px' }}>
     <StateEvent initial="Cats" change={(event) => event?.target?.dataset.value}>
       {(value, change) => (
         <div style={{ display: 'flex' }}>
@@ -80,7 +80,7 @@ Or you can pass initial selected value.
 
 Secondary variant should be used as default variant.
 
-<Playground size="S">
+<Playground>
   <div style={{ height: '150px' }}>
     <StateEvent initial={null} change={(event) => event?.target?.dataset.value}>
       {(value, change) => (

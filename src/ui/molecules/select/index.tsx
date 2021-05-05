@@ -111,18 +111,19 @@ export const Select = styled(SelectBase)`
   --local-background-input-color: var(--woly-canvas-default);
   --local-border-input-color: var(--woly-canvas-text-active);
 
-  --local-icon-fill: var(--woly-canvas-text-default);
+  --local-shape-color: var(--woly-canvas-text-default);
 
   --local-list-background: var(--woly-shape-text-default);
   --local-border-list: var(--woly-canvas-default);
 
-  --local-value-color: var(--woly-canvas-text-default);
   --local-item-background: var(--woly-canvas-default);
 
-  --local-select-width: 225px;
+  --local-icon-size: var(--woly-line-height);
 
   position: relative;
   align-items: center;
+  width: 100%;
+
   outline: none;
   cursor: pointer;
 
@@ -140,7 +141,7 @@ export const Select = styled(SelectBase)`
     color: var(--local-value-color);
 
     [data-value] {
-      width: var(--local-select-width);
+      flex: 1;
     }
   }
 
@@ -150,12 +151,18 @@ export const Select = styled(SelectBase)`
 
   [data-icon] {
     display: flex;
-    flex-direction: column;
+    align-items: center;
     justify-content: center;
-    height: 100%;
+    flex-shrink: 1;
+
+    width: var(--local-icon-size);
+    height: var(--local-icon-size);
 
     svg > path {
-      fill: var(--local-icon-fill);
+      height: 100%;
+      width: 100%;
+
+      fill: var(--local-shape-color);
     }
   }
 
@@ -188,10 +195,10 @@ export const Select = styled(SelectBase)`
   li {
     padding: var(--local-vertical) var(--local-horizontal);
     
-    line-height: var(--woly-line-height, 24px);
+    line-height: var(--woly-line-height);
     
     background: var(--local-item-background);
-    color: var(--local-value-color);
+    color: var(--local-shape-color);
     
     cursor: pointer;
   
@@ -202,7 +209,7 @@ export const Select = styled(SelectBase)`
     &:focus,
     &:active {
       outline: none;
-      --local-value-color: var(--woly-canvas-text-default);
+      --local-shape-color: var(--woly-canvas-text-default);
     }
   }
 
@@ -212,32 +219,19 @@ export const Select = styled(SelectBase)`
     --local-border-color: var(--woly-focus);
     box-shadow: 0 0 0 var(--woly-border-width) var(--woly-focus);
 
-    --local-value-color: var(--woly-canvas-text-default);
-    
-    [data-icon] {
-       --local-icon-fill: var(--woly-canvas-text-default);
-    }
   }
 
   &[data-open='true'] > div[data-selected] {
     border-color: var(--woly-focus);
 
-    svg > path {
-      --local-icon-fill: var(--woly-canvas-text-default);
-    }
+    --local-shape-color: var(--woly-canvas-text-default);
   }
 
   &[data-disabled='true'] {
     pointer-events: none;
 
-    [data-icon] {
-      --local-icon-fill: var(--woly-canvas-text-disabled);
-    }
-    
-    [data-selected] {
-      --local-background-input-color: var(--woly-canvas-disabled);
-      --local-border-input-color: var(--woly-canvas-text-disabled);
-      --local-value-color: var(--woly-canvas-text-disabled);
-    }
+    --local-shape-color: var(--woly-canvas-text-disabled);
+    --local-background-input-color: var(--woly-canvas-disabled);
+    --local-border-input-color: var(--woly-canvas-text-disabled);
   }
 ` as StyledComponent<'div', Record<string, unknown>, SelectProps & Variant>;
