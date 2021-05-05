@@ -3,7 +3,7 @@ import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
 import { Variant } from 'lib/types';
 
-export type ButtonVariants = 'default' | 'primary' | 'destructive' | 'text';
+export type ButtonVariants = 'secondary' | 'primary' | 'destructive' | 'text';
 export type ButtonSizes = 'default' | 'small';
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -18,7 +18,7 @@ const ButtonBase: React.FC<ButtonProps & Variant> = ({
   icon,
   text,
   type = 'button',
-  variant = 'default',
+  variant = 'secondary',
   outlined = false,
   ...p
 }) => (
@@ -60,9 +60,9 @@ export const Button = styled(ButtonBase)`
   &[data-outlined='true'] {
     background-color: transparent;
     color: var(--local-shape-color);
-    svg > path {
-      fill: var(--local-shape-color);
-    }
+      svg > path {
+        fill: var(--local-shape-color);
+      }
   }
 
   [data-icon] {
@@ -100,7 +100,7 @@ export const Button = styled(ButtonBase)`
   }
 
   &:focus {
-    box-shadow: 0 0 0 1.5px var(--woly-focus);
+    box-shadow: 0 0 0 var(--woly-border-width) var(--woly-focus);
   }
 
   &:disabled {

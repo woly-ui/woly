@@ -13,7 +13,7 @@ const ButtonIconBase: React.FC<Props & Variant> = ({
   icon,
   onClick,
   filled = false,
-  variant = 'default',
+  variant = 'secondary',
   ...p
 }) => (
   <button data-filled={filled} data-variant={variant} onClick={onClick} type="button" {...p}>

@@ -1,24 +1,22 @@
 ---
-name: backdrop
-category: atoms
+name: modal
+category: molecules
 package: 'woly'
 ---
 
-import { Content, Playground, block, State, FormBlock, Aside, Menu } from 'box-styles'
-import { Surface, Button, Input, Label, ButtonIcon, Backdrop, Modal, Field } from 'ui'
-import { CloseIcon } from 'icons';
+import { Playground, State, block } from 'box-styles'
+import { Button, Field, Input, Modal } from 'ui';
+import { SearchIcon } from 'icons';
 
-`Backdrop` is a dark layer that covers full screen. It can be used in Modal windows or Aside menu panel.
+Modal component is used for creating dialogs.
 
-### Example
-
-Modal based on `Backdrop`.
+### Modal Example
 
 <Playground>
   <State initial={false} change={(i) => !i}>
     {(value, change) => (
       <>
-        <Button onClick={change} text="Open modal" />
+        <Button icon={<SearchIcon />} onClick={change} text="Click on me" variant="primary" />
         <Modal visible={value} title="Change customer" onClose={change} variant="primary">
           <form autoComplete="off">
             <Field label="Customer name">
@@ -52,12 +50,16 @@ Modal based on `Backdrop`.
 
 ### Kinds
 
-| Name       | Description   |
-| ---------- | ------------- |
-| `Backdrop` | Base backdrop |
+| Name    | Description |
+| ------- | ----------- |
+| `Modal` | Base modal  |
 
 ### Props
 
-| Name      | Type     | Default       | Description                              |
-| --------- | -------- | ------------- | ---------------------------------------- |
-| `variant` | `string` | `'secondary'` | Variant prop to style Backdrop component |
+| Name       | Type                                       | Default       | Description                           |
+| ---------- | ------------------------------------------ | ------------- | ------------------------------------- |
+| `onClose`  | `React.EventHandler<React.SyntheticEvent>` |               | Event handler on modal close          |
+| `title`    | `string`                                   |               | Title of modal                        |
+| `visible`  | `boolean`                                  | `false`       | Set initial visibility of Modal       |
+| `children` | `React.ReactNode`                          |               | Modal content                         |
+| `variant`  | `string`                                   | `'secondary'` | Variant prop to style Modal component |

@@ -1,8 +1,8 @@
-import styled from 'styled-components';
+import styled, { StyledComponent } from 'styled-components';
 import { Variant } from 'lib/types';
 
 const map = (properties: Variant) => ({
-  'data-variant': properties.variant || 'default',
+  'data-variant': properties.variant || 'secondary',
 });
 
 export const HeaderPanel = styled.div.attrs(map)`
@@ -17,12 +17,10 @@ export const HeaderPanel = styled.div.attrs(map)`
     var(--woly-const-m) + (1px * var(--woly-main-level)) + var(--local-vertical)
   );
 
-  --local-box-shadow: 3px 3px 9px rgba(57, 57, 57, 0.12);
-
   padding: var(--local-vertical) var(--local-horizontal);
 
   background-color: var(--woly-background);
   border: var(--woly-border-width) solid var(--woly-background);
   border-radius: var(--woly-rounding);
-  box-shadow: var(--local-box-shadow);
-`;
+  box-shadow: var(--woly-shadow);
+` as StyledComponent<'div', Record<string, unknown>, Variant>;

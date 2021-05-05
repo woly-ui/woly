@@ -30,11 +30,19 @@ import { PlusIcon, SearchIcon } from 'icons';
 
 ### Variants
 
-Primary and secondary variants are should be used to focus user attention.
+Primary and danger variants are should be used to focus user attention.
 
 <Playground>
   <Button text="The main action on the page" variant="primary" />
+  <Button text="Alternative action" variant="danger" outlined />
+  <Button text="Alternative action" variant="danger" />
+</Playground>
+
+Secondary variant should be used as a default variant.
+
+<Playground>
   <Button text="Alternative action" variant="secondary" />
+  <Button text="Alternative action" variant="secondary" outlined />
 </Playground>
 
 ### Icons
@@ -83,9 +91,9 @@ Buttons can be placed inside the container. Button width is equal to container s
 
 ### Props
 
-| Name      | Type                | Default     | Description                                                |
-| --------- | ------------------- | ----------- | ---------------------------------------------------------- |
-| `icon`    | `React.ReactNode`   | `null`      | Component to show on the left side of the text (ex.: Icon) |
-| `text`    | `React.ReactNode`   |             | Text appeared on the button                                |
-| `variant` | `string`            | `'default'` | Variant prop to style Input component                      |
-| `...`     | `HTMLButtonElement` | `{}`        | Other props are inherited from `HTMLButtonElement`         |
+| Name      | Type                | Default       | Description                                                |
+| --------- | ------------------- | ------------- | ---------------------------------------------------------- |
+| `icon`    | `React.ReactNode`   | `null`        | Component to show on the left side of the text (ex.: Icon) |
+| `text`    | `React.ReactNode`   |               | Text appeared on the button                                |
+| `variant` | `string`            | `'secondary'` | Variant prop to style Input component                      |
+| `...`     | `HTMLButtonElement` | `{}`          | Other props are inherited from `HTMLButtonElement`         |

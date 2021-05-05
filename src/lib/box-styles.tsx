@@ -2,6 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 
 export const Global = styled.div`
+  * {
+    font-family: 'Helvetica Neue', sans-serif;
+  }
+
   --palette-snow-1000: #000000;
   --palette-snow-500: #c0c0c0;
   --palette-snow-300: #e5e5e5;
@@ -19,6 +23,7 @@ export const Global = styled.div`
   --woly-border-width: 1.5px;
   --woly-rounding: 4px;
   --woly-font-size: 15px;
+  --woly-shadow: 3px 3px 9px rgba(57, 57, 57, 0.12);
 
   --woly-const-m: 6px;
   --woly-main-level: 3;
@@ -51,23 +56,25 @@ export const Global = styled.div`
   }
 
   [data-variant='secondary'] {
-    --woly-border-width: 1.5px;
+    --woly-shape-default: var(--palette-snow-500);
+    --woly-shape-disabled: var(--palette-snow-100);
+    --woly-shape-hover: var(--palette-snow-500);
+    --woly-shape-active: var(--palette-snow-500);
 
-    --woly-background: #ffffff;
-    --woly-border: #b0a3f4;
-    --woly-color: #b0a3f4;
-    --woly-hint-color: #c4c4c4;
-    --woly-background-hover: #ffffff;
-    --woly-border-hover: #c9c0f8;
-    --woly-color-hover: #c9c0f8;
-    --woly-background-focus: #ffffff;
-    --woly-border-focus: #9381f1;
-    --woly-color-focus: #9381f1;
-    --woly-background-disabled: #c0c0c0;
-    --woly-border-disabled: #c0c0c0;
-    --woly-color-disabled: #a39bb2;
-    --woly-text-disabled: #e4e4e4;
-    --woly-fill-disabled: #e4e4e4;
+    --woly-shape-text-default: var(--palette-snow-0);
+    --woly-shape-text-disabled: var(--palette-snow-0);
+    --woly-shape-text-hover: var(--palette-snow-0);
+    --woly-shape-text-active: var(--palette-snow-0);
+
+    --woly-canvas-default: transparent;
+    --woly-canvas-disabled: var(--palette-snow-100);
+    --woly-canvas-hover: var(--palette-snow-500);
+    --woly-canvas-active: var(--palette-snow-500);
+
+    --woly-canvas-text-default: var(--palette-snow-1000);
+    --woly-canvas-text-disabled: var(--palette-snow-500);
+    --woly-canvas-text-hover: var(--palette-snow-500);
+    --woly-canvas-text-active: var(--palette-snow-500);
   }
   [data-variant='danger'] {
     --woly-shape-default: var(--woly-danger);
@@ -180,7 +187,7 @@ const Frame = styled.div`
   max-width: 100%;
   padding: 1rem;
   overflow: auto;
-  border: 2px solid var(--base, rgb(246, 248, 250));
+  border: 2px solid rgb(246, 248, 250);
   border-radius: 4px;
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
@@ -251,14 +258,6 @@ export const Line = styled.div`
   align-items: baseline;
 `;
 
-export const Modal = styled.div`
-  z-index: 1;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-`;
-
 export const ColumnContent = styled.div`
   background: var(--palette-lavender-500);
   color: var(--palette-snow-0);
@@ -269,4 +268,11 @@ export const ColumnContent = styled.div`
 
 export const TableContent = styled.div`
   padding: 10px;
+`;
+
+export const Form = styled.form`
+  width: 100%;
+  & > div {
+    margin-bottom: 10px;
+  }
 `;

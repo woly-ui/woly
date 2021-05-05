@@ -33,7 +33,7 @@ const TextAreaBase: React.FC<TextAreaProps & Variant> = ({
   resize,
   rows,
   value,
-  variant = 'default',
+  variant = 'secondary',
   wrap,
   ...p
 }) => {
@@ -49,33 +49,11 @@ const TextAreaBase: React.FC<TextAreaProps & Variant> = ({
 
   const tabIndex = disabled ? -1 : 0;
 
-  const onKeyDown = React.useCallback(
-    (event: React.KeyboardEvent) => {
-      console.log(1);
-
-      if (event.key === 'Enter') {
-        event.preventDefault();
-      }
-      const keyHandler = {
-        enter: (event: React.SyntheticEvent<Element, Event>) => {
-          onChange(event);
-        },
-      };
-
-      keyboardEventHandle({
-        event,
-        keyHandler,
-      });
-    },
-    [onChange],
-  );
-
   return (
     <div
       className={className}
       data-disabled={disabled}
       data-variant={variant}
-      onKeyDown={onKeyDown}
       tabIndex={tabIndex}
       data-overflow={overflow}
       data-resize={resize}

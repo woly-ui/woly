@@ -41,7 +41,7 @@ export const SelectBase: React.FC<SelectProps & Variant> = ({
   options,
   placeholder = '',
   selected,
-  variant = 'default',
+  variant = 'secondary',
 }) => {
   const [isOpen, setIsOpen] = React.useReducer((is) => !is, false);
   const selectRef = React.useRef(null);
@@ -126,7 +126,9 @@ export const Select = styled(SelectBase)`
   cursor: pointer;
   &:focus > div[data-selected],
   &:active > div[data-selected] {
-    border-color: var(--woly-background-focus, #1f68f5);
+    --local-border-color: var(--woly-focus);
+    box-shadow: 0 0 0 var(--woly-border-width) var(--woly-focus);
+
     color: var(--woly-color-focus, #000000);
     svg > path {
       fill: var(--woly-color-focus, #c4c4c4);
@@ -145,7 +147,7 @@ export const Select = styled(SelectBase)`
     }
     div[data-selected] {
       background: var(--woly-background-disabled, #ffffff);
-      border-color: var(--woly-border-disabled, var(--woly-background-disabled, #c4c4c4));
+      border: var(--woly-border-width) solid var(--local-border-color);
       color: var(--woly-color-disabled, #c4c4c4);
     }
   }
@@ -156,7 +158,7 @@ export const Select = styled(SelectBase)`
     background: var(--woly-canvas, #ffffff);
     border-color: var(--woly-border, var(--woly-background, #f8f7f7));
     border-style: solid;
-    border-width: var(--woly-border-width, 1.5px);
+    border-width: var(--woly-border-width);
     border-radius: var(--woly-rounding, 3px);
     box-sizing: border-box;
     color: var(--woly-color, #000000);
@@ -181,12 +183,12 @@ export const Select = styled(SelectBase)`
     background-color: var(--woly-canvas, #ffffff);
     border-color: var(--woly-border, var(--woly-background, #f8f7f7));
     border-style: solid;
-    border-width: var(--woly-border-width, 1px);
+    border-width: var(--woly-border-width);
     border-radius: var(--woly-rounding, 3px);
     padding: 0;
     z-index: 1;
     margin-top: 6px;
-    box-shadow: 3px 3px 9px rgba(57, 57, 57, 0.12);
+    box-shadow: var(--woly-shadow);
   }
   ul[data-visible='true'] {
     display: flex;

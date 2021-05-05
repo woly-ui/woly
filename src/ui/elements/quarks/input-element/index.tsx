@@ -36,8 +36,8 @@ export const InputElement = styled(InputElementBase)`
 
   width: 100%;
 
-  font-size: var(--woly-font-size, 15px);
-  line-height: var(--woly-line-height, 24px);
+  font-size: var(--woly-font-size);
+  line-height: var(--woly-line-height);
 
   color: var(--local-value-color);
   background: var(--local-background);
