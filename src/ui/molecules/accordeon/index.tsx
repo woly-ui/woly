@@ -20,10 +20,7 @@ const AccordionBase: React.FC<AccordionProps & Variant> = ({
 
   const onKeyDown = React.useCallback(
     ({ key }) => {
-      if (isContentVisible && key === 'Escape') {
-        setContentVisible();
-      }
-      if (key === 'Enter') {
+      if ((isContentVisible && key === 'Escape') || key === 'Enter') {
         setContentVisible();
       }
     },
@@ -32,7 +29,7 @@ const AccordionBase: React.FC<AccordionProps & Variant> = ({
   return (
     <div className={className} data-variant={variant}>
       <div
-        data-container
+        data-header
         data-open={isContentVisible}
         onClick={setContentVisible}
         onKeyDown={onKeyDown}
@@ -49,39 +46,53 @@ const AccordionBase: React.FC<AccordionProps & Variant> = ({
 };
 
 export const Accordion = styled(AccordionBase)`
-  --local-vertical: calc(1px * var(--woly-component-level) * var(--woly-main-level));
+  --local-vertical: calc(
+    1px * var(--woly-component-level) * var(--woly-main-level) - var(--woly-border-width)
+  );
   --local-horizontal: calc(
-    var(--woly-const-m) + (1px * var(--woly-main-level)) + var(--local-vertical)
+    var(--woly-const-m) + (1px * var(--woly-main-level)) + var(--local-vertical) -
+      var(--woly-border-width)
   );
 
   --local-background-color: var(--woly-canvas-default);
   --local-border-color: var(--woly-canvas-disabled);
 
   --local-icon-fill: var(--woly-canvas-text-default);
-
-  --local-gap: var(--woly-const-m);
-
-  border-radius: var(--woly-rounding);
+  --local-icon-size: var(--woly-line-height);
 
   box-sizing: border-box;
   width: 100%;
 
   outline: none;
-  overflow: hidden;
 
   input {
     display: none;
     outline: none;
   }
 
-  [data-container] {
+  [data-header] {
     display: flex;
     align-items: center;
 
     background: var(--local-background-color);
-    padding: var(--local-vertical) var(--local-horizontal);
 
     border-bottom: var(--woly-border-width) solid var(--local-border-color);
+    border-radius: var(--woly-rounding);
+
+    padding: var(--local-vertical) var(--local-horizontal);
+
+    outline: none;
+
+    margin-bottom: var(--woly-border-width);
+
+    &:hover {
+      --local-background-color: var(--woly-canvas-disabled);
+    }
+
+    &:focus,
+    &:active {
+      box-shadow: 0 0 0 var(--woly-border-width) var(--woly-focus);
+    }
   }
 
   [data-title] {
@@ -89,7 +100,13 @@ export const Accordion = styled(AccordionBase)`
   }
 
   [data-icon] {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     flex-shrink: 0;
+
+    width: var(--local-icon-size);
+    height: var(--local-icon-size);
 
     svg > path {
       fill: var(--local-icon-fill);
@@ -98,15 +115,11 @@ export const Accordion = styled(AccordionBase)`
 
   [data-content] {
     display: none;
-
-    min-width: 100%;
-
-    padding: var(--local-vertical) var(--local-horizontal);
   }
 
   [data-open='true'] {
     --local-background-color: var(--woly-canvas-disabled);
-    border-bottom: none;
+    --local-border-color: var(--woly-canvas-default);
   }
 
   [data-open='true'] > [data-icon] {
@@ -115,16 +128,8 @@ export const Accordion = styled(AccordionBase)`
 
   [data-open='true'] ~ [data-content] {
     display: inline-block;
+
     height: auto;
-  }
-
-  &:hover > [data-container] {
-    --local-background-color: var(--woly-canvas-disabled);
-  }
-
-  &:focus,
-  &:active {
-    box-shadow: 0 0 0 var(--woly-border-width) var(--woly-focus);
-    outline: none;
+    width: 100%;
   }
 ` as StyledComponent<'div', Record<string, unknown>, AccordionProps & Variant>;

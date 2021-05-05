@@ -1,5 +1,5 @@
 ---
-name: accordeon
+name: accordion
 category: molecules
 package: 'woly'
 ---
@@ -56,7 +56,7 @@ export const tableRows = [
 Accordion`s content and title can be manadged for our own.
 
 <Playground direction="vertical" size="L">
-  <block>
+  <>
     <Accordion
       variant="primary"
       isOpen={false}
@@ -125,13 +125,13 @@ Accordion`s content and title can be manadged for our own.
         </Field>
       </div>
     </Accordion>
-  </block>
+  </>
 </Playground>
 
 Accordion can be closed for default
 
 <Playground size="L">
-  <Accordion variant="primary" isOpen={false} title={<span>Some text</span>}>
+  <Accordion variant="primary" isOpen={false} title={<Text>Some text</Text>}>
     <Table columns={tableHead.length} variant="primary">
       <Thead>
         <Tr>
@@ -186,9 +186,9 @@ or open
 
 ### Props
 
-| Name       | Type              | Default     | Description                               |
-| ---------- | ----------------- | ----------- | ----------------------------------------- |
-| `children` | `React.ReactNode` |             | Trigger element of accordion              |
-| `content`  | `React.ReactNode` |             | Content of accordion                      |
-| `isOpen`   | `boolean`         | `'false'`   | Whether the component is visible or not   |
-| `variant`  | `string`          | `'default'` | Variant prop to style accordion component |
+| Name       | Type              | Default       | Description                                            |
+| ---------- | ----------------- | ------------- | ------------------------------------------------------ |
+| `title`    | `React.ReactNode` |               | Title of accordion, that triggers element of accordion |              |
+| `children` | `React.ReactNode` |               | Content of accordion                                   |
+| `isOpen`   | `boolean`         | `'false'`     | Whether the component is visible or not                |
+| `variant`  | `string`          | `'secondary'` | Variant prop to style accordion component              |
