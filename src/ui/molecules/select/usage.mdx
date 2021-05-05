@@ -8,15 +8,21 @@ import { Select } from './index';
 import { block, Playground, StateEvent } from 'box-styles';
 import { ArrowDown } from 'icons';
 
-Select component to choose single option from list of options.
+Select is a type of input that is used in forms, 
+where a user is submitting data and chooses one option from a list.
+
+The select component uses an `list` component instance to contain the list of options, 
+but uses the data-value attribute instead of value to represent the options' values.
 
 ### Example
 
-Use Select to choose one option from dropdown. You can pass placeholder if you don't have initial selected value.
+
 Each option has data attribute data-value where value of option is saved.
 
+If any initial value hasn`t been selected yet, you can pass a placeholder.
+
 <Playground>
-  <div style={{ height: '300px' }}>
+  <div style={{ height: '250px', width: '250px' }}>
     <StateEvent initial={null} change={(event) => event?.target?.dataset.value}>
       {(value, change) => (
         <Select
@@ -38,39 +44,48 @@ Each option has data attribute data-value where value of option is saved.
 
 ### Selected value
 
-Or you can pass initial selected value.
+Or initial selected value can be passed by default.
 
 <Playground>
-  <div style={{ width: '250px', height: '150px' }}>
+  <div style={{ width: '250px', height: '250px' }}>
     <StateEvent initial="Cats" change={(event) => event?.target?.dataset.value}>
       {(value, change) => (
-        <div style={{ display: 'flex' }}>
-          <Select
-            icon={<ArrowDown />}
-            onChange={change}
-            options={[
-              { children: 'Cats', value: 'Cats' },
-              { children: 'Dogs', value: 'Dogs' },
-              { children: 'Birds', value: 'Birds' },
-            ]}
-            selected={value}
-            variant="secondary"
-          />
-          <div style={{ marginLeft: '10px' }}>
-            <Select
-              icon={<ArrowDown />}
-              onChange={() => {}}
-              options={[
-                { children: 'Toyota', value: 'Toyota' },
-                { children: 'Opel', value: 'Opel' },
-                { children: 'BMW', value: 'BMW' },
-              ]}
-              selected="BMW"
-              variant="primary"
-              disabled
-            />
-          </div>
-        </div>
+        <Select
+          icon={<ArrowDown />}
+          onChange={change}
+          options={[
+            { children: 'Cats', value: 'Cats' },
+            { children: 'Dogs', value: 'Dogs' },
+            { children: 'Birds', value: 'Birds' },
+          ]}
+          selected={value}
+          variant="secondary"
+        />
+      )}
+    </StateEvent>
+  </div>
+</Playground>
+
+### Disable 
+
+Disabled selects are uneditable. They have less opacity so that they appear less tappable.
+
+<Playground>
+  <div style={{ width: '250px', height: '250px' }}>
+    <StateEvent initial="Cats" change={(event) => event?.target?.dataset.value}>
+      {(value, change) => (
+        <Select
+          icon={<ArrowDown />}
+          onChange={change}
+          options={[
+            { children: 'Cats', value: 'Cats' },
+            { children: 'Dogs', value: 'Dogs' },
+            { children: 'Birds', value: 'Birds' },
+          ]}
+          selected={value}
+          variant="secondary"
+          disabled
+        />
       )}
     </StateEvent>
   </div>
@@ -81,7 +96,7 @@ Or you can pass initial selected value.
 Secondary variant should be used as default variant.
 
 <Playground>
-  <div style={{ height: '150px' }}>
+  <div style={{ width: '250px', height: '250px' }}>
     <StateEvent initial={null} change={(event) => event?.target?.dataset.value}>
       {(value, change) => (
         <Select
@@ -101,13 +116,13 @@ Secondary variant should be used as default variant.
   </div>
 </Playground>
 
-Primary and dander variants are should be used to focus used attention.
+Primary and dander variants should focus user attention.
 
-<Playground size="S">
-  <div style={{ height: '150px' }}>
-    <StateEvent initial="Cats" change={(event) => event?.target?.dataset.value}>
-      {(value, change) => (
-        <div style={{ display: 'flex' }}>
+<Playground direction='vertical'>
+  <StateEvent initial="Cats" change={(event) => event?.target?.dataset.value}>
+    {(value, change) => (
+      <>
+        <div style={{ width: '250px', height: '250px' }}>
           <Select
             icon={<ArrowDown />}
             onChange={change}
@@ -119,24 +134,23 @@ Primary and dander variants are should be used to focus used attention.
             selected={value}
             variant="primary"
           />
-          <div style={{ marginLeft: '10px' }}>
-            <Select
-              icon={<ArrowDown />}
-              onChange={() => {}}
-              options={[
-                { children: 'Toyota', value: 'Toyota' },
-                { children: 'Opel', value: 'Opel' },
-                { children: 'BMW', value: 'BMW' },
-              ]}
-              selected="BMW"
-              variant="danger"
-              disabled
-            />
-          </div>
         </div>
-      )}
-    </StateEvent>
-  </div>
+        <div style={{ width: '250px', height: '250px' }}>
+          <Select
+            icon={<ArrowDown />}
+            onChange={() => {}}
+            options={[
+              { children: 'Toyota', value: 'Toyota' },
+              { children: 'Opel', value: 'Opel' },
+              { children: 'BMW', value: 'BMW' },
+            ]}
+            selected="BMW"
+            variant="danger"
+          />
+        </div>
+      </>
+    )}
+  </StateEvent>
 </Playground>
 
 ### Kinds
@@ -154,14 +168,14 @@ Primary and dander variants are should be used to focus used attention.
 
 # Props
 
-| Name          | Type                                       | Default     | Description                                   |
-| ------------- | ------------------------------------------ | ----------- | ----------------------------------------------|
-| `icon`        | `React.ReactNode`                          |             | Component to show on the right side of select |
-| `disabled`    | `boolean`                                  |             | HTML disabled attribute                       |
-| `onBlur`      | `React.FocusEventHandler<HTMLElement>`     |             | On blur event handler.                        |
-| `onChange`    | `React.EventHandler<React.SyntheticEvent>` |             | On change event handler.                      |
-| `onFocus`     | `React.FocusEventHandler<HTMLElement>`     |             | On focus event handler.                       |
-| `options`     | `SelectOptionProps[]`                      |             | An array of select options                    |
-| `placeholder` | `string`                                   | ''          | Placeholder for select                        |
-| `selected`    | `SelectOptionProps`                        |             | Selected option                               |
-| `variant`     | `string`                                   | 'default'   | Variant prop to style Select component        |
+| Name          | Type                                       | Default       | Description                                   |
+| ------------- | ------------------------------------------ | ------------- | ----------------------------------------------|
+| `icon`        | `React.ReactNode`                          |               | Component to show on the right side of select |
+| `disabled`    | `boolean`                                  |               | HTML disabled attribute                       |
+| `onBlur`      | `React.FocusEventHandler<HTMLElement>`     |               | On blur event handler.                        |
+| `onChange`    | `React.EventHandler<React.SyntheticEvent>` |               | On change event handler.                      |
+| `onFocus`     | `React.FocusEventHandler<HTMLElement>`     |               | On focus event handler.                       |
+| `options`     | `SelectOptionProps[]`                      |               | An array of select options                    |
+| `placeholder` | `string`                                   | ''            | Placeholder for select                        |
+| `selected`    | `SelectOptionProps`                        |               | Selected option                               |
+| `variant`     | `string`                                   | 'secondary'   | Variant prop to style Select component        |

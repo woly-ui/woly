@@ -1,9 +1,11 @@
 import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
 import { Variant } from 'lib/types';
+
 import { InputContainer, InputElement } from '../../elements/quarks';
 
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+  autoComplete?: 'on' | 'off';
   className?: string;
   disabled?: boolean;
   leftIcon?: React.ReactNode;
@@ -16,6 +18,7 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
 }
 
 const InputBase: React.FC<InputProps & Variant> = ({
+  autoComplete = 'off',
   className,
   disabled = false,
   leftIcon,
@@ -36,6 +39,7 @@ const InputBase: React.FC<InputProps & Variant> = ({
     variant={variant}
   >
     <InputElement
+      autoComplete={autoComplete}
       className={className}
       disabled={disabled}
       name={name}
@@ -48,16 +52,10 @@ const InputBase: React.FC<InputProps & Variant> = ({
 );
 
 export const Input = styled(InputBase)`
-  --local-vertical: calc(1px * var(--woly-component-level) * var(--woly-main-level));
-  --local-horizontal: calc(
-    var(--woly-const-m) + (1px * var(--woly-main-level)) + var(--local-vertical)
-  );
-  
   box-sizing: border-box;
   width: 100%;
 
   &[data-disabled='true'] {
     pointer-events: none;
   }
-
 ` as StyledComponent<'div', Record<string, unknown>, InputProps & Variant>;

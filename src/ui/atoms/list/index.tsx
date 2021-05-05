@@ -56,13 +56,7 @@ const ListBase: React.FC<List & Variant> = ({
       tabIndex={tabIndex}
     >
       {list.map(({ left, right, text, id, onClick, disabled }) => (
-        <li
-          data-disabled={disabled}
-          data-type="list-item"
-          key={id}
-          onClick={onClick}
-          tabIndex={-1}
-        >
+        <li data-disabled={disabled} data-type="list-item" key={id} onClick={onClick} tabIndex={-1}>
           {left && <span data-icon="left">{left}</span>}
           <span data-text="text">{text}</span>
           {right && <span data-icon="right">{right}</span>}
@@ -70,8 +64,7 @@ const ListBase: React.FC<List & Variant> = ({
       ))}
     </ul>
   );
-}
-
+};
 
 export const List = styled(ListBase)`
   --local-vertical: calc(1px * var(--woly-component-level) * var(--woly-main-level));
@@ -122,7 +115,7 @@ export const List = styled(ListBase)`
       padding: 0 var(--local-horizontal);
     }
 
-    & > [data-text]:not(:only-child, :last-child ){
+    & > [data-text]:not(:only-child, :last-child) {
       padding-right: 0;
     }
 
@@ -176,9 +169,9 @@ export const List = styled(ListBase)`
       }
     }
   }
-  
+
   &:focus {
-      box-shadow: 0 0 0 var(--woly-border-width) var(--woly-focus);
+    box-shadow: 0 0 0 var(--woly-border-width) var(--woly-focus);
   }
 
   &[data-disabled='true'] {
@@ -190,7 +183,7 @@ export const List = styled(ListBase)`
     }
 
     [data-icon] {
-        --local-color: var(--woly-canvas-text-disabled);
-      }
+      --local-color: var(--woly-canvas-text-disabled);
+    }
   }
 ` as StyledComponent<'ul', Record<string, unknown>, List & Variant>;

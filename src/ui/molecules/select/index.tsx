@@ -101,22 +101,21 @@ export const SelectBase: React.FC<SelectProps & Variant> = ({
 };
 
 export const Select = styled(SelectBase)`
-  --local-vertical: calc(1px * var(--woly-component-level) * var(--woly-main-level));
+  --local-vertical: calc(1px * var(--woly-component-level) * var(--woly-main-level) - 
+    var(--woly-border-width));
   --local-horizontal: calc(
-    var(--woly-const-m) + (1px * var(--woly-main-level)) + var(--local-vertical)
-  );
+    var(--woly-const-m) + (1px * var(--woly-main-level)) + var(--local-vertical) - 
+    var(--woly-border-width));
 
   --local-gap: var(--woly-const-m);
 
-  --local-background-input-color: var(--woly-canvas-default);
+  --local-background: var(--woly-canvas-default);
   --local-border-input-color: var(--woly-canvas-text-active);
 
   --local-shape-color: var(--woly-canvas-text-default);
 
   --local-list-background: var(--woly-shape-text-default);
   --local-border-list: var(--woly-canvas-default);
-
-  --local-item-background: var(--woly-canvas-default);
 
   --local-icon-size: var(--woly-line-height);
 
@@ -132,13 +131,13 @@ export const Select = styled(SelectBase)`
     align-items: center;
 
     padding: var(--local-vertical) var(--local-horizontal);
-    background: var(--local-background-input-color);
+    background: var(--local-background);
 
     border: var(--woly-border-width) solid var(--local-border-input-color);
     border-radius: var(--woly-rounding);
     box-sizing: border-box;
 
-    color: var(--local-value-color);
+    color: var(--local-shape-color);
 
     [data-value] {
       flex: 1;
@@ -197,13 +196,13 @@ export const Select = styled(SelectBase)`
     
     line-height: var(--woly-line-height);
     
-    background: var(--local-item-background);
+    background: var(--local-background);
     color: var(--local-shape-color);
     
     cursor: pointer;
   
     &:hover {
-      --local-item-background: var(--woly-canvas-disabled);
+      --local-background: var(--woly-canvas-disabled);
     }
    
     &:focus,
@@ -231,7 +230,7 @@ export const Select = styled(SelectBase)`
     pointer-events: none;
 
     --local-shape-color: var(--woly-canvas-text-disabled);
-    --local-background-input-color: var(--woly-canvas-disabled);
+    --local-background: var(--woly-canvas-disabled);
     --local-border-input-color: var(--woly-canvas-text-disabled);
   }
 ` as StyledComponent<'div', Record<string, unknown>, SelectProps & Variant>;
