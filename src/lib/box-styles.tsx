@@ -6,6 +6,11 @@ export const Global = styled.div`
     font-family: 'Helvetica Neue', sans-serif;
   }
 
+  button {
+    padding: 0;
+    margin: 0;
+  }
+
   --palette-snow-1000: #000000;
   --palette-snow-500: #c0c0c0;
   --palette-snow-300: #e5e5e5;
@@ -211,6 +216,8 @@ const Container = styled.div`
   }
   &[data-dir='horizontal'] {
     flex-direction: row;
+    flex-wrap: wrap;
+
     & > * + * {
       margin-left: 0.5rem;
     }
