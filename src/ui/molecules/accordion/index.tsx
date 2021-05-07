@@ -1,6 +1,6 @@
 import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
-import { IconArrowDown } from 'icons';
+import { IconArrowDown } from 'static/icons';
 import { Variant } from 'lib/types';
 
 interface AccordionProps {

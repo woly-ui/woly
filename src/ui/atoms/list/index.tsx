@@ -1,8 +1,7 @@
 import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
 import { Variant } from 'lib/types';
-
-import { Box, Elements } from '../../elements';
+import { box } from 'ui/elements';
 
 interface ListElementsProps {
   iconLeft?: React.ReactNode;
@@ -38,10 +37,34 @@ export const ListContainer = styled.div.attrs(mapContainer)`
   margin: 0;
 ` as StyledComponent<'div', Record<string, unknown>, Variant>;
 
+export const ListItem: React.FC<ListItemProps & ListElementsProps & Variant> = ({
+  as,
+  disabled = false,
+  href,
+  iconLeft,
+  iconRight,
+  tabIndex,
+  text,
+  variant = 'secondary',
+}) => (
+  <ListItemContainer
+    as={as}
+    href={href}
+    disabled={disabled}
+    tabIndex={disabled ? -1 : tabIndex}
+    variant={variant}
+  >
+    {iconLeft && <span data-icon>{iconLeft}</span>}
+    <span>{text}</span>
+    {iconRight && <span data-icon>{iconRight}</span>}
+  </ListItemContainer>
+);
+
 /**
  * Fix ListItemContainer after implementing box element
  */
-const ListItemContainer = styled(Box).attrs(mapItem)`
+const ListItemContainer = styled.div.attrs(mapItem)`
+  ${box}
   --local-icon-color: var(--woly-canvas-text-default);
   --local-backgound: var(--woly-canvas-default);
   --local-color: var(--woly-canvas-text-default)
@@ -82,24 +105,3 @@ const ListItemContainer = styled(Box).attrs(mapItem)`
     pointer-events: none;
   }
 ` as StyledComponent<'div', Record<string, unknown>, ListItemProps & Variant>;
-
-export const ListItem: React.FC<ListItemProps & ListElementsProps & Variant> = ({
-  as,
-  disabled = false,
-  href,
-  iconLeft,
-  iconRight,
-  tabIndex,
-  text,
-  variant = 'secondary',
-}) => (
-  <ListItemContainer
-    as={as}
-    href={href}
-    disabled={disabled}
-    tabIndex={disabled ? -1 : tabIndex}
-    variant={variant}
-  >
-    <Elements text={text} iconLeft={iconLeft} iconRight={iconRight} variant={variant} />
-  </ListItemContainer>
-);

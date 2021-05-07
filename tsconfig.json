@@ -2,30 +2,27 @@
   "compilerOptions": {
     "allowJs": false,
     "allowSyntheticDefaultImports": true,
+    "baseUrl": "./src",
+    "declaration": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "isolatedModules": false,
     "jsx": "react",
+    //"noEmit": true,
     "lib": ["dom", "dom.iterable", "esnext"],
     "module": "esnext",
-    //"noEmit": true,
     "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "strict": true,
-    "skipLibCheck": true,
-    "target": "es6",
-    "declaration": true,
-    //"declarationDir": "./dist",
-    "baseUrl": "./src",
-    "typeRoots": ["./node_modules/@types"],
     "paths": {
       "~/": ["./"],
-      "box-styles": ["lib/box-styles"],
-      "lib": ["lib/"],
-      "icons": ["static/icons"],
-      "ui": ["ui/"]
+      "lib": ["./lib/"],
+      "icons": ["./static/icons"],
+      "ui": ["./ui/"]
     },
-    "types": []
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    //"declarationDir": "./dist",
+    "strict": true,
+    "target": "es6"
   },
   "exclude": ["./node_modules", "./dist", "./.storybook"]
 }

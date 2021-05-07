@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
 import { Backdrop, Heading, Surface } from 'ui/atoms';
-import { IconClose } from 'icons';
+import { IconClose } from 'static/icons';
 import { Variant } from 'lib/types';
 
 interface ModalProps {
@@ -44,14 +44,29 @@ const ModalBase: React.FC<ModalProps & Variant> = ({
   return (
     <div className={className} data-variant={variant} data-visible={visible} tabIndex={-1}>
       <Backdrop onClick={onClose} />
-      <Surface data-variant={variant}>
+      <Shape data-variant={variant}>
         {icon}
         <Heading size={2}>{title}</Heading>
         <div data-content>{children}</div>
-      </Surface>
+      </Shape>
     </div>
   );
 };
+
+const Shape = styled(Surface)`
+  z-index: 1;
+  padding: var(--local-padding-top) var(--local-padding) var(--local-padding);
+
+  width: fit-content;
+  position: relative;
+
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  max-height: 100vh;
+  overflow: scroll;
+  box-sizing: border-box;
+`;
 
 export const Modal = styled(ModalBase)`
   --local-icon-size: var(--woly-line-height);
@@ -61,7 +76,7 @@ export const Modal = styled(ModalBase)`
   --local-gap: calc(5px * var(--woly-component-level) * var(--woly-main-level));
   --local-padding: calc(var(--local-gap) - 1px * var(--woly-main-level));
   --local-padding-top: calc(
-    var(--woly-const-m) * (var(--woly-component-level)+1) + var(--local-padding)
+    var(--woly-const-m) * (var(--woly-component-level) + 1) + var(--local-padding)
   );
 
   visibility: hidden;
@@ -75,21 +90,6 @@ export const Modal = styled(ModalBase)`
   &[data-visible='true'] {
     visibility: visible;
     opacity: 1;
-  }
-
-  ${Surface} {
-    z-index: 1;
-    padding: var(--local-padding-top) var(--local-padding) var(--local-padding);
-
-    width: fit-content;
-    position: relative;
-
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    max-height: 100vh;
-    overflow: scroll;
-    box-sizing: border-box;
   }
 
   [data-icon] {

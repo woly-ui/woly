@@ -4,8 +4,8 @@ category: template
 package: 'woly'
 ---
 
-import { Playground, ColumnContent, TableContent} from 'box-styles'
-import { Grid, Column } from 'ui'
+import {ColumnContent, Playground, TableContent} from 'lib/playground'
+import {Column, Grid} from 'ui'
 
 Grid is a template to create pages or tables. You can set number of columns in grid.
 To create a column use Column component, also you can set size of column.
@@ -68,13 +68,6 @@ To create a column use Column component, also you can set size of column.
     </Column>
   </Grid>
 </Playground>
-
-### Kinds
-
-| Name     | Description      |
-| -------- | ---------------- |
-| `Grid`   | Base grid layout |
-| `Column` | Base column      |
 
 ### Grid Props
 

@@ -1,10 +1,9 @@
 import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
-import { IconEyeClosed, IconEyeOpened } from 'icons';
+import { ButtonIcon, Input } from 'ui/atoms';
+import { IconEyeClosed, IconEyeOpened } from 'static/icons';
 import { Variant } from 'lib/types';
-import { block } from 'box-styles';
-
-import { ButtonIcon, Input } from '../../atoms';
+import { block } from 'lib/block';
 
 interface InputPasswordProps {
   className?: string;
@@ -14,7 +13,6 @@ interface InputPasswordProps {
   placeholder?: string;
   type: 'text' | 'password' | 'email';
   value?: HTMLInputElement['value'];
-  icon: React.ReactNode;
 }
 
 export const InputPasswordBase: React.FC<InputPasswordProps & Variant> = ({
@@ -37,7 +35,7 @@ export const InputPasswordBase: React.FC<InputPasswordProps & Variant> = ({
         name={name}
         onChange={onChange}
         placeholder={placeholder}
-        type={isVisible ? 'text' : 'password'}
+        type={isVisible ? type : 'password'}
         value={value}
         variant={variant}
         rightIcon={
@@ -56,7 +54,7 @@ export const InputPasswordBase: React.FC<InputPasswordProps & Variant> = ({
   );
 };
 
-export const InputPassword = (styled(InputPasswordBase)`
+export const InputPassword = styled(InputPasswordBase)`
   --local-gap: calc(
     (1px * var(--woly-main-level)) + (1px * var(--woly-main-level) * var(--woly-component-level))
   );
@@ -67,4 +65,4 @@ export const InputPassword = (styled(InputPasswordBase)`
   & > *:not(:first-child) {
     margin-left: var(--woly-gap);
   }
-` as unknown) as StyledComponent<'div', Record<string, unknown>, InputPasswordProps & Variant>;
+` as StyledComponent<'div', Record<string, unknown>, InputPasswordProps & Variant>;

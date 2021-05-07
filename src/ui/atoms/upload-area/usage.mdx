@@ -4,20 +4,20 @@ category: atoms
 package: 'woly'
 ---
 
-import { Playground, Content } from 'box-styles';
-import { Table, Thead, Th, Tr, Td, Tbody, UploadArea, Text, Button } from 'ui';
+import {Playground} from 'lib/playground';
+import {Button, Table, Tbody, Td, Text, Th, Thead, Tr, UploadArea} from 'ui';
 
 export const tableHead = [
-  { id: 'id', name: 'Id' },
-  { id: 'firstName', name: 'First name' },
-  { id: 'lastName', name: 'Last name' },
-  { id: 'email', name: 'Email' },
-  { id: 'country', name: 'Country' },
-  { id: 'street', name: 'Street' },
-  { id: 'date', name: 'Date' },
-  { id: 'role', name: 'Role' },
-  { id: 'content', name: 'Content' },
-  { id: 'phone', name: 'Phone' },
+  {id: 'id', name: 'Id'},
+  {id: 'firstName', name: 'First name'},
+  {id: 'lastName', name: 'Last name'},
+  {id: 'email', name: 'Email'},
+  {id: 'country', name: 'Country'},
+  {id: 'street', name: 'Street'},
+  {id: 'date', name: 'Date'},
+  {id: 'role', name: 'Role'},
+  {id: 'content', name: 'Content'},
+  {id: 'phone', name: 'Phone'},
 ];
 
 export const tableRows = [
@@ -372,12 +372,6 @@ Also `UploadArea` component should be reused in creation other components, eg dr
     />
   </div>
 </Playground>
-
-### Kinds
-
-| Name         | Description     |
-| ------------ | --------------- |
-| `UploadArea` | Base UploadArea |
 
 ### Props
 

@@ -4,9 +4,9 @@ category: molecules
 package: 'woly'
 ---
 
-import { Select } from './index';
-import { block, Playground, StateEvent } from 'box-styles';
-import { ArrowDown } from 'icons';
+import {Select} from 'ui';
+import {Playground, StateEvent} from 'lib/playground';
+import {IconArrowDown} from 'static/icons';
 
 Select is a type of input that is used in forms,
 where a user is submitting data and chooses one option from a list.
@@ -25,7 +25,7 @@ If any initial value hasn`t been selected yet, you can pass a placeholder.
     <StateEvent initial={null} change={(event) => event?.target?.dataset.value}>
       {(value, change) => (
         <Select
-          icon={<ArrowDown />}
+          icon={<IconArrowDown />}
           onChange={change}
           options={[
             { children: 'Toyota', value: 'Toyota' },
@@ -50,7 +50,7 @@ Or initial selected value can be passed by default.
     <StateEvent initial="Cats" change={(event) => event?.target?.dataset.value}>
       {(value, change) => (
         <Select
-          icon={<ArrowDown />}
+          icon={<IconArrowDown />}
           onChange={change}
           options={[
             { children: 'Cats', value: 'Cats' },
@@ -74,7 +74,7 @@ Disabled selects are uneditable. They have less opacity so that they appear less
     <StateEvent initial="Cats" change={(event) => event?.target?.dataset.value}>
       {(value, change) => (
         <Select
-          icon={<ArrowDown />}
+          icon={<IconArrowDown />}
           onChange={change}
           options={[
             { children: 'Cats', value: 'Cats' },
@@ -99,7 +99,7 @@ Secondary variant should be used as default variant.
     <StateEvent initial={null} change={(event) => event?.target?.dataset.value}>
       {(value, change) => (
         <Select
-          icon={<ArrowDown />}
+          icon={<IconArrowDown />}
           onChange={change}
           options={[
             { children: 'Toyota', value: 'Toyota' },
@@ -123,7 +123,7 @@ Primary and dander variants should focus user attention.
       <>
         <div style={{ width: '250px', height: '250px' }}>
           <Select
-            icon={<ArrowDown />}
+            icon={<IconArrowDown />}
             onChange={change}
             options={[
               { children: 'Cats', value: 'Cats' },
@@ -136,7 +136,7 @@ Primary and dander variants should focus user attention.
         </div>
         <div style={{ width: '250px', height: '250px' }}>
           <Select
-            icon={<ArrowDown />}
+            icon={<IconArrowDown />}
             onChange={() => {}}
             options={[
               { children: 'Toyota', value: 'Toyota' },
@@ -151,19 +151,6 @@ Primary and dander variants should focus user attention.
     )}
   </StateEvent>
 </Playground>
-
-### Kinds
-
-| Name     | Description                                                      |
-| -------- | ---------------------------------------------------------------- |
-| `Select` | Base Select. Useful for creating a new kind of Select components |
-
-### Props
-
-| Name       | Type              | Default | Description                                                                |
-| ---------- | ----------------- | ------- | -------------------------------------------------------------------------- |
-| `children` | `React.ReactNode` |         | The content to show inside option. It can be string or string with an icon |
-| `value`    | `string`          |         | The value of option. Passed to option as an attribute data-value           |
 
 # Props
 

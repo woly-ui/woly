@@ -4,9 +4,9 @@ category: atoms
 package: 'woly'
 ---
 
-import { Playground } from 'box-styles'
-import { OpenedEyeIcon, SearchIcon } from 'icons';
-import { ButtonIcon } from 'ui';
+import {Playground} from 'lib/playground'
+import {IconEyeOpened, IconSearch} from 'static/icons';
+import {ButtonIcon} from 'ui';
 
 `ButtonIcon` is a button with an icon
 
@@ -15,7 +15,7 @@ import { ButtonIcon } from 'ui';
 <Playground>
   <block.N>
     <ButtonIcon
-      icon={<SearchIcon />}
+      icon={<IconSearch />}
       onClick={() => console.info('ButtonIcon clicked')}
       variant="primary"
       filled
@@ -23,14 +23,14 @@ import { ButtonIcon } from 'ui';
   </block.N>
   <block.N>
     <ButtonIcon
-      icon={<OpenedEyeIcon />}
+      icon={<IconEyeOpened />}
       onClick={() => console.info('ButtonIcon clicked')}
       variant="primary"
     />
   </block.N>
   <block.N>
     <ButtonIcon
-      icon={<SearchIcon />}
+      icon={<IconSearch />}
       onClick={() => console.info('ButtonIcon clicked')}
       variant="primary"
       filled
@@ -39,7 +39,7 @@ import { ButtonIcon } from 'ui';
   </block.N>
   <block.N>
     <ButtonIcon
-      icon={<OpenedEyeIcon />}
+      icon={<IconEyeOpened />}
       onClick={() => console.info('ButtonIcon clicked')}
       variant="primary"
       disabled
@@ -47,7 +47,7 @@ import { ButtonIcon } from 'ui';
   </block.N>
   <block.XS>
     <ButtonIcon
-      icon={<SearchIcon />}
+      icon={<IconSearch />}
       onClick={() => console.info('ButtonIcon clicked')}
       variant="primary"
       filled
@@ -55,14 +55,14 @@ import { ButtonIcon } from 'ui';
   </block.XS>
   <block.XS>
     <ButtonIcon
-      icon={<OpenedEyeIcon />}
+      icon={<IconEyeOpened />}
       onClick={() => console.info('ButtonIcon clicked')}
       variant="primary"
     />
   </block.XS>
   <block.XS>
     <ButtonIcon
-      icon={<SearchIcon />}
+      icon={<IconSearch />}
       onClick={() => console.info('ButtonIcon clicked')}
       variant="primary"
       filled
@@ -71,7 +71,7 @@ import { ButtonIcon } from 'ui';
   </block.XS>
   <block.XS>
     <ButtonIcon
-      icon={<OpenedEyeIcon />}
+      icon={<IconEyeOpened />}
       onClick={() => console.info('ButtonIcon clicked')}
       variant="primary"
       disabled
@@ -79,7 +79,7 @@ import { ButtonIcon } from 'ui';
   </block.XS>
   <block.S>
     <ButtonIcon
-      icon={<SearchIcon />}
+      icon={<IconSearch />}
       onClick={() => console.info('ButtonIcon clicked')}
       variant="primary"
       filled
@@ -87,14 +87,14 @@ import { ButtonIcon } from 'ui';
   </block.S>
   <block.S>
     <ButtonIcon
-      icon={<OpenedEyeIcon />}
+      icon={<IconEyeOpened />}
       onClick={() => console.info('ButtonIcon clicked')}
       variant="primary"
     />
   </block.S>
   <block.S>
     <ButtonIcon
-      icon={<SearchIcon />}
+      icon={<IconSearch />}
       onClick={() => console.info('ButtonIcon clicked')}
       variant="primary"
       filled
@@ -103,7 +103,7 @@ import { ButtonIcon } from 'ui';
   </block.S>
   <block.S>
     <ButtonIcon
-      icon={<OpenedEyeIcon />}
+      icon={<IconEyeOpened />}
       onClick={() => console.info('ButtonIcon clicked')}
       variant="primary"
       disabled
@@ -117,34 +117,28 @@ Secondary and error variant should be used to focus user attention.
 
 <Playground>
   <ButtonIcon
-    icon={<SearchIcon />}
+    icon={<IconSearch />}
     onClick={() => console.info('ButtonIcon clicked')}
     variant="secondary"
   />
   <ButtonIcon
-    icon={<SearchIcon />}
+    icon={<IconSearch />}
     onClick={() => console.info('ButtonIcon clicked')}
     variant="secondary"
     filled
   />
   <ButtonIcon
-    icon={<SearchIcon />}
+    icon={<IconSearch />}
     onClick={() => console.info('ButtonIcon clicked')}
     variant="danger"
   />
   <ButtonIcon
-    icon={<SearchIcon />}
+    icon={<IconSearch />}
     onClick={() => console.info('ButtonIcon clicked')}
     variant="danger"
     filled
   />
 </Playground>
-
-### Kinds
-
-| Name         | Description              |
-| ------------ | ------------------------ |
-| `ButtonIcon` | Base button with an icon |
 
 ### Props
 

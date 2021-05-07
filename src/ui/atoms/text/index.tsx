@@ -22,6 +22,7 @@ export const Text = styled.p.attrs(map)`
   font-size: 15px;
   line-height: 21px;
   font-weight: 400;
+
   &[data-type='subtitle'][data-weight='medium'] {
     font-weight: 500;
   }

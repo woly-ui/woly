@@ -129,6 +129,7 @@ export const Tooltip = styled(TooltipBase)`
 
   &[data-position='bottom'] > [data-tooltip] {
     top: var(--tooltip-position);
+
     &::after {
       bottom: initial;
       top: calc(-4px - var(--woly-border-width, 0px));
@@ -140,6 +141,7 @@ export const Tooltip = styled(TooltipBase)`
   &[data-position='left'] > [data-tooltip] {
     right: var(--tooltip-position);
     top: 0;
+
     &::after {
       top: 12px;
       right: calc(-5px - var(--woly-border-width, 0px));
@@ -150,6 +152,7 @@ export const Tooltip = styled(TooltipBase)`
   &[data-position='right'] > [data-tooltip] {
     left: var(--tooltip-position);
     top: 0;
+
     &::after {
       top: 12px;
       left: calc(-5px - var(--woly-border-width, 0px));

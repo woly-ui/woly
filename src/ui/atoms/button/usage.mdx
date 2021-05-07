@@ -4,9 +4,9 @@ category: atoms
 package: woly
 ---
 
-import { Button } from './index'
-import { Playground, block } from 'box-styles'
-import { PlusIcon, SearchIcon } from 'icons';
+import {Button} from './index'
+import {block, Playground} from 'lib/playground'
+import {IconPlus, IconSearch} from 'static/icons';
 
 `Button` allows users to take actions and make choices with a single tap.
 
@@ -14,13 +14,13 @@ import { PlusIcon, SearchIcon } from 'icons';
 
 <Playground>
   <Button
-    icon={<SearchIcon />}
+    icon={<IconSearch />}
     onClick={() => alert('Hi!')}
     text="Just a button"
     variant="primary"
   />
   <Button
-    icon={<SearchIcon />}
+    icon={<IconSearch />}
     onClick={() => alert('Hi!')}
     text="Just a button"
     variant="primary"
@@ -50,8 +50,8 @@ Secondary variant should be used as a default variant.
 Button can be used with icon on the left side.
 
 <Playground>
-  <Button text="Icon on the left" variant="primary" icon={<PlusIcon />} />
-  <Button text="Disabled button" variant="primary" icon={<SearchIcon />} disabled />
+  <Button text="Icon on the left" variant="primary" icon={<IconPlus />} />
+  <Button text="Disabled button" variant="primary" icon={<IconSearch />} disabled />
 </Playground>
 
 ### Sizes
@@ -60,19 +60,19 @@ Size controlled by the `component-level` block property not from the props.
 
 <Playground>
   <block.S>
-    <Button variant="primary" text="Small" icon={<PlusIcon />} />
+    <Button variant="primary" text="Small" icon={<IconPlus />} />
   </block.S>
   <block.M>
-    <Button variant="primary" text="Normal" icon={<PlusIcon />} />
+    <Button variant="primary" text="Normal" icon={<IconPlus />} />
   </block.M>
   <block.L>
-    <Button variant="primary" text="Large" icon={<PlusIcon />} />
+    <Button variant="primary" text="Large" icon={<IconPlus />} />
   </block.L>
   <block.XL>
-    <Button variant="primary" text="Extra Large" icon={<PlusIcon />} />
+    <Button variant="primary" text="Extra Large" icon={<IconPlus />} />
   </block.XL>
   <block.H>
-    <Button variant="primary" text="Huge" icon={<PlusIcon />} />
+    <Button variant="primary" text="Huge" icon={<IconPlus />} />
   </block.H>
 </Playground>
 
@@ -85,7 +85,7 @@ Buttons can be placed inside the container. Button width is equal to container s
     <Button variant="primary" text="Small" />
   </block.S>
   <block.S>
-    <Button variant="primary" text="Small" icon={<PlusIcon />} />
+    <Button variant="primary" text="Small" icon={<IconPlus />} />
   </block.S>
 </Playground>
 

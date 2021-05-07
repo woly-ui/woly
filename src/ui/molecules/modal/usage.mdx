@@ -4,9 +4,9 @@ category: molecules
 package: 'woly'
 ---
 
-import { Playground, State, block } from 'box-styles'
-import { Button, Field, Input, Modal } from 'ui';
-import { SearchIcon } from 'icons';
+import {Playground, State} from 'lib/playground'
+import {Button, Field, Input, Modal} from 'ui';
+import {IconSearch} from 'static/icons';
 
 Modal component is used for creating dialogs.
 
@@ -16,7 +16,7 @@ Modal component is used for creating dialogs.
   <State initial={false} change={(i) => !i}>
     {(value, change) => (
       <>
-        <Button icon={<SearchIcon />} onClick={change} text="Click on me" variant="primary" />
+        <Button icon={<IconSearch />} onClick={change} text="Click on me" variant="primary" />
         <Modal visible={value} title="Change customer" onClose={change} variant="primary">
           <form autoComplete="off">
             <Field label="Customer name">
@@ -47,12 +47,6 @@ Modal component is used for creating dialogs.
     )}
   </State>
 </Playground>
-
-### Kinds
-
-| Name    | Description |
-| ------- | ----------- |
-| `Modal` | Base modal  |
 
 ### Props
 

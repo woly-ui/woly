@@ -116,6 +116,7 @@ export const RadioButton = styled(RadioButtonBase)`
 
   input:checked + [data-checkbox] {
     --local-border-color: var(--woly-shape-default);
+
     &:before {
       content: '';
 

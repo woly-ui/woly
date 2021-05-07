@@ -137,6 +137,7 @@ export const Switch = styled(SwitchBase)`
 
   &:active > label > [data-checkbox] {
     box-shadow: none;
+
     &:before {
       width: var(--local-tumbler-width-active);
       box-shadow: none;

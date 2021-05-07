@@ -1,8 +1,7 @@
 import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
+import { InputContainer, InputElement } from 'ui/elements';
 import { Variant } from 'lib/types';
-
-import { InputContainer, InputElement } from '../../elements';
 
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   autoComplete?: 'on' | 'off';

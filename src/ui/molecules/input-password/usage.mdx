@@ -4,11 +4,11 @@ category: molecules
 package: 'woly'
 ---
 
-import { InputPassword } from './index';
-import { Playground, block, State } from 'box-styles';
+import {InputPassword} from './index';
+import {block, Playground, State} from 'lib/playground';
 
 `InputPassword` provide a way for the user to securely enter a password
-The component icludes a button-icon that toggle to hide and show the
+The component includes a button-icon that toggle to hide and show the
 password as well as a meter to show the current strength of the password.
 
 InputPassword can be used in an authorization form or to confirm user action.
@@ -186,12 +186,6 @@ Inputs can be placed inside the container. Input width is equal to container siz
     </State>
   </block.L>
 </Playground>
-
-### Kinds
-
-| Name            | Description                                                         |
-| --------------- | ------------------------------------------------------------------- |
-| `InputPassword` | Base inputPassword. Useful for creating a new kind of inputPassword |
 
 ### Props
 

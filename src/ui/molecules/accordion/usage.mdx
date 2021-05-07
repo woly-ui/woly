@@ -4,24 +4,35 @@ category: molecules
 package: 'woly'
 ---
 
-import { Playground, block } from 'box-styles'
-import { Accordion, Table, Thead, Th, Tr, Td, Tbody, Field, TextArea, Text} from 'ui';
+import {Playground} from 'lib/playground'
+import {
+  Accordion,
+  Field,
+  Table,
+  Tbody,
+  Td,
+  Text,
+  TextArea,
+  Th,
+  Thead,
+  Tr
+} from 'ui';
 
 The accordion component delivers large amounts of content in a small space through progressive disclosure.
 The header title give the user a high level overview of the content allowing the user to decide which sections to read.
 
 Accordions can make information processing.
-However, it does hide content from users and it’s important to account for a user not noticing or reading all of the included content.
+However, it does hide content from users, and it’s important to account for a user not noticing or reading all of the included content.
 
-As ussuall accordions are used to organize related information.
-In another case, they shold be used when space is at a premium and long content cannot be displayed all at once,
+As ussually accordions are used to organize related information.
+In another case, they should be used when space is at a premium and long content cannot be displayed all at once,
 eg in a side panel.
 
 export const tableHead = [
-  { id: 'id', name: 'Id' },
-  { id: 'firstName', name: 'First name' },
-  { id: 'lastName', name: 'Last name' },
-  { id: 'email', name: 'Email' },
+  {id: 'id', name: 'Id'},
+  {id: 'firstName', name: 'First name'},
+  {id: 'lastName', name: 'Last name'},
+  {id: 'email', name: 'Email'},
 ];
 
 export const tableRows = [
@@ -36,7 +47,7 @@ export const tableRows = [
     firstName: 'Jonathan',
     lastName: 'Kearney',
     email: 'msmith2343@gmail.com',
-   },
+  },
   {
     id: 3,
     firstName: 'Donald',
@@ -177,12 +188,6 @@ or open
     </Table>
   </Accordion>
 </Playground>
-
-### Kinds
-
-| Name        | Description                                                 |
-| ----------- | ----------------------------------------------------------- |
-| `Accordion` | Base accordion. Useful for creating a new kind of accordion |
 
 ### Props
 

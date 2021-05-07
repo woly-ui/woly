@@ -4,8 +4,8 @@ category: atoms
 package: 'woly'
 ---
 
-import { Checkbox } from './index';
-import { Playground, State } from 'box-styles'
+import {Checkbox} from 'ui';
+import {Playground, State} from 'lib/playground'
 
 Checkboxes allow you to setup selectable options for your users - either to toggle a single setting on or off, or to allow for multiple choices.
 
@@ -78,20 +78,14 @@ Primary variant should be used to focus user attention. The disabled checkbox is
   </State>
 </Playground>
 
-### Kinds
-
-| Name       | Description                                                 |
-| ---------- | ----------------------------------------------------------- |
-| `Checkbox` | Base checkbox. Useful for creating a new kind of checkboxes |
-
 ### Props
 
 | Name        | Type                                         | Default       | Description                                                                  |
 | ----------- | -------------------------------------------- | ------------- | ---------------------------------------------------------------------------- |
-| `id`        | `string`                                     |               | HTML id attribute                                                            |
-| `disabled`  | `boolean`                                    |               | HTML disabled attribute                                                      |
 | `checked`   | `boolean`                                    |               | Whether checkbox is checked or not                                           |
-| `text`      | `string`                                     |               | Text component                                                               |
-| `onKeyDown` |                                              |               | The onKeydown event occurs when the user is pressing a key (on the keyboard) |
+| `disabled`  | `boolean`                                    |               | HTML disabled attribute                                                      |
+| `id`        | `string`                                     |               | HTML id attribute                                                            |
 | `onChange`  | `React.ChangeEventHandler<HTMLInputElement>` |               | Callback when checkbox is clicked                                            |
+| `onKeyDown` |                                              |               | The onKeydown event occurs when the user is pressing a key (on the keyboard) |
+| `text`      | `string`                                     |               | Text component                                                               |
 | `variant`   | `string`                                     | `'secondary'` | Variant prop to style Checkbox component                                     |

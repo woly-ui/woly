@@ -4,12 +4,10 @@ category: atoms
 package: 'woly'
 ---
 
-import { Input } from './index';
-import { InfoIcon } from 'icons';
+import {ButtonIcon, Input} from 'ui';
+import {InfoIcon} from 'static/icons';
 
-import { Playground, block, State, Form } from 'box-styles'
-
-import { ButtonIcon } from '../../atoms';
+import {block, Form, Playground} from 'lib/playground'
 
 `Input` is a field to accept data from the user. Input is used to create form fields that accept user input.
 They typically appear in forms and dialogs.
@@ -49,7 +47,7 @@ Use character or word counters where there is a character or word limit.
 Specs:
 
 - Right justified
-- Displayed as a ratio of characters used and the character limit (formatted as: characters used / character limit)
+- Displayed as a ratio of characters used, and the character limit (formatted as: characters used / character limit)
 
 ### Example
 
@@ -442,12 +440,6 @@ Inputs can be placed inside the container. Input width is equal to container siz
     </block.L>
   </Form>
 </Playground>
-
-### Kinds
-
-| Name    | Description                              |
-| ------- | ---------------------------------------- |
-| `Input` | Useful for creating a new kind of inputs |
 
 ### Props
 

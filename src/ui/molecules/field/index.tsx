@@ -1,9 +1,8 @@
 import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
+import { Label } from 'ui/atoms';
 import { Variant } from 'lib/types';
-import { box, boxVertical } from 'ui/elements';
-
-import { Label } from '../../atoms';
+import { boxVertical } from 'ui/elements';
 
 interface FieldProps {
   className?: string;
@@ -38,6 +37,7 @@ export const Field = styled(FieldBase)`
   &[data-row='true'] {
     display: flex;
     align-items: center;
+
     & > :not(:first-child) {
       padding-left: var(--local-gap);
     }

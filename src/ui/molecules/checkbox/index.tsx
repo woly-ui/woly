@@ -1,6 +1,6 @@
 import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
-import { IconCheckFilled, IconFilledUnchecked } from 'icons';
+import { IconCheckFilled, IconFilledUnchecked } from 'static/icons';
 import { Variant, keyboardEventHandle } from 'lib';
 
 interface CheckboxProps {
@@ -127,9 +127,11 @@ export const Checkbox = styled(CheckboxBase)`
       svg > rect {
         fill: var(--local-icon-fill);
       }
+
       &:hover {
         --local-icon-fill: var(--woly-shape-hover);
       }
+
       &:focus,
       &:active {
         --local-icon-fill: var(--woly-focus);

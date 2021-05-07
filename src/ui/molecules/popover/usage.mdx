@@ -4,9 +4,9 @@ category: molecules
 package: 'woly'
 ---
 
-import { Playground, block } from 'box-styles'
-import { ButtonIcon, Popover, Button, ListContainer, ListItem } from 'ui';
-import { SearchIcon } from 'icons';
+import {block, Playground} from 'lib/playground'
+import {Button, ButtonIcon, ListContainer, ListItem, Popover} from 'ui';
+import {IconSearch} from 'static/icons';
 
 export const links = [
   {
@@ -19,12 +19,12 @@ export const links = [
     content: "Alex",
     disabled: true
   },
-    {
+  {
     id: "fwed32q4fcsw",
     content: "Michael",
     disabled: false
   },
-    {
+  {
     id: "fwed32q4fcsb",
     content: "Donald",
     disabled: false
@@ -55,7 +55,7 @@ If you scroll to the bottom of page and there is no place for Popover to show it
       position="top"
       content={<div style={{ padding: '30px 50px' }}>This is top Popover!</div>}
     >
-      <ButtonIcon icon={<SearchIcon />} onClick={() => {}} variant="primary" />
+      <ButtonIcon icon={<IconSearch />} onClick={() => {}} variant="primary" />
     </Popover>
   </div>
 </Playground>
@@ -98,25 +98,24 @@ If you scroll to the bottom of page and there is no place for Popover to show it
       <Popover
         isOpen={false}
         content={
-          <ul style={{listStyleType: 'none'}}>
-            <li><a href="">Home</a></li>
-            <li><a href="">Shop</a></li>
-            <li><a href="">About</a></li>
+          <ul style={{ listStyleType: 'none' }}>
+            <li>
+              <a href="">Home</a>
+            </li>
+            <li>
+              <a href="">Shop</a>
+            </li>
+            <li>
+              <a href="">About</a>
+            </li>
           </ul>
         }
       >
-        <Button text="Toggle menu" onClick={() => {}} variant="primary" />
+        <Button text="Toggle menu" onClick={() => console.log('wow')} variant="primary" />
       </Popover>
     </div>
-
   </block.L>
 </Playground>
-
-### Kinds
-
-| Name      | Description  |
-| --------- | ------------ |
-| `Popover` | Base popover |
 
 ### Props
 

@@ -27,7 +27,6 @@ export const Notification = styled(NotificationBase)`
     var(--woly-const-m) + (1px * var(--woly-main-level)) + var(--local-vertical)
   );
 
-  --local-position-top: 24px;
   --local-position-right: 0;
   --local-position-bottom: unset;
   --local-position-top: 0;
