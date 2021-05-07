@@ -2,7 +2,7 @@ import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
 import { Variant } from 'lib/types';
 
-import { Box, Elements } from '../../elements/quarks';
+import { Box, Elements } from '../../elements';
 
 interface ListElementsProps {
   iconLeft?: React.ReactNode;
@@ -78,7 +78,7 @@ const ListItemContainer = styled(Box).attrs(mapItem)`
   &[data-disabled='true'] {
     --local-icon-color: var(--woly-canvas-text-disabled);
     --local-color: var(--woly-canvas-text-disabled);
-    
+
     pointer-events: none;
   }
 ` as StyledComponent<'div', Record<string, unknown>, ListItemProps & Variant>;

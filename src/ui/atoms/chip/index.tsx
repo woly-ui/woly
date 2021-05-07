@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
 import { Variant } from 'lib/types';
-import { box } from 'ui/elements/quarks';
+import { box } from 'ui/elements';
 
 interface ChipProps {
   children?: string;

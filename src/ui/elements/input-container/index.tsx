@@ -106,7 +106,6 @@ export const InputContainer = styled(InputContainerBase)`
 
     --local-border-color: var(--woly-focus);
     --local-icon-fill: var(--woly-canvas-text-default);
-    --local-border-color: var(--woly-focus);
 
     outline: none;
   }
