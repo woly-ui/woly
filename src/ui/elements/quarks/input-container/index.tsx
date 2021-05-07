@@ -102,7 +102,7 @@ export const InputContainer = styled(InputContainerBase)`
 
   &:focus-within {
     box-shadow: 0 0 0 var(--woly-border-width) var(--woly-focus);
-    
+
     --local-border-color: var(--woly-focus);
     --local-icon-fill: var(--woly-canvas-text-default);
     --local-border-color: var(--woly-focus);

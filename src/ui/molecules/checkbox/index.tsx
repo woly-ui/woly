@@ -170,7 +170,7 @@ export const Checkbox = styled(CheckboxBase)`
     [data-checkmark] > svg {
       box-shadow: none;
     }
-    
+
     [data-checkmark='unchecked'],
     input:checked ~ [data-checkmark='checked'] {
       display: flex;
