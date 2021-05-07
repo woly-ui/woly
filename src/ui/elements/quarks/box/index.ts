@@ -1,5 +1,17 @@
 import { css } from 'styled-components';
 
+export const verticalBox = css`
+  --local-gap: var(--woly-const-m);
+
+  & > *:not(:last-child) {
+    padding-bottom: var(--local-gap);
+  }
+
+  & > :only-child {
+    padding: 0;
+  }
+`;
+
 export const box = css`
   --local-vertical: calc(
     1px * var(--woly-component-level) * var(--woly-main-level) - var(--woly-border-width)
@@ -10,6 +22,7 @@ export const box = css`
   );
   --local-gap: calc(1px * var(--woly-component-level) * var(--woly-main-level));
   --local-compensate: var(--local-vertical);
+
   & > * {
     padding-top: var(--local-vertical);
     padding-bottom: var(--local-vertical);
