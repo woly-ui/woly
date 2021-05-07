@@ -46,9 +46,7 @@ Disabled text fields are uneditable. They have less opacity so that they appear 
 
 ### Variants
 
-Primary and secondary variants are should be used to focus user attention.
-
-<!-- example for secondary variant will be fixed with task FRNT-476 -->
+Primary and danger variants are should be used to focus user attention.
 
 <Playground direction="vertical">
   <State initial={false} change={(i) => !i}>
@@ -69,13 +67,13 @@ Primary and secondary variants are should be used to focus user attention.
         name="name"
         placeholder="Enter password"
         onChange={(event) => console.info('On input change')}
-        variant="secondary"
+        variant="danger"
       />
     )}
   </State>
 </Playground>
 
-Error variant can be used to focus user attention on error.
+Secondary variant should be used as a default variant.
 
 <Playground direction="vertical">
   <State initial={false} change={(i) => !i}>
@@ -85,7 +83,7 @@ Error variant can be used to focus user attention on error.
         name="name"
         placeholder="Enter password"
         onChange={(event) => console.info('On input change')}
-        variant="danger"
+        variant="secondary"
       />
     )}
   </State>
@@ -197,13 +195,13 @@ Inputs can be placed inside the container. Input width is equal to container siz
 
 ### Props
 
-| Name          | Type                                         | Default     | Description                                                 |
-| ------------- | -------------------------------------------- | ----------- | ----------------------------------------------------------- |
-| `disabled`    | `boolean`                                    | `null`      | HTML disabled attribute                                     |
-| `name`        | `string`                                     |             | HTML name attribute                                         |
-| `onChange`    | `React.ChangeEventHandler<HTMLInputElement>` |             | Callback when input is changed                              |
-| `value`       | `HTMLInputElement['value']`                  | `null`      | HTML value attribute                                        |
-| `variant`     | `string`                                     | `'default'` | Variant prop to style InputPassword component               |
-| `placeholder` | `string`                                     |             | CSS pseudo-element represents the placeholder text          |
-| `rightIcon`   | `React.ReactNode`                            |             | Component to show on the right side of the text (ex.: Icon) |
-| `...`         | `HTMLInputElement`                           | `{}`        | Other props are inherited from `HTMLInputElement`           |
+| Name          | Type                                         | Default       | Description                                                 |
+| ------------- | -------------------------------------------- | ------------- | ----------------------------------------------------------- |
+| `disabled`    | `boolean`                                    | `null`        | HTML disabled attribute                                     |
+| `name`        | `string`                                     |               | HTML name attribute                                         |
+| `onChange`    | `React.ChangeEventHandler<HTMLInputElement>` |               | Callback when input is changed                              |
+| `value`       | `HTMLInputElement['value']`                  | `null`        | HTML value attribute                                        |
+| `variant`     | `string`                                     | `'secondary'` | Variant prop to style InputPassword component               |
+| `placeholder` | `string`                                     |               | CSS pseudo-element represents the placeholder text          |
+| `rightIcon`   | `React.ReactNode`                            |               | Component to show on the right side of the text (ex.: Icon) |
+| `...`         | `HTMLInputElement`                           | `{}`          | Other props are inherited from `HTMLInputElement`           |
