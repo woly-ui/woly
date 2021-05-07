@@ -36,7 +36,7 @@ export const box = css`
   }
 `;
 
-export const verticalBox = css`
+export const boxVertical = css`
   --local-gap: var(--woly-const-m);
 
   & > *:not(:first-child) {

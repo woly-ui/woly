@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
 import { Variant } from 'lib/types';
-import { box, verticalBox } from 'ui/elements/quarks';
+import { box, boxVertical } from 'ui/elements/quarks';
 
 import { Label } from '../../atoms';
 
@@ -32,7 +32,7 @@ export const Field = styled(FieldBase)`
   width: 100%;
 
   &[data-row='false'] {
-    ${verticalBox}
+    ${boxVertical}
   }
 
   &[data-row='true'] {
