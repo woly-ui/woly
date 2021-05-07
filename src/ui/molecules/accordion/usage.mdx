@@ -66,75 +66,67 @@ export const tableRows = [
 
 Accordion`s content and title can be manadged for our own.
 
-<Playground direction="vertical" size="L">
+<Playground direction="vertical">
   <>
     <Accordion
       variant="primary"
       isOpen={false}
       title={<Text type="L">Short recomendation when to use accordion&nbsp;</Text>}
     >
-      <div>
-        <ul style={{ margin: '0 0 10px 0', paddingLeft: '20px' }}>
-          <li>
-            <Text type="S">To organize related information&nbsp;</Text>
-          </li>
-          <li>
-            <Text type="S">
-              To shorten pages and reduce scrolling when content is not crucial to read in
-              full.&nbsp;
-            </Text>
-          </li>
-          <li>
-            <Text type="S">
-              When space is at a premium and long content cannot be displayed all at once, like on a
-              mobile interface or in a side panel.&nbsp;
-            </Text>
-          </li>
-        </ul>
-        <Field label="Leave some comment" variant="primary">
-          <TextArea
-            name="comment"
-            placeholder="Enter comment"
-            onChange={() => console.info('On textarea change')}
-            variant="primary"
-            overflow="hidden"
-          />
-        </Field>
-      </div>
+      <ul style={{ margin: '0 0 10px 0', paddingLeft: '20px' }}>
+        <li>
+          <Text type="S">To organize related information&nbsp;</Text>
+        </li>
+        <li>
+          <Text type="S">
+            To shorten pages and reduce scrolling when content is not crucial to read in
+            full.&nbsp;
+          </Text>
+        </li>
+        <li>
+          <Text type="S">
+            When space is at a premium and long content cannot be displayed all at once, like on a
+            mobile interface or in a side panel.&nbsp;
+          </Text>
+        </li>
+      </ul>
+      <TextArea
+        name="name"
+        placeholder="TextArea"
+        onChange={() => console.info('On textarea change')}
+        variant="primary"
+        overflow="hidden"
+      />
     </Accordion>
     <Accordion
       variant="primary"
       isOpen={false}
       title={<Text type="L">Short recomendation when to use accordion&nbsp;</Text>}
     >
-      <div>
-        <ul style={{ margin: '0 0 10px 0', paddingLeft: '20px' }}>
-          <li>
-            <Text type="S">To organize related information&nbsp;</Text>
-          </li>
-          <li>
-            <Text type="S">
-              To shorten pages and reduce scrolling when content is not crucial to read in
-              full.&nbsp;
-            </Text>
-          </li>
-          <li>
-            <Text type="S">
-              When space is at a premium and long content cannot be displayed all at once, like on a
-              mobile interface or in a side panel.&nbsp;
-            </Text>
-          </li>
-        </ul>
-        <Field label="Leave some comment" variant="primary">
-          <TextArea
-            name="comment"
-            placeholder="Enter comment"
-            onChange={() => console.info('On textarea change')}
-            variant="primary"
-            overflow="hidden"
-          />
-        </Field>
-      </div>
+      <ul style={{ margin: '0 0 10px 0', paddingLeft: '20px' }}>
+        <li>
+          <Text type="S">To organize related information&nbsp;</Text>
+        </li>
+        <li>
+          <Text type="S">
+            To shorten pages and reduce scrolling when content is not crucial to read in
+            full.&nbsp;
+          </Text>
+        </li>
+        <li>
+          <Text type="S">
+            When space is at a premium and long content cannot be displayed all at once, like on a
+            mobile interface or in a side panel.&nbsp;
+          </Text>
+        </li>
+      </ul>
+      <TextArea
+        name="name"
+        placeholder="TextArea"
+        onChange={() => console.info('On textarea change')}
+        variant="primary"
+        overflow="hidden"
+      />
     </Accordion>
   </>
 </Playground>
@@ -167,6 +159,7 @@ Accordion can be closed for default
 or open
 
 <Playground>
+  <>
   <Accordion variant="primary" isOpen={true} title={<span>Some text</span>}>
     <Table columns={tableHead.length} variant="primary">
       <Thead>
@@ -187,6 +180,27 @@ or open
       </Tbody>
     </Table>
   </Accordion>
+  <Accordion variant="primary" isOpen={true} title={<span>Some text</span>}>
+    <Table columns={tableHead.length} variant="primary">
+      <Thead>
+        <Tr>
+          {tableHead.map(({ id, name }) => (
+            <Th key={id}>{name}</Th>
+          ))}
+        </Tr>
+      </Thead>
+      <Tbody>
+        {tableRows.map((row) => (
+          <Tr>
+            {tableHead.map(({ id }) => (
+              <Td key={id}>{row[id]}</Td>
+            ))}
+          </Tr>
+        ))}
+      </Tbody>
+    </Table>
+  </Accordion>
+  </>
 </Playground>
 
 ### Props
