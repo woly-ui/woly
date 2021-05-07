@@ -85,26 +85,29 @@ export const TextArea = styled(TextAreaBase)`
   --local-border-color: var(--woly-canvas-text-hover);
   --local-background-color: var(--woly-canvas-default);
   --local-value-color: var(--woly-canvas-text-default);
+  box-sizing: border-box;
 
   width: 100%;
-  box-sizing: border-box;
-  outline: none;
 
   font-size: var(--woly-font-size, 15px);
   line-height: var(--woly-line-height, 21px);
 
+  outline: none;
+
   textarea {
     padding: var(--local-vertical) var(--local-horizontal);
 
-    outline: none;
+    overflow: hidden;
+
+    color: var(--local-value-color);
 
     background-color: var(--local-background-color);
-    color: var(--local-value-color);
 
     border: var(--woly-border-width) solid var(--local-border-color);
     border-radius: var(--woly-rounding);
 
-    overflow: hidden;
+    outline: none;
+
     resize: none;
 
     &::placeholder {
@@ -114,14 +117,14 @@ export const TextArea = styled(TextAreaBase)`
 
   &:focus > textarea {
     --local-border-color: var(--woly-focus);
-    box-shadow: 0 0 0 var(--woly-border-width) var(--woly-focus);
     outline: none;
+    box-shadow: 0 0 0 var(--woly-border-width) var(--woly-focus);
   }
 
   &:active > textarea {
     --local-border-color: var(--woly-focus);
-    box-shadow: 0 0 0 var(--woly-border-width) var(--woly-focus);
     outline: none;
+    box-shadow: 0 0 0 var(--woly-border-width) var(--woly-focus);
   }
 
   &:hover > textarea {

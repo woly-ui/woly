@@ -39,26 +39,27 @@ export const InputContainer = styled(InputContainerBase)`
   --local-icon-fill: var(--woly-canvas-text-active);
   --local-value-color: var(--woly-canvas-text-default);
 
-  width: 100%;
-  outline: none;
-
-  padding: calc(var(--local-vertical) - var(--woly-border-width)) 0;
+  display: flex;
+  align-items: center;
 
   box-sizing: border-box;
 
-  display: flex;
-  align-items: center;
+  width: 100%;
+
+  padding: calc(var(--local-vertical) - var(--woly-border-width)) 0;
 
   background: var(--local-background-color);
 
   border: var(--woly-border-width) solid var(--local-border-color);
   border-radius: var(--woly-rounding);
+  outline: none;
 
   [data-input='input'] {
     flex: 1;
-    color: var(--local-value-color);
 
     padding: 0 var(--local-horizontal);
+
+    color: var(--local-value-color);
 
     input {
       padding: 0;
@@ -102,12 +103,11 @@ export const InputContainer = styled(InputContainerBase)`
   }
 
   &:focus-within {
+    outline: none;
     box-shadow: 0 0 0 var(--woly-border-width) var(--woly-focus);
 
     --local-border-color: var(--woly-focus);
     --local-icon-fill: var(--woly-canvas-text-default);
-
-    outline: none;
   }
 
   &[data-disabled='true'] {

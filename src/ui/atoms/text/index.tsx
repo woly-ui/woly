@@ -18,10 +18,11 @@ export const Text = styled.p.attrs(map)`
   --local-color: var(--woly-canvas-text-default);
 
   margin: 0;
+
   color: var(--local-color);
+  font-weight: 400;
   font-size: 15px;
   line-height: 21px;
-  font-weight: 400;
 
   &[data-type='subtitle'][data-weight='medium'] {
     font-weight: 500;
@@ -48,9 +49,9 @@ export const Text = styled.p.attrs(map)`
   }
 
   &[data-type='hint'] {
+    color: var(--local-color);
     font-size: 12px;
     line-height: 15px;
-    color: var(--local-color);
   }
 
   &[data-type='hint'][data-weight='light'] {

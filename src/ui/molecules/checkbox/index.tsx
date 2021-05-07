@@ -81,8 +81,9 @@ export const Checkbox = styled(CheckboxBase)`
 
   padding: var(--local-vertical) var(--local-horizontal);
 
-  user-select: none;
   outline: none;
+
+  user-select: none;
 
   &:focus [data-checkmark] > svg,
   &:active [data-checkmark] > svg {

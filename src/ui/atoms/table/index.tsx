@@ -15,8 +15,8 @@ export const Table = styled.table.attrs(map)`
   --local-gap: calc(var(--woly-const-m) / 2);
 
   display: grid;
-  gap: var(--local-gap);
   grid-template-columns: repeat(var(--local-columns), auto);
+  gap: var(--local-gap);
 `;
 
 export const Thead = styled.thead`
@@ -28,19 +28,23 @@ export const Tbody = styled.tbody`
 `;
 
 export const Th = styled.th`
-  padding: var(--local-vertical) var(--local-horizontal);
-  max-width: var(--local-cell-max-width);
   box-sizing: border-box;
-  background: var(--woly-shape-text-default);
+  max-width: var(--local-cell-max-width);
+  padding: var(--local-vertical) var(--local-horizontal);
+
   color: var(--woly-canvas-text-disabled);
+
+  background: var(--woly-shape-text-default);
 `;
 
 export const Td = styled.td`
-  padding: var(--local-vertical) var(--local-horizontal);
-  max-width: var(--local-cell-max-width);
   box-sizing: border-box;
-  background: var(--woly-shape-text-default);
+  max-width: var(--local-cell-max-width);
+  padding: var(--local-vertical) var(--local-horizontal);
+
   color: var(--woly-canvas-text-default);
+
+  background: var(--woly-shape-text-default);
 `;
 
 export const Tr = styled.tr`

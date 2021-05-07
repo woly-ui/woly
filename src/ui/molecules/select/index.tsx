@@ -123,6 +123,7 @@ export const Select = styled(SelectBase)`
   --local-icon-size: var(--woly-line-height);
 
   position: relative;
+
   align-items: center;
   width: 100%;
 
@@ -132,15 +133,16 @@ export const Select = styled(SelectBase)`
   [data-selected] {
     display: flex;
     align-items: center;
+    box-sizing: border-box;
 
     padding: var(--local-vertical) var(--local-horizontal);
+
+    color: var(--local-shape-color);
+
     background: var(--local-background);
 
     border: var(--woly-border-width) solid var(--local-border-input-color);
     border-radius: var(--woly-rounding);
-    box-sizing: border-box;
-
-    color: var(--local-shape-color);
 
     [data-value] {
       flex: 1;
@@ -153,36 +155,37 @@ export const Select = styled(SelectBase)`
 
   [data-icon] {
     display: flex;
+    flex-shrink: 1;
     align-items: center;
     justify-content: center;
-    flex-shrink: 1;
 
     width: var(--local-icon-size);
     height: var(--local-icon-size);
 
     svg > path {
-      height: 100%;
       width: 100%;
+      height: 100%;
 
       fill: var(--local-shape-color);
     }
   }
 
   ul {
-    display: none;
-    list-style-type: none;
-
     position: absolute;
     z-index: 1;
+
+    display: none;
     width: 100%;
+    margin-top: var(--local-gap);
+
+    padding: 0;
+
+    list-style-type: none;
 
     background: var(--local-list-background);
 
     border: var(--woly-border-width) solid var(--local-border-list);
     border-radius: var(--woly-rounding);
-
-    padding: 0;
-    margin-top: var(--local-gap);
 
     box-shadow: var(--woly-shadow);
   }
@@ -197,10 +200,11 @@ export const Select = styled(SelectBase)`
   li {
     padding: var(--local-vertical) var(--local-horizontal);
 
+    color: var(--local-shape-color);
+
     line-height: var(--woly-line-height);
 
     background: var(--local-background);
-    color: var(--local-shape-color);
 
     cursor: pointer;
 

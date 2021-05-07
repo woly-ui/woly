@@ -98,10 +98,12 @@ export const Popover = styled(PopoverBase)`
 
   [data-popover] {
     position: absolute;
+    z-index: 1;
+
+    min-width: 100%;
+
     visibility: hidden;
     opacity: 0;
-    z-index: 1;
-    min-width: 100%;
   }
 
   & > [data-open='true'] {

@@ -82,10 +82,11 @@ export const RadioButton = styled(RadioButtonBase)`
 
   display: flex;
   align-items: center;
-  outline: none;
-  border-radius: var(--local-border-rounding);
 
   margin-right: var(--local-vertical);
+
+  border-radius: var(--local-border-rounding);
+  outline: none;
 
   label {
     display: flex;
@@ -95,6 +96,7 @@ export const RadioButton = styled(RadioButtonBase)`
 
     input {
       display: none;
+
       outline: none;
     }
   }
@@ -107,24 +109,24 @@ export const RadioButton = styled(RadioButtonBase)`
     width: var(--local-radio-size);
     height: var(--local-radio-size);
 
-    background: var(--local-background);
-    border-radius: var(--local-border-rounding);
-    border: var(--woly-border-width) solid var(--local-border-color);
-
     margin-right: var(--local-gap);
+
+    background: var(--local-background);
+    border: var(--woly-border-width) solid var(--local-border-color);
+    border-radius: var(--local-border-rounding);
   }
 
   input:checked + [data-checkbox] {
     --local-border-color: var(--woly-shape-default);
 
     &:before {
-      content: '';
-
       width: var(--local-ellipse-size);
       height: var(--local-ellipse-size);
 
       background-color: var(--local-icon-fill);
       border-radius: var(--local-border-rounding);
+
+      content: '';
     }
 
     &:hover {
@@ -138,16 +140,22 @@ export const RadioButton = styled(RadioButtonBase)`
     }
   }
 
-  &:hover {
-    --local-border-color: var(--woly-shape-hover);
+  &:focus > label > [data-checkbox] {
+    box-shadow: 0 0 0 var(--woly-border-width) var(--woly-focus);
   }
 
   &:active > label > [data-checkbox] {
     --local-border-color: var(--woly-shape-active);
   }
 
-  &:focus > label > [data-checkbox] {
-    box-shadow: 0 0 0 var(--woly-border-width) var(--woly-focus);
+  &:hover {
+    --local-border-color: var(--woly-shape-hover);
+  }
+
+  [data-text] {
+    color: var(--local-color-text);
+    font-size: var(--woly-font-size);
+    line-height: var(--woly-line-height);
   }
 
   &[data-disabled='true'] {
@@ -165,11 +173,5 @@ export const RadioButton = styled(RadioButtonBase)`
     [data-text] {
       --local-color-text: var(--woly-canvas-text-disabled);
     }
-  }
-
-  [data-text] {
-    font-size: var(--woly-font-size);
-    line-height: var(--woly-line-height);
-    color: var(--local-color-text);
   }
 ` as StyledComponent<'div', Record<string, unknown>, RadioButtonProps & Variant>;

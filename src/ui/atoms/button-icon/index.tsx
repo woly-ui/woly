@@ -24,33 +24,33 @@ const ButtonIconBase: React.FC<Props & Variant> = ({
 
 export const ButtonIcon = styled(ButtonIconBase)`
   ${box}
-  --local-vertical: calc(
-    1px * var(--woly-component-level) * var(--woly-main-level)
-  );
 
+  --local-vertical: calc(1px * var(--woly-component-level) * var(--woly-main-level));
   --local-shape-color: var(--woly-canvas-default);
   --local-icon-size: calc(var(--woly-line-height));
   --local-button-size: calc(var(--local-icon-size) + (var(--local-vertical) * 2));
   --local-icon-color: var(--woly-shape-default);
 
   display: flex;
-  justify-content: center;
+
   align-items: center;
+  justify-content: center;
   box-sizing: border-box;
 
   width: var(--local-button-size);
   height: var(--local-button-size);
 
+  background: var(--local-shape-color);
   border: var(--woly-border-width) solid var(--local-shape-color);
   border-radius: var(--woly-rounding);
-  cursor: pointer;
-  background: var(--local-shape-color);
   outline: none;
+  cursor: pointer;
 
   [data-icon] {
     display: flex;
     align-items: center;
     justify-content: center;
+
     svg {
       width: var(--local-icon-size);
       height: var(--local-icon-size);
@@ -59,6 +59,7 @@ export const ButtonIcon = styled(ButtonIconBase)`
     svg > path {
       fill: var(--local-icon-color);
     }
+
     svg > g {
       stroke: var(--local-icon-color);
     }
@@ -71,13 +72,16 @@ export const ButtonIcon = styled(ButtonIconBase)`
     &:active {
       --local-shape-color: var(--woly-focus);
     }
+
     &:focus {
       --local-shape-color: var(--woly-shape-active);
       box-shadow: 0 0 0 var(--woly-border-width) var(--woly-focus);
     }
+
     &:hover {
       --local-shape-color: var(--woly-shape-hover);
     }
+
     &:disabled {
       --local-shape-color: var(--woly-canvas-disabled);
     }

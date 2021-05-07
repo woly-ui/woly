@@ -54,18 +54,20 @@ const ModalBase: React.FC<ModalProps & Variant> = ({
 };
 
 const Shape = styled(Surface)`
-  z-index: 1;
-  padding: var(--local-padding-top) var(--local-padding) var(--local-padding);
-
-  width: fit-content;
   position: relative;
+  top: 50%;
 
   left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  max-height: 100vh;
-  overflow: scroll;
+  z-index: 1;
+
   box-sizing: border-box;
+
+  width: fit-content;
+  max-height: 100vh;
+  padding: var(--local-padding-top) var(--local-padding) var(--local-padding);
+  overflow: scroll;
+
+  transform: translate(-50%, -50%);
 `;
 
 export const Modal = styled(ModalBase)`
@@ -78,14 +80,14 @@ export const Modal = styled(ModalBase)`
   --local-padding-top: calc(
     var(--woly-const-m) * (var(--woly-component-level) + 1) + var(--local-padding)
   );
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
 
   visibility: hidden;
   opacity: 0;
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  left: 0;
 
   &[data-visible='true'] {
     visibility: visible;
@@ -94,10 +96,11 @@ export const Modal = styled(ModalBase)`
 
   [data-icon] {
     position: absolute;
-    width: var(--local-icon-size);
-    height: var(--local-icon-size);
     top: var(--local-icon-position);
     right: var(--local-icon-position);
+
+    width: var(--local-icon-size);
+    height: var(--local-icon-size);
     padding: var(--local-icon-padding);
   }
 

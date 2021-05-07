@@ -41,12 +41,13 @@ export const Button = styled(ButtonBase)`
   --local-shape-color: var(--woly-shape-default);
   --local-border-color: var(--woly-shape-default);
 
-  ${box};
+  ${box}
 
-  box-sizing: border-box;
   display: flex;
   flex-wrap: nowrap;
   justify-content: center;
+
+  box-sizing: border-box;
 
   color: var(--local-text-color);
   font-size: var(--woly-font-size);
@@ -60,8 +61,9 @@ export const Button = styled(ButtonBase)`
   outline: none;
 
   &[data-outlined='true'] {
-    background-color: transparent;
     color: var(--local-shape-color);
+
+    background-color: transparent;
 
     svg > path {
       fill: var(--local-shape-color);
