@@ -55,7 +55,7 @@ or also as a label of group of component, eg checkbox or radiobutton groups.
       onChange={() => console.info('On textarea change')}
       variant="primary"
       overflow="hidden"
-      disabled
+      isDisabled
     />
   </Field>
   <Field label="Label for input">
@@ -68,7 +68,7 @@ or also as a label of group of component, eg checkbox or radiobutton groups.
       variant="primary"
     />
   </Field>
-</Playground>
+</Playground>{' '}
 
 Labels and children component can be replaced in row
 
@@ -106,37 +106,6 @@ or in column variants
 
 ### Variants
 
-Secondary variant should be used as a default variarnt.
-
-<Playground direction="vertical">
-  <Field label="Default textarea" variant="danger">
-    <TextArea
-      name="name"
-      placeholder="TextArea"
-      onChange={() => console.info('On textarea change')}
-      variant="secondary"
-      overflow="hidden"
-      disabled
-    />
-  </Field>
-  <Field label="Default input" variant="danger">
-    <Input
-      variant="secondary"
-      name="name"
-      onChange={(event) => console.info('On input change')}
-      placeholder="Placeholder"
-      type="text"
-    />
-  </Field>
-  <State initial={false} change={(i) => !i}>
-    {(value, change) => (
-      <Field label="Default switch">
-        <Switch isChecked={value} onChange={change} id="roundOne" variant="secondary" />
-      </Field>
-    )}
-  </State>
-</Playground>
-
 Error variant can be used to focus user attention on error.
 
 <Playground direction="vertical">
@@ -147,7 +116,7 @@ Error variant can be used to focus user attention on error.
       onChange={() => console.info('On textarea change')}
       variant="danger"
       overflow="hidden"
-      disabled
+      isDisabled
     />
   </Field>
   <Field label="Input with error" variant="danger">

@@ -6,17 +6,18 @@ interface InputContainerProps extends React.InputHTMLAttributes<HTMLInputElement
   className?: string;
   disabled?: boolean;
   leftIcon?: React.ReactNode;
+  onChange: React.EventHandler<React.SyntheticEvent>;
   rightIcon?: React.ReactNode;
 }
 
 const InputContainerBase: React.FC<InputContainerProps & Variant> = ({
   children,
   className,
-  disabled = false,
+  disabled,
   leftIcon,
   onChange,
   rightIcon,
-  variant = 'default',
+  variant = 'secondary',
 }) => {
   const tabIndex = disabled ? -1 : 0;
 
@@ -71,7 +72,7 @@ export const InputContainer = styled(InputContainerBase)`
   width: 100%;
   outline: none;
 
-  padding: calc(var(--local-vertical) - var(--woly-border-width)) 0;
+  padding: var(--local-vertical) 0;
 
   box-sizing: border-box;
 
@@ -126,7 +127,7 @@ export const InputContainer = styled(InputContainerBase)`
     padding-left: var(--local-gap);
   }
 
-  &:focus-within {
+  &:focus {
     box-shadow: 0 0 0 var(--woly-border-width) var(--woly-focus);
     outline: none;
 
@@ -141,15 +142,10 @@ export const InputContainer = styled(InputContainerBase)`
 
   &:active {
     --local-border-color: var(--woly-focus);
-    --local-icon-fill: var(--woly-canvas-text-default);
-  }
 
-  &:focus-within {
-    --local-border-color: var(--woly-focus);
-    --local-icon-fill: var(--woly-canvas-text-default);
-    --local-border-color: var(--woly-focus);
-
-    outline: none;
+    [data-icon] {
+      --local-icon-fill: var(--woly-canvas-text-default);
+    }
   }
 
   &[data-disabled='true'] {
