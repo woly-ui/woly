@@ -9,8 +9,8 @@ interface SelectOptionProps {
 
 interface SelectProps {
   className?: string;
-  icon?: React.ReactNode;
   disabled?: boolean;
+  icon?: React.ReactNode;
   onBlur?: React.FocusEventHandler<HTMLElement>;
   onChange: React.EventHandler<React.SyntheticEvent>;
   onFocus?: React.FocusEventHandler<HTMLElement>;
@@ -21,8 +21,8 @@ interface SelectProps {
 
 export const SelectBase: React.FC<SelectProps & Variant> = ({
   className,
+  disabled = false,
   icon,
-  disabled,
   onBlur,
   onChange,
   onFocus,
@@ -101,11 +101,13 @@ export const SelectBase: React.FC<SelectProps & Variant> = ({
 };
 
 export const Select = styled(SelectBase)`
-  --local-vertical: calc(1px * var(--woly-component-level) * var(--woly-main-level) - 
-    var(--woly-border-width));
+  --local-vertical: calc(
+    1px * var(--woly-component-level) * var(--woly-main-level) - var(--woly-border-width)
+  );
   --local-horizontal: calc(
-    var(--woly-const-m) + (1px * var(--woly-main-level)) + var(--local-vertical) - 
-    var(--woly-border-width));
+    var(--woly-const-m) + (1px * var(--woly-main-level)) + var(--local-vertical) -
+      var(--woly-border-width)
+  );
 
   --local-gap: var(--woly-const-m);
 
@@ -172,15 +174,15 @@ export const Select = styled(SelectBase)`
     position: absolute;
     z-index: 1;
     width: 100%;
-    
+
     background: var(--local-list-background);
-    
+
     border: var(--woly-border-width) solid var(--local-border-list);
     border-radius: var(--woly-rounding);
-    
+
     padding: 0;
     margin-top: var(--local-gap);
-    
+
     box-shadow: var(--woly-shadow);
   }
 
@@ -193,18 +195,18 @@ export const Select = styled(SelectBase)`
 
   li {
     padding: var(--local-vertical) var(--local-horizontal);
-    
+
     line-height: var(--woly-line-height);
-    
+
     background: var(--local-background);
     color: var(--local-shape-color);
-    
+
     cursor: pointer;
-  
+
     &:hover {
       --local-background: var(--woly-canvas-disabled);
     }
-   
+
     &:focus,
     &:active {
       outline: none;
@@ -214,10 +216,8 @@ export const Select = styled(SelectBase)`
 
   &:focus > div[data-selected],
   &:active > div[data-selected] {
-    
     --local-border-color: var(--woly-focus);
     box-shadow: 0 0 0 var(--woly-border-width) var(--woly-focus);
-
   }
 
   &[data-open='true'] > div[data-selected] {

@@ -8,14 +8,13 @@ import { Select } from './index';
 import { block, Playground, StateEvent } from 'box-styles';
 import { ArrowDown } from 'icons';
 
-Select is a type of input that is used in forms, 
+Select is a type of input that is used in forms,
 where a user is submitting data and chooses one option from a list.
 
-The select component uses an `list` component instance to contain the list of options, 
+The select component uses an `list` component instance to contain the list of options,
 but uses the data-value attribute instead of value to represent the options' values.
 
 ### Example
-
 
 Each option has data attribute data-value where value of option is saved.
 
@@ -66,7 +65,7 @@ Or initial selected value can be passed by default.
   </div>
 </Playground>
 
-### Disable 
+### Disable
 
 Disabled selects are uneditable. They have less opacity so that they appear less tappable.
 
@@ -118,7 +117,7 @@ Secondary variant should be used as default variant.
 
 Primary and dander variants should focus user attention.
 
-<Playground direction='vertical'>
+<Playground direction="vertical">
   <StateEvent initial="Cats" change={(event) => event?.target?.dataset.value}>
     {(value, change) => (
       <>
@@ -157,25 +156,25 @@ Primary and dander variants should focus user attention.
 
 | Name     | Description                                                      |
 | -------- | ---------------------------------------------------------------- |
-| Select   | Base Select. Useful for creating a new kind of Select components |
+| `Select` | Base Select. Useful for creating a new kind of Select components |
 
 ### Props
 
 | Name       | Type              | Default | Description                                                                |
 | ---------- | ----------------- | ------- | -------------------------------------------------------------------------- |
-| children   | React.ReactNode   |         | The content to show inside option. It can be string or string with an icon |
-| value      | string            |         | The value of option. Passed to option as an attribute data-value           |
+| `children` | `React.ReactNode` |         | The content to show inside option. It can be string or string with an icon |
+| `value`    | `string`          |         | The value of option. Passed to option as an attribute data-value           |
 
 # Props
 
 | Name          | Type                                       | Default       | Description                                   |
-| ------------- | ------------------------------------------ | ------------- | ----------------------------------------------|
-| `icon`        | `React.ReactNode`                          |               | Component to show on the right side of select |
-| `disabled`    | `boolean`                                  |               | HTML disabled attribute                       |
+| ------------- | ------------------------------------------ | ------------- | --------------------------------------------- |
+| `disabled`    | `boolean`                                  | `false`       | HTML disabled attribute                       |
+| `icon`        | `React.ReactNode`                          | `null`        | Component to show on the right side of select |
 | `onBlur`      | `React.FocusEventHandler<HTMLElement>`     |               | On blur event handler.                        |
 | `onChange`    | `React.EventHandler<React.SyntheticEvent>` |               | On change event handler.                      |
 | `onFocus`     | `React.FocusEventHandler<HTMLElement>`     |               | On focus event handler.                       |
-| `options`     | `SelectOptionProps[]`                      |               | An array of select options                    |
+| `options`     | `SelectOptionProps[]`                      | `[]`          | An array of select options                    |
 | `placeholder` | `string`                                   | ''            | Placeholder for select                        |
 | `selected`    | `SelectOptionProps`                        |               | Selected option                               |
-| `variant`     | `string`                                   | 'secondary'   | Variant prop to style Select component        |
+| `variant`     | `string`                                   | '`secondary`' | Variant prop to style Select component        |
