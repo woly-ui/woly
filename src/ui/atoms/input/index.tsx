@@ -52,6 +52,11 @@ const InputBase: React.FC<InputProps & Variant> = ({
 );
 
 export const Input = styled(InputBase)`
+  --local-vertical: calc(1px * var(--woly-component-level) * var(--woly-main-level));
+  --local-horizontal: calc(
+    var(--woly-const-m) + (1px * var(--woly-main-level)) + var(--local-vertical)
+  );
+
   box-sizing: border-box;
   width: 100%;
 

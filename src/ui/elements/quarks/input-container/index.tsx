@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
 import { Variant } from 'lib/types';
-
+import { keyboardEventHandle } from 'lib';
 interface InputContainerProps extends React.InputHTMLAttributes<HTMLInputElement> {
   className?: string;
   disabled?: boolean;
@@ -12,23 +12,52 @@ interface InputContainerProps extends React.InputHTMLAttributes<HTMLInputElement
 const InputContainerBase: React.FC<InputContainerProps & Variant> = ({
   children,
   className,
-  disabled = 'false',
+  disabled = false,
   leftIcon,
+  onChange,
   rightIcon,
   variant = 'default',
-}) => (
-  <div className={className} data-disabled={disabled} data-variant={variant}>
-    {leftIcon && <span data-icon="left">{leftIcon}</span>}
-    <div data-input="input">{children}</div>
-    {rightIcon && <span data-icon="right">{rightIcon}</span>}
-  </div>
-);
+}) => {
+  const tabIndex = disabled ? -1 : 0;
+
+  const onKeyDown = React.useCallback(
+    (event: React.KeyboardEvent) => {
+      if (event.key === 'Enter') {
+        event.preventDefault();
+      }
+      const keyHandler = {
+        enter: (event: React.SyntheticEvent<Element, Event>) => {
+          onChange(event);
+        },
+      };
+
+      keyboardEventHandle({
+        event,
+        keyHandler,
+      });
+    },
+    [onChange],
+  );
+
+  return (
+    <div
+      className={className}
+      data-disabled={disabled}
+      data-variant={variant}
+      onKeyDown={onKeyDown}
+      tabIndex={tabIndex}
+    >
+      {leftIcon && <span data-icon="left">{leftIcon}</span>}
+      <div data-input="input">{children}</div>
+      {rightIcon && <span data-icon="right">{rightIcon}</span>}
+    </div>
+  );
+};
 
 export const InputContainer = styled(InputContainerBase)`
   --local-vertical: calc(1px * var(--woly-component-level) * var(--woly-main-level));
   --local-horizontal: calc(
-    var(--woly-const-m) + (1px * var(--woly-main-level)) + var(--local-vertical) -
-      var(--woly-border-width)
+    var(--woly-const-m) + (1px * var(--woly-main-level)) + var(--local-vertical)
   );
 
   --local-gap: var(--local-vertical);
@@ -70,9 +99,14 @@ export const InputContainer = styled(InputContainerBase)`
   }
 
   [data-icon] {
+    --local-icon-size: var(--woly-line-height);
+
     display: flex;
     align-items: center;
     justify-content: center;
+
+    width: var(--local-icon-size);
+    height: var(--local-icon-size);
 
     svg > path {
       fill: var(--local-icon-fill);
@@ -94,6 +128,7 @@ export const InputContainer = styled(InputContainerBase)`
 
   &:focus-within {
     box-shadow: 0 0 0 var(--woly-border-width) var(--woly-focus);
+    outline: none;
 
     [data-icon] {
       --local-icon-fill: var(--woly-canvas-text-default);

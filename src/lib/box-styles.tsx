@@ -20,7 +20,7 @@ export const Global = styled.div`
 
   /* should be rewritten to formulas */
   --woly-line-height: 24px;
-  --woly-border-width: 1.5px;
+  --woly-border-width: 2px;
   --woly-rounding: 4px;
   --woly-font-size: 15px;
   --woly-shadow: 3px 3px 9px rgba(57, 57, 57, 0.12);
@@ -47,7 +47,7 @@ export const Global = styled.div`
     --woly-canvas-default: transparent;
     --woly-canvas-disabled: var(--palette-snow-100);
     --woly-canvas-hover: var(--palette-snow-500);
-    --woly-canvas-active: var(--palette-snow-500);
+    --woly-canvas-active: var(--palette-lavender-500);
 
     --woly-canvas-text-default: var(--palette-snow-1000);
     --woly-canvas-text-disabled: var(--palette-snow-500);
