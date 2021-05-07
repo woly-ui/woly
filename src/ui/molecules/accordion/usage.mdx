@@ -1,0 +1,194 @@
+---
+name: accordion
+category: molecules
+package: 'woly'
+---
+
+import { Playground, block } from 'box-styles'
+import { Accordion, Table, Thead, Th, Tr, Td, Tbody, Field, TextArea, Text} from 'ui';
+
+The accordion component delivers large amounts of content in a small space through progressive disclosure.
+The header title give the user a high level overview of the content allowing the user to decide which sections to read.
+
+Accordions can make information processing.
+However, it does hide content from users and it’s important to account for a user not noticing or reading all of the included content.
+
+As ussuall accordions are used to organize related information.
+In another case, they shold be used when space is at a premium and long content cannot be displayed all at once,
+eg in a side panel.
+
+export const tableHead = [
+  { id: 'id', name: 'Id' },
+  { id: 'firstName', name: 'First name' },
+  { id: 'lastName', name: 'Last name' },
+  { id: 'email', name: 'Email' },
+];
+
+export const tableRows = [
+  {
+    id: 1,
+    firstName: 'Michael',
+    lastName: 'Smith',
+    email: 'msmith2343@gmail.com',
+  },
+  {
+    id: 2,
+    firstName: 'Jonathan',
+    lastName: 'Kearney',
+    email: 'msmith2343@gmail.com',
+   },
+  {
+    id: 3,
+    firstName: 'Donald',
+    lastName: 'Morrison',
+    email: 'msmith2343@gmail.com',
+  },
+  {
+    id: 4,
+    firstName: 'Tara',
+    lastName: 'Richardson',
+    email: 'msmith2343@gmail.com',
+  },
+];
+
+### Example
+
+Accordion`s content and title can be manadged for our own.
+
+<Playground direction="vertical" size="L">
+  <>
+    <Accordion
+      variant="primary"
+      isOpen={false}
+      title={<Text type="L">Short recomendation when to use accordion&nbsp;</Text>}
+    >
+      <div>
+        <ul style={{ margin: '0 0 10px 0', paddingLeft: '20px' }}>
+          <li>
+            <Text type="S">To organize related information&nbsp;</Text>
+          </li>
+          <li>
+            <Text type="S">
+              To shorten pages and reduce scrolling when content is not crucial to read in
+              full.&nbsp;
+            </Text>
+          </li>
+          <li>
+            <Text type="S">
+              When space is at a premium and long content cannot be displayed all at once, like on a
+              mobile interface or in a side panel.&nbsp;
+            </Text>
+          </li>
+        </ul>
+        <Field label="Leave some comment" variant="primary">
+          <TextArea
+            name="comment"
+            placeholder="Enter comment"
+            onChange={() => console.info('On textarea change')}
+            variant="primary"
+            overflow="hidden"
+          />
+        </Field>
+      </div>
+    </Accordion>
+    <Accordion
+      variant="primary"
+      isOpen={false}
+      title={<Text type="L">Short recomendation when to use accordion&nbsp;</Text>}
+    >
+      <div>
+        <ul style={{ margin: '0 0 10px 0', paddingLeft: '20px' }}>
+          <li>
+            <Text type="S">To organize related information&nbsp;</Text>
+          </li>
+          <li>
+            <Text type="S">
+              To shorten pages and reduce scrolling when content is not crucial to read in
+              full.&nbsp;
+            </Text>
+          </li>
+          <li>
+            <Text type="S">
+              When space is at a premium and long content cannot be displayed all at once, like on a
+              mobile interface or in a side panel.&nbsp;
+            </Text>
+          </li>
+        </ul>
+        <Field label="Leave some comment" variant="primary">
+          <TextArea
+            name="comment"
+            placeholder="Enter comment"
+            onChange={() => console.info('On textarea change')}
+            variant="primary"
+            overflow="hidden"
+          />
+        </Field>
+      </div>
+    </Accordion>
+  </>
+</Playground>
+
+Accordion can be closed for default
+
+<Playground size="L">
+  <Accordion variant="primary" isOpen={false} title={<Text>Some text</Text>}>
+    <Table columns={tableHead.length} variant="primary">
+      <Thead>
+        <Tr>
+          {tableHead.map(({ id, name }) => (
+            <Th key={id}>{name}</Th>
+          ))}
+        </Tr>
+      </Thead>
+      <Tbody>
+        {tableRows.map((row) => (
+          <Tr>
+            {tableHead.map(({ id }) => (
+              <Td key={id}>{row[id]}</Td>
+            ))}
+          </Tr>
+        ))}
+      </Tbody>
+    </Table>
+  </Accordion>
+</Playground>
+
+or open
+
+<Playground>
+  <Accordion variant="primary" isOpen={true} title={<span>Some text</span>}>
+    <Table columns={tableHead.length} variant="primary">
+      <Thead>
+        <Tr>
+          {tableHead.map(({ id, name }) => (
+            <Th key={id}>{name}</Th>
+          ))}
+        </Tr>
+      </Thead>
+      <Tbody>
+        {tableRows.map((row) => (
+          <Tr>
+            {tableHead.map(({ id }) => (
+              <Td key={id}>{row[id]}</Td>
+            ))}
+          </Tr>
+        ))}
+      </Tbody>
+    </Table>
+  </Accordion>
+</Playground>
+
+### Kinds
+
+| Name        | Description                                                 |
+| ----------- | ----------------------------------------------------------- |
+| `Accordion` | Base accordion. Useful for creating a new kind of accordion |
+
+### Props
+
+| Name       | Type              | Default       | Description                                            |
+| ---------- | ----------------- | ------------- | ------------------------------------------------------ | --- |
+| `children` | `React.ReactNode` |               | Content of accordion                                   |
+| `isOpen`   | `boolean`         | `'false'`     | Whether the component is visible or not                |
+| `title`    | `React.ReactNode` |               | Title of accordion, that triggers element of accordion |     |
+| `variant`  | `string`          | `'secondary'` | Variant prop to style accordion component              |

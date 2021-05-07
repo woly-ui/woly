@@ -4,12 +4,12 @@ import { Variant } from 'lib/types';
 
 const SeparatorBase: React.FC<{ className: string } & Variant> = ({ className, variant }) => (
   <div className={className} data-variant={variant}>
-    <div data-line></div>
+    <div data-line />
   </div>
 );
 
 export const Separator = styled(SeparatorBase)`
-  --local-padding: 3px;
+  --local-padding: calc(var(--woly-const-m) / 2);
 
   width: 100%;
   padding: calc(var(--local-padding) - (var(--woly-border-width) / 2)) 0;

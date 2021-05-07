@@ -197,11 +197,11 @@ Inputs can be placed inside the container. Input width is equal to container siz
 
 | Name          | Type                                         | Default       | Description                                                 |
 | ------------- | -------------------------------------------- | ------------- | ----------------------------------------------------------- |
-| `disabled`    | `boolean`                                    | `null`        | HTML disabled attribute                                     |
+| `disabled`    | `boolean`                                    | `false`       | HTML disabled attribute                                     |
 | `name`        | `string`                                     |               | HTML name attribute                                         |
 | `onChange`    | `React.ChangeEventHandler<HTMLInputElement>` |               | Callback when input is changed                              |
+| `placeholder` | `string`                                     | ''            | CSS pseudo-element represents the placeholder text          |
+| `rightIcon`   | `React.ReactNode`                            | `null`        | Component to show on the right side of the text (ex.: Icon) |
 | `value`       | `HTMLInputElement['value']`                  | `null`        | HTML value attribute                                        |
 | `variant`     | `string`                                     | `'secondary'` | Variant prop to style InputPassword component               |
-| `placeholder` | `string`                                     |               | CSS pseudo-element represents the placeholder text          |
-| `rightIcon`   | `React.ReactNode`                            |               | Component to show on the right side of the text (ex.: Icon) |
 | `...`         | `HTMLInputElement`                           | `{}`          | Other props are inherited from `HTMLInputElement`           |
