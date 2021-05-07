@@ -5,7 +5,7 @@
   "scripts": {
     "build": "rm -rf dist && node build",
     "commit": "git-cz",
-    "docs:build": "gatsby build --prefix-paths",
+    "docs:build": "gatsby clean && gatsby build --prefix-paths",
     "format": "prettier --write '{src,build,.storybook,packages}/**/**.{ts,tsx,js,md,mdx,json}'",
     "lint:code": "eslint --fix --ext .ts,.tsx src",
     "lint:style": "stylelint ./src/**/*.{js,css,ts,tsx} --fix",

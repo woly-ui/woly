@@ -4,6 +4,8 @@ import styled from 'styled-components';
 import { Global } from './global';
 import { block } from './block';
 
+export { block };
+
 export const Playground: React.FC<{
   size: keyof typeof block;
   direction: 'vertical' | 'horizontal';

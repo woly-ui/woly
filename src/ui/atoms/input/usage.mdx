@@ -5,7 +5,7 @@ package: 'woly'
 ---
 
 import {ButtonIcon, Input} from 'ui';
-import {InfoIcon} from 'static/icons';
+import {IconInfo} from 'static/icons';
 
 import {block, Form, Playground} from 'lib/playground'
 
@@ -79,7 +79,7 @@ Disabled text fields are uneditable. They have less opacity so that they appear 
     />
     <Input
       disabled
-      leftIcon={<InfoIcon />}
+      leftIcon={<IconInfo />}
       name="name"
       onChange={(event) => console.info('On input change')}
       placeholder="Enter your name here"
@@ -96,7 +96,7 @@ Inputs can be combined with an icon on the left side or the right. Use icons on 
 <Playground direction="vertical" size="L">
   <Form autoComplete="false">
     <Input
-      leftIcon={<InfoIcon />}
+      leftIcon={<IconInfo />}
       type="text"
       name="name"
       placeholder="Enter your name here"
@@ -109,16 +109,16 @@ Inputs can be combined with an icon on the left side or the right. Use icons on 
       placeholder="Enter your name here"
       variant="primary"
       onChange={(event) => console.info('On input change')}
-      rightIcon={<InfoIcon />}
+      rightIcon={<IconInfo />}
     />
     <Input
-      leftIcon={<InfoIcon />}
+      leftIcon={<IconInfo />}
       type="text"
       name="name"
       placeholder="Enter your name here"
       variant="primary"
       onChange={(event) => console.info('On input change')}
-      rightIcon={<InfoIcon />}
+      rightIcon={<IconInfo />}
     />
   </Form>
 </Playground>
@@ -131,7 +131,7 @@ Icons can also be touch targets for nested components.
       rightIcon={
         <block.S>
           <ButtonIcon
-            icon={<InfoIcon />}
+            icon={<IconInfo />}
             onClick={() => console.info('ButtonIcon clicked')}
             variant="primary"
           />
@@ -144,7 +144,7 @@ Icons can also be touch targets for nested components.
       variant="primary"
     />
     <Input
-      leftIcon={<InfoIcon />}
+      leftIcon={<IconInfo />}
       type="text"
       name="name"
       placeholder="Enter your name here"
@@ -153,7 +153,7 @@ Icons can also be touch targets for nested components.
       rightIcon={
         <block.S>
           <ButtonIcon
-            icon={<InfoIcon />}
+            icon={<IconInfo />}
             onClick={() => console.info('ButtonIcon clicked')}
             variant="primary"
           />
@@ -170,7 +170,7 @@ Primary and secondary variants are should be used to focus user attention.
 <Playground direction="vertical">
   <Form autoComplete="false">
     <Input
-      leftIcon={<InfoIcon />}
+      leftIcon={<IconInfo />}
       name="name"
       onChange={(event) => console.info('On input change')}
       placeholder="Primary input"
@@ -179,7 +179,7 @@ Primary and secondary variants are should be used to focus user attention.
       variant="primary"
     />
     <Input
-      leftIcon={<InfoIcon />}
+      leftIcon={<IconInfo />}
       type="text"
       name="name"
       value="Secondary"
@@ -195,7 +195,7 @@ Error variant can be used to focus user attention on error.
 <Playground>
   <Form autoComplete="false">
     <Input
-      leftIcon={<InfoIcon />}
+      leftIcon={<IconInfo />}
       name="name"
       onChange={(event) => console.info('On input change')}
       placeholder="Error input"
@@ -221,7 +221,7 @@ Size controlled by the `component-level` block property not from the props.
     />
     <Input
       disabled
-      leftIcon={<InfoIcon />}
+      leftIcon={<IconInfo />}
       name="name"
       onChange={(event) => console.info('On input change')}
       placeholder="Enter your name here"
@@ -238,7 +238,7 @@ Inputs can be combined with an icon on the left side or the right. Use icons on 
 <Playground direction="vertical" size="L">
   <Form autoComplete="false">
     <Input
-      leftIcon={<InfoIcon />}
+      leftIcon={<IconInfo />}
       type="text"
       name="name"
       placeholder="Enter your name here"
@@ -251,16 +251,16 @@ Inputs can be combined with an icon on the left side or the right. Use icons on 
       placeholder="Enter your name here"
       variant="primary"
       onChange={(event) => console.info('On input change')}
-      rightIcon={<InfoIcon />}
+      rightIcon={<IconInfo />}
     />
     <Input
-      leftIcon={<InfoIcon />}
+      leftIcon={<IconInfo />}
       type="text"
       name="name"
       placeholder="Enter your name here"
       variant="primary"
       onChange={(event) => console.info('On input change')}
-      rightIcon={<InfoIcon />}
+      rightIcon={<IconInfo />}
     />
   </Form>
 </Playground>
@@ -273,7 +273,7 @@ Icons can also be touch targets for nested components.
       rightIcon={
         <block.S>
           <ButtonIcon
-            icon={<InfoIcon />}
+            icon={<IconInfo />}
             onClick={() => console.info('ButtonIcon clicked')}
             variant="primary"
           />
@@ -286,7 +286,7 @@ Icons can also be touch targets for nested components.
       variant="primary"
     />
     <Input
-      leftIcon={<InfoIcon />}
+      leftIcon={<IconInfo />}
       type="text"
       name="name"
       placeholder="Enter your name here"
@@ -295,7 +295,7 @@ Icons can also be touch targets for nested components.
       rightIcon={
         <block.S>
           <ButtonIcon
-            icon={<InfoIcon />}
+            icon={<IconInfo />}
             onClick={() => console.info('ButtonIcon clicked')}
             variant="primary"
           />
@@ -312,7 +312,7 @@ Primary and secondary variants are should be used to focus user attention.
 <Playground direction="vertical">
   <Form autoComplete="false">
     <Input
-      leftIcon={<InfoIcon />}
+      leftIcon={<IconInfo />}
       name="name"
       onChange={(event) => console.info('On input change')}
       placeholder="Primary input"
@@ -321,7 +321,7 @@ Primary and secondary variants are should be used to focus user attention.
       variant="primary"
     />
     <Input
-      leftIcon={<InfoIcon />}
+      leftIcon={<IconInfo />}
       type="text"
       name="name"
       value="Secondary"
@@ -337,7 +337,7 @@ Error variant can be used to focus user attention on error.
 <Playground>
   <Form autoComplete="false">
     <Input
-      leftIcon={<InfoIcon />}
+      leftIcon={<IconInfo />}
       name="name"
       onChange={(event) => console.info('On input change')}
       placeholder="Error input"
@@ -410,7 +410,7 @@ Inputs can be placed inside the container. Input width is equal to container siz
   <Form autoComplete="false">
     <block.L>
       <Input
-        leftIcon={<InfoIcon />}
+        leftIcon={<IconInfo />}
         type="text"
         name="name"
         value="Primary"
@@ -421,7 +421,7 @@ Inputs can be placed inside the container. Input width is equal to container siz
     </block.L>
     <block.L>
       <Input
-        leftIcon={<InfoIcon />}
+        leftIcon={<IconInfo />}
         type="text"
         name="name"
         placeholder="Enter your name here"
@@ -430,7 +430,7 @@ Inputs can be placed inside the container. Input width is equal to container siz
         rightIcon={
           <block.S>
             <ButtonIcon
-              icon={<InfoIcon />}
+              icon={<IconInfo />}
               onClick={() => console.info('ButtonIcon clicked')}
               variant="primary"
             />

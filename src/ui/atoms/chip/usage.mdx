@@ -4,9 +4,8 @@ category: atoms
 package: 'woly'
 ---
 
-import {Chip} from './index';
-import {CloseIcon, PlusIcon} from 'static/icons';
-import {ButtonIcon} from 'ui'
+import {ButtonIcon, Chip} from 'ui';
+import {IconClose, IconPlus} from 'static/icons';
 import {block, Playground} from 'lib/playground'
 
 `Chip` is used for categorizing or markup.
@@ -48,7 +47,7 @@ If chip consists another clickable component (eg button), this property defined 
       onClick={() => console.info('click')}
       rightIcon={
         <ButtonIcon
-          icon={<CloseIcon />}
+          icon={<IconClose />}
           onClick={() => console.info('IconClose clicked')}
           variant="primary"
           filled
@@ -64,7 +63,7 @@ If chip consists another clickable component (eg button), this property defined 
       variant="primary"
       rightIcon={
         <ButtonIcon
-          icon={<CloseIcon />}
+          icon={<IconClose />}
           onClick={() => console.info('IconClose clicked')}
           variant="primary"
           filled
@@ -80,7 +79,7 @@ If chip consists another clickable component (eg button), this property defined 
       disabled
       rightIcon={
         <ButtonIcon
-          icon={<CloseIcon />}
+          icon={<IconClose />}
           onClick={() => console.info('IconClose clicked')}
           variant="primary"
           filled
@@ -101,23 +100,23 @@ Even chip can be used with both options.
 
 <Playground>
   <block.S>
-    <Chip variant="primary" leftIcon={<PlusIcon />}>
+    <Chip variant="primary" leftIcon={<IconPlus />}>
       Chip with Icon
     </Chip>
   </block.S>
   <block.S>
-    <Chip variant="primary" leftIcon={<PlusIcon />} onClick={() => console.info('click')}>
+    <Chip variant="primary" leftIcon={<IconPlus />} onClick={() => console.info('click')}>
       Clicked Chip
     </Chip>
   </block.S>
   <block.S>
     <Chip
       variant="primary"
-      leftIcon={<PlusIcon />}
+      leftIcon={<IconPlus />}
       onClick={() => console.info('click')}
       rightIcon={
         <ButtonIcon
-          icon={<CloseIcon />}
+          icon={<IconClose />}
           onClick={(event) => console.info('IconClose clicked')}
           variant="primary"
           filled
@@ -130,11 +129,11 @@ Even chip can be used with both options.
   <block.S>
     <Chip
       variant="primary"
-      leftIcon={<PlusIcon />}
+      leftIcon={<IconPlus />}
       disabled
       rightIcon={
         <ButtonIcon
-          icon={<CloseIcon />}
+          icon={<IconClose />}
           onClick={(event) => console.info('IconClose clicked')}
           variant="primary"
           filled

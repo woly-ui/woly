@@ -6,7 +6,7 @@ package: 'woly'
 
 import {block, Playground} from 'lib/playground'
 import {Button, ButtonIcon, ListContainer, ListItem, Popover} from 'ui';
-import {IconSearch} from 'static/icons';
+import {IconSearch, IconInfo} from 'static/icons';
 
 export const links = [
   {
@@ -74,8 +74,8 @@ If you scroll to the bottom of page and there is no place for Popover to show it
                 as="a"
                 disabled={disabled}
                 href={`#${id}`}
-                iconLeft={<InfoIcon />}
-                iconRight={<InfoIcon />}
+                iconLeft={<IconInfo />}
+                iconRight={<IconInfo />}
                 key={id}
                 text={content}
                 variant="primary"
