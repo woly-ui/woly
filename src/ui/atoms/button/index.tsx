@@ -2,6 +2,7 @@
 import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
 import { Variant } from 'lib/types';
+import { box } from 'ui/elements/quarks';
 
 export type ButtonVariants = 'secondary' | 'primary' | 'destructive' | 'text';
 export type ButtonSizes = 'default' | 'small';
@@ -40,10 +41,11 @@ export const Button = styled(ButtonBase)`
   --local-shape-color: var(--woly-shape-default);
   --local-border-color: var(--woly-shape-default);
 
+  ${box};
+
   box-sizing: border-box;
   display: flex;
   flex-wrap: nowrap;
-  padding: var(--local-vertical) 0;
   justify-content: center;
 
   color: var(--local-text-color);
@@ -72,15 +74,6 @@ export const Button = styled(ButtonBase)`
     justify-content: center;
     width: var(--local-icon-size);
     height: var(--local-icon-size);
-    padding: 0 0 0 calc(var(--local-horizontal) - var(--local-compensate));
-  }
-
-  [data-text] {
-    padding: 0 var(--local-horizontal);
-  }
-
-  span[data-icon='left'] + span[data-text] {
-    padding-left: var(--local-gap);
   }
 
   svg > path {
