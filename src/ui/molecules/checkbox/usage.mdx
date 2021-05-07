@@ -71,8 +71,15 @@ Primary variant should be used to focus user attention. The disabled checkbox is
   <State initial={false} change={(i) => !i}>
     {(value, change) => (
       <>
-        <Checkbox checked id="primary" text="Primary" variant="primary" />
-        <Checkbox checked disabled id="disabled" text="Disabled" variant="primary" />
+        <Checkbox checked onChange={change} id="primary" text="Primary" variant="primary" />
+        <Checkbox
+          checked
+          onChange={change}
+          disabled
+          id="disabled"
+          text="Disabled"
+          variant="primary"
+        />
       </>
     )}
   </State>

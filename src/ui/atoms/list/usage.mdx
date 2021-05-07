@@ -195,14 +195,19 @@ Size of list item is controlled by the `component-level` block property not from
     </ListContainer>
   </block.S>
   <block.M>
-    <List
-      variant="primary"
-      list={[
-        { left: <IconInfo />, id: 0, text: 'Red' },
-        { left: <IconInfo />, id: 1, text: 'Green' },
-        { left: <IconInfo />, id: 2, text: 'Blue' },
-      ]}
-    />
+    <ListContainer variant="primary" style={{ width: '100%' }}>
+      {links.map(({ id, content, disabled }) => (
+        <ListItem
+          key={id}
+          as="a"
+          href={`#${id}`}
+          disabled={disabled}
+          text={content}
+          iconRight={<IconInfo />}
+          iconLeft={<IconInfo />}
+        />
+      ))}
+    </ListContainer>
   </block.M>
   <block.L>
     <ListContainer variant="primary" style={{ width: '100%' }}>
@@ -236,14 +241,20 @@ Size of list item is controlled by the `component-level` block property not from
     </ListContainer>
   </block.XL>
   <block.H>
-    <List
-      variant="primary"
-      list={[
-        { left: <IconInfo />, id: 0, text: 'Red' },
-        { left: <IconInfo />, id: 1, text: 'Green' },
-        { left: <IconInfo />, id: 2, text: 'Blue' },
-      ]}
-    />
+    <ListContainer variant="primary" style={{ width: '100%' }} as="ul">
+      {links.map(({ id, content, disabled }) => (
+        <ListItem
+          as="a"
+          disabled={disabled}
+          href={`#${id}`}
+          iconLeft={<IconInfo />}
+          iconRight={<IconInfo />}
+          key={id}
+          text={content}
+          variant="primary"
+        />
+      ))}
+    </ListContainer>
   </block.H>
 </Playground>
 

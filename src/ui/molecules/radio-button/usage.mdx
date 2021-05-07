@@ -49,7 +49,9 @@ Disabled radio button are uneditable. They have less opacity so that they appear
 
 <Playground>
   <State initial={false} change={(i) => !i}>
-    {(value, change) => <RadioButton id="one" checked disabled variant="primary" text="disabled" />}
+    {(value, change) => (
+      <RadioButton id="one" checked disabled variant="primary" text="disabled" onChange={change} />
+    )}
   </State>
 </Playground>
 

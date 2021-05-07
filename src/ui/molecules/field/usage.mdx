@@ -55,7 +55,7 @@ or also as a label of group of component, eg checkbox or radiobutton groups.
       onChange={() => console.info('On textarea change')}
       variant="primary"
       overflow="hidden"
-      isDisabled
+      disabled
     />
   </Field>
   <Field label="Label for input">
@@ -81,7 +81,7 @@ Labels and children component can be replaced in row
   <State initial={false} change={(i) => !i}>
     {(value, change) => (
       <Field label="Label of item" row>
-        <Switch isChecked={value} onChange={change} id="roundTwo" variant="primary" />
+        <Switch checked={value} onChange={change} id="roundTwo" variant="primary" />
       </Field>
     )}
   </State>
@@ -98,7 +98,7 @@ or in column variants
   <State initial={false} change={(i) => !i}>
     {(value, change) => (
       <Field label="Label of item">
-        <Switch isChecked={value} onChange={change} id="roundOne" variant="primary" />
+        <Switch checked={value} onChange={change} id="roundOne" variant="primary" />
       </Field>
     )}
   </State>
@@ -116,7 +116,7 @@ Error variant can be used to focus user attention on error.
       onChange={() => console.info('On textarea change')}
       variant="danger"
       overflow="hidden"
-      isDisabled
+      disabled
     />
   </Field>
   <Field label="Input with error" variant="danger">
@@ -131,7 +131,7 @@ Error variant can be used to focus user attention on error.
   <State initial={false} change={(i) => !i}>
     {(value, change) => (
       <Field label="Switch with error">
-        <Switch isChecked={value} onChange={change} id="roundOne" variant="danger" />
+        <Switch checked={value} onChange={change} id="roundOne" variant="danger" />
       </Field>
     )}
   </State>
