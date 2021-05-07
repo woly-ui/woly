@@ -1,0 +1,42 @@
+name: Pull Request CI
+
+on:
+  pull_request:
+    types:
+      - synchronize
+
+jobs:
+  validate:
+    runs-on: ubuntu-18.04
+
+    strategy:
+      matrix:
+        node: [14]
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          persist-credentials: false
+
+      - name: Node.JS ${{matrix.node}}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{matrix.node}}
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Build Woly
+        run: yarn build
+
+      - name: Check for formatting
+        run: yarn format:validate
+
+      - name: Check for code style
+        run: yarn lint:code
+
+      - name: Check for CSS issues
+        run: yarn lint:style
+
+      - name: Run tests
+        run: yarn test
