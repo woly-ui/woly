@@ -1,6 +1,7 @@
 import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
 import { Variant } from 'lib/types';
+import { box } from 'ui/elements/quarks';
 
 interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string;
@@ -22,15 +23,27 @@ const ButtonIconBase: React.FC<Props & Variant> = ({
 );
 
 export const ButtonIcon = styled(ButtonIconBase)`
-  --local-shape-color: var(--woly-canvas-default);
-  --local-icon-size: var(--woly-line-height);
-  --local-icon-color: var(--woly-canvas-text-default);
-  --local-padding: calc(1px * var(--woly-component-level) * var(--woly-main-level));
+  ${box}
+  --local-vertical: calc(
+    1px * var(--woly-component-level) * var(--woly-main-level)
+  );
 
-  border: var(--woly-border) solid var(--local-shape-color);
-  border-radius: var(--woly-rounding, 4px);
+  --local-shape-color: var(--woly-canvas-default);
+  --local-icon-size: calc(var(--woly-line-height));
+  --local-button-size: calc(var(--local-icon-size) + (var(--local-vertical) * 2));
+  --local-icon-color: var(--woly-shape-default);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+
+  width: var(--local-button-size);
+  height: var(--local-button-size);
+
+  border: var(--woly-border-width) solid var(--local-shape-color);
+  border-radius: var(--woly-rounding);
   cursor: pointer;
-  padding: var(--local-padding);
   background: var(--local-shape-color);
   outline: none;
 
@@ -38,8 +51,10 @@ export const ButtonIcon = styled(ButtonIconBase)`
     display: flex;
     align-items: center;
     justify-content: center;
-    width: var(--local-icon-size);
-    height: var(--local-icon-size);
+    svg {
+      width: var(--local-icon-size);
+      height: var(--local-icon-size);
+    }
 
     svg > path {
       fill: var(--local-icon-color);

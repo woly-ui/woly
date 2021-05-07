@@ -1,197 +1,96 @@
 import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
 import { Variant } from 'lib/types';
-
-/**
- * --woly-rounding — in pixels
- * --woly-font-size
- * --woly-line-height
- * --woly-border-width
- *
- * --woly-background
- * --woly-border
- * --woly-color
- *
- * --woly-background-hover
- * --woly-border-hover
- * --woly-color-hover
- *
- * --woly-background-focus
- * --woly-border-focus
- * --woly-color-focus
- *
- * --woly-background-disabled
- * --woly-border-disabled
- * --woly-color-disabled
- *
- */
+import { box } from 'ui/elements/quarks';
 
 interface ChipProps {
-  action?: React.ReactNode;
   children?: string;
   className?: string;
   disabled?: boolean;
-  icon?: React.ReactNode;
-  onActionClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
-  onClick?: (event: React.MouseEvent<HTMLDivElement>) => void;
+  leftIcon?: React.ReactNode;
+  onClick?: React.EventHandler<React.SyntheticEvent>;
+  rightIcon?: React.ReactNode;
 }
 
 const ChipBase: React.FC<ChipProps & Variant> = ({
-  action,
   children,
   className,
   disabled,
-  icon,
-  onActionClick,
+  leftIcon,
   onClick,
+  rightIcon,
   variant = 'secondary',
 }) => {
   const chipRole = onClick ? 'button' : 'div';
-  const chipTabIndex = onClick ? 1 : 0;
+  const chipTabIndex = onClick ? 0 : -1;
+
+  const onKeyDown = React.useCallback(
+    (event) => {
+      if (event.key === 'Enter' && onClick) {
+        onClick(event);
+      }
+    },
+    [onClick],
+  );
   return (
-    <div className={className} data-disabled={disabled}>
-      <div
-        data-block="label"
-        data-variant={variant}
-        onClick={onClick}
-        role={chipRole}
-        tabIndex={chipTabIndex}
-      >
-        {icon && <div data-icon="left">{icon}</div>}
+    <div className={className} data-disabled={disabled} data-variant={variant} role={chipRole}>
+      {leftIcon && (
+        <div data-icon onClick={onClick} onKeyDown={onKeyDown}>
+          {leftIcon}
+        </div>
+      )}
+      <div data-text tabIndex={chipTabIndex} onClick={onClick} onKeyDown={onKeyDown}>
         {children}
-        {action && (
-          <>
-            <button
-              data-icon="right"
-              data-variant={variant}
-              disabled={disabled}
-              onClick={onActionClick}
-              type="button"
-            >
-              {action}
-            </button>
-            <div data-type="stub" />
-          </>
-        )}
       </div>
+      {rightIcon && <div data-icon>{rightIcon}</div>}
     </div>
   );
 };
 
 export const Chip = styled(ChipBase)`
-  --woly-vertical: calc(1px * var(--woly-component-level) * var(--woly-main-level));
-  --woly-horizontal: calc(
-    var(--woly-const-m) + (1px * var(--woly-main-level)) + var(--woly-vertical)
-  );
-  --woly-line-height: 24px;
-
-  position: relative;
+  ${box}
+  --local-background: var(--woly-shape-default);
+  --local-icon-size: var(--woly-line-height);
+  --local-color: var(--woly-shape-text-default);
+  --local-border-color: var(--woly-shape-default);
 
   box-sizing: border-box;
-
   display: flex;
   align-items: center;
+  background-color: var(--local-background);
+  color: var(--local-color);
+  border-radius: var(--woly-rounding);
+  font-size: var(--woly-font-size);
+  outline: none;
+  border: var(--woly-border-width) solid var(--local-border-color);
 
-  background-color: var(--woly-background, #b0a3f4);
-  color: var(--woly-color, #ffffff);
-
-  border-radius: var(--woly-rounding, 3px);
-
-  [role] {
-    width: 100%;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    font-size: var(--woly-font-size, 12px);
-    line-height: var(--woly-line-height, 20px);
-
-    border-radius: var(--woly-rounding, 3px);
-
-    padding: 0 var(--woly-horizontal, 6px);
-
+  [data-text] {
     outline: none;
+    line-height: var(--woly-line-height);
   }
 
-  [role='button']:active {
-    color: var(--woly-color-focus, #ffffff);
-    background-color: var(--woly-background-focus, #9381f1);
-    border-color: var(--woly-border-focus, transparent);
+  &[role='button']:focus-within {
+    --local-background: var(--woly-focus);
+    --local-border-color: var(--woly-shape-active);
+
+    box-shadow: 0 0 0 var(--woly-border-width) var(--woly-shape-default);
   }
 
-  [role='button']:focus {
-    box-shadow: 0 0 0 var(--woly-border-width) var(--woly-border-focus, #9381f1);
-  }
-
-  [role='button']:hover {
-    color: var(--woly-color-hover, #ffffff);
-    background-color: var(--woly-background-hover, #9381f1);
-    opacity: 0.5;
-    border-color: var(--woly-border-hover, transparent);
-    outline: none;
+  &[role='button']:hover {
+    --local-background: var(--woly-shape-hover);
+    --local-border-color: var(--woly-shape-hover);
   }
 
   &[data-disabled='true'] {
-    color: var(--woly-color-disabled, #c0c0c0);
-    background: var(--woly-background-disabled, #f5f5f5);
-    border-color: var(--woly-background-disabled, transparent);
+    --local-background: var(--woly-shape-disabled);
+    --local-text: var(--woly-shape-text-disabled);
+    --local-border-color: var(--woly-shape-disabled);
+
     pointer-events: none;
-
-    [data-icon] {
-      svg > path {
-        fill: var(--woly-color, #c0c0c0);
-      }
-    }
   }
 
-  [data-icon],
-  [data-type='stub'] {
+  [data-icon] {
+    --woly-component-level: 0;
     display: flex;
-    align-items: center;
-    justify-content: center;
-
-    width: var(--woly-line-height, 24px);
-    height: var(--woly-line-height, 24px);
-
-    background: var(--woly-background-disabled, transparent);
-
-    border-color: var(--woly-border, transparent);
-    border-style: solid;
-    border-width: var(--woly-border-width);
-    border-radius: var(--woly-rounding, 3px);
-
-    outline: none;
-
-    svg > path {
-      fill: var(--woly-color, #ffffff);
-    }
-  }
-
-  [data-type='stub'] {
-    visibility: hidden;
-    position: static;
-    flex-shrink: 0;
-  }
-
-  [data-icon='right'] {
-    position: absolute;
-    right: 0;
-    z-index: 1;
-    top: 50%;
-    transform: translateY(-50%);
-
-    &:hover {
-      background-color: var(--woly-background-hover, #9381f1);
-      opacity: 0.5;
-    }
-
-    &:active {
-      background-color: var(--woly-background-hover, #9381f1);
-    }
-
-    &:focus {
-      box-shadow: 0 0 0 var(--woly-border-width) var(--woly-border-focus, #9381f1);
-    }
   }
 ` as StyledComponent<'div', Record<string, unknown>, ChipProps & Variant>;

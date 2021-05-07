@@ -10,22 +10,27 @@ export const box = css`
   );
   --local-gap: calc(1px * var(--woly-component-level) * var(--woly-main-level));
   --local-compensate: var(--local-vertical);
+
   & > * {
     padding-top: var(--local-vertical);
     padding-bottom: var(--local-vertical);
   }
+
   & > :first-child {
     padding-left: var(--local-horizontal);
   }
+
   & > :last-child {
     padding-right: var(--local-horizontal);
   }
+
   & > [data-icon]:first-child {
     padding-left: var(--local-compensate);
   }
   & > [data-icon]:last-child {
     padding-right: var(--local-compensate);
   }
+
   & > :not(:first-child) {
     margin-left: var(--local-gap);
   }
