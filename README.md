@@ -28,3 +28,11 @@ Example:
 ```sh
 DEBUG=woly:* NEXT=true DRY_RUN=true yarn build
 ```
+
+## Publish process
+
+1. Review [draft release](https://github.com/woly-ui/woly/releases) in GitHub
+1. Set version from draft release to [package.json](./package.json)
+1. Commit and push
+1. At the [Publish Package CI](https://github.com/woly-ui/woly/actions/workflows/npm.yml) press "Run workflow"
+1. Set "yes" for packages that need to be published, and press "Run workflow"
