@@ -110,8 +110,15 @@ data-styled.g64[id="sc-1yhkdrf-1"]{content:"iqFZJJ,"}/*!sc*/
   &lt;State initial={false} change={(i) =&gt; !i}&gt;
     {(value, change) =&gt; (
       &lt;&gt;
-        &lt;Checkbox checked id=&quot;primary&quot; text=&quot;Primary&quot; variant=&quot;primary&quot; /&gt;
-        &lt;Checkbox checked disabled id=&quot;disabled&quot; text=&quot;Disabled&quot; variant=&quot;primary&quot; /&gt;
+        &lt;Checkbox checked onChange={change} id=&quot;primary&quot; text=&quot;Primary&quot; variant=&quot;primary&quot; /&gt;
+        &lt;Checkbox
+          checked
+          onChange={change}
+          disabled
+          id=&quot;disabled&quot;
+          text=&quot;Disabled&quot;
+          variant=&quot;primary&quot;
+        /&gt;
       &lt;/&gt;
     )}
   &lt;/State&gt;

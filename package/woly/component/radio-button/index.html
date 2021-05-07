@@ -87,7 +87,9 @@ When a user chooses a new item, the previous choice is automatically deselected.
 &lt;/Playground&gt;
 </code></pre><h3>Disabled</h3><p>Disabled radio button are uneditable. They have less opacity so that they appear less tappable.</p><div class="sc-1akavvx-0 hrIZab"><div class="sc-1jjs9kd-0 fAtiFB"><div class="sc-1eobcld-0 sc-1eobcld-4 jYjYQz voFLr"><div data-dir="horizontal" class="sc-1akavvx-1 fGoyua"><div class="sc-1q0apmp-0 ggxxhZ" data-disabled="true" data-variant="primary" tabindex="-1"><label for="one"><input type="radio" checked="" id="one"/><span data-checkbox="true"></span><span data-text="true">disabled</span></label></div></div></div></div></div><pre><code class="language-jsx">&lt;Playground&gt;
   &lt;State initial={false} change={(i) =&gt; !i}&gt;
-    {(value, change) =&gt; &lt;RadioButton id=&quot;one&quot; checked disabled variant=&quot;primary&quot; text=&quot;disabled&quot; /&gt;}
+    {(value, change) =&gt; (
+      &lt;RadioButton id=&quot;one&quot; checked disabled variant=&quot;primary&quot; text=&quot;disabled&quot; onChange={change} /&gt;
+    )}
   &lt;/State&gt;
 &lt;/Playground&gt;
 </code></pre><h3>Variants</h3><p>Primary and danger variants are should be used to focus user attention.</p><div class="sc-1akavvx-0 hrIZab"><div class="sc-1jjs9kd-0 fAtiFB"><div class="sc-1eobcld-0 sc-1eobcld-4 jYjYQz voFLr"><div data-dir="vertical" class="sc-1akavvx-1 fGoyua"><div class="sc-1q0apmp-0 ggxxhZ" data-disabled="false" data-variant="primary" tabindex="0"><label for="yes"><input type="radio" checked="" id="yes" name="my-input"/><span data-checkbox="true"></span><span data-text="true">yes</span></label></div><div class="sc-1q0apmp-0 ggxxhZ" data-disabled="false" data-variant="primary" tabindex="0"><label for="no"><input type="radio" checked="" id="no" name="my-input"/><span data-checkbox="true"></span><span data-text="true">no</span></label></div></div></div></div></div><pre><code class="language-jsx">&lt;Playground direction=&quot;vertical&quot;&gt;

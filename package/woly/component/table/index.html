@@ -67,8 +67,8 @@ To set number of columns pass <code>columns</code> prop to the Table component.<
         &lt;/Tr&gt;
       &lt;/Thead&gt;
       &lt;Tbody&gt;
-        {tableRows.map((row) =&gt; (
-          &lt;Tr&gt;
+        {tableRows.map((row, key) =&gt; (
+          &lt;Tr key={key}&gt;
             {tableHead.map(({ id }) =&gt; (
               &lt;Td key={id}&gt;{row[id]}&lt;/Td&gt;
             ))}
