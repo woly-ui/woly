@@ -1,6 +1,7 @@
 import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
 import { Variant } from 'lib/types';
+import { box, verticalBox } from 'ui/elements/quarks';
 
 import { Label } from '../../atoms';
 
@@ -18,38 +19,27 @@ const FieldBase: React.FC<FieldProps & Variant> = ({
   row = false,
   variant = 'secondary',
 }) => (
-  <div className={className} data-row={row} data-variant={variant}>
-    <div data-field="label">
-      <Label>
-        {label}
-        <div data-field="content">{children}</div>
-      </Label>
-    </div>
-  </div>
+  <Label data-field="label" className={className} data-row={row} data-variant={variant}>
+    <span>{label}</span>
+    <div data-field="content">{children}</div>
+  </Label>
 );
 
 export const Field = styled(FieldBase)`
-  --local-vertical: calc(1px * var(--woly-component-level) * var(--woly-main-level));
-  --local-horizontal: calc(
-    var(--woly-const-m) + (1px * var(--woly-main-level)) + var(--local-vertical)
-  );
-
-  padding-bottom: var(--local-vertical, 6px);
+  --local-gap: calc(1px * var(--woly-component-level) * var(--woly-main-level));
 
   box-sizing: border-box;
-
   width: 100%;
 
-  label {
-    padding: var(--local-vertical, 6px) 0;
+  &[data-row='false'] {
+    ${verticalBox}
   }
 
   &[data-row='true'] {
     display: flex;
     align-items: center;
-
-    [data-field='label'] {
-      padding: 0 var(--local-horizontal, 6px);
+    & > :not(:first-child) {
+      padding-left: var(--local-gap);
     }
   }
 ` as StyledComponent<'label', Record<string, unknown>, FieldProps & Variant>;
