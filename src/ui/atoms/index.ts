@@ -7,7 +7,7 @@ export { HeaderPanel } from './header-panel';
 export { Heading } from './heading';
 export { Input } from './input';
 export { Label } from './label';
-export { List } from './list';
+export { ListItem, ListContainer } from './list';
 export { Notification } from './notification';
 export { Separator } from './separator';
 export { Surface } from './surface';
