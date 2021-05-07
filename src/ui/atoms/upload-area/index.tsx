@@ -26,10 +26,10 @@ export const UploadArea = styled(UploadAreaBase)`
   --local-border-color: var(--woly-canvas-hover);
   --local-background-color: var(--woly-canvas-disabled);
 
+  position: relative;
+
   width: 100%;
   height: 100%;
-
-  position: relative;
   overflow: auto;
 
   background-color: var(--local-background-color);
@@ -40,6 +40,7 @@ export const UploadArea = styled(UploadAreaBase)`
     position: absolute;
     top: 50%;
     left: 50%;
+
     transform: translate(-50%, -50%);
   }
 
@@ -49,16 +50,16 @@ export const UploadArea = styled(UploadAreaBase)`
     outline: none;
 
     [data-overlay] {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      z-index: 1;
+
       width: 100%;
       height: 100%;
 
-      position: absolute;
-      z-index: 1;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-
       background: rgba(110, 59, 254, 0.05);
+      transform: translate(-50%, -50%);
     }
   }
 ` as StyledComponent<'div', Record<string, unknown>, UploadAreaProps & Variant>;

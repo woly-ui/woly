@@ -18,9 +18,9 @@ export const Heading = styled.span.attrs(map)`
   --local-color: var(--woly-canvas-text-default);
 
   color: var(--local-color);
+  font-weight: 500;
   font-size: 24px;
   line-height: 30px;
-  font-weight: 500;
   &[data-size='2'] {
     font-size: 21px;
     line-height: 27px;

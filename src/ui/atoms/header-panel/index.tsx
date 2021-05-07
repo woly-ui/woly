@@ -8,14 +8,9 @@ const map = (properties: Variant) => ({
 export const HeaderPanel = styled.div.attrs(map)`
   display: flex;
   align-items: center;
-
-  height: 100%;
   width: 100%;
 
-  --local-vertical: calc(1px * var(--woly-component-level) * var(--woly-main-level));
-  --local-horizontal: calc(
-    var(--woly-const-m) + (1px * var(--woly-main-level)) + var(--local-vertical)
-  );
+  height: 100%;
 
   padding: var(--local-vertical) var(--local-horizontal);
 
@@ -23,4 +18,9 @@ export const HeaderPanel = styled.div.attrs(map)`
   border: var(--woly-border-width) solid var(--woly-background);
   border-radius: var(--woly-rounding);
   box-shadow: var(--woly-shadow);
+
+  --local-vertical: calc(1px * var(--woly-component-level) * var(--woly-main-level));
+  --local-horizontal: calc(
+    var(--woly-const-m) + (1px * var(--woly-main-level)) + var(--local-vertical)
+  );
 ` as StyledComponent<'div', Record<string, unknown>, Variant>;

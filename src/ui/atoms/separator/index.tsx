@@ -16,6 +16,7 @@ export const Separator = styled(SeparatorBase)`
 
   [data-line] {
     height: var(--woly-border-width);
+
     background: var(--woly-canvas-disabled);
   }
 ` as StyledComponent<'div', Record<string, unknown>, Variant>;

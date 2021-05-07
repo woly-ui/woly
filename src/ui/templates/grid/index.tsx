@@ -18,8 +18,8 @@ const columnMap = (properties: ColumnProps) => ({
 
 export const Grid = styled.div.attrs(map)`
   display: grid;
-  width: 100%;
   grid-template-columns: repeat(var(--local-columns), 1fr);
+  width: 100%;
 ` as StyledComponent<'div', Record<string, unknown>, GridProps>;
 
 export const Column = styled.div.attrs(columnMap)`

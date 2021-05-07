@@ -36,13 +36,14 @@ export const InputElement = styled(InputElementBase)`
 
   width: 100%;
 
+  padding: 0;
+
+  color: var(--local-value-color);
+
   font-size: var(--woly-font-size);
   line-height: var(--woly-line-height);
 
-  color: var(--local-value-color);
   background: var(--local-background);
-
-  padding: 0;
 
   border: none;
   outline: none;

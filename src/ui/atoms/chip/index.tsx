@@ -54,25 +54,28 @@ export const Chip = styled(ChipBase)`
   --local-color: var(--woly-shape-text-default);
   --local-border-color: var(--woly-shape-default);
 
-  box-sizing: border-box;
   display: flex;
   align-items: center;
-  background-color: var(--local-background);
+
+  box-sizing: border-box;
+
   color: var(--local-color);
-  border-radius: var(--woly-rounding);
   font-size: var(--woly-font-size);
-  outline: none;
+
+  background-color: var(--local-background);
   border: var(--woly-border-width) solid var(--local-border-color);
+  border-radius: var(--woly-rounding);
+  outline: none;
 
   [data-text] {
-    outline: none;
     line-height: var(--woly-line-height);
+
+    outline: none;
   }
 
   &[role='button']:focus-within {
     --local-background: var(--woly-focus);
     --local-border-color: var(--woly-shape-active);
-
     box-shadow: 0 0 0 var(--woly-border-width) var(--woly-shape-default);
   }
 

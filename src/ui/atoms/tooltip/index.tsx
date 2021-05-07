@@ -66,6 +66,7 @@ export const Tooltip = styled(TooltipBase)`
   --tooltip-position: calc(100% + 4px + var(--woly-gap, 10px));
 
   position: relative;
+
   font-size: var(--woly-font-size, 16px);
   line-height: 21px;
 
@@ -73,13 +74,20 @@ export const Tooltip = styled(TooltipBase)`
     div[data-tooltip] {
       visibility: visible;
       opacity: 1;
+
       transition: 0.3s linear;
     }
   }
 
   div[data-tooltip] {
-    visibility: hidden;
     position: absolute;
+    z-index: 1;
+
+    box-sizing: border-box;
+    width: max-content;
+    min-width: 112px;
+    max-width: 240px;
+    min-height: 48px;
 
     padding: 12px 18px;
 
@@ -90,26 +98,24 @@ export const Tooltip = styled(TooltipBase)`
     border-style: solid;
     border-width: var(--woly-border-width);
     border-radius: var(--woly-rounding, 6px);
+    box-shadow: var(--woly-shadow);
+    visibility: hidden;
+    cursor: pointer;
+    opacity: 0;
 
     transition: all 0.3s ease-in-out;
-    z-index: 1;
-    opacity: 0;
-    cursor: pointer;
-    box-shadow: var(--woly-shadow);
-    width: max-content;
-    min-width: 112px;
-    max-width: 240px;
-    min-height: 48px;
-    box-sizing: border-box;
 
     &::after {
-      content: ' ';
+      position: absolute;
+
       width: 0;
       height: 0;
+
+      border-color: var(--woly-background, #ffffff) transparent transparent transparent;
       border-style: solid;
       border-width: 4px 3px 0 3px;
-      border-color: var(--woly-background, #ffffff) transparent transparent transparent;
-      position: absolute;
+
+      content: ' ';
     }
 
     &:hover {
@@ -123,6 +129,7 @@ export const Tooltip = styled(TooltipBase)`
     &::after {
       bottom: calc(-4px - var(--woly-border-width, 0px));
       left: 12px;
+
       transform: initial;
     }
   }
@@ -131,32 +138,35 @@ export const Tooltip = styled(TooltipBase)`
     top: var(--tooltip-position);
 
     &::after {
-      bottom: initial;
       top: calc(-4px - var(--woly-border-width, 0px));
+      bottom: initial;
       left: 12px;
+
       transform: rotate(180deg);
     }
   }
 
   &[data-position='left'] > [data-tooltip] {
-    right: var(--tooltip-position);
     top: 0;
+    right: var(--tooltip-position);
 
     &::after {
       top: 12px;
       right: calc(-5px - var(--woly-border-width, 0px));
+
       transform: rotate(-90deg);
     }
   }
 
   &[data-position='right'] > [data-tooltip] {
-    left: var(--tooltip-position);
     top: 0;
+    left: var(--tooltip-position);
 
     &::after {
       top: 12px;
-      left: calc(-5px - var(--woly-border-width, 0px));
       right: initial;
+      left: calc(-5px - var(--woly-border-width, 0px));
+
       transform: rotate(90deg);
     }
   }

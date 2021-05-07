@@ -74,35 +74,44 @@ export const Switch = styled(SwitchBase)`
   --local-switch-margin: 3px;
 
   position: relative;
+
   display: flex;
   align-items: center;
+
   outline: none;
 
   label {
     width: var(--local-switch-width);
     height: var(--local-switch-height);
+
     cursor: pointer;
 
     input {
       display: none;
+
       outline: none;
     }
   }
 
   [data-checkbox] {
     position: absolute;
+
     width: var(--local-switch-width);
     height: var(--local-switch-height);
+
     background-color: var(--local-shape);
     border-radius: var(--local-switch-border-radius);
 
     &:before {
       position: absolute;
+
       width: var(--local-tumbler-width);
       height: var(--local-tumbler-height);
       margin: var(--local-switch-margin);
+
       background-color: var(--local-tumbler-background);
       border-radius: var(--local-tumbler-border-radius);
+
       content: '';
     }
   }
@@ -140,6 +149,7 @@ export const Switch = styled(SwitchBase)`
 
     &:before {
       width: var(--local-tumbler-width-active);
+
       box-shadow: none;
     }
   }

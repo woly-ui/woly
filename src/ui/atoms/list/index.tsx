@@ -32,9 +32,10 @@ export const ListContainer = styled.div.attrs(mapContainer)`
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--local-gap);
-  background-color: var(--woly-shape-text-default);
-  padding: 0;
   margin: 0;
+  padding: 0;
+
+  background-color: var(--woly-shape-text-default);
 ` as StyledComponent<'div', Record<string, unknown>, Variant>;
 
 export const ListItem: React.FC<ListItemProps & ListElementsProps & Variant> = ({
@@ -67,16 +68,17 @@ const ListItemContainer = styled.div.attrs(mapItem)`
   ${box}
   --local-icon-color: var(--woly-canvas-text-default);
   --local-backgound: var(--woly-canvas-default);
-  --local-color: var(--woly-canvas-text-default)
+  --local-color: var(--woly-canvas-text-default);
 
-  cursor: pointer;
+  color: var(--local-color);
   font-size: var(--woly-font-size);
   line-height: var(--woly-line-height);
   text-decoration: none;
-  background-color: var(--local-backgound);
-  color: var(--local-color);
 
   list-style-type: none;
+
+  background-color: var(--local-backgound);
+  cursor: pointer;
 
   span {
     svg > path {

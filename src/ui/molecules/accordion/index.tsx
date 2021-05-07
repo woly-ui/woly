@@ -67,6 +67,7 @@ export const Accordion = styled(AccordionBase)`
 
   input {
     display: none;
+
     outline: none;
   }
 
@@ -74,16 +75,16 @@ export const Accordion = styled(AccordionBase)`
     display: flex;
     align-items: center;
 
+    margin-bottom: var(--woly-border-width);
+
+    padding: var(--local-vertical) var(--local-horizontal);
+
     background: var(--local-background-color);
 
     border-bottom: var(--woly-border-width) solid var(--local-border-color);
     border-radius: var(--woly-rounding);
 
-    padding: var(--local-vertical) var(--local-horizontal);
-
     outline: none;
-
-    margin-bottom: var(--woly-border-width);
 
     &:hover {
       --local-background-color: var(--woly-canvas-disabled);
@@ -101,9 +102,9 @@ export const Accordion = styled(AccordionBase)`
 
   [data-icon] {
     display: flex;
+    flex-shrink: 0;
     align-items: center;
     justify-content: center;
-    flex-shrink: 0;
 
     width: var(--local-icon-size);
     height: var(--local-icon-size);
@@ -128,8 +129,8 @@ export const Accordion = styled(AccordionBase)`
 
   [data-open='true'] ~ [data-content] {
     display: inline-block;
+    width: 100%;
 
     height: auto;
-    width: 100%;
   }
 ` as StyledComponent<'div', Record<string, unknown>, AccordionProps & Variant>;
