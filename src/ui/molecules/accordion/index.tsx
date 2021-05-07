@@ -1,6 +1,6 @@
 import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
-import { ArrowDown } from 'icons';
+import { IconArrowDown } from 'icons';
 import { Variant } from 'lib/types';
 
 interface AccordionProps {
@@ -37,7 +37,7 @@ const AccordionBase: React.FC<AccordionProps & Variant> = ({
       >
         <div data-title>{title}</div>
         <div data-icon>
-          <ArrowDown />
+          <IconArrowDown />
         </div>
       </div>
       <div data-content>{children}</div>

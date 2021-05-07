@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
 import { Backdrop, Heading, Surface } from 'ui/atoms';
-import { CloseIcon } from 'icons';
+import { IconClose } from 'icons';
 import { Variant } from 'lib/types';
 
 interface ModalProps {
@@ -22,7 +22,7 @@ const ModalBase: React.FC<ModalProps & Variant> = ({
   let icon = null;
 
   if (onClose) {
-    icon = <CloseIcon onClick={onClose} data-icon />;
+    icon = <IconClose onClick={onClose} data-icon />;
   }
 
   const onKeyDown = React.useCallback(

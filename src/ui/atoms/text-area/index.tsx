@@ -2,6 +2,7 @@ import React from 'react';
 import styled, { StyledComponent } from 'styled-components';
 import { Variant } from 'lib/types';
 import { keyboardEventHandle } from 'lib';
+
 interface TextAreaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
   className?: string;
   cols?: number;

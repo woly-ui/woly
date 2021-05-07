@@ -1,9 +1,10 @@
 import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
-import { ButtonIcon, Input } from 'ui';
-import { ClosedEyeIcon, InfoIcon, OpenedEyeIcon } from 'icons';
+import { IconEyeClosed, IconEyeOpened } from 'icons';
 import { Variant } from 'lib/types';
 import { block } from 'box-styles';
+
+import { ButtonIcon, Input } from '../../atoms';
 
 interface InputPasswordProps {
   className?: string;
@@ -45,7 +46,7 @@ export const InputPasswordBase: React.FC<InputPasswordProps & Variant> = ({
               className={className}
               onClick={onClick}
               disabled={disabled}
-              icon={isVisible ? <ClosedEyeIcon /> : <OpenedEyeIcon />}
+              icon={isVisible ? <IconEyeClosed /> : <IconEyeOpened />}
               variant={variant}
             />
           </block.S>

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
-import { CheckIcon, UnCheckIcon } from 'icons';
+import { IconCheckFilled, IconFilledUnchecked } from 'icons';
 import { Variant, keyboardEventHandle } from 'lib';
 
 interface CheckboxProps {
@@ -53,10 +53,10 @@ const CheckboxBase: React.FC<CheckboxProps & Variant> = ({
       <span data-block="container" data-disabled={disabled} tabIndex={-1}>
         <input type="checkbox" id={id} checked={checked} onChange={onChange} />
         <span data-checkmark="unchecked">
-          <UnCheckIcon />
+          <IconFilledUnchecked />
         </span>
         <span data-checkmark="checked">
-          <CheckIcon />
+          <IconCheckFilled />
         </span>
         {text && <span data-block="text">{text}</span>}
       </span>

@@ -2,6 +2,7 @@ import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
 import { Variant } from 'lib/types';
 import { keyHandlerGet, keyboardEventHandle } from 'lib';
+
 interface SelectOptionProps {
   children: React.ReactNode;
   value: string;

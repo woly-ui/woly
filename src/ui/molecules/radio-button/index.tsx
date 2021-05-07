@@ -60,8 +60,7 @@ const RadioButtonBase: React.FC<RadioButtonProps & Variant> = ({
       </label>
     </div>
   );
-}
-
+};
 
 export const RadioButton = styled(RadioButtonBase)`
   --local-vertical: calc(1px * var(--woly-component-level) * var(--woly-main-level));
@@ -80,7 +79,7 @@ export const RadioButton = styled(RadioButtonBase)`
 
   --local-border-color: var(--woly-canvas-hover);
   --local-border-rounding: 50%;
-  
+
   display: flex;
   align-items: center;
   outline: none;
@@ -104,7 +103,7 @@ export const RadioButton = styled(RadioButtonBase)`
     display: flex;
     align-items: center;
     justify-content: center;
-   
+
     width: var(--local-radio-size);
     height: var(--local-radio-size);
 
@@ -142,14 +141,14 @@ export const RadioButton = styled(RadioButtonBase)`
     --local-border-color: var(--woly-shape-hover);
   }
 
-  &:active > label > [data-checkbox]{
-   --local-border-color: var(--woly-shape-active);
+  &:active > label > [data-checkbox] {
+    --local-border-color: var(--woly-shape-active);
   }
 
-  &:focus > label > [data-checkbox]{
+  &:focus > label > [data-checkbox] {
     box-shadow: 0 0 0 var(--woly-border-width) var(--woly-focus);
   }
- 
+
   &[data-disabled='true'] {
     pointer-events: none;
 

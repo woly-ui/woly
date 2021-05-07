@@ -1,6 +1,7 @@
 import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
 import { Variant } from 'lib/types';
+
 interface NotificationProps {
   className?: string;
   message: React.ReactNode;

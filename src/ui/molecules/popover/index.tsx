@@ -1,8 +1,9 @@
 import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
-import { Surface } from 'ui';
 import { Variant } from 'lib/types';
 import { positionRelativeGet } from 'lib';
+
+import { Surface } from '../../atoms';
 
 interface Props {
   className?: string;

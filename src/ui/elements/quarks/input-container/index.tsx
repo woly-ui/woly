@@ -1,6 +1,7 @@
 import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
 import { Variant } from 'lib/types';
+
 interface InputContainerProps extends React.InputHTMLAttributes<HTMLInputElement> {
   className?: string;
   disabled?: boolean;

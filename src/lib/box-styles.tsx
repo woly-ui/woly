@@ -76,6 +76,7 @@ export const Global = styled.div`
     --woly-canvas-text-hover: var(--palette-snow-500);
     --woly-canvas-text-active: var(--palette-snow-500);
   }
+
   [data-variant='danger'] {
     --woly-shape-default: var(--woly-danger);
     --woly-shape-disabled: var(--palette-snow-300);
@@ -152,11 +153,11 @@ export const Playground: React.FC<{
   );
 };
 
-type StateType = {
+interface StateType {
   change: (value: any) => any;
   children: (value: any, change: any) => React.ElementType;
   initial: any;
-};
+}
 
 export const State = ({ initial, change, children }: StateType) => {
   const [value, setValue] = React.useState(initial);
@@ -187,13 +188,15 @@ const Frame = styled.div`
   max-width: 100%;
   padding: 1rem;
   overflow: auto;
+
   border: 2px solid rgb(246, 248, 250);
-  border-radius: 4px;
-  border-bottom-right-radius: 0;
-  border-bottom-left-radius: 0;
+  border-radius: 4px 4px 0 0;
+
   resize: both;
+
   & + .prism-code {
     margin-top: 0;
+
     border-top-left-radius: 0;
     border-top-right-radius: 0;
   }
@@ -203,15 +206,19 @@ const Container = styled.div`
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
+
   &[data-dir='vertical'] {
     flex-direction: column;
+
     & > * + * {
       margin-top: 0.5rem;
     }
   }
+
   &[data-dir='horizontal'] {
     flex-direction: row;
     flex-wrap: wrap;
+
     & > * {
       margin-right: 0.5rem;
       margin-bottom: 0.5rem;
@@ -233,15 +240,20 @@ export const Aside = styled.div`
   position: absolute;
   top: 0;
   left: 0;
+
   display: flex;
   width: 0;
   height: 100%;
   overflow-x: hidden;
+
   transition: 0.5s;
+
   li {
     display: block;
+
     color: #818181;
     text-decoration: none;
+
     transition: 0.3s;
   }
 `;
@@ -261,11 +273,13 @@ export const Line = styled.div`
 `;
 
 export const ColumnContent = styled.div`
-  background: var(--palette-lavender-500);
-  color: var(--palette-snow-0);
-  padding: 10px;
-  border-radius: 6px;
   margin: 4px;
+  padding: 10px;
+
+  color: var(--palette-snow-0);
+
+  background: var(--palette-lavender-500);
+  border-radius: 6px;
 `;
 
 export const TableContent = styled.div`
@@ -274,6 +288,7 @@ export const TableContent = styled.div`
 
 export const Form = styled.form`
   width: 100%;
+
   & > div {
     margin-bottom: 10px;
   }

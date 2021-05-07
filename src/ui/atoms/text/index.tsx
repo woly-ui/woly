@@ -1,6 +1,7 @@
 import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
 import { Variant } from 'lib/types';
+
 interface TextProps extends React.LabelHTMLAttributes<HTMLLabelElement> {
   children: React.ReactNode;
   type?: 'L' | 'S' | 'XS' | 'M' | 'subtitle' | 'hint';

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
 import { Variant } from 'lib/types';
+
 interface HeadingProps extends React.LabelHTMLAttributes<HTMLLabelElement> {
   children: React.ReactNode;
   size?: 1 | 2 | 3;
