@@ -2,6 +2,8 @@ import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
 import { Variant } from 'lib/types';
 
+import { box } from '../box';
+
 interface InputContainerProps extends React.InputHTMLAttributes<HTMLInputElement> {
   className?: string;
   disabled?: boolean;
@@ -25,19 +27,12 @@ const InputContainerBase: React.FC<InputContainerProps & Variant> = ({
 );
 
 export const InputContainer = styled(InputContainerBase)`
-  --local-vertical: calc(1px * var(--woly-component-level) * var(--woly-main-level));
-  --local-horizontal: calc(
-    var(--woly-const-m) + (1px * var(--woly-main-level)) + var(--local-vertical) -
-      var(--woly-border-width)
-  );
-
-  --local-gap: var(--local-vertical);
-  --local-compensate: var(--woly-const-m);
-
   --local-background-color: var(--woly-canvas-default);
   --local-border-color: var(--woly-canvas-text-hover);
   --local-icon-fill: var(--woly-canvas-text-active);
   --local-value-color: var(--woly-canvas-text-default);
+
+  ${box}
 
   display: flex;
   align-items: center;
@@ -45,8 +40,6 @@ export const InputContainer = styled(InputContainerBase)`
   box-sizing: border-box;
 
   width: 100%;
-
-  padding: calc(var(--local-vertical) - var(--woly-border-width)) 0;
 
   background: var(--local-background-color);
 
@@ -57,16 +50,10 @@ export const InputContainer = styled(InputContainerBase)`
   [data-input='input'] {
     flex: 1;
 
-    padding: 0 var(--local-horizontal);
-
     color: var(--local-value-color);
 
     input {
       padding: 0;
-    }
-
-    &:not(:only-child, :last-child) {
-      padding-right: 0;
     }
   }
 
@@ -78,19 +65,6 @@ export const InputContainer = styled(InputContainerBase)`
     svg > path {
       fill: var(--local-icon-fill);
     }
-  }
-
-  [data-icon='left'] {
-    padding: 0 0 0 calc(var(--local-horizontal) - var(--local-compensate));
-  }
-
-  [data-icon='right'] {
-    padding: 0 calc(var(--local-horizontal) - var(--local-compensate)) 0 0;
-  }
-
-  [data-icon='left'] ~ [data-input='input'],
-  [data-input='input'] ~ [data-icon='right'] {
-    padding-left: var(--local-gap);
   }
 
   &:hover {
