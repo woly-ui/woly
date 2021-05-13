@@ -2,6 +2,7 @@ import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
 import { IconCheckFilled, IconFilledUnchecked } from 'static/icons';
 import { Variant, keyboardEventHandle } from 'lib';
+import { box } from 'ui/elements/box';
 
 interface CheckboxProps {
   className?: string;
@@ -52,10 +53,10 @@ const CheckboxBase: React.FC<CheckboxProps & Variant> = ({
     >
       <span data-block="container" data-disabled={disabled} tabIndex={-1}>
         <input type="checkbox" id={id} checked={checked} onChange={onChange} />
-        <span data-checkmark="unchecked">
+        <span data-checkmark="unchecked" data-icon>
           <IconFilledUnchecked />
         </span>
-        <span data-checkmark="checked">
+        <span data-checkmark="checked" data-icon>
           <IconCheckFilled />
         </span>
         {text && <span data-block="text">{text}</span>}
@@ -79,7 +80,7 @@ export const Checkbox = styled(CheckboxBase)`
   --local-text-color: var(--woly-canvas-text-default);
   --local-background-color: var(--woly-shape-default);
 
-  padding: var(--local-vertical) var(--local-horizontal);
+  ${box}
 
   outline: none;
 
