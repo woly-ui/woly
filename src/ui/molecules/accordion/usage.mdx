@@ -79,8 +79,7 @@ Accordion`s content and title can be manadged for our own.
         </li>
         <li>
           <Text type="S">
-            To shorten pages and reduce scrolling when content is not crucial to read in
-            full.&nbsp;
+            To shorten pages and reduce scrolling when content is not crucial to read in full.&nbsp;
           </Text>
         </li>
         <li>
@@ -109,8 +108,7 @@ Accordion`s content and title can be manadged for our own.
         </li>
         <li>
           <Text type="S">
-            To shorten pages and reduce scrolling when content is not crucial to read in
-            full.&nbsp;
+            To shorten pages and reduce scrolling when content is not crucial to read in full.&nbsp;
           </Text>
         </li>
         <li>
@@ -160,46 +158,46 @@ or open
 
 <Playground>
   <>
-  <Accordion variant="primary" isOpen={true} title={<span>Some text</span>}>
-    <Table columns={tableHead.length} variant="primary">
-      <Thead>
-        <Tr>
-          {tableHead.map(({ id, name }) => (
-            <Th key={id}>{name}</Th>
-          ))}
-        </Tr>
-      </Thead>
-      <Tbody>
-        {tableRows.map((row) => (
+    <Accordion variant="primary" isOpen={true} title={<span>Some text</span>}>
+      <Table columns={tableHead.length} variant="primary">
+        <Thead>
           <Tr>
-            {tableHead.map(({ id }) => (
-              <Td key={id}>{row[id]}</Td>
+            {tableHead.map(({ id, name }) => (
+              <Th key={id}>{name}</Th>
             ))}
           </Tr>
-        ))}
-      </Tbody>
-    </Table>
-  </Accordion>
-  <Accordion variant="primary" isOpen={true} title={<span>Some text</span>}>
-    <Table columns={tableHead.length} variant="primary">
-      <Thead>
-        <Tr>
-          {tableHead.map(({ id, name }) => (
-            <Th key={id}>{name}</Th>
+        </Thead>
+        <Tbody>
+          {tableRows.map((row) => (
+            <Tr>
+              {tableHead.map(({ id }) => (
+                <Td key={id}>{row[id]}</Td>
+              ))}
+            </Tr>
           ))}
-        </Tr>
-      </Thead>
-      <Tbody>
-        {tableRows.map((row) => (
+        </Tbody>
+      </Table>
+    </Accordion>
+    <Accordion variant="primary" isOpen={true} title={<span>Some text</span>}>
+      <Table columns={tableHead.length} variant="primary">
+        <Thead>
           <Tr>
-            {tableHead.map(({ id }) => (
-              <Td key={id}>{row[id]}</Td>
+            {tableHead.map(({ id, name }) => (
+              <Th key={id}>{name}</Th>
             ))}
           </Tr>
-        ))}
-      </Tbody>
-    </Table>
-  </Accordion>
+        </Thead>
+        <Tbody>
+          {tableRows.map((row) => (
+            <Tr>
+              {tableHead.map(({ id }) => (
+                <Td key={id}>{row[id]}</Td>
+              ))}
+            </Tr>
+          ))}
+        </Tbody>
+      </Table>
+    </Accordion>
   </>
 </Playground>
 
