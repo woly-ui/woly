@@ -1,0 +1,170 @@
+---
+name: toast
+category: molecules
+package: 'woly'
+---
+
+import { Button, Toast } from 'ui';
+import { IconPlus, IconSearch } from 'static/icons';
+import { block, Playground, State } from 'lib/playground';
+
+`Toasts` are lightweight notifications designed to mimic the push notifications.
+Toasts are intended to be small interruptions to your visitors or users,
+and therefore should contain minimal, to-the-point, non-interactive content.
+
+### Example
+Siple Toast with text only
+
+<Playground>
+  <block.L>
+    <Toast
+      variant="primary"
+      outlined
+    >
+      Режим предпросмотра таблицы
+    </Toast>
+  </block.L>
+</Playground>
+
+### Icons
+
+Toast can be used with icon on the left side.
+
+<Playground>
+  <block.L>
+    <Toast
+      icon={<IconPlus />}
+      variant="primary"
+      outlined
+    >
+      Перетащите файл формата XLS 
+    </Toast>
+  </block.L>
+</Playground>
+
+Toast can also consist action block
+
+<Playground>
+  <block.L style={{ width: '1200px' }}>
+    <Toast
+      variant="primary"
+      outlined
+      action={
+        <>
+          <Button
+            icon={<IconSearch />}
+            onClick={() => console.info('IconClose clicked')}
+            variant="primary"
+            text="Submit"
+          />
+          <Button
+            icon={<IconSearch />}
+            onClick={() => console.info('IconClose clicked')}
+            variant="secondary"
+            text="Cancel"
+            outlined
+          />
+        </>
+      }
+    >
+      Перетащите файл формата XLS, чтобы обновить данные о тарифах
+    </Toast>
+  </block.L>
+</Playground>
+
+Or even both 
+
+<Playground>
+  <block.L style={{ width: '1200px' }}>
+    <Toast
+      icon={<IconPlus />}
+      variant="primary"
+      outlined
+      action={
+        <>
+          <Button
+            onClick={() => console.info('IconClose clicked')}
+            variant="primary"
+            text="Submit"
+          />
+          <Button
+            onClick={() => console.info('IconClose clicked')}
+            variant="primary"
+            text="Cancel"
+            outlined
+          />
+        </>
+      }
+    >
+      Сохраните изменения, чтобы выйти из режима предпросмотра
+    </Toast>
+  </block.L>
+</Playground>
+
+### Variants
+
+<Playground>
+  <block.L style={{ width: '1200px' }}>
+    <Toast
+      icon={<IconPlus />}
+      variant="secondary"
+      outlined
+      action={
+        <>
+          <Button
+            onClick={() => console.info('IconClose clicked')}
+            variant="secondary"
+            text="Submit"
+            outlined
+          />
+          <Button
+            onClick={() => console.info('IconClose clicked')}
+            variant="secondary"
+            text="Cancel"
+            outlined
+          />
+        </>
+      }
+    >
+      Сохраните изменения, чтобы выйти из режима предпросмотра
+    </Toast>
+  </block.L>
+</Playground>
+
+<Playground>
+  <block.L style={{ width: '1200px' }}>
+    <Toast
+      icon={<IconPlus />}
+      variant="primary"
+      outlined
+      action={
+        <>
+          <Button
+            onClick={() => console.info('IconClose clicked')}
+            variant="primary"
+            text="Submit"
+            outlined
+          />
+          <Button
+            onClick={() => console.info('IconClose clicked')}
+            variant="primary"
+            text="Cancel"
+            outlined
+          />
+        </>
+      }
+    >
+      Сохраните изменения, чтобы выйти из режима предпросмотра
+    </Toast>
+  </block.L>
+</Playground>
+
+
+### Props
+
+| Name       | Type               | Default       | Description                                                           |
+| ---------- | ------------------ | ------------- | --------------------------------------------------------------------- |
+| `action`   | `React.ReactNode`  | `null`        | Block of action items (ex. One element or grop that can be clicked)   |
+| `content`  | `React.ReactNode`  | `null`        | Component to show the icon near the text (ex.: Icon on the left side) |
+| `children` | ``React.ReactNode` | `null`        | Content block                                                         |
+| `variant`  | `string`           | `'secondary'` | Variant prop to style InputPassword component                         |

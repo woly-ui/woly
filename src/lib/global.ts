@@ -5,7 +5,6 @@ export const Global = styled.div`
     font-family: 'Helvetica Neue', sans-serif;
   }
 
-
   button {
     padding: 0;
   }
