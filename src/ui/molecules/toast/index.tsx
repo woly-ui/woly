@@ -35,7 +35,7 @@ export const Toast = styled(ToastBase)`
 
   display: flex;
   flex-wrap: nowrap;
-  
+
   min-width: fit-content;
   max-width: 75%;
 
@@ -65,7 +65,7 @@ export const Toast = styled(ToastBase)`
     flex: 1;
     flex-wrap: nowrap;
   }
-  
+
   [data-toast-icon] {
     --woly-component-level: 0;
     --local-icon-size: var(--woly-line-height);
