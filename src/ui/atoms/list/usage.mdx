@@ -46,7 +46,7 @@ It does not need to be a direct child of the List component.
 
 <Playground>
   <block.L>
-    <ListContainer variant="primary" style={{ width: '100%' }}>
+    <ListContainer variant="primary">
       {links.map(({ id, content, disabled }) => (
         <ListItem
           key={id}
@@ -66,7 +66,7 @@ It does not need to be a direct child of the List component.
 
 <Playground>
   <Surface>
-    <ListContainer variant="primary" style={{ width: '100%' }} as="ul">
+    <ListContainer variant="primary" as="ul">
       {links.map(({ id, content }) => (
         <ListItem
           as="li"
@@ -88,8 +88,8 @@ It does not need to be a direct child of the List component.
   <block.L>
     <State initial={false} change={(i) => !i}>
       {(value, change) => (
-        <ListContainer variant="primary" style={{ width: '100%' }}>
-          <Surface>
+        <ListContainer variant="primary">
+          <Surface style={{ display: 'flex', flexDirection: 'column' }}>
             <Input
               name="name"
               onChange={(event) => console.info('On input change')}
@@ -107,9 +107,7 @@ It does not need to be a direct child of the List component.
                 key={id}
               />
             ))}
-            <div style={{ display: 'flex', flexDirection: 'column' }}>
-              <Button text="Show more" variant="primary" />
-            </div>
+           <Button text="Show more" variant="primary" />
           </Surface>
         </ListContainer>
       )}
@@ -123,14 +121,14 @@ List items can have an icon on the left or/and the right side. To use icons on b
 
 <Playground>
   <Surface variant="primary">
-    <ListContainer style={{ width: '100%' }}>
+    <ListContainer>
       {links.map(({ id, content, disabled }) => (
         <ListItem key={id} as="a" href={`#${id}`} disabled={disabled} text={content} />
       ))}
     </ListContainer>
   </Surface>
   <Surface variant="primary">
-    <ListContainer style={{ width: '100%' }}>
+    <ListContainer>
       {links.map(({ id, content, disabled }) => (
         <ListItem
           key={id}
@@ -144,7 +142,7 @@ List items can have an icon on the left or/and the right side. To use icons on b
     </ListContainer>
   </Surface>
   <Surface variant="primary">
-    <ListContainer style={{ width: '100%' }}>
+    <ListContainer>
       {links.map(({ id, content, disabled }) => (
         <ListItem
           key={id}
@@ -158,7 +156,7 @@ List items can have an icon on the left or/and the right side. To use icons on b
     </ListContainer>
   </Surface>
   <Surface variant="primary">
-    <ListContainer style={{ width: '100%' }}>
+    <ListContainer>
       {links.map(({ id, content, disabled }) => (
         <ListItem
           key={id}
@@ -180,7 +178,7 @@ Size of list item is controlled by the `component-level` block property not from
 
 <Playground>
   <block.S>
-    <ListContainer variant="primary" style={{ width: '100%' }}>
+    <ListContainer variant="primary">
       {links.map(({ id, content, disabled }) => (
         <ListItem
           key={id}
@@ -195,7 +193,7 @@ Size of list item is controlled by the `component-level` block property not from
     </ListContainer>
   </block.S>
   <block.M>
-    <ListContainer variant="primary" style={{ width: '100%' }}>
+    <ListContainer variant="primary">
       {links.map(({ id, content, disabled }) => (
         <ListItem
           key={id}
@@ -210,7 +208,7 @@ Size of list item is controlled by the `component-level` block property not from
     </ListContainer>
   </block.M>
   <block.L>
-    <ListContainer variant="primary" style={{ width: '100%' }}>
+    <ListContainer variant="primary">
       {links.map(({ id, content, disabled }) => (
         <ListItem
           key={id}
@@ -225,7 +223,7 @@ Size of list item is controlled by the `component-level` block property not from
     </ListContainer>
   </block.L>
   <block.XL>
-    <ListContainer variant="primary" style={{ width: '100%' }} as="ul">
+    <ListContainer variant="primary" as="ul">
       {links.map(({ id, content, disabled }) => (
         <ListItem
           as="a"
@@ -241,7 +239,7 @@ Size of list item is controlled by the `component-level` block property not from
     </ListContainer>
   </block.XL>
   <block.H>
-    <ListContainer variant="primary" style={{ width: '100%' }} as="ul">
+    <ListContainer variant="primary" as="ul">
       {links.map(({ id, content, disabled }) => (
         <ListItem
           as="a"

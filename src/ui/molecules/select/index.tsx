@@ -2,10 +2,17 @@ import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
 import { Variant } from 'lib/types';
 import { keyHandlerGet, keyboardEventHandle } from 'lib';
+import { ListContainer, ListItem, Popover, Surface } from 'ui';
+
 
 interface SelectOptionProps {
-  children: React.ReactNode;
-  value: string;
+  as?: 'a' | 'li';
+  content: React.ReactNode;
+  disabled?: boolean;
+  href?: string;
+  iconLeft?: React.ReactNode;
+  iconRight?: React.ReactNode;
+  id: string;
 }
 
 interface SelectProps {
@@ -79,24 +86,34 @@ export const SelectBase: React.FC<SelectProps & Variant> = ({
       ref={selectRef}
       tabIndex={tabIndex}
     >
-      <div data-selected>
-        <div data-value>{select}</div>
-        <span data-icon={isOpen}>{icon}</span>
-      </div>
-      {/* В дальнейшем использовать Popover и List для создания выпадающего списка элементов */}
-      <ul
-        aria-activedescendant={select}
-        data-visible={isOpen}
-        ref={dropdownRef}
-        role="listbox"
-        tabIndex={-1}
-      >
-        {options.map(({ children, value }) => (
-          <li data-value={value} key={value} onClick={onChange} role="option" tabIndex={-1}>
-            {children}
-          </li>
-        ))}
-      </ul>
+      <Popover
+        isOpen={false}
+        variant={variant}
+        content={
+          <Surface variant={variant}>
+            <ListContainer role="listbox" variant={variant} ref={dropdownRef} data-visible={isOpen}>
+              {options.map(({ id, content, disabled, as, href, iconLeft, iconRight }) => (
+                <ListItem
+                  as={as}
+                  disabled={disabled}
+                  href={href}
+                  iconLeft={iconLeft}
+                  iconRight={iconRight}
+                  key={id}
+                  role="option"
+                  tabIndex={-1}
+                  text={content}
+                  variant={variant}
+                />
+              ))}
+            </ListContainer>
+          </Surface>
+        }>
+        <div data-selected>
+          <div data-value>{select}</div>
+          <span data-icon={isOpen}>{icon}</span>
+        </div>
+      </Popover>
     </div>
   );
 };
@@ -170,7 +187,7 @@ export const Select = styled(SelectBase)`
     }
   }
 
-  ul {
+  ${ListContainer} {
     position: absolute;
     z-index: 1;
 
@@ -181,42 +198,13 @@ export const Select = styled(SelectBase)`
     padding: 0;
 
     list-style-type: none;
-
-    background: var(--local-list-background);
-
-    border: var(--woly-border-width) solid var(--local-border-list);
-    border-radius: var(--woly-rounding);
-
-    box-shadow: var(--woly-shadow);
   }
 
-  ul[data-visible='true'] {
+  ${ListContainer}[data-visible='true'] {
     display: flex;
     flex-direction: column;
 
     box-sizing: border-box;
-  }
-
-  li {
-    padding: var(--local-vertical) var(--local-horizontal);
-
-    color: var(--local-shape-color);
-
-    line-height: var(--woly-line-height);
-
-    background: var(--local-background);
-
-    cursor: pointer;
-
-    &:hover {
-      --local-background: var(--woly-canvas-disabled);
-    }
-
-    &:focus,
-    &:active {
-      outline: none;
-      --local-shape-color: var(--woly-canvas-text-default);
-    }
   }
 
   &:focus > div[data-selected],

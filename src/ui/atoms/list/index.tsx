@@ -7,6 +7,8 @@ interface ListElementsProps {
   iconLeft?: React.ReactNode;
   iconRight?: React.ReactNode;
   text: React.ReactNode;
+  onClick?: React.EventHandler<React.SyntheticEvent>;
+  role?: string;
 }
 
 interface ListItemProps {
@@ -32,9 +34,11 @@ export const ListContainer = styled.div.attrs(mapContainer)`
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--local-gap);
+
+  width: 100%;
+  
   margin: 0;
   padding: 0;
-
   background-color: var(--woly-shape-text-default);
 ` as StyledComponent<'div', Record<string, unknown>, Variant>;
 
@@ -44,6 +48,8 @@ export const ListItem: React.FC<ListItemProps & ListElementsProps & Variant> = (
   href,
   iconLeft,
   iconRight,
+  onClick,
+  role,
   tabIndex,
   text,
   variant = 'secondary',
@@ -52,38 +58,58 @@ export const ListItem: React.FC<ListItemProps & ListElementsProps & Variant> = (
     as={as}
     href={href}
     disabled={disabled}
+    onClick={onClick}
+    role={role}
     tabIndex={disabled ? -1 : tabIndex}
     variant={variant}
   >
     {iconLeft && <span data-icon>{iconLeft}</span>}
-    <span>{text}</span>
+    <span data-item-text>{text}</span>
     {iconRight && <span data-icon>{iconRight}</span>}
   </ListItemContainer>
 );
 
-/**
- * Fix ListItemContainer after implementing box element
- */
 const ListItemContainer = styled.div.attrs(mapItem)`
   ${box}
   --local-icon-color: var(--woly-canvas-text-default);
   --local-backgound: var(--woly-canvas-default);
   --local-color: var(--woly-canvas-text-default);
+  --local-icon-size: var(--woly-line-height);
 
   color: var(--local-color);
   font-size: var(--woly-font-size);
   line-height: var(--woly-line-height);
+  
   text-decoration: none;
-
   list-style-type: none;
+
+  & {
+    display: flex;
+    align-items: center;
+  }
 
   background-color: var(--local-backgound);
   cursor: pointer;
 
-  span {
+  [data-icon] {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+
+    width: var(--local-icon-size);
+    height: var(--local-icon-size);
+
     svg > path {
+      width: 100%;
+      height: 100%;
       fill: var(--local-icon-color);
     }
+  }
+
+  [data-item-text] {
+    flex: 1;
+    flex-wrap: nowrap;
   }
 
   &:hover {
