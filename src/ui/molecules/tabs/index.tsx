@@ -31,7 +31,7 @@ export const TabContainer = styled.div.attrs(mapTabContainer)`
   align-items: center;
 
   width: 100%;
- 
+
   margin: 0;
   padding: 0;
   margin-right: var(--local-gap);
@@ -51,12 +51,7 @@ export const TabList: React.FC<TabItemProps & TabElementProps & Variant> = ({
   text,
   variant = 'secondary',
 }) => (
-  <TabItemContainer
-    href={href}
-    data-outlined={outlined}
-    onClick={onClick}
-    variant={variant}
-  >
+  <TabItemContainer href={href} data-outlined={outlined} onClick={onClick} variant={variant}>
     <div data-content>
       {iconLeft && <span data-icon="link-icon">{iconLeft}</span>}
       <span data-link="link-text">{text}</span>
@@ -76,7 +71,7 @@ const TabItemContainer = styled.div.attrs(mapTabItem)`
   color: var(--local-color);
   font-size: var(--woly-font-size);
   line-height: var(--woly-line-height);
-  
+
   text-decoration: none;
   box-sizing: border-box;
 
@@ -86,14 +81,14 @@ const TabItemContainer = styled.div.attrs(mapTabItem)`
   [data-content] {
     display: flex;
     align-items: center;
-    
+
     max-width: 201px;
-    min-width: 201px; 
-    
+    min-width: 201px;
+
     border-right: var(--woly-border-width) solid var(--local-border-color);
   }
 
-  [data-link="link-text"] {
+  [data-link='link-text'] {
     flex: 1;
   }
 
