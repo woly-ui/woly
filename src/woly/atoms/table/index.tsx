@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { StyledComponent } from 'styled-components';
 import { Priority } from 'lib/types';
 
 const map = (properties: { columns: number } & Priority) => ({
@@ -17,7 +17,7 @@ export const Table = styled.table.attrs(map)`
   display: grid;
   grid-template-columns: repeat(var(--local-columns), auto);
   gap: var(--local-gap);
-`;
+` as StyledComponent<'table', Record<string, unknown>, { columns: number } & Priority>;
 
 export const Thead = styled.thead`
   display: contents;
@@ -34,7 +34,10 @@ export const Th = styled.th`
   max-width: var(--local-cell-max-width);
   padding: var(--local-vertical) var(--local-horizontal);
 
-  color: var(--woly-canvas-text-disabled);
+  color: var(--woly-neutral);
+  font-weight: normal;
+
+  line-height: var(--woly-line-height);
 
   background: var(--woly-shape-text-default);
 `;
@@ -46,6 +49,7 @@ export const Td = styled.td`
   padding: var(--local-vertical) var(--local-horizontal);
 
   color: var(--woly-canvas-text-default);
+  line-height: var(--woly-line-height);
 
   background: var(--woly-shape-text-default);
 `;

@@ -1,11 +1,12 @@
 export { Accordion } from './accordion';
 export { Checkbox } from './checkbox';
+export { DataTable } from './data-table';
 export { Field } from './field';
 export { InputPassword } from './input-password';
 export { Notification } from './notification';
 export { Modal } from './modal';
-export { RadioButton } from './radio-button';
 export { Popover } from './popover';
+export { RadioButton } from './radio-button';
 export { Select } from './select';
 export { Switch } from './switch';
 export { Toast } from './toast';

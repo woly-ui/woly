@@ -1,0 +1,158 @@
+import { Playground } from 'lib/playground'
+import { DataTable } from './index'
+
+import { Filter, RangeCell } from './filter'
+
+export const bankNames = [
+  {
+    value: 'vtb',
+    name: 'ВТБ'
+  },
+  {
+    value: 'tinkoff',
+    name: 'Тинькофф'
+  },
+  {
+    value: 'alfa',
+    name: 'Альфа'
+  },
+  {
+    value: 'otkrytie',
+    name: 'Открытие'
+  },
+]
+
+export const paymentSystems = [
+  {
+    value: 'visa-mastercard',
+    name: 'Visa/Mastercard'
+  },
+  {
+    value: 'mir',
+    name: 'МИР'
+  },
+]
+
+export const columns = [
+  {
+    title: 'ID Дебет',
+    property: 'id-debet',
+  },
+  {
+    title: 'ID Кредит',
+    property: 'id-credit',
+  },
+  {
+    title:  <Filter options={bankNames} title="Название банка"  />,
+    property: 'bank-name',
+  },
+  {
+    title:  <Filter options={paymentSystems} title='Платежная система'/>,
+    property: 'payment-system',
+  },
+  {
+    title: 'Диапазон',
+    property: 'range',
+    cell: RangeCell
+  },
+];
+
+export const values = [
+  {
+    id: 1,
+    'id-debet': 798172,
+    'id-credit': null,
+    'bank-name': 'ВТБ',
+    'payment-system': 'Visa/Mastercard',
+    'range': {
+      from: 1,
+      to: 4
+    }
+  },
+  {
+    id: 2,
+    'id-debet': 798173,
+    'id-credit': null,
+    'bank-name': 'Альфа-банк',
+    'payment-system': 'Visa/Mastercard',
+    'range': {
+      from: 4,
+      to: 6
+    }
+  },
+  {
+    id: 3,
+    'id-debet': 798174,
+    'id-credit': null,
+    'bank-name': 'ВТБ',
+    'payment-system': 'МИР',
+    'range': {
+      from: 4,
+      to: 6
+    }
+  },   
+  {
+    id: 4,
+    'id-debet': 798175,
+    'id-credit': null,
+    'bank-name': 'Тинькофф',
+    'payment-system': 'Visa/Mastercard',
+    'range': {
+      from: 3,
+      to: 6
+    }
+  },
+  {
+    id: 5,
+    'id-debet': 798176,
+    'id-credit': null,
+    'bank-name': 'Открытие',
+    'payment-system': 'МИР',
+    'range': {
+      from: 4,
+      to: 6
+    }
+  },
+  {
+    id: 6,
+    'id-debet': 798177,
+    'id-credit': null,
+    'bank-name': 'Альфа-банк',
+    'payment-system': 'МИР',
+    'range': {
+      from: 4,
+      to: 9
+    }
+  }
+];
+
+### Example
+
+<Playground>
+  <block.L style={{ background: '#f5f5f5', padding: '20px' }}>
+    <DataTable columns={columns} values={values} variant="primary" />
+  </block.L>
+</Playground>
+
+### Components
+
+| Name        | Description         |
+| ----------- | ------------------- |
+| `DataTable` | DataTable component |
+
+### DataTable Props
+
+| Name          | Type                               | Default       | Description                                  |
+| ------------- | ---------------------------------- | ------------- | -------------------------------------------- |
+| `columns`     | `Array<ColumnProps>`               |               | Table head                                   |
+| `placeholder` | `string`                           | `'----'`      | String that is displayed when value is empty |
+| `values`      | `Array<Record<string, CellProps>>` |               | Table content                                |
+| `priority`    | `string`                           | `'secondary'` | Priority prop to style DataTable component   |
+
+### ColumnProps
+
+| Name       | Type                       | Default | Description                                                                         |
+| ---------- | -------------------------- | ------- | ----------------------------------------------------------------------------------- |
+| `property` | `string`                   |         | Unique property of column to connect head with value in a row                       |
+| `title`    | `React.ReactNode ӏ string` |         | Head of column to show. Can be a simple string or a component (ex. Filter dropdown) |
+| `cell`     | `React.FC<CellProps>`      | null    | FC to render cell                                                                   |
