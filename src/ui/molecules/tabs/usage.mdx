@@ -1,0 +1,85 @@
+---
+name: tabs
+category: molecules
+package: 'woly'
+---
+
+import {ButtonIcon, TabContainer, TabList} from 'ui';
+import {IconClose, IconPlus} from 'static/icons';
+import {block, Playground} from 'lib/playground';
+
+export const links = [
+  {
+    id: "fwed324fcse",
+    content: "John"
+  },
+  {
+    id: "fwed32q4fcss",
+    content: "Alex"
+  }
+];
+
+`Tabs` organize and allow navigation between groups of content that are related and at the same level of hierarchy.
+A TabBarar appears at the top (rarely bottom) of an app screen and lets people quickly switch among different sections of an app.
+A tab bar may contain any number of tabs, but the number of visible tabs varies based on the device size and orientation. 
+If some tabs can’t be displayed due to limited horizontal space, the final visible tab becomes a More tab, which reveals the additional tabs in a list on a separate screen.
+
+In general, use a tab bar to organize information at the app level. 
+A tab bar is a good way to flatten your information hierarchy and provide access to several peer information categories or modes at the same time.
+
+Aim for the right number of tabs. Too many tabs reduces the tappable area of each tab and increases the complexity of your app, which can make it harder for people to locate information. 
+Too few tabs can be a problem too, as it can make your interface appear disconnected. Although a More tab can display extra tabs, it requires an additional tap to reveal them and can be a poor use of space. 
+Include essential tabs only, and use the minimum number of tabs necessary for your information hierarchy. 
+
+Don’t remove or disable a tab when its function is unavailable. 
+If tabs are available in some cases but not in others, your app’s interface becomes unstable and unpredictable. 
+Ensure that all tabs are always enabled, and explain why a tab’s content is unavailable. 
+
+### Example
+
+<Playground>
+  <block.L style={{width:"1200px"}}>
+    <TabContainer variant="primary">
+      {links.map(({ id, content, iconLeft }) => (
+        <TabList
+          key={id}
+          href={`#${id}`}
+          iconLeft={iconLeft}
+          iconRight={
+            <ButtonIcon 
+              icon={<IconClose />} 
+              onClick={() => {console.log("click icon")}}  
+              filled
+              variant="primary" 
+            />}
+          text={content}
+          onClick={() => console.log(`click ${id}`)}
+          variant="primary"
+        />
+      ))}
+    </TabContainer>
+  </block.L>
+</Playground>
+
+<Playground>
+  <block.L style={{width:"1200px"}}>
+    <TabContainer variant="secondary">
+      {links.map(({ id, content, iconLeft }) => (
+        <TabList
+          key={id}
+          href={`#${id}`}
+          iconLeft={iconLeft}
+          iconRight={
+            <ButtonIcon 
+              icon={<IconClose />} 
+              onClick={() => {console.log("click icon")}}  
+              variant="secondary" 
+            />}
+          text={content}
+          onClick={() => console.log(`click ${id}`)}
+          variant="secondary"
+        />
+      ))}
+    </TabContainer>
+  </block.L>
+</Playground>
