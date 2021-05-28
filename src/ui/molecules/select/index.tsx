@@ -26,7 +26,8 @@ interface SelectProps {
   placeholder?: string;
   selected: string | null;
 }
-
+// in the future, should to set the number of items in the list
+// and decide whether the select will contain a scroll and something else
 export const SelectBase: React.FC<SelectProps & Variant> = ({
   className,
   disabled = false,
