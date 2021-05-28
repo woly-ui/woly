@@ -36,7 +36,7 @@ export const ListContainer = styled.div.attrs(mapContainer)`
   gap: var(--local-gap);
 
   width: 100%;
-  
+
   margin: 0;
   padding: 0;
   background-color: var(--woly-shape-text-default);
@@ -79,7 +79,7 @@ const ListItemContainer = styled.div.attrs(mapItem)`
   color: var(--local-color);
   font-size: var(--woly-font-size);
   line-height: var(--woly-line-height);
-  
+
   text-decoration: none;
   list-style-type: none;
 

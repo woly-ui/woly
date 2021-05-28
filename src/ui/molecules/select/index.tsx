@@ -1,9 +1,9 @@
 import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
-import { Variant } from 'lib/types';
-import { keyHandlerGet, keyboardEventHandle } from 'lib';
 import { ListContainer, ListItem, Popover, Surface } from 'ui';
+import { Variant } from 'lib/types';
 import { box } from 'ui/elements';
+import { keyHandlerGet, keyboardEventHandle } from 'lib';
 
 interface SelectOptionProps {
   as?: 'a' | 'li';
@@ -110,7 +110,8 @@ export const SelectBase: React.FC<SelectProps & Variant> = ({
               ))}
             </ListContainer>
           </Surface>
-        }>
+        }
+      >
         <div data-selected>
           <div data-value>{select}</div>
           <span data-icon={isOpen}>{icon}</span>
@@ -121,7 +122,7 @@ export const SelectBase: React.FC<SelectProps & Variant> = ({
 };
 
 export const Select = styled(SelectBase)`
-   ${box}
+  ${box}
 
   --local-background: var(--woly-canvas-default);
   --local-border-input-color: var(--woly-canvas-text-active);
@@ -192,7 +193,7 @@ export const Select = styled(SelectBase)`
   }
 
   [data-icon='true'] > svg {
-      transform: rotate(180deg);
+    transform: rotate(180deg);
   }
 
   &:focus > div[data-selected],
