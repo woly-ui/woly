@@ -19,7 +19,7 @@ const ToastBase: React.FC<ToastProps & Variant> = ({
   variant = 'secondary',
 }) => (
   <div className={className} data-outlined={outlined} data-variant={variant}>
-    {icon && <span data-toast-icon>{icon}</span>}
+    {icon && <span data-icon="toast">{icon}</span>}
     <div data-content>{children}</div>
     {action && <span data-action>{action}</span>}
   </div>
@@ -53,7 +53,7 @@ export const Toast = styled(ToastBase)`
 
     background-color: transparent;
 
-    [data-toast-icon] {
+    [data-icon='toast'] {
       svg > path {
         fill: var(--local-shape-color);
       }
@@ -66,7 +66,7 @@ export const Toast = styled(ToastBase)`
     flex-wrap: nowrap;
   }
 
-  [data-toast-icon] {
+  [data-icon='toast'] {
     --woly-component-level: 0;
     --local-icon-size: var(--woly-line-height);
     display: flex;
