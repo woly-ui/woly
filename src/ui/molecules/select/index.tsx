@@ -3,11 +3,11 @@ import styled, { StyledComponent } from 'styled-components';
 import { Variant } from 'lib/types';
 import { keyHandlerGet, keyboardEventHandle } from 'lib';
 import { ListContainer, ListItem, Popover, Surface } from 'ui';
-
+import { box } from 'ui/elements';
 
 interface SelectOptionProps {
   as?: 'a' | 'li';
-  content: React.ReactNode;
+  value: string;
   disabled?: boolean;
   href?: string;
   iconLeft?: React.ReactNode;
@@ -87,12 +87,13 @@ export const SelectBase: React.FC<SelectProps & Variant> = ({
       tabIndex={tabIndex}
     >
       <Popover
-        isOpen={false}
+        isOpen={isOpen}
+        ref={dropdownRef}
         variant={variant}
         content={
           <Surface variant={variant}>
-            <ListContainer role="listbox" variant={variant} ref={dropdownRef} data-visible={isOpen}>
-              {options.map(({ id, content, disabled, as, href, iconLeft, iconRight }) => (
+            <ListContainer role="listbox" variant={variant} aria-activedescendant={select}>
+              {options.map(({ id, value, disabled, as, href, iconLeft, iconRight }) => (
                 <ListItem
                   as={as}
                   disabled={disabled}
@@ -100,9 +101,10 @@ export const SelectBase: React.FC<SelectProps & Variant> = ({
                   iconLeft={iconLeft}
                   iconRight={iconRight}
                   key={id}
+                  onClick={onChange}
                   role="option"
                   tabIndex={-1}
-                  text={content}
+                  text={value}
                   variant={variant}
                 />
               ))}
@@ -119,15 +121,7 @@ export const SelectBase: React.FC<SelectProps & Variant> = ({
 };
 
 export const Select = styled(SelectBase)`
-  --local-vertical: calc(
-    1px * var(--woly-component-level) * var(--woly-main-level) - var(--woly-border-width)
-  );
-  --local-horizontal: calc(
-    var(--woly-const-m) + (1px * var(--woly-main-level)) + var(--local-vertical) -
-      var(--woly-border-width)
-  );
-
-  --local-gap: var(--woly-const-m);
+   ${box}
 
   --local-background: var(--woly-canvas-default);
   --local-border-input-color: var(--woly-canvas-text-active);
@@ -142,7 +136,7 @@ export const Select = styled(SelectBase)`
   position: relative;
 
   align-items: center;
-  width: 100%;
+  box-sizing: border-box;
 
   outline: none;
   cursor: pointer;
@@ -150,12 +144,11 @@ export const Select = styled(SelectBase)`
   [data-selected] {
     display: flex;
     align-items: center;
-    box-sizing: border-box;
+    width: 100%;
 
     padding: var(--local-vertical) var(--local-horizontal);
 
     color: var(--local-shape-color);
-
     background: var(--local-background);
 
     border: var(--woly-border-width) solid var(--local-border-input-color);
@@ -164,10 +157,6 @@ export const Select = styled(SelectBase)`
     [data-value] {
       flex: 1;
     }
-  }
-
-  [data-icon='true'] {
-    transform: rotate(180deg);
   }
 
   [data-icon] {
@@ -192,19 +181,18 @@ export const Select = styled(SelectBase)`
     z-index: 1;
 
     display: none;
-    width: 100%;
     margin-top: var(--local-gap);
-
-    padding: 0;
-
-    list-style-type: none;
   }
 
-  ${ListContainer}[data-visible='true'] {
+  [data-open='true'] > ${Surface} > ${ListContainer} {
     display: flex;
     flex-direction: column;
 
     box-sizing: border-box;
+  }
+
+  [data-icon='true'] > svg {
+      transform: rotate(180deg);
   }
 
   &:focus > div[data-selected],

@@ -22,15 +22,15 @@ If any initial value hasn`t been selected yet, you can pass a placeholder.
 
 <Playground>
   <div style={{ height: '250px', width: '250px' }}>
-    <StateEvent initial={null} change={(event) => event?.target?.dataset.value}>
+    <StateEvent initial={null} change={(event) => event?.target?.textContent}>
       {(value, change) => (
         <Select
           icon={<IconArrowDown />}
           onChange={change}
           options={[
-            { children: 'Toyota', value: 'Toyota' },
-            { children: 'Opel', value: 'Opel' },
-            { children: 'BMW', value: 'BMW' },
+            { content: 'Toyota', value: 'Toyota' },
+            { content: 'Opel', value: 'Opel' },
+            { content: 'BMW', value: 'BMW' },
           ]}
           placeholder="Choose an option"
           selected={value}
@@ -47,7 +47,7 @@ Or initial selected value can be passed by default.
 
 <Playground>
   <div style={{ width: '250px', height: '250px' }}>
-    <StateEvent initial="Cats" change={(event) => event?.target?.dataset.value}>
+    <StateEvent initial="Cats" change={(event) => event?.target?.textContent}>
       {(value, change) => (
         <Select
           icon={<IconArrowDown />}
@@ -71,7 +71,7 @@ Disabled selects are uneditable. They have less opacity so that they appear less
 
 <Playground>
   <div style={{ width: '250px', height: '250px' }}>
-    <StateEvent initial="Cats" change={(event) => event?.target?.dataset.value}>
+    <StateEvent initial="Cats" change={(event) => event?.target?.textContent}>
       {(value, change) => (
         <Select
           icon={<IconArrowDown />}
@@ -96,7 +96,7 @@ Secondary variant should be used as default variant.
 
 <Playground>
   <div style={{ width: '250px', height: '250px' }}>
-    <StateEvent initial={null} change={(event) => event?.target?.dataset.value}>
+    <StateEvent initial={null} change={(event) => event?.target?.textContent}>
       {(value, change) => (
         <Select
           icon={<IconArrowDown />}
@@ -117,37 +117,42 @@ Secondary variant should be used as default variant.
 
 Primary and dander variants should focus user attention.
 
-<Playground direction="vertical">
-  <StateEvent initial="Cats" change={(event) => event?.target?.dataset.value}>
+<Playground>
+  <StateEvent initial="Cats" change={(event) => event?.target?.textContent}>
     {(value, change) => (
-      <>
-        <div style={{ width: '250px', height: '250px' }}>
-          <Select
-            icon={<IconArrowDown />}
-            onChange={change}
-            options={[
-              { children: 'Cats', value: 'Cats' },
-              { children: 'Dogs', value: 'Dogs' },
-              { children: 'Birds', value: 'Birds' },
-            ]}
-            selected={value}
-            variant="primary"
-          />
-        </div>
-        <div style={{ width: '250px', height: '250px' }}>
-          <Select
-            icon={<IconArrowDown />}
-            onChange={() => {}}
-            options={[
-              { children: 'Toyota', value: 'Toyota' },
-              { children: 'Opel', value: 'Opel' },
-              { children: 'BMW', value: 'BMW' },
-            ]}
-            selected="BMW"
-            variant="danger"
-          />
-        </div>
-      </>
+      <div style={{ width: '250px', height: '250px' }}>
+        <Select
+          icon={<IconArrowDown />}
+          onChange={change}
+          options={[
+            { children: 'Cats', value: 'Cats' },
+            { children: 'Dogs', value: 'Dogs' },
+            { children: 'Birds', value: 'Birds' },
+          ]}
+          selected={value}
+          variant="primary"
+        />
+      </div>
+    )}
+  </StateEvent>
+</Playground>
+
+<Playground>
+  <StateEvent initial="BMW" change={(event) => event?.target?.textContent}>
+    {(value, change) => (
+      <div style={{ width: '250px', height: '250px' }}>
+        <Select
+          icon={<IconArrowDown />}
+          onChange={change}
+          options={[
+            { children: 'Toyota', value: 'Toyota' },
+            { children: 'Opel', value: 'Opel' },
+            { children: 'BMW', value: 'BMW' },
+          ]}
+          selected={value}
+          variant="danger"
+        />
+      </div>
     )}
   </StateEvent>
 </Playground>
