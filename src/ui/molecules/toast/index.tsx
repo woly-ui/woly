@@ -34,6 +34,7 @@ export const Toast = styled(ToastBase)`
   ${box}
 
   display: flex;
+  align-items: center;
   flex-wrap: nowrap;
 
   min-width: fit-content;
