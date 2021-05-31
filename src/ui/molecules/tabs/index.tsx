@@ -12,14 +12,20 @@ interface TabElementProps {
 
 interface TabItemProps {
   href?: string;
+  active?: boolean;
+}
+
+interface TabContainerProps {
   outlined?: boolean;
 }
 
 const mapTabItem = (properties: TabItemProps & Variant) => ({
+  'data-active': properties.active || false,
   'data-variant': properties.variant || 'secondary',
 });
 
-const mapTabContainer = (properties: { columns: number } & Variant) => ({
+const mapTabContainer = (properties: TabContainerProps & Variant) => ({
+  'data-outlined': properties.outlined || false,
   'data-variant': properties.variant || 'secondary',
 });
 
@@ -42,17 +48,23 @@ export const TabContainer = styled.div.attrs(mapTabContainer)`
   border-bottom: var(--woly-border-width) solid var(--local-border-color);
 ` as StyledComponent<'div', Record<string, unknown>, Variant>;
 
-export const TabList: React.FC<TabItemProps & TabElementProps & Variant> = ({
+export const TabList: React.FC<TabContainerProps & TabItemProps & TabElementProps & Variant> = ({
+  active,
   href,
   iconLeft,
   iconRight,
   onClick,
-  outlined = false,
+  outlined,
   text,
-  variant = 'secondary',
+  variant,
 }) => (
-  <TabItemContainer href={href} data-outlined={outlined} onClick={onClick} variant={variant}>
-    <div data-content>
+  <TabItemContainer
+    href={href}
+    data-outlined={outlined}
+    onClick={onClick}
+    tabIndex={0}
+    variant={variant}>
+    <div data-content data-active={active}>
       {iconLeft && <span data-icon="link-icon">{iconLeft}</span>}
       <span data-link="link-text">{text}</span>
       {iconRight && <span data-icon="tab-action">{iconRight}</span>}
@@ -84,7 +96,7 @@ const TabItemContainer = styled.div.attrs(mapTabItem)`
 
     max-width: 201px;
     min-width: 201px;
-
+    
     border-right: var(--woly-border-width) solid var(--local-border-color);
   }
 
@@ -129,12 +141,12 @@ const TabItemContainer = styled.div.attrs(mapTabItem)`
     --local-background: var(--woly-canvas-default);
   }
 
-  &:active {
+  &[data-active='true'] {
     border-bottom: var(--woly-border-width) solid var(--woly-focus);
     --local-background: var(--woly-canvas-default);
   }
 
-  &:focus-within {
+  &:focus {
     --local-icon-color: var(--woly-shape-text-active);
     --local-backgound: var(--woly-focus);
 
