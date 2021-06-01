@@ -14,10 +14,8 @@ const { directory } = require('./library');
 const babelConfig = require('./babel');
 const { minifyConfig } = require('./minification');
 
-function buildWoly() {
-  const name = 'woly';
-
-  return Promise.all([
+const buildPackage = (name) => () =>
+  Promise.all([
     createEsCjs(name, {
       dir: directory(`dist/${name}`),
       file: {
@@ -27,24 +25,12 @@ function buildWoly() {
       inputExtension: 'ts',
     }),
   ]);
-}
 
-function buildCalendar() {
-  const name = 'calendar';
+const buildWoly = buildPackage('woly');
+const buildCalendar = buildPackage('calendar');
+const buildUpload = buildPackage('upload');
 
-  return Promise.all([
-    createEsCjs(name, {
-      dir: directory(`dist/${name}`),
-      file: {
-        cjs: `${name}.js`,
-        // es: `${name}.mjs`,
-      },
-      inputExtension: 'ts',
-    }),
-  ]);
-}
-
-module.exports = { buildWoly, buildCalendar };
+module.exports = { buildWoly, buildCalendar, buildUpload };
 
 const _compatTarget = {
   browsers: [
@@ -56,7 +42,15 @@ const _compatTarget = {
   ],
 };
 
-const externals = ['@woly/calendar', 'react-dom', 'react', 'styled-components', 'woly'];
+const externals = [
+  '@woly/calendar',
+  '@woly/upload',
+  'react-dom',
+  'react',
+  'styled-components',
+  'woly',
+  'react-dropzone',
+];
 
 const extensions = ['.js', '.mjs', '.ts', '.tsx'];
 

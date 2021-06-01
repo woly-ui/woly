@@ -1,5 +1,6 @@
-import {Playground} from 'lib/playground';
-import {Button, Table, Tbody, Td, Text, Th, Thead, Tr, UploadArea} from 'ui';
+import {Playground, State} from 'lib/playground';
+import {Button, Table, Tbody, Td, Text, Th, Thead, Tr} from 'ui';
+import {UploadArea} from './index';
 
 export const tableHead = [
   {id: 'id', name: 'Id'},
@@ -325,46 +326,70 @@ Also `UploadArea` component should be reused in creation other components, eg dr
 ### Example
 
 <Playground direction="vertical">
-  <Text type="L">Empty UploadArea component&nbsp;</Text>
-  <div style={{ width: '600px', height: '600px' }}>
-    <UploadArea priority="primary" />
-  </div>
+  <State initial={false} change={(is) => !is}>
+    {(value, change) => (
+      <>
+        <Text type="L">Empty UploadArea component&nbsp;</Text>
+        <div style={{ width: '600px', height: '600px' }} onClick={change}>
+          <UploadArea priority="primary" focus={value} />
+        </div>
+      </>
+    )}
+  </State>
 </Playground>
 
 <Playground direction="vertical">
-  <Text type="L">UploadArea component with content&nbsp;</Text>
-  <div style={{ width: '600px', height: '600px' }}>
-    <UploadArea center priority="primary" content={<Button text="Upload button" />} />
-  </div>
+  <State initial={false} change={(is) => !is}>
+    {(value, change) => (
+      <>
+        <Text type="L">UploadArea component with content&nbsp;</Text>
+        <div style={{ width: '600px', height: '600px' }} onClick={change}>
+          <UploadArea
+            center
+            priority="primary"
+            content={<Button text="Upload button" />}
+            focus={value}
+          />
+        </div>
+      </>
+    )}
+  </State>
 </Playground>
 
 <Playground direction="vertical">
-  <Text type="L">Scrolled UploadArea component with huge data&nbsp;</Text>
-  <div style={{ width: '1200px', height: '600px' }}>
-    <UploadArea
-      priority="primary"
-      content={
-        <Table columns={tableHead.length} priority="primary">
-          <Thead>
-            <Tr>
-              {tableHead.map(({ id, name }) => (
-                <Th key={id}>{name}</Th>
-              ))}
-            </Tr>
-          </Thead>
-          <Tbody>
-            {tableRows.map((row) => (
-              <Tr>
-                {tableHead.map(({ id }) => (
-                  <Td key={id}>{row[id]}</Td>
-                ))}
-              </Tr>
-            ))}
-          </Tbody>
-        </Table>
-      }
-    />
-  </div>
+  <State initial={false} change={(is) => !is}>
+    {(value, change) => (
+      <>
+        <Text type="L">Scrolled UploadArea component with huge data&nbsp;</Text>
+        <div style={{ width: '1200px', height: '600px' }} onClick={change}>
+          <UploadArea
+            priority="primary"
+            focus={value}
+            content={
+              <Table columns={tableHead.length} priority="primary">
+                <Thead>
+                  <Tr>
+                    {tableHead.map(({ id, name }) => (
+                      <Th key={id}>{name}</Th>
+                    ))}
+                  </Tr>
+                </Thead>
+                <Tbody>
+                  {tableRows.map((row, id) => (
+                    <Tr key={id}>
+                      {tableHead.map(({ id }) => (
+                        <Td key={id}>{row[id]}</Td>
+                      ))}
+                    </Tr>
+                  ))}
+                </Tbody>
+              </Table>
+            }
+          />
+        </div>
+      </>
+    )}
+  </State>
 </Playground>
 
 ### Props

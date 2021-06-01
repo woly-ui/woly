@@ -1,0 +1,62 @@
+---
+name: upload-button
+category: molecules
+package: upload
+---
+
+import {Button} from 'ui'
+import {Playground, StateEvent,FormBlock} from 'lib/playground';
+import {IconPlus} from 'static/icons';
+import {UploadButton} from './index';
+
+# Upload Button
+
+Simple upload button. To upload files, click on a button, choose files in an opened dialog window.
+To set file types, you should set the 'accept' property.
+
+### Example
+
+<Playground>
+  <StateEvent initial={[]} change={(files) => files}>
+    {(files, change) => (
+      <div style={{ display: 'flex' }}>
+        <UploadButton text="Upload files" icon={<IconPlus />} variant="primary" onChange={change} />
+        <div style={{ padding: '0 10px' }}>
+          {files.map((file) => (
+            <div key={file.name}>{file.name}</div>
+          ))}
+        </div>
+      </div>
+    )}
+  </StateEvent>
+</Playground>
+
+### Disabled upload button
+
+<Playground>
+  <StateEvent initial={[]} change={(files) => files}>
+    {(files, change) => (
+      <UploadButton
+        text="You can't upload files"
+        icon={<IconPlus />}
+        onChange={change}
+        variant="primary"
+        disabled
+      />
+    )}
+  </StateEvent>
+</Playground>
+
+### Props
+
+| Name       | Type                | Default     | Description                                                                                                            |
+| ---------- | ------------------- | ----------- | ---------------------------------------------------------------------------------------------------------------------- |
+| `accept`   | `string ӏ string[]` |             | File extensions that are accepted to load                                                                              |
+| `disabled` | `boolean`           | `false`     | Enable/disable upload button                                                                                           |
+| `icon`     | `React.ReactNode`   |             | Button icon                                                                                                            |
+| `maxFiles` | `number`            | `0`         | Max number of files to load. The default value is 0 which means there is no limitation to how many files are accepted. |
+| `maxSize`  | `number`            | `Infinity`  | Max file size (in bytes)                                                                                               |
+| `onChange` | `fn`                |             | Callback for change event                                                                                              |
+| `outlined` | `fn`                |             | Set button to be outlined                                                                                              |
+| `text`     | `string`            |             | Button text                                                                                                            |
+| `variant`  | `string`            | `'default'` | Variant prop to style UploadArea component                                                                             |

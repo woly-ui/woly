@@ -99,6 +99,23 @@ const calendar = {
   },
   ...common,
 };
-calendar.repository.directory = 'packages/calendar';
 
-module.exports = { woly, calendar };
+const upload = {
+  name: '@woly/upload',
+  version: versions.upload,
+  description: 'Upload components for Woly React library',
+  ...getModules('upload'),
+  files: getFiles('upload'),
+  keywords: [...keywords, 'upload'],
+  dependencies: {},
+  peerDependencies: {
+    ...dependsPeer,
+    ...dependsOnWoly,
+  },
+  ...common,
+};
+
+calendar.repository.directory = 'packages/calendar';
+upload.repository.directory = 'packages/upload';
+
+module.exports = { woly, calendar, upload };
