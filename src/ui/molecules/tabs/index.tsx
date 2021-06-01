@@ -30,7 +30,6 @@ const mapTabContainer = (properties: TabContainerProps & Variant) => ({
 });
 
 export const TabContainer = styled.div.attrs(mapTabContainer)`
-  --local-gap: calc(var(--woly-border-width) * 2);
   --local-border-color: var(--woly-shape-default);
 
   display: flex;
@@ -40,7 +39,6 @@ export const TabContainer = styled.div.attrs(mapTabContainer)`
 
   margin: 0;
   padding: 0;
-  margin-right: var(--local-gap);
 
   background-color: var(--woly-shape-text-default);
 
@@ -63,7 +61,8 @@ export const TabList: React.FC<TabContainerProps & TabItemProps & TabElementProp
     data-outlined={outlined}
     onClick={onClick}
     tabIndex={0}
-    variant={variant}>
+    variant={variant}
+  >
     <div data-content data-active={active}>
       {iconLeft && <span data-icon="link-icon">{iconLeft}</span>}
       <span data-link="link-text">{text}</span>
@@ -73,7 +72,6 @@ export const TabList: React.FC<TabContainerProps & TabItemProps & TabElementProp
 );
 
 const TabItemContainer = styled.div.attrs(mapTabItem)`
-  ${box}
   --local-icon-color: var(--woly-canvas-text-default);
   --local-background: var(--woly-canvas-disabled);
   --local-color: var(--woly-canvas-text-default);
@@ -83,25 +81,40 @@ const TabItemContainer = styled.div.attrs(mapTabItem)`
   color: var(--local-color);
   font-size: var(--woly-font-size);
   line-height: var(--woly-line-height);
+  margin-right: var(--woly-border-width);
 
   text-decoration: none;
   box-sizing: border-box;
 
   background-color: var(--local-background);
+  border-right: var(--woly-border-width) solid var(--local-border-color);
+  max-width: 201px;
+  min-width: 201px;
   cursor: pointer;
 
   [data-content] {
+    ${box}
+
     display: flex;
     align-items: center;
-
-    max-width: 201px;
-    min-width: 201px;
-    
-    border-right: var(--woly-border-width) solid var(--local-border-color);
   }
 
   [data-link='link-text'] {
+    position: relative;
     flex: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    background-color: var(--local-background);
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 45%; /* 1 */
+      height: 100%;
+      background: linear-gradient(to right, rgba(255, 255, 255, 0.2), var(--local-background) 100%);
+    }
   }
 
   [data-icon] {
@@ -139,6 +152,13 @@ const TabItemContainer = styled.div.attrs(mapTabItem)`
 
   &:hover {
     --local-background: var(--woly-canvas-default);
+    [data-link='link-text'] {
+      --local-background: var(--woly-canvas-default);
+
+      &::after {
+        background: linear-gradient(to right, rgba(255, 255, 255, 0.2), #ffffff 100%);
+      }
+    }
   }
 
   &[data-active='true'] {

@@ -11,7 +11,7 @@ import {block, Playground} from 'lib/playground';
 export const links = [
   {
     id: "fwed324fcse",
-    content: "John",
+    content: "Johnnnnnnnnnnn Doehhhhhhh",
     active: true
   },
   {
@@ -48,14 +48,12 @@ Ensure that all tabs are always enabled, and explain why a tab’s content is un
           key={id}
           href={`#${id}`}
           iconLeft={iconLeft}
-          
           iconRight={
             <ButtonIcon
               icon={<IconClose />}
               onClick={() => {
                 console.log('click icon');
               }}
-              filled
               variant="primary"
             />
           }
@@ -97,19 +95,19 @@ Ensure that all tabs are always enabled, and explain why a tab’s content is un
 
 ### TabList Props
 
-| Name        | Type                              | Default       | Description                          |
-| ----------- | --------------------------------- | ------------- | ------------------------------------ |
-| `href`      | `string`                          |               | href attribute                       |
-| `iconLeft`  | `React.ReactNode`                 |               | Left icon                            |
-| `iconRight` | `React.ReactNode`                 |               | Right icon                           |
-| `onClick`   | `React.MouseEvent<HTMLDivElement>`| `null`        | Callback when tab is clicked         |
-| `outlined`  | `boolean`                         | `false`       | Add outlened variant                 |
-| `tabIndex`  | `number`                          |               | set tabIndex to tab item             |
-| `text`      | `string`                          |               | text of tab item                     |
-| `variant`   | `string`                          | `'secondary'` | Variant prop to style Tab component  |
+| Name        | Type                               | Default       | Description                         |
+| ----------- | ---------------------------------- | ------------- | ----------------------------------- |
+| `href`      | `string`                           |               | href attribute                      |
+| `iconLeft`  | `React.ReactNode`                  |               | Left icon                           |
+| `iconRight` | `React.ReactNode`                  |               | Right icon                          |
+| `onClick`   | `React.MouseEvent<HTMLDivElement>` | `null`        | Callback when tab is clicked        |
+| `outlined`  | `boolean`                          | `false`       | Add outlened variant                |
+| `tabIndex`  | `number`                           |               | set tabIndex to tab item            |
+| `text`      | `string`                           |               | text of tab item                    |
+| `variant`   | `string`                           | `'secondary'` | Variant prop to style Tab component |
 
 ### TabContainer Props
 
-| Name      | Type     | Default       | Description                                   |
-| --------- | -------- | ------------- | --------------------------------------------- |
+| Name      | Type     | Default       | Description                                  |
+| --------- | -------- | ------------- | -------------------------------------------- |
 | `variant` | `string` | `'secondary'` | Variant prop to style TabContainer component |
