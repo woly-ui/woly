@@ -81,7 +81,6 @@ const TabItemContainer = styled.div.attrs(mapTabItem)`
   color: var(--local-color);
   font-size: var(--woly-font-size);
   line-height: var(--woly-line-height);
-  margin-right: var(--woly-border-width);
 
   text-decoration: none;
   box-sizing: border-box;
@@ -94,7 +93,7 @@ const TabItemContainer = styled.div.attrs(mapTabItem)`
 
   [data-content] {
     ${box}
-
+    position: relative;
     display: flex;
     align-items: center;
   }
@@ -169,7 +168,7 @@ const TabItemContainer = styled.div.attrs(mapTabItem)`
   &:focus {
     --local-icon-color: var(--woly-shape-text-active);
     --local-backgound: var(--woly-focus);
-
+    z-index: 1;
     outline: none;
     box-shadow: 0 0 0 var(--woly-border-width) var(--woly-focus);
   }
