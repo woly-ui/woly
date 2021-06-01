@@ -5,17 +5,17 @@ export const Global = styled.div`
     font-family: 'Helvetica Neue', sans-serif;
   }
 
-  --palette-snow-1000: 0, 0%, 0%; //black - #000000
-  --palette-snow-500: 0, 0%, 75%; //grey - #c0c0c0
-  --palette-snow-300: 0, 0%, 90%; //light grey - #e5e5e5
-  --palette-snow-100: 0, 0%, 96%; //very light grey - #f5f5f5
-  --palette-snow-0: 0, 0%, 100%; //white - #ffffff
+  --palette-snow-1000: 0, 0%, 0%; /* #000000 */
+  --palette-snow-500: 0, 0%, 75%; /* #c0c0c0 */
+  --palette-snow-300: 0, 0%, 90%; /* #e5e5e5 */
+  --palette-snow-100: 0, 0%, 96%; /* #f5f5f5 */
+  --palette-snow-0: 0, 0%, 100%; /* #ffffff */
 
-  --palette-lavender-500: 250, 80%, 73%; //#9381f1;
-  --palette-lavender-300: 250, 79%, 80%; //#b0a3f4;
-  --palette-lavender-100: 250, 80%, 86%; //#c9c0f8;
+  --palette-lavender-500: 250, 80%, 73%; /* #9381f1 */
+  --palette-lavender-300: 250, 79%, 80%; /* #b0a3f4 */
+  --palette-lavender-100: 250, 80%, 86%; /* #c9c0f8 */
 
-  --palette-dawn-300: 356, 100%, 78%; //#ff9097;
+  --palette-dawn-300: 356, 100%, 78%; /* #ff9097 */
 
   /* should be rewritten to formulas */
   --woly-line-height: 24px;
