@@ -7,38 +7,57 @@ package: 'woly'
 import {block, Playground} from 'lib/playground'
 import {Button, Input, Tooltip} from 'ui'
 
-`Tooltip` is used when you want to show addition information near component.
-Tooltip message is visible when user hover over component that is passed as a children to `Tooltip`.
+`Tooltip` is used to show addition information near component. The information should be contextual, useful, and nonessential.
+
+A tooltip can be simple message box that is displayed when a user hovers over, clicks or gives focus to a UI element
+such as an icon, a highlighted word, or a button that is passed as a children to `Tooltip`.
+Also the definition tooltip provides additional help or defines an item or term. It may be used on the label of a UI element,
+or on a word embedded in a paragraph.
+
+Interactive tooltips may contain rich text and other interactive elements like buttons or links.
+In general, hiding interactive content in a tooltip is discouraged.
+Interactive tooltips are best used for onboarding experiences and product tours.
+
+The tooltip position is flexible and changes depending on how close the element is to the edge of the screen.
+The top, right, bottom, and left positions appear outside the target element, center-aligned along the appropriate axis.
 
 ### Example
 
 <Playground>
-  <block.S style={{ display: 'flex', padding: '100px' }}>
-    <Tooltip message="Подсказка может быть написана в две строки и более" position="bottom">
-      <Button
-        onClick={() => console.info('Hi!')}
-        text="Button"
-        variant="primary"
-        style={{ marginRight: '10px' }}
-      />
+  <block.S
+    style={{
+      width: '800px',
+      display: 'flex',
+      padding: '200px',
+      alignItems: 'center',
+      justifyContent: 'space-between',
+      background: 'grey',
+    }}
+  >
+    <Tooltip
+      text="Подсказка может быть написана в две строки и более"
+      position="bottom"
+      isOpen={false}
+    >
+      <Button onClick={() => console.info('Hi!')} text="Button" variant="primary" />
     </Tooltip>
-    <Tooltip message="Подсказка" position="top" id="tooltip-top">
-      <Button
-        onClick={() => console.info('Hi!')}
-        text="Button"
-        variant="primary"
-        style={{ marginRight: '10px' }}
-      />
+    <Tooltip text="Подсказка" position="top" id="tooltip-top" isOpen={false}>
+      <Button onClick={() => console.info('Hi!')} text="Button" variant="primary" />
     </Tooltip>
-    <Tooltip message="Подсказка может быть написана в две строки" position="left">
-      <Button
-        onClick={() => console.info('Hi!')}
-        text="Button"
-        variant="primary"
-        style={{ marginRight: '10px' }}
-      />
+    <Tooltip
+      text="Подсказка может быть написана в две и более строки, а также содержать блок с actions"
+      position="left"
+      isOpen={false}
+      iconRight={
+        <>
+          <Button onClick={() => console.info('Hi!')} text="Button" variant="primary" />
+          <Button onClick={() => console.info('Hi!')} text="Button" variant="secondary" />
+        </>
+      }
+    >
+      <Button onClick={() => console.info('Hi!')} text="Button" variant="primary" />
     </Tooltip>
-    <Tooltip message="Подсказка" position="right" variant="primary">
+    <Tooltip text="Подсказка" position="right" variant="primary" isOpen={false}>
       <Input
         name="name"
         onChange={() => console.info('On input change')}
