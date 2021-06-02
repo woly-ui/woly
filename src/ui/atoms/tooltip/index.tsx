@@ -21,7 +21,8 @@ const TooltipBase: React.FC<TooltipProps & Variant> = ({
   className,
   tooltipRow = false,
   iconLeft,
-  iconRight,
+ 
+ iconRight,
   isOpen = true,
   text,
   position = 'top',
@@ -95,13 +96,13 @@ export const Tooltip = styled(TooltipBase)`
   div[data-tooltip] {
     ${box}
 
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
     position: absolute;
     z-index: 1;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 
     box-sizing: border-box;
     width: max-content;
