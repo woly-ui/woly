@@ -5,10 +5,12 @@
     "stylelint-config-rational-order"
   ],
   "rules": {
+    "order/properties-order": [[], { "severity": "error" }],
     "plugin/rational-order": [
       true,
       {
-        "empty-line-between-groups": true
+        "empty-line-between-groups": true,
+        "severity": "error"
       }
     ],
     "no-descending-specificity": null
