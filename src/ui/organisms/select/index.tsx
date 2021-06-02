@@ -1,6 +1,6 @@
 import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
-import { ListContainer, ListItem, Popover, Surface } from 'ui';
+import { ListContainer, ListItem, Popover } from 'ui';
 import { Variant } from 'lib/types';
 import { box } from 'ui/elements';
 import { keyHandlerGet, keyboardEventHandle } from 'lib';
@@ -93,26 +93,24 @@ export const SelectBase: React.FC<SelectProps & Variant> = ({
         ref={dropdownRef}
         variant={variant}
         content={
-          <Surface variant={variant}>
-            <ListContainer role="listbox" variant={variant} aria-activedescendant={select}>
-              {options.map(({ id, value, disabled, as, href, iconLeft, iconRight }) => (
-                <ListItem
-                  as={as}
-                  disabled={disabled}
-                  href={href}
-                  iconLeft={iconLeft}
-                  iconRight={iconRight}
-                  key={id}
-                  onClick={onChange}
-                  role="option"
-                  tabIndex={-1}
-                  text={value}
-                  variant={variant}
-                />
-              ))}
-            </ListContainer>
-          </Surface>
-        }
+         <ListContainer role="listbox" variant={variant} aria-activedescendant={select}>
+          {options.map(({ id, value, disabled, as, href, iconLeft, iconRight }) => (
+            <ListItem
+              as={as}
+              disabled={disabled}
+              href={href}
+              iconLeft={iconLeft}
+              iconRight={iconRight}
+              key={id}
+              onClick={onChange}
+              role="option"
+              tabIndex={-1}
+              text={value}
+              variant={variant}
+            />
+          ))}
+         </ListContainer>
+         }
       >
         <div data-selected>
           <div data-value>{select}</div>
@@ -124,8 +122,6 @@ export const SelectBase: React.FC<SelectProps & Variant> = ({
 };
 
 export const Select = styled(SelectBase)`
-  ${box}
-
   --local-background: var(--woly-canvas-default);
   --local-border-input-color: var(--woly-canvas-text-active);
 
@@ -141,17 +137,19 @@ export const Select = styled(SelectBase)`
   align-items: center;
   box-sizing: border-box;
 
+  width: 100%;
+
   outline: none;
   cursor: pointer;
 
   [data-selected] {
+    ${box}
     display: flex;
     align-items: center;
     width: 100%;
 
-    padding: var(--local-vertical) var(--local-horizontal);
-
     color: var(--local-shape-color);
+
     background: var(--local-background);
 
     border: var(--woly-border-width) solid var(--local-border-input-color);
@@ -187,7 +185,7 @@ export const Select = styled(SelectBase)`
     margin-top: var(--local-gap);
   }
 
-  [data-open='true'] > ${Surface} > ${ListContainer} {
+  [data-open='true'] > ${ListContainer} {
     display: flex;
     flex-direction: column;
 

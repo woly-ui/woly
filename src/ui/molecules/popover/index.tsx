@@ -90,10 +90,10 @@ const PopoverBase: React.FC<Props & Variant> = ({
 };
 
 export const Popover = styled(PopoverBase)`
-  --woly-gap: calc(
+  --local-gap: min(calc(1px * var(--woly-main-level) + var(--woly-const-m)), calc(
     (1px * var(--woly-main-level)) + (1px * var(--woly-main-level) * var(--woly-component-level))
-  );
-  --popover-position: calc(100% + 4px + var(--woly-gap, 10px));
+  ));
+  --popover-position: 100%;
   position: relative;
 
   [data-popover] {
