@@ -27,7 +27,7 @@ interface SelectProps {
   selected: string | null;
 }
 // in the future, should to set the number of items in the list
-// and decide whether the select will contain a scroll and something else
+// and decide whether the list of select will contain a scroll or something else
 
 export const SelectBase: React.FC<SelectProps & Variant> = ({
   className,
@@ -57,7 +57,7 @@ export const SelectBase: React.FC<SelectProps & Variant> = ({
       }
 
       event.preventDefault();
-      const kh = keyHandlerGet({
+      const selectKeyHandler = keyHandlerGet({
         dropdownNode,
         isOpen,
         onChange,
@@ -68,7 +68,7 @@ export const SelectBase: React.FC<SelectProps & Variant> = ({
 
       keyboardEventHandle({
         event,
-        keyHandler: kh,
+        keyHandler: selectKeyHandler,
         shiftKeyHandler,
       });
     },
@@ -93,7 +93,7 @@ export const SelectBase: React.FC<SelectProps & Variant> = ({
         ref={dropdownRef}
         variant={variant}
         content={
-         <ListContainer role="listbox" variant={variant} aria-activedescendant={select}>
+         <ListContainer role="listbox" variant={variant} aria-activedescendant={select} ref={dropdownRef}>
           {options.map(({ id, value, disabled, as, href, iconLeft, iconRight }) => (
             <ListItem
               as={as}
@@ -124,6 +124,7 @@ export const SelectBase: React.FC<SelectProps & Variant> = ({
 export const Select = styled(SelectBase)`
   --local-background: var(--woly-canvas-default);
   --local-border-input-color: var(--woly-canvas-text-active);
+  --local-gap: var(--woly-border-width);
 
   --local-shape-color: var(--woly-canvas-text-default);
 
@@ -183,6 +184,9 @@ export const Select = styled(SelectBase)`
 
     display: none;
     margin-top: var(--local-gap);
+
+    background-color: var(--local-list-background);
+    border: var(--woly-border-width) solid var(--local-border-list);
   }
 
   [data-open='true'] > ${ListContainer} {

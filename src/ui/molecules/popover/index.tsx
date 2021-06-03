@@ -73,7 +73,7 @@ const PopoverBase: React.FC<Props & Variant> = ({
   }, [onScroll, onClickOutside]);
 
   return (
-    <div className={className} ref={ref}>
+    <div className={className} ref={ref} data-variant={variant}>
       <div onClick={setVisibility} onKeyDown={onKeyDown}>
         {children}
       </div>
@@ -81,7 +81,7 @@ const PopoverBase: React.FC<Props & Variant> = ({
         data-popover
         data-open={isVisible}
         data-position={popoverPosition}
-        data-variant={variant}
+        variant={variant}
       >
         {content}
       </Surface>
@@ -90,25 +90,23 @@ const PopoverBase: React.FC<Props & Variant> = ({
 };
 
 export const Popover = styled(PopoverBase)`
-  --local-gap: min(calc(1px * var(--woly-main-level) + var(--woly-const-m)), calc(
-    (1px * var(--woly-main-level)) + (1px * var(--woly-main-level) * var(--woly-component-level))
-  ));
-  --popover-position: 100%;
+  --local-gap: var(--woly-const-m);
+  
+  --popover-position: calc(100% + var(--local-gap));
   position: relative;
 
   [data-popover] {
     position: absolute;
     z-index: 1;
 
-    min-width: 100%;
+    display: none;
 
-    visibility: hidden;
-    opacity: 0;
+    min-width: 100%;
+    height: 100%;
   }
 
   & > [data-open='true'] {
-    visibility: visible;
-    opacity: 1;
+    display: block;
   }
 
   & > [data-position='top'] {

@@ -35,12 +35,11 @@ export const ListContainer = styled.div.attrs(mapContainer)`
   grid-template-columns: 1fr;
   gap: var(--local-gap);
 
-  width: 100%;
-
   margin: 0;
   padding: 0;
 
-  background-color: var(--woly-shape-text-default);
+  background-color: var(--woly-background);
+  border: var(--woly-border-width) solid var(--woly-background);
 ` as StyledComponent<'div', Record<string, unknown>, Variant>;
 
 export const ListItem: React.FC<ListItemProps & ListElementsProps & Variant> = ({
@@ -81,18 +80,15 @@ const ListItemContainer = styled.div.attrs(mapItem)`
   font-size: var(--woly-font-size);
   line-height: var(--woly-line-height);
 
-  border: var(--woly-border-width) solid var(--woly-canvas-default);
-
   text-decoration: none;
 
   list-style-type: none;
 
+  background: var(--local-backgound);
   & {
     display: flex;
     align-items: center;
   }
-
-  background-color: var(--local-backgound);
   cursor: pointer;
 
   [data-icon] {
