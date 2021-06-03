@@ -1,0 +1,28 @@
+---
+name: loader
+category: atoms
+package: 'woly'
+---
+
+import {Loader} from 'ui';
+import {Playground} from 'lib/playground'
+
+`Loader` component is used when retrieving data or performing slow computations, and help to notify users that loading is underway..
+Description text below animated spinner provides more details on the current operation.
+
+Use a `Loader` component whenever the wait time is anticipated to be longer than three seconds.
+
+### Example
+
+<Playground>
+  <div style={{ height: 300 }}>
+    <Loader variant="primary" description="Loading, please wait until all data is loaded" />
+  </div>
+</Playground>
+
+### Props
+
+| Name          | Type             | Default      | Description                                     |
+| ------------- | ---------------- | ------------ | ----------------------------------------------- |
+| `description` | `string`         | 'Loading...' | Description text below the animated spinner     |
+| `...`         | `HTMLDivElement` | `{}`         | Other props are inherited from `HTMLDivElement` |
