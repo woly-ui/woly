@@ -8,14 +8,16 @@ interface LoaderProps {
   className?: string;
 }
 
-const LoaderBase = ({ description = 'Loading...', variant, className }: LoaderProps & Variant) => {
+const LoaderBase = ({
+  description = 'Loading...',
+  variant = 'primary',
+  className,
+}: LoaderProps & Variant) => {
   return (
     <div className={className} data-variant={variant}>
       <div data-loader>
-        <svg data-track>
-          <path d="M10.117 6.663a18 18 0 0016.867 31.314" data-track-segment />
-          <path d="M35.978 11.016A18 18 0 007.33 9.29" data-track-segment />
-          <path d="M37.976 15.016a18.001 18.001 0 00-9.203-10.251" data-track-segment />
+        <svg viewBox="0 0 100 100" data-track>
+          <circle data-spinner cx={50} cy={50} r={45} strokeWidth={10} />
         </svg>
         <div data-text>{description}</div>
       </div>
@@ -25,16 +27,43 @@ const LoaderBase = ({ description = 'Loading...', variant, className }: LoaderPr
 
 const trackAnimation = keyframes`
   0% {
+    transform: rotateZ(0deg);
+  }
+
+  100% {
+    transform: rotateZ(360deg)
+  }
+`;
+
+const spinnerAnimation = keyframes`
+ 0%,
+  25% {
+    stroke-dashoffset: 280;
+
     transform: rotate(0);
   }
+
+  50%,
+  75% {
+    stroke-dashoffset: 75;
+
+    transform: rotate(45deg);
+  }
+
   100% {
+    stroke-dashoffset: 280;
+
     transform: rotate(360deg);
   }
 `;
 
 export const Loader = styled(LoaderBase)`
   ${box}
-  --local-size: 42px;
+  --local-size: calc(
+    1px * var(--woly-component-level) * var(--woly-main-level) * 4
+  );
+  --local-track-color: var(--woly-canvas-default);
+  --local-spinner-color: var(--woly-shape-default);
 
   display: flex;
   align-items: center;
@@ -43,11 +72,6 @@ export const Loader = styled(LoaderBase)`
   box-sizing: border-box;
   width: 100%;
   height: 100%;
-
-  color: var(--woly-canvas-text-default);
-  font-weight: 400;
-  font-size: 15px;
-  line-height: 21px;
 
   [data-loader] {
     display: flex;
@@ -58,31 +82,32 @@ export const Loader = styled(LoaderBase)`
   [data-track] {
     width: var(--local-size);
     height: var(--local-size);
-
-    margin-bottom: 20px;
+    margin-bottom: calc(var(--local-gap) * 2);
 
     transform-origin: 50% 50%;
 
-    animation: 0.8s ${trackAnimation} cubic-bezier(0.2, 0, 0.38, 0.9) infinite;
+    animation: 2s linear infinite ${trackAnimation};
 
     fill: transparent;
   }
 
-  [data-track-segment] {
-    stroke-width: 6;
-  }
-  [data-track-segment]:nth-child(1) {
-    stroke: var(--palette-lavender-500);
-  }
-  [data-track-segment]:nth-child(2) {
-    stroke: var(--palette-lavender-300);
-  }
-  [data-track-segment]:nth-child(3) {
-    stroke: var(--palette-lavender-100);
+  [data-track] circle {
+    transform-origin: 50% 50%;
+
+    animation: 1.4s ease-in-out infinite both ${spinnerAnimation};
+
+    stroke: var(--local-spinner-color);
+    stroke-linecap: round;
+    stroke-dashoffset: 280;
+    stroke-dasharray: 283;
   }
 
   [data-text] {
+    color: var(--woly-canvas-text-default);
+    font-weight: 400;
+    font-size: var(--woly-font-size);
     line-height: var(--woly-line-height);
+    line-height: 21px;
     text-align: center;
   }
 ` as StyledComponent<'div', Record<string, unknown>, LoaderProps & Variant>;
