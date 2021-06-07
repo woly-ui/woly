@@ -9,7 +9,7 @@ export const Global = styled.div`
   --base-black-0: 0, 0%, 0%;
   --base-grey-50: 247, 7%, 48%;
   --base-white-100: 0, 0%, 100%;
-  --base-danger-color: 356, 100%, 78%; 
+  --base-danger-color: 356, 100%, 78%;
 
   /* grey palette */
   --grey-lighter-1: 249, 7%, 81%;
@@ -23,13 +23,13 @@ export const Global = styled.div`
   --grey-darker-9: 240, 7%, 11%;
 
   /* brand palette */
-  --brand-color-base-5: 255, 85%, 58%; 
+  --brand-color-base-5: 255, 85%, 58%;
 
   --brand-color-lighter-1: 257, 78%, 98%;
   --brand-color-lighter-2: 256, 83%, 93%;
   --brand-color-lighter-3: 255, 85%, 84%;
   --brand-color-lighter-4: 256, 84%, 72%;
-  
+
   --brand-color-darker-6: 255, 61%, 49%;
   --brand-color-darker-7: 255, 61%, 37%;
   --brand-color-darker-8: 255, 60%, 25%;
@@ -38,10 +38,10 @@ export const Global = styled.div`
   /* should be rewritten to formulas */
   --woly-main-level: 3;
   --woly-const-m: 6px;
-  
+
   --woly-border-width: 1.5px;
   --woly-rounding: 3px;
- 
+
   --woly-line-height: 24px;
   --woly-font-size: 15px;
 
@@ -56,7 +56,7 @@ export const Global = styled.div`
     --woly-shape-default: hsla(var(--base-black-0), 1);
     --woly-shape-disabled: hsla(var(--grey-lighter-2), 1);
     --woly-shape-hover: hsla(var(--grey-darker-7), 1);
-    --woly-shape-active: hsla(var(--grey-darker-6),1);
+    --woly-shape-active: hsla(var(--grey-darker-6), 1);
 
     --woly-shape-text-default: hsla(var(--base-white-100), 1);
     --woly-shape-text-disabled: hsla(var(--grey-lighter-3), 1);
