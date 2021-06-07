@@ -17,16 +17,14 @@ import {IconPlus, IconSearch} from 'static/icons';
     icon={<IconSearch />}
     onClick={() => alert('Hi!')}
     text="Just a button"
-    variant="white-and-black"
-    disabled
+    variant="default"
   />
   <Button
     icon={<IconSearch />}
     onClick={() => alert('Hi!')}
     text="Just a button"
-    variant="white-and-black"
+    variant="default"
     outlined
-    disabled
   />
 </Playground>
 
@@ -36,6 +34,7 @@ Primary and danger variants are should be used to focus user attention.
 
 <Playground>
   <Button text="The main action on the page" variant="primary" />
+  <Button text="The main action on the page" variant="primary" outlined/>
   <Button text="Alternative action" variant="danger" outlined />
   <Button text="Alternative action" variant="danger" />
 </Playground>
@@ -45,6 +44,12 @@ Secondary variant should be used as a default variant.
 <Playground>
   <Button text="Alternative action" variant="secondary" />
   <Button text="Alternative action" variant="secondary" outlined />
+</Playground>
+
+Tertiary variant should be used as an alternative variant to secondary and can`t be used with outline.
+
+<Playground>
+   <Button text="Alternative action" variant="tertiary" />
 </Playground>
 
 ### Icons

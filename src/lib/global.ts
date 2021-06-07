@@ -5,140 +5,160 @@ export const Global = styled.div`
     font-family: 'Helvetica Neue', sans-serif;
   }
 
-  --palette-snow-1000: 0, 0%, 0%; /* #000000 */
-  --palette-snow-500: 0, 0%, 75%; /* #c0c0c0 */
-  --palette-snow-300: 0, 0%, 90%; /* #e5e5e5 */
-  --palette-snow-100: 0, 0%, 96%; /* #f5f5f5 */
-  --palette-snow-0: 0, 0%, 100%; /* #ffffff */
+  /* base colors */
+  --base-black-0: 0, 0%, 0%;
+  --base-grey-50: 247, 7%, 48%;
+  --base-white-100: 0, 0%, 100%;
+  --base-danger-color: 356, 100%, 78%; 
 
-  --palette-lavender-500: 250, 80%, 73%; /* #9381f1 */
-  --palette-lavender-300: 250, 79%, 80%; /* #b0a3f4 */
-  --palette-lavender-100: 250, 80%, 86%; /* #c9c0f8 */
+  /* grey palette */
+  --grey-lighter-1: 249, 7%, 81%;
+  --grey-lighter-2: 240, 7%, 92%;
+  --grey-lighter-3: 240, 9%, 98%;
+  --grey-lighter-4: 245, 6%, 66%;
 
-  --palette-dawn-300: 356, 100%, 78%; /* #ff9097 */
+  --grey-darker-6: 248, 7%, 40%;
+  --grey-darker-7: 251, 7%, 30%;
+  --grey-darker-8: 249, 7%, 21%;
+  --grey-darker-9: 240, 7%, 11%;
+
+  /* brand palette */
+  --brand-color-base-5: 255, 85%, 58%; 
+
+  --brand-color-lighter-1: 257, 78%, 98%;
+  --brand-color-lighter-2: 256, 83%, 93%;
+  --brand-color-lighter-3: 255, 85%, 84%;
+  --brand-color-lighter-4: 256, 84%, 72%;
+  
+  --brand-color-darker-6: 255, 61%, 49%;
+  --brand-color-darker-7: 255, 61%, 37%;
+  --brand-color-darker-8: 255, 60%, 25%;
+  --brand-color-darker-9: 256, 61%, 13%;
 
   /* should be rewritten to formulas */
-  --woly-line-height: 24px;
+  --woly-main-level: 3;
+  --woly-const-m: 6px;
+  
   --woly-border-width: 1.5px;
   --woly-rounding: 3px;
+ 
+  --woly-line-height: 24px;
   --woly-font-size: 15px;
+
+  --woly-background: hsla(var(--base-white-100), 1);
+  --woly-neutral: hsla(var(--base-grey-50), 1);
+  --woly-focus-color: hsla(var(--brand-color-darker-7), 1);
+  --woly-danger-color: hsla(var(--base-danger-color), 1);
+
   --woly-shadow: 3px 3px 9px hsla(0, 0%, 22%, 12%);
 
-  --woly-const-m: 6px;
-  --woly-main-level: 3;
+  [data-variant='default'] {
+    --woly-shape-default: hsla(var(--base-black-0), 1);
+    --woly-shape-disabled: hsla(var(--grey-lighter-2), 1);
+    --woly-shape-hover: hsla(var(--grey-darker-7), 1);
+    --woly-shape-active: hsla(var(--grey-darker-6),1);
 
-  --woly-background: hsla(var(--palette-snow-0), 100%);
-  --woly-neutral: hsla(var(--palette-snow-500), 100%);
-  --woly-focus: hsla(var(--palette-lavender-500), 100%);
-  --woly-danger: hsla(var(--palette-dawn-300), 100%);
-
-  [data-variant='white-and-black'] {
-    --woly-shape-default: var(--woly-base);
-    --woly-shape-disabled: hsla(var(--palette-snow-300), 100%);
-    --woly-shape-hover: hsla(var(--palette-snow-1000), 50%);
-    --woly-shape-active: var(--woly-neutral);
-
-    --woly-shape-text-default: hsla(var(--palette-snow-0), 100%);
-    --woly-shape-text-disabled: hsla(var(--palette-snow-0), 100%);
-    --woly-shape-text-hover: hsla(var(--palette-snow-0), 100%);
-    --woly-shape-text-active: hsla(var(--palette-snow-0), 100%);
+    --woly-shape-text-default: hsla(var(--base-white-100), 1);
+    --woly-shape-text-disabled: hsla(var(--grey-lighter-3), 1);
+    --woly-shape-text-hover: hsla(var(--base-white-100), 1);
+    --woly-shape-text-active: hsla(var(--base-white-100), 1);
 
     --woly-canvas-default: transparent;
-    --woly-canvas-disabled: hsla(var(--palette-snow-300), 100%);
-    --woly-canvas-hover: hsla(var(--palette-snow-500), 10%);
-    --woly-canvas-active: transparent;
+    --woly-canvas-disabled: hsla(var(--grey-lighter-2), 1);
+    --woly-canvas-hover: hsla(var(--grey-darker-7), 1);
+    --woly-canvas-active: hsla(var(--grey-darker-6), 1);
 
-    --woly-canvas-text-default: hsla(var(--palette-snow-1000), 100%);
-    --woly-canvas-text-disabled: hsla(var(--palette-snow-300), 100%);
-    --woly-canvas-text-hover: hsla(var(--palette-snow-500), 10%);
-    --woly-canvas-text-active: hsla(var(--palette-snow-500), 100%);
+    --woly-canvas-text-default: hsla(var(--base-black-0), 1);
+    --woly-canvas-text-disabled: hsla(var(--grey-lighter-3), 0.5);
+    --woly-canvas-text-hover: hsla(var(--base-black-0), 1);
+    --woly-canvas-text-active: hsla(var(--base-black-0), 1);
   }
 
   [data-variant='primary'] {
-    --woly-shape-default: hsla(var(--palette-lavender-300), 100%);
-    --woly-shape-disabled: hsla(var(--palette-snow-300), 100%);
-    --woly-shape-hover: hsla(var(--palette-lavender-100), 100%);
-    --woly-shape-active: hsla(var(--palette-lavender-300), 100%);
+    --woly-shape-default: hsla(var(--brand-color-base-5), 1);
+    --woly-shape-disabled: hsla(var(--grey-lighter-2), 1);
+    --woly-shape-hover: hsla(var(--brand-color-darker-6), 1);
+    --woly-shape-active: hsla(var(--brand-color-darker-7), 1);
 
-    --woly-shape-text-default: hsla(var(--palette-snow-0), 100%);
-    --woly-shape-text-disabled: hsla(var(--palette-snow-0), 100%);
-    --woly-shape-text-hover: hsla(var(--palette-snow-0), 100%);
-    --woly-shape-text-active: hsla(var(--palette-snow-0), 100%);
+    --woly-shape-text-default: hsla(var(--base-white-100), 1);
+    --woly-shape-text-disabled: hsla(var(--base-white-100), 1);
+    --woly-shape-text-hover: hsla(var(--base-white-100), 1);
+    --woly-shape-text-active: hsla(var(--base-white-100), 1);
 
     --woly-canvas-default: transparent;
-    --woly-canvas-disabled: hsla(var(--palette-snow-100), 100%);
-    --woly-canvas-hover: hsla(var(--palette-snow-500), 100%);
-    --woly-canvas-active: hsla(var(--palette-snow-500), 100%);
+    --woly-canvas-disabled: hsla(var(--grey-lighter-2), 1);
+    --woly-canvas-hover: hsla(var(--brand-color-darker-6), 1);
+    --woly-canvas-active: hsla(var(--brand-color-darker-7), 1);
 
-    --woly-canvas-text-default: hsla(var(--palette-snow-1000), 100%);
-    --woly-canvas-text-disabled: hsla(var(--palette-snow-500), 100%);
-    --woly-canvas-text-hover: hsla(var(--palette-snow-500), 100%);
-    --woly-canvas-text-active: hsla(var(--palette-snow-500), 100%);
+    --woly-canvas-text-default: hsla(var(--base-black-0), 1);
+    --woly-canvas-text-disabled: hsla(var(--grey-lighter-3), 1);
+    --woly-canvas-text-hover: hsla(var(--base-black-0), 1);
+    --woly-canvas-text-active: hsla(var(--base-black-0), 1);
   }
 
   [data-variant='secondary'] {
-    --woly-shape-default: hsla(var(--palette-snow-0), 100%);
-    --woly-shape-disabled: hsla(var(--palette-snow-0), 100%);
-    --woly-shape-hover: hsla(var(--palette-snow-300), 100%);
-    --woly-shape-active: hsla(var(--palette-snow-1000), 5%);
+    --woly-shape-default: hsla(var(--base-grey-50), 1);
+    --woly-shape-disabled: hsla(var(--grey-lighter-2), 1);
+    --woly-shape-hover: hsla(var(--grey-darker-7), 1);
+    --woly-shape-active: hsla(var(--grey-darker-8), 1);
 
-    --woly-shape-text-default: hsla(var(--palette-snow-1000), 100%);
-    --woly-canvas-text-disabled: hsla(var(--palette-snow-1000), 10%);
-    --woly-shape-text-default: hsla(var(--palette-snow-1000), 100%);
-    --woly-shape-text-default: hsla(var(--palette-snow-1000), 100%);
+    --woly-shape-text-default: hsla(var(--base-white-100), 1);
+    --woly-canvas-text-disabled: hsla(var(--grey-lighter-3), 1);
+    --woly-shape-text-hover: hsla(var(--base-white-100), 1);
+    --woly-shape-text-active: hsla(var(--base-white-100), 1);
 
     --woly-canvas-default: transparent;
-    --woly-canvas-disabled: hsla(var(--palette-snow-100), 100%);
-    --woly-canvas-hover: hsla(var(--palette-snow-1000), 5%);
-    --woly-canvas-active: hsla(var(--palette-snow-300), 100%);
+    --woly-canvas-disabled: hsla(var(--grey-lighter-2), 1);
+    --woly-canvas-hover: hsla(var(--grey-darker-7), 1);
+    --woly-canvas-active: hsla(var(--grey-darker-8), 1);
 
-    --woly-canvas-text-default: hsla(var(--palette-snow-1000), 100%);
-    --woly-canvas-text-disabled: hsla(var(--palette-snow-1000), 10%);
-    --woly-canvas-text-hover: hsla(var(--palette-snow-1000), 100%);
-    --woly-canvas-text-active: hsla(var(--palette-snow-1000), 100%);
+    --woly-canvas-text-default: hsla(var(--base-black-0), 1);
+    --woly-canvas-text-disabled: hsla(var(--grey-lighter-3), 1);
+    --woly-canvas-text-hover: hsla(var(--base-black-0), 1);
+    --woly-canvas-text-active: hsla(var(--base-black-0), 1);
   }
 
   [data-variant='tertiary'] {
-    --woly-shape-default: hsla(var(--palette-snow-1000), 5%);
-    --woly-shape-disabled: hsla(var(--palette-snow-100), 100%);
-    --woly-shape-hover: hsla(var(--palette-snow-300), 100%);
-    --woly-shape-active: hsla(var(--palette-snow-500), 100%);
+    --woly-shape-default: transparent;
+    --woly-shape-disabled: hsla(var(--grey-lighter-2), 1);
+    --woly-shape-hover: transparent;
+    --woly-shape-active: transparent;
 
-    --woly-shape-text-default: hsla(var(--palette-snow-1000), 100%);
-    --woly-shape-text-disabled: hsla(var(--palette-snow-1000), 10%);
-    --woly-shape-text-hover: hsla(var(--palette-snow-1000), 100%);
-    --woly-shape-text-active: hsla(var(--palette-snow-1000), 100%);
+    --woly-shape-text-default: hsla(var(--base-black-0), 1);
+    --woly-shape-text-disabled: hsla(var(--grey-lighter-3), 1);
+    --woly-shape-text-hover: hsla(var(--grey-darker-7), 1);
+    --woly-shape-text-active: hsla(var(--grey-darker-6), 1);
 
     --woly-canvas-default: transparent;
-    --woly-canvas-disabled: hsla(var(--palette-snow-100), 100%);
-    --woly-canvas-hover: hsla(var(--palette-snow-500), 100%);
-    --woly-canvas-active: hsla(var(--palette-snow-500), 100%);
+    --woly-canvas-disabled: hsla(var(--grey-lighter-2), 1);
+    --woly-canvas-hover: transparent;
+    --woly-canvas-active: transparent;
 
-    --woly-canvas-text-default: hsla(var(--palette-snow-1000), 100%);
-    --woly-canvas-text-disabled: hsla(var(--palette-snow-500), 100%);
-    --woly-canvas-text-hover: hsla(var(--palette-snow-500), 100%);
-    --woly-canvas-text-active: hsla(var(--palette-snow-500), 100%);
+    --woly-canvas-text-default: hsla(var(--base-black-0), 1);
+    --woly-canvas-text-disabled: hsla(var(--grey-lighter-3), 1);
+    --woly-canvas-text-hover: hsla(var(--grey-darker-7), 1);
+    --woly-canvas-text-active: hsla(var(--grey-darker-6), 1);
   }
 
   [data-variant='danger'] {
-    --woly-shape-default: hsla(var(--woly-danger), 100%);
-    --woly-shape-disabled: hsla(var(--palette-snow-300), 100%);
-    --woly-shape-hover: hsla(var(--woly-danger), 100%);
-    --woly-shape-active: hsla(var(--woly-danger), 100%);
+    --woly-shape-default: hsla(var(--base-danger-color), 1);
+    --woly-shape-disabled: hsla(var(--grey-lighter-2), 1);
+    --woly-shape-hover: hsla(var(--base-danger-color), 1);
+    --woly-shape-active: hsla(var(--base-danger-color), 1);
 
-    --woly-shape-text-default: hsla(var(--palette-snow-0), 100%);
-    --woly-shape-text-disabled: hsla(var(--palette-snow-0), 100%);
-    --woly-shape-text-hover: hsla(var(--palette-snow-0), 100%);
-    --woly-shape-text-active: hsla(var(--palette-snow-0), 100%);
+    --woly-shape-text-default: hsla(var(--base-white-100), 1);
+    --woly-shape-text-disabled: hsla(var(--grey-lighter-3), 1);
+    --woly-shape-text-hover: hsla(var(--base-white-100), 1);
+    --woly-shape-text-active: hsla(var(--base-white-100), 1);
 
     --woly-canvas-default: transparent;
-    --woly-canvas-disabled: hsla(var(--palette-snow-100), 100%);
-    --woly-canvas-hover: hsla(var(--woly-danger), 100%);
-    --woly-canvas-active: hsla(var(--woly-danger), 100%);
+    --woly-canvas-disabled: hsla(var(--grey-lighter-2), 1);
+    --woly-canvas-hover: hsla(var(--base-danger-color), 1);
+    --woly-canvas-active: hsla(var(--base-danger-color), 1);
 
-    --woly-canvas-text-default: hsla(var(--woly-danger), 100%);
-    --woly-canvas-text-disabled: hsla(var(--palette-snow-500), 100%);
-    --woly-canvas-text-hover: hsla(var(--woly-danger), 100%);
-    --woly-canvas-text-active: hsla(var(--woly-danger), 100%);
+    --woly-canvas-text-default: hsla(var(--base-danger-color), 1);
+    --woly-canvas-text-disabled: hsla(var(--grey-lighter-3), 1);
+    --woly-canvas-text-hover: hsla(var(--base-danger-color), 1);
+    --woly-canvas-text-active: hsla(var(--base-danger-color), 1);
   }
 `;

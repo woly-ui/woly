@@ -63,7 +63,7 @@ export const Button = styled(ButtonBase)`
   &[data-outlined='true'] {
     color: var(--local-shape-color);
 
-    background-color: transparent;
+    background: transparent;
 
     svg > path {
       fill: var(--local-shape-color);
