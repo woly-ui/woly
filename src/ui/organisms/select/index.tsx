@@ -179,9 +179,6 @@ export const Select = styled(SelectBase)`
   }
 
   ${ListContainer} {
-    position: absolute;
-    z-index: 1;
-
     display: none;
     margin-top: var(--local-gap);
 
