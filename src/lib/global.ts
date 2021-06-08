@@ -43,7 +43,7 @@ export const Global = styled.div`
   --secondary-800: 223, 100%, 78%;
   --secondary-900: 223, 100%, 93%;
 
-  /* dagner palette */
+  /* danger palette */
   --danger-100: 345, 73%, 96%;
   --danger-200: 344, 72%, 87%;
   --danger-300: 345, 72%, 74%;
