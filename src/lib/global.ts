@@ -8,7 +8,6 @@ export const Global = styled.div`
   /* base colors */
   --bw-0: 0, 0%, 0%;
   --bw-1000: 0, 0%, 100%;
-  --base-danger-color: 356, 100%, 78%;
 
   /* bw palette */
   --bw-100: 249, 7%, 81%;

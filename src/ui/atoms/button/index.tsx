@@ -4,7 +4,7 @@ import styled, { StyledComponent } from 'styled-components';
 import { Variant } from 'lib/types';
 import { box } from 'ui/elements';
 
-export type ButtonVariants = 'secondary' | 'primary' | 'destructive' | 'text';
+export type ButtonVariants = 'secondary' | 'primary' | 'default' | 'transparent'| 'danger'| 'accent'| 'success' ;
 export type ButtonSizes = 'default' | 'small';
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -17,12 +17,12 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
 }
 
 const ButtonBase: React.FC<ButtonProps & Variant> = ({
-  icon,
   fullWidth = false,
+  icon,
+  outlined = false,
   text,
   type = 'button',
   variant = 'secondary',
-  outlined = false,
   ...p
 }) => (
   <button type={type} data-width={fullWidth} data-outlined={outlined} data-variant={variant} {...p}>
