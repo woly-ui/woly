@@ -28,6 +28,27 @@ import {IconPlus, IconSearch} from 'static/icons';
   />
 </Playground>
 
+### Width
+
+Button can span the entire width of the container or have a fixed width
+
+<Playground direction="horizontal">
+  <Button
+    icon={<IconSearch />}
+    onClick={() => alert('Hi!')}
+    text="Just a button"
+    variant="primary"
+  />
+  <Button
+    icon={<IconSearch />}
+    onClick={() => alert('Hi!')}
+    text="Just a button"
+    variant="primary"
+    fullWidth
+    outlined
+  />
+</Playground>
+
 ### Variants
 
 Primary and danger variants are should be used to focus user attention.

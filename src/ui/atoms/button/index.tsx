@@ -10,20 +10,28 @@ export type ButtonSizes = 'default' | 'small';
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children?: never;
   className?: string;
+  fullWidth?: boolean;
   icon?: React.ReactNode;
-  text: React.ReactNode;
   outlined?: boolean;
+  text: React.ReactNode;
 }
 
 const ButtonBase: React.FC<ButtonProps & Variant> = ({
   icon,
+  fullWidth = false,
   text,
   type = 'button',
   variant = 'secondary',
   outlined = false,
   ...p
 }) => (
-  <button type={type} data-outlined={outlined} data-variant={variant} {...p}>
+  <button 
+    type={type} 
+    data-width={fullWidth} 
+    data-outlined={outlined} 
+    data-variant={variant} 
+    {...p}
+  >
     {icon && <span data-icon="left">{icon}</span>}
     <span data-text>{text}</span>
   </button>
@@ -68,6 +76,10 @@ export const Button = styled(ButtonBase)`
     svg > path {
       fill: var(--local-shape-color);
     }
+  }
+
+  &[data-width='true'] {
+    width: 100%;
   }
 
   [data-icon] {
