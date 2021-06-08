@@ -25,13 +25,7 @@ const ButtonBase: React.FC<ButtonProps & Variant> = ({
   outlined = false,
   ...p
 }) => (
-  <button 
-    type={type} 
-    data-width={fullWidth} 
-    data-outlined={outlined} 
-    data-variant={variant} 
-    {...p}
-  >
+  <button type={type} data-width={fullWidth} data-outlined={outlined} data-variant={variant} {...p}>
     {icon && <span data-icon="left">{icon}</span>}
     <span data-text>{text}</span>
   </button>

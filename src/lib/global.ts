@@ -76,7 +76,7 @@ export const Global = styled.div`
   --success-800: 124, 23%, 24%;
   --success-900: 124, 23%, 12%;
 
- /* should be rewritten to formulas */
+  /* should be rewritten to formulas */
   --woly-main-level: 3;
   --woly-const-m: 6px;
 
