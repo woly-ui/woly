@@ -38,18 +38,15 @@ const ButtonBase: React.FC<ButtonProps & Variant> = ({
 );
 
 export const Button = styled(ButtonBase)`
-  --local-vertical: calc(1px * var(--woly-component-level) * var(--woly-main-level));
-  --local-horizontal: calc(
-    var(--woly-const-m) + (1px * var(--woly-main-level)) + var(--local-vertical)
-  );
-  --local-gap: var(--local-vertical);
-  --local-compensate: var(--woly-const-m);
+  ${box}
+
+  & {
+    padding: 0;
+  }
 
   --local-text-color: var(--woly-shape-text-default);
   --local-shape-color: var(--woly-shape-default);
   --local-border-color: var(--woly-shape-default);
-
-  ${box}
 
   display: flex;
   flex-wrap: nowrap;
@@ -62,9 +59,7 @@ export const Button = styled(ButtonBase)`
   line-height: var(--woly-line-height);
 
   background-color: var(--local-shape-color);
-  border-color: var(--local-border-color);
-  border-style: solid;
-  border-width: var(--woly-border-width);
+  border: var(--woly-border-width) solid var(--local-border-color);
   border-radius: var(--woly-rounding);
   outline: none;
 
