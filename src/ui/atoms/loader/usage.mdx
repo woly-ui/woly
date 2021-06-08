@@ -4,10 +4,11 @@ category: atoms
 package: 'woly'
 ---
 
-import {Loader} from 'ui';
-import {block, Playground} from 'lib/playground'
+import {Loader, Button, Text} from 'ui';
+import {Playground, State} from 'lib/playground';
+import {ExampleDataFetching} from './example';
 
-`Loader` component is used when retrieving data or performing slow computations, and help to notify users that loading is underway..
+`Loader` component is used when retrieving data or performing slow computations and helps to notify users that loading is underway.
 Description text below animated spinner provides more details on the current operation.
 
 Use a `Loader` component whenever the wait time is anticipated to be longer than three seconds.
@@ -15,22 +16,30 @@ Use a `Loader` component whenever the wait time is anticipated to be longer than
 ### Example
 
 <Playground>
-  <block.H>
-    <div style={{ height: 300 }}>
-      <Loader description="Loading, please wait until all data is loaded" />
-    </div>
-  </block.H>
-  <block.S>
-    <div style={{ height: 100 }}>
-      <Loader variant="secondary" />
-    </div>
-  </block.S>
+  <State initial={false} change={(i) => !i}>
+    {(value, change) => (
+      <React.Fragment>
+        <Button text="Toggle loader" onClick={change} />
+        {value ? (
+          <div style={{ width: 300 }}>
+            <Loader description={<Text type="S">Some action in progress...</Text>} />
+          </div>
+        ) : null}
+      </React.Fragment>
+    )}
+  </State>
+</Playground>
+
+### Example with data fetching
+
+<Playground>
+  <ExampleDataFetching />
 </Playground>
 
 ### Props
 
-| Name          | Type             | Default      | Description                                     |
-| ------------- | ---------------- | ------------ | ----------------------------------------------- |
-| `description` | `string`         | 'Loading...' | Description text below the animated spinner     |
-| `variant`     | `string`         | `'primary'`  | Variant prop to style Input component           |
-| `...`         | `HTMLDivElement` | `{}`         | Other props are inherited from `HTMLDivElement` |
+| Name          | Type             | Default       | Description                                     |
+| ------------- | ---------------- | ------------- | ----------------------------------------------- |
+| `description` | `string`         | 'Loading...'  | Description text below the animated spinner     |
+| `variant`     | `string`         | `'secondary'` | Variant prop to style Loader component          |
+| `...`         | `HTMLDivElement` | `{}`          | Other props are inherited from `HTMLDivElement` |

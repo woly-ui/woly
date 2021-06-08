@@ -1,25 +1,24 @@
 import * as React from 'react';
 import styled, { StyledComponent, keyframes } from 'styled-components';
+import { IconSpinner } from 'static/icons';
 import { Variant } from 'lib/types';
 import { box } from 'ui/elements';
 
 interface LoaderProps {
-  description?: string;
+  description?: React.ReactChild;
   className?: string;
 }
 
 const LoaderBase = ({
   description = 'Loading...',
-  variant = 'primary',
+  variant = 'secondary',
   className,
 }: LoaderProps & Variant) => {
   return (
     <div className={className} data-variant={variant}>
       <div data-loader>
-        <svg viewBox="0 0 100 100" data-track>
-          <circle data-spinner cx={50} cy={50} r={45} strokeWidth={10} />
-        </svg>
-        <div data-text>{description}</div>
+        <IconSpinner data-track />
+        <div data-description>{description}</div>
       </div>
     </div>
   );
@@ -59,9 +58,8 @@ const spinnerAnimation = keyframes`
 
 export const Loader = styled(LoaderBase)`
   ${box}
-  --local-size: calc(
-    1px * var(--woly-component-level) * var(--woly-main-level) * 4
-  );
+  --local-track-size: 42px;
+  --local-vertical-gap: 12px;
   --local-track-color: var(--woly-canvas-default);
   --local-spinner-color: var(--woly-shape-default);
 
@@ -80,9 +78,9 @@ export const Loader = styled(LoaderBase)`
   }
 
   [data-track] {
-    width: var(--local-size);
-    height: var(--local-size);
-    margin-bottom: calc(var(--local-gap) * 2);
+    width: var(--local-track-size);
+    height: var(--local-track-size);
+    margin-bottom: var(--local-vertical-gap);
 
     transform-origin: 50% 50%;
 
@@ -96,17 +94,18 @@ export const Loader = styled(LoaderBase)`
 
     animation: 1.4s ease-in-out infinite both ${spinnerAnimation};
 
+    fill: none;
+
     stroke: var(--local-spinner-color);
     stroke-linecap: round;
     stroke-dashoffset: 280;
     stroke-dasharray: 283;
   }
 
-  [data-text] {
+  [data-description] {
     color: var(--woly-canvas-text-default);
     font-weight: 400;
-    font-size: var(--woly-font-size);
-    line-height: var(--woly-line-height);
+    font-size: 15px;
     line-height: 21px;
     text-align: center;
   }
