@@ -7,7 +7,7 @@ export const Global = styled.div`
 
   /* base colors */
   --bw-0: 0, 0%, 0%;
-  --bw-100: 0, 0%, 100%;
+  --bw-1000: 0, 0%, 100%;
   --base-danger-color: 356, 100%, 78%;
 
   /* bw palette */
@@ -86,7 +86,7 @@ export const Global = styled.div`
   --woly-line-height: 24px;
   --woly-font-size: 15px;
 
-  --woly-background: hsla(var(--bw-100), 1);
+  --woly-background: hsla(var(--bw-1000), 1);
   --woly-neutral: hsla(var(--bw-50), 1);
   --woly-focus-color: hsla(var(--primary-700), 1);
   --woly-danger-color: hsla(var(--danger-500), 1);
@@ -99,10 +99,10 @@ export const Global = styled.div`
     --woly-shape-hover: hsla(var(--bw-600), 1);
     --woly-shape-active: hsla(var(--bw-700), 1);
 
-    --woly-shape-text-default: hsla(var(--bw-100), 1);
+    --woly-shape-text-default: hsla(var(--bw-1000), 1);
     --woly-shape-text-disabled: hsla(var(--bw-300), 1);
-    --woly-shape-text-hover: hsla(var(--bw-100), 1);
-    --woly-shape-text-active: hsla(var(--bw-100), 1);
+    --woly-shape-text-hover: hsla(var(--bw-1000), 1);
+    --woly-shape-text-active: hsla(var(--bw-1000), 1);
 
     --woly-canvas-default: transparent;
     --woly-canvas-disabled: hsla(var(--bw-200), 1);
@@ -121,10 +121,10 @@ export const Global = styled.div`
     --woly-shape-hover: hsla(var(--primary-600), 1);
     --woly-shape-active: hsla(var(--primary-700), 1);
 
-    --woly-shape-text-default: hsla(var(--bw-100), 1);
+    --woly-shape-text-default: hsla(var(--bw-1000), 1);
     --woly-shape-text-disabled: hsla(var(--bw-300), 1);
-    --woly-shape-text-hover: hsla(var(--bw-100), 1);
-    --woly-shape-text-active: hsla(var(--bw-100), 1);
+    --woly-shape-text-hover: hsla(var(--bw-1000), 1);
+    --woly-shape-text-active: hsla(var(--bw-1000), 1);
 
     --woly-canvas-default: transparent;
     --woly-canvas-disabled: hsla(var(--bw-200), 1);
@@ -143,10 +143,10 @@ export const Global = styled.div`
     --woly-shape-hover: hsla(var(--secondary-600), 1);
     --woly-shape-active: hsla(var(--secondary-700), 1);
 
-    --woly-shape-text-default: hsla(var(--bw-100), 1);
+    --woly-shape-text-default: hsla(var(--bw-1000), 1);
     --woly-canvas-text-disabled: hsla(var(--bw-300), 1);
-    --woly-shape-text-hover: hsla(var(--bw-100), 1);
-    --woly-shape-text-active: hsla(var(--bw-100), 1);
+    --woly-shape-text-hover: hsla(var(--bw-1000), 1);
+    --woly-shape-text-active: hsla(var(--bw-1000), 1);
 
     --woly-canvas-default: transparent;
     --woly-canvas-disabled: hsla(var(--bw-200), 1);
@@ -187,10 +187,10 @@ export const Global = styled.div`
     --woly-shape-hover: hsla(var(--danger-600), 1);
     --woly-shape-active: hsla(var(--danger-700), 1);
 
-    --woly-shape-text-default: hsla(var(--bw-100), 1);
+    --woly-shape-text-default: hsla(var(--bw-1000), 1);
     --woly-shape-text-disabled: hsla(var(--bw-300), 1);
-    --woly-shape-text-hover: hsla(var(--bw-100), 1);
-    --woly-shape-text-active: hsla(var(--bw-100), 1);
+    --woly-shape-text-hover: hsla(var(--bw-1000), 1);
+    --woly-shape-text-active: hsla(var(--bw-1000), 1);
 
     --woly-canvas-default: transparent;
     --woly-canvas-disabled: hsla(var(--danger-200), 1);
