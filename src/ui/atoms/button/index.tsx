@@ -4,7 +4,14 @@ import styled, { StyledComponent } from 'styled-components';
 import { Variant } from 'lib/types';
 import { box } from 'ui/elements';
 
-export type ButtonVariants = 'secondary' | 'primary' | 'default' | 'transparent'| 'danger'| 'accent'| 'success' ;
+export type ButtonVariants =
+  | 'secondary'
+  | 'primary'
+  | 'default'
+  | 'transparent'
+  | 'danger'
+  | 'accent'
+  | 'success';
 export type ButtonSizes = 'default' | 'small';
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
