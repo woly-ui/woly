@@ -20,13 +20,13 @@ interface TabContainerProps {
 }
 
 const mapTabItem = (properties: TabItemProps & Variant) => ({
-  'data-active': properties.active || false,
-  'data-variant': properties.variant || 'secondary',
+  'data-active': properties.active ?? false,
+  'data-variant': properties.variant ?? 'secondary',
 });
 
 const mapTabContainer = (properties: TabContainerProps & Variant) => ({
-  'data-outlined': properties.outlined || false,
-  'data-variant': properties.variant || 'secondary',
+  'data-outlined': properties.outlined ?? false,
+  'data-variant': properties.variant ?? 'secondary',
 });
 
 export const TabContainer = styled.div.attrs(mapTabContainer)`
@@ -61,9 +61,10 @@ export const TabList: React.FC<TabContainerProps & TabItemProps & TabElementProp
     data-outlined={outlined}
     onClick={onClick}
     tabIndex={0}
+    active={active}
     variant={variant}
   >
-    <div data-content data-active={active}>
+    <div data-content>
       {iconLeft && <span data-icon="link-icon">{iconLeft}</span>}
       <span data-link="link-text">{text}</span>
       {iconRight && <span data-icon="tab-action">{iconRight}</span>}
@@ -77,42 +78,50 @@ const TabItemContainer = styled.div.attrs(mapTabItem)`
   --local-color: var(--woly-canvas-text-default);
   --local-icon-size: var(--woly-line-height);
   --local-border-color: var(--woly-shape-default);
+  --local-tab-size: 201px;
+  box-sizing: border-box;
+  width: var(--local-tab-size);
 
   color: var(--local-color);
   font-size: var(--woly-font-size);
   line-height: var(--woly-line-height);
 
   text-decoration: none;
-  box-sizing: border-box;
 
   background-color: var(--local-background);
   border-right: var(--woly-border-width) solid var(--local-border-color);
-  max-width: 201px;
-  min-width: 201px;
+  
   cursor: pointer;
 
   [data-content] {
     ${box}
     position: relative;
+
     display: flex;
     align-items: center;
   }
 
   [data-link='link-text'] {
     position: relative;
+
     flex: 1;
-    white-space: nowrap;
     overflow: hidden;
+
+    white-space: nowrap;
+
     background-color: var(--local-background);
 
     &::after {
-      content: '';
       position: absolute;
       top: 0;
       right: 0;
+
       width: 45%; /* 1 */
       height: 100%;
+
       background: linear-gradient(to right, rgba(255, 255, 255, 0.2), var(--local-background) 100%);
+
+      content: '';
     }
   }
 
@@ -120,9 +129,9 @@ const TabItemContainer = styled.div.attrs(mapTabItem)`
     --woly-component-level: 0;
 
     display: flex;
+    flex-shrink: 0;
     align-items: center;
     justify-content: center;
-    flex-shrink: 0;
 
     width: var(--local-icon-size);
     height: var(--local-icon-size);
@@ -169,6 +178,7 @@ const TabItemContainer = styled.div.attrs(mapTabItem)`
     --local-icon-color: var(--woly-shape-text-active);
     --local-backgound: var(--woly-focus);
     z-index: 1;
+
     outline: none;
     box-shadow: 0 0 0 var(--woly-border-width) var(--woly-focus);
   }

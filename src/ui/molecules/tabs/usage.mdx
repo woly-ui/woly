@@ -18,6 +18,26 @@ export const links = [
     id: "fwed32q4fcss",
     content: "Alex",
     active: false
+  },
+  {
+    id: "fwed324fcse",
+    content: "Johnnnnnnnnnnn Doehhhhhhh",
+    active: true
+  },
+  {
+    id: "fwed324fcse",
+    content: "Johnnnnnnnnnnn Doehhhhhhh",
+    active: true
+  },
+  {
+    id: "fwed324fcse",
+    content: "Johnnnnnnnnnnn Doehhhhhhh",
+    active: true
+  },
+  {
+    id: "fwed324fcse",
+    content: "Johnnnnnnnnnnn Doehhhhhhh",
+    active: true
   }
 ];
 
@@ -74,6 +94,37 @@ Ensure that all tabs are always enabled, and explain why a tab’s content is un
           active={active}
           key={id}
           href={`#${id}`}
+          iconLeft={<IconPlus/>}
+          iconRight={
+            <ButtonIcon
+              icon={<IconClose />}
+              onClick={() => {
+                console.log('click icon');
+              }}
+              variant="secondary"
+            />
+          }
+          text={content}
+          onClick={() => console.log(`click ${id}`)}
+          variant="secondary"
+        />
+      ))}
+    </TabContainer>
+  </block.L>
+</Playground>
+
+## Icons
+
+Tab can consist icon on left side ex. icon, logo or avatar
+
+<Playground>
+  <block.L style={{ width: '1200px' }}>
+    <TabContainer variant="secondary">
+      {links.map(({ active, id, content, iconLeft }) => (
+        <TabList
+          active={active}
+          key={id}
+          href={`#${id}`}
           iconLeft={iconLeft}
           iconRight={
             <ButtonIcon
@@ -101,7 +152,7 @@ Ensure that all tabs are always enabled, and explain why a tab’s content is un
 | `iconLeft`  | `React.ReactNode`                  |               | Left icon                           |
 | `iconRight` | `React.ReactNode`                  |               | Right icon                          |
 | `onClick`   | `React.MouseEvent<HTMLDivElement>` | `null`        | Callback when tab is clicked        |
-| `outlined`  | `boolean`                          | `false`       | Add outlened variant                |
+| `outlined`  | `boolean`                          | `false`       | Add outlined variant                |
 | `tabIndex`  | `number`                           |               | set tabIndex to tab item            |
 | `text`      | `string`                           |               | text of tab item                    |
 | `variant`   | `string`                           | `'secondary'` | Variant prop to style Tab component |
