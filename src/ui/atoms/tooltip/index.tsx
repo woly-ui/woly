@@ -8,27 +8,23 @@ type PositionProps = 'bottom' | 'top' | 'left' | 'right';
 
 interface TooltipProps {
   className?: string;
+  column?: boolean;
   iconLeft?: React.ReactNode;
   iconRight?: React.ReactNode;
-  isOpen?: boolean;
   position?: PositionProps;
   text: React.ReactNode;
-  tooltipRow?: boolean;
 }
 
 const TooltipBase: React.FC<TooltipProps & Variant> = ({
   children,
   className,
-  tooltipRow = false,
+  column = false,
   iconLeft,
-
   iconRight,
-  isOpen = true,
-  text,
   position = 'top',
+  text,
   variant = 'secondary',
 }) => {
-  const [isContentVisible, setContentVisible] = React.useReducer((is) => !is, isOpen);
   const [tooltipPosition, setPosition] = React.useState<PositionProps>('top');
   const ref = React.useRef<HTMLDivElement>(null);
 
@@ -49,28 +45,20 @@ const TooltipBase: React.FC<TooltipProps & Variant> = ({
       document.removeEventListener('scroll', onScroll);
     };
   }, [position, ref]);
-
-  const onKeyDown = React.useCallback(
-    ({ key }) => {
-      if (key === 'Enter') {
-        setContentVisible();
-      }
-    },
-    [isContentVisible],
-  );
   return (
-    <div className={className} data-position={tooltipPosition} data-variant={variant} ref={ref}>
-      <div
-        data-element
-        onClick={setContentVisible}
-        data-open={isContentVisible}
-        onKeyDown={onKeyDown}
-      >
+    <div
+      className={className}
+      data-position={tooltipPosition}
+      data-variant={variant}
+      ref={ref}
+      tabIndex={0}
+    >
+      <div data-element="notifications" aria-labelledby="notifications-desc">
         {children}
       </div>
-      <div data-tooltip data-row={tooltipRow}>
+      <div role="tooltip" id="notifications-desc" data-direction={column}>
         {iconLeft && <div data-icon="tooltip-visual-block">{iconLeft}</div>}
-        <div data-text="tooltip-message">{text}</div>
+        <div data-text="tooltip-description">{text}</div>
         {iconRight && <div data-icon="tooltip-action-block">{iconRight}</div>}
       </div>
     </div>
@@ -87,26 +75,27 @@ export const Tooltip = styled(TooltipBase)`
   );
 
   --tooltip-position: calc(100% + var(--woly-border-width) + var(--local-gap));
+  --local-tooltip-maxsize: 200px;
+  --local-icon-size: var(--woly-line-height);
 
   position: relative;
 
   font-size: var(--woly-font-size);
   line-height: var(--woly-line-height);
 
-  div[data-tooltip] {
-    ${box}
+  outline: none;
 
+  [role='tooltip'] {
+    ${box}
     position: absolute;
     z-index: 1;
 
-    display: flex;
-    flex-direction: column;
+    display: none;
     align-items: center;
-    justify-content: center;
 
     box-sizing: border-box;
     width: max-content;
-    max-width: 240px;
+    max-width: var(--local-tooltip-maxsize);
 
     color: var(--local-color);
 
@@ -117,9 +106,6 @@ export const Tooltip = styled(TooltipBase)`
     border-width: var(--woly-border-width);
     border-radius: calc(var(--woly-rounding) * 2);
     box-shadow: var(--woly-shadow);
-
-    visibility: hidden;
-    opacity: 0;
 
     transition: all 0.3s ease-in-out;
 
@@ -138,25 +124,32 @@ export const Tooltip = styled(TooltipBase)`
     }
   }
 
-  &:hover > div[data-tooltip],
-  & > [data-open='true'] ~ div[data-tooltip] {
-    visibility: visible;
-    opacity: 1;
+  [data-icon='tooltip-visual-block'] {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: var(--local-icon-size);
+    height: var(--local-icon-size);
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  &:hover > [role='tooltip'],
+  &:focus > [role='tooltip'] {
+    display: flex;
 
     transition: 0.3s linear;
   }
 
-  [data-element] {
-    outline: none;
-  }
-
-  & [data-row='true'] {
-    flex-direction: row;
+  & [data-direction='true'] {
+    flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center;
   }
 
-  & [data-icon='tooltip-action-block'] {
+  [data-icon='tooltip-action-block'] {
     display: flex;
     align-items: center;
 
@@ -165,7 +158,7 @@ export const Tooltip = styled(TooltipBase)`
     }
   }
 
-  &[data-position='top'] > [data-tooltip] {
+  &[data-position='top'] > [role='tooltip'] {
     bottom: var(--tooltip-position);
 
     &::after {
@@ -176,7 +169,7 @@ export const Tooltip = styled(TooltipBase)`
     }
   }
 
-  &[data-position='bottom'] > [data-tooltip] {
+  &[data-position='bottom'] > [role='tooltip'] {
     top: var(--tooltip-position);
 
     &::after {
@@ -188,7 +181,7 @@ export const Tooltip = styled(TooltipBase)`
     }
   }
 
-  &[data-position='left'] > [data-tooltip] {
+  &[data-position='left'] > [role='tooltip'] {
     top: 0;
     right: var(--tooltip-position);
 
@@ -200,7 +193,7 @@ export const Tooltip = styled(TooltipBase)`
     }
   }
 
-  &[data-position='right'] > [data-tooltip] {
+  &[data-position='right'] > [role='tooltip'] {
     top: 0;
     left: var(--tooltip-position);
 

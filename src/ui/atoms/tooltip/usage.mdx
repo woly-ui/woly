@@ -5,7 +5,8 @@ package: 'woly'
 ---
 
 import {block, Playground} from 'lib/playground'
-import {Button, Input, Tooltip} from 'ui'
+import {Button, Input, Tooltip, Text} from 'ui'
+import {IconInfo} from 'static/icons';
 
 `Tooltip` is used to show addition information near component. The information should be contextual, useful, and nonessential.
 
@@ -35,29 +36,37 @@ The top, right, bottom, and left positions appear outside the target element, ce
     }}
   >
     <Tooltip
-      text="Подсказка может быть написана в две строки и более"
+      text={<Text type="S">Подсказка может быть написана в две строки и более</Text>}
       position="bottom"
-      isOpen={false}
     >
       <Button onClick={() => console.info('Hi!')} text="Button" variant="primary" />
     </Tooltip>
-    <Tooltip text="Подсказка" position="top" id="tooltip-top" isOpen={false}>
+    <Tooltip text={<Text type="S">Подсказка</Text>} position="top" id="tooltip-top">
       <Button onClick={() => console.info('Hi!')} text="Button" variant="primary" />
     </Tooltip>
     <Tooltip
-      text="Подсказка может быть написана в две и более строки, а также содержать блок с actions"
+      column
+      text={
+        <Text type="S">
+          Подсказка может быть написана в две и более строки, а также содержать блок с actions
+        </Text>
+      }
       position="left"
-      isOpen={false}
       iconRight={
         <>
-          <Button onClick={() => console.info('Hi!')} text="Button" variant="primary" />
-          <Button onClick={() => console.info('Hi!')} text="Button" variant="secondary" />
+          <Button onClick={() => console.info('Hi!')} text="Назад" variant="primary" />
+          <Button onClick={() => console.info('Hi!')} text="Вперед" variant="secondary" />
         </>
       }
     >
       <Button onClick={() => console.info('Hi!')} text="Button" variant="primary" />
     </Tooltip>
-    <Tooltip text="Подсказка" position="right" variant="primary" isOpen={false}>
+    <Tooltip
+      iconLeft={<IconInfo />}
+      text={<Text type="XS">Подсказка c иконой</Text>}
+      position="right"
+      variant="primary"
+    >
       <Input
         name="name"
         onChange={() => console.info('On input change')}
@@ -70,10 +79,12 @@ The top, right, bottom, and left positions appear outside the target element, ce
 
 ### Props
 
-| Name       | Type                                  | Default       | Description                                          |
-| ---------- | ------------------------------------- | ------------- | ---------------------------------------------------- |
-| `children` | `React.ReactElement`                  |               | The tooltip will be visible near `children` on hover |
-| `message`  | `string`                              |               | Message to show near component                       |
-| `position` | `"top" ӏ "left" ӏ"bottom" ӏ "right" ` |               | Width of tooltip block                               |
-| `variant`  | `string`                              | `'secondary'` | Variant prop to style Tooltip component              |
-| `width`    | `number`                              |               | Width of tooltip block                               |
+| Name        | Type                 | Default       | Description                                                                              |
+| ----------- | -------------------- | ------------- | ---------------------------------------------------------------------------------------- |
+| `children`  | `React.ReactElement` |               | The tooltip will be visible near `children` on hover or focus                            |
+| `column`    | `boolean`            | `false`       | Column prop set deriction of the tooltip content                                         |
+| `iconLeft`  | `React.ReactNode`    | `null`        | Component to show on the left side of the description (ex.: icon)                        |
+| `iconRight` | `React.ReactNode`    | `null`        | Component to show on the right side of the description (ex.: icon or block with actions) |
+| `position`  | `string`             | `'top'`       | Positon of tooltip aginst the relative element                                           |
+| `text`      | `React.ReactElement` |               | Information has been described in tooltip                                                |
+| `variant`   | `string`             | `'secondary'` | Variant prop to style Tooltip component                                                  |
