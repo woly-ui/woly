@@ -18,26 +18,58 @@ export const links = [
     id: "fwed32q4fcss",
     content: "Alex",
     active: false
+  },
+   {
+    id: "fwed324fcse",
+    content: "Ann Adams",
+    active: false
   }
 ];
 
 `Tabs` organize and allow navigation between groups of content that are related and at the same level of hierarchy.
-A TabBarar appears at the top (rarely bottom) of an app screen and lets people quickly switch among different sections of an app.
+
+A Tabs appears at the top (rarely bottom) of an app screen and lets people quickly switch among different sections of an app.
 A tab bar may contain any number of tabs, but the number of visible tabs varies based on the device size and orientation.
 If some tabs can’t be displayed due to limited horizontal space, the final visible tab becomes a More tab, which reveals the additional tabs in a list on a separate screen.
 
-In general, use a tab bar to organize information at the app level.
-A tab bar is a good way to flatten your information hierarchy and provide access to several peer information categories or modes at the same time.
-
-Aim for the right number of tabs. Too many tabs reduces the tappable area of each tab and increases the complexity of your app, which can make it harder for people to locate information.
-Too few tabs can be a problem too, as it can make your interface appear disconnected. Although a More tab can display extra tabs, it requires an additional tap to reveal them and can be a poor use of space.
-Include essential tabs only, and use the minimum number of tabs necessary for your information hierarchy.
-
-Don’t remove or disable a tab when its function is unavailable.
-If tabs are available in some cases but not in others, your app’s interface becomes unstable and unpredictable.
+In general, use a tab bar to organize information at the app level. A tab bar is a good way to flatten your information hierarchy and provide access to several peer information categories or modes at the same time.
+Aim for the right number of tabs. Too many tabs reduce the tappable area of each tab and increase the complexity of your app, which can make it harder for people to locate information. Too few tabs can be a problem too,
+as it can make your interface appear disconnected. Although a More tab can display extra tabs, it requires an additional tap to reveal them and can be a poor use of space. Include essential tabs only, and use the minimum number of tabs necessary for your information hierarchy.
+Don’t remove or disable a tab when its function is unavailable. If tabs are available in some cases but not in others, your app’s interface becomes unstable and unpredictable.
 Ensure that all tabs are always enabled, and explain why a tab’s content is unavailable.
 
 ### Example
+
+<Playground>
+  <block.L style={{ width: '1200px' }}>
+    <Tabs variant="secondary">
+      {links.map(({ active, id, content, iconLeft }) => (
+        <Tab
+          active={active}
+          key={id}
+          href={`#${id}`}
+          iconLeft={iconLeft}
+          iconRight={
+            <ButtonIcon
+              icon={<IconClose />}
+              onClick={() => {
+                console.log('click icon');
+              }}
+              variant="secondary"
+            />
+          }
+          text={content}
+          onClick={() => console.log(`click ${id}`)}
+          variant="secondary"
+        />
+      ))}
+    </Tabs>
+  </block.L>
+</Playground>
+
+## Variants
+
+Primary variant can be used to style tabs in brand color.
 
 <Playground>
   <block.L style={{ width: '1200px' }}>
@@ -66,6 +98,8 @@ Ensure that all tabs are always enabled, and explain why a tab’s content is un
   </block.L>
 </Playground>
 
+Secondary variant should be used as default variant.
+
 <Playground>
   <block.L style={{ width: '1200px' }}>
     <Tabs variant="secondary">
@@ -74,7 +108,7 @@ Ensure that all tabs are always enabled, and explain why a tab’s content is un
           active={active}
           key={id}
           href={`#${id}`}
-          iconLeft={<IconPlus />}
+          iconLeft={iconLeft}
           iconRight={
             <ButtonIcon
               icon={<IconClose />}
@@ -105,7 +139,7 @@ Tab can consist icon on left side ex. icon, logo or avatar
           active={active}
           key={id}
           href={`#${id}`}
-          iconLeft={iconLeft}
+          iconLeft={<IconPlus />}
           iconRight={
             <ButtonIcon
               icon={<IconClose />}
@@ -117,7 +151,7 @@ Tab can consist icon on left side ex. icon, logo or avatar
           }
           text={content}
           onClick={() => console.log(`click ${id}`)}
-          variant="secondary"
+          variant="primary"
         />
       ))}
     </Tabs>
@@ -126,19 +160,19 @@ Tab can consist icon on left side ex. icon, logo or avatar
 
 ### Tab Props
 
-| Name        | Type                               | Default       | Description                         |
-| ----------- | ---------------------------------- | ------------- | ----------------------------------- |
-| `href`      | `string`                           |               | href attribute                      |
-| `iconLeft`  | `React.ReactNode`                  |               | Left icon                           |
-| `iconRight` | `React.ReactNode`                  |               | Right icon                          |
-| `onClick`   | `React.MouseEvent<HTMLDivElement>` | `null`        | Callback when tab is clicked        |
-| `outlined`  | `boolean`                          | `false`       | Add outlined variant                |
-| `tabIndex`  | `number`                           |               | set tabIndex to tab item            |
-| `text`      | `string`                           |               | text of tab item                    |
-| `variant`   | `string`                           | `'secondary'` | Variant prop to style Tab component |
+| Name        | Type                               | Default       | Description                                                                                         |
+| ----------- | ---------------------------------- | ------------- | --------------------------------------------------------------------------------------------------- |
+| `href`      | `string`                           |               | Href - attribute that adds url adress to tab component                                              |
+| `iconLeft`  | `React.ReactNode`                  | `null`        | Element appears on left side near tab component`s text (ex.: icon or avatar)                        |
+| `iconRight` | `React.ReactNode`                  | `null`        | Element appears on right side near tab component`s text (ex.: action block, that consists a button) |
+| `onClick`   | `React.MouseEvent<HTMLDivElement>` | `null`        | Callback when tab component is clicked                                                              |
+| `outlined`  | `boolean`                          | `false`       | Add outline variant to style Tab component                                                          |
+| `tabIndex`  | `number`                           |               | Set tabIndex to Tab component                                                                       |
+| `text`      | `string`                           |               | Tab component`s text (ex.: url adress as ussual, in such cases text)                                |
+| `variant`   | `string`                           | `'secondary'` | Variant prop to style Tab component                                                                 |
 
 ### Tabs Props
 
-| Name      | Type     | Default       | Description                                  |
-| --------- | -------- | ------------- | -------------------------------------------- |
-| `variant` | `string` | `'secondary'` | Variant prop to style TabContainer component |
+| Name      | Type     | Default       | Description                          |
+| --------- | -------- | ------------- | ------------------------------------ |
+| `variant` | `string` | `'secondary'` | Variant prop to style Tabs component |

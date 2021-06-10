@@ -5,21 +5,18 @@ import { box } from 'ui/elements';
 interface TabElementProps {
   iconLeft?: React.ReactNode;
   iconRight?: React.ReactNode;
-  text: React.ReactNode;
   onClick?: React.EventHandler<React.SyntheticEvent>;
+  text: React.ReactNode;
 }
 
 interface TabProps {
-  href?: string;
   active?: boolean;
-}
-
-interface TabsProps {
+  className?: string;
+  href?: string;
   outlined?: boolean;
 }
 
-const mapTabs = (properties: TabsProps & Variant) => ({
-  'data-outlined': properties.outlined ?? false,
+const mapTabs = (properties: Variant) => ({
   'data-variant': properties.variant ?? 'secondary',
 });
 
@@ -40,8 +37,9 @@ export const Tabs = styled.div.attrs(mapTabs)`
   border-bottom: var(--woly-border-width) solid var(--local-border-color);
 ` as StyledComponent<'div', Record<string, unknown>, Variant>;
 
-const TabBase: React.FC<TabsProps & TabProps & TabElementProps & Variant> = ({
+const TabBase: React.FC<TabProps & TabElementProps & Variant> = ({
   active,
+  className,
   href,
   iconLeft,
   iconRight,
@@ -51,6 +49,7 @@ const TabBase: React.FC<TabsProps & TabProps & TabElementProps & Variant> = ({
   variant,
 }) => (
   <div
+    className={className}
     data-href={href}
     data-outlined={outlined}
     onClick={onClick}
@@ -58,11 +57,9 @@ const TabBase: React.FC<TabsProps & TabProps & TabElementProps & Variant> = ({
     data-active={active}
     data-variant={variant}
   >
-    <div data-content="tab-content">
-      {iconLeft && <span data-icon="link-icon">{iconLeft}</span>}
-      <span data-link="link-text">{text}</span>
-      {iconRight && <span data-icon="tab-action">{iconRight}</span>}
-    </div>
+    {iconLeft && <span data-icon="link-icon">{iconLeft}</span>}
+    <span data-link="link-text">{text}</span>
+    {iconRight && <span data-icon="tab-action">{iconRight}</span>}
   </div>
 );
 
@@ -72,9 +69,17 @@ export const Tab = styled(TabBase)`
   --local-color: var(--woly-canvas-text-default);
   --local-icon-size: var(--woly-line-height);
   --local-border-color: var(--woly-shape-default);
-  --local-tab-size: 201px;
+  --local-tab-max-size: 201px;
+  --local-tab-min-size: 67px;
+
+  ${box}
+
+  display: flex;
+  align-items: center;
 
   box-sizing: border-box;
+  min-width: var(--local-tab-min-size);
+  max-width: var(--local-tab-max-size);
 
   color: var(--local-color);
   font-size: var(--woly-font-size);
@@ -85,18 +90,9 @@ export const Tab = styled(TabBase)`
   background-color: var(--local-background);
   border-right: var(--woly-border-width) solid var(--local-border-color);
 
+  outline: none;
+
   cursor: pointer;
-
-  [data-content='tab-content'] {
-    ${box}
-
-    position: relative;
-
-    width: var(--local-tab-size);
-
-    display: flex;
-    align-items: center;
-  }
 
   [data-link='link-text'] {
     position: relative;
@@ -161,14 +157,30 @@ export const Tab = styled(TabBase)`
       --local-background: var(--woly-canvas-default);
 
       &::after {
-        background: linear-gradient(to right, rgba(255, 255, 255, 0.2), #ffffff 100%);
+        background: linear-gradient(
+          to right,
+          rgba(255, 255, 255, 0.2),
+          var(--woly-background) 100%
+        );
       }
     }
   }
 
   &[data-active='true'] {
-    border-bottom: var(--woly-border-width) solid var(--woly-focus);
+    z-index: 1;
+
+    box-shadow: 0 var(--woly-border-width) 0 0 var(--woly-shape-default);
+
     --local-background: var(--woly-canvas-default);
+    [data-link='link-text'] {
+      &::after {
+        background: linear-gradient(
+          to right,
+          rgba(255, 255, 255, 0.2),
+          var(--woly-background) 100%
+        );
+      }
+    }
   }
 
   &:focus {
@@ -178,8 +190,4 @@ export const Tab = styled(TabBase)`
     outline: none;
     box-shadow: 0 0 0 var(--woly-border-width) var(--woly-focus);
   }
-` as StyledComponent<
-  'div',
-  Record<string, unknown>,
-  TabsProps & TabProps & TabElementProps & Variant
->;
+` as StyledComponent<'div', Record<string, unknown>, TabProps & TabElementProps & Variant>;
