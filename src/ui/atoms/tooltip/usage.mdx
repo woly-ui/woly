@@ -8,11 +8,11 @@ import {block, Playground} from 'lib/playground'
 import {Button, Input, Tooltip, Text} from 'ui'
 import {IconInfo} from 'static/icons';
 
-`Tooltip` is used to show addition information near component. The information should be contextual, useful, and nonessential.
+`Tooltip` is used to show additional information near the component. The information should be contextual, useful, and nonessential.
 
-A tooltip can be simple message box that is displayed when a user hovers over, clicks or gives focus to a UI element
-such as an icon, a highlighted word, or a button that is passed as a children to `Tooltip`.
-Also the definition tooltip provides additional help or defines an item or term. It may be used on the label of a UI element,
+A tooltip can be a simple message box that is displayed when a user hovers over, clicks, or gives focus to a UI element
+such as an icon, a highlighted word, or a button that is passed as children to `Tooltip`.
+Also, the definition tooltip provides additional help or defines an item or term. It may be used on the label of a UI element,
 or on a word embedded in a paragraph.
 
 Interactive tooltips may contain rich text and other interactive elements like buttons or links.
@@ -63,7 +63,7 @@ The top, right, bottom, and left positions appear outside the target element, ce
     </Tooltip>
     <Tooltip
       iconLeft={<IconInfo />}
-      text={<Text type="XS">Подсказка c иконой</Text>}
+      text={<Text type="XS">Подсказка c иконкой</Text>}
       position="right"
       variant="primary"
     >
@@ -82,9 +82,9 @@ The top, right, bottom, and left positions appear outside the target element, ce
 | Name        | Type                 | Default       | Description                                                                              |
 | ----------- | -------------------- | ------------- | ---------------------------------------------------------------------------------------- |
 | `children`  | `React.ReactElement` |               | The tooltip will be visible near `children` on hover or focus                            |
-| `column`    | `boolean`            | `false`       | Column prop set deriction of the tooltip content                                         |
+| `column`    | `boolean`            | `false`       | Column prop set the deriction of the tooltip content                                     |
 | `iconLeft`  | `React.ReactNode`    | `null`        | Component to show on the left side of the description (ex.: icon)                        |
 | `iconRight` | `React.ReactNode`    | `null`        | Component to show on the right side of the description (ex.: icon or block with actions) |
-| `position`  | `string`             | `'top'`       | Positon of tooltip aginst the relative element                                           |
-| `text`      | `React.ReactElement` |               | Information has been described in tooltip                                                |
+| `position`  | `string`             | `'top'`       | The positon of the tooltip aginst the relative element                                   |
+| `text`      | `React.ReactElement` |               | Information has been described in a tooltip                                              |
 | `variant`   | `string`             | `'secondary'` | Variant prop to style Tooltip component                                                  |

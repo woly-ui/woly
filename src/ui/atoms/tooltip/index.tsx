@@ -56,7 +56,7 @@ const TooltipBase: React.FC<TooltipProps & Variant> = ({
       <div data-element="notifications" aria-labelledby="notifications-desc">
         {children}
       </div>
-      <div role="tooltip" id="notifications-desc" data-direction={column}>
+      <div role="tooltip" id="notifications-desc" data-direction-column={column}>
         {iconLeft && <div data-icon="tooltip-visual-block">{iconLeft}</div>}
         <div data-text="tooltip-description">{text}</div>
         {iconRight && <div data-icon="tooltip-action-block">{iconRight}</div>}
@@ -126,6 +126,7 @@ export const Tooltip = styled(TooltipBase)`
 
   [data-icon='tooltip-visual-block'] {
     display: flex;
+    flex-shrink: 0;
     align-items: center;
     justify-content: center;
 
@@ -143,7 +144,7 @@ export const Tooltip = styled(TooltipBase)`
     transition: 0.3s linear;
   }
 
-  & [data-direction='true'] {
+  & [data-direction-column='true'] {
     flex-direction: column;
     align-items: center;
     justify-content: center;
