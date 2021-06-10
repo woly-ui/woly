@@ -7,4 +7,4 @@ export { RadioButton } from './radio-button';
 export { Popover } from './popover';
 export { Select } from './select';
 export { Switch } from './switch';
-export { TabList, TabContainer } from './tabs';
+export { Tab, Tabs } from './tabs';
