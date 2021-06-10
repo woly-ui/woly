@@ -18,11 +18,6 @@ interface TabsProps {
   outlined?: boolean;
 }
 
-const mapTab = (properties: TabProps & Variant) => ({
-  'data-active': properties.active ?? false,
-  'data-variant': properties.variant ?? 'secondary',
-});
-
 const mapTabs = (properties: TabsProps & Variant) => ({
   'data-outlined': properties.outlined ?? false,
   'data-variant': properties.variant ?? 'secondary',
@@ -72,117 +67,119 @@ const TabBase: React.FC<TabsProps & TabProps & TabElementProps & Variant> = ({
 );
 
 export const Tab = styled(TabBase)`
---local-icon-color: var(--woly-canvas-text-default);
---local-background: var(--woly-canvas-disabled);
---local-color: var(--woly-canvas-text-default);
---local-icon-size: var(--woly-line-height);
---local-border-color: var(--woly-shape-default);
---local-tab-size: 201px;
+  --local-icon-color: var(--woly-canvas-text-default);
+  --local-background: var(--woly-canvas-disabled);
+  --local-color: var(--woly-canvas-text-default);
+  --local-icon-size: var(--woly-line-height);
+  --local-border-color: var(--woly-shape-default);
+  --local-tab-size: 201px;
 
-box-sizing: border-box;
+  box-sizing: border-box;
 
+  color: var(--local-color);
+  font-size: var(--woly-font-size);
+  line-height: var(--woly-line-height);
 
-color: var(--local-color);
-font-size: var(--woly-font-size);
-line-height: var(--woly-line-height);
-
-text-decoration: none;
-
-background-color: var(--local-background);
-border-right: var(--woly-border-width) solid var(--local-border-color);
-
-cursor: pointer;
-
-[data-content='tab-content'] {
-  ${box}
-
-  position: relative;
-
-  width: var(--local-tab-size);
-
-  display: flex;
-  align-items: center;
-}
-
-[data-link='link-text'] {
-  position: relative;
-
-  flex: 1;
-  overflow: hidden;
-
-  white-space: nowrap;
+  text-decoration: none;
 
   background-color: var(--local-background);
+  border-right: var(--woly-border-width) solid var(--local-border-color);
 
-  &::after {
-    position: absolute;
-    top: 0;
-    right: 0;
+  cursor: pointer;
 
-    width: 45%;
-    height: 100%;
+  [data-content='tab-content'] {
+    ${box}
 
-    background: linear-gradient(to right, rgba(255, 255, 255, 0.2), var(--local-background) 100%);
+    position: relative;
 
-    content: '';
+    width: var(--local-tab-size);
+
+    display: flex;
+    align-items: center;
   }
-}
 
-[data-icon] {
-  --woly-component-level: 0;
-
-  display: flex;
-  flex-shrink: 0;
-  align-items: center;
-  justify-content: center;
-
-  width: var(--local-icon-size);
-  height: var(--local-icon-size);
-
-  svg {
-    width: 100%;
-    height: 100%;
-
-    path {
-      fill: var(--local-icon-color);
-    }
-  }
-}
-
-&[data-outlined='true'] {
-  color: var(--local-shape-color);
-
-  background-color: transparent;
-
-  [data-icon] > svg {
-    path {
-      fill: var(--local-shape-color);
-    }
-  }
-}
-
-&:hover {
-  --local-background: var(--woly-canvas-default);
   [data-link='link-text'] {
-    --local-background: var(--woly-canvas-default);
+    position: relative;
+
+    flex: 1;
+    overflow: hidden;
+
+    white-space: nowrap;
+
+    background-color: var(--local-background);
 
     &::after {
-      background: linear-gradient(to right, rgba(255, 255, 255, 0.2), #ffffff 100%);
+      position: absolute;
+      top: 0;
+      right: 0;
+
+      width: 45%;
+      height: 100%;
+
+      background: linear-gradient(to right, rgba(255, 255, 255, 0.2), var(--local-background) 100%);
+
+      content: '';
     }
   }
-}
 
-&[data-active='true'] {
-  border-bottom: var(--woly-border-width) solid var(--woly-focus);
-  --local-background: var(--woly-canvas-default);
-}
+  [data-icon] {
+    --woly-component-level: 0;
 
-&:focus {
-  --local-backgound: var(--woly-focus);
-  z-index: 1;
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
 
-  outline: none;
-  box-shadow: 0 0 0 var(--woly-border-width) var(--woly-focus);
-}
-` as StyledComponent<'div', Record<string, unknown>, TabsProps & TabProps & TabElementProps & Variant>;
+    width: var(--local-icon-size);
+    height: var(--local-icon-size);
 
+    svg {
+      width: 100%;
+      height: 100%;
+
+      path {
+        fill: var(--local-icon-color);
+      }
+    }
+  }
+
+  &[data-outlined='true'] {
+    color: var(--local-shape-color);
+
+    background-color: transparent;
+
+    [data-icon] > svg {
+      path {
+        fill: var(--local-shape-color);
+      }
+    }
+  }
+
+  &:hover {
+    --local-background: var(--woly-canvas-default);
+    [data-link='link-text'] {
+      --local-background: var(--woly-canvas-default);
+
+      &::after {
+        background: linear-gradient(to right, rgba(255, 255, 255, 0.2), #ffffff 100%);
+      }
+    }
+  }
+
+  &[data-active='true'] {
+    border-bottom: var(--woly-border-width) solid var(--woly-focus);
+    --local-background: var(--woly-canvas-default);
+  }
+
+  &:focus {
+    --local-backgound: var(--woly-focus);
+    z-index: 1;
+
+    outline: none;
+    box-shadow: 0 0 0 var(--woly-border-width) var(--woly-focus);
+  }
+` as StyledComponent<
+  'div',
+  Record<string, unknown>,
+  TabsProps & TabProps & TabElementProps & Variant
+>;
