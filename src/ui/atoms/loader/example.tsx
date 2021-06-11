@@ -57,13 +57,13 @@ export const ExampleDataFetching = () => {
   }
 
   return (
-    <React.Fragment>
+    <>
       <ListContainer variant="primary" style={{ width: '100%' }}>
         {data.map(({ id, name }) => (
           <ListItem key={id} as="li" text={name} />
         ))}
       </ListContainer>
       <Button text="Reset" onClick={reset} />
-    </React.Fragment>
+    </>
   );
 };
