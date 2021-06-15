@@ -10,11 +10,11 @@ import {block, Playground} from 'lib/playground'
 
 `Chip` is used for categorizing or markup.
 Chips allow users to enter information, make selections, filter content, or trigger actions.
-While buttons are expected to appear consistently and with familiar calls to action, 
+While buttons are expected to appear consistently and with familiar calls to action,
 chips should appear dynamically as a group of multiple interactive elements.
 
 Chips support content labeling for accessibility and are readable by most screen readers, such as TalkBack.
-Text rendered in chips is automatically provided to accessibility services. 
+Text rendered in chips is automatically provided to accessibility services.
 Additional content labels are usually unnecessary.
 
 When a chip can be removed a special cancel icon will appear at the far right to indicate this.
@@ -29,21 +29,20 @@ As a standalone component, the most common use will be in some form of input.
 
 ### Weight and priority
 
-Chip can be represented in primary, secondary, default or tertiary variants and can be styled with fill or outline. 
-In case of choosing chip in tertiary variant with outline styles use the opposite background color to the text color of chip.  
+Chip can be represented in primary, secondary, default or tertiary variants and can be styled with fill or outline.
+In case of choosing chip in tertiary variant with outline styles use the opposite background color to the text color of chip.
 
 <Playground direction="horizontal" size="XS">
-  <Chip text="Simple Chip" variant="primary"/>
-  <Chip text="Simple Chip" variant="secondary"/>
-  <Chip text="Simple Chip" variant="default"/>
-  <Chip text="Simple Chip" variant="tertiary"/>
+  <Chip text="Simple Chip" variant="primary" />
+  <Chip text="Simple Chip" variant="secondary" />
+  <Chip text="Simple Chip" variant="default" />
+  <Chip text="Simple Chip" variant="tertiary" />
 </Playground>
 
-
 <Playground direction="horizontal" size="XS">
-  <Chip outlined text="Simple Chip" variant="primary"/>
+  <Chip outlined text="Simple Chip" variant="primary" />
   <Chip outlined text="Simple Chip" variant="secondary" />
-  <Chip outlined text="Simple Chip" variant="default"/>
+  <Chip outlined text="Simple Chip" variant="default" />
 </Playground>
 
 ### Clickable
@@ -52,15 +51,11 @@ A chip can be either a simple visual component or an interactive element.
 When chip is clickable, it can change its state to disabled, hover, active and can be focused.
 In this case chip`s view can be changed depending on the state in which he is now.
 
-Also, not only chip`s text can be interactive, the chip can include inside in own other interactive components, 
+Also, not only chip`s text can be interactive, the chip can include inside in own other interactive components,
 eg button-icon.
 
 <Playground direction="horizontal" size="S">
-  <Chip
-    onClick={() => console.info('click')}
-    text="Click chip"
-    variant="primary"
-  />
+  <Chip onClick={() => console.info('click')} text="Click chip" variant="primary" />
   <Chip
     rightIcon={
       <ButtonIcon
@@ -89,12 +84,7 @@ eg button-icon.
 </Playground>
 
 <Playground direction="horizontal" size="S">
-  <Chip
-    onClick={() => console.info('click')}
-    outlined
-    text="Click chip"
-    variant="primary"
-  />
+  <Chip onClick={() => console.info('click')} outlined text="Click chip" variant="primary" />
   <Chip
     outlined
     rightIcon={
@@ -124,7 +114,7 @@ eg button-icon.
 
 ### Disabled
 
-If chip is an interactive component it can be disabled. In case when chip contains an interactive component don`t 
+If chip is an interactive component it can be disabled. In case when chip contains an interactive component don`t
 pass the disable state only to it, make the entire component disable.
 
 <Playground>
@@ -163,12 +153,12 @@ pass the disable state only to it, make the entire component disable.
 Aslo, chip can contain some other interactive component such like a button. As usual it represents on the right side of chip.
 
 <Playground direction="horizontal" size="S">
-  <Chip leftIcon={<IconPlus />} text="Chip with icon" variant="primary"/>
+  <Chip leftIcon={<IconPlus />} text="Chip with icon" variant="primary" />
   <Chip
-    leftIcon={<IconPlus />} 
+    leftIcon={<IconPlus />}
     onClick={() => console.info('click')}
     text="Clicked Chip & icon"
-    variant="primary" 
+    variant="primary"
   />
   <Chip
     leftIcon={<IconPlus />}
@@ -202,7 +192,7 @@ Aslo, chip can contain some other interactive component such like a button. As u
 
 ### Size
 
-Mostly use three chip sizes: none, extra small and small. 
+Mostly use three chip sizes: none, extra small and small.
 Small chips can be used as standalone components, chips of other sizes are used as part of complex components.
 
 <Playground>

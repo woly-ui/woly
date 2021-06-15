@@ -35,9 +35,9 @@ const ChipBase: React.FC<ChipProps & Variant> = ({
     [onClick],
   );
   return (
-    <div 
-      className={className} 
-      data-disabled={disabled} 
+    <div
+      className={className}
+      data-disabled={disabled}
       data-outlined={outlined}
       data-variant={variant}
     >
@@ -46,12 +46,12 @@ const ChipBase: React.FC<ChipProps & Variant> = ({
           {leftIcon}
         </div>
       )}
-      <div 
+      <div
         data-text="chip-text-content"
-        onClick={onClick} 
+        onClick={onClick}
         onKeyDown={onKeyDown}
         role={chipRole}
-        tabIndex={chipTabIndex} 
+        tabIndex={chipTabIndex}
       >
         {text}
       </div>
@@ -83,7 +83,7 @@ export const Chip = styled(ChipBase)`
   [data-text] {
     display: flex;
     flex: 1;
-    
+
     line-height: var(--woly-line-height);
 
     outline: none;
@@ -99,15 +99,15 @@ export const Chip = styled(ChipBase)`
       fill: var(--local-text-color);
     }
   }
-  
+
   [data-icon='chip-action-block'] {
     --woly-component-level: 0;
   }
-  
+
   [data-icon='chip-visual-block'] {
-    width: var( --local-icon-size);
+    width: var(--local-icon-size);
     height: var(--local-icon-size);
-    svg{
+    svg {
       width: 100%;
       height: 100%;
     }
@@ -125,8 +125,8 @@ export const Chip = styled(ChipBase)`
       --local-text-color: var(--woly-shape-hover);
     }
 
-    &:active ,
-    &:focus-within{
+    &:active,
+    &:focus-within {
       --local-shape-color: transparent;
       --local-text-color: var(--woly-shape-active);
     }
