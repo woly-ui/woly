@@ -4,8 +4,8 @@ category: atoms
 package: 'woly'
 ---
 
-import {ButtonIcon, Input} from 'ui';
-import {IconInfo} from 'static/icons';
+import {ButtonIcon, Input, Button} from 'ui';
+import {IconInfo, IconSearch} from 'static/icons';
 
 import {block, Form, Playground} from 'lib/playground'
 
@@ -91,7 +91,7 @@ Disabled text fields are uneditable. They have less opacity so that they appear 
 
 ### Icons
 
-Inputs can be combined with an icon on the left side or the right. Use icons on the both sides is not recommended.
+Inputs can be combined with an icon on the left side or the right. To use icons on both sides is not recommended.
 
 <Playground direction="vertical" size="L">
   <Form autoComplete="false">
@@ -129,13 +129,11 @@ Icons can also be touch targets for nested components.
   <Form autoComplete="false">
     <Input
       rightIcon={
-        <block.S>
-          <ButtonIcon
-            icon={<IconInfo />}
-            onClick={() => console.info('ButtonIcon clicked')}
-            variant="primary"
-          />
-        </block.S>
+        <ButtonIcon
+          icon={<IconInfo />}
+          onClick={() => console.info('ButtonIcon clicked')}
+          variant="primary"
+        />
       }
       type="text"
       name="name"
@@ -151,13 +149,11 @@ Icons can also be touch targets for nested components.
       onChange={(event) => console.info('On input change')}
       variant="primary"
       rightIcon={
-        <block.S>
-          <ButtonIcon
-            icon={<IconInfo />}
-            onClick={() => console.info('ButtonIcon clicked')}
-            variant="primary"
-          />
-        </block.S>
+        <ButtonIcon
+          icon={<IconInfo />}
+          onClick={() => console.info('ButtonIcon clicked')}
+          variant="primary"
+        />
       }
     />
   </Form>
@@ -165,7 +161,7 @@ Icons can also be touch targets for nested components.
 
 ### Variants
 
-Primary and secondary variants are should be used to focus user attention.
+Primary and secondary variants should be used to focus user attention.
 
 <Playground direction="vertical">
   <Form autoComplete="false">
@@ -207,7 +203,7 @@ Error variant can be used to focus user attention on error.
 
 ### Sizes
 
-Size controlled by the `component-level` block property not from the props.
+Size is controlled by the `component-level` block property, not from the props.
 
 <Playground direction="vertical">
   <Form autoComplete="false">
@@ -233,7 +229,7 @@ Size controlled by the `component-level` block property not from the props.
 
 ### Icons
 
-Inputs can be combined with an icon on the left side or the right. Use icons on the both sides is not recommended.
+Inputs can be combined with an icon on the left side or the right. To use icons on both sides is not recommended.
 
 <Playground direction="vertical" size="L">
   <Form autoComplete="false">
@@ -271,13 +267,11 @@ Icons can also be touch targets for nested components.
   <Form autoComplete="false">
     <Input
       rightIcon={
-        <block.S>
-          <ButtonIcon
-            icon={<IconInfo />}
-            onClick={() => console.info('ButtonIcon clicked')}
-            variant="primary"
-          />
-        </block.S>
+        <ButtonIcon
+          icon={<IconInfo />}
+          onClick={() => console.info('ButtonIcon clicked')}
+          variant="primary"
+        />
       }
       type="text"
       name="name"
@@ -293,13 +287,11 @@ Icons can also be touch targets for nested components.
       onChange={(event) => console.info('On input change')}
       variant="primary"
       rightIcon={
-        <block.S>
-          <ButtonIcon
-            icon={<IconInfo />}
-            onClick={() => console.info('ButtonIcon clicked')}
-            variant="primary"
-          />
-        </block.S>
+        <ButtonIcon
+          icon={<IconInfo />}
+          onClick={() => console.info('ButtonIcon clicked')}
+          variant="primary"
+        />
       }
     />
   </Form>
@@ -307,7 +299,7 @@ Icons can also be touch targets for nested components.
 
 ### Variants
 
-Primary and secondary variants are should be used to focus user attention.
+Primary and secondary variants should be used to focus user attention.
 
 <Playground direction="vertical">
   <Form autoComplete="false">
@@ -350,7 +342,7 @@ Error variant can be used to focus user attention on error.
 
 ### Sizes
 
-Size controlled by the `component-level` block property not from the props.
+Size is controlled by the `component-level` block property, not from the props.
 
 <Playground direction="vertical">
   <Form autoComplete="false">
@@ -428,17 +420,36 @@ Inputs can be placed inside the container. Input width is equal to container siz
         onChange={(event) => console.info('On input change')}
         variant="primary"
         rightIcon={
-          <block.S>
-            <ButtonIcon
-              icon={<IconInfo />}
-              onClick={() => console.info('ButtonIcon clicked')}
-              variant="primary"
-            />
-          </block.S>
+          <ButtonIcon
+            icon={<IconInfo />}
+            onClick={() => console.info('ButtonIcon clicked')}
+            variant="primary"
+          />
         }
       />
     </block.L>
   </Form>
+</Playground>
+
+### Input with Button
+
+<Playground>
+  <Input
+    leftIcon={<IconInfo />}
+    type="text"
+    name="name"
+    placeholder="Enter your name here"
+    onChange={(event) => console.info('On input change')}
+    variant="primary"
+    rightIcon={
+      <Button
+        icon={<IconSearch />}
+        onClick={() => alert('Hi!')}
+        text="Just a button"
+        variant="primary"
+      />
+    }
+  />
 </Playground>
 
 ### Map of Input

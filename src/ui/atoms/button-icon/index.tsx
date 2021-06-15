@@ -23,6 +23,7 @@ const ButtonIconBase: React.FC<Props & Variant> = ({
     onClick={onClick}
     role="button"
     type="button"
+    data-component
     {...p}
   >
     <span data-icon>{icon}</span>
@@ -31,9 +32,10 @@ const ButtonIconBase: React.FC<Props & Variant> = ({
 
 export const ButtonIcon = styled(ButtonIconBase)`
   ${box}
-  --local-shape-color: var(--woly-shape-default);
-  --local-icon-size: var(--woly-line-height);
-  --local-icon-color: var(--woly-shape-text-default);
+
+  --local-shape-color: var(--woly-canvas-default);
+  --local-icon-size: calc(var(--woly-line-height) - 2 * var(--woly-border-width));
+  --local-icon-color: var(--woly-shape-default);
 
   display: flex;
   align-items: center;

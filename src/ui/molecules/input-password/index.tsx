@@ -3,7 +3,6 @@ import styled, { StyledComponent } from 'styled-components';
 import { ButtonIcon, Input } from 'ui/atoms';
 import { IconEyeClosed, IconEyeOpened } from 'static/icons';
 import { Variant } from 'lib/types';
-import { block } from 'lib/block';
 
 interface InputPasswordProps {
   className?: string;
@@ -28,29 +27,25 @@ export const InputPasswordBase: React.FC<InputPasswordProps & Variant> = ({
   const [isVisible, onClick] = React.useReducer((is) => !is, false);
 
   return (
-    <div className={className}>
-      <Input
-        className={className}
-        disabled={disabled}
-        name={name}
-        onChange={onChange}
-        placeholder={placeholder}
-        type={isVisible ? type : 'password'}
-        value={value}
-        variant={variant}
-        rightIcon={
-          <block.S>
-            <ButtonIcon
-              className={className}
-              onClick={onClick}
-              disabled={disabled}
-              icon={isVisible ? <IconEyeClosed /> : <IconEyeOpened />}
-              variant={variant}
-            />
-          </block.S>
-        }
-      />
-    </div>
+    <Input
+      className={className}
+      disabled={disabled}
+      name={name}
+      onChange={onChange}
+      placeholder={placeholder}
+      type={isVisible ? type : 'password'}
+      value={value}
+      variant={variant}
+      rightIcon={
+        <ButtonIcon
+          className={className}
+          onClick={onClick}
+          disabled={disabled}
+          icon={isVisible ? <IconEyeClosed /> : <IconEyeOpened />}
+          variant={variant}
+        />
+      }
+    />
   );
 };
 

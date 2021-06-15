@@ -10,29 +10,40 @@ export const box = css`
   );
   --local-gap: calc(1px * var(--woly-component-level) * var(--woly-main-level));
   --local-compensate: var(--local-vertical);
+  --local-component: calc(var(--woly-const-m) - var(--woly-border-width));
 
   & > * {
     padding-top: var(--local-vertical);
     padding-bottom: var(--local-vertical);
-  }
-
-  & > :first-child {
     padding-left: var(--local-horizontal);
   }
 
-  & > :last-child {
+  & > [data-text]:last-child {
     padding-right: var(--local-horizontal);
   }
 
   & > [data-icon]:first-child {
     padding-left: var(--local-compensate);
   }
-  & > [data-icon]:last-child {
-    padding-right: var(--local-compensate);
-  }
 
   & > :not(:first-child) {
     padding-left: var(--local-gap);
+  }
+
+  & > [data-icon]:last-child {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  & > [data-icon]:last-child > * {
+    padding-top: var(--local-vertical);
+    padding-right: var(--local-compensate);
+    padding-bottom: var(--local-vertical);
+  }
+
+  & > [data-icon]:last-child > [data-component] {
+    margin: var(--local-component) var(--local-component) var(--local-component) auto;
+    padding: 0;
   }
 `;
 

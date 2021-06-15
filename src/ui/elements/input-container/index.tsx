@@ -31,6 +31,7 @@ export const InputContainer = styled(InputContainerBase)`
   --local-border-color: var(--woly-canvas-text-hover);
   --local-icon-fill: var(--woly-canvas-text-active);
   --local-value-color: var(--woly-canvas-text-default);
+  --local-size: var(--woly-component-level);
 
   ${box}
 
@@ -51,10 +52,6 @@ export const InputContainer = styled(InputContainerBase)`
     flex: 1;
 
     color: var(--local-value-color);
-
-    input {
-      padding: 0;
-    }
   }
 
   [data-icon] {
@@ -65,6 +62,10 @@ export const InputContainer = styled(InputContainerBase)`
     svg > path {
       fill: var(--local-icon-fill);
     }
+  }
+
+  [data-icon='right'] {
+    --woly-component-level: calc(var(--local-size) - 2);
   }
 
   &:hover {
