@@ -17,6 +17,26 @@ import {IconPlus, IconSearch} from 'static/icons';
     icon={<IconSearch />}
     onClick={() => alert('Hi!')}
     text="Just a button"
+    variant="default"
+  />
+  <Button
+    icon={<IconSearch />}
+    onClick={() => alert('Hi!')}
+    text="Just a button"
+    variant="default"
+    outlined
+  />
+</Playground>
+
+### Width
+
+Button can span the entire width of the container or have a fixed width
+
+<Playground direction="horizontal">
+  <Button
+    icon={<IconSearch />}
+    onClick={() => alert('Hi!')}
+    text="Just a button"
     variant="primary"
   />
   <Button
@@ -24,6 +44,7 @@ import {IconPlus, IconSearch} from 'static/icons';
     onClick={() => alert('Hi!')}
     text="Just a button"
     variant="primary"
+    fullWidth
     outlined
   />
 </Playground>
@@ -34,6 +55,7 @@ Primary and danger variants are should be used to focus user attention.
 
 <Playground>
   <Button text="The main action on the page" variant="primary" />
+  <Button text="The main action on the page" variant="primary" outlined />
   <Button text="Alternative action" variant="danger" outlined />
   <Button text="Alternative action" variant="danger" />
 </Playground>
@@ -43,6 +65,12 @@ Secondary variant should be used as a default variant.
 <Playground>
   <Button text="Alternative action" variant="secondary" />
   <Button text="Alternative action" variant="secondary" outlined />
+</Playground>
+
+Tertiary variant should be used as an alternative variant to secondary and can`t be used with outline.
+
+<Playground>
+  <Button text="Alternative action" variant="tertiary" />
 </Playground>
 
 ### Icons
@@ -94,9 +122,12 @@ Buttons can be placed inside the container. Button width is equal to container s
 
 ### Props
 
-| Name      | Type                | Default       | Description                                                |
-| --------- | ------------------- | ------------- | ---------------------------------------------------------- |
-| `icon`    | `React.ReactNode`   | `null`        | Component to show on the left side of the text (ex.: Icon) |
-| `text`    | `React.ReactNode`   |               | Text appeared on the button                                |
-| `variant` | `string`            | `'secondary'` | Variant prop to style Input component                      |
-| `...`     | `HTMLButtonElement` | `{}`          | Other props are inherited from `HTMLButtonElement`         |
+| Name        | Type                | Default       | Description                                                 |
+| ----------- | ------------------- | ------------- | ----------------------------------------------------------- |
+| `icon`      | `React.ReactNode`   | `null`        | Component to show on the left side of the text (ex.: Icon)  |
+| `fullWidth` | `boolean`           | `false`       | Change button`s width from content width to container width |
+| `outlined`  | `boolean`           | `false`       | Change button`s view from filled to outlined                |
+| `text`      | `React.ReactNode`   |               | Text appeared on the button                                 |
+| `type`      | `string`            | `button`      | HTML type of the button                                     |
+| `variant`   | `string`            | `'secondary'` | Variant prop to style Button component                      |
+| `...`       | `HTMLButtonElement` | `{}`          | Other props are inherited from `HTMLButtonElement`          |
