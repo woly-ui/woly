@@ -26,6 +26,7 @@ interface StateType {
   change: (value: any) => any;
   children: (value: any, change: any) => React.ElementType;
   initial: any;
+  effect?: any;
 }
 
 export interface StateCallback {
@@ -33,7 +34,7 @@ export interface StateCallback {
   value: any;
 }
 
-export const State = ({ initial, change, children }: StateType) => {
+export const State = ({ initial, change, children, effect }: StateType) => {
   const [value, setValue] = React.useState(initial);
 
   const onChange = React.useCallback(() => {
@@ -166,4 +167,16 @@ export const Form = styled.form`
   & > div {
     margin-bottom: 10px;
   }
+`;
+
+export const Link = styled.a`
+  text-decoration: none;
+`;
+
+export const CenteredContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 20px;
 `;

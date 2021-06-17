@@ -1,0 +1,148 @@
+import {block, Playground, StateEvent, CenteredContainer, State} from 'lib/playground'
+import {NavigationContainer, NavigationItem} from './index';
+import {Surface} from '../../atoms'
+import {IconInfo} from 'static/icons';
+
+Navigation is a component to relocate a user through a site.
+The current (or active) path is marked in a list of menu items so user can see what page is opened right now.
+
+export const links = [
+  {
+    path: '#knowledge-dictionary',
+    value: 'База знаний',
+    active: true
+  },
+  {
+    path: '#tariffs',
+    value: 'Список тарифов',
+  },
+  {
+    path: '#users',
+    value: 'Список пользователей',
+  },
+  {
+    path: '#settings',
+    value: 'Настройки',
+  },
+];
+
+export const linksWithIcon = [
+  {
+    path: "#dogs",
+    value: <div>Dogs</div>,
+    active: true
+  },
+  {
+    path: "#cats",
+    value: <div>Cats</div>,
+    disabled: true
+  },
+  {
+    path: "#pigs",
+    value: <div>Pigs</div>,
+  },
+    {
+    path: "#info",
+    value: <div style={{height: '24px'}}><IconInfo/></div>,
+  },
+];
+
+### Menu Example
+
+Example of menu using `onClick` callback to switch between menu items.
+User triggers event `onClick` by clicking on menu item and active link is set by changing property `active`.
+
+<Playground>
+  <StateEvent
+    initial={links}
+    change={(event) => {
+      const path = event?.currentTarget?.dataset?.path;
+      location.hash = path;
+      return links.map((item) => {
+        if (item.path === path) {
+          return { ...item, active: true };
+        } else {
+          return { ...item, active: false };
+        }
+      });
+    }}
+  >
+    {(value, change) => (
+      <>
+        <Surface>
+          <NavigationContainer>
+            {value.map(({ active, disabled, path, value }) => (
+              <NavigationItem
+                active={active}
+                disabled={disabled}
+                key={path}
+                onClick={change}
+                path={path}
+                priority="primary"
+                value={value}
+              />
+            ))}
+          </NavigationContainer>
+        </Surface>
+        <CenteredContainer>
+          You selected {value?.find(({ active }) => active)?.path}
+        </CenteredContainer>
+      </>
+    )}
+  </StateEvent>
+</Playground>
+
+### Menu with Icon Example
+
+Menu component with Icon and disabled item.
+
+<Playground>
+  <StateEvent
+    initial={linksWithIcon}
+    change={(event) => {
+      const path = event?.currentTarget?.dataset?.path;
+      location.hash = path;
+      return linksWithIcon.map((item) => {
+        if (item.path === path) {
+          return { ...item, active: true };
+        } else {
+          return { ...item, active: false };
+        }
+      });
+    }}
+  >
+    {(value, change) => (
+      <div style={{ width: '100%', dispay: 'flex', flexDirection: 'column' }}>
+        <Surface>
+          <NavigationContainer>
+            {value.map(({ active, disabled, path, value }) => (
+              <NavigationItem
+                active={active}
+                disabled={disabled}
+                key={path}
+                onClick={change}
+                path={path}
+                priority="seconary"
+                value={value}
+              />
+            ))}
+          </NavigationContainer>
+        </Surface>
+        <CenteredContainer>
+          You selected {value?.find(({ active }) => active)?.path}
+        </CenteredContainer>
+      </div>
+    )}
+  </StateEvent>
+</Playground>
+
+### NavigationItem Props
+
+| Name       | Type                                       | Default       | Description                                                           |
+| ---------- | ------------------------------------------ | ------------- | --------------------------------------------------------------------- |
+| `active`   | `boolean`                                  | `'false'`     | Active navigation item state. Only one nav item can have active state |
+| `disabled` | `boolean`                                  | `'false'`     | Disable state of navigation item                                      |
+| `onClick`  | `React.EventHandler<React.SyntheticEvent>` | ``            | On navigation item click handler                                      |
+| `path`     | `string`                                   | ``            | Path of navigation                                                    |
+| `priority` | `string`                                   | `'secondary'` | Priority prop to style ListContainer component                        |
+| `value`    | `React.ReactNode`                          | ``            | Navigation item content                                               |
