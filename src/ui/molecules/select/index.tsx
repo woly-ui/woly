@@ -1,6 +1,7 @@
 import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
 import { Variant } from 'lib/types';
+import { box } from 'ui/elements';
 import { keyHandlerGet, keyboardEventHandle } from 'lib';
 
 interface SelectOptionProps {
@@ -80,7 +81,7 @@ export const SelectBase: React.FC<SelectProps & Variant> = ({
       tabIndex={tabIndex}
     >
       <div data-selected>
-        <div data-value>{select}</div>
+        <div data-text>{select}</div>
         <span data-icon={isOpen}>{icon}</span>
       </div>
       {/* В дальнейшем использовать Popover и List для создания выпадающего списка элементов */}
@@ -93,7 +94,7 @@ export const SelectBase: React.FC<SelectProps & Variant> = ({
       >
         {options.map(({ children, value }) => (
           <li data-value={value} key={value} onClick={onChange} role="option" tabIndex={-1}>
-            {children}
+            <span data-text>{children}</span>
           </li>
         ))}
       </ul>
@@ -102,14 +103,6 @@ export const SelectBase: React.FC<SelectProps & Variant> = ({
 };
 
 export const Select = styled(SelectBase)`
-  --local-vertical: calc(
-    1px * var(--woly-component-level) * var(--woly-main-level) - var(--woly-border-width)
-  );
-  --local-horizontal: calc(
-    var(--woly-const-m) + (1px * var(--woly-main-level)) + var(--local-vertical) -
-      var(--woly-border-width)
-  );
-
   --local-gap: var(--woly-const-m);
 
   --local-background: var(--woly-canvas-default);
@@ -131,11 +124,10 @@ export const Select = styled(SelectBase)`
   cursor: pointer;
 
   [data-selected] {
+    ${box}
     display: flex;
     align-items: center;
     box-sizing: border-box;
-
-    padding: var(--local-vertical) var(--local-horizontal);
 
     color: var(--local-shape-color);
 
@@ -144,7 +136,7 @@ export const Select = styled(SelectBase)`
     border: var(--woly-border-width) solid var(--local-border-input-color);
     border-radius: var(--woly-rounding);
 
-    [data-value] {
+    [data-text] {
       flex: 1;
     }
   }
@@ -198,7 +190,9 @@ export const Select = styled(SelectBase)`
   }
 
   li {
-    padding: var(--local-vertical) var(--local-horizontal);
+    ${box}
+
+    display: flex;
 
     color: var(--local-shape-color);
 
