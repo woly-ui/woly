@@ -55,9 +55,8 @@ export const Button = styled(ButtonBase)`
   flex-wrap: nowrap;
   justify-content: center;
 
-  padding: 0;
-
   box-sizing: border-box;
+  padding: 0;
 
   color: var(--local-text-color);
   font-size: var(--woly-font-size);
