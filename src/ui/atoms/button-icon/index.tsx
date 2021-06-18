@@ -7,53 +7,55 @@ interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string;
   icon: React.ReactNode;
   onClick: React.MouseEventHandler<HTMLButtonElement>;
-  filled?: boolean;
+  outlined?: boolean;
 }
 
 const ButtonIconBase: React.FC<Props & Variant> = ({
   icon,
   onClick,
-  filled = false,
+  outlined = false,
   variant = 'secondary',
   ...p
 }) => (
-  <button data-filled={filled} data-variant={variant} onClick={onClick} type="button" {...p}>
+  <button
+    data-outlined={outlined}
+    data-variant={variant}
+    onClick={onClick}
+    role="button"
+    type="button"
+    {...p}
+  >
     <span data-icon>{icon}</span>
   </button>
 );
 
 export const ButtonIcon = styled(ButtonIconBase)`
   ${box}
-
-  --local-vertical: calc(1px * var(--woly-component-level) * var(--woly-main-level));
-  --local-shape-color: var(--woly-canvas-default);
-  --local-icon-size: calc(var(--woly-line-height));
-  --local-button-size: calc(var(--local-icon-size) + (var(--local-vertical) * 2));
-  --local-icon-color: var(--woly-shape-default);
+  --local-shape-color: var(--woly-shape-default);
+  --local-icon-size: var(--woly-line-height);
+  --local-icon-color: var(--woly-shape-text-default);
 
   display: flex;
-
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
-
-  width: var(--local-button-size);
-  height: var(--local-button-size);
+  padding: 0;
 
   background: var(--local-shape-color);
   border: var(--woly-border-width) solid var(--local-shape-color);
   border-radius: var(--woly-rounding);
   outline: none;
-  cursor: pointer;
 
   [data-icon] {
     display: flex;
     align-items: center;
     justify-content: center;
+    width: var(--local-icon-size);
+    height: var(--local-icon-size);
 
     svg {
-      width: var(--local-icon-size);
-      height: var(--local-icon-size);
+      width: 100%;
+      height: 100%;
     }
 
     svg > path {
@@ -65,48 +67,51 @@ export const ButtonIcon = styled(ButtonIconBase)`
     }
   }
 
-  &[data-filled='true'] {
-    --local-shape-color: var(--woly-shape-default);
-    --local-icon-color: var(--woly-shape-text-default);
-
-    &:active {
-      --local-shape-color: var(--woly-focus);
-    }
-
-    &:focus {
-      --local-shape-color: var(--woly-shape-active);
-      box-shadow: 0 0 0 var(--woly-border-width) var(--woly-focus);
-    }
-
-    &:hover {
-      --local-shape-color: var(--woly-shape-hover);
-    }
-
-    &:disabled {
-      --local-shape-color: var(--woly-canvas-disabled);
-    }
+  &:hover {
+    --local-shape-color: var(--woly-shape-hover);
+    --local-icon-color: var(--woly-shape-text-hover);
   }
 
-  &[data-filled='false'] {
-    &:active {
-      --local-shape-color: transparent;
-      --local-icon-color: var(--woly-focus);
-    }
+  &:active {
+    --local-shape-color: var(--woly-shape-active);
+    --local-icon-color: var(--woly-shape-text-active);
+  }
 
-    &:focus {
-      --local-shape-color: transparent;
-      box-shadow: 0 0 0 var(--woly-border-width) var(--woly-focus);
-    }
+  &:focus {
+    --local-shape-color: var(--woly-shape-active);
+    --local-icon-color: var(--woly-shape-text-active);
+    box-shadow: 0 0 0 var(--woly-border-width) var(--woly-focus-color);
+  }
+
+  &:disabled {
+    --local-shape-color: var(--woly-canvas-disabled);
+    --local-icon-color: var(--woly-shape-text-disabled);
+  }
+
+  &[data-outlined='true'] {
+    --local-shape-color: var(--woly-canvas-default);
+    --local-icon-color: var(--woly-shape-default);
 
     &:hover {
       --local-shape-color: transparent;
       --local-icon-color: var(--woly-shape-hover);
     }
-  }
 
-  &:disabled {
-    pointer-events: none;
-    --local-shape-color: transparent;
-    --local-icon-color: var(--woly-canvas-text-disabled);
+    &:active {
+      --local-shape-color: transparent;
+      --local-icon-color: var(--woly-canvas-active);
+    }
+
+    &:focus {
+      --local-shape-color: transparent;
+      --local-icon-color: var(--woly-canvas-active);
+      box-shadow: 0 0 0 var(--woly-border-width) var(--woly-focus-color);
+    }
+
+    &:disabled {
+      pointer-events: none;
+      --local-shape-color: var(--woly-shape-text-disabled);
+      --local-icon-color: var(--woly-canvas-text-disabled);
+    }
   }
 ` as StyledComponent<'button', Record<string, unknown>, Props & Variant>;
