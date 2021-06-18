@@ -46,7 +46,6 @@ const ButtonBase: React.FC<ButtonProps & Variant> = ({
 
 export const Button = styled(ButtonBase)`
   ${box}
-
   --local-text-color: var(--woly-shape-text-default);
   --local-shape-color: var(--woly-shape-default);
   --local-border-color: var(--woly-shape-default);

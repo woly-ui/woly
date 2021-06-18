@@ -26,16 +26,15 @@ const ToastBase: React.FC<ToastProps & Variant> = ({
 );
 
 export const Toast = styled(ToastBase)`
+  ${box}
   --local-text-color: var(--woly-shape-text-default);
   --local-shape-color: var(--woly-shape-default);
   --local-border-color: var(--woly-shape-default);
   --local-toast-gap: max(9px, calc(1px * var(--woly-component-level) * var(--woly-main-level)));
 
-  ${box}
-
   display: flex;
-  align-items: center;
   flex-wrap: nowrap;
+  align-items: center;
 
   min-width: fit-content;
   max-width: 75%;
