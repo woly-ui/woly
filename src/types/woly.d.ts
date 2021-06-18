@@ -1,3 +1,3 @@
-declare interface DefaultVariant {
-  variant?: 'primary' | 'secondary' | 'danger';
+declare interface DefaultPriority {
+  priority?: 'primary' | 'secondary' | 'danger';
 }

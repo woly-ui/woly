@@ -1,6 +1,6 @@
 import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
-import { Variant } from 'lib/types';
+import { Priority } from 'lib/types';
 import { positionRelativeGet } from 'lib';
 
 /**
@@ -22,12 +22,12 @@ interface TooltipProps {
   position?: PositionProps;
 }
 
-const TooltipBase: React.FC<TooltipProps & Variant> = ({
+const TooltipBase: React.FC<TooltipProps & Priority> = ({
   children,
   className,
   message,
   position = 'top',
-  variant = 'secondary',
+  priority = 'secondary',
 }) => {
   const [tooltipPosition, setPosition] = React.useState<PositionProps>('top');
   const ref = React.useRef<HTMLDivElement>(null);
@@ -51,7 +51,7 @@ const TooltipBase: React.FC<TooltipProps & Variant> = ({
   }, [position, ref]);
 
   return (
-    <div className={className} data-position={tooltipPosition} data-variant={variant} ref={ref}>
+    <div className={className} data-position={tooltipPosition} data-priority={priority} ref={ref}>
       <div data-element>{children}</div>
       <div data-tooltip>{message}</div>
     </div>
@@ -170,4 +170,4 @@ export const Tooltip = styled(TooltipBase)`
       transform: rotate(90deg);
     }
   }
-` as StyledComponent<'div', Record<string, unknown>, TooltipProps & Variant>;
+` as StyledComponent<'div', Record<string, unknown>, TooltipProps & Priority>;

@@ -23,7 +23,7 @@ InputPassword can be used in an authorization form or to confirm user action.
         name="name"
         placeholder="Enter password"
         onChange={(event) => console.info('On input change')}
-        variant="primary"
+        priority="primary"
       />
     )}
   </State>
@@ -37,16 +37,16 @@ Disabled text fields are uneditable. They have less opacity so that they appear 
   <InputPassword
     disabled
     onClick={(event) => console.info('OnClick')}
-    variant="primary"
+    priority="primary"
     name="name"
     placeholder="Enter password"
-    variant="primary"
+    priority="primary"
   />
 </Playground>
 
-### Variants
+### prioritys
 
-Primary and danger variants are should be used to focus user attention.
+Primary and danger prioritys are should be used to focus user attention.
 
 <Playground direction="vertical">
   <State initial={false} change={(i) => !i}>
@@ -56,7 +56,7 @@ Primary and danger variants are should be used to focus user attention.
         name="name"
         placeholder="Enter password"
         onChange={(event) => console.info('On input change')}
-        variant="primary"
+        priority="primary"
       />
     )}
   </State>
@@ -67,13 +67,13 @@ Primary and danger variants are should be used to focus user attention.
         name="name"
         placeholder="Enter password"
         onChange={(event) => console.info('On input change')}
-        variant="danger"
+        priority="danger"
       />
     )}
   </State>
 </Playground>
 
-Secondary variant should be used as a default variant.
+Secondary priority should be used as a default priority.
 
 <Playground direction="vertical">
   <State initial={false} change={(i) => !i}>
@@ -83,7 +83,7 @@ Secondary variant should be used as a default variant.
         name="name"
         placeholder="Enter password"
         onChange={(event) => console.info('On input change')}
-        variant="secondary"
+        priority="secondary"
       />
     )}
   </State>
@@ -99,11 +99,11 @@ Size controlled by the `component-level` block property not from the props.
       {(value, change) => (
         <InputPassword
           onClick={change}
-          variant="primary"
+          priority="primary"
           name="name"
           placeholder="Enter password"
           onChange={(event) => console.info('On input change')}
-          variant="primary"
+          priority="primary"
         />
       )}
     </State>
@@ -113,11 +113,11 @@ Size controlled by the `component-level` block property not from the props.
       {(value, change) => (
         <InputPassword
           onClick={change}
-          variant="primary"
+          priority="primary"
           name="name"
           placeholder="Enter password"
           onChange={(event) => console.info('On input change')}
-          variant="primary"
+          priority="primary"
         />
       )}
     </State>
@@ -127,11 +127,11 @@ Size controlled by the `component-level` block property not from the props.
       {(value, change) => (
         <InputPassword
           onClick={change}
-          variant="primary"
+          priority="primary"
           name="name"
           placeholder="Enter password"
           onChange={(event) => console.info('On input change')}
-          variant="primary"
+          priority="primary"
         />
       )}
     </State>
@@ -141,11 +141,11 @@ Size controlled by the `component-level` block property not from the props.
       {(value, change) => (
         <InputPassword
           onClick={change}
-          variant="primary"
+          priority="primary"
           name="name"
           placeholder="Enter password"
           onChange={(event) => console.info('On input change')}
-          variant="primary"
+          priority="primary"
         />
       )}
     </State>
@@ -155,11 +155,11 @@ Size controlled by the `component-level` block property not from the props.
       {(value, change) => (
         <InputPassword
           onClick={change}
-          variant="primary"
+          priority="primary"
           name="name"
           placeholder="Enter password"
           onChange={(event) => console.info('On input change')}
-          variant="primary"
+          priority="primary"
         />
       )}
     </State>
@@ -176,11 +176,11 @@ Inputs can be placed inside the container. Input width is equal to container siz
       {(value, change) => (
         <InputPassword
           onClick={change}
-          variant="primary"
+          priority="primary"
           name="name"
           placeholder="Enter password"
           onChange={(event) => console.info('On input change')}
-          variant="primary"
+          priority="primary"
         />
       )}
     </State>
@@ -195,7 +195,7 @@ Inputs can be placed inside the container. Input width is equal to container siz
 | `name`        | `string`                                     |               | HTML name attribute                                         |
 | `onChange`    | `React.ChangeEventHandler<HTMLInputElement>` |               | Callback when input is changed                              |
 | `placeholder` | `string`                                     | ''            | CSS pseudo-element represents the placeholder text          |
+| `priority`    | `string`                                     | `'secondary'` | Priority prop to style InputPassword component              |
 | `rightIcon`   | `React.ReactNode`                            | `null`        | Component to show on the right side of the text (ex.: Icon) |
 | `value`       | `HTMLInputElement['value']`                  | `null`        | HTML value attribute                                        |
-| `variant`     | `string`                                     | `'secondary'` | Variant prop to style InputPassword component               |
 | `...`         | `HTMLInputElement`                           | `{}`          | Other props are inherited from `HTMLInputElement`           |

@@ -16,14 +16,14 @@ import {Heading, Input, Separator} from 'ui'
     <div style={{ margin: '18px 0' }}>
       <Heading size={2}>User List</Heading>
     </div>
-    <Separator variant="primary" />
+    <Separator priority="primary" />
     <div style={{ margin: '18px 0' }}>
       <Input
         type="text"
         name="name"
         placeholder="Search"
         onChange={() => console.info('On input change')}
-        variant="primary"
+        priority="primary"
         style={{ margin: '10px 0' }}
       />
     </div>
@@ -38,6 +38,6 @@ import {Heading, Input, Separator} from 'ui'
 
 ### Props
 
-| Name      | Type     | Default       | Description                               |
-| --------- | -------- | ------------- | ----------------------------------------- |
-| `variant` | `string` | `'secondary'` | Variant prop to style Separator component |
+| Name       | Type     | Default       | Description                                |
+| ---------- | -------- | ------------- | ------------------------------------------ |
+| `priority` | `string` | `'secondary'` | Priority prop to style Separator component |

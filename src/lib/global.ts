@@ -92,7 +92,7 @@ export const Global = styled.div`
 
   --woly-shadow: 3px 3px 9px hsla(0, 0%, 22%, 12%);
 
-  [data-variant='default'] {
+  [data-priority='default'] {
     --woly-shape-default: hsla(var(--bw-500), 1);
     --woly-shape-disabled: hsla(var(--bw-200), 1);
     --woly-shape-hover: hsla(var(--bw-600), 1);
@@ -114,7 +114,7 @@ export const Global = styled.div`
     --woly-canvas-text-active: hsla(var(--bw-0), 1);
   }
 
-  [data-variant='primary'] {
+  [data-priority='primary'] {
     --woly-shape-default: hsla(var(--primary-500), 1);
     --woly-shape-disabled: hsla(var(--primary-200), 1);
     --woly-shape-hover: hsla(var(--primary-600), 1);
@@ -136,7 +136,7 @@ export const Global = styled.div`
     --woly-canvas-text-active: hsla(var(--bw-0), 1);
   }
 
-  [data-variant='secondary'] {
+  [data-priority='secondary'] {
     --woly-shape-default: hsla(var(--secondary-500), 1);
     --woly-shape-disabled: hsla(var(--secondary-200), 1);
     --woly-shape-hover: hsla(var(--secondary-600), 1);
@@ -158,7 +158,7 @@ export const Global = styled.div`
     --woly-canvas-text-active: hsla(var(--bw-0), 1);
   }
 
-  [data-variant='tertiary'] {
+  [data-priority='tertiary'] {
     --woly-shape-default: transparent;
     --woly-shape-disabled: hsla(var(--bw-200), 1);
     --woly-shape-hover: transparent;
@@ -180,7 +180,7 @@ export const Global = styled.div`
     --woly-canvas-text-active: hsla(var(--bw-700), 1);
   }
 
-  [data-variant='danger'] {
+  [data-priority='danger'] {
     --woly-shape-default: hsla(var(--danger-500), 1);
     --woly-shape-disabled: hsla(var(--danger-200), 1);
     --woly-shape-hover: hsla(var(--danger-600), 1);

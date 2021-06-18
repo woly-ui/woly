@@ -2,7 +2,7 @@ import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
 import { ButtonIcon, Input } from 'ui/atoms';
 import { IconEyeClosed, IconEyeOpened } from 'static/icons';
-import { Variant } from 'lib/types';
+import { Priority } from 'lib/types';
 import { block } from 'lib/block';
 
 interface InputPasswordProps {
@@ -15,15 +15,15 @@ interface InputPasswordProps {
   value?: HTMLInputElement['value'];
 }
 
-export const InputPasswordBase: React.FC<InputPasswordProps & Variant> = ({
+export const InputPasswordBase: React.FC<InputPasswordProps & Priority> = ({
   className,
   disabled = false,
   name,
   onChange,
   placeholder,
+  priority = 'secondary',
   type = 'text',
   value,
-  variant = 'secondary',
 }) => {
   const [isVisible, onClick] = React.useReducer((is) => !is, false);
 
@@ -37,7 +37,7 @@ export const InputPasswordBase: React.FC<InputPasswordProps & Variant> = ({
         placeholder={placeholder}
         type={isVisible ? type : 'password'}
         value={value}
-        variant={variant}
+        priority={priority}
         rightIcon={
           <block.S>
             <ButtonIcon
@@ -45,7 +45,7 @@ export const InputPasswordBase: React.FC<InputPasswordProps & Variant> = ({
               onClick={onClick}
               disabled={disabled}
               icon={isVisible ? <IconEyeClosed /> : <IconEyeOpened />}
-              variant={variant}
+              priority={priority}
             />
           </block.S>
         }
@@ -65,4 +65,4 @@ export const InputPassword = styled(InputPasswordBase)`
   & > *:not(:first-child) {
     margin-left: var(--woly-gap);
   }
-` as StyledComponent<'div', Record<string, unknown>, InputPasswordProps & Variant>;
+` as StyledComponent<'div', Record<string, unknown>, InputPasswordProps & Priority>;

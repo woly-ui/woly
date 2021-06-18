@@ -2,7 +2,7 @@ import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
 import { Backdrop, Heading, Surface } from 'ui/atoms';
 import { IconClose } from 'static/icons';
-import { Variant } from 'lib/types';
+import { Priority } from 'lib/types';
 
 interface ModalProps {
   className?: string;
@@ -11,12 +11,12 @@ interface ModalProps {
   visible: boolean;
 }
 
-const ModalBase: React.FC<ModalProps & Variant> = ({
+const ModalBase: React.FC<ModalProps & Priority> = ({
   children,
   className,
   onClose,
+  priority = 'secondary',
   title,
-  variant = 'secondary',
   visible = false,
 }) => {
   let icon = null;
@@ -42,9 +42,9 @@ const ModalBase: React.FC<ModalProps & Variant> = ({
   }, [onKeyDown]);
 
   return (
-    <div className={className} data-variant={variant} data-visible={visible} tabIndex={-1}>
+    <div className={className} data-priority={priority} data-visible={visible} tabIndex={-1}>
       <Backdrop onClick={onClose} />
-      <Shape data-variant={variant}>
+      <Shape data-priority={priority}>
         {icon}
         <Heading size={2}>{title}</Heading>
         <div data-content>{children}</div>
@@ -107,4 +107,4 @@ export const Modal = styled(ModalBase)`
   [data-content] {
     padding-top: var(--local-gap);
   }
-` as StyledComponent<'div', Record<string, unknown>, ModalProps & Variant>;
+` as StyledComponent<'div', Record<string, unknown>, ModalProps & Priority>;

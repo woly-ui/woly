@@ -1,6 +1,6 @@
 import React from 'react';
 import styled, { StyledComponent } from 'styled-components';
-import { Variant } from 'lib/types';
+import { Priority } from 'lib/types';
 
 interface TextAreaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
   className?: string;
@@ -19,7 +19,7 @@ interface TextAreaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement
   wrap?: string;
 }
 
-const TextAreaBase: React.FC<TextAreaProps & Variant> = ({
+const TextAreaBase: React.FC<TextAreaProps & Priority> = ({
   className,
   cols,
   disabled,
@@ -29,11 +29,11 @@ const TextAreaBase: React.FC<TextAreaProps & Variant> = ({
   onChange,
   overflow,
   placeholder,
+  priority = 'secondary',
   ref,
   resize,
   rows,
   value,
-  variant = 'secondary',
   wrap,
   ...p
 }) => {
@@ -53,7 +53,7 @@ const TextAreaBase: React.FC<TextAreaProps & Variant> = ({
     <div
       className={className}
       data-disabled={disabled}
-      data-variant={variant}
+      data-priority={priority}
       tabIndex={tabIndex}
       data-overflow={overflow}
       data-resize={resize}
@@ -61,7 +61,7 @@ const TextAreaBase: React.FC<TextAreaProps & Variant> = ({
     >
       <textarea
         cols={cols}
-        data-variant={variant}
+        data-priority={priority}
         maxLength={maxLength}
         minLength={minlength}
         name={name}
@@ -148,4 +148,4 @@ export const TextArea = styled(TextAreaBase)`
   &[data-resize='true'] > textarea {
     resize: both;
   }
-` as StyledComponent<'textarea', Record<string, unknown>, TextAreaProps & Variant>;
+` as StyledComponent<'textarea', Record<string, unknown>, TextAreaProps & Priority>;

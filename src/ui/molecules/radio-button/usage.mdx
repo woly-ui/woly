@@ -27,7 +27,7 @@ When a user chooses a new item, the previous choice is automatically deselected.
           id="yes"
           checked={value}
           onChange={change}
-          variant="primary"
+          priority="primary"
           text="yes"
         />
         <RadioButton
@@ -35,7 +35,7 @@ When a user chooses a new item, the previous choice is automatically deselected.
           id="no"
           checked={value}
           onChange={change}
-          variant="primary"
+          priority="primary"
           text="no"
         />
       </>
@@ -50,14 +50,14 @@ Disabled radio button are uneditable. They have less opacity so that they appear
 <Playground>
   <State initial={false} change={(i) => !i}>
     {(value, change) => (
-      <RadioButton id="one" checked disabled variant="primary" text="disabled" onChange={change} />
+      <RadioButton id="one" checked disabled priority="primary" text="disabled" onChange={change} />
     )}
   </State>
 </Playground>
 
-### Variants
+### prioritys
 
-Primary and danger variants are should be used to focus user attention.
+Primary and danger prioritys are should be used to focus user attention.
 
 <Playground direction="vertical">
   <State initial="no" change={(i) => !i}>
@@ -68,7 +68,7 @@ Primary and danger variants are should be used to focus user attention.
           id="yes"
           checked={value}
           onChange={change}
-          variant="primary"
+          priority="primary"
           text="yes"
         />
         <RadioButton
@@ -76,7 +76,7 @@ Primary and danger variants are should be used to focus user attention.
           id="no"
           checked={value}
           onChange={change}
-          variant="primary"
+          priority="primary"
           text="no"
         />
       </>
@@ -93,7 +93,7 @@ Primary and danger variants are should be used to focus user attention.
           id="yes"
           checked={value}
           onChange={change}
-          variant="danger"
+          priority="danger"
           text="yes"
         />
         <RadioButton
@@ -101,7 +101,7 @@ Primary and danger variants are should be used to focus user attention.
           id="no"
           checked={value}
           onChange={change}
-          variant="danger"
+          priority="danger"
           text="no"
         />
       </>
@@ -109,7 +109,7 @@ Primary and danger variants are should be used to focus user attention.
   </State>
 </Playground>
 
-Secondary variant should be used as default variant
+Secondary priority should be used as default priority
 
 <Playground direction="vertical">
   <State initial="no" change={(i) => !i}>
@@ -120,7 +120,7 @@ Secondary variant should be used as default variant
           id="yes"
           checked={value}
           onChange={change}
-          variant="secondary"
+          priority="secondary"
           text="yes"
         />
         <RadioButton
@@ -128,7 +128,7 @@ Secondary variant should be used as default variant
           id="no"
           checked={value}
           onChange={change}
-          variant="secondary"
+          priority="secondary"
           text="no"
         />
       </>
@@ -144,5 +144,5 @@ Secondary variant should be used as default variant
 | `disabled` | `boolean`                                    |             | Disable radio-button                              |
 | `id`       | `string`                                     |             | HTML id attribute                                 |
 | `onChange` | `React.ChangeEventHandler<HTMLInputElement>` |             | Callback when radio-button is clicked             |
-| `variant`  | `string`                                     | `'default'` | Variant prop to style RadioButton component       |
+| `priority` | `string`                                     | `'default'` | Priority prop to style RadioButton component      |
 | `...`      | `HTMLInputElement`                           | `{}`        | Other props are inherited from `HTMLInputElement` |

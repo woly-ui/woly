@@ -17,13 +17,13 @@ import {IconPlus, IconSearch} from 'static/icons';
     icon={<IconSearch />}
     onClick={() => alert('Hi!')}
     text="Just a button"
-    variant="default"
+    priority="default"
   />
   <Button
     icon={<IconSearch />}
     onClick={() => alert('Hi!')}
     text="Just a button"
-    variant="default"
+    priority="default"
     outlined
   />
 </Playground>
@@ -37,40 +37,40 @@ Button can span the entire width of the container or have a fixed width
     icon={<IconSearch />}
     onClick={() => alert('Hi!')}
     text="Just a button"
-    variant="primary"
+    priority="primary"
   />
   <Button
     icon={<IconSearch />}
     onClick={() => alert('Hi!')}
     text="Just a button"
-    variant="primary"
+    priority="primary"
     fullWidth
     outlined
   />
 </Playground>
 
-### Variants
+### prioritys
 
-Primary and danger variants are should be used to focus user attention.
+Primary and danger prioritys are should be used to focus user attention.
 
 <Playground>
-  <Button text="The main action on the page" variant="primary" />
-  <Button text="The main action on the page" variant="primary" outlined />
-  <Button text="Alternative action" variant="danger" outlined />
-  <Button text="Alternative action" variant="danger" />
+  <Button text="The main action on the page" priority="primary" />
+  <Button text="The main action on the page" priority="primary" outlined />
+  <Button text="Alternative action" priority="danger" outlined />
+  <Button text="Alternative action" priority="danger" />
 </Playground>
 
-Secondary variant should be used as a default variant.
+Secondary priority should be used as a default priority.
 
 <Playground>
-  <Button text="Alternative action" variant="secondary" />
-  <Button text="Alternative action" variant="secondary" outlined />
+  <Button text="Alternative action" priority="secondary" />
+  <Button text="Alternative action" priority="secondary" outlined />
 </Playground>
 
-Tertiary variant should be used as an alternative variant to secondary and can`t be used with outline.
+Tertiary priority should be used as an alternative priority to secondary and can`t be used with outline.
 
 <Playground>
-  <Button text="Alternative action" variant="tertiary" />
+  <Button text="Alternative action" priority="tertiary" />
 </Playground>
 
 ### Icons
@@ -78,8 +78,8 @@ Tertiary variant should be used as an alternative variant to secondary and can`t
 Button can be used with icon on the left side.
 
 <Playground>
-  <Button text="Icon on the left" variant="primary" icon={<IconPlus />} />
-  <Button text="Disabled button" variant="primary" icon={<IconSearch />} disabled />
+  <Button text="Icon on the left" priority="primary" icon={<IconPlus />} />
+  <Button text="Disabled button" priority="primary" icon={<IconSearch />} disabled />
 </Playground>
 
 ### Sizes
@@ -88,22 +88,22 @@ Size controlled by the `component-level` block property not from the props.
 
 <Playground>
   <block.N>
-    <Button variant="primary" text="None" icon={<IconPlus />} />
+    <Button priority="primary" text="None" icon={<IconPlus />} />
   </block.N>
   <block.S>
-    <Button variant="primary" text="Small" icon={<IconPlus />} />
+    <Button priority="primary" text="Small" icon={<IconPlus />} />
   </block.S>
   <block.M>
-    <Button variant="primary" text="Normal" icon={<IconPlus />} />
+    <Button priority="primary" text="Normal" icon={<IconPlus />} />
   </block.M>
   <block.L>
-    <Button variant="primary" text="Large" icon={<IconPlus />} />
+    <Button priority="primary" text="Large" icon={<IconPlus />} />
   </block.L>
   <block.XL>
-    <Button variant="primary" text="Extra Large" icon={<IconPlus />} />
+    <Button priority="primary" text="Extra Large" icon={<IconPlus />} />
   </block.XL>
   <block.H>
-    <Button variant="primary" text="Huge" icon={<IconPlus />} />
+    <Button priority="primary" text="Huge" icon={<IconPlus />} />
   </block.H>
 </Playground>
 
@@ -113,10 +113,10 @@ Buttons can be placed inside the container. Button width is equal to container s
 
 <Playground direction="horizontal">
   <block.S>
-    <Button variant="primary" text="Small" />
+    <Button priority="primary" text="Small" />
   </block.S>
   <block.S>
-    <Button variant="primary" text="Small" icon={<IconPlus />} />
+    <Button priority="primary" text="Small" icon={<IconPlus />} />
   </block.S>
 </Playground>
 
@@ -124,10 +124,10 @@ Buttons can be placed inside the container. Button width is equal to container s
 
 | Name        | Type                | Default       | Description                                                 |
 | ----------- | ------------------- | ------------- | ----------------------------------------------------------- |
-| `icon`      | `React.ReactNode`   | `null`        | Component to show on the left side of the text (ex.: Icon)  |
 | `fullWidth` | `boolean`           | `false`       | Change button`s width from content width to container width |
+| `icon`      | `React.ReactNode`   | `null`        | Component to show on the left side of the text (ex.: Icon)  |
 | `outlined`  | `boolean`           | `false`       | Change button`s view from filled to outlined                |
+| `priority`  | `string`            | `'secondary'` | Priority prop to style Button component                     |
 | `text`      | `React.ReactNode`   |               | Text appeared on the button                                 |
 | `type`      | `string`            | `button`      | HTML type of the button                                     |
-| `variant`   | `string`            | `'secondary'` | Variant prop to style Button component                      |
 | `...`       | `HTMLButtonElement` | `{}`          | Other props are inherited from `HTMLButtonElement`          |

@@ -69,7 +69,7 @@ Accordion`s content and title can be manadged for our own.
 <Playground direction="vertical">
   <>
     <Accordion
-      variant="primary"
+      priority="primary"
       isOpen={false}
       title={<Text type="L">Short recomendation when to use accordion&nbsp;</Text>}
     >
@@ -93,12 +93,12 @@ Accordion`s content and title can be manadged for our own.
         name="name"
         placeholder="TextArea"
         onChange={() => console.info('On textarea change')}
-        variant="primary"
+        priority="primary"
         overflow="hidden"
       />
     </Accordion>
     <Accordion
-      variant="primary"
+      priority="primary"
       isOpen={false}
       title={<Text type="L">Short recomendation when to use accordion&nbsp;</Text>}
     >
@@ -122,7 +122,7 @@ Accordion`s content and title can be manadged for our own.
         name="name"
         placeholder="TextArea"
         onChange={() => console.info('On textarea change')}
-        variant="primary"
+        priority="primary"
         overflow="hidden"
       />
     </Accordion>
@@ -132,8 +132,8 @@ Accordion`s content and title can be manadged for our own.
 Accordion can be closed for default
 
 <Playground size="L">
-  <Accordion variant="primary" isOpen={false} title={<Text>Some text</Text>}>
-    <Table columns={tableHead.length} variant="primary">
+  <Accordion priority="primary" isOpen={false} title={<Text>Some text</Text>}>
+    <Table columns={tableHead.length} priority="primary">
       <Thead>
         <Tr>
           {tableHead.map(({ id, name }) => (
@@ -158,8 +158,8 @@ or open
 
 <Playground>
   <>
-    <Accordion variant="primary" isOpen={true} title={<span>Some text</span>}>
-      <Table columns={tableHead.length} variant="primary">
+    <Accordion priority="primary" isOpen={true} title={<span>Some text</span>}>
+      <Table columns={tableHead.length} priority="primary">
         <Thead>
           <Tr>
             {tableHead.map(({ id, name }) => (
@@ -178,8 +178,8 @@ or open
         </Tbody>
       </Table>
     </Accordion>
-    <Accordion variant="primary" isOpen={true} title={<span>Some text</span>}>
-      <Table columns={tableHead.length} variant="primary">
+    <Accordion priority="primary" isOpen={true} title={<span>Some text</span>}>
+      <Table columns={tableHead.length} priority="primary">
         <Thead>
           <Tr>
             {tableHead.map(({ id, name }) => (
@@ -204,8 +204,8 @@ or open
 ### Props
 
 | Name       | Type              | Default       | Description                                            |
-| ---------- | ----------------- | ------------- | ------------------------------------------------------ | --- |
+| ---------- | ----------------- | ------------- | ------------------------------------------------------ |
 | `children` | `React.ReactNode` |               | Content of accordion                                   |
 | `isOpen`   | `boolean`         | `'false'`     | Whether the component is visible or not                |
-| `title`    | `React.ReactNode` |               | Title of accordion, that triggers element of accordion |     |
-| `variant`  | `string`          | `'secondary'` | Variant prop to style accordion component              |
+| `priority` | `string`          | `'secondary'` | Priority prop to style accordion component             |
+| `title`    | `React.ReactNode` |               | Title of accordion, that triggers element of accordion |

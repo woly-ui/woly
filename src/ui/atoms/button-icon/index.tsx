@@ -1,6 +1,6 @@
 import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
-import { Variant } from 'lib/types';
+import { Priority } from 'lib/types';
 import { box } from 'ui/elements';
 
 interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -10,14 +10,14 @@ interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   filled?: boolean;
 }
 
-const ButtonIconBase: React.FC<Props & Variant> = ({
+const ButtonIconBase: React.FC<Props & Priority> = ({
+  filled = false,
   icon,
   onClick,
-  filled = false,
-  variant = 'secondary',
+  priority = 'secondary',
   ...p
 }) => (
-  <button data-filled={filled} data-variant={variant} onClick={onClick} type="button" {...p}>
+  <button data-filled={filled} data-priority={priority} onClick={onClick} type="button" {...p}>
     <span data-icon>{icon}</span>
   </button>
 );
@@ -109,4 +109,4 @@ export const ButtonIcon = styled(ButtonIconBase)`
     --local-shape-color: transparent;
     --local-icon-color: var(--woly-canvas-text-disabled);
   }
-` as StyledComponent<'button', Record<string, unknown>, Props & Variant>;
+` as StyledComponent<'button', Record<string, unknown>, Props & Priority>;

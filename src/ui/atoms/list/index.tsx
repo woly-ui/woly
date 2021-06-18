@@ -1,6 +1,6 @@
 import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
-import { Variant } from 'lib/types';
+import { Priority } from 'lib/types';
 import { box } from 'ui/elements';
 
 interface ListElementsProps {
@@ -16,14 +16,14 @@ interface ListItemProps {
   tabIndex?: number;
 }
 
-const mapContainer = (properties: { columns: number } & Variant) => ({
-  'data-variant': properties.variant || 'secondary',
+const mapContainer = (properties: { columns: number } & Priority) => ({
+  'data-priority': properties.priority || 'secondary',
 });
 
-const mapItem = (properties: ListItemProps & Variant) => ({
-  'data-variant': properties.variant || 'secondary',
-  'data-type': properties.as,
+const mapItem = (properties: ListItemProps & Priority) => ({
   'data-disabled': properties.disabled,
+  'data-priority': properties.priority || 'secondary',
+  'data-type': properties.as,
 });
 
 export const ListContainer = styled.div.attrs(mapContainer)`
@@ -36,24 +36,24 @@ export const ListContainer = styled.div.attrs(mapContainer)`
   padding: 0;
 
   background-color: var(--woly-shape-text-default);
-` as StyledComponent<'div', Record<string, unknown>, Variant>;
+` as StyledComponent<'div', Record<string, unknown>, Priority>;
 
-export const ListItem: React.FC<ListItemProps & ListElementsProps & Variant> = ({
+export const ListItem: React.FC<ListItemProps & ListElementsProps & Priority> = ({
   as,
   disabled = false,
   href,
   iconLeft,
   iconRight,
+  priority = 'secondary',
   tabIndex,
   text,
-  variant = 'secondary',
 }) => (
   <ListItemContainer
     as={as}
     href={href}
     disabled={disabled}
     tabIndex={disabled ? -1 : tabIndex}
-    variant={variant}
+    priority={priority}
   >
     {iconLeft && <span data-icon>{iconLeft}</span>}
     <span>{text}</span>
@@ -106,4 +106,4 @@ const ListItemContainer = styled.div.attrs(mapItem)`
 
     pointer-events: none;
   }
-` as StyledComponent<'div', Record<string, unknown>, ListItemProps & Variant>;
+` as StyledComponent<'div', Record<string, unknown>, ListItemProps & Priority>;

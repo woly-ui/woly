@@ -34,7 +34,7 @@ If any initial value hasn`t been selected yet, you can pass a placeholder.
           ]}
           placeholder="Choose an option"
           selected={value}
-          variant="primary"
+          priority="primary"
         />
       )}
     </StateEvent>
@@ -58,7 +58,7 @@ Or initial selected value can be passed by default.
             { children: 'Birds', value: 'Birds' },
           ]}
           selected={value}
-          variant="secondary"
+          priority="secondary"
         />
       )}
     </StateEvent>
@@ -82,7 +82,7 @@ Disabled selects are uneditable. They have less opacity so that they appear less
             { children: 'Birds', value: 'Birds' },
           ]}
           selected={value}
-          variant="secondary"
+          priority="secondary"
           disabled
         />
       )}
@@ -90,9 +90,9 @@ Disabled selects are uneditable. They have less opacity so that they appear less
   </div>
 </Playground>
 
-### Variants
+### prioritys
 
-Secondary variant should be used as default variant.
+Secondary priority should be used as default priority.
 
 <Playground>
   <div style={{ width: '250px', height: '250px' }}>
@@ -108,14 +108,14 @@ Secondary variant should be used as default variant.
           ]}
           placeholder="Choose an option"
           selected={value}
-          variant="secondary"
+          priority="secondary"
         />
       )}
     </StateEvent>
   </div>
 </Playground>
 
-Primary and dander variants should focus user attention.
+Primary and dander prioritys should focus user attention.
 
 <Playground direction="vertical">
   <StateEvent initial="Cats" change={(event) => event?.target?.dataset.value}>
@@ -131,7 +131,7 @@ Primary and dander variants should focus user attention.
               { children: 'Birds', value: 'Birds' },
             ]}
             selected={value}
-            variant="primary"
+            priority="primary"
           />
         </div>
         <div style={{ width: '250px', height: '250px' }}>
@@ -144,7 +144,7 @@ Primary and dander variants should focus user attention.
               { children: 'BMW', value: 'BMW' },
             ]}
             selected="BMW"
-            variant="danger"
+            priority="danger"
           />
         </div>
       </>
@@ -163,5 +163,5 @@ Primary and dander variants should focus user attention.
 | `onFocus`     | `React.FocusEventHandler<HTMLElement>`     |               | On focus event handler.                       |
 | `options`     | `SelectOptionProps[]`                      | `[]`          | An array of select options                    |
 | `placeholder` | `string`                                   | ''            | Placeholder for select                        |
+| `priority`    | `string`                                   | '`secondary`' | Priority prop to style Select component       |
 | `selected`    | `SelectOptionProps`                        |               | Selected option                               |
-| `variant`     | `string`                                   | '`secondary`' | Variant prop to style Select component        |

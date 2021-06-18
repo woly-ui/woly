@@ -27,7 +27,7 @@ The input line indicates where to enter text, displayed below the label.
 <Playground>
   <Field label="Label">
     <Input
-      variant="primary"
+      priority="primary"
       name="name"
       onChange={(event) => console.info('On input change')}
       placeholder="Placeholder"
@@ -44,16 +44,16 @@ or also as a label of group of component, eg checkbox or radiobutton groups.
 
 <Playground size="S">
   <Field label="Label of group">
-    <Checkbox text="Item text" variant="secondary" />
-    <Checkbox text="Item text" variant="secondary" />
-    <Checkbox text="Item text" variant="secondary" />
+    <Checkbox text="Item text" priority="secondary" />
+    <Checkbox text="Item text" priority="secondary" />
+    <Checkbox text="Item text" priority="secondary" />
   </Field>
-  <Field label="Label for a standalone component" variant="primary">
+  <Field label="Label for a standalone component" priority="primary">
     <TextArea
       name="name"
       placeholder="TextArea"
       onChange={() => console.info('On textarea change')}
-      variant="primary"
+      priority="primary"
       overflow="hidden"
       disabled
     />
@@ -65,7 +65,7 @@ or also as a label of group of component, eg checkbox or radiobutton groups.
       name="input"
       onChange={() => console.info('change')}
       placeholder="Enter password"
-      variant="primary"
+      priority="primary"
     />
   </Field>
 </Playground>{' '}
@@ -74,54 +74,54 @@ Labels and children component can be replaced in row
 
 <Playground size="S">
   <Field label="Label of set" row>
-    <Checkbox text="Item text" variant="secondary" />
-    <Checkbox text="Item text" variant="secondary" />
-    <Checkbox text="Item text" variant="secondary" />
+    <Checkbox text="Item text" priority="secondary" />
+    <Checkbox text="Item text" priority="secondary" />
+    <Checkbox text="Item text" priority="secondary" />
   </Field>
   <State initial={false} change={(i) => !i}>
     {(value, change) => (
       <Field label="Label of item" row>
-        <Switch checked={value} onChange={change} id="roundTwo" variant="primary" />
+        <Switch checked={value} onChange={change} id="roundTwo" priority="primary" />
       </Field>
     )}
   </State>
 </Playground>
 
-or in column variants
+or in column prioritys
 
 <Playground size="S">
   <Field label="Label of set">
-    <Checkbox text="Item text" variant="secondary" />
-    <Checkbox text="Item text" variant="secondary" />
-    <Checkbox text="Item text" variant="secondary" />
+    <Checkbox text="Item text" priority="secondary" />
+    <Checkbox text="Item text" priority="secondary" />
+    <Checkbox text="Item text" priority="secondary" />
   </Field>
   <State initial={false} change={(i) => !i}>
     {(value, change) => (
       <Field label="Label of item">
-        <Switch checked={value} onChange={change} id="roundOne" variant="primary" />
+        <Switch checked={value} onChange={change} id="roundOne" priority="primary" />
       </Field>
     )}
   </State>
 </Playground>
 
-### Variants
+### prioritys
 
-Error variant can be used to focus user attention on error.
+Error priority can be used to focus user attention on error.
 
 <Playground direction="vertical">
-  <Field label="Textarea with error" variant="danger">
+  <Field label="Textarea with error" priority="danger">
     <TextArea
       name="name"
       placeholder="TextArea"
       onChange={() => console.info('On textarea change')}
-      variant="danger"
+      priority="danger"
       overflow="hidden"
       disabled
     />
   </Field>
-  <Field label="Input with error" variant="danger">
+  <Field label="Input with error" priority="danger">
     <Input
-      variant="danger"
+      priority="danger"
       name="name"
       onChange={(event) => console.info('On input change')}
       placeholder="Placeholder"
@@ -131,7 +131,7 @@ Error variant can be used to focus user attention on error.
   <State initial={false} change={(i) => !i}>
     {(value, change) => (
       <Field label="Switch with error">
-        <Switch checked={value} onChange={change} id="roundOne" variant="danger" />
+        <Switch checked={value} onChange={change} id="roundOne" priority="danger" />
       </Field>
     )}
   </State>
@@ -141,7 +141,7 @@ Error variant can be used to focus user attention on error.
 
 | Name       | Type              | Default       | Description                                                  |
 | ---------- | ----------------- | ------------- | ------------------------------------------------------------ |
-| `children` | `React.ReactNode` |               | Trigger element of Popover                                   |
-| `label`    | `React.ReactNode` |               | Text appeared on the button                                  |
+| `children` | `React.ReactNode` |               | Field content                                                |
+| `label`    | `React.ReactNode` |               | Text appeared above the content                              |
+| `priority` | `string`          | `'secondary'` | Priority prop to style component                             |
 | `row`      | `boolean`         |               | The row attribute specifies direction of label and component |
-| `variant`  | `string`          | `'secondary'` | Variant prop to style component                              |

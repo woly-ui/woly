@@ -17,7 +17,7 @@ import {ButtonIcon} from 'ui';
     <ButtonIcon
       icon={<IconSearch />}
       onClick={() => console.info('ButtonIcon clicked')}
-      variant="primary"
+      priority="primary"
       filled
     />
   </block.N>
@@ -25,14 +25,14 @@ import {ButtonIcon} from 'ui';
     <ButtonIcon
       icon={<IconEyeOpened />}
       onClick={() => console.info('ButtonIcon clicked')}
-      variant="primary"
+      priority="primary"
     />
   </block.N>
   <block.N>
     <ButtonIcon
       icon={<IconSearch />}
       onClick={() => console.info('ButtonIcon clicked')}
-      variant="primary"
+      priority="primary"
       filled
       disabled
     />
@@ -41,7 +41,7 @@ import {ButtonIcon} from 'ui';
     <ButtonIcon
       icon={<IconEyeOpened />}
       onClick={() => console.info('ButtonIcon clicked')}
-      variant="primary"
+      priority="primary"
       disabled
     />
   </block.N>
@@ -49,7 +49,7 @@ import {ButtonIcon} from 'ui';
     <ButtonIcon
       icon={<IconSearch />}
       onClick={() => console.info('ButtonIcon clicked')}
-      variant="primary"
+      priority="primary"
       filled
     />
   </block.XS>
@@ -57,14 +57,14 @@ import {ButtonIcon} from 'ui';
     <ButtonIcon
       icon={<IconEyeOpened />}
       onClick={() => console.info('ButtonIcon clicked')}
-      variant="primary"
+      priority="primary"
     />
   </block.XS>
   <block.XS>
     <ButtonIcon
       icon={<IconSearch />}
       onClick={() => console.info('ButtonIcon clicked')}
-      variant="primary"
+      priority="primary"
       filled
       disabled
     />
@@ -73,7 +73,7 @@ import {ButtonIcon} from 'ui';
     <ButtonIcon
       icon={<IconEyeOpened />}
       onClick={() => console.info('ButtonIcon clicked')}
-      variant="primary"
+      priority="primary"
       disabled
     />
   </block.XS>
@@ -81,7 +81,7 @@ import {ButtonIcon} from 'ui';
     <ButtonIcon
       icon={<IconSearch />}
       onClick={() => console.info('ButtonIcon clicked')}
-      variant="primary"
+      priority="primary"
       filled
     />
   </block.S>
@@ -89,14 +89,14 @@ import {ButtonIcon} from 'ui';
     <ButtonIcon
       icon={<IconEyeOpened />}
       onClick={() => console.info('ButtonIcon clicked')}
-      variant="primary"
+      priority="primary"
     />
   </block.S>
   <block.S>
     <ButtonIcon
       icon={<IconSearch />}
       onClick={() => console.info('ButtonIcon clicked')}
-      variant="primary"
+      priority="primary"
       filled
       disabled
     />
@@ -105,46 +105,46 @@ import {ButtonIcon} from 'ui';
     <ButtonIcon
       icon={<IconEyeOpened />}
       onClick={() => console.info('ButtonIcon clicked')}
-      variant="primary"
+      priority="primary"
       disabled
     />
   </block.S>
 </Playground>
 
-### Variants
+### prioritys
 
-Secondary and error variant should be used to focus user attention.
+Secondary and error priority should be used to focus user attention.
 
 <Playground>
   <ButtonIcon
     icon={<IconSearch />}
     onClick={() => console.info('ButtonIcon clicked')}
-    variant="secondary"
+    priority="secondary"
   />
   <ButtonIcon
     icon={<IconSearch />}
     onClick={() => console.info('ButtonIcon clicked')}
-    variant="secondary"
+    priority="secondary"
     filled
   />
   <ButtonIcon
     icon={<IconSearch />}
     onClick={() => console.info('ButtonIcon clicked')}
-    variant="danger"
+    priority="danger"
   />
   <ButtonIcon
     icon={<IconSearch />}
     onClick={() => console.info('ButtonIcon clicked')}
-    variant="danger"
+    priority="danger"
     filled
   />
 </Playground>
 
 ### Props
 
-| Name      | Type                                         | Default       | Description                                        |
-| --------- | -------------------------------------------- | ------------- | -------------------------------------------------- |
-| `icon`    | `React.ReactNode`                            |               | Set the icon component inside the button           |
-| `onClick` | `React.MouseEventHandler<HTMLButtonElement>` |               | Callback when button clicked                       |
-| `variant` | `string`                                     | `'secondary'` | Variant prop to style ButtonIcon component         |
-| `...`     | `HTMLButtonElement`                          | `{}`          | Other props are inherited from `HTMLButtonElement` |
+| Name       | Type                                         | Default       | Description                                        |
+| ---------- | -------------------------------------------- | ------------- | -------------------------------------------------- |
+| `icon`     | `React.ReactNode`                            |               | Set the icon component inside the button           |
+| `onClick`  | `React.MouseEventHandler<HTMLButtonElement>` |               | Callback when button clicked                       |
+| `priority` | `string`                                     | `'secondary'` | Priority prop to style ButtonIcon component        |
+| `...`      | `HTMLButtonElement`                          | `{}`          | Other props are inherited from `HTMLButtonElement` |
