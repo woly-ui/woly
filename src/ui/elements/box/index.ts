@@ -32,7 +32,7 @@ export const box = css`
   }
 
   & > :not(:first-child) {
-    margin-left: var(--local-gap);
+    padding-left: var(--local-gap);
   }
 `;
 
