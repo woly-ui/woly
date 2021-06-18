@@ -32,7 +32,13 @@ const ButtonBase: React.FC<ButtonProps & Variant> = ({
   variant = 'secondary',
   ...p
 }) => (
-  <button type={type} data-fullWidth={fullWidth} data-outlined={outlined} data-variant={variant} {...p}>
+  <button
+    type={type}
+    data-fullWidth={fullWidth}
+    data-outlined={outlined}
+    data-variant={variant}
+    {...p}
+  >
     {icon && <span data-icon="left">{icon}</span>}
     <span data-text>{text}</span>
   </button>
