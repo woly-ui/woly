@@ -4,26 +4,35 @@ import styled, { StyledComponent } from 'styled-components';
 import { Variant } from 'lib/types';
 import { box } from 'ui/elements';
 
-export type ButtonVariants = 'secondary' | 'primary' | 'destructive' | 'text';
+export type ButtonVariants =
+  | 'secondary'
+  | 'primary'
+  | 'default'
+  | 'transparent'
+  | 'danger'
+  | 'accent'
+  | 'success';
 export type ButtonSizes = 'default' | 'small';
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children?: never;
   className?: string;
+  fullWidth?: boolean;
   icon?: React.ReactNode;
-  text: React.ReactNode;
   outlined?: boolean;
+  text: React.ReactNode;
 }
 
 const ButtonBase: React.FC<ButtonProps & Variant> = ({
+  fullWidth = false,
   icon,
+  outlined = false,
   text,
   type = 'button',
   variant = 'secondary',
-  outlined = false,
   ...p
 }) => (
-  <button type={type} data-outlined={outlined} data-variant={variant} {...p}>
+  <button type={type} data-fullWidth={fullWidth} data-outlined={outlined} data-variant={variant} {...p}>
     {icon && <span data-icon="left">{icon}</span>}
     <span data-text>{text}</span>
   </button>
@@ -40,6 +49,8 @@ export const Button = styled(ButtonBase)`
   flex-wrap: nowrap;
   justify-content: center;
 
+  padding: 0;
+
   box-sizing: border-box;
 
   color: var(--local-text-color);
@@ -54,11 +65,15 @@ export const Button = styled(ButtonBase)`
   &[data-outlined='true'] {
     color: var(--local-shape-color);
 
-    background-color: transparent;
+    background: transparent;
 
     svg > path {
       fill: var(--local-shape-color);
     }
+  }
+
+  &[data-width='true'] {
+    width: 100%;
   }
 
   [data-icon] {
