@@ -35,12 +35,11 @@ export const ButtonIcon = styled(ButtonIconBase)`
   --local-icon-size: var(--woly-line-height);
   --local-icon-color: var(--woly-shape-text-default);
 
-  padding: 0;
-
   display: flex;
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
+  padding: 0;
 
   background: var(--local-shape-color);
   border: var(--woly-border-width) solid var(--local-shape-color);
