@@ -5,14 +5,14 @@ import { Variant } from 'lib/types';
 import { box } from 'ui/elements';
 
 interface LoaderProps {
-  description?: React.ReactChild;
   className?: string;
+  description?: React.ReactChild;
 }
 
 const LoaderBase = ({
+  className,
   description = 'Loading...',
   variant = 'secondary',
-  className,
 }: LoaderProps & Variant) => {
   return (
     <div className={className} data-variant={variant}>
