@@ -34,7 +34,7 @@ const ButtonBase: React.FC<ButtonProps & Priority> = ({
 }) => (
   <button
     type={type}
-    data-width={fullWidth}
+    data-fullWidth={fullWidth}
     data-outlined={outlined}
     data-priority={priority}
     {...p}
@@ -46,11 +46,6 @@ const ButtonBase: React.FC<ButtonProps & Priority> = ({
 
 export const Button = styled(ButtonBase)`
   ${box}
-
-  & {
-    padding: 0;
-  }
-
   --local-text-color: var(--woly-shape-text-default);
   --local-shape-color: var(--woly-shape-default);
   --local-border-color: var(--woly-shape-default);
@@ -60,6 +55,7 @@ export const Button = styled(ButtonBase)`
   justify-content: center;
 
   box-sizing: border-box;
+  padding: 0;
 
   color: var(--local-text-color);
   font-size: var(--woly-font-size);

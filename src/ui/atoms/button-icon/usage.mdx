@@ -8,112 +8,68 @@ import {Playground} from 'lib/playground'
 import {IconEyeOpened, IconSearch} from 'static/icons';
 import {ButtonIcon} from 'ui';
 
-`ButtonIcon` is a button with an icon
+`ButtonIcon` is an icon that triggers some sort of action on the page.
+More accurately, technically speaking, an icon button is a button that contains an icon and no (visible) accompanying text.
+Considering that a text label is not used, an icon should be present to signify what the button does.
+
+Also, icons can be used as toggle buttons when they allow selection, or deselection, of a single choice, such as marking an item as a favorite.
 
 ### Example
 
 <Playground>
-  <block.N>
-    <ButtonIcon
-      icon={<IconSearch />}
-      onClick={() => console.info('ButtonIcon clicked')}
-      priority="primary"
-      filled
-    />
-  </block.N>
-  <block.N>
-    <ButtonIcon
-      icon={<IconEyeOpened />}
-      onClick={() => console.info('ButtonIcon clicked')}
-      priority="primary"
-    />
-  </block.N>
-  <block.N>
-    <ButtonIcon
-      icon={<IconSearch />}
-      onClick={() => console.info('ButtonIcon clicked')}
-      priority="primary"
-      filled
-      disabled
-    />
-  </block.N>
-  <block.N>
-    <ButtonIcon
-      icon={<IconEyeOpened />}
-      onClick={() => console.info('ButtonIcon clicked')}
-      priority="primary"
-      disabled
-    />
-  </block.N>
-  <block.XS>
-    <ButtonIcon
-      icon={<IconSearch />}
-      onClick={() => console.info('ButtonIcon clicked')}
-      priority="primary"
-      filled
-    />
-  </block.XS>
-  <block.XS>
-    <ButtonIcon
-      icon={<IconEyeOpened />}
-      onClick={() => console.info('ButtonIcon clicked')}
-      priority="primary"
-    />
-  </block.XS>
-  <block.XS>
-    <ButtonIcon
-      icon={<IconSearch />}
-      onClick={() => console.info('ButtonIcon clicked')}
-      priority="primary"
-      filled
-      disabled
-    />
-  </block.XS>
-  <block.XS>
-    <ButtonIcon
-      icon={<IconEyeOpened />}
-      onClick={() => console.info('ButtonIcon clicked')}
-      priority="primary"
-      disabled
-    />
-  </block.XS>
-  <block.S>
-    <ButtonIcon
-      icon={<IconSearch />}
-      onClick={() => console.info('ButtonIcon clicked')}
-      priority="primary"
-      filled
-    />
-  </block.S>
-  <block.S>
-    <ButtonIcon
-      icon={<IconEyeOpened />}
-      onClick={() => console.info('ButtonIcon clicked')}
-      priority="primary"
-    />
-  </block.S>
-  <block.S>
-    <ButtonIcon
-      icon={<IconSearch />}
-      onClick={() => console.info('ButtonIcon clicked')}
-      priority="primary"
-      filled
-      disabled
-    />
-  </block.S>
-  <block.S>
-    <ButtonIcon
-      icon={<IconEyeOpened />}
-      onClick={() => console.info('ButtonIcon clicked')}
-      priority="primary"
-      disabled
-    />
-  </block.S>
+  <ButtonIcon
+    icon={<IconSearch />}
+    onClick={() => console.info('ButtonIcon clicked')}
+    variant="default"
+  />
+  <ButtonIcon
+    icon={<IconSearch />}
+    onClick={() => console.info('ButtonIcon clicked')}
+    variant="default"
+    outlined
+  />
 </Playground>
 
-### prioritys
+## Sizes
 
-Secondary and error priority should be used to focus user attention.
+Button-icon's size can controlled by block-container and it`s width is equal to container size.
+
+<Playground>
+  <block.N>
+    <ButtonIcon
+      icon={<IconSearch />}
+      onClick={() => console.info('ButtonIcon clicked')}
+      priority="default"
+    />
+  </block.N>
+  <block.XS>
+    <ButtonIcon
+      icon={<IconEyeOpened />}
+      onClick={() => console.info('ButtonIcon clicked')}
+      priority="primary"
+    />
+  </block.XS>
+  <block.S>
+    <ButtonIcon
+      icon={<IconSearch />}
+      onClick={() => console.info('ButtonIcon clicked')}
+      priority="secondary"
+    />
+  </block.S>
+  <block.M>
+    <ButtonIcon
+      icon={<IconEyeOpened />}
+      onClick={() => console.info('ButtonIcon clicked')}
+      priority="primary"
+      disabled
+    />
+  </block.M>
+</Playground>
+
+### Weight and priority
+
+Button-icon can be represented in primary, secondary, default or tertiary variants and can be styled with fill or outline.
+In case of choosing button-icon in tertiary variant with outline styles use the opposite background color to the text color of button-icon.
 
 <Playground>
   <ButtonIcon
@@ -125,26 +81,47 @@ Secondary and error priority should be used to focus user attention.
     icon={<IconSearch />}
     onClick={() => console.info('ButtonIcon clicked')}
     priority="secondary"
-    filled
+    outlined
   />
   <ButtonIcon
     icon={<IconSearch />}
     onClick={() => console.info('ButtonIcon clicked')}
-    priority="danger"
+    priority="primary"
   />
   <ButtonIcon
     icon={<IconSearch />}
     onClick={() => console.info('ButtonIcon clicked')}
-    priority="danger"
-    filled
+    priority="primary"
+    outlined
+  />
+  <ButtonIcon
+    icon={<IconSearch />}
+    onClick={() => console.info('ButtonIcon clicked')}
+    priority="default"
+  />
+  <ButtonIcon
+    icon={<IconSearch />}
+    onClick={() => console.info('ButtonIcon clicked')}
+    priority="default"
+    outlined
+  />
+  <ButtonIcon
+    icon={<IconSearch />}
+    onClick={() => console.info('ButtonIcon clicked')}
+    priority="tertiary"
   />
 </Playground>
+
+### Map of ButtonIcon
+
+<a href="/package/woly/component/button-icon-map">See map</a>
 
 ### Props
 
 | Name       | Type                                         | Default       | Description                                        |
 | ---------- | -------------------------------------------- | ------------- | -------------------------------------------------- |
-| `icon`     | `React.ReactNode`                            |               | Set the icon component inside the button           |
+| `icon`     | `React.ReactNode`                            |  `null`       | Set the icon component inside the button           |
 | `onClick`  | `React.MouseEventHandler<HTMLButtonElement>` |               | Callback when button clicked                       |
+| `outlined` | `boolean`                                    | `false`       | Change button-icon`s view from filled to outlined  |
 | `priority` | `string`                                     | `'secondary'` | Priority prop to style ButtonIcon component        |
 | `...`      | `HTMLButtonElement`                          | `{}`          | Other props are inherited from `HTMLButtonElement` |
