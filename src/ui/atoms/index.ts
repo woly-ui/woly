@@ -10,6 +10,7 @@ export { ListItem, ListContainer } from './list';
 export { Notification } from './notification';
 export { Separator } from './separator';
 export { Surface } from './surface';
+export { Loader } from './loader';
 export { Table, Thead, Tbody, Tr, Td, Th } from './table';
 export { Text } from './text';
 export { TextArea } from './text-area';
