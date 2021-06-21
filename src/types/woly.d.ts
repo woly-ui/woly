@@ -1,3 +1,3 @@
 declare interface DefaultPriority {
-  priority?: 'primary' | 'secondary' | 'danger';
+  priority?: 'default' | 'primary' | 'secondary' | 'danger' | 'success';
 }
