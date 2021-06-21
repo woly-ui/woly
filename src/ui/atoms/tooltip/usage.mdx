@@ -36,34 +36,30 @@ The top, right, bottom, and left positions appear outside the target element, ce
     }}
   >
     <Tooltip
-      text={<Text type="S">Подсказка может быть написана в две строки и более</Text>}
+      content={<Text type="S">Подсказка может быть написана в две строки и более</Text>}
       position="bottom"
     >
       <Button onClick={() => console.info('Hi!')} text="Button" variant="primary" />
     </Tooltip>
-    <Tooltip text={<Text type="S">Подсказка</Text>} position="top" id="tooltip-top">
+    <Tooltip content={<Text type="S">Подсказка</Text>} position="top" id="tooltip-top">
       <Button onClick={() => console.info('Hi!')} text="Button" variant="primary" />
     </Tooltip>
     <Tooltip
-      column
-      text={
-        <Text type="S">
-          Подсказка может быть написана в две и более строки, а также содержать блок с actions
-        </Text>
-      }
-      position="left"
-      iconRight={
+      content={
         <>
+          <Text type="S">
+            Подсказка может быть написана в две и более строки, а также содержать блок с actions
+          </Text>
           <Button onClick={() => console.info('Hi!')} text="Назад" variant="primary" />
           <Button onClick={() => console.info('Hi!')} text="Вперед" variant="secondary" />
         </>
       }
-    >
+      position="left"
+     >
       <Button onClick={() => console.info('Hi!')} text="Button" variant="primary" />
     </Tooltip>
     <Tooltip
-      iconLeft={<IconInfo />}
-      text={<Text type="XS">Подсказка c иконкой</Text>}
+      content={<Text type="XS">Подсказка c иконкой</Text>}
       position="right"
       variant="primary"
     >
@@ -79,12 +75,9 @@ The top, right, bottom, and left positions appear outside the target element, ce
 
 ### Props
 
-| Name        | Type                 | Default       | Description                                                                              |
-| ----------- | -------------------- | ------------- | ---------------------------------------------------------------------------------------- |
-| `children`  | `React.ReactElement` |               | The tooltip will be visible near `children` on hover or focus                            |
-| `column`    | `boolean`            | `false`       | Column prop set the deriction of the tooltip content                                     |
-| `iconLeft`  | `React.ReactNode`    | `null`        | Component to show on the left side of the description (ex.: icon)                        |
-| `iconRight` | `React.ReactNode`    | `null`        | Component to show on the right side of the description (ex.: icon or block with actions) |
-| `position`  | `string`             | `'top'`       | The positon of the tooltip aginst the relative element                                   |
-| `text`      | `React.ReactElement` |               | Information has been described in a tooltip                                              |
-| `variant`   | `string`             | `'secondary'` | Variant prop to style Tooltip component                                                  |
+| Name        | Type                 | Default       | Description                                                    |
+| ----------- | -------------------- | ------------- | ---------------------------------------------------------------|
+| `children`  | `React.ReactElement` | `null`        | The tooltip will be visible near `children` on hover or focus  |
+| `content`   | `React.ReactElement` | `null`        | Tooltip`s content                                              |
+| `position`  | `string`             | `'top'`       | The positon of the tooltip aginst the relative element         |
+| `variant`   | `string`             | `'secondary'` | Variant prop to style Tooltip component                        |

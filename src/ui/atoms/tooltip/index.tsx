@@ -1,28 +1,21 @@
 import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
 import { Variant } from 'lib/types';
-import { box } from 'ui/elements';
 import { positionRelativeGet } from 'lib';
 
-type PositionProps = 'bottom' | 'top' | 'left' | 'right';
+type PositionProps = 'bottom' | 'left' | 'right' | 'top';
 
 interface TooltipProps {
   className?: string;
-  column?: boolean;
-  iconLeft?: React.ReactNode;
-  iconRight?: React.ReactNode;
+  content?: string | React.ReactNode;
   position?: PositionProps;
-  text: React.ReactNode;
 }
 
 const TooltipBase: React.FC<TooltipProps & Variant> = ({
   children,
   className,
-  column = false,
-  iconLeft,
-  iconRight,
+  content,
   position = 'top',
-  text,
   variant = 'secondary',
 }) => {
   const [tooltipPosition, setPosition] = React.useState<PositionProps>('top');
@@ -56,17 +49,15 @@ const TooltipBase: React.FC<TooltipProps & Variant> = ({
       <div data-element="notifications" aria-labelledby="notifications-desc">
         {children}
       </div>
-      <div role="tooltip" id="notifications-desc" data-direction-column={column}>
-        {iconLeft && <div data-icon="tooltip-visual-block">{iconLeft}</div>}
-        <div data-text="tooltip-description">{text}</div>
-        {iconRight && <div data-icon="tooltip-action-block">{iconRight}</div>}
+      <div role="tooltip" id="notifications-desc">
+        {content}
       </div>
     </div>
   );
 };
 
 export const Tooltip = styled(TooltipBase)`
-  --local-color: var(--woly-canvas-text-default);
+  --local-shape-color: var(--woly-canvas-text-default);
   --local-gap: min(
     calc(1px * var(--woly-main-level) + var(--woly-const-m)),
     calc(
@@ -86,7 +77,6 @@ export const Tooltip = styled(TooltipBase)`
   outline: none;
 
   [role='tooltip'] {
-    ${box}
     position: absolute;
     z-index: 1;
 
@@ -96,8 +86,6 @@ export const Tooltip = styled(TooltipBase)`
     box-sizing: border-box;
     width: max-content;
     max-width: var(--local-tooltip-maxsize);
-
-    color: var(--local-color);
 
     background-color: var(--woly-background);
 
@@ -124,41 +112,13 @@ export const Tooltip = styled(TooltipBase)`
     }
   }
 
-  [data-icon='tooltip-visual-block'] {
-    display: flex;
-    flex-shrink: 0;
-    align-items: center;
-    justify-content: center;
-
-    width: var(--local-icon-size);
-    height: var(--local-icon-size);
-    svg {
-      width: 100%;
-      height: 100%;
-    }
-  }
   &:hover > [role='tooltip'],
   &:focus > [role='tooltip'] {
-    display: flex;
+    display: block;
 
     transition: 0.3s linear;
   }
-
-  & [data-direction-column='true'] {
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-
-  [data-icon='tooltip-action-block'] {
-    display: flex;
-    align-items: center;
-
-    & > :not(:last-child) {
-      margin-right: var(--local-gap);
-    }
-  }
-
+  
   &[data-position='top'] > [role='tooltip'] {
     bottom: var(--tooltip-position);
 
