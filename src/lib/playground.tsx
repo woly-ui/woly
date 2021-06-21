@@ -1,26 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Surface } from 'ui';
 
 import { Global } from './global';
 import { block } from './block';
 
 export { block };
-
-export const Playground: React.FC<{
-  size: keyof typeof block;
-  direction: 'vertical' | 'horizontal';
-}> = ({ size = 'M', direction = 'horizontal', children }) => {
-  const Wrapper = block[size];
-  return (
-    <Frame>
-      <Global>
-        <Wrapper>
-          <Container data-dir={direction}>{children}</Container>
-        </Wrapper>
-      </Global>
-    </Frame>
-  );
-};
 
 interface StateType {
   change: (value: any) => any;
@@ -51,23 +36,95 @@ export const StateEvent = ({ initial, change, children }: StateType) => {
   return <>{children(value, onChange)}</>;
 };
 
+export const Playground: React.FC<{
+  size: keyof typeof block;
+  direction: 'vertical' | 'horizontal';
+}> = ({ size = 'M', direction = 'horizontal', children }) => {
+  const Size = block[size];
+  const [expanded, toggleExpand] = React.useReducer((is) => !is, false);
+
+  return (
+    <Frame>
+      <Tools data-expanded={expanded}>
+        <div data-tools>
+          <label>Background</label>
+          <select>
+            <option value="default" selected>
+              default
+            </option>
+            <option value="primary">primary</option>
+            <option value="secondary">secondary</option>
+          </select>
+        </div>
+        <button onClick={toggleExpand} data-toggler>
+          ⚙️
+        </button>
+      </Tools>
+      <Global>
+        <Surface>
+          <Size>
+            <Container data-dir={direction}>{children}</Container>
+          </Size>
+        </Surface>
+      </Global>
+    </Frame>
+  );
+};
+
 const Frame = styled.div`
   box-sizing: border-box;
   width: 100%;
   max-width: 100%;
-  padding: 1rem;
-  overflow: auto;
 
-  border: 2px solid rgb(246, 248, 250);
+  border: 2px solid var(--base);
   border-radius: 4px 4px 0 0;
-
-  resize: both;
 
   & + .prism-code {
     margin-top: 0;
 
+    border-color: var(--base);
     border-top-left-radius: 0;
     border-top-right-radius: 0;
+  }
+`;
+
+const Tools = styled.div`
+  display: flex;
+  justify-content: end;
+
+  padding: 0.4rem 1rem;
+
+  background-color: var(--base);
+
+  [data-toggler] {
+    height: 24px;
+    margin: 0;
+    padding: 0.2rem;
+
+    background: transparent;
+
+    border: 0;
+  }
+
+  [data-tools] {
+    display: flex;
+    align-items: center;
+
+    font-size: 14px;
+
+    & > * {
+      margin-right: 0.2rem;
+    }
+  }
+
+  &[data-expanded='false'] {
+    margin-bottom: -24px;
+
+    background-color: transparent;
+
+    [data-tools] {
+      display: none;
+    }
   }
 `;
 
@@ -75,12 +132,17 @@ const Container = styled.div`
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
+  padding: 1rem;
+
+  overflow: auto;
+
+  resize: both;
 
   &[data-dir='vertical'] {
     flex-direction: column;
 
     & > * + * {
-      margin-top: 0.5rem;
+      margin-top: 0.4rem;
     }
   }
 
@@ -89,8 +151,7 @@ const Container = styled.div`
     flex-wrap: wrap;
 
     & > * {
-      margin-right: 0.5rem;
-      margin-bottom: 0.5rem;
+      margin: 0.2rem;
     }
   }
 `;

@@ -23,6 +23,7 @@ export const Global = styled.div`
   --woly-rounding: 3px;
   --woly-font-size: 15px;
   --woly-shadow: 3px 3px 9px rgba(57, 57, 57, 0.12);
+  --woly-shadow-perfect: 3px 3px 8px rgba(11, 31, 53, 0.04);
 
   --woly-const-m: 6px;
   --woly-main-level: 3;
