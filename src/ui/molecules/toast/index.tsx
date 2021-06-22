@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
 import { Variant } from 'lib/types';
-import { box } from 'ui/elements';
+import { Box } from 'ui/atoms';
 
 interface ToastProps {
   action?: React.ReactNode;
@@ -26,7 +26,7 @@ const ToastBase: React.FC<ToastProps & Variant> = ({
 );
 
 export const Toast = styled(ToastBase)`
-  ${box}
+  ${Box}
   --local-text-color: var(--woly-shape-text-default);
   --local-shape-color: var(--woly-shape-default);
   --local-border-color: var(--woly-shape-default);
