@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
 import { IconArrowDown } from 'static/icons';
-import { Variant } from 'lib/types';
+import { Priority } from 'lib/types';
 
 interface AccordionProps {
   className?: string;
@@ -9,12 +9,12 @@ interface AccordionProps {
   title?: React.ReactNode;
 }
 
-const AccordionBase: React.FC<AccordionProps & Variant> = ({
+const AccordionBase: React.FC<AccordionProps & Priority> = ({
   children,
   className,
   isOpen = true,
+  priority = 'secondary',
   title,
-  variant = 'secondary',
 }) => {
   const [isContentVisible, setContentVisible] = React.useReducer((is) => !is, isOpen);
 
@@ -27,7 +27,7 @@ const AccordionBase: React.FC<AccordionProps & Variant> = ({
     [isContentVisible],
   );
   return (
-    <div className={className} data-variant={variant}>
+    <div className={className} data-priority={priority}>
       <div
         data-header
         data-open={isContentVisible}
@@ -133,4 +133,4 @@ export const Accordion = styled(AccordionBase)`
 
     height: auto;
   }
-` as StyledComponent<'div', Record<string, unknown>, AccordionProps & Variant>;
+` as StyledComponent<'div', Record<string, unknown>, AccordionProps & Priority>;

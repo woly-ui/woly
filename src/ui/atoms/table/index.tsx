@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import { Variant } from 'lib/types';
+import { Priority } from 'lib/types';
 
-const map = (properties: { columns: number } & Variant) => ({
-  'data-variant': properties.variant || 'secondary',
+const map = (properties: { columns: number } & Priority) => ({
+  'data-priority': properties.priority || 'secondary',
   style: { '--local-columns': properties.columns },
 });
 

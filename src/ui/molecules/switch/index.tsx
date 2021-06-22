@@ -1,6 +1,6 @@
 import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
-import { Variant } from 'lib/types';
+import { Priority } from 'lib/types';
 import { keyboardEventHandle } from 'lib';
 
 interface SwitchProps extends React.InputHTMLAttributes<HTMLInputElement> {
@@ -11,13 +11,13 @@ interface SwitchProps extends React.InputHTMLAttributes<HTMLInputElement> {
   onChange: React.EventHandler<React.SyntheticEvent>;
 }
 
-const SwitchBase: React.FC<SwitchProps & Variant> = ({
+const SwitchBase: React.FC<SwitchProps & Priority> = ({
   className,
   id,
   checked,
   disabled = false,
   onChange,
-  variant = 'secondary',
+  priority = 'secondary',
   ...p
 }) => {
   const tabIndex = disabled ? -1 : 0;
@@ -45,7 +45,7 @@ const SwitchBase: React.FC<SwitchProps & Variant> = ({
     <div
       className={className}
       data-disabled={disabled}
-      data-variant={variant}
+      data-priority={priority}
       onKeyDown={onKeyDown}
       tabIndex={tabIndex}
     >
@@ -153,4 +153,4 @@ export const Switch = styled(SwitchBase)`
       box-shadow: none;
     }
   }
-` as StyledComponent<'div', Record<string, unknown>, SwitchProps & Variant>;
+` as StyledComponent<'div', Record<string, unknown>, SwitchProps & Priority>;

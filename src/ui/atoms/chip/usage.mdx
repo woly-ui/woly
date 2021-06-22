@@ -29,20 +29,20 @@ As a standalone component, the most common use will be in some form of input.
 
 ### Weight and priority
 
-Chip can be represented in primary, secondary, default or tertiary variants and can be styled with fill or outline.
-In case of choosing chip in tertiary variant with outline styles use the opposite background color to the text color of chip.
+Chip can be represented in primary, secondary, default or tertiary prioritys and can be styled with fill or outline.
+In case of choosing chip in tertiary priority with outline styles use the opposite background color to the text color of chip.
 
 <Playground direction="horizontal" size="XS">
-  <Chip text="Simple Chip" variant="primary" />
-  <Chip text="Simple Chip" variant="secondary" />
-  <Chip text="Simple Chip" variant="default" />
-  <Chip text="Simple Chip" variant="tertiary" />
+  <Chip text="Simple Chip" priority="primary" />
+  <Chip text="Simple Chip" priority="secondary" />
+  <Chip text="Simple Chip" priority="default" />
+  <Chip text="Simple Chip" priority="tertiary" />
 </Playground>
 
 <Playground direction="horizontal" size="XS">
-  <Chip outlined text="Simple Chip" variant="primary" />
-  <Chip outlined text="Simple Chip" variant="secondary" />
-  <Chip outlined text="Simple Chip" variant="default" />
+  <Chip outlined text="Simple Chip" priority="primary" />
+  <Chip outlined text="Simple Chip" priority="secondary" />
+  <Chip outlined text="Simple Chip" priority="default" />
 </Playground>
 
 ### Clickable
@@ -55,18 +55,18 @@ Also, not only chip`s text can be interactive, the chip can include inside in ow
 eg button-icon.
 
 <Playground direction="horizontal" size="S">
-  <Chip onClick={() => console.info('click')} text="Click chip" variant="primary" />
+  <Chip onClick={() => console.info('click')} text="Click chip" priority="primary" />
   <Chip
     rightIcon={
       <ButtonIcon
         filled
         icon={<IconClose />}
         onClick={() => console.info('IconClose clicked')}
-        variant="primary"
+        priority="primary"
       />
     }
     text="Click button"
-    variant="primary"
+    priority="primary"
   />
   <Chip
     onClick={() => console.info('click')}
@@ -75,27 +75,27 @@ eg button-icon.
         filled
         icon={<IconClose />}
         onClick={() => console.info('IconClose clicked')}
-        variant="primary"
+        priority="primary"
       />
     }
     text="Clicked chip and button"
-    variant="primary"
+    priority="primary"
   />
 </Playground>
 
 <Playground direction="horizontal" size="S">
-  <Chip onClick={() => console.info('click')} outlined text="Click chip" variant="primary" />
+  <Chip onClick={() => console.info('click')} outlined text="Click chip" priority="primary" />
   <Chip
     outlined
     rightIcon={
       <ButtonIcon
         icon={<IconClose />}
         onClick={() => console.info('IconClose clicked')}
-        variant="secondary"
+        priority="secondary"
       />
     }
     text="Click button"
-    variant="secondary"
+    priority="secondary"
   />
   <Chip
     onClick={() => console.info('click')}
@@ -104,11 +104,11 @@ eg button-icon.
       <ButtonIcon
         icon={<IconClose />}
         onClick={() => console.info('IconClose clicked')}
-        variant="default"
+        priority="default"
       />
     }
     text="Clicked chip and button"
-    variant="default"
+    priority="default"
   />
 </Playground>
 
@@ -125,11 +125,11 @@ pass the disable state only to it, make the entire component disable.
         disabled
         icon={<IconClose />}
         onClick={() => console.info('IconClose clicked')}
-        variant="primary"
+        priority="primary"
       />
     }
     text="Disabled chip button"
-    variant="primary"
+    priority="primary"
   />
   <Chip
     disabled
@@ -139,11 +139,11 @@ pass the disable state only to it, make the entire component disable.
         filled
         icon={<IconClose />}
         onClick={() => console.info('IconClose clicked')}
-        variant="primary"
+        priority="primary"
       />
     }
     text="Disabled chip button"
-    variant="default"
+    priority="default"
   />
 </Playground>
 
@@ -153,12 +153,12 @@ pass the disable state only to it, make the entire component disable.
 Aslo, chip can contain some other interactive component such like a button. As usual it represents on the right side of chip.
 
 <Playground direction="horizontal" size="S">
-  <Chip leftIcon={<IconPlus />} text="Chip with icon" variant="primary" />
+  <Chip leftIcon={<IconPlus />} text="Chip with icon" priority="primary" />
   <Chip
     leftIcon={<IconPlus />}
     onClick={() => console.info('click')}
     text="Clicked Chip & icon"
-    variant="primary"
+    priority="primary"
   />
   <Chip
     leftIcon={<IconPlus />}
@@ -168,11 +168,11 @@ Aslo, chip can contain some other interactive component such like a button. As u
         filled
         icon={<IconClose />}
         onClick={(event) => console.info('IconClose clicked')}
-        variant="primary"
+        priority="primary"
       />
     }
     text="Chip with icon"
-    variant="primary"
+    priority="primary"
   />
   <Chip
     disabled
@@ -182,11 +182,11 @@ Aslo, chip can contain some other interactive component such like a button. As u
         disabled
         icon={<IconClose />}
         onClick={(event) => console.info('IconClose clicked')}
-        variant="primary"
+        priority="primary"
       />
     }
     text="Chip with icon"
-    variant="primary"
+    priority="primary"
   />
 </Playground>
 
@@ -205,11 +205,11 @@ Small chips can be used as standalone components, chips of other sizes are used 
           filled
           icon={<IconClose />}
           onClick={(event) => console.info('IconClose clicked')}
-          variant="primary"
+          priority="primary"
         />
       }
       text="Chip with icon"
-      variant="primary"
+      priority="primary"
     />
   </block.N>
   <block.XS>
@@ -221,11 +221,11 @@ Small chips can be used as standalone components, chips of other sizes are used 
           filled
           icon={<IconClose />}
           onClick={(event) => console.info('IconClose clicked')}
-          variant="primary"
+          priority="primary"
         />
       }
       text="Chip with icon"
-      variant="primary"
+      priority="primary"
     />
   </block.XS>
   <block.S>
@@ -237,11 +237,11 @@ Small chips can be used as standalone components, chips of other sizes are used 
           filled
           icon={<IconClose />}
           onClick={(event) => console.info('IconClose clicked')}
-          variant="primary"
+          priority="primary"
         />
       }
       text="Chip with icon"
-      variant="primary"
+      priority="primary"
     />
   </block.S>
 </Playground>
@@ -258,6 +258,6 @@ Small chips can be used as standalone components, chips of other sizes are used 
 | `leftIcon`  | `React.ReactNode`                  | `null`        | Component to show on the left side of the text (ex.: icon)               |
 | `onClick`   | `React.MouseEvent<HTMLDivElement>` | `null`        | Callback when chip is clicked                                            |
 | `outlined`  | `boolean`                          | `false`       | Change chip`s view from filled to outlined                               |
+| `priority`  | `string`                           | `'secondary'` | Priority prop to style Chip component                                    |
 | `rightIcon` | `React.ReactNode`                  | `null`        | Component to show on the right side of the text (ex.: icon, icon-button) |
 | `text`      | `string`                           |               | Text inside chip                                                         |
-| `variant`   | `string`                           | `'secondary'` | Variant prop to style Chip component                                     |

@@ -14,11 +14,13 @@ Switch is used to choose between two different options.
 <Playground direction="horizontal">
   <State initial={false} change={(i) => !i}>
     {(value, change) => (
-      <Switch id="unchecked" checked={value} onChange={change} variant="primary" />
+      <Switch id="unchecked" checked={value} onChange={change} priority="primary" />
     )}
   </State>
   <State initial={true} change={(i) => !i}>
-    {(value, change) => <Switch id="checked" checked={value} onChange={change} variant="primary" />}
+    {(value, change) => (
+      <Switch id="checked" checked={value} onChange={change} priority="primary" />
+    )}
   </State>
   <State initial={false} change={(i) => !i}>
     {(value, change) => (
@@ -26,14 +28,14 @@ Switch is used to choose between two different options.
         id="disabled-unchecked"
         checked={value}
         onChange={change}
-        variant="primary"
+        priority="primary"
         disabled
       />
     )}
   </State>
   <State initial={true} change={(i) => !i}>
     {(value, change) => (
-      <Switch id="disabled-checked" checked={value} onChange={change} variant="primary" disabled />
+      <Switch id="disabled-checked" checked={value} onChange={change} priority="primary" disabled />
     )}
   </State>
 </Playground>
@@ -51,23 +53,23 @@ Switch is used to choose between two different options.
           background: value ? 'black' : 'white',
         }}
       >
-        <Label style={{ paddingRight: '20px' }} variant={value ? 'primary' : 'secondary'}>
+        <Label style={{ paddingRight: '20px' }} priority={value ? 'primary' : 'secondary'}>
           Dark mode
         </Label>
-        <Switch id="set-mode" checked={value} onChange={change} variant="primary" />
+        <Switch id="set-mode" checked={value} onChange={change} priority="primary" />
       </div>
     )}
   </State>
 </Playground>
 
-### Variants
+### prioritys
 
-Error variant focus attention user on error
+Error priority focus attention user on error
 
 <Playground direction="horizontal">
   <State initial={false} change={(i) => !i}>
     {(value, change) => (
-      <Switch id="unchecked" checked={value} onChange={change} variant="danger" />
+      <Switch id="unchecked" checked={value} onChange={change} priority="danger" />
     )}
   </State>
 </Playground>
@@ -86,5 +88,5 @@ Error variant focus attention user on error
 | `disabled` | `boolean`                                    |               | Disable switch                                    |
 | `id`       | `string`                                     |               | HTML id attribute                                 |
 | `onChange` | `React.ChangeEventHandler<HTMLInputElement>` |               | Callback when switch is clicked                   |
-| `variant`  | `string`                                     | `'secondary'` | Variant prop to style Switch component            |
+| `priority` | `string`                                     | `'secondary'` | Priority prop to style Switch component           |
 | `...`      | `HTMLInputElement`                           | `{}`          | Other props are inherited from `HTMLInputElement` |

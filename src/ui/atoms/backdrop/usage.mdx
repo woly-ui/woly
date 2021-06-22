@@ -18,11 +18,11 @@ Modal based on `Backdrop`.
     {(value, change) => (
       <>
         <Button onClick={change} text="Open modal" />
-        <Modal visible={value} title="Change customer" onClose={change} variant="primary">
+        <Modal visible={value} title="Change customer" onClose={change} priority="primary">
           <form autoComplete="off">
             <Field label="Customer name">
               <Input
-                variant="primary"
+                priority="primary"
                 name="name"
                 onChange={(event) => console.info('On name change')}
                 placeholder="Name"
@@ -31,7 +31,7 @@ Modal based on `Backdrop`.
             </Field>
             <Field label="Customer email">
               <Input
-                variant="primary"
+                priority="primary"
                 name="email"
                 onChange={(event) => console.info('On email change')}
                 placeholder="Email"
@@ -39,8 +39,8 @@ Modal based on `Backdrop`.
               />
             </Field>
             <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-              <Button onClick={() => alert('Change clicked!')} text="Change" variant="primary" />
-              <Button onClick={change} text="Cancel" variant="primary" outlined />
+              <Button onClick={() => alert('Change clicked!')} text="Change" priority="primary" />
+              <Button onClick={change} text="Cancel" priority="primary" outlined />
             </div>
           </form>
         </Modal>
@@ -51,6 +51,6 @@ Modal based on `Backdrop`.
 
 ### Props
 
-| Name      | Type     | Default       | Description                              |
-| --------- | -------- | ------------- | ---------------------------------------- |
-| `variant` | `string` | `'secondary'` | Variant prop to style Backdrop component |
+| Name       | Type     | Default       | Description                               |
+| ---------- | -------- | ------------- | ----------------------------------------- |
+| `priority` | `string` | `'secondary'` | Priority prop to style Backdrop component |

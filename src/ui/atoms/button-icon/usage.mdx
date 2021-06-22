@@ -39,37 +39,31 @@ Button-icon's size can controlled by block-container and it`s width is equal to 
     <ButtonIcon
       icon={<IconSearch />}
       onClick={() => console.info('ButtonIcon clicked')}
-      variant="primary"
+      priority="default"
     />
   </block.N>
   <block.XS>
     <ButtonIcon
-      icon={<IconSearch />}
+      icon={<IconEyeOpened />}
       onClick={() => console.info('ButtonIcon clicked')}
-      variant="primary"
+      priority="primary"
     />
   </block.XS>
   <block.S>
     <ButtonIcon
       icon={<IconSearch />}
       onClick={() => console.info('ButtonIcon clicked')}
-      variant="primary"
+      priority="secondary"
     />
   </block.S>
   <block.M>
     <ButtonIcon
       icon={<IconEyeOpened />}
       onClick={() => console.info('ButtonIcon clicked')}
-      variant="primary"
+      priority="primary"
+      disabled
     />
   </block.M>
-  <block.L>
-    <ButtonIcon
-      icon={<IconEyeOpened />}
-      onClick={() => console.info('ButtonIcon clicked')}
-      variant="primary"
-    />
-  </block.L>
 </Playground>
 
 ### Weight and priority
@@ -81,40 +75,40 @@ In case of choosing button-icon in tertiary variant with outline styles use the 
   <ButtonIcon
     icon={<IconSearch />}
     onClick={() => console.info('ButtonIcon clicked')}
-    variant="primary"
+    priority="secondary"
   />
   <ButtonIcon
     icon={<IconSearch />}
     onClick={() => console.info('ButtonIcon clicked')}
-    variant="primary"
+    priority="secondary"
     outlined
   />
   <ButtonIcon
     icon={<IconSearch />}
     onClick={() => console.info('ButtonIcon clicked')}
-    variant="danger"
+    priority="primary"
   />
   <ButtonIcon
     icon={<IconSearch />}
     onClick={() => console.info('ButtonIcon clicked')}
-    variant="danger"
+    priority="primary"
     outlined
   />
   <ButtonIcon
     icon={<IconSearch />}
     onClick={() => console.info('ButtonIcon clicked')}
-    variant="secondary"
+    priority="default"
   />
   <ButtonIcon
     icon={<IconSearch />}
     onClick={() => console.info('ButtonIcon clicked')}
-    variant="secondary"
+    priority="default"
     outlined
   />
   <ButtonIcon
     icon={<IconSearch />}
     onClick={() => console.info('ButtonIcon clicked')}
-    variant="tertiary"
+    priority="tertiary"
   />
 </Playground>
 
@@ -126,8 +120,8 @@ In case of choosing button-icon in tertiary variant with outline styles use the 
 
 | Name       | Type                                         | Default       | Description                                        |
 | ---------- | -------------------------------------------- | ------------- | -------------------------------------------------- |
-| `icon`     | `React.ReactNode`                            |               | Set the icon component inside the button           |
+| `icon`     | `React.ReactNode`                            | `null`        | Set the icon component inside the button           |
 | `onClick`  | `React.MouseEventHandler<HTMLButtonElement>` |               | Callback when button clicked                       |
 | `outlined` | `boolean`                                    | `false`       | Change button-icon`s view from filled to outlined  |
-| `variant`  | `string`                                     | `'secondary'` | Variant prop to style ButtonIcon component         |
+| `priority` | `string`                                     | `'secondary'` | Priority prop to style ButtonIcon component        |
 | `...`      | `HTMLButtonElement`                          | `{}`          | Other props are inherited from `HTMLButtonElement` |

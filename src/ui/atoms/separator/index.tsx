@@ -1,9 +1,9 @@
 import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
-import { Variant } from 'lib/types';
+import { Priority } from 'lib/types';
 
-const SeparatorBase: React.FC<{ className: string } & Variant> = ({ className, variant }) => (
-  <div className={className} data-variant={variant}>
+const SeparatorBase: React.FC<{ className: string } & Priority> = ({ className, priority }) => (
+  <div className={className} data-priority={priority}>
     <div data-line />
   </div>
 );
@@ -19,4 +19,4 @@ export const Separator = styled(SeparatorBase)`
 
     background: var(--woly-canvas-disabled);
   }
-` as StyledComponent<'div', Record<string, unknown>, Variant>;
+` as StyledComponent<'div', Record<string, unknown>, Priority>;

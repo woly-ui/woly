@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
+import { Priority } from 'lib/types';
 import { Surface } from 'ui/atoms';
-import { Variant } from 'lib/types';
 import { positionRelativeGet } from 'lib';
 
 interface Props {
@@ -13,13 +13,13 @@ interface Props {
 
 type PopoverPositionType = 'top' | 'bottom';
 
-const PopoverBase: React.FC<Props & Variant> = ({
+const PopoverBase: React.FC<Props & Priority> = ({
   children,
   className,
   content,
   isOpen,
   position = 'bottom',
-  variant = 'secondary',
+  priority = 'secondary',
 }) => {
   const ref = React.useRef<HTMLDivElement>(null);
 
@@ -81,7 +81,7 @@ const PopoverBase: React.FC<Props & Variant> = ({
         data-popover
         data-open={isVisible}
         data-position={popoverPosition}
-        data-variant={variant}
+        data-priority={priority}
       >
         {content}
       </Surface>
@@ -117,4 +117,4 @@ export const Popover = styled(PopoverBase)`
   & > [data-position='bottom'] {
     top: var(--popover-position);
   }
-` as StyledComponent<'div', Record<string, unknown>, Props & Variant>;
+` as StyledComponent<'div', Record<string, unknown>, Props & Priority>;

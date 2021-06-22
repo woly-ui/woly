@@ -1,6 +1,6 @@
 import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
-import { Variant } from 'lib/types';
+import { Priority } from 'lib/types';
 import { box } from 'ui/elements';
 
 interface ChipProps {
@@ -13,15 +13,15 @@ interface ChipProps {
   rightIcon?: React.ReactNode;
 }
 
-const ChipBase: React.FC<ChipProps & Variant> = ({
-  text,
+const ChipBase: React.FC<ChipProps & Priority> = ({
   className,
   disabled,
   leftIcon,
   onClick,
   outlined,
+  priority = 'secondary',
   rightIcon,
-  variant = 'secondary',
+  text,
 }) => {
   const chipRole = onClick ? 'button' : 'div';
   const chipTabIndex = onClick ? 0 : -1;
@@ -39,7 +39,7 @@ const ChipBase: React.FC<ChipProps & Variant> = ({
       className={className}
       data-disabled={disabled}
       data-outlined={outlined}
-      data-variant={variant}
+      data-priority={priority}
     >
       {leftIcon && (
         <div data-icon="chip-visual-block" onClick={onClick} onKeyDown={onKeyDown}>
@@ -157,4 +157,4 @@ export const Chip = styled(ChipBase)`
 
     pointer-events: none;
   }
-` as StyledComponent<'div', Record<string, unknown>, ChipProps & Variant>;
+` as StyledComponent<'div', Record<string, unknown>, ChipProps & Priority>;

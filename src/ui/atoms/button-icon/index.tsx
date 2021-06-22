@@ -1,6 +1,6 @@
 import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
-import { Variant } from 'lib/types';
+import { Priority } from 'lib/types';
 import { box } from 'ui/elements';
 
 interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -10,16 +10,16 @@ interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   outlined?: boolean;
 }
 
-const ButtonIconBase: React.FC<Props & Variant> = ({
+const ButtonIconBase: React.FC<Props & Priority> = ({
   icon,
   onClick,
   outlined = false,
-  variant = 'secondary',
+  priority = 'secondary',
   ...p
 }) => (
   <button
     data-outlined={outlined}
-    data-variant={variant}
+    data-priority={priority}
     onClick={onClick}
     role="button"
     type="button"
@@ -84,6 +84,7 @@ export const ButtonIcon = styled(ButtonIconBase)`
   }
 
   &:disabled {
+    pointer-events: none;
     --local-shape-color: var(--woly-canvas-disabled);
     --local-icon-color: var(--woly-shape-text-disabled);
   }
@@ -114,4 +115,4 @@ export const ButtonIcon = styled(ButtonIconBase)`
       --local-icon-color: var(--woly-canvas-text-disabled);
     }
   }
-` as StyledComponent<'button', Record<string, unknown>, Props & Variant>;
+` as StyledComponent<'button', Record<string, unknown>, Props & Priority>;

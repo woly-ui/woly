@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
 import { InputContainer, InputElement } from 'ui/elements';
-import { Variant } from 'lib/types';
+import { Priority } from 'lib/types';
 
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   autoComplete?: 'on' | 'off';
@@ -16,7 +16,7 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   value?: HTMLInputElement['value'];
 }
 
-const InputBase: React.FC<InputProps & Variant> = ({
+const InputBase: React.FC<InputProps & Priority> = ({
   autoComplete = 'off',
   className,
   disabled = false,
@@ -24,10 +24,10 @@ const InputBase: React.FC<InputProps & Variant> = ({
   name,
   onChange,
   placeholder,
+  priority = 'secondary',
   rightIcon,
   type = 'text',
   value,
-  variant = 'secondary',
 }) => (
   <InputContainer
     className={className}
@@ -35,7 +35,7 @@ const InputBase: React.FC<InputProps & Variant> = ({
     leftIcon={leftIcon}
     onChange={onChange}
     rightIcon={rightIcon}
-    variant={variant}
+    priority={priority}
   >
     <InputElement
       autoComplete={autoComplete}
@@ -57,4 +57,4 @@ export const Input = styled(InputBase)`
   &[data-disabled='true'] {
     pointer-events: none;
   }
-` as StyledComponent<'div', Record<string, unknown>, InputProps & Variant>;
+` as StyledComponent<'div', Record<string, unknown>, InputProps & Priority>;

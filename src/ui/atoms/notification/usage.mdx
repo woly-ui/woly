@@ -19,10 +19,10 @@ import { Playground, block, StateEvent, State } from 'lib/playground';
         <Button
           onClick={change}
           text={value ? 'hide notification' : 'show notification'}
-          variant="primary"
+          priority="primary"
         />
         <div style={{ display: value ? 'block' : 'none' }}>
-          <Notification message="Your transaction has been completed" variant="primary" />
+          <Notification message="Your transaction has been completed" priority="primary" />
         </div>
       </block.S>
     )}
@@ -37,7 +37,7 @@ import { Playground, block, StateEvent, State } from 'lib/playground';
 
 ### Props
 
-| Name      | Type              | Default       | Description                                  |
-| --------- | ----------------- | ------------- | -------------------------------------------- |
-| `message` | `React.ReactNode` |               | Message that will be shown in notification   |
-| `variant` | `string`          | `'secondary'` | Variant prop to style Notification component |
+| Name       | Type              | Default       | Description                                   |
+| ---------- | ----------------- | ------------- | --------------------------------------------- |
+| `message`  | `React.ReactNode` |               | Message that will be shown in notification    |
+| `priority` | `string`          | `'secondary'` | Priority prop to style Notification component |

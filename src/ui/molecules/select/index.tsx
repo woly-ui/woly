@@ -1,6 +1,6 @@
 import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
-import { Variant } from 'lib/types';
+import { Priority } from 'lib/types';
 import { box } from 'ui/elements';
 import { keyHandlerGet, keyboardEventHandle } from 'lib';
 
@@ -21,7 +21,7 @@ interface SelectProps {
   selected: string | null;
 }
 
-export const SelectBase: React.FC<SelectProps & Variant> = ({
+export const SelectBase: React.FC<SelectProps & Priority> = ({
   className,
   disabled = false,
   icon,
@@ -30,8 +30,8 @@ export const SelectBase: React.FC<SelectProps & Variant> = ({
   onFocus,
   options,
   placeholder = '',
+  priority = 'secondary',
   selected,
-  variant = 'secondary',
 }) => {
   const [isOpen, setIsOpen] = React.useReducer((is) => !is, false);
   const selectRef = React.useRef(null);
@@ -72,7 +72,7 @@ export const SelectBase: React.FC<SelectProps & Variant> = ({
       data-disabled={disabled}
       data-open={isOpen}
       data-select
-      data-variant={variant}
+      data-priority={priority}
       onBlur={onBlur}
       onClick={setIsOpen}
       onFocus={onFocus}
@@ -232,4 +232,4 @@ export const Select = styled(SelectBase)`
     --local-background: var(--woly-canvas-disabled);
     --local-border-input-color: var(--woly-canvas-text-disabled);
   }
-` as StyledComponent<'div', Record<string, unknown>, SelectProps & Variant>;
+` as StyledComponent<'div', Record<string, unknown>, SelectProps & Priority>;

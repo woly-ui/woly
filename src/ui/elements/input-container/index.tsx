@@ -1,6 +1,6 @@
 import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
-import { Variant } from 'lib/types';
+import { Priority } from 'lib/types';
 
 import { box } from '../box';
 
@@ -11,15 +11,15 @@ interface InputContainerProps extends React.InputHTMLAttributes<HTMLInputElement
   rightIcon?: React.ReactNode;
 }
 
-const InputContainerBase: React.FC<InputContainerProps & Variant> = ({
+const InputContainerBase: React.FC<InputContainerProps & Priority> = ({
   children,
   className,
   disabled = 'false',
   leftIcon,
+  priority = 'secondary',
   rightIcon,
-  variant = 'secondary',
 }) => (
-  <div className={className} data-disabled={disabled} data-variant={variant}>
+  <div className={className} data-disabled={disabled} data-priority={priority}>
     {leftIcon && <span data-icon="left">{leftIcon}</span>}
     <div data-input="input">{children}</div>
     {rightIcon && <span data-icon="right">{rightIcon}</span>}
@@ -91,4 +91,4 @@ export const InputContainer = styled(InputContainerBase)`
     --local-border-color: var(--woly-shape-disabled);
     --local-value-color: var(--woly-canvas-text-disabled);
   }
-` as StyledComponent<'div', Record<string, unknown>, InputContainerProps & Variant>;
+` as StyledComponent<'div', Record<string, unknown>, InputContainerProps & Priority>;

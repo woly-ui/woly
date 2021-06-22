@@ -78,7 +78,7 @@ To set number of columns pass `columns` prop to the Table component.
 
 <Playground>
   <block.L style={{ background: '#f5f5f5', padding: '20px' }}>
-    <Table columns={tableHead.length} variant="primary">
+    <Table columns={tableHead.length} priority="primary">
       <Thead>
         <Tr>
           {tableHead.map(({ id, name }) => (
@@ -104,16 +104,16 @@ To set number of columns pass `columns` prop to the Table component.
 | Name    | Description        |
 | ------- | ------------------ |
 | `Table` | Table component    |
-| `Thead` | Head of table      |
 | `Tbody` | Body of table      |
-| `Th`    | Head cell of table |
-| `Tr`    | Row of table       |
 | `Td`    | Cell of table      |
+| `Th`    | Head cell of table |
+| `Thead` | Head of table      |
+| `Tr`    | Row of table       |
 
 ### Table Props
 
 | Name       | Type              | Default       | Description                                                     |
 | ---------- | ----------------- | ------------- | --------------------------------------------------------------- |
-| `variant`  | `string`          | `'secondary'` | Variant prop to style Table component                           |
-| `columns`  | `number`          |               | Number of columns in table                                      |
 | `children` | `React.ReactNode` |               | Pass any content as a children property within Table component. |
+| `columns`  | `number`          |               | Number of columns in table                                      |
+| `priority` | `string`          | `'secondary'` | Priority prop to style Table component                          |

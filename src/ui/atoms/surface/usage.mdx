@@ -36,7 +36,7 @@ Sign in form based on `Surface`.
   <State initial={false} change={(i) => !i}>
     {(value, change) => (
       <block.S style={{ padding: '20px' }}>
-        <Button onClick={change} text="Sign in" variant="primary" />
+        <Button onClick={change} text="Sign in" priority="primary" />
         <div
           style={{
             visibility: value ? 'visible' : 'hidden',
@@ -45,26 +45,26 @@ Sign in form based on `Surface`.
         >
           <Surface>
             <FormBlock>
-              <Label variant="primary">Name</Label>
+              <Label priority="primary">Name</Label>
               <Input
                 name="name"
                 onChange={() => console.info('On input change')}
                 placeholder="Ivan Ivanov"
                 type="text"
-                variant="primary"
+                priority="primary"
               />
-              <Label variant="primary">Password</Label>
+              <Label priority="primary">Password</Label>
               <Input
                 name="password"
                 onChange={() => console.info('On input change')}
                 type="password"
-                variant="primary"
+                priority="primary"
               />
               <Button
                 style={{ marginTop: '20px' }}
                 onClick={() => {}}
                 text="Sign in"
-                variant="primary"
+                priority="primary"
               />
             </FormBlock>
           </Surface>
@@ -84,7 +84,7 @@ Aside menu based on `Surface`.
       <block.S style={{ paddingLeft: '320px', position: 'relative', height: '300px' }}>
         <ButtonIcon
           onClick={change}
-          variant="secondary"
+          priority="secondary"
           style={{ position: 'absolute', left: 0, zIndex: 1 }}
           icon={
             <div
@@ -126,5 +126,5 @@ Aside menu based on `Surface`.
 
 | Name       | Type              | Default       | Description                                                       |
 | ---------- | ----------------- | ------------- | ----------------------------------------------------------------- |
-| `variant`  | `string`          | `'secondary'` | Variant prop to style Popover component                           |
 | `children` | `React.ReactNode` |               | Pass any content as a children property within Surface component. |
+| `priority` | `string`          | `'secondary'` | Priority prop to style Surface component                          |

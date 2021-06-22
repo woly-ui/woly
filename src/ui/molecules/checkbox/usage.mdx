@@ -24,7 +24,7 @@ Use a checkbox when the user has to stop before performing an action. Checkbox w
 <Playground>
   <State initial={false} change={(i) => !i}>
     {(value, change) => (
-      <Checkbox checked={value} id="simple" onChange={change} text="Simple" variant="primary" />
+      <Checkbox checked={value} id="simple" onChange={change} text="Simple" priority="primary" />
     )}
   </State>
 </Playground>
@@ -38,13 +38,19 @@ Size controlled by the `component-level` block property not from the props.
     {(value, change) => (
       <>
         <block.S>
-          <Checkbox checked={value} id="small" onChange={change} text="Small" variant="primary" />
+          <Checkbox checked={value} id="small" onChange={change} text="Small" priority="primary" />
         </block.S>
         <block.M>
-          <Checkbox checked={value} id="medium" onChange={change} text="Medium" variant="primary" />
+          <Checkbox
+            checked={value}
+            id="medium"
+            onChange={change}
+            text="Medium"
+            priority="primary"
+          />
         </block.M>
         <block.L>
-          <Checkbox checked={value} id="large" onChange={change} text="Large" variant="primary" />
+          <Checkbox checked={value} id="large" onChange={change} text="Large" priority="primary" />
         </block.L>
         <block.XL>
           <Checkbox
@@ -52,33 +58,33 @@ Size controlled by the `component-level` block property not from the props.
             id="extra"
             onChange={change}
             text="Extra large"
-            variant="primary"
+            priority="primary"
           />
         </block.XL>
         <block.H>
-          <Checkbox checked={value} id="huge" onChange={change} text="Huge" variant="primary" />
+          <Checkbox checked={value} id="huge" onChange={change} text="Huge" priority="primary" />
         </block.H>
       </>
     )}
   </State>
 </Playground>
 
-### Variants
+### prioritys
 
-Primary variant should be used to focus user attention. The disabled checkbox is unusable and un-clickable.
+Primary priority should be used to focus user attention. The disabled checkbox is unusable and un-clickable.
 
 <Playground size="S">
   <State initial={false} change={(i) => !i}>
     {(value, change) => (
       <>
-        <Checkbox checked onChange={change} id="primary" text="Primary" variant="primary" />
+        <Checkbox checked onChange={change} id="primary" text="Primary" priority="primary" />
         <Checkbox
           checked
           onChange={change}
           disabled
           id="disabled"
           text="Disabled"
-          variant="primary"
+          priority="primary"
         />
       </>
     )}
@@ -94,5 +100,5 @@ Primary variant should be used to focus user attention. The disabled checkbox is
 | `id`        | `string`                                     |               | HTML id attribute                                                            |
 | `onChange`  | `React.ChangeEventHandler<HTMLInputElement>` |               | Callback when checkbox is clicked                                            |
 | `onKeyDown` |                                              |               | The onKeydown event occurs when the user is pressing a key (on the keyboard) |
+| `priority`  | `string`                                     | `'secondary'` | Priority prop to style Checkbox component                                    |
 | `text`      | `string`                                     |               | Text component                                                               |
-| `variant`   | `string`                                     | `'secondary'` | Variant prop to style Checkbox component                                     |

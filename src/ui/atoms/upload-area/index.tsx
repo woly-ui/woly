@@ -1,20 +1,20 @@
 import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
-import { Variant } from 'lib/types';
+import { Priority } from 'lib/types';
 
 interface UploadAreaProps {
-  className?: string;
   center?: boolean;
+  className?: string;
   content?: React.ReactNode;
 }
 
-const UploadAreaBase: React.FC<UploadAreaProps & Variant> = ({
-  className,
+const UploadAreaBase: React.FC<UploadAreaProps & Priority> = ({
   center = false,
+  className,
   content,
-  variant = 'default',
+  priority = 'default',
 }) => (
-  <div className={className} data-variant={variant} tabIndex={0}>
+  <div className={className} data-priority={priority} tabIndex={0}>
     <div data-content data-center={center}>
       <div data-overlay />
       {content}
@@ -62,4 +62,4 @@ export const UploadArea = styled(UploadAreaBase)`
       transform: translate(-50%, -50%);
     }
   }
-` as StyledComponent<'div', Record<string, unknown>, UploadAreaProps & Variant>;
+` as StyledComponent<'div', Record<string, unknown>, UploadAreaProps & Priority>;

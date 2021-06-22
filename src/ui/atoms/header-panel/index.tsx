@@ -1,8 +1,8 @@
 import styled, { StyledComponent } from 'styled-components';
-import { Variant } from 'lib/types';
+import { Priority } from 'lib/types';
 
-const map = (properties: Variant) => ({
-  'data-variant': properties.variant || 'secondary',
+const map = (properties: Priority) => ({
+  'data-priority': properties.priority || 'secondary',
 });
 
 export const HeaderPanel = styled.div.attrs(map)`
@@ -23,4 +23,4 @@ export const HeaderPanel = styled.div.attrs(map)`
   --local-horizontal: calc(
     var(--woly-const-m) + (1px * var(--woly-main-level)) + var(--local-vertical)
   );
-` as StyledComponent<'div', Record<string, unknown>, Variant>;
+` as StyledComponent<'div', Record<string, unknown>, Priority>;

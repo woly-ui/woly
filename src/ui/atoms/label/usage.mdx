@@ -21,15 +21,15 @@ This increased hit area provides an advantage to anyone trying to activate the i
 ### Example
 
 <Playground>
-  <Label variant="secondary">Base label</Label>
+  <Label priority="secondary">Base label</Label>
 </Playground>
 
-### Variants
+### prioritys
 
-Error variant can be used to focus user attention on error.
+Error priority can be used to focus user attention on error.
 
 <Playground>
-  <Label variant="danger">Error label</Label>
+  <Label priority="danger">Error label</Label>
 </Playground>
 
 ### Kinds
@@ -40,7 +40,7 @@ Error variant can be used to focus user attention on error.
 
 ### Props
 
-| Name      | Type               | Default       | Description                                       |
-| --------- | ------------------ | ------------- | ------------------------------------------------- |
-| `variant` | `string`           | `'secondary'` | Variant prop to style Input component             |
-| `...`     | `HTMLLabelElement` | `{}`          | Other props are inherited from `HTMLLabelElement` |
+| Name       | Type               | Default       | Description                                       |
+| ---------- | ------------------ | ------------- | ------------------------------------------------- |
+| `priority` | `string`           | `'secondary'` | Priority prop to style Label component            |
+| `...`      | `HTMLLabelElement` | `{}`          | Other props are inherited from `HTMLLabelElement` |

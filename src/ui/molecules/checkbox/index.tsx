@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
 import { IconCheckFilled, IconFilledUnchecked } from 'static/icons';
-import { Variant, keyboardEventHandle } from 'lib';
+import { Priority, keyboardEventHandle } from 'lib';
 import { box } from 'ui/elements/box';
 
 interface CheckboxProps {
@@ -13,14 +13,14 @@ interface CheckboxProps {
   text?: string;
 }
 
-const CheckboxBase: React.FC<CheckboxProps & Variant> = ({
+const CheckboxBase: React.FC<CheckboxProps & Priority> = ({
+  checked,
   className,
   disabled,
   id,
-  checked,
   onChange,
+  priority = 'secondary',
   text,
-  variant = 'secondary',
 }) => {
   const tabIndex = disabled ? -1 : 0;
 
@@ -47,7 +47,7 @@ const CheckboxBase: React.FC<CheckboxProps & Variant> = ({
     <label
       htmlFor={id}
       className={className}
-      data-variant={variant}
+      data-priority={priority}
       onKeyDown={onKeyDown}
       tabIndex={tabIndex}
     >
@@ -188,4 +188,4 @@ export const Checkbox = styled(CheckboxBase)`
       display: none;
     }
   }
-` as StyledComponent<'div', Record<string, unknown>, CheckboxProps & Variant>;
+` as StyledComponent<'div', Record<string, unknown>, CheckboxProps & Priority>;

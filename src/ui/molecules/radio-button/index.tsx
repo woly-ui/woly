@@ -1,6 +1,6 @@
 import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
-import { Variant } from 'lib/types';
+import { Priority } from 'lib/types';
 import { keyboardEventHandle } from 'lib';
 
 interface RadioButtonProps {
@@ -13,15 +13,15 @@ interface RadioButtonProps {
   name: string;
 }
 
-const RadioButtonBase: React.FC<RadioButtonProps & Variant> = ({
+const RadioButtonBase: React.FC<RadioButtonProps & Priority> = ({
+  checked,
   className,
   disabled = false,
   id,
-  checked,
-  onChange,
-  text,
   name,
-  variant = 'primary',
+  onChange,
+  priority = 'primary',
+  text,
   ...p
 }) => {
   const tabIndex = disabled ? -1 : 0;
@@ -49,7 +49,7 @@ const RadioButtonBase: React.FC<RadioButtonProps & Variant> = ({
     <div
       className={className}
       data-disabled={disabled}
-      data-variant={variant}
+      data-priority={priority}
       onKeyDown={onKeyDown}
       tabIndex={tabIndex}
     >
@@ -174,4 +174,4 @@ export const RadioButton = styled(RadioButtonBase)`
       --local-color-text: var(--woly-canvas-text-disabled);
     }
   }
-` as StyledComponent<'div', Record<string, unknown>, RadioButtonProps & Variant>;
+` as StyledComponent<'div', Record<string, unknown>, RadioButtonProps & Priority>;

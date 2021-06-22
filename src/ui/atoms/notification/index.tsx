@@ -1,18 +1,18 @@
 import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
-import { Variant } from 'lib/types';
+import { Priority } from 'lib/types';
 
 interface NotificationProps {
   className?: string;
   message: React.ReactNode;
 }
 
-const NotificationBase: React.FC<NotificationProps & Variant> = ({
+const NotificationBase: React.FC<NotificationProps & Priority> = ({
   className,
   message,
-  variant = 'secondary',
+  priority = 'secondary',
 }) => (
-  <div className={className} data-variant={variant}>
+  <div className={className} data-priority={priority}>
     <div>{message}</div>
   </div>
 );
@@ -51,4 +51,4 @@ export const Notification = styled(NotificationBase)`
     border: var(--woly-border-width) solid var(--local-border-color);
     border-radius: var(--woly-rounding);
   }
-` as StyledComponent<'div', Record<string, unknown>, NotificationProps & Variant>;
+` as StyledComponent<'div', Record<string, unknown>, NotificationProps & Priority>;

@@ -16,12 +16,12 @@ Modal component is used for creating dialogs.
   <State initial={false} change={(i) => !i}>
     {(value, change) => (
       <>
-        <Button icon={<IconSearch />} onClick={change} text="Click on me" variant="primary" />
-        <Modal visible={value} title="Change customer" onClose={change} variant="primary">
+        <Button icon={<IconSearch />} onClick={change} text="Click on me" priority="primary" />
+        <Modal visible={value} title="Change customer" onClose={change} priority="primary">
           <form autoComplete="off">
             <Field label="Customer name">
               <Input
-                variant="primary"
+                priority="primary"
                 name="name"
                 onChange={(event) => console.info('On name change')}
                 placeholder="Name"
@@ -30,7 +30,7 @@ Modal component is used for creating dialogs.
             </Field>
             <Field label="Customer email">
               <Input
-                variant="primary"
+                priority="primary"
                 name="email"
                 onChange={(event) => console.info('On email change')}
                 placeholder="Email"
@@ -38,8 +38,8 @@ Modal component is used for creating dialogs.
               />
             </Field>
             <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-              <Button onClick={() => alert('Change clicked!')} text="Change" variant="primary" />
-              <Button onClick={change} text="Cancel" variant="primary" outlined />
+              <Button onClick={() => alert('Change clicked!')} text="Change" priority="primary" />
+              <Button onClick={change} text="Cancel" priority="primary" outlined />
             </div>
           </form>
         </Modal>
@@ -50,10 +50,10 @@ Modal component is used for creating dialogs.
 
 ### Props
 
-| Name       | Type                                       | Default       | Description                           |
-| ---------- | ------------------------------------------ | ------------- | ------------------------------------- |
-| `onClose`  | `React.EventHandler<React.SyntheticEvent>` |               | Event handler on modal close          |
-| `title`    | `string`                                   |               | Title of modal                        |
-| `visible`  | `boolean`                                  | `false`       | Set initial visibility of Modal       |
-| `children` | `React.ReactNode`                          |               | Modal content                         |
-| `variant`  | `string`                                   | `'secondary'` | Variant prop to style Modal component |
+| Name       | Type                                       | Default       | Description                            |
+| ---------- | ------------------------------------------ | ------------- | -------------------------------------- |
+| `children` | `React.ReactNode`                          |               | Modal content                          |
+| `onClose`  | `React.EventHandler<React.SyntheticEvent>` |               | Event handler on modal close           |
+| `priority` | `string`                                   | `'secondary'` | Priority prop to style Modal component |
+| `title`    | `string`                                   |               | Title of modal                         |
+| `visible`  | `boolean`                                  | `false`       | Set initial visibility of Modal        |

@@ -47,7 +47,7 @@ If you scroll to the bottom of page and there is no place for Popover to show it
         isOpen={false}
         content={<div style={{ padding: '30px 50px' }}>Hello! This is Popover!</div>}
       >
-        <Button text="Open Popover" onClick={() => {}} variant="primary" />
+        <Button text="Open Popover" onClick={() => {}} priority="primary" />
       </Popover>
     </div>
     <Popover
@@ -55,7 +55,7 @@ If you scroll to the bottom of page and there is no place for Popover to show it
       position="top"
       content={<div style={{ padding: '30px 50px' }}>This is top Popover!</div>}
     >
-      <ButtonIcon icon={<IconSearch />} onClick={() => {}} variant="primary" />
+      <ButtonIcon icon={<IconSearch />} onClick={() => {}} priority="primary" />
     </Popover>
   </div>
 </Playground>
@@ -68,7 +68,7 @@ If you scroll to the bottom of page and there is no place for Popover to show it
       <Popover
         isOpen={false}
         content={
-          <ListContainer variant="primary" style={{ width: '100%' }} as="ul">
+          <ListContainer priority="primary" style={{ width: '100%' }} as="ul">
             {links.map(({ id, content, disabled }) => (
               <ListItem
                 as="a"
@@ -78,13 +78,13 @@ If you scroll to the bottom of page and there is no place for Popover to show it
                 iconRight={<IconInfo />}
                 key={id}
                 text={content}
-                variant="primary"
+                priority="primary"
               />
             ))}
           </ListContainer>
         }
       >
-        <Button text="Toggle menu" onClick={() => {}} variant="primary" />
+        <Button text="Toggle menu" onClick={() => {}} priority="primary" />
       </Popover>
     </div>
   </block.L>
@@ -111,7 +111,7 @@ If you scroll to the bottom of page and there is no place for Popover to show it
           </ul>
         }
       >
-        <Button text="Toggle menu" onClick={() => console.log('wow')} variant="primary" />
+        <Button text="Toggle menu" onClick={() => console.log('wow')} priority="primary" />
       </Popover>
     </div>
   </block.L>
@@ -119,10 +119,10 @@ If you scroll to the bottom of page and there is no place for Popover to show it
 
 ### Props
 
-| Name       | Type              | Default       | Description                             |
-| ---------- | ----------------- | ------------- | --------------------------------------- |
-| `children` | `React.ReactNode` |               | Trigger element of Popover              |
-| `content`  | `React.ReactNode` |               | Content of Popover                      |
-| `isOpen`   | `boolean`         | `'false'`     | Whether the component is visible or not |
-| `position` | `top or bottom`   | `'bottom'`    | Initial position of Popover             |
-| `variant`  | `string`          | `'secondary'` | Variant prop to style Popover component |
+| Name       | Type              | Default       | Description                              |
+| ---------- | ----------------- | ------------- | ---------------------------------------- |
+| `children` | `React.ReactNode` |               | Trigger element of Popover               |
+| `content`  | `React.ReactNode` |               | Content of Popover                       |
+| `isOpen`   | `boolean`         | `'false'`     | Whether the component is visible or not  |
+| `position` | `top or bottom`   | `'bottom'`    | Initial position of Popover              |
+| `priority` | `string`          | `'secondary'` | Priority prop to style Popover component |

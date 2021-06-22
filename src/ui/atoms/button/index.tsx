@@ -1,10 +1,10 @@
 /* eslint-disable react/button-has-type */
 import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
-import { Variant } from 'lib/types';
+import { Priority } from 'lib/types';
 import { box } from 'ui/elements';
 
-export type ButtonVariants =
+export type Buttonprioritys =
   | 'secondary'
   | 'primary'
   | 'default'
@@ -23,20 +23,20 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   text: React.ReactNode;
 }
 
-const ButtonBase: React.FC<ButtonProps & Variant> = ({
+const ButtonBase: React.FC<ButtonProps & Priority> = ({
   fullWidth = false,
   icon,
   outlined = false,
+  priority = 'secondary',
   text,
   type = 'button',
-  variant = 'secondary',
   ...p
 }) => (
   <button
     type={type}
     data-fullWidth={fullWidth}
     data-outlined={outlined}
-    data-variant={variant}
+    data-priority={priority}
     {...p}
   >
     {icon && <span data-icon="left">{icon}</span>}
@@ -114,4 +114,4 @@ export const Button = styled(ButtonBase)`
     --local-border-color: var(--woly-shape-disabled);
     --local-shape-color: var(--woly-shape-disabled);
   }
-` as StyledComponent<'button', Record<string, unknown>, ButtonProps & Variant>;
+` as StyledComponent<'button', Record<string, unknown>, ButtonProps & Priority>;

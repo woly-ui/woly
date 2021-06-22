@@ -18,7 +18,7 @@ Tooltip message is visible when user hover over component that is passed as a ch
       <Button
         onClick={() => console.info('Hi!')}
         text="Button"
-        variant="primary"
+        priority="primary"
         style={{ marginRight: '10px' }}
       />
     </Tooltip>
@@ -26,7 +26,7 @@ Tooltip message is visible when user hover over component that is passed as a ch
       <Button
         onClick={() => console.info('Hi!')}
         text="Button"
-        variant="primary"
+        priority="primary"
         style={{ marginRight: '10px' }}
       />
     </Tooltip>
@@ -34,16 +34,16 @@ Tooltip message is visible when user hover over component that is passed as a ch
       <Button
         onClick={() => console.info('Hi!')}
         text="Button"
-        variant="primary"
+        priority="primary"
         style={{ marginRight: '10px' }}
       />
     </Tooltip>
-    <Tooltip message="Подсказка" position="right" variant="primary">
+    <Tooltip message="Подсказка" position="right" priority="primary">
       <Input
         name="name"
         onChange={() => console.info('On input change')}
         type="text"
-        variant="primary"
+        priority="primary"
       />
     </Tooltip>
   </block.S>
@@ -56,5 +56,5 @@ Tooltip message is visible when user hover over component that is passed as a ch
 | `children` | `React.ReactElement`                  |               | The tooltip will be visible near `children` on hover |
 | `message`  | `string`                              |               | Message to show near component                       |
 | `position` | `"top" ӏ "left" ӏ"bottom" ӏ "right" ` |               | Width of tooltip block                               |
-| `variant`  | `string`                              | `'secondary'` | Variant prop to style Tooltip component              |
+| `priority` | `string`                              | `'secondary'` | Priority prop to style Tooltip component             |
 | `width`    | `number`                              |               | Width of tooltip block                               |
