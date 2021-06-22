@@ -30,7 +30,7 @@ import {IconInfo} from 'static/icons';
         name="adress"
         onChange={() => console.info('On input change')}
         type="text"
-        variant="primary"
+        priority="primary"
         value="г. Комсомольск на Амуре, ул. 1-го октября, д. 145, корп. 9, кв. 16"
       />
     </Tooltip>
@@ -38,7 +38,7 @@ import {IconInfo} from 'static/icons';
 </Playground>
 
 <Playground>
-  <block.L style={{ width: '1000px', paddingBottom: '400px' }}>
+  <block.L style={{ paddingBottom: '400px' }}>
     <Tooltip
       message={
         <>
@@ -54,11 +54,11 @@ import {IconInfo} from 'static/icons';
               <Button
                 onClick={() => alert('Hi!')}
                 text="Назад"
-                variant="secondary"
+                priority="secondary"
                 outlined
                 style={{ marginRight: '30px' }}
               />
-              <Button onClick={() => alert('Hi!')} text="Дальше" variant="secondary" />
+              <Button onClick={() => alert('Hi!')} text="Дальше" priority="secondary" />
             </block.S>
           </Box>
         </>
@@ -72,7 +72,7 @@ import {IconInfo} from 'static/icons';
             id="id"
             onChange={change}
             text="Согласие на обработку персональных данных"
-            variant="primary"
+            priority="primary"
           />
         )}
       </State>
@@ -84,7 +84,7 @@ import {IconInfo} from 'static/icons';
 
 <Playground>
   <Accordion
-    variant="primary"
+    priority="primary"
     isOpen={false}
     title={
       <Box>
@@ -112,7 +112,7 @@ import {IconInfo} from 'static/icons';
           name="name"
           placeholder="Please, left some comments"
           onChange={() => console.info('On textarea change')}
-          variant="primary"
+          priority="primary"
           overflow="hidden"
         />
       </Box>

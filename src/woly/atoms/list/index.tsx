@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
-import { box } from 'ui/atoms';
 import { Priority } from 'lib/types';
+import { box } from 'ui/atoms';
 
 interface ListElementsProps {
   iconLeft?: React.ReactNode;

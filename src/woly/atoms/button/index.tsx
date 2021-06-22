@@ -1,8 +1,8 @@
 /* eslint-disable react/button-has-type */
 import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
-import { box } from 'ui/atoms';
 import { Priority } from 'lib/types';
+import { box } from 'ui/atoms';
 
 export type Buttonprioritys =
   | 'secondary'

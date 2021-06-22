@@ -13,7 +13,7 @@ Use a `Loader` component whenever the wait time is anticipated to be longer than
   <State initial={false} change={(i) => !i}>
     {(value, change) => (
       <>
-        <Button text="Toggle loader" onClick={change} variant="primary" />
+        <Button text="Toggle loader" onClick={change} priority="primary" />
         {value ? (
           <div style={{ width: 300 }}>
             <Loader description={<Text type="S">Some action in progress...</Text>} />
@@ -38,7 +38,7 @@ Use a `Loader` component whenever the wait time is anticipated to be longer than
       value.loading ? (
         <div style={{ width: 300 }}>
           <Loader
-            variant="primary"
+            priority="primary"
             description={<Text weight="medium">Fetching users, please wait</Text>}
           />
         </div>
@@ -46,13 +46,17 @@ Use a `Loader` component whenever the wait time is anticipated to be longer than
         <>
           <UsersList data={value.data} style={{ marginBottom: 10 }} />
           <Button
-            variant="primary"
+            priority="primary"
             text="Reset"
             onClick={() => change({ loading: false, data: null })}
           />
         </>
       ) : (
-        <Button variant="primary" text="Fetch users" onClick={() => loadUsers({ value, change })} />
+        <Button
+          priority="primary"
+          text="Fetch users"
+          onClick={() => loadUsers({ value, change })}
+        />
       )
     }
   </StateEvent>
