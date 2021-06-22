@@ -1,0 +1,54 @@
+import {block, Playground} from 'lib/playground'
+import {Button, Input, Tooltip} from 'ui'
+
+`Tooltip` is used when you want to show addition information near component.
+Tooltip message is visible when user hover over component that is passed as a children to `Tooltip`.
+
+### Example
+
+<Playground>
+  <block.S style={{ display: 'flex', padding: '100px' }}>
+    <Tooltip message="Подсказка может быть написана в две строки и более" position="bottom">
+      <Button
+        onClick={() => console.info('Hi!')}
+        text="Button"
+        priority="primary"
+        style={{ marginRight: '10px' }}
+      />
+    </Tooltip>
+    <Tooltip message="Подсказка" position="top" id="tooltip-top">
+      <Button
+        onClick={() => console.info('Hi!')}
+        text="Button"
+        priority="primary"
+        style={{ marginRight: '10px' }}
+      />
+    </Tooltip>
+    <Tooltip message="Подсказка может быть написана в две строки" position="left">
+      <Button
+        onClick={() => console.info('Hi!')}
+        text="Button"
+        priority="primary"
+        style={{ marginRight: '10px' }}
+      />
+    </Tooltip>
+    <Tooltip message="Подсказка" position="right" priority="primary">
+      <Input
+        name="name"
+        onChange={() => console.info('On input change')}
+        type="text"
+        priority="primary"
+      />
+    </Tooltip>
+  </block.S>
+</Playground>
+
+### Props
+
+| Name       | Type                                  | Default       | Description                                          |
+| ---------- | ------------------------------------- | ------------- | ---------------------------------------------------- |
+| `children` | `React.ReactElement`                  |               | The tooltip will be visible near `children` on hover |
+| `message`  | `string`                              |               | Message to show near component                       |
+| `position` | `"top" ӏ "left" ӏ"bottom" ӏ "right" ` |               | Width of tooltip block                               |
+| `priority` | `string`                              | `'secondary'` | Priority prop to style Tooltip component             |
+| `width`    | `number`                              |               | Width of tooltip block                               |

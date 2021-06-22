@@ -1,0 +1,161 @@
+import {Select} from 'ui';
+import {Playground, StateEvent} from 'lib/playground';
+import {IconArrowDown} from 'static/icons';
+
+Select is a type of input that is used in forms,
+where a user is submitting data and chooses one option from a list.
+
+The select component uses an `list` component instance to contain the list of options,
+but uses the data-value attribute instead of value to represent the options' values.
+
+### Example
+
+Each option has data attribute data-value where value of option is saved.
+
+If any initial value hasn`t been selected yet, you can pass a placeholder.
+
+<Playground>
+  <div style={{ height: '250px', width: '250px' }}>
+    <StateEvent initial={null} change={(event) => event?.target?.dataset.value}>
+      {(value, change) => (
+        <Select
+          icon={<IconArrowDown />}
+          onChange={change}
+          options={[
+            { children: 'Toyota', value: 'Toyota' },
+            { children: 'Opel', value: 'Opel' },
+            { children: 'BMW', value: 'BMW' },
+          ]}
+          placeholder="Choose an option"
+          selected={value}
+          priority="primary"
+        />
+      )}
+    </StateEvent>
+  </div>
+</Playground>
+
+### Selected value
+
+Or initial selected value can be passed by default.
+
+<Playground>
+  <div style={{ width: '250px', height: '250px' }}>
+    <StateEvent initial="Cats" change={(event) => event?.target?.dataset.value}>
+      {(value, change) => (
+        <Select
+          icon={<IconArrowDown />}
+          onChange={change}
+          options={[
+            { children: 'Cats', value: 'Cats' },
+            { children: 'Dogs', value: 'Dogs' },
+            { children: 'Birds', value: 'Birds' },
+          ]}
+          selected={value}
+          priority="secondary"
+        />
+      )}
+    </StateEvent>
+  </div>
+</Playground>
+
+### Disable
+
+Disabled selects are uneditable. They have less opacity so that they appear less tappable.
+
+<Playground>
+  <div style={{ width: '250px', height: '250px' }}>
+    <StateEvent initial="Cats" change={(event) => event?.target?.dataset.value}>
+      {(value, change) => (
+        <Select
+          icon={<IconArrowDown />}
+          onChange={change}
+          options={[
+            { children: 'Cats', value: 'Cats' },
+            { children: 'Dogs', value: 'Dogs' },
+            { children: 'Birds', value: 'Birds' },
+          ]}
+          selected={value}
+          priority="secondary"
+          disabled
+        />
+      )}
+    </StateEvent>
+  </div>
+</Playground>
+
+### prioritys
+
+Secondary priority should be used as default priority.
+
+<Playground>
+  <div style={{ width: '250px', height: '250px' }}>
+    <StateEvent initial={null} change={(event) => event?.target?.dataset.value}>
+      {(value, change) => (
+        <Select
+          icon={<IconArrowDown />}
+          onChange={change}
+          options={[
+            { children: 'Toyota', value: 'Toyota' },
+            { children: 'Opel', value: 'Opel' },
+            { children: 'BMW', value: 'BMW' },
+          ]}
+          placeholder="Choose an option"
+          selected={value}
+          priority="secondary"
+        />
+      )}
+    </StateEvent>
+  </div>
+</Playground>
+
+Primary and dander prioritys should focus user attention.
+
+<Playground direction="vertical">
+  <StateEvent initial="Cats" change={(event) => event?.target?.dataset.value}>
+    {(value, change) => (
+      <>
+        <div style={{ width: '250px', height: '250px' }}>
+          <Select
+            icon={<IconArrowDown />}
+            onChange={change}
+            options={[
+              { children: 'Cats', value: 'Cats' },
+              { children: 'Dogs', value: 'Dogs' },
+              { children: 'Birds', value: 'Birds' },
+            ]}
+            selected={value}
+            priority="primary"
+          />
+        </div>
+        <div style={{ width: '250px', height: '250px' }}>
+          <Select
+            icon={<IconArrowDown />}
+            onChange={() => {}}
+            options={[
+              { children: 'Toyota', value: 'Toyota' },
+              { children: 'Opel', value: 'Opel' },
+              { children: 'BMW', value: 'BMW' },
+            ]}
+            selected="BMW"
+            priority="danger"
+          />
+        </div>
+      </>
+    )}
+  </StateEvent>
+</Playground>
+
+# Props
+
+| Name          | Type                                       | Default       | Description                                   |
+| ------------- | ------------------------------------------ | ------------- | --------------------------------------------- |
+| `disabled`    | `boolean`                                  | `false`       | HTML disabled attribute                       |
+| `icon`        | `React.ReactNode`                          | `null`        | Component to show on the right side of select |
+| `onBlur`      | `React.FocusEventHandler<HTMLElement>`     |               | On blur event handler.                        |
+| `onChange`    | `React.EventHandler<React.SyntheticEvent>` |               | On change event handler.                      |
+| `onFocus`     | `React.FocusEventHandler<HTMLElement>`     |               | On focus event handler.                       |
+| `options`     | `SelectOptionProps[]`                      | `[]`          | An array of select options                    |
+| `placeholder` | `string`                                   | ''            | Placeholder for select                        |
+| `priority`    | `string`                                   | '`secondary`' | Priority prop to style Select component       |
+| `selected`    | `SelectOptionProps`                        |               | Selected option                               |
