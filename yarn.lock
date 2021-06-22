@@ -8424,10 +8424,10 @@ gatsby-telemetry@^2.7.1:
     node-fetch "^2.6.1"
     uuid "3.4.0"
 
-gatsby-theme-woly@^0.6.3:
-  version "0.6.3"
-  resolved "https://registry.yarnpkg.com/gatsby-theme-woly/-/gatsby-theme-woly-0.6.3.tgz#90afb19d51eb4d518b626a2bc45e6f481add563a"
-  integrity sha512-GXcwLSAzOLmKApNaOPq2z2FWxjcuIso83FJ8M1IsDvFIj1XxtfSm7wRjJcPIh6GRAngiyYGrhcQzYDKFI+mb0Q==
+gatsby-theme-woly@^0.7.2:
+  version "0.7.2"
+  resolved "https://registry.yarnpkg.com/gatsby-theme-woly/-/gatsby-theme-woly-0.7.2.tgz#405034d084ba9b954d6495c21569da4093817d93"
+  integrity sha512-X2HDPZA57POI1Hs01R1f8EfK1YIelQKu9GwR0llQSUhQm0Vd+2szb+4eOcZ6cxMV5tLavxF3gjBvy9SHXDunUg==
   dependencies:
     "@mdx-js/mdx" "^1.6.22"
     "@mdx-js/react" "^1.6.22"
