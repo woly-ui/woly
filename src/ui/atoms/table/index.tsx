@@ -28,6 +28,8 @@ export const Tbody = styled.tbody`
 `;
 
 export const Th = styled.th`
+  display: flex;
+  align-items: center;
   box-sizing: border-box;
   max-width: var(--local-cell-max-width);
   padding: var(--local-vertical) var(--local-horizontal);
@@ -38,6 +40,7 @@ export const Th = styled.th`
 `;
 
 export const Td = styled.td`
+  display: flex;
   box-sizing: border-box;
   max-width: var(--local-cell-max-width);
   padding: var(--local-vertical) var(--local-horizontal);
