@@ -4,7 +4,7 @@ import { Variant } from 'lib/types';
 import { box } from 'ui/elements';
 interface TabElementProps {
   iconLeft?: React.ReactNode;
-  iconRight?: React.ReactNode;
+  iconAction?: React.ReactNode;
   onClick?: React.EventHandler<React.SyntheticEvent>;
   text: React.ReactNode;
 }
@@ -42,7 +42,7 @@ const TabBase: React.FC<TabProps & TabElementProps & Variant> = ({
   className,
   href,
   iconLeft,
-  iconRight,
+  iconAction,
   onClick,
   outlined,
   text,
@@ -59,7 +59,7 @@ const TabBase: React.FC<TabProps & TabElementProps & Variant> = ({
   >
     {iconLeft && <span data-icon="link-icon">{iconLeft}</span>}
     <span data-link="link-text">{text}</span>
-    {iconRight && <span data-icon="tab-action">{iconRight}</span>}
+    {iconAction && <span data-icon="tab-action">{iconAction}</span>}
   </div>
 );
 
@@ -169,7 +169,7 @@ export const Tab = styled(TabBase)`
   &[data-active='true'] {
     z-index: 1;
 
-    box-shadow: 0 var(--woly-border-width) 0 0 var(--woly-shape-default);
+    box-shadow: 0 var(--woly-border-width) 0 0 var(--woly-shape-active);
 
     --local-background: var(--woly-canvas-default);
     [data-link='link-text'] {
@@ -184,10 +184,9 @@ export const Tab = styled(TabBase)`
   }
 
   &:focus {
-    --local-backgound: var(--woly-focus);
     z-index: 1;
 
     outline: none;
-    box-shadow: 0 0 0 var(--woly-border-width) var(--woly-focus);
+    box-shadow: 0 var(--woly-border-width) 0 0 var(--woly-focus-color);
   }
 ` as StyledComponent<'div', Record<string, unknown>, TabProps & TabElementProps & Variant>;

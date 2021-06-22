@@ -49,7 +49,7 @@ Ensure that all tabs are always enabled, and explain why a tab’s content is un
           key={id}
           href={`#${id}`}
           iconLeft={iconLeft}
-          iconRight={
+          iconAction={
             <ButtonIcon
               icon={<IconClose />}
               onClick={() => {
@@ -80,7 +80,7 @@ Primary variant can be used to style tabs in brand color.
           key={id}
           href={`#${id}`}
           iconLeft={iconLeft}
-          iconRight={
+          iconAction={
             <ButtonIcon
               icon={<IconClose />}
               onClick={() => {
@@ -109,7 +109,7 @@ Secondary variant should be used as default variant.
           key={id}
           href={`#${id}`}
           iconLeft={iconLeft}
-          iconRight={
+          iconAction={
             <ButtonIcon
               icon={<IconClose />}
               onClick={() => {
@@ -133,25 +133,26 @@ Tab can consist icon on left side ex. icon, logo or avatar
 
 <Playground>
   <block.L style={{ width: '1200px' }}>
-    <Tabs variant="secondary">
+    <Tabs variant="default">
       {links.map(({ active, id, content, iconLeft }) => (
         <Tab
           active={active}
           key={id}
           href={`#${id}`}
           iconLeft={<IconPlus />}
-          iconRight={
+          iconAction={
             <ButtonIcon
               icon={<IconClose />}
               onClick={() => {
                 console.log('click icon');
               }}
-              variant="secondary"
+              variant="default"
+              outlined
             />
           }
           text={content}
           onClick={() => console.log(`click ${id}`)}
-          variant="primary"
+          variant="default"
         />
       ))}
     </Tabs>
@@ -164,7 +165,7 @@ Tab can consist icon on left side ex. icon, logo or avatar
 | ----------- | ---------------------------------- | ------------- | --------------------------------------------------------------------------------------------------- |
 | `href`      | `string`                           |               | Href - attribute that adds url adress to tab component                                              |
 | `iconLeft`  | `React.ReactNode`                  | `null`        | Element appears on left side near tab component`s text (ex.: icon or avatar)                        |
-| `iconRight` | `React.ReactNode`                  | `null`        | Element appears on right side near tab component`s text (ex.: action block, that consists a button) |
+| `iconAction`| `React.ReactNode`                  | `null`        | Element appears on right side near tab component`s text (ex.: action block, that consists a button) |
 | `onClick`   | `React.MouseEvent<HTMLDivElement>` | `null`        | Callback when tab component is clicked                                                              |
 | `outlined`  | `boolean`                          | `false`       | Add outline variant to style Tab component                                                          |
 | `tabIndex`  | `number`                           |               | Set tabIndex to Tab component                                                                       |
