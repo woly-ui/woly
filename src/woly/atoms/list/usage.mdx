@@ -1,0 +1,272 @@
+import {block, Playground, State} from 'lib/playground'
+import {Button, Checkbox, Input, ListContainer, ListItem, Surface} from 'ui';
+import {IconInfo} from 'static/icons';
+
+export const links = [
+  {
+    id: "fwed324fcse",
+    content: "John",
+    disabled: false
+  },
+  {
+    id: "fwed32q4fcss",
+    content: "Alex",
+    disabled: true
+  },
+  {
+    id: "fwed32q4fcsw",
+    content: "Michael",
+    disabled: false
+  },
+  {
+    id: "fwed32q4fcsb",
+    content: "Donald",
+    disabled: false
+  }
+];
+
+`List` is a list of items related to a single object.
+A List displays a list of choices on a temporary surface. It appears when the user interacts with a button, or other control.
+This component can be used in list dropdown or input autosuggestion components.
+
+Simple lists open over the anchor element by default.
+When close to a screen edge, simple lists vertically realign to make sure that all list items are completely visible.
+
+ListItem
+This component defines a selectable item in a List. It should only be used as a descendant of a List.
+It does not need to be a direct child of the List component.
+
+### Example List
+
+<Playground>
+  <block.L>
+    <ListContainer priority="primary" style={{ width: '100%' }}>
+      {links.map(({ id, content, disabled }) => (
+        <ListItem
+          key={id}
+          as="a"
+          href={`#${id}`}
+          disabled={disabled}
+          text={content}
+          iconRight={<IconInfo />}
+          iconLeft={<IconInfo />}
+        />
+      ))}
+    </ListContainer>
+  </block.L>
+</Playground>
+
+### Example dropdown list
+
+<Playground>
+  <Surface>
+    <ListContainer priority="primary" style={{ width: '100%' }} as="ul">
+      {links.map(({ id, content }) => (
+        <ListItem
+          as="li"
+          tabIndex={1}
+          key={id}
+          onClick={() => {
+            console.log(id);
+          }}
+          text={content}
+        />
+      ))}
+    </ListContainer>
+  </Surface>
+</Playground>
+
+### Example List with Input, Checkboxes and Button
+
+<Playground>
+  <block.L>
+    <State initial={false} change={(i) => !i}>
+      {(value, change) => (
+        <ListContainer priority="primary" style={{ width: '100%' }}>
+          <Surface>
+            <Input
+              name="name"
+              onChange={(event) => console.info('On input change')}
+              placeholder="Enter your name here"
+              type="text"
+              priority="primary"
+            />
+            {links.map(({ id, content }) => (
+              <Checkbox
+                checked={value}
+                id="small"
+                onChange={change}
+                text={content}
+                priority="primary"
+                key={id}
+              />
+            ))}
+            <div style={{ display: 'flex', flexDirection: 'column' }}>
+              <Button text="Show more" priority="primary" />
+            </div>
+          </Surface>
+        </ListContainer>
+      )}
+    </State>
+  </block.L>
+</Playground>
+
+### Icons
+
+List items can have an icon on the left or/and the right side. To use icons on both sides is not recommended.
+
+<Playground>
+  <Surface priority="primary">
+    <ListContainer style={{ width: '100%' }}>
+      {links.map(({ id, content, disabled }) => (
+        <ListItem key={id} as="a" href={`#${id}`} disabled={disabled} text={content} />
+      ))}
+    </ListContainer>
+  </Surface>
+  <Surface priority="primary">
+    <ListContainer style={{ width: '100%' }}>
+      {links.map(({ id, content, disabled }) => (
+        <ListItem
+          key={id}
+          as="a"
+          href={`#${id}`}
+          disabled={disabled}
+          text={content}
+          iconLeft={<IconInfo />}
+        />
+      ))}
+    </ListContainer>
+  </Surface>
+  <Surface priority="primary">
+    <ListContainer style={{ width: '100%' }}>
+      {links.map(({ id, content, disabled }) => (
+        <ListItem
+          key={id}
+          as="a"
+          href={`#${id}`}
+          disabled={disabled}
+          text={content}
+          iconRight={<IconInfo />}
+        />
+      ))}
+    </ListContainer>
+  </Surface>
+  <Surface priority="primary">
+    <ListContainer style={{ width: '100%' }}>
+      {links.map(({ id, content, disabled }) => (
+        <ListItem
+          key={id}
+          as="a"
+          href={`#${id}`}
+          disabled={disabled}
+          text={content}
+          iconRight={<IconInfo />}
+          iconLeft={<IconInfo />}
+        />
+      ))}
+    </ListContainer>
+  </Surface>
+</Playground>
+
+### Sizes
+
+Size of list item is controlled by the `component-level` block property not from the props.
+
+<Playground>
+  <block.S>
+    <ListContainer priority="primary" style={{ width: '100%' }}>
+      {links.map(({ id, content, disabled }) => (
+        <ListItem
+          key={id}
+          as="a"
+          href={`#${id}`}
+          disabled={disabled}
+          text={content}
+          iconRight={<IconInfo />}
+          iconLeft={<IconInfo />}
+        />
+      ))}
+    </ListContainer>
+  </block.S>
+  <block.M>
+    <ListContainer priority="primary" style={{ width: '100%' }}>
+      {links.map(({ id, content, disabled }) => (
+        <ListItem
+          key={id}
+          as="a"
+          href={`#${id}`}
+          disabled={disabled}
+          text={content}
+          iconRight={<IconInfo />}
+          iconLeft={<IconInfo />}
+        />
+      ))}
+    </ListContainer>
+  </block.M>
+  <block.L>
+    <ListContainer priority="primary" style={{ width: '100%' }}>
+      {links.map(({ id, content, disabled }) => (
+        <ListItem
+          key={id}
+          as="a"
+          href={`#${id}`}
+          disabled={disabled}
+          text={content}
+          iconRight={<IconInfo />}
+          iconLeft={<IconInfo />}
+        />
+      ))}
+    </ListContainer>
+  </block.L>
+  <block.XL>
+    <ListContainer priority="primary" style={{ width: '100%' }} as="ul">
+      {links.map(({ id, content, disabled }) => (
+        <ListItem
+          as="a"
+          disabled={disabled}
+          href={`#${id}`}
+          iconLeft={<IconInfo />}
+          iconRight={<IconInfo />}
+          key={id}
+          text={content}
+          priority="primary"
+        />
+      ))}
+    </ListContainer>
+  </block.XL>
+  <block.H>
+    <ListContainer priority="primary" style={{ width: '100%' }} as="ul">
+      {links.map(({ id, content, disabled }) => (
+        <ListItem
+          as="a"
+          disabled={disabled}
+          href={`#${id}`}
+          iconLeft={<IconInfo />}
+          iconRight={<IconInfo />}
+          key={id}
+          text={content}
+          priority="primary"
+        />
+      ))}
+    </ListContainer>
+  </block.H>
+</Playground>
+
+### ListItem Props
+
+| Name        | Type              | Default     | Description                           |
+| ----------- | ----------------- | ----------- | ------------------------------------- |
+| `as`        | `'a' ӏ 'li'`      |             | Use as to set tag for element         |
+| `disabled`  | `boolean`         | `false `    | disabled attribute                    |
+| `href`      | `string`          |             | href attribute                        |
+| `iconLeft`  | `React.ReactNode` |             | Left icon                             |
+| `iconRight` | `React.ReactNode` |             | Right icon                            |
+| `priority`  | `string`          | `'default'` | Priority prop to style List component |
+| `tabIndex`  | `number`          |             | set tabIndex to list item             |
+| `text`      | `string`          |             | text of list item                     |
+
+### ListContainer Props
+
+| Name       | Type     | Default       | Description                                    |
+| ---------- | -------- | ------------- | ---------------------------------------------- |
+| `priority` | `string` | `'secondary'` | Priority prop to style ListContainer component |

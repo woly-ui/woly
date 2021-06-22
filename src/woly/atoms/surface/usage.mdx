@@ -1,0 +1,124 @@
+import {
+  Aside,
+  block,
+  Content,
+  FormBlock,
+  Menu,
+  Playground,
+  State
+} from 'lib/playground'
+import {Button, ButtonIcon, Input, Label, Surface} from 'ui'
+import {IconClose} from 'static/icons';
+
+`Surface` is a simple layer that contains information. Surface can be used inside Popover or Sidebar component.
+
+### Example
+
+Simple text inside `Surface`.
+
+<Playground>
+  <Surface>
+    <Content>Surface content</Content>
+  </Surface>
+</Playground>
+
+### Sign in form
+
+Sign in form based on `Surface`.
+
+<Playground>
+  <State initial={false} change={(i) => !i}>
+    {(value, change) => (
+      <block.S style={{ padding: '20px' }}>
+        <Button onClick={change} text="Sign in" priority="primary" />
+        <div
+          style={{
+            visibility: value ? 'visible' : 'hidden',
+            marginTop: '20px',
+          }}
+        >
+          <Surface>
+            <FormBlock>
+              <Label priority="primary">Name</Label>
+              <Input
+                name="name"
+                onChange={() => console.info('On input change')}
+                placeholder="Ivan Ivanov"
+                type="text"
+                priority="primary"
+              />
+              <Label priority="primary">Password</Label>
+              <Input
+                name="password"
+                onChange={() => console.info('On input change')}
+                type="password"
+                priority="primary"
+              />
+              <Button
+                style={{ marginTop: '20px' }}
+                onClick={() => {}}
+                text="Sign in"
+                priority="primary"
+              />
+            </FormBlock>
+          </Surface>
+        </div>
+      </block.S>
+    )}
+  </State>
+</Playground>
+
+### Aside menu
+
+Aside menu based on `Surface`.
+
+<Playground>
+  <State initial={false} change={(i) => !i}>
+    {(value, change) => (
+      <block.S style={{ paddingLeft: '320px', position: 'relative', height: '300px' }}>
+        <ButtonIcon
+          onClick={change}
+          priority="secondary"
+          style={{ position: 'absolute', left: 0, zIndex: 1 }}
+          icon={
+            <div
+              style={{
+                transform: value ? '' : 'rotate(45deg)',
+                transition: '0.5s',
+              }}
+            >
+              <IconClose />
+            </div>
+          }
+        />
+        <Aside
+          style={{
+            width: value ? '250px' : '0',
+          }}
+        >
+          <Surface>
+            <Menu>
+              <li>Home</li>
+              <li>Shop</li>
+              <li>About</li>
+              <li>Contacts</li>
+            </Menu>
+          </Surface>
+        </Aside>
+      </block.S>
+    )}
+  </State>
+</Playground>
+
+### Kinds
+
+| Name      | Description  |
+| --------- | ------------ |
+| `Surface` | Base surface |
+
+### Props
+
+| Name       | Type              | Default       | Description                                                       |
+| ---------- | ----------------- | ------------- | ----------------------------------------------------------------- |
+| `children` | `React.ReactNode` |               | Pass any content as a children property within Surface component. |
+| `priority` | `string`          | `'secondary'` | Priority prop to style Surface component                          |

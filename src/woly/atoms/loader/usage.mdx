@@ -1,0 +1,67 @@
+import {Loader, Button, Text} from 'ui';
+import {Playground, State, StateEvent} from 'lib/playground';
+import {loadUsers, UsersList} from './example';
+
+`Loader` component is used when retrieving data or performing slow computations and helps to notify users that loading is underway.
+Description text below animated spinner provides more details on the current operation.
+
+Use a `Loader` component whenever the wait time is anticipated to be longer than three seconds.
+
+### Example
+
+<Playground>
+  <State initial={false} change={(i) => !i}>
+    {(value, change) => (
+      <>
+        <Button text="Toggle loader" onClick={change} variant="primary" />
+        {value ? (
+          <div style={{ width: 300 }}>
+            <Loader description={<Text type="S">Some action in progress...</Text>} />
+          </div>
+        ) : null}
+      </>
+    )}
+  </State>
+</Playground>
+
+### Example with data fetching
+
+<Playground>
+  <StateEvent
+    initial={{
+      loading: false,
+      data: null,
+    }}
+    change={(i) => i}
+  >
+    {(value, change) =>
+      value.loading ? (
+        <div style={{ width: 300 }}>
+          <Loader
+            variant="primary"
+            description={<Text weight="medium">Fetching users, please wait</Text>}
+          />
+        </div>
+      ) : value.data ? (
+        <>
+          <UsersList data={value.data} style={{ marginBottom: 10 }} />
+          <Button
+            variant="primary"
+            text="Reset"
+            onClick={() => change({ loading: false, data: null })}
+          />
+        </>
+      ) : (
+        <Button variant="primary" text="Fetch users" onClick={() => loadUsers({ value, change })} />
+      )
+    }
+  </StateEvent>
+</Playground>
+
+### Props
+
+| Name          | Type             | Default       | Description                                     |
+| ------------- | ---------------- | ------------- | ----------------------------------------------- |
+| `description` | `string`         | 'Loading...'  | Description text below the animated spinner     |
+| `priority`    | `string`         | `'secondary'` | Priority prop to style Loader component         |
+| `...`         | `HTMLDivElement` | `{}`          | Other props are inherited from `HTMLDivElement` |

@@ -10,3 +10,4 @@ export { default as IconEyeOpened } from './eye-opened.svg';
 export { default as IconPlus } from './plus.svg';
 export { default as IconSearch } from './search.svg';
 export { default as IconFilledUnchecked } from './check-filled-unchecked.svg';
+export { default as IconSpinner } from './spinner.svg';
