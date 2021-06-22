@@ -28,9 +28,9 @@ const InputContainerBase: React.FC<InputContainerProps & Priority> = ({
 
 export const InputContainer = styled(InputContainerBase)`
   --local-background-color: var(--woly-canvas-default);
-  --local-border-color: var(--woly-canvas-text-hover);
-  --local-icon-fill: var(--woly-canvas-text-active);
-  --local-value-color: var(--woly-canvas-text-default);
+  --local-border-color: var(--woly-shape-default);
+  --local-icon-fill: var(--woly-canvas-text-default);
+  --local-text-color: var(--woly-canvas-text-default);
 
   ${box}
 
@@ -50,7 +50,7 @@ export const InputContainer = styled(InputContainerBase)`
   [data-input='input'] {
     flex: 1;
 
-    color: var(--local-value-color);
+    color: var(--local-text-color);
 
     input {
       padding: 0;
@@ -69,18 +69,20 @@ export const InputContainer = styled(InputContainerBase)`
 
   &:hover {
     --local-border-color: var(--woly-shape-hover);
+    --local-icon-fill: var(--woly-canvas-text-default);
   }
 
   &:active {
-    --local-border-color: var(--woly-focus);
+    --local-border-color: var(--woly-shape-active);
     --local-icon-fill: var(--woly-canvas-text-default);
+    outline: none;
   }
 
   &:focus-within {
     outline: none;
-    box-shadow: 0 0 0 var(--woly-border-width) var(--woly-focus);
+    box-shadow: 0 0 0 var(--woly-border-width) var(--woly-focus-color);
 
-    --local-border-color: var(--woly-focus);
+    --local-border-color: var(--woly-shape-active);
     --local-icon-fill: var(--woly-canvas-text-default);
   }
 
@@ -88,7 +90,8 @@ export const InputContainer = styled(InputContainerBase)`
     pointer-events: none;
 
     --local-background-color: var(--woly-canvas-disabled);
-    --local-border-color: var(--woly-shape-disabled);
-    --local-value-color: var(--woly-canvas-text-disabled);
+    --local-border-color: var(--woly-canvas-disabled);
+    --local-text-color: var(--woly-canvas-text-disabled);
+    --local-icon-fill: var(--woly-canvas-text-disabled);
   }
 ` as StyledComponent<'div', Record<string, unknown>, InputContainerProps & Priority>;

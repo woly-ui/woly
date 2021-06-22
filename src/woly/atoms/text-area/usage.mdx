@@ -8,43 +8,59 @@ TextArea is often used in a form, to collect user inputs like comments or review
 ## Example
 
 <Playground>
-  <TextArea
-    name="name"
-    placeholder="Simple text-area"
-    onChange={() => console.info('On textarea change')}
-    priority="secondary"
-  />
+  <block.S>
+    <TextArea
+      name="name"
+      placeholder="Simple text-area"
+      onChange={() => console.info('On textarea change')}
+      priority="secondary"
+    />
+  </block.S>
 </Playground>
 
-## prioritys
+## Priorities
 
 Primary and danger prioritys are should be used to focus user attention.
 
-<Playground direction="vertical">
-  <TextArea
-    name="name"
-    placeholder="Primary"
-    onChange={() => console.info('On textarea change')}
-    priority="primary"
-  />
-  <TextArea
-    name="name"
-    placeholder="Error"
-    value="Error"
-    onChange={() => console.info('On textarea change')}
-    priority="danger"
-  />
+<Playground direction="horizontal">
+  <block.L>
+    <TextArea
+      name="name"
+      placeholder="Primary"
+      onChange={() => console.info('On textarea change')}
+      priority="primary"
+    />
+  </block.L>
+  <block.L>
+    <TextArea
+      name="name"
+      placeholder="Error"
+      value="Error"
+      onChange={() => console.info('On textarea change')}
+      priority="danger"
+    />
+  </block.L>
 </Playground>
 
-Secondary priority should be used as a default priority.
+Secondary and default priority should be used as a default priority.
 
-<Playground>
-  <TextArea
-    name="name"
-    placeholder="Primary"
-    onChange={() => console.info('On textarea change')}
-    priority="secondary"
-  />
+<Playground direction="horizontal">
+  <block.S>
+    <TextArea
+      name="name"
+      placeholder="Primary"
+      onChange={() => console.info('On textarea change')}
+      priority="secondary"
+    />
+  </block.S>
+  <block.S>
+    <TextArea
+      name="name"
+      placeholder="Default"
+      onChange={() => console.info('On textarea change')}
+      priority="default"
+    />
+  </block.S>
 </Playground>
 
 ## Disabled
@@ -54,7 +70,9 @@ If this attribute is not specified, the control inherits its setting from the co
 if there is no containing element when the disabled attribute is set, the control is enabled.
 
 <Playground>
-  <TextArea name="name" placeholder="Disabled" priority="primary" disabled />
+  <block.L>
+    <TextArea name="name" placeholder="Disabled" priority="default" disabled />
+  </block.L>
 </Playground>
 
 ## Resize
@@ -62,7 +80,7 @@ if there is no containing element when the disabled attribute is set, the contro
 The resize property defines if (and how) an element is resizable by the user.
 
 <Playground>
-  <div style={{ marginBottom: '60px' }}>
+  <block.L style={{ marginBottom: '60px' }}>
     <TextArea
       name="name"
       placeholder="Here, the user can resize both the height and width"
@@ -71,15 +89,15 @@ The resize property defines if (and how) an element is resizable by the user.
       rows={5}
       resize
     />
-  </div>
-  <div style={{ marginBottom: '40px' }}>
+  </block.L>
+  <block.L style={{ marginBottom: '40px' }}>
     <TextArea
       name="name"
       placeholder="Oops! You can't resize this textarea"
       onChange={() => console.info('On textarea change')}
       priority="primary"
     />
-  </div>
+  </block.L>
 </Playground>
 
 ## Cols, rows and wrap
@@ -110,21 +128,25 @@ Possible values are:
   and the textarea becomes horizontally scrollable.
 
 <Playground>
-  <TextArea
-    name="name"
-    placeholder="Hey! Here is 20 cols and it's wrapp off"
-    onChange={() => console.info('On textarea change')}
-    priority="primary"
-    cols={20}
-    wrap="off"
-  />
-  <TextArea
-    name="name"
-    placeholder="Oops! Textarea consists only 3 rows"
-    onChange={() => console.info('On textarea change')}
-    priority="primary"
-    rows={3}
-  />
+  <block.L>
+    <TextArea
+      name="name"
+      placeholder="Hey! Here is 20 cols and it's wrapp off"
+      onChange={() => console.info('On textarea change')}
+      priority="primary"
+      cols={20}
+      wrap="off"
+    />
+  </block.L>
+  <block.L>
+    <TextArea
+      name="name"
+      placeholder="Oops! Textarea consists only 3 rows"
+      onChange={() => console.info('On textarea change')}
+      priority="primary"
+      rows={3}
+    />
+  </block.L>
 </Playground>
 
 ## Sizes
@@ -179,14 +201,14 @@ TextArea can be placed inside the container. TextArea width is equal to containe
       priority="primary"
     />
   </block.S>
-  <block.S>
+  <block.L>
     <TextArea
       name="name"
       placeholder="Primary"
       onChange={() => console.info('On textarea change')}
       priority="primary"
     />
-  </block.S>
+  </block.L>
 </Playground>
 
 ### Props
