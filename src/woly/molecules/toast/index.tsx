@@ -1,6 +1,6 @@
 import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
-import { Variant } from 'lib/types';
+import { Priority } from 'lib/types';
 import { box } from 'ui/elements';
 
 interface ToastProps {
@@ -10,15 +10,15 @@ interface ToastProps {
   outlined?: boolean;
 }
 
-const ToastBase: React.FC<ToastProps & Variant> = ({
+const ToastBase: React.FC<ToastProps & Priority> = ({
   action,
   children,
   className,
   icon,
   outlined = false,
-  variant = 'secondary',
+  priority = 'secondary',
 }) => (
-  <div className={className} data-outlined={outlined} data-variant={variant}>
+  <div className={className} data-outlined={outlined} data-priority={priority}>
     {icon && <span data-icon="toast">{icon}</span>}
     <div data-content>{children}</div>
     {action && <span data-action>{action}</span>}
@@ -95,4 +95,4 @@ export const Toast = styled(ToastBase)`
   &:focus {
     box-shadow: 0 0 0 var(--woly-border-width) var(--woly-focus);
   }
-` as StyledComponent<'div', Record<string, unknown>, ToastProps & Variant>;
+` as StyledComponent<'div', Record<string, unknown>, ToastProps & Priority>;

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled, { StyledComponent, keyframes } from 'styled-components';
 import { IconSpinner } from 'static/icons';
-import { Variant } from 'lib/types';
+import { Priority } from 'lib/types';
 import { box } from 'ui/elements';
 
 interface LoaderProps {
@@ -12,10 +12,10 @@ interface LoaderProps {
 const LoaderBase = ({
   className,
   description = 'Loading...',
-  variant = 'secondary',
-}: LoaderProps & Variant) => {
+  priority = 'secondary',
+}: LoaderProps & Priority) => {
   return (
-    <div className={className} data-variant={variant}>
+    <div className={className} data-priority={priority}>
       <div data-loader>
         <IconSpinner data-track />
         <div data-description>{description}</div>
@@ -109,4 +109,4 @@ export const Loader = styled(LoaderBase)`
     line-height: 21px;
     text-align: center;
   }
-` as StyledComponent<'div', Record<string, unknown>, LoaderProps & Variant>;
+` as StyledComponent<'div', Record<string, unknown>, LoaderProps & Priority>;
