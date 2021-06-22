@@ -8548,7 +8548,7 @@ gatsby-telemetry@^2.7.1:
     node-fetch "^2.6.1"
     uuid "3.4.0"
 
-gatsby-theme-woly@^0.7.2:
+gatsby-theme-woly@^0.7.3:
   version "0.7.3"
   resolved "https://registry.yarnpkg.com/gatsby-theme-woly/-/gatsby-theme-woly-0.7.3.tgz#0bae9011769d493af4c3fe6b1132dd35ae0d7e92"
   integrity sha512-32uZtQAeBjZrj771pOZbJ3266KV2xoHFm2zPYOfarRvWaCSccwW1LybubBsEfdOjsOQ8+VuZxKSMMtVLOSQ49A==
