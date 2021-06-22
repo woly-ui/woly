@@ -48,10 +48,10 @@ export const boxVertical = css`
   }
 `;
 
-export const Box = styled.div`
+export const BoxComponent = styled.div`
   ${box}
 ` as StyledComponent<'div', Record<string, unknown>>;
 
-export const BoxVertical = styled.div`
+export const BoxVerticalComponent = styled.div`
   ${boxVertical}
 ` as StyledComponent<'div', Record<string, unknown>>;

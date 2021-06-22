@@ -4,7 +4,7 @@ category: atoms
 package: woly
 ---
 
-import {Box, BoxVertical} from './index';
+import {BoxComponent, BoxVerticalComponent} from './index';
 import {Text, Tooltip, Button, Accordion, TextArea, Input, Checkbox} from 'ui';
 import {block, Playground, State} from 'lib/playground';
 import {IconInfo} from 'static/icons';
@@ -19,9 +19,9 @@ import {IconInfo} from 'static/icons';
   <block.L style={{ width: '400px', padding: '100px' }}>
     <Tooltip
       message={
-        <Box>
+        <BoxComponent>
           <Text>г. Комсомольск на Амуре, ул. 1-го октября, д. 145, корп. 9, кв. 16</Text>
-        </Box>
+        </BoxComponent>
       }
       position="bottom"
     >
@@ -42,14 +42,14 @@ import {IconInfo} from 'static/icons';
     <Tooltip
       message={
         <>
-          <Box>
+          <BoxComponent>
             <Text type="S">
               Согласие на обработку персональных данных – это письменное разрешение гражданина
               Российской Федерации, которое он дает заинтересованной стороне на получение, сбор,
               хранение и использование персональных сведений о себе.
             </Text>
-          </Box>
-          <Box>
+          </BoxComponent>
+          <BoxComponent>
             <block.S style={{ display: 'flex' }}>
               <Button
                 onClick={() => alert('Hi!')}
@@ -60,7 +60,7 @@ import {IconInfo} from 'static/icons';
               />
               <Button onClick={() => alert('Hi!')} text="Дальше" priority="secondary" />
             </block.S>
-          </Box>
+          </BoxComponent>
         </>
       }
       position="bottom"
@@ -87,27 +87,27 @@ import {IconInfo} from 'static/icons';
     priority="primary"
     isOpen={false}
     title={
-      <Box>
+      <BoxComponent>
         <Text type="L">Short recomendation when to use accordion&nbsp;</Text>
-      </Box>
+      </BoxComponent>
     }
   >
-    <BoxVertical>
-      <Box>
+    <BoxVerticalComponent>
+      <BoxComponent>
         <Text type="S">To organize related information&nbsp;</Text>
-      </Box>
-      <Box>
+      </BoxComponent>
+      <BoxComponent>
         <Text type="S">
           To shorten pages and reduce scrolling when content is not crucial to read in full.&nbsp;
         </Text>
-      </Box>
-      <Box>
+      </BoxComponent>
+      <BoxComponent>
         <Text type="S">
           When space is at a premium and long content cannot be displayed all at once, like on a
           mobile interface or in a side panel.&nbsp;
         </Text>
-      </Box>
-      <Box>
+      </BoxComponent>
+      <BoxComponent>
         <TextArea
           name="name"
           placeholder="Please, left some comments"
@@ -115,7 +115,7 @@ import {IconInfo} from 'static/icons';
           priority="primary"
           overflow="hidden"
         />
-      </Box>
-    </BoxVertical>
+      </BoxComponent>
+    </BoxVerticalComponent>
   </Accordion>
 </Playground>

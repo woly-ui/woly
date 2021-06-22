@@ -1,5 +1,4 @@
 export { Backdrop } from './backdrop';
-export { Box, BoxVertical, box, boxVertical } from './box';
 export { Button } from './button';
 export { ButtonIcon } from './button-icon';
 export { Chip } from './chip';
