@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
 import { Variant } from 'lib/types';
-import { Box } from 'ui/atoms';
+import { box } from 'ui/atoms';
 
 interface ChipProps {
   text?: string;
@@ -61,7 +61,7 @@ const ChipBase: React.FC<ChipProps & Variant> = ({
 };
 
 export const Chip = styled(ChipBase)`
-  ${Box}
+  ${box}
   --local-shape-color: var(--woly-shape-default);
   --local-icon-size: var(--woly-line-height);
   --local-text-color: var(--woly-shape-text-default);

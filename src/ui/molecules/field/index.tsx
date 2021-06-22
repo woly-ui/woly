@@ -1,6 +1,6 @@
 import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
-import { Label, BoxVertical } from 'ui/atoms';
+import { Label, boxVertical } from 'ui/atoms';
 import { Variant } from 'lib/types';
 
 interface FieldProps {
@@ -30,7 +30,7 @@ export const Field = styled(FieldBase)`
   width: 100%;
 
   &[data-row='false'] {
-    ${BoxVertical}
+    ${boxVertical}
   }
 
   &[data-row='true'] {

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
 import { Variant } from 'lib/types';
-import { Box } from 'ui/atoms';
+import { box } from 'ui/atoms';
 import { keyHandlerGet, keyboardEventHandle } from 'lib';
 
 interface SelectOptionProps {
@@ -124,7 +124,7 @@ export const Select = styled(SelectBase)`
   cursor: pointer;
 
   [data-selected] {
-    ${Box}
+    ${box}
     display: flex;
     align-items: center;
     box-sizing: border-box;
@@ -190,7 +190,7 @@ export const Select = styled(SelectBase)`
   }
 
   li {
-    ${Box}
+    ${box}
 
     display: flex;
 

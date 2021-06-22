@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
 import { Variant } from 'lib/types';
-import { Box } from 'ui/atoms';
+import { box } from 'ui/atoms';
 
 interface InputContainerProps extends React.InputHTMLAttributes<HTMLInputElement> {
   className?: string;
@@ -31,7 +31,7 @@ export const InputContainer = styled(InputContainerBase)`
   --local-icon-fill: var(--woly-canvas-text-active);
   --local-value-color: var(--woly-canvas-text-default);
 
-  ${Box}
+  ${box}
 
   display: flex;
   align-items: center;

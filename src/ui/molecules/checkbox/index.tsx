@@ -2,7 +2,7 @@ import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
 import { IconCheckFilled, IconFilledUnchecked } from 'static/icons';
 import { Variant, keyboardEventHandle } from 'lib';
-import { Box } from 'ui/atoms';
+import { box } from 'ui/atoms';
 
 interface CheckboxProps {
   className?: string;
@@ -80,7 +80,7 @@ export const Checkbox = styled(CheckboxBase)`
   --local-text-color: var(--woly-canvas-text-default);
   --local-background-color: var(--woly-shape-default);
 
-  ${Box}
+  ${box}
 
   outline: none;
 

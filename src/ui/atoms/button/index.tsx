@@ -2,7 +2,7 @@
 import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
 import { Variant } from 'lib/types';
-import { Box } from 'ui/atoms';
+import { box } from 'ui/atoms';
 
 export type ButtonVariants =
   | 'secondary'
@@ -45,7 +45,7 @@ const ButtonBase: React.FC<ButtonProps & Variant> = ({
 );
 
 export const Button = styled(ButtonBase)`
-  ${Box}
+  ${box}
   --local-text-color: var(--woly-shape-text-default);
   --local-shape-color: var(--woly-shape-default);
   --local-border-color: var(--woly-shape-default);

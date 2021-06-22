@@ -89,8 +89,6 @@ export const Tooltip = styled(TooltipBase)`
     max-width: 240px;
     min-height: 48px;
 
-    padding: 12px 18px;
-
     color: var(--woly-color, #000000);
 
     background-color: var(--woly-background, #ffffff);

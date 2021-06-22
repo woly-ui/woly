@@ -1,6 +1,6 @@
-import { css } from 'styled-components';
+import styled, { StyledComponent, css } from 'styled-components';
 
-export const Box = css`
+export const box = css`
   --local-vertical: calc(
     1px * var(--woly-component-level) * var(--woly-main-level) - var(--woly-border-width)
   );
@@ -36,7 +36,7 @@ export const Box = css`
   }
 `;
 
-export const BoxVertical = css`
+export const boxVertical = css`
   --local-gap: var(--woly-const-m);
 
   & > *:not(:first-child) {
@@ -47,3 +47,11 @@ export const BoxVertical = css`
     padding: 0;
   }
 `;
+
+export const Box = styled.div`
+  ${box}
+` as StyledComponent<'div', Record<string, unknown>>;
+
+export const BoxVertical = styled.div`
+  ${boxVertical}
+` as StyledComponent<'div', Record<string, unknown>>;

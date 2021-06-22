@@ -2,7 +2,7 @@ import * as React from 'react';
 import styled, { StyledComponent, keyframes } from 'styled-components';
 import { IconSpinner } from 'static/icons';
 import { Variant } from 'lib/types';
-import { Box } from 'ui/atoms';
+import { box } from 'ui/atoms';
 
 interface LoaderProps {
   className?: string;
@@ -57,7 +57,7 @@ const spinnerAnimation = keyframes`
 `;
 
 export const Loader = styled(LoaderBase)`
-  ${Box}
+  ${box}
   --local-track-size: 42px;
   --local-vertical-gap: 12px;
   --local-track-color: var(--woly-canvas-default);

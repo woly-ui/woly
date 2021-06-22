@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
 import { Variant } from 'lib/types';
-import { Box } from 'ui/atoms';
+import { box } from 'ui/atoms';
 
 interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string;
@@ -30,7 +30,7 @@ const ButtonIconBase: React.FC<Props & Variant> = ({
 );
 
 export const ButtonIcon = styled(ButtonIconBase)`
-  ${Box}
+  ${box}
   --local-shape-color: var(--woly-shape-default);
   --local-icon-size: var(--woly-line-height);
   --local-icon-color: var(--woly-shape-text-default);

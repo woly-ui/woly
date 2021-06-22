@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
 import { Variant } from 'lib/types';
-import { Box } from 'ui/atoms';
+import { box } from 'ui/atoms';
 
 interface ListElementsProps {
   iconLeft?: React.ReactNode;
@@ -65,7 +65,7 @@ export const ListItem: React.FC<ListItemProps & ListElementsProps & Variant> = (
  * Fix ListItemContainer after implementing box element
  */
 const ListItemContainer = styled.div.attrs(mapItem)`
-  ${Box}
+  ${box}
   --local-icon-color: var(--woly-canvas-text-default);
   --local-backgound: var(--woly-canvas-default);
   --local-color: var(--woly-canvas-text-default);
