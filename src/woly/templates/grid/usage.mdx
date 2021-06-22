@@ -1,0 +1,76 @@
+import {ColumnContent, Playground, TableContent} from 'lib/playground'
+import {Column, Grid} from 'ui'
+
+Grid is a template to create pages or tables. You can set number of columns in grid.
+To create a column use Column component, also you can set size of column.
+
+### Example
+
+<Playground>
+  <Grid columns={5}>
+    <Column>
+      <ColumnContent>Column</ColumnContent>
+    </Column>
+    <Column size={2}>
+      <ColumnContent>Column</ColumnContent>
+    </Column>
+    <Column>
+      <ColumnContent>Column</ColumnContent>
+    </Column>
+    <Column size={5}>
+      <ColumnContent>Column</ColumnContent>
+    </Column>
+    <Column>
+      <ColumnContent>Column</ColumnContent>
+    </Column>
+    <Column>
+      <ColumnContent>Column</ColumnContent>
+    </Column>
+  </Grid>
+</Playground>
+
+### Table
+
+<Playground>
+  <Grid columns={5}>
+    <Column>
+      <TableContent style={{ background: '#f5f5f5' }}>Number</TableContent>
+    </Column>
+    <Column size={3}>
+      <TableContent style={{ background: '#f5f5f5' }}>Name</TableContent>
+    </Column>
+    <Column>
+      <TableContent style={{ background: '#f5f5f5' }}>Age</TableContent>
+    </Column>
+    <Column>
+      <TableContent>1</TableContent>
+    </Column>
+    <Column size={3}>
+      <TableContent>Edward Lock</TableContent>
+    </Column>
+    <Column>
+      <TableContent>23</TableContent>
+    </Column>
+    <Column>
+      <TableContent>2</TableContent>
+    </Column>
+    <Column size={3}>
+      <TableContent>Miles Rank</TableContent>
+    </Column>
+    <Column>
+      <TableContent>42</TableContent>
+    </Column>
+  </Grid>
+</Playground>
+
+### Grid Props
+
+| Name      | Type     | Default | Description       |
+| --------- | -------- | ------- | ----------------- |
+| `columns` | `number` |         | Number of columns |
+
+### Column Props
+
+| Name   | Type     | Default | Description                              |
+| ------ | -------- | ------- | ---------------------------------------- |
+| `size` | `number` |         | Size of column: number of cells it takes |

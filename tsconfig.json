@@ -16,7 +16,8 @@
       "~/": ["./"],
       "lib": ["./lib/"],
       "icons": ["./static/icons"],
-      "ui": ["./ui/"]
+      "ui": ["./woly/"],
+      "ui/*": ["./woly/*"]
     },
     "resolveJsonModule": true,
     "skipLibCheck": true,

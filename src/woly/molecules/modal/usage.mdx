@@ -1,0 +1,53 @@
+import {Playground, State} from 'lib/playground'
+import {Button, Field, Input, Modal} from 'ui';
+import {IconSearch} from 'static/icons';
+
+Modal component is used for creating dialogs.
+
+### Modal Example
+
+<Playground>
+  <State initial={false} change={(i) => !i}>
+    {(value, change) => (
+      <>
+        <Button icon={<IconSearch />} onClick={change} text="Click on me" priority="primary" />
+        <Modal visible={value} title="Change customer" onClose={change} priority="primary">
+          <form autoComplete="off">
+            <Field label="Customer name">
+              <Input
+                priority="primary"
+                name="name"
+                onChange={(event) => console.info('On name change')}
+                placeholder="Name"
+                type="text"
+              />
+            </Field>
+            <Field label="Customer email">
+              <Input
+                priority="primary"
+                name="email"
+                onChange={(event) => console.info('On email change')}
+                placeholder="Email"
+                type="text"
+              />
+            </Field>
+            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+              <Button onClick={() => alert('Change clicked!')} text="Change" priority="primary" />
+              <Button onClick={change} text="Cancel" priority="primary" outlined />
+            </div>
+          </form>
+        </Modal>
+      </>
+    )}
+  </State>
+</Playground>
+
+### Props
+
+| Name       | Type                                       | Default       | Description                            |
+| ---------- | ------------------------------------------ | ------------- | -------------------------------------- |
+| `children` | `React.ReactNode`                          |               | Modal content                          |
+| `onClose`  | `React.EventHandler<React.SyntheticEvent>` |               | Event handler on modal close           |
+| `priority` | `string`                                   | `'secondary'` | Priority prop to style Modal component |
+| `title`    | `string`                                   |               | Title of modal                         |
+| `visible`  | `boolean`                                  | `false`       | Set initial visibility of Modal        |

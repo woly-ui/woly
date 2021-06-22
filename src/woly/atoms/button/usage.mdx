@@ -1,0 +1,131 @@
+import {Button} from './index'
+import {block, Playground} from 'lib/playground'
+import {IconPlus, IconSearch} from 'static/icons';
+
+`Button` allows users to take actions and make choices with a single tap.
+
+### Example
+
+<Playground>
+  <Button
+    icon={<IconSearch />}
+    onClick={() => alert('Hi!')}
+    text="Just a button"
+    priority="default"
+  />
+  <Button
+    icon={<IconSearch />}
+    onClick={() => alert('Hi!')}
+    text="Just a button"
+    priority="default"
+    outlined
+  />
+</Playground>
+
+### Width
+
+Button can span the entire width of the container or have a fixed width
+
+<Playground direction="horizontal">
+  <Button
+    icon={<IconSearch />}
+    onClick={() => alert('Hi!')}
+    text="Just a button"
+    priority="primary"
+  />
+  <Button
+    icon={<IconSearch />}
+    onClick={() => alert('Hi!')}
+    text="Just a button"
+    priority="primary"
+    fullWidth
+    outlined
+  />
+</Playground>
+
+### prioritys
+
+Primary and danger prioritys are should be used to focus user attention.
+
+<Playground>
+  <Button text="The main action on the page" priority="primary" />
+  <Button text="The main action on the page" priority="primary" outlined />
+  <Button text="Alternative action" priority="danger" outlined />
+  <Button text="Alternative action" priority="danger" />
+</Playground>
+
+Secondary priority should be used as a default priority.
+
+<Playground>
+  <Button text="Alternative action" priority="secondary" />
+  <Button text="Alternative action" priority="secondary" outlined />
+</Playground>
+
+Tertiary priority should be used as an alternative priority to secondary and can`t be used with outline.
+
+<Playground>
+  <Button text="Alternative action" priority="tertiary" />
+</Playground>
+
+### Icons
+
+Button can be used with icon on the left side.
+
+<Playground>
+  <Button text="Icon on the left" priority="primary" icon={<IconPlus />} />
+  <Button text="Disabled button" priority="primary" icon={<IconSearch />} disabled />
+</Playground>
+
+### Sizes
+
+Size controlled by the `component-level` block property not from the props.
+
+<Playground>
+  <block.N>
+    <Button priority="primary" text="None" icon={<IconPlus />} />
+  </block.N>
+  <block.S>
+    <Button priority="primary" text="Small" icon={<IconPlus />} />
+  </block.S>
+  <block.M>
+    <Button priority="primary" text="Normal" icon={<IconPlus />} />
+  </block.M>
+  <block.L>
+    <Button priority="primary" text="Large" icon={<IconPlus />} />
+  </block.L>
+  <block.XL>
+    <Button priority="primary" text="Extra Large" icon={<IconPlus />} />
+  </block.XL>
+  <block.H>
+    <Button priority="primary" text="Huge" icon={<IconPlus />} />
+  </block.H>
+</Playground>
+
+### Container
+
+Buttons can be placed inside the container. Button width is equal to container size.
+
+<Playground direction="horizontal">
+  <block.S>
+    <Button priority="primary" text="Small" />
+  </block.S>
+  <block.S>
+    <Button priority="primary" text="Small" icon={<IconPlus />} />
+  </block.S>
+</Playground>
+
+### Map of Button
+
+<a href="/package/woly/component/button-map">See full map of button</a>
+
+### Props
+
+| Name        | Type                | Default       | Description                                                 |
+| ----------- | ------------------- | ------------- | ----------------------------------------------------------- |
+| `fullWidth` | `boolean`           | `false`       | Change button`s width from content width to container width |
+| `icon`      | `React.ReactNode`   | `null`        | Component to show on the left side of the text (ex.: Icon)  |
+| `outlined`  | `boolean`           | `false`       | Change button`s view from filled to outlined                |
+| `priority`  | `string`            | `'secondary'` | Priority prop to style Button component                     |
+| `text`      | `React.ReactNode`   |               | Text appeared on the button                                 |
+| `type`      | `string`            | `button`      | HTML type of the button                                     |
+| `...`       | `HTMLButtonElement` | `{}`          | Other props are inherited from `HTMLButtonElement`          |
