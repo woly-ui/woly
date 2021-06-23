@@ -1,7 +1,8 @@
 import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
 import { Priority } from 'lib/types';
-import { box } from 'ui/atoms/box';
+
+import { box } from '../box';
 
 interface InputContainerProps extends React.InputHTMLAttributes<HTMLInputElement> {
   className?: string;

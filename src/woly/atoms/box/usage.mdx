@@ -1,9 +1,9 @@
-import {BoxComponent, BoxVerticalComponent} from './index';
+import {Box, BoxVertical} from './index';
 import {Text, Tooltip, Button, Accordion, TextArea, Input, Checkbox} from 'ui';
 import {block, Playground, State} from 'lib/playground';
 import {IconInfo} from 'static/icons';
 
-`Box` and `Vertical` are wrapper components, that add a box model to elements that don't have it.
+`Box` and `BoxVertical` are wrapper components, that add a box model to elements that don't have it.
 
 ## Example with Box
 
@@ -13,9 +13,9 @@ import {IconInfo} from 'static/icons';
   <block.L style={{ width: '400px', padding: '100px' }}>
     <Tooltip
       message={
-        <BoxComponent>
+        <Box>
           <Text>г. Комсомольск на Амуре, ул. 1-го октября, д. 145, корп. 9, кв. 16</Text>
-        </BoxComponent>
+        </Box>
       }
       position="bottom"
     >
@@ -36,14 +36,14 @@ import {IconInfo} from 'static/icons';
     <Tooltip
       message={
         <>
-          <BoxComponent>
+          <Box>
             <Text type="S">
               Согласие на обработку персональных данных – это письменное разрешение гражданина
               Российской Федерации, которое он дает заинтересованной стороне на получение, сбор,
               хранение и использование персональных сведений о себе.
             </Text>
-          </BoxComponent>
-          <BoxComponent>
+          </Box>
+          <Box>
             <block.S style={{ display: 'flex' }}>
               <Button
                 onClick={() => alert('Hi!')}
@@ -54,7 +54,7 @@ import {IconInfo} from 'static/icons';
               />
               <Button onClick={() => alert('Hi!')} text="Дальше" priority="secondary" />
             </block.S>
-          </BoxComponent>
+          </Box>
         </>
       }
       position="bottom"
@@ -81,27 +81,27 @@ import {IconInfo} from 'static/icons';
     priority="primary"
     isOpen={false}
     title={
-      <BoxComponent>
+      <Box>
         <Text type="L">Short recomendation when to use accordion&nbsp;</Text>
-      </BoxComponent>
+      </Box>
     }
   >
-    <BoxVerticalComponent>
-      <BoxComponent>
+    <BoxVertical>
+      <Box>
         <Text type="S">To organize related information&nbsp;</Text>
-      </BoxComponent>
-      <BoxComponent>
+      </Box>
+      <Box>
         <Text type="S">
           To shorten pages and reduce scrolling when content is not crucial to read in full.&nbsp;
         </Text>
-      </BoxComponent>
-      <BoxComponent>
+      </Box>
+      <Box>
         <Text type="S">
           When space is at a premium and long content cannot be displayed all at once, like on a
           mobile interface or in a side panel.&nbsp;
         </Text>
-      </BoxComponent>
-      <BoxComponent>
+      </Box>
+      <Box>
         <TextArea
           name="name"
           placeholder="Please, left some comments"
@@ -109,7 +109,7 @@ import {IconInfo} from 'static/icons';
           priority="primary"
           overflow="hidden"
         />
-      </BoxComponent>
-    </BoxVerticalComponent>
+      </Box>
+    </BoxVertical>
   </Accordion>
 </Playground>
