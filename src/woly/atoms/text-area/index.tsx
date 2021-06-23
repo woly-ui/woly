@@ -1,6 +1,7 @@
 import React from 'react';
 import styled, { StyledComponent } from 'styled-components';
 import { Priority } from 'lib/types';
+import { box } from 'ui/elements';
 
 interface TextAreaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
   className?: string;
@@ -54,17 +55,16 @@ const TextAreaBase: React.FC<TextAreaProps & Priority> = ({
       className={className}
       data-disabled={disabled}
       data-priority={priority}
-      tabIndex={tabIndex}
       data-overflow={overflow}
       data-resize={resize}
       ref={textAreaRef}
     >
       <textarea
         cols={cols}
-        data-priority={priority}
         maxLength={maxLength}
         minLength={minlength}
         name={name}
+        tabIndex={tabIndex}
         onChange={onChange}
         placeholder={placeholder}
         rows={rows}
@@ -77,75 +77,72 @@ const TextAreaBase: React.FC<TextAreaProps & Priority> = ({
 };
 
 export const TextArea = styled(TextAreaBase)`
-  --local-vertical: calc(1px * var(--woly-component-level) * var(--woly-main-level));
-  --local-horizontal: calc(
-    var(--woly-const-m) + (1px * var(--woly-main-level)) + var(--local-vertical)
-  );
-
-  --local-border-color: var(--woly-canvas-text-hover);
+  --local-border-color: var(--woly-shape-default);
   --local-background-color: var(--woly-canvas-default);
-  --local-value-color: var(--woly-canvas-text-default);
-  box-sizing: border-box;
-
-  width: 100%;
-
-  font-size: var(--woly-font-size, 15px);
-  line-height: var(--woly-line-height, 21px);
-
-  outline: none;
+  --local-text-color: var(--woly-canvas-text-default);
+  ${box}
 
   textarea {
-    padding: var(--local-vertical) var(--local-horizontal);
+    box-sizing: border-box;
+    width: 100%;
 
-    overflow: hidden;
+    color: var(--local-text-color);
 
-    color: var(--local-value-color);
+    font-size: var(--woly-font-size);
+    line-height: var(--woly-line-height);
 
     background-color: var(--local-background-color);
-
-    border: var(--woly-border-width) solid var(--local-border-color);
-    border-radius: var(--woly-rounding);
-
+    border: none;
     outline: none;
 
     resize: none;
 
     &::placeholder {
-      color: var(--woly-canvas-text-disabled);
+      color: var(--woly-neutral);
     }
   }
 
-  &:focus > textarea {
-    --local-border-color: var(--woly-focus);
+  box-sizing: border-box;
+
+  width: 100%;
+
+  overflow: hidden;
+
+  background-color: var(--local-background-color);
+
+  border: var(--woly-border-width) solid var(--local-border-color);
+  border-radius: var(--woly-rounding);
+
+  outline: none;
+
+  &:focus-within {
+    --local-border-color: var(--woly-shape-active);
     outline: none;
-    box-shadow: 0 0 0 var(--woly-border-width) var(--woly-focus);
+    box-shadow: 0 0 0 var(--woly-border-width) var(--woly-focus-color);
   }
 
-  &:active > textarea {
-    --local-border-color: var(--woly-focus);
+  &:active {
+    --local-border-color: var(--woly-shape-active);
     outline: none;
-    box-shadow: 0 0 0 var(--woly-border-width) var(--woly-focus);
   }
 
-  &:hover > textarea {
+  &:hover {
     --local-border-color: var(--woly-shape-hover);
   }
 
   &[data-disabled='true'] {
     pointer-events: none;
 
-    textarea {
-      --local-background-color: var(--woly-canvas-disabled);
-      --local-border-color: var(--woly-shape-disabled);
-      --local-value-color: var(--woly-canvas-text-disabled);
-    }
+    --local-background-color: var(--woly-canvas-disabled);
+    --local-border-color: var(--woly-canvas-disabled);
+    --local-text-color: var(--woly-canvas-text-disabled);
   }
 
   &[data-overflow='true'] > textarea {
     overflow: auto;
   }
 
-  &[data-resize='true'] > textarea {
+  &[data-resize='true'] {
     resize: both;
   }
 ` as StyledComponent<'textarea', Record<string, unknown>, TextAreaProps & Priority>;
