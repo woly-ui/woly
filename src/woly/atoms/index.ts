@@ -15,3 +15,4 @@ export { Table, Thead, Tbody, Tr, Td, Th } from './table';
 export { Text } from './text';
 export { TextArea } from './text-area';
 export { UploadArea } from './upload-area';
+export { Avatar } from './avatar';
