@@ -1,22 +1,8 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { StyledComponent } from 'styled-components';
 import { IconProfile } from 'static/icons';
 
 import { useImageLoad } from './use-image-load';
-
-const AvatarContainer = styled.div`
-  --local-size: calc((var(--woly-component-level) + 2) * 2 * var(--woly-const-m));
-
-  width: var(--local-size);
-  height: var(--local-size);
-
-  & > * {
-    width: 100%;
-    height: 100%;
-
-    border-radius: 50%;
-  }
-`;
 
 interface AvatarProps {
   alt?: string;
@@ -25,7 +11,13 @@ interface AvatarProps {
   children?: React.ReactNode;
 }
 
-export const Avatar: React.FC<AvatarProps> = ({ alt, src, srcSet, children: childrenProp }) => {
+const AvatarBase: React.FC<AvatarProps> = ({
+  alt,
+  children: childrenProp,
+  src,
+  srcSet,
+  ...props
+}) => {
   const loadFailed = useImageLoad({ src, srcSet });
   const hasImg = src || srcSet;
   let children = null;
@@ -39,5 +31,19 @@ export const Avatar: React.FC<AvatarProps> = ({ alt, src, srcSet, children: chil
     children = <IconProfile />;
   }
 
-  return <AvatarContainer>{children}</AvatarContainer>;
+  return <div {...props}>{children}</div>;
 };
+
+export const Avatar = styled(AvatarBase)`
+  --local-size: calc((var(--woly-component-level) + 2) * 2 * var(--woly-const-m));
+
+  width: var(--local-size);
+  height: var(--local-size);
+
+  & > * {
+    width: 100%;
+    height: 100%;
+
+    border-radius: 50%;
+  }
+` as StyledComponent<'div', Record<string, unknown>, AvatarProps>;
