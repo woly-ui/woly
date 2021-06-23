@@ -6,17 +6,35 @@ package: 'woly'
 
 import {ButtonIcon, Tabs, Tab} from 'ui';
 import {IconClose, IconPlus} from 'static/icons';
-import {block, Playground} from 'lib/playground';
+import { block, Playground } from 'lib/playground';
 
 export const links = [
   {
     id: "fwed324fcse",
-    content: "Johnnnnnnnnnnn Doehhhhhhh",
+    content: "John Doeh",
     active: true
   },
   {
     id: "fwed32q4fcss",
-    content: "Alex",
+    content: "Alex Miller",
+    active: false
+  },
+   {
+    id: "fwed324fcse",
+    content: "Ann Adams",
+    active: false
+  }
+];
+
+export const linksMap = [
+  {
+    id: "fwed324fcse",
+    content: "John Doeh",
+    active: true
+  },
+  {
+    id: "fwed32q4fcss",
+    content: "Alex Miller",
     active: false
   },
    {
@@ -77,26 +95,25 @@ Ensure that all tabs are always enabled, and explain why a tab’s content is un
 
 <Playground>
   <block.L style={{ width: '1200px' }}>
-    <Tabs priority="secondary">
+    <Tabs priority="default">
       {links.map(({ active, id, content, iconLeft }) => (
         <Tab
           active={active}
           key={id}
           href={`#${id}`}
-          iconLeft={iconLeft}
           iconAction={
             <ButtonIcon
               icon={<IconClose />}
               onClick={() => {
                 console.log('click icon');
               }}
-              priority="secondary"
+              priority="default"
               outlined
             />
           }
           text={content}
           onClick={() => console.log(`click ${id}`)}
-          priority="secondary"
+          priority="default"
         />
       ))}
     </Tabs>
@@ -112,10 +129,10 @@ Primary priority can be used to style tabs in brand color.
     <Tabs priority="primary">
       {links.map(({ active, id, content, iconLeft }) => (
         <Tab
+          weight="3"
           active={active}
           key={id}
           href={`#${id}`}
-          iconLeft={iconLeft}
           iconAction={
             <ButtonIcon
               icon={<IconClose />}
@@ -138,28 +155,19 @@ Secondary priority should be used as default variant.
 
 <Playground>
   <block.L style={{ width: '1200px' }}>
-    <Tabs priority="secondary">
-      {links.map(({ active, id, content, iconLeft }) => (
+    <div style={{ display: 'flex' }}>
+      {links.map(({ active, id, content }) => (
         <Tab
+          weight="1"
           active={active}
           key={id}
           href={`#${id}`}
-          iconLeft={iconLeft}
-          iconAction={
-            <ButtonIcon
-              icon={<IconClose />}
-              onClick={() => {
-                console.log('click icon');
-              }}
-              priority="secondary"
-            />
-          }
           text={content}
           onClick={() => console.log(`click ${id}`)}
-          variant="secondary"
+          priority="default"
         />
       ))}
-    </Tabs>
+    </div>
   </block.L>
 </Playground>
 
@@ -195,21 +203,47 @@ Tab can have an optional icon on the left side ex. icon, logo or avatar.
   </block.L>
 </Playground>
 
+<Playground>
+  <block.L style={{ width: '1200px' }}>
+    <Tabs priority="default">
+      {linksMap.map(({ active, id, content, iconLeft }) => (
+        <Tab
+          active={active}
+          key={id}
+          href={`#${id}`}
+          iconLeft={<IconPlus />}
+          iconAction={
+            <ButtonIcon
+              icon={<IconClose />}
+              onClick={console.log('click')}
+              priority="default"
+              outlined
+            />
+          }
+          text={content}
+          onClick={() => console.log(`click ${id}`)}
+          priority="default"
+        />
+      ))}
+    </Tabs>
+  </block.L>
+</Playground>
+
 ### Tab Props
 
-| Name        | Type                               | Default       | Description                                                                                         |
-| ----------- | ---------------------------------- | ------------- | --------------------------------------------------------------------------------------------------- |
-| `href`      | `string`                           |               | Href - attribute that adds url adress to tab component                                              |
-| `iconLeft`  | `React.ReactNode`                  | `null`        | Element appears on left side near tab component`s text (ex.: icon or avatar)                        |
-| `iconAction`| `React.ReactNode`                  | `null`        | Element appears on right side near tab component`s text (ex.: action block, that consists a button) |
-| `onClick`   | `React.MouseEvent<HTMLDivElement>` | `null`        | Callback when tab component is clicked                                                              |
-| `outlined`  | `boolean`                          | `false`       | Add outline variant to style Tab component                                                          |
-| `tabIndex`  | `number`                           |               | Set tabIndex to Tab component                                                                       |
-| `text`      | `string`                           |               | Tab component`s text (ex.: url adress as ussual, in such cases text)                                |
-| `priority`  | `string`                           | `'secondary'` | Priority prop to style Tab component                                                                |
+| Name         | Type                               | Default       | Description                                                                                         |
+| ------------ | ---------------------------------- | ------------- | --------------------------------------------------------------------------------------------------- |
+| `href`       | `string`                           |               | Href - attribute that adds url adress to tab component                                              |
+| `iconAction` | `React.ReactNode`                  | `null`        | Element appears on right side near tab component`s text (ex.: action block, that consists a button) |
+| `iconLeft`   | `React.ReactNode`                  | `null`        | Element appears on left side near tab component`s text (ex.: icon or avatar)                        |
+| `onClick`    | `React.MouseEvent<HTMLDivElement>` | `null`        | Callback when tab component is clicked                                                              |
+| `priority`   | `string`                           | `'secondary'` | Priority prop to style Tab component                                                                |
+| `tabIndex`   | `number`                           |               | Set tabIndex to Tab component                                                                       |
+| `text`       | `string`                           |               | Tab component`s text (ex.: url adress as ussual, in such cases text)                                |
+| `weight`     | `string`                           | `2`           | Add weight to style Tab component                                                                   |
 
 ### Tabs Props
 
-| Name      | Type     | Default       | Description                           |
-| --------- | -------- | ------------- | ------------------------------------- |
-| `priority`| `string` | `'secondary'` | Priority prop to style Tabs component |
+| Name       | Type     | Default       | Description                           |
+| ---------- | -------- | ------------- | ------------------------------------- |
+| `priority` | `string` | `'secondary'` | Priority prop to style Tabs component |
