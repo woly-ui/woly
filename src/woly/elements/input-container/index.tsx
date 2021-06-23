@@ -30,7 +30,6 @@ export const InputContainer = styled(InputContainerBase)`
   --local-background-color: var(--woly-canvas-default);
   --local-border-color: var(--woly-shape-default);
   --local-icon-fill: var(--woly-canvas-text-default);
-  --local-text-color: var(--woly-canvas-text-default);
 
   ${box}
 
@@ -49,8 +48,6 @@ export const InputContainer = styled(InputContainerBase)`
 
   [data-input='input'] {
     flex: 1;
-
-    color: var(--local-text-color);
 
     input {
       padding: 0;
@@ -87,11 +84,14 @@ export const InputContainer = styled(InputContainerBase)`
   }
 
   &[data-disabled='true'] {
+    input {
+      color: var(--woly-canvas-text-disabled);
+    }
+
     pointer-events: none;
 
     --local-background-color: var(--woly-canvas-disabled);
     --local-border-color: var(--woly-canvas-disabled);
-    --local-text-color: var(--woly-canvas-text-disabled);
     --local-icon-fill: var(--woly-canvas-text-disabled);
   }
 ` as StyledComponent<'div', Record<string, unknown>, InputContainerProps & Priority>;

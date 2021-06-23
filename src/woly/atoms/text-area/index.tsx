@@ -55,17 +55,16 @@ const TextAreaBase: React.FC<TextAreaProps & Priority> = ({
       className={className}
       data-disabled={disabled}
       data-priority={priority}
-      tabIndex={tabIndex}
       data-overflow={overflow}
       data-resize={resize}
       ref={textAreaRef}
     >
       <textarea
         cols={cols}
-        data-priority={priority}
         maxLength={maxLength}
         minLength={minlength}
         name={name}
+        tabIndex={tabIndex}
         onChange={onChange}
         placeholder={placeholder}
         rows={rows}
@@ -84,8 +83,8 @@ export const TextArea = styled(TextAreaBase)`
   ${box}
 
   textarea {
+    box-sizing: border-box;
     width: 100%;
-    padding: 0;
 
     color: var(--local-text-color);
 
@@ -93,9 +92,10 @@ export const TextArea = styled(TextAreaBase)`
     line-height: var(--woly-line-height);
 
     background-color: var(--local-background-color);
-
     border: none;
     outline: none;
+
+    resize: none;
 
     &::placeholder {
       color: var(--woly-neutral);
@@ -115,9 +115,7 @@ export const TextArea = styled(TextAreaBase)`
 
   outline: none;
 
-  resize: none;
-
-  &:focus {
+  &:focus-within {
     --local-border-color: var(--woly-shape-active);
     outline: none;
     box-shadow: 0 0 0 var(--woly-border-width) var(--woly-focus-color);
@@ -144,7 +142,7 @@ export const TextArea = styled(TextAreaBase)`
     overflow: auto;
   }
 
-  &[data-resize='true'] > textarea {
+  &[data-resize='true'] {
     resize: both;
   }
 ` as StyledComponent<'textarea', Record<string, unknown>, TextAreaProps & Priority>;

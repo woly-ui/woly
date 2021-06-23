@@ -49,6 +49,6 @@ export const InputElement = styled(InputElementBase)`
   outline: none;
 
   &::placeholder {
-    color: var(--woly-canvas-text-disabled);
+    color: var(--woly-neutral);
   }
 ` as StyledComponent<'input', Record<string, unknown>, InputElementProps>;
