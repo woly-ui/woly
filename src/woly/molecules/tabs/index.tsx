@@ -1,6 +1,6 @@
 import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
-import { Variant } from 'lib/types';
+import { Priority } from 'lib/types';
 import { box } from 'ui/elements';
 interface TabElementProps {
   iconLeft?: React.ReactNode;
@@ -16,8 +16,8 @@ interface TabProps {
   outlined?: boolean;
 }
 
-const mapTabs = (properties: Variant) => ({
-  'data-variant': properties.variant ?? 'secondary',
+const mapTabs = (properties: Priority) => ({
+  'data-priority': properties.priority ?? 'secondary',
 });
 
 export const Tabs = styled.div.attrs(mapTabs)`
@@ -35,9 +35,9 @@ export const Tabs = styled.div.attrs(mapTabs)`
 
   border-top: var(--woly-border-width) solid var(--local-border-color);
   border-bottom: var(--woly-border-width) solid var(--local-border-color);
-` as StyledComponent<'div', Record<string, unknown>, Variant>;
+` as StyledComponent<'div', Record<string, unknown>, Priority>;
 
-const TabBase: React.FC<TabProps & TabElementProps & Variant> = ({
+const TabBase: React.FC<TabProps & TabElementProps & Priority> = ({
   active,
   className,
   href,
@@ -46,7 +46,7 @@ const TabBase: React.FC<TabProps & TabElementProps & Variant> = ({
   onClick,
   outlined,
   text,
-  variant,
+  priority
 }) => (
   <div
     className={className}
@@ -55,7 +55,7 @@ const TabBase: React.FC<TabProps & TabElementProps & Variant> = ({
     onClick={onClick}
     tabIndex={0}
     data-active={active}
-    data-variant={variant}
+    data-priority={priority}
   >
     {iconLeft && <span data-icon="link-icon">{iconLeft}</span>}
     <span data-link="link-text">{text}</span>
@@ -71,10 +71,14 @@ export const Tab = styled(TabBase)`
   --local-border-color: var(--woly-shape-default);
   --local-tab-max-size: 201px;
   --local-tab-min-size: 67px;
+  --local-gradient-color-default: linear-gradient(to right, rgba(255, 255, 255, 0.2), var(--local-background) 100%);
+  --local-gradient-color-hover: linear-gradient(to right,rgba(255, 255, 255, 0.2), var(--woly-background) 100%);
+  --local-gradient-color-active: linear-gradient(to right,rgba(255, 255, 255, 0.2), var(--woly-background) 100%);
 
   ${box}
 
   display: flex;
+  flex: 1;
   align-items: center;
 
   box-sizing: border-box;
@@ -109,10 +113,10 @@ export const Tab = styled(TabBase)`
       top: 0;
       right: 0;
 
-      width: 45%;
+      width: 35%;
       height: 100%;
 
-      background: linear-gradient(to right, rgba(255, 255, 255, 0.2), var(--local-background) 100%);
+      background: var(--local-gradient-color);
 
       content: '';
     }
@@ -157,11 +161,7 @@ export const Tab = styled(TabBase)`
       --local-background: var(--woly-canvas-default);
 
       &::after {
-        background: linear-gradient(
-          to right,
-          rgba(255, 255, 255, 0.2),
-          var(--woly-background) 100%
-        );
+        --local-gradient-color: var(--local-gradient-color-hover);
       }
     }
   }
@@ -169,16 +169,12 @@ export const Tab = styled(TabBase)`
   &[data-active='true'] {
     z-index: 1;
 
-    box-shadow: 0 var(--woly-border-width) 0 0 var(--woly-shape-active);
+    box-shadow: 0 var(--woly-border-width) 0 0 var(--woly-focus-color);
 
     --local-background: var(--woly-canvas-default);
     [data-link='link-text'] {
       &::after {
-        background: linear-gradient(
-          to right,
-          rgba(255, 255, 255, 0.2),
-          var(--woly-background) 100%
-        );
+        --local-gradient-color: var(--local-gradient-color-active);
       }
     }
   }
@@ -189,4 +185,4 @@ export const Tab = styled(TabBase)`
     outline: none;
     box-shadow: 0 var(--woly-border-width) 0 0 var(--woly-focus-color);
   }
-` as StyledComponent<'div', Record<string, unknown>, TabProps & TabElementProps & Variant>;
+` as StyledComponent<'div', Record<string, unknown>, TabProps & TabElementProps & Priority>;
