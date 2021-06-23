@@ -16,3 +16,4 @@ export { Text } from './text';
 export { TextArea } from './text-area';
 export { Tooltip } from './tooltip';
 export { UploadArea } from './upload-area';
+export { Avatar } from './avatar';
