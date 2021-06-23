@@ -26,7 +26,7 @@ interface UsersListProps {
 }
 
 export const UsersList = ({ data }: UsersListProps) => (
-  <ListContainer variant="primary" style={{ width: '100%' }}>
+  <ListContainer priority="primary" style={{ width: '100%' }}>
     {data.map(({ id, name }) => (
       <ListItem key={id} as="li" text={name} />
     ))}

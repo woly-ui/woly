@@ -14,12 +14,12 @@ Also, icons can be used as toggle buttons when they allow selection, or deselect
   <ButtonIcon
     icon={<IconSearch />}
     onClick={() => console.info('ButtonIcon clicked')}
-    variant="default"
+    priority="default"
   />
   <ButtonIcon
     icon={<IconSearch />}
     onClick={() => console.info('ButtonIcon clicked')}
-    variant="default"
+    priority="default"
     outlined
   />
 </Playground>
@@ -62,8 +62,8 @@ Button-icon's size can controlled by block-container and it`s width is equal to 
 
 ### Weight and priority
 
-Button-icon can be represented in primary, secondary, default or tertiary variants and can be styled with fill or outline.
-In case of choosing button-icon in tertiary variant with outline styles use the opposite background color to the text color of button-icon.
+Button-icon can be represented in primary, secondary, default or tertiary priorities and can be styled with fill or outline.
+In case of choosing button-icon in tertiary priority with outline styles use the opposite background color to the text color of button-icon.
 
 <Playground>
   <ButtonIcon

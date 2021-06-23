@@ -2,7 +2,7 @@ import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
 import { Label } from 'ui/atoms';
 import { Priority } from 'lib/types';
-import { boxVertical } from 'ui/elements';
+import { boxVertical } from 'ui/elements/box';
 
 interface FieldProps {
   className?: string;
