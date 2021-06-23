@@ -2,7 +2,7 @@ import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
 import { IconCheckFilled, IconFilledUnchecked } from 'static/icons';
 import { Priority, keyboardEventHandle } from 'lib';
-import { box } from 'ui/atoms';
+import { box } from 'ui/atoms/box';
 
 interface CheckboxProps {
   className?: string;

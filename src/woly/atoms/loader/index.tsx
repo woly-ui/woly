@@ -2,7 +2,7 @@ import * as React from 'react';
 import styled, { StyledComponent, keyframes } from 'styled-components';
 import { IconSpinner } from 'static/icons';
 import { Priority } from 'lib/types';
-import { box } from 'ui/atoms';
+import { box } from 'ui/atoms/box';
 
 interface LoaderProps {
   className?: string;
