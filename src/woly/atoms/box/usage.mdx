@@ -1,0 +1,115 @@
+import {Box, BoxVertical} from './index';
+import {Text, Tooltip, Button, Accordion, TextArea, Input, Checkbox} from 'ui';
+import {block, Playground, State} from 'lib/playground';
+import {IconInfo} from 'static/icons';
+
+`Box` and `BoxVertical` are wrapper components, that add a box model to elements that don't have it.
+
+## Example with Box
+
+<!-- TODO update example with PRs FRNT-401 & FRNT-520 -->
+
+<Playground>
+  <block.L style={{ width: '400px', padding: '100px' }}>
+    <Tooltip
+      message={
+        <Box>
+          <Text>г. Комсомольск на Амуре, ул. 1-го октября, д. 145, корп. 9, кв. 16</Text>
+        </Box>
+      }
+      position="bottom"
+    >
+      <Input
+        leftIcon={<IconInfo />}
+        name="adress"
+        onChange={() => console.info('On input change')}
+        type="text"
+        priority="primary"
+        value="г. Комсомольск на Амуре, ул. 1-го октября, д. 145, корп. 9, кв. 16"
+      />
+    </Tooltip>
+  </block.L>
+</Playground>
+
+<Playground>
+  <block.L style={{ paddingBottom: '400px' }}>
+    <Tooltip
+      message={
+        <>
+          <Box>
+            <Text type="S">
+              Согласие на обработку персональных данных – это письменное разрешение гражданина
+              Российской Федерации, которое он дает заинтересованной стороне на получение, сбор,
+              хранение и использование персональных сведений о себе.
+            </Text>
+          </Box>
+          <Box>
+            <block.S style={{ display: 'flex' }}>
+              <Button
+                onClick={() => alert('Hi!')}
+                text="Назад"
+                priority="secondary"
+                outlined
+                style={{ marginRight: '30px' }}
+              />
+              <Button onClick={() => alert('Hi!')} text="Дальше" priority="secondary" />
+            </block.S>
+          </Box>
+        </>
+      }
+      position="bottom"
+    >
+      <State initial={false} change={(i) => !i}>
+        {(value, change) => (
+          <Checkbox
+            checked={value}
+            id="id"
+            onChange={change}
+            text="Согласие на обработку персональных данных"
+            priority="primary"
+          />
+        )}
+      </State>
+    </Tooltip>
+  </block.L>
+</Playground>
+
+## Example with VerticalBox
+
+<Playground>
+  <Accordion
+    priority="primary"
+    isOpen={false}
+    title={
+      <Box>
+        <Text type="L">Short recomendation when to use accordion&nbsp;</Text>
+      </Box>
+    }
+  >
+    <BoxVertical>
+      <Box>
+        <Text type="S">To organize related information&nbsp;</Text>
+      </Box>
+      <Box>
+        <Text type="S">
+          To shorten pages and reduce scrolling when content is not crucial to read in full.&nbsp;
+        </Text>
+      </Box>
+      <Box>
+        <Text type="S">
+          When space is at a premium and long content cannot be displayed all at once, like on a
+          mobile interface or in a side panel.&nbsp;
+        </Text>
+      </Box>
+      <Box>
+        <TextArea
+          name="name"
+          placeholder="Please, left some comments"
+          onChange={() => console.info('On textarea change')}
+          priority="primary"
+          overflow="hidden"
+        />
+      </Box>
+    </BoxVertical>
+  </Accordion>
+</Playground>

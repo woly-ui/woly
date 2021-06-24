@@ -1,0 +1,158 @@
+import { Button, Toast } from 'ui';
+import { IconPlus, IconSearch } from 'static/icons';
+import { block, Playground, State } from 'lib/playground';
+
+`Toast` is lightweight notification designed to mimic the push notifications.
+Toast is intended to be small interruptions to your visitors or users,
+and therefore should contain minimal, to-the-point, non-interactive content.
+
+### Example
+
+Siple Toast with text only
+
+<Playground>
+  <block.L>
+    <Toast priority="primary" outlined>
+      Режим предпросмотра таблицы
+    </Toast>
+  </block.L>
+</Playground>
+
+### Icons
+
+Toast can be used with icon on the left side.
+
+<Playground>
+  <block.L>
+    <Toast icon={<IconPlus />} priority="primary" outlined>
+      Перетащите файл формата XLS
+    </Toast>
+  </block.L>
+</Playground>
+
+Toast can also consist action block
+
+<Playground>
+  <block.L style={{ width: '1200px' }}>
+    <Toast
+      priority="primary"
+      outlined
+      action={
+        <>
+          <Button
+            icon={<IconSearch />}
+            onClick={() => console.info('IconClose clicked')}
+            priority="primary"
+            text="Submit"
+          />
+          <Button
+            icon={<IconSearch />}
+            onClick={() => console.info('IconClose clicked')}
+            priority="secondary"
+            text="Cancel"
+            outlined
+          />
+        </>
+      }
+    >
+      Перетащите файл формата XLS, чтобы обновить данные о тарифах
+    </Toast>
+  </block.L>
+</Playground>
+
+Or even both
+
+<Playground>
+  <block.L style={{ width: '1200px' }}>
+    <Toast
+      icon={<IconPlus />}
+      priority="primary"
+      outlined
+      action={
+        <>
+          <Button
+            onClick={() => console.info('IconClose clicked')}
+            priority="primary"
+            text="Submit"
+          />
+          <Button
+            onClick={() => console.info('IconClose clicked')}
+            priority="primary"
+            text="Cancel"
+            outlined
+          />
+        </>
+      }
+    >
+      Сохраните изменения, чтобы выйти из режима предпросмотра
+    </Toast>
+  </block.L>
+</Playground>
+
+### Priorities
+
+<Playground>
+  <block.L style={{ width: '1200px' }}>
+    <Toast
+      icon={<IconPlus />}
+      priority="secondary"
+      outlined
+      action={
+        <>
+          <Button
+            onClick={() => console.info('IconClose clicked')}
+            priority="secondary"
+            text="Submit"
+            outlined
+          />
+          <Button
+            onClick={() => console.info('IconClose clicked')}
+            priority="secondary"
+            text="Cancel"
+            outlined
+          />
+        </>
+      }
+    >
+      Сохраните изменения, чтобы выйти из режима предпросмотра
+    </Toast>
+  </block.L>
+</Playground>
+
+<Playground>
+  <block.L style={{ width: '1200px' }}>
+    <Toast
+      icon={<IconPlus />}
+      priority="primary"
+      outlined
+      action={
+        <>
+          <Button
+            onClick={() => console.info('IconClose clicked')}
+            priority="primary"
+            text="Submit"
+            outlined
+          />
+          <Button
+            onClick={() => console.info('IconClose clicked')}
+            priority="primary"
+            text="Cancel"
+            outlined
+          />
+        </>
+      }
+    >
+      Сохраните изменения, чтобы выйти из режима предпросмотра
+    </Toast>
+  </block.L>
+</Playground>
+
+### Props
+
+| Name       | Type               | Default       | Description                                                           |
+| ---------- | ------------------ | ------------- | --------------------------------------------------------------------- |
+| `action`   | `React.ReactNode`  | `null`        | Block of action items (ex. One element or grop that can be clicked)   |
+| `content`  | `React.ReactNode`  | `null`        | Component to show the icon near the text (ex.: Icon on the left side) |
+| `children` | ``React.ReactNode` | `null`        | Content block                                                         |
+| `outlined` | `boolean`          | `false`       | Change toast`s view from filled to outlined                           |
+| `priority` | `string`           | `'secondary'` | Priority prop to style Toast component                                |

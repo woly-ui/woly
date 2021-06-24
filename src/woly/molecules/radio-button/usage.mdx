@@ -1,0 +1,142 @@
+import {RadioButton} from 'ui';
+import {Playground, State} from 'lib/playground';
+
+The `RadioButton` component lets you add a radio button and assign it to a radio group.
+Users can select only one radio button at a time within a radio group.
+
+### Radio button group.
+
+Radio buttons are used for mutually exclusive choices, not for multiple choices.
+Only one radio button can be selected at a time.
+When a user chooses a new item, the previous choice is automatically deselected.
+
+### Example
+
+<Playground direction="vertical">
+  <State initial="no" change={(i) => !i}>
+    {(value, change) => (
+      <>
+        <RadioButton
+          name="my-input"
+          id="yes"
+          checked={value}
+          onChange={change}
+          priority="primary"
+          text="yes"
+        />
+        <RadioButton
+          name="my-input"
+          id="no"
+          checked={value}
+          onChange={change}
+          priority="primary"
+          text="no"
+        />
+      </>
+    )}
+  </State>
+</Playground>
+
+### Disabled
+
+Disabled radio button are uneditable. They have less opacity so that they appear less tappable.
+
+<Playground>
+  <State initial={false} change={(i) => !i}>
+    {(value, change) => (
+      <RadioButton id="one" checked disabled priority="primary" text="disabled" onChange={change} />
+    )}
+  </State>
+</Playground>
+
+### prioritys
+
+Primary and danger prioritys are should be used to focus user attention.
+
+<Playground direction="vertical">
+  <State initial="no" change={(i) => !i}>
+    {(value, change) => (
+      <>
+        <RadioButton
+          name="my-input"
+          id="yes"
+          checked={value}
+          onChange={change}
+          priority="primary"
+          text="yes"
+        />
+        <RadioButton
+          name="my-input"
+          id="no"
+          checked={value}
+          onChange={change}
+          priority="primary"
+          text="no"
+        />
+      </>
+    )}
+  </State>
+</Playground>
+
+<Playground direction="vertical">
+  <State initial="no" change={(i) => !i}>
+    {(value, change) => (
+      <>
+        <RadioButton
+          name="my-input"
+          id="yes"
+          checked={value}
+          onChange={change}
+          priority="danger"
+          text="yes"
+        />
+        <RadioButton
+          name="my-input"
+          id="no"
+          checked={value}
+          onChange={change}
+          priority="danger"
+          text="no"
+        />
+      </>
+    )}
+  </State>
+</Playground>
+
+Secondary priority should be used as default priority
+
+<Playground direction="vertical">
+  <State initial="no" change={(i) => !i}>
+    {(value, change) => (
+      <>
+        <RadioButton
+          name="my-input"
+          id="yes"
+          checked={value}
+          onChange={change}
+          priority="secondary"
+          text="yes"
+        />
+        <RadioButton
+          name="my-input"
+          id="no"
+          checked={value}
+          onChange={change}
+          priority="secondary"
+          text="no"
+        />
+      </>
+    )}
+  </State>
+</Playground>
+
+### Props
+
+| Name       | Type                                         | Default     | Description                                       |
+| ---------- | -------------------------------------------- | ----------- | ------------------------------------------------- |
+| `checked`  | `boolean`                                    |             | Whether radio-button is checked or not            |
+| `disabled` | `boolean`                                    |             | Disable radio-button                              |
+| `id`       | `string`                                     |             | HTML id attribute                                 |
+| `onChange` | `React.ChangeEventHandler<HTMLInputElement>` |             | Callback when radio-button is clicked             |
+| `priority` | `string`                                     | `'default'` | Priority prop to style RadioButton component      |
+| `...`      | `HTMLInputElement`                           | `{}`        | Other props are inherited from `HTMLInputElement` |
