@@ -22,7 +22,7 @@ const ModalBase: React.FC<ModalProps & Priority> = ({
   let icon = null;
 
   if (onClose) {
-    icon = <IconClose onClick={onClose} data-icon />;
+    icon = <IconClose onClick={onClose} data-icon="modal-close" />;
   }
 
   const onKeyDown = React.useCallback(
@@ -94,7 +94,7 @@ export const Modal = styled(ModalBase)`
     opacity: 1;
   }
 
-  [data-icon] {
+  [data-icon='modal-close'] {
     position: absolute;
     top: var(--local-icon-position);
     right: var(--local-icon-position);
