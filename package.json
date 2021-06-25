@@ -64,7 +64,7 @@
     "fs-extra": "^9.1.0",
     "gatsby": "^3.0.4",
     "gatsby-plugin-react-svg": "^3.0.0",
-    "gatsby-theme-woly": "^0.7.4",
+    "gatsby-theme-woly": "^0.7.5",
     "husky": "^5.0.9",
     "import-sort-style-sova": "^0.1.0",
     "inquirer": "^7.3.3",
