@@ -105,12 +105,16 @@ Size controlled by the `component-level` block property not from the props.
 
 Buttons can be placed inside the container. Button width is equal to container size.
 
-<Playground direction="horizontal">
+<Playground>
   <block.S>
-    <Button priority="primary" text="Small" />
+    <div style={{ width: '300px' }}>
+      <Button priority="primary" text="Small" fullWidth />
+    </div>
   </block.S>
   <block.S>
-    <Button priority="primary" text="Small" icon={<IconPlus />} />
+    <div style={{ width: '300px' }}>
+      <Button priority="primary" text="Small" fullWidth icon={<IconPlus />} />
+    </div>
   </block.S>
 </Playground>
 

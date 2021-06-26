@@ -34,7 +34,7 @@ const ButtonBase: React.FC<ButtonProps & Priority> = ({
 }) => (
   <button
     type={type}
-    data-fullWidth={fullWidth}
+    data-full-width={fullWidth}
     data-outlined={outlined}
     data-priority={priority}
     {...p}
@@ -76,7 +76,7 @@ export const Button = styled(ButtonBase)`
     }
   }
 
-  &[data-width='true'] {
+  &[data-full-width='true'] {
     width: 100%;
   }
 
