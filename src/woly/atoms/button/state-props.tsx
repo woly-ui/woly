@@ -20,7 +20,7 @@ interface ComponentButtonProps {
 
 export const variants: ComponentProps = {
   name: 'variants',
-  values: ['primary', 'secondary'],
+  values: ['primary', 'secondary', 'danger', 'goast', 'default'],
 };
 
 export const sizes: ComponentProps = {
@@ -41,7 +41,7 @@ export const ComponentButton: React.FC<{ prop: ComponentButtonProps }> = ({ prop
     onClick={() => console.log('Hi!')}
     outlined={prop.outlined}
     text="Button"
-    variant={prop.variants}
+    priority={prop.variants}
   />
 );
 
