@@ -2,6 +2,7 @@ import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
 import { Priority } from 'lib/types';
 import { positionRelativeGet } from 'lib';
+import { Surface } from 'ui';
 
 type PositionProps = 'bottom' | 'left' | 'right' | 'top';
 
@@ -50,26 +51,30 @@ const TooltipBase: React.FC<TooltipProps & Priority> = ({
         {children}
       </div>
       <div role="tooltip" id="notifications-desc">
-        {content}
+        <Surface priority={priority}>
+          {content}
+        </Surface>
       </div>
     </div>
   );
 };
 
 export const Tooltip = styled(TooltipBase)`
-  --local-shape-color: var(--woly-canvas-text-default);
-  --local-gap: min(
+    --local-gap: min(
     calc(1px * var(--woly-main-level) + var(--woly-const-m)),
     calc(
       (1px * var(--woly-main-level)) + (1px * var(--woly-main-level) * var(--woly-component-level))
     )
   );
+  --local-triangel: min(calc(var(--woly-const-m) * 2), calc(1px * var(--woly-component-level) * var(--woly-const-m)));
 
   --tooltip-position: calc(100% + var(--woly-border-width) + var(--local-gap));
   --local-tooltip-maxsize: 200px;
   --local-icon-size: var(--woly-line-height);
 
   position: relative;
+
+  color: var(--woly-shape-text-default);
 
   font-size: var(--woly-font-size);
   line-height: var(--woly-line-height);
@@ -106,8 +111,7 @@ export const Tooltip = styled(TooltipBase)`
 
       border-color: var(--woly-background) transparent transparent transparent;
       border-style: solid;
-      border-width: calc(var(--woly-border-width) * 2);
-      border-bottom-width: 0;
+      border-width: var(--local-triangel);
 
       content: ' ';
     }
@@ -124,10 +128,10 @@ export const Tooltip = styled(TooltipBase)`
     bottom: var(--tooltip-position);
 
     &::after {
-      bottom: calc(-3px - var(--woly-border-width));
-      left: calc(var(--woly-const-m) * 2);
+      top: initial;
+      left: 10%;
 
-      transform: initial;
+      margin-left: calc(-1 * var(--local-triangel));
     }
   }
 
@@ -135,9 +139,10 @@ export const Tooltip = styled(TooltipBase)`
     top: var(--tooltip-position);
 
     &::after {
-      top: calc(-3px - var(--woly-border-width));
-      bottom: initial;
-      left: calc(var(--woly-const-m) * 2);
+      top: calc(var(--woly-const-m) * -2);
+      left: 10%;
+
+      margin-left: calc(-1 * var(--local-triangel));
 
       transform: rotate(180deg);
     }
@@ -149,9 +154,11 @@ export const Tooltip = styled(TooltipBase)`
 
     &::after {
       top: calc(var(--woly-const-m) * 2);
-      right: calc(-4px - var(--woly-border-width));
+      left: 100%;
 
-      transform: rotate(-90deg);
+      margin-top: calc(-1 * var(--local-triangel));
+
+      transform: rotate(-90deg)
     }
   }
 
@@ -162,7 +169,7 @@ export const Tooltip = styled(TooltipBase)`
     &::after {
       top: calc(var(--woly-const-m) * 2);
       right: initial;
-      left: calc(-4px - var(--woly-border-width));
+      left: calc(-2 * var(--woly-const-m) - var(--woly-border-width));
 
       transform: rotate(90deg);
     }
