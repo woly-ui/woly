@@ -12,7 +12,7 @@ Siple Toast with text only
 
 <Playground>
   <block.L>
-    <Toast variant="primary" outlined>
+    <Toast priority="primary" outlined>
       Режим предпросмотра таблицы
     </Toast>
   </block.L>
@@ -24,7 +24,7 @@ Toast can be used with icon on the left side.
 
 <Playground>
   <block.L>
-    <Toast icon={<IconPlus />} variant="primary" outlined>
+    <Toast icon={<IconPlus />} priority="primary" outlined>
       Перетащите файл формата XLS
     </Toast>
   </block.L>
@@ -35,20 +35,20 @@ Toast can also consist action block
 <Playground>
   <block.L style={{ width: '1200px' }}>
     <Toast
-      variant="primary"
+      priority="primary"
       outlined
       action={
         <>
           <Button
             icon={<IconSearch />}
             onClick={() => console.info('IconClose clicked')}
-            variant="primary"
+            priority="primary"
             text="Submit"
           />
           <Button
             icon={<IconSearch />}
             onClick={() => console.info('IconClose clicked')}
-            variant="secondary"
+            priority="secondary"
             text="Cancel"
             outlined
           />
@@ -66,18 +66,18 @@ Or even both
   <block.L style={{ width: '1200px' }}>
     <Toast
       icon={<IconPlus />}
-      variant="primary"
+      priority="primary"
       outlined
       action={
         <>
           <Button
             onClick={() => console.info('IconClose clicked')}
-            variant="primary"
+            priority="primary"
             text="Submit"
           />
           <Button
             onClick={() => console.info('IconClose clicked')}
-            variant="primary"
+            priority="primary"
             text="Cancel"
             outlined
           />
@@ -89,25 +89,25 @@ Or even both
   </block.L>
 </Playground>
 
-### Variants
+### Priorities
 
 <Playground>
   <block.L style={{ width: '1200px' }}>
     <Toast
       icon={<IconPlus />}
-      variant="secondary"
+      priority="secondary"
       outlined
       action={
         <>
           <Button
             onClick={() => console.info('IconClose clicked')}
-            variant="secondary"
+            priority="secondary"
             text="Submit"
             outlined
           />
           <Button
             onClick={() => console.info('IconClose clicked')}
-            variant="secondary"
+            priority="secondary"
             text="Cancel"
             outlined
           />
@@ -123,19 +123,19 @@ Or even both
   <block.L style={{ width: '1200px' }}>
     <Toast
       icon={<IconPlus />}
-      variant="primary"
+      priority="primary"
       outlined
       action={
         <>
           <Button
             onClick={() => console.info('IconClose clicked')}
-            variant="primary"
+            priority="primary"
             text="Submit"
             outlined
           />
           <Button
             onClick={() => console.info('IconClose clicked')}
-            variant="primary"
+            priority="primary"
             text="Cancel"
             outlined
           />

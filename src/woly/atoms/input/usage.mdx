@@ -80,6 +80,15 @@ Disabled text fields are uneditable. They have less opacity so that they appear 
       type="text"
       priority="primary"
     />
+    <Input
+      disabled
+      leftIcon={<IconInfo />}
+      name="name"
+      onChange={(event) => console.info('On input change')}
+      value="Maria Ivanova"
+      type="text"
+      priority="primary"
+    />
   </Form>
 </Playground>
 
@@ -157,9 +166,9 @@ Icons can also be touch targets for nested components.
   </Form>
 </Playground>
 
-### prioritys
+### Priorities
 
-Primary and secondary prioritys are should be used to focus user attention.
+Primary and secondary priorities are should be used to focus user attention.
 
 <Playground direction="vertical">
   <Form autoComplete="false">

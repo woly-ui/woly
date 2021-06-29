@@ -2,7 +2,7 @@
 import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
 import { Priority } from 'lib/types';
-import { box } from 'ui/elements';
+import { box } from 'ui/elements/box';
 
 export type Buttonprioritys =
   | 'secondary'
