@@ -7,7 +7,7 @@ interface ToastProps {
   action?: React.ReactNode;
   className?: string;
   icon?: React.ReactNode;
-  outlined?: boolean;
+  weight?: string;
 }
 
 const ToastBase: React.FC<ToastProps & Priority> = ({
@@ -15,10 +15,10 @@ const ToastBase: React.FC<ToastProps & Priority> = ({
   children,
   className,
   icon,
-  outlined = false,
+  weight = '2',
   priority = 'secondary',
 }) => (
-  <div className={className} data-outlined={outlined} data-priority={priority}>
+  <div className={className} data-weight={weight} data-priority={priority}>
     {icon && <span data-icon="toast">{icon}</span>}
     <div data-content>{children}</div>
     {action && <span data-action>{action}</span>}
@@ -27,10 +27,8 @@ const ToastBase: React.FC<ToastProps & Priority> = ({
 
 export const Toast = styled(ToastBase)`
   ${box}
-  --local-text-color: var(--woly-shape-text-default);
-  --local-shape-color: var(--woly-shape-default);
-  --local-border-color: var(--woly-shape-default);
   --local-toast-gap: max(9px, calc(1px * var(--woly-component-level) * var(--woly-main-level)));
+  --local-icon-size: var(--woly-line-height);
 
   display: flex;
   flex-wrap: nowrap;
@@ -39,26 +37,15 @@ export const Toast = styled(ToastBase)`
   min-width: fit-content;
   max-width: 75%;
 
-  color: var(--local-text-color);
   font-size: var(--woly-font-size);
   line-height: var(--woly-line-height);
 
-  background-color: var(--local-shape-color);
-  border: var(--woly-border-width) solid var(--local-border-color);
+  border-style: solid;
+
+  border-width: var(--woly-border-width);
+
   border-radius: var(--woly-rounding);
   outline: none;
-
-  &[data-outlined='true'] {
-    color: var(--local-shape-color);
-
-    background-color: transparent;
-
-    [data-icon='toast'] {
-      svg > path {
-        fill: var(--local-shape-color);
-      }
-    }
-  }
 
   [data-content] {
     display: flex;
@@ -68,7 +55,6 @@ export const Toast = styled(ToastBase)`
 
   [data-icon='toast'] {
     --woly-component-level: 0;
-    --local-icon-size: var(--woly-line-height);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -86,13 +72,83 @@ export const Toast = styled(ToastBase)`
     }
   }
 
-  &:hover {
-    --local-text-color: var(--woly-shape-text-hover);
-    --local-border-color: var(--woly-shape-hover);
-    --local-shape-color: var(--woly-shape-hover);
+  &[data-weight='3'] {
+    --local-text-color: var(--woly-shape-text-default);
+    --local-shape-color: var(--woly-shape-default);
+    --local-border-color: var(--woly-shape-default);
+
+    color: var(--local-text-color);
+
+    background-color: var(--local-shape-color);
+    border-color: var(--local-border-color);
+
+    [data-icon='toast'] > svg > path {
+      fill: var(--local-text-color);
+    }
+
+    [data-icon='toast'] > svg > g {
+      stroke: var(--local-text-color);
+    }
   }
 
-  &:focus {
-    box-shadow: 0 0 0 var(--woly-border-width) var(--woly-focus);
+  &[data-weight='2'] {
+    --local-text-color: var(--woly-shape-default);
+    --local-shape-color: transparent;
+    --local-border-color: var(--woly-shape-default);
+
+    color: var(--local-text-color);
+
+    background-color: transparent;
+    border-color: var(--local-text-color);
+
+    [data-icon='toast'] > svg > path {
+      fill: var(--local-text-color);
+    }
+
+    [data-icon='toast'] > svg > g {
+      stroke: var(--local-text-color);
+    }
+  }
+
+  &[data-weight='1'] {
+    --local-text-color: var(--woly-shape-text-default);
+    --local-shape-color: transparent;
+    --local-border-color: var(--woly-shape-text-default);
+    --local-shadow: var(--woly-border-width) var(--woly-border-width)
+      calc(var(--woly-border-width) * 4) hsla(0, 0%, 100%, 50%);
+
+    color: var(--local-text-color);
+
+    background-color: var(--local-shape-color);
+    border-color: var(--local-border-color);
+
+    box-shadow: var(--local-shadow);
+
+    [data-icon='toast'] > svg > path {
+      fill: var(--local-text-color);
+    }
+
+    [data-icon='toast'] > svg > g {
+      stroke: var(--local-text-color);
+    }
+  }
+
+  &[data-weight='0'] {
+    --local-text-color: var(--woly-shape-default);
+    --local-shape-color: transparent;
+    --local-border-color: transparent;
+
+    color: var(--local-text-color);
+
+    background-color: var(--local-shape-color);
+    border-color: var(--local-shape-color);
+
+    [data-icon='toast'] > svg > path {
+      fill: var(--local-text-color);
+    }
+
+    [data-icon='toast'] > svg > g {
+      stroke: var(--local-text-color);
+    }
   }
 ` as StyledComponent<'div', Record<string, unknown>, ToastProps & Priority>;
