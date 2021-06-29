@@ -104,7 +104,7 @@ export const Chip = styled(ChipBase)`
     --woly-component-level: 0;
   }
 
-  [data-icon='chip-visual-block'] {
+  [data-icon] {
     width: var(--local-icon-size);
     height: var(--local-icon-size);
     svg {
