@@ -5,6 +5,7 @@ export { ButtonIcon } from './button-icon';
 export { Chip } from './chip';
 export { HeaderPanel } from './header-panel';
 export { Heading } from './heading';
+export { Icon } from './icon';
 export { Input } from './input';
 export { Label } from './label';
 export { ListItem, ListContainer } from './list';
