@@ -69,48 +69,81 @@ Button-icon's size can controlled by block-container and it`s width is equal to 
 ### Weight and priority
 
 Button-icon can be represented in primary, secondary or default priorities and can be styled by changing icon`s weight: fill, outline, transparent.
-In case of choosing button-icon in tertiary priority with outline styles use the opposite background color to the text color of button-icon.
+In case of choosing button-icon in goast priority with outline styles use the opposite background color to the text color of button-icon.
 
 <Playground>
-  <ButtonIcon
-    icon={<IconSearch />}
-    onClick={() => console.info('ButtonIcon clicked')}
-    priority="secondary"
-  />
-  <ButtonIcon
-    icon={<IconSearch />}
-    onClick={() => console.info('ButtonIcon clicked')}
-    priority="secondary"
-    weight="2"
-  />
-  <ButtonIcon
-    icon={<IconSearch />}
-    onClick={() => console.info('ButtonIcon clicked')}
-    priority="primary"
-    weight="0"
-  />
-  <ButtonIcon
-    icon={<IconSearch />}
-    onClick={() => console.info('ButtonIcon clicked')}
-    priority="primary"
-  />
-  <ButtonIcon
-    icon={<IconSearch />}
-    onClick={() => console.info('ButtonIcon clicked')}
-    priority="default"
-  />
-  <ButtonIcon
-    icon={<IconSearch />}
-    onClick={() => console.info('ButtonIcon clicked')}
-    priority="default"
-    weight="2"
-  />
-  <ButtonIcon
-    icon={<IconSearch />}
-    onClick={() => console.info('ButtonIcon clicked')}
-    priority="default"
-    weight="0"
-  />
+  <block.L
+    style={{
+      display: 'flex',
+      justifyContent: 'space-between',
+      padding: '100px',
+      width: '900px',
+      background: 'lightgrey',
+    }}
+  >
+    <ButtonIcon
+      icon={<IconSearch />}
+      onClick={() => console.info('ButtonIcon clicked')}
+      priority="primary"
+    />
+    <ButtonIcon
+      icon={<IconSearch />}
+      onClick={() => console.info('ButtonIcon clicked')}
+      priority="primary"
+      weight="2"
+    />
+    <ButtonIcon
+      icon={<IconSearch />}
+      onClick={() => console.info('ButtonIcon clicked')}
+      priority="primary"
+      weight="0"
+    />
+    <ButtonIcon
+      icon={<IconSearch />}
+      onClick={() => console.info('ButtonIcon clicked')}
+      priority="secondary"
+    />
+    <ButtonIcon
+      icon={<IconSearch />}
+      onClick={() => console.info('ButtonIcon clicked')}
+      priority="secondary"
+      weight="2"
+    />
+    <ButtonIcon
+      icon={<IconSearch />}
+      onClick={() => console.info('ButtonIcon clicked')}
+      priority="secondary"
+      weight="0"
+    />
+    <ButtonIcon
+      icon={<IconSearch />}
+      onClick={() => console.info('ButtonIcon clicked')}
+      priority="default"
+    />
+    <ButtonIcon
+      icon={<IconSearch />}
+      onClick={() => console.info('ButtonIcon clicked')}
+      priority="default"
+      weight="2"
+    />
+    <ButtonIcon
+      icon={<IconSearch />}
+      onClick={() => console.info('ButtonIcon clicked')}
+      priority="default"
+      weight="0"
+    />
+    <ButtonIcon
+      icon={<IconSearch />}
+      onClick={() => console.info('ButtonIcon clicked')}
+      weight="1"
+      priority="goast"
+    />
+    <ButtonIcon
+      icon={<IconSearch />}
+      onClick={() => console.info('ButtonIcon clicked')}
+      priority="goast"
+    />
+  </block.L>
 </Playground>
 
 ### Map of ButtonIcon

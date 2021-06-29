@@ -134,6 +134,51 @@ export const ButtonIcon = styled(ButtonIconBase)`
     }
   }
 
+  &[data-weight='1'] {
+    --local-shape-color: transparent;
+    --local-icon-color: var(--woly-shape-text-default);
+    --local-border-color: var(--woly-shape-text-default);
+
+    --local-shadow: var(--woly-border-width) var(--woly-border-width)
+      calc(var(--woly-border-width) * 4) hsla(0, 0%, 100%, 50%);
+
+    background: var(--local-shape-color);
+    border-color: var(--local-border-color);
+    box-shadow: var(--local-shadow);
+
+    [data-icon] > svg > path {
+      fill: var(--local-icon-color);
+    }
+    [data-icon] > svg > g {
+      stroke: var(--local-icon-color);
+    }
+
+    &:hover {
+      --local-shape-color: transparent;
+      --local-icon-color: var(--woly-shape-text-hover);
+      --local-border-color: var(--woly-shape-text-hover);
+    }
+
+    &:active {
+      --local-shape-color: transparent;
+      --local-icon-color: var(--woly-shape-text-active);
+      --local-border-color: var(--woly-shape-text-active);
+    }
+
+    &:focus {
+      --local-shape-color: transparent;
+      --local-icon-color: var(--woly-shape-text-active);
+      --local-border-color: var(--woly-shape-text-active);
+      box-shadow: 0 0 0 var(--woly-border-width) var(--woly-focus-color);
+    }
+
+    &:disabled {
+      pointer-events: none;
+      --local-shape-color: var(--woly-shape-text-disabled);
+      --local-icon-color: var(--woly-shape-disabled);
+    }
+  }
+
   &[data-weight='0'] {
     --local-shape-color: transparent;
     --local-icon-color: var(--woly-shape-default);
