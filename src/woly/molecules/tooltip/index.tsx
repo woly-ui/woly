@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
 import { Priority } from 'lib/types';
-import { Surface } from 'ui';
+import { Surface } from 'ui/atoms';
 import { positionRelativeGet } from 'lib';
 
 type PositionProps = 'bottom' | 'left' | 'right' | 'top';
