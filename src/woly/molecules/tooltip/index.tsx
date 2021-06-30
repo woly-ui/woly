@@ -1,8 +1,8 @@
 import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
 import { Priority } from 'lib/types';
-import { positionRelativeGet } from 'lib';
 import { Surface } from 'ui';
+import { positionRelativeGet } from 'lib';
 
 type PositionProps = 'bottom' | 'left' | 'right' | 'top';
 
@@ -51,25 +51,27 @@ const TooltipBase: React.FC<TooltipProps & Priority> = ({
         {children}
       </div>
       <div role="tooltip" id="notifications-desc">
-        <Surface priority={priority}>
-          {content}
-        </Surface>
+        <div data-triangle />
+        <Surface data-priority={priority}>{content}</Surface>
       </div>
     </div>
   );
 };
 
 export const Tooltip = styled(TooltipBase)`
-    --local-gap: min(
+  --local-gap: min(
     calc(1px * var(--woly-main-level) + var(--woly-const-m)),
     calc(
       (1px * var(--woly-main-level)) + (1px * var(--woly-main-level) * var(--woly-component-level))
     )
   );
-  --local-triangel: min(calc(var(--woly-const-m) * 2), calc(1px * var(--woly-component-level) * var(--woly-const-m)));
+  --local-triangel: min(
+    var(--woly-const-m),
+    calc(1px * var(--woly-component-level) * var(--woly-const-m))
+  );
 
   --tooltip-position: calc(100% + var(--woly-border-width) + var(--local-gap));
-  --local-tooltip-maxsize: 200px;
+  --local-tooltip-maxsize: 240px;
   --local-icon-size: var(--woly-line-height);
 
   position: relative;
@@ -85,7 +87,6 @@ export const Tooltip = styled(TooltipBase)`
     position: absolute;
     z-index: 1;
 
-    display: none;
     align-items: center;
 
     box-sizing: border-box;
@@ -100,10 +101,12 @@ export const Tooltip = styled(TooltipBase)`
     border-radius: calc(var(--woly-rounding) * 2);
     box-shadow: var(--woly-shadow);
 
-    transition: all 0.3s ease-in-out;
+    visibility: hidden;
+    opacity: 0;
 
+    transition: 0.3s ease-in-out;
 
-    &::after {
+    [data-triangle] {
       position: absolute;
 
       width: 0;
@@ -112,64 +115,54 @@ export const Tooltip = styled(TooltipBase)`
       border-color: var(--woly-background) transparent transparent transparent;
       border-style: solid;
       border-width: var(--local-triangel);
-
-      content: ' ';
     }
   }
 
-  &:hover > [role='tooltip'],
-  &:focus > [role='tooltip'] {
-    display: block;
-
-    transition: 0.3s linear;
+  &:hover [role='tooltip'],
+  &:focus [role='tooltip'] {
+    visibility: visible;
+    opacity: 1;
   }
-  
-  &[data-position='top'] > [role='tooltip'] {
+
+  &[data-position='top'] [role='tooltip'] {
     bottom: var(--tooltip-position);
 
-    &::after {
-      top: initial;
-      left: 10%;
-
-      margin-left: calc(-1 * var(--local-triangel));
+    [data-triangle] {
+      bottom: calc(-1 * (var(--woly-const-m) + var(--woly-border-width)));
+      left: calc(2 * var(--woly-const-m));
     }
   }
 
-  &[data-position='bottom'] > [role='tooltip'] {
+  &[data-position='bottom'] [role='tooltip'] {
     top: var(--tooltip-position);
 
-    &::after {
-      top: calc(var(--woly-const-m) * -2);
-      left: 10%;
-
-      margin-left: calc(-1 * var(--local-triangel));
+    [data-triangle] {
+      top: calc(-1 * (var(--woly-const-m) + var(--woly-border-width)));
+      left: calc(2 * var(--woly-const-m));
 
       transform: rotate(180deg);
     }
   }
 
-  &[data-position='left'] > [role='tooltip'] {
+  &[data-position='left'] [role='tooltip'] {
     top: 0;
     right: var(--tooltip-position);
 
-    &::after {
-      top: calc(var(--woly-const-m) * 2);
-      left: 100%;
+    [data-triangle] {
+      top: calc(2 * var(--woly-const-m));
+      right: calc(-1 * (var(--woly-const-m) + var(--woly-border-width)));
 
-      margin-top: calc(-1 * var(--local-triangel));
-
-      transform: rotate(-90deg)
+      transform: rotate(-90deg);
     }
   }
 
-  &[data-position='right'] > [role='tooltip'] {
+  &[data-position='right'] [role='tooltip'] {
     top: 0;
     left: var(--tooltip-position);
 
-    &::after {
-      top: calc(var(--woly-const-m) * 2);
-      right: initial;
-      left: calc(-2 * var(--woly-const-m) - var(--woly-border-width));
+    [data-triangle] {
+      top: calc(2 * var(--woly-const-m));
+      left: calc(-1 * (var(--woly-const-m) + var(--woly-border-width)));
 
       transform: rotate(90deg);
     }
