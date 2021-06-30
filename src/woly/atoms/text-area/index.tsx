@@ -1,7 +1,7 @@
 import React from 'react';
 import styled, { StyledComponent } from 'styled-components';
 import { Priority } from 'lib/types';
-import { box } from 'ui/elements';
+import { box } from 'ui/elements/box';
 
 interface TextAreaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
   className?: string;
