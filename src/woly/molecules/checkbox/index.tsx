@@ -52,7 +52,7 @@ const CheckboxBase: React.FC<CheckboxProps & Priority> = ({
       tabIndex={tabIndex}
     >
       <span data-container data-disabled={disabled} tabIndex={-1}>
-        <span data-icon>
+        <span data-icon="checkbox">
           <input type="checkbox" id={id} checked={checked} onChange={onChange} />
           <span data-unchecked>
             <IconFilledUnchecked />
