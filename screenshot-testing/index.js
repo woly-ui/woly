@@ -7,7 +7,20 @@ const { getConfigs } = require('./get-configs');
 const { makeScreenshots } = require('./make-screenshots');
 const { makeSnapshots } = require('./make-snapshots');
 
-const startScreenshotTesting = async ({ rootUrl, mapSelector, pageOptions }) => {
+/**
+ * TODO: test with all major browsers
+ * TODO: reduce testing time
+ * TODO: pass screenshot width to cells style
+ * TODO: automatic layout from states length
+ */
+
+const defaultPageOptions = {
+  deviceScaleFactor: 2,
+  viewport: { width: 800, height: 400 },
+  defaultTimout: 300,
+};
+
+const startScreenshotTesting = async ({ rootUrl, mapSelector }) => {
   await fs.remove(`${__dirname}/screenshots`); /** 0 */
 
   reporter('booting playwright...'); /** 1 */
@@ -28,6 +41,7 @@ const startScreenshotTesting = async ({ rootUrl, mapSelector, pageOptions }) => 
   reporter('iterating over components to make screenshots...'); /** 3 */
 
   for await (const component of components) {
+    const pageOptions = { ...defaultPageOptions, ...component.pageOptions };
     const context = await browser.newContext(pageOptions);
 
     const { meta } = await makeScreenshots({
@@ -56,11 +70,6 @@ const main = async () => {
     await startScreenshotTesting({
       rootUrl: 'http://localhost:8000',
       mapSelector: '.state-map',
-      pageOptions: {
-        deviceScaleFactor: 2,
-        viewport: { width: 800, height: 400 },
-        defaultTimout: 200,
-      },
     });
   } catch (error) {
     reporter(error);

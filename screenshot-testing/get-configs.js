@@ -1,7 +1,9 @@
 const path = require('path');
 
 async function getConfigs({ browser, configsUrl, reporter }) {
-  const excludedComponents = process.env.EXCLUDE ? process.env.EXCLUDE.split(',') : [];
+  const excludedComponents = process.env.EXCLUDE
+    ? process.env.EXCLUDE.split(',').map((component) => component.trim())
+    : [];
 
   const page = await browser.newPage();
   const response = await page.goto(configsUrl);

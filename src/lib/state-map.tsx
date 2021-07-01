@@ -10,26 +10,26 @@ type ArrayElement<
   ArrayType extends readonly unknown[]
 > = ArrayType extends readonly (infer ElementType)[] ? ElementType : never;
 
-type PropVariants = Record<string, readonly unknown[]>;
+type ObjectVariations = Record<string, readonly unknown[]>;
 
-interface StateMapProps<Props extends PropVariants> {
+type StateMapRenderProps<Props extends ObjectVariations> = {
+  [Key in keyof Props]: ArrayElement<Props[Key]>;
+};
+
+interface StateMapProps<Props extends ObjectVariations> {
   groupByProp: keyof Props & string;
   propVariations: Props;
-  render: (
-    variant: {
-      [Key in keyof Props]: ArrayElement<Props[Key]>;
-    },
-  ) => React.ReactElement;
+  render: (variant: StateMapRenderProps<Props>) => React.ReactElement;
   style?: React.CSSProperties;
 }
 
-export function StateMap<Props extends PropVariants>({
+export function StateMap<Props extends ObjectVariations>({
   groupByProp,
   propVariations,
   style,
   render,
 }: StateMapProps<Props>) {
-  const allVariations = combinations(propVariations);
+  const allVariations = createCombinations(propVariations);
   const groups = Object.entries(groupByKey(allVariations, groupByProp));
 
   return (
@@ -50,10 +50,7 @@ export function StateMap<Props extends PropVariants>({
                     key={`${groupName}-${index}`}
                     className="state-map__variant"
                   >
-                    {
-                      // TODO: better typings
-                      render(variationProps)
-                    }
+                    {render(variationProps as StateMapRenderProps<Props>)}
                   </StateMapVariant>
                 );
               })}
@@ -81,10 +78,6 @@ const StateMapVariant = styled.div`
 
 // https://github.com/evgenykochetkov/react-storybook-addon-props-combinations/blob/master/src/utils.js
 
-function flatMap<T>(arr: Array<T>, fn: (value: T, index: number, array: Array<T>) => Array<T>) {
-  return arr.map(fn).reduce((a, b) => a.concat(b));
-}
-
 /**
  * Takes an object with a shape of {fieldName: arrayOfPossibleValues}
  * and returns an array of objects with all possible combinations
@@ -98,36 +91,39 @@ function flatMap<T>(arr: Array<T>, fn: (value: T, index: number, array: Array<T>
  *  {foo: 2, bar: "b"}
  * ]
  */
-function combinations(propCombinations: Record<string, readonly unknown[]>) {
-  const fieldNames = Object.keys(propCombinations);
+
+function createCombinations(obj: ObjectVariations) {
+  const fieldNames = Object.keys(obj);
 
   if (fieldNames.length === 0) return [{}];
 
   function _combinations<Combination extends string[]>(
-    [currentPropName, ...restPropNames]: Combination,
+    [key, ...restKeys]: Combination,
     combinations: Record<string, unknown[]>,
   ): Record<string, unknown>[] {
-    const variationsForProp = propCombinations[currentPropName];
+    const possibleValues = obj[key];
 
-    if (!Array.isArray(variationsForProp) || variationsForProp.length === 0) {
-      throw new Error(
-        `Please provide a non-empty array of possible values for prop ${currentPropName}`,
-      );
+    if (!Array.isArray(possibleValues) || possibleValues.length === 0) {
+      throw new Error(`Please provide a non-empty array of possible values for prop ${key}`);
     }
 
-    const variation = variationsForProp.map((fieldValue) => ({
+    const variation = possibleValues.map((fieldValue) => ({
       ...combinations,
-      [currentPropName]: fieldValue,
+      [key]: fieldValue,
     }));
 
-    if (restPropNames.length === 0) {
+    if (restKeys.length === 0) {
       return variation;
     }
 
-    return flatMap(variation, (newAcc) => _combinations(restPropNames, newAcc));
+    return flatMap(variation, (newAcc) => _combinations(restKeys, newAcc));
   }
 
   return _combinations(fieldNames, {});
+}
+
+function flatMap<T>(arr: Array<T>, fn: (value: T, index: number, array: Array<T>) => Array<T>) {
+  return arr.map(fn).reduce((a, b) => a.concat(b));
 }
 
 function dataPropsFromObject<O extends Record<string, unknown>>(obj: O) {
