@@ -41,8 +41,7 @@ const startScreenshotTesting = async ({ rootUrl, mapSelector }) => {
   reporter('iterating over components to make screenshots...'); /** 3 */
 
   for await (const component of components) {
-    const pageOptions = { ...defaultPageOptions, ...component.pageOptions };
-    const context = await browser.newContext(pageOptions);
+    const context = await browser.newContext(defaultPageOptions);
 
     const { meta } = await makeScreenshots({
       component,
@@ -52,7 +51,7 @@ const startScreenshotTesting = async ({ rootUrl, mapSelector }) => {
       rootUrl,
     });
 
-    await makeSnapshots({ context, mapSelector, meta, reporter });
+    await makeSnapshots({ component, context, mapSelector, meta, reporter });
   }
 
   reporter('closed playwright');

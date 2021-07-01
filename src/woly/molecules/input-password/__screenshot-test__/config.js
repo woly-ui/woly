@@ -1,5 +1,9 @@
 module.exports = {
   selector: "[class^='input-password']",
+  screenshotElStyle: {
+    width: 300,
+    height: 150,
+  },
   states: [
     'static',
     'hover',

@@ -7,8 +7,8 @@ html(lang="en")
     title Component
     style(type="text/css").
       .state-map {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        display: flex;
+        flex-wrap: wrap;
       }
       .state-map__cell {
         position: relative;
@@ -17,9 +17,12 @@ html(lang="en")
       .state-map__cell img { max-width: 100%; display: block;}
 
       .state-map__cell::before {
+        position: absolute;
+        top: 2px;
+        left: 2px;
         display: block;
         content: attr(data-variation);
-        font-size: 0.6rem;
+        font-size: 1rem;
         min-height: 20px;
         box-sizing: border-box;
         padding: 2px;
@@ -32,5 +35,5 @@ html(lang="en")
   body
     .state-map
       for stat in stats
-        .state-map__cell(data-variation=`${stat.variation}` data-in-state=`${stat.inState}`)
+        .state-map__cell(data-variation=`${stat.variation}` data-in-state=`${stat.inState}` style=`width: ${screenshotElStyle.width}px;height: ${screenshotElStyle.height}px`)
           img(src=`${stat.path}`)

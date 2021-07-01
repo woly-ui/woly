@@ -9,19 +9,29 @@ app.use('/screenshots', express.static(`${__dirname}/screenshots`));
 
 const port = 3000;
 
-async function makeSnapshots({ context, mapSelector, meta, reporter }) {
+async function makeSnapshots({ component, context, mapSelector, meta, reporter }) {
   const screenshotServer = app.listen(port, () => {
     reporter(`booted screenshot server at http://localhost:${port}`);
   });
 
-  for await (const { component, group, stats } of meta) {
+  const {
+    config: {
+      screenshotElStyle = {
+        width: 400,
+        height: 200,
+      },
+    },
+  } = component;
+
+  for await (const { name, groupName, stats } of meta) {
     const page = await context.newPage();
 
-    const variantGroup = `${component}-${group}`;
+    const variantGroup = `${name}-${groupName}`;
 
     app.get(`/${variantGroup}`, (_req, res) => {
       res.render('screenshot-page-template', {
         stats,
+        screenshotElStyle,
       });
     });
 
@@ -33,11 +43,11 @@ async function makeSnapshots({ context, mapSelector, meta, reporter }) {
 
     await page.waitForSelector(mapSelector);
 
-    reporter(`making debug screenshot for ${component}, group ${group}`);
+    reporter(`making debug screenshot for ${name}, group ${groupName}`);
 
     const stateMap = await page.$(mapSelector);
     await stateMap.screenshot({
-      path: `${__dirname}/screenshots/${component}/${group}.png`,
+      path: `${__dirname}/screenshots/${name}/${groupName}.png`,
     });
     await page.close();
   }

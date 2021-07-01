@@ -63,8 +63,9 @@ export function StateMap<Props extends ObjectVariations>({
 }
 
 const StateMapGroup = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 `;
 
 const StateMapVariant = styled.div`
@@ -73,6 +74,7 @@ const StateMapVariant = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  box-sizing: border-box;
   padding: 1.5rem;
 `;
 

@@ -30,10 +30,15 @@ function noEmptyString(value) {
 async function makeScreenshots({ component, context, mapSelector, reporter, rootUrl }) {
   const {
     name,
-    category,
-    package: p,
     url,
-    config: { selector, states },
+    config: {
+      selector,
+      states,
+      screenshotElStyle = {
+        width: 400,
+        height: 200,
+      },
+    },
   } = component;
 
   reporter('\ncurrent component', name);
@@ -41,6 +46,15 @@ async function makeScreenshots({ component, context, mapSelector, reporter, root
   const page = await context.newPage();
   await page.goto(`${rootUrl}/${url}`);
   await page.waitForSelector(mapSelector); /** 1 */
+
+  await page.addStyleTag({
+    content: `
+      ${mapSelector}__variant {
+        width: ${screenshotElStyle.width}px;
+        height: ${screenshotElStyle.height}px;
+      }
+    `,
+  });
 
   reporter(`iterating over ${name} variant groups...`);
 
@@ -101,8 +115,8 @@ async function makeScreenshots({ component, context, mapSelector, reporter, root
     }
 
     meta.push({
-      component: name,
-      group: groupName,
+      name,
+      groupName,
       stats,
     });
   }
