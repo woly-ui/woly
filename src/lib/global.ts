@@ -201,4 +201,52 @@ export const Global = styled.div`
     --woly-canvas-text-hover: hsla(var(--danger-600), 1);
     --woly-canvas-text-active: hsla(var(--danger-700), 1);
   }
+
+  --woly-component-level: 7;
+
+  [data-woly-component-level-dec] {
+    --woly-component-level: 6;
+  }
+
+  [data-woly-component-level-dec] [data-woly-component-level-dec] {
+    --woly-component-level: 5;
+  }
+
+  [data-woly-component-level-dec] [data-woly-component-level-dec] [data-woly-component-level-dec] {
+    --woly-component-level: 4;
+  }
+
+  [data-woly-component-level-dec]
+    [data-woly-component-level-dec]
+    [data-woly-component-level-dec]
+    [data-woly-component-level-dec] {
+    --woly-component-level: 3;
+  }
+
+  [data-woly-component-level-dec]
+    [data-woly-component-level-dec]
+    [data-woly-component-level-dec]
+    [data-woly-component-level-dec]
+    [data-woly-component-level-dec] {
+    --woly-component-level: 2;
+  }
+
+  [data-woly-component-level-dec]
+    [data-woly-component-level-dec]
+    [data-woly-component-level-dec]
+    [data-woly-component-level-dec]
+    [data-woly-component-level-dec]
+    [data-woly-component-level-dec] {
+    --woly-component-level: 1;
+  }
+
+  [data-woly-component-level-dec]
+    [data-woly-component-level-dec]
+    [data-woly-component-level-dec]
+    [data-woly-component-level-dec]
+    [data-woly-component-level-dec]
+    [data-woly-component-level-dec]
+    [data-woly-component-level-dec] {
+    --woly-component-level: 0;
+  }
 `;
