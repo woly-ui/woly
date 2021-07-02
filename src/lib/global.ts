@@ -82,7 +82,7 @@ export const Global = styled.div`
   --woly-border-width: 1.5px;
   --woly-rounding: 3px;
 
-  --woly-line-height: 24px;
+  --woly-line-height: calc(24px - 2 * var(--woly-border-width));
   --woly-font-size: 15px;
 
   --woly-background: hsla(var(--bw-1000), 1);

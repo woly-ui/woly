@@ -41,55 +41,80 @@ const ChipBase: React.FC<ChipProps & Priority> = ({
       data-outlined={outlined}
       data-priority={priority}
     >
-      {leftIcon && (
-        <div data-icon="chip-visual-block" onClick={onClick} onKeyDown={onKeyDown}>
-          {leftIcon}
+      <div data-content>
+        {leftIcon && (
+          <div data-icon="chip-visual-block" onClick={onClick} onKeyDown={onKeyDown}>
+            {leftIcon}
+          </div>
+        )}
+        <div
+          data-text="chip-text-content"
+          onClick={onClick}
+          onKeyDown={onKeyDown}
+          role={chipRole}
+          tabIndex={chipTabIndex}
+        >
+          {text}
         </div>
-      )}
-      <div
-        data-text="chip-text-content"
-        onClick={onClick}
-        onKeyDown={onKeyDown}
-        role={chipRole}
-        tabIndex={chipTabIndex}
-      >
-        {text}
+        {rightIcon && (
+          <div data-icon="chip-action-block" data-size-none>
+            {rightIcon}
+          </div>
+        )}
       </div>
-      {rightIcon && <div data-icon="chip-action-block">{rightIcon}</div>}
+      <div data-background />
     </div>
   );
 };
 
 export const Chip = styled(ChipBase)`
-  ${box}
   --local-shape-color: var(--woly-shape-default);
   --local-icon-size: var(--woly-line-height);
   --local-text-color: var(--woly-shape-text-default);
   --local-border-color: var(--woly-shape-default);
+  --local-line-height: calc(var(--woly-line-height) + 2 * var(--woly-border-width));
+  position: relative;
 
-  display: flex;
-  align-items: center;
-
-  box-sizing: border-box;
-
-  color: var(--local-text-color);
   font-size: var(--woly-font-size);
 
-  background-color: var(--local-shape-color);
-  border: var(--woly-border-width) solid var(--local-border-color);
-  border-radius: var(--woly-rounding);
-  outline: none;
+  [data-content] {
+    ${box}
+
+    display: flex;
+    align-items: center;
+
+    box-sizing: border-box;
+  }
+
+  [data-background] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    background-color: var(--local-shape-color);
+    border: var(--woly-border-width) solid var(--local-border-color);
+    border-radius: var(--woly-rounding);
+    outline: none;
+  }
 
   [data-text] {
+    z-index: 1;
+
     display: flex;
     flex: 1;
 
-    line-height: var(--woly-line-height);
+    color: var(--local-text-color);
+
+    line-height: var(--local-line-height);
 
     outline: none;
   }
 
   [data-icon] {
+    z-index: 1;
+
     display: flex;
     flex-shrink: 0;
     align-items: center;
@@ -107,6 +132,9 @@ export const Chip = styled(ChipBase)`
   [data-icon='chip-visual-block'] {
     width: var(--local-icon-size);
     height: var(--local-icon-size);
+
+    color: var(--local-text-color);
+
     svg {
       width: 100%;
       height: 100%;
