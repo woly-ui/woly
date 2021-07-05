@@ -20,12 +20,12 @@ export const Text = styled.p.attrs(map)`
   margin: 0;
 
   color: var(--local-color);
-  font-weight: var(--font-regular);
+  font-weight: 400;
   font-size: 15px;
   line-height: 21px;
 
   &[data-type='subtitle'][data-weight='medium'] {
-    font-weight: var(--font-regular);
+    font-weight: 400;
   }
 
   &[data-type='L'] {
@@ -55,6 +55,6 @@ export const Text = styled.p.attrs(map)`
   }
 
   &[data-type='hint'][data-weight='light'] {
-    font-weight: var(--font-light);
+    font-weight: 300;
   }
 ` as StyledComponent<'span', Record<string, unknown>, TextProps & Priority>;

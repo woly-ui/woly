@@ -45,13 +45,13 @@ export const systemUi = css`
   }
 
   /* prettier-ignore */
-  --system-ui:
+  --font-system-ui:
     /* Always render emoji first */
     system-stack-emoji,
     /* CSS Fonts Level 4 generic */
     system-ui,
-    /* Safari (MacOS 10.11+, iOS 9+)
-    */ -apple-system-body,
+    /* Safari (MacOS 10.11+, iOS 9+) */
+    -apple-system-body,
     /* Chrome until 55, Opera until 42 (MacOS) */
     BlinkMacSystemFont,
     /* Fallback to local fonts */

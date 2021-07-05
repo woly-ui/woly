@@ -8,13 +8,8 @@ export const Global = styled.div`
   ${systemUi}
 
   * {
-    font-family: 'Helvetica Neue', var(--system-ui);
+    font-family: 'Helvetica Neue', var(--font-system-ui);
   }
-
-  /* font-weights */
-  --font-light: 300;
-  --font-regular: 400;
-  --font-medium: 500;
 
   /* base colors */
   --bw-0: 0, 0%, 0%;

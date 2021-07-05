@@ -18,7 +18,7 @@ export const Heading = styled.span.attrs(map)`
   --local-color: var(--woly-canvas-text-default);
 
   color: var(--local-color);
-  font-weight: var(--font-medium);
+  font-weight: 500;
   font-size: 24px;
   line-height: 30px;
 
@@ -31,6 +31,6 @@ export const Heading = styled.span.attrs(map)`
     line-height: 24px;
   }
   &[data-weight='regular'] {
-    font-weight: var(--font-regular);
+    font-weight: 400;
   }
 ` as StyledComponent<'label', Record<string, unknown>, HeadingProps & Priority>;
