@@ -6,7 +6,7 @@ import {block, Playground} from 'lib/playground';
 
 <!-- TODO update example with PRs FRNT-4transparent1 & FRNT-520 -->
 
-`IconBox` is icon-wrapper component, that add a box model to static icon elements.
+`IconBox` is an icon-wrapper component that adds a box model to static icon elements.
 
 ## Weight
 
@@ -38,7 +38,7 @@ import {block, Playground} from 'lib/playground';
 
 ## Size
 
-Size is controlled by the component-level block property not from the props.
+Size is controlled by the component-level block property, not by the props.
 
 <Playground>
   <block.N>
@@ -71,7 +71,7 @@ Size is controlled by the component-level block property not from the props.
 ## Example with other components
 
 <Playground>
-  <block.L style={{ width: '400px', padding: '100px' }}>
+  <block.L style={{ width: '400px', padding: '100px 120px' }}>
     <Tooltip
       message={
         <div style={{ display: 'flex', alignItems: 'flex-start' }}>
