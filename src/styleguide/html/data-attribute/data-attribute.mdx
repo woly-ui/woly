@@ -1,6 +1,8 @@
 # Styleguide for data-attributes
 
-Data-attributes allow us to store extra information on standard, semantic HTML elements. The data attribute can also be used for styling. You can access them from CSS to add styles to the tag that have specific data-attribute.
+Data-attributes allow us to store extra information on standard, semantic HTML elements. 
+The data attribute can also be used for styling. 
+You can access them from CSS to add styles to the tag that have specific data-attribute.
 
 It's simpler and cleaner to write data attributes as data-name, where a name is a concrete name of a data attribute.
 
@@ -18,7 +20,8 @@ Good code example:
 <div data-input></div>
 ```
 
-If you have several values of component states that you need to pass to a data attribute, you can write it this way:
+If you have several values of component states that you need to pass to a data attribute, make data attribute more unique with adding a name to data attribute.
+You can do it in this way:
 
 ```html
 data-name="value"
@@ -27,7 +30,7 @@ data-name="value"
 For example:
 
 ```html
-<div data-position="horizontal">horizontal block</div>
+<div data-direction="horizontal">horizontal block</div>
 
-<div data-position="vertical">vertical block</div>
+<div data-direction="vertical">vertical block</div>
 ```
