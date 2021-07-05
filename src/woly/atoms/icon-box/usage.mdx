@@ -4,20 +4,20 @@ import {block, Playground} from 'lib/playground';
 
 ### Example
 
-<!-- TODO update example with PRs FRNT-401 & FRNT-520 -->
+<!-- TODO update example with PRs FRNT-4transparent1 & FRNT-520 -->
 
 `IconBox` is icon-wrapper component, that add a box model to static icon elements.
 
 ## Weight
 
 <Playground>
-  <IconBox priority="primary" weight="0">
+  <IconBox priority="primary" weight="transparent">
     <IconClose />
   </IconBox>
-  <IconBox priority="primary" weight="2">
+  <IconBox priority="primary" weight="outline">
     <IconClose />
   </IconBox>
-  <IconBox priority="primary" weight="3">
+  <IconBox priority="primary" weight="fill">
     <IconClose />
   </IconBox>
 </Playground>
@@ -25,13 +25,13 @@ import {block, Playground} from 'lib/playground';
 ## Priority
 
 <Playground>
-  <IconBox priority="secondary" weight="0">
+  <IconBox priority="secondary" weight="transparent">
     <IconClose />
   </IconBox>
-  <IconBox priority="secondary" weight="2">
+  <IconBox priority="secondary" weight="outline">
     <IconClose />
   </IconBox>
-  <IconBox priority="secondary" weight="3">
+  <IconBox priority="secondary" weight="fill">
     <IconClose />
   </IconBox>
 </Playground>
@@ -42,27 +42,27 @@ Size is controlled by the component-level block property not from the props.
 
 <Playground>
   <block.N>
-    <IconBox priority="secondary" weight="3">
+    <IconBox priority="secondary" weight="fill">
       <IconClose />
     </IconBox>
   </block.N>
   <block.XS>
-    <IconBox priority="secondary" weight="3">
+    <IconBox priority="secondary" weight="fill">
       <IconClose />
     </IconBox>
   </block.XS>
   <block.S>
-    <IconBox priority="secondary" weight="3">
+    <IconBox priority="secondary" weight="fill">
       <IconClose />
     </IconBox>
   </block.S>
   <block.M>
-    <IconBox priority="secondary" weight="3">
+    <IconBox priority="secondary" weight="fill">
       <IconClose />
     </IconBox>
   </block.M>
   <block.L>
-    <IconBox priority="secondary" weight="3">
+    <IconBox priority="secondary" weight="fill">
       <IconClose />
     </IconBox>
   </block.L>
@@ -75,7 +75,7 @@ Size is controlled by the component-level block property not from the props.
     <Tooltip
       message={
         <div style={{ display: 'flex', alignItems: 'flex-start' }}>
-          <IconBox priority="default" weight="1">
+          <IconBox priority="default" weight="goast">
             <IconInfo />
           </IconBox>
           <Box>
@@ -108,7 +108,7 @@ Size is controlled by the component-level block property not from the props.
       position="bottom"
     >
       <block.S>
-        <IconBox priority="default" weight="1" style={{ alignSelf: 'flex-start' }}>
+        <IconBox priority="default" weight="goast" style={{ alignSelf: 'flex-start' }}>
           <IconInfo />
         </IconBox>
       </block.S>
@@ -124,5 +124,5 @@ Size is controlled by the component-level block property not from the props.
 | Name       | Type              | Default       | Description                                            |
 | ---------- | ----------------- | ------------- | ------------------------------------------------------ |
 | `children` | `React.ReactNode` | `null`        | Component to show as content (ex.: svg-icon)           |
-| `weight`   | `string`          | `0`           | Change icon`s styles (ex.: fill, outline, transparent) |
+| `weight`   | `string`          | `transparent` | Change icon`s styles (ex.: fill, outline, transparent) |
 | `priority` | `string`          | `'secondary'` | Priority prop to style Icon component                  |

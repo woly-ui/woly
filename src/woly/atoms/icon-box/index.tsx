@@ -6,14 +6,14 @@ import { box } from 'ui/elements/box';
 interface IconBoxProps {
   className?: string;
   children: React.ReactNode;
-  weight?: boolean;
+  weight?: string;
 }
 
 const IconBoxBase: React.FC<IconBoxProps & Priority> = ({
   className,
   children,
   priority = 'secondary',
-  weight = '0',
+  weight = 'transparent',
 }) => (
   <div className={className} data-weight={weight} data-priority={priority}>
     <span data-icon="icon-component">{children}</span>
@@ -52,7 +52,7 @@ export const IconBox = styled(IconBoxBase)`
     }
   }
 
-  &[data-weight='3'] {
+  &[data-weight='fill'] {
     --local-shape-color: var(--woly-shape-default);
     --local-fill-color: var(--woly-shape-text-default);
     --local-border-color: var(--woly-shape-default);
@@ -65,7 +65,7 @@ export const IconBox = styled(IconBoxBase)`
     }
   }
 
-  &[data-weight='2'] {
+  &[data-weight='outline'] {
     --local-shape-color: transparent;
     --local-fill-color: var(--woly-shape-default);
     --local-border-color: var(--woly-shape-default);
@@ -78,7 +78,7 @@ export const IconBox = styled(IconBoxBase)`
     }
   }
 
-  &[data-weight='1'] {
+  &[data-weight='goast'] {
     --local-shape-color: transparent;
     --local-fill-color: var(--woly-base-black);
     --local-border-color: transparent;
@@ -91,7 +91,7 @@ export const IconBox = styled(IconBoxBase)`
     }
   }
 
-  &[data-weight='0'] {
+  &[data-weight='transparent'] {
     --local-shape-color: transparent;
     --local-fill-color: var(--woly-shape-default);
     --local-border-color: transparent;
