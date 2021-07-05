@@ -8,10 +8,9 @@ const { makeScreenshots } = require('./make-screenshots');
 const { makeSnapshots } = require('./make-snapshots');
 
 /**
- * TODO: test with all major browsers
+ * TODO: test in all major browsers
  * TODO: reduce testing time
- * TODO: pass screenshot width to cells style
- * TODO: automatic layout from states length
+ * TODO: make it work with production build
  */
 
 const defaultPageOptions = {
