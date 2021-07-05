@@ -86,6 +86,7 @@ export const Global = styled.div`
   --woly-font-size: 15px;
 
   --woly-background: hsla(var(--bw-1000), 1);
+  --woly-base-black: hsla(var(--bw-0), 1);
   --woly-neutral: hsla(var(--bw-500), 1);
   --woly-focus-color: hsla(var(--primary-700), 1);
   --woly-danger-color: hsla(var(--danger-500), 1);
