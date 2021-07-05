@@ -86,6 +86,7 @@ export const Global = styled.div`
   --woly-font-size: 15px;
 
   --woly-background: hsla(var(--bw-1000), 1);
+  --woly-base-black: hsla(var(--bw-0), 1);
   --woly-neutral: hsla(var(--bw-500), 1);
   --woly-focus-color: hsla(var(--primary-700), 1);
   --woly-danger-color: hsla(var(--danger-500), 1);
@@ -158,16 +159,16 @@ export const Global = styled.div`
     --woly-canvas-text-active: hsla(var(--bw-0), 1);
   }
 
-  [data-priority='tertiary'] {
+  [data-priority='goast'] {
     --woly-shape-default: transparent;
     --woly-shape-disabled: hsla(var(--bw-200), 1);
     --woly-shape-hover: transparent;
     --woly-shape-active: transparent;
 
-    --woly-shape-text-default: hsla(var(--bw-0), 1);
+    --woly-shape-text-default: hsla(var(--bw-1000), 1);
     --woly-shape-text-disabled: hsla(var(--bw-300), 1);
-    --woly-shape-text-hover: hsla(var(--bw-600), 1);
-    --woly-shape-text-active: hsla(var(--bw-700), 1);
+    --woly-shape-text-hover: hsla(var(--bw-400), 1);
+    --woly-shape-text-active: hsla(var(--bw-500), 1);
 
     --woly-canvas-default: transparent;
     --woly-canvas-disabled: hsla(var(--bw-200), 1);

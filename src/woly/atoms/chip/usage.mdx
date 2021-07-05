@@ -23,14 +23,22 @@ As a standalone component, the most common use will be in some form of input.
 
 ### Weight and priority
 
-Chip can be represented in primary, secondary, default or tertiary priorities and can be styled with fill or outline.
-In case of choosing chip in tertiary priority with outline styles use the opposite background color to the text color of chip.
+Chip can be represented in primary, secondary, default or goast priorities and can be styled with fill or outline.
 
-<Playground direction="horizontal" size="XS">
-  <Chip text="Simple Chip" priority="primary" />
-  <Chip text="Simple Chip" priority="secondary" />
-  <Chip text="Simple Chip" priority="default" />
-  <Chip text="Simple Chip" priority="tertiary" />
+<Playground direction="horizontal" size="S">
+  <div
+    style={{
+      background: 'grey',
+      display: 'flex',
+      justifyContent: 'space-between',
+      padding: '100px 10px',
+    }}
+  >
+    <Chip text="Simple Chip" priority="primary" />
+    <Chip text="Simple Chip" priority="secondary" />
+    <Chip text="Simple Chip" priority="default" />
+    <Chip text="Simple Chip" priority="goast" />
+  </div>
 </Playground>
 
 <Playground direction="horizontal" size="XS">
@@ -66,7 +74,6 @@ eg button-icon.
     onClick={() => console.info('click')}
     rightIcon={
       <ButtonIcon
-        filled
         icon={<IconClose />}
         onClick={() => console.info('IconClose clicked')}
         priority="primary"
@@ -130,7 +137,6 @@ pass the disable state only to it, make the entire component disable.
     rightIcon={
       <ButtonIcon
         disabled
-        filled
         icon={<IconClose />}
         onClick={() => console.info('IconClose clicked')}
         priority="primary"
