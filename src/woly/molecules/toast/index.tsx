@@ -15,7 +15,7 @@ const ToastBase: React.FC<ToastProps & Priority> = ({
   children,
   className,
   icon,
-  weight = '2',
+  weight = 'fill',
   priority = 'secondary',
 }) => (
   <div className={className} data-weight={weight} data-priority={priority}>
@@ -27,7 +27,7 @@ const ToastBase: React.FC<ToastProps & Priority> = ({
 
 export const Toast = styled(ToastBase)`
   ${box}
-  --local-toast-gap: max(9px, calc(1px * var(--woly-component-level) * var(--woly-main-level)));
+  --local-toast-gap: max(var(--woly-const-m), calc(1px * var(--woly-component-level) * var(--woly-main-level)));
   --local-icon-size: var(--woly-line-height);
 
   display: flex;
@@ -72,7 +72,7 @@ export const Toast = styled(ToastBase)`
     }
   }
 
-  &[data-weight='3'] {
+  &[data-weight='fill'] {
     --local-text-color: var(--woly-shape-text-default);
     --local-shape-color: var(--woly-shape-default);
     --local-border-color: var(--woly-shape-default);
@@ -91,7 +91,7 @@ export const Toast = styled(ToastBase)`
     }
   }
 
-  &[data-weight='2'] {
+  &[data-weight='outline'] {
     --local-text-color: var(--woly-shape-default);
     --local-shape-color: transparent;
     --local-border-color: var(--woly-shape-default);
@@ -110,7 +110,7 @@ export const Toast = styled(ToastBase)`
     }
   }
 
-  &[data-weight='1'] {
+  &[data-weight='goast'] {
     --local-text-color: var(--woly-shape-text-default);
     --local-shape-color: transparent;
     --local-border-color: var(--woly-shape-text-default);
@@ -133,7 +133,7 @@ export const Toast = styled(ToastBase)`
     }
   }
 
-  &[data-weight='0'] {
+  &[data-weight='transparent'] {
     --local-text-color: var(--woly-shape-default);
     --local-shape-color: transparent;
     --local-border-color: transparent;

@@ -12,7 +12,7 @@ Siple Toast with text only
 
 <Playground>
   <block.L>
-    <Toast priority="secondary" weight="0">
+    <Toast priority="secondary" weight="transparent">
       Режим предпросмотра таблицы
     </Toast>
   </block.L>
@@ -24,7 +24,7 @@ Toast can be used with icon on the left side.
 
 <Playground>
   <block.L>
-    <Toast icon={<IconPlus />} priority="primary" weight="3">
+    <Toast icon={<IconPlus />} priority="primary" weight="fill">
       Перетащите файл формата XLS
     </Toast>
   </block.L>
@@ -36,7 +36,7 @@ Toast can also consist action block
   <block.L style={{ width: '1200px' }}>
     <Toast
       priority="secondary"
-      weight="2"
+      weight="outline"
       action={
         <>
           <Button
@@ -65,7 +65,7 @@ Or even both
     <Toast
       icon={<IconPlus />}
       priority="primary"
-      weight="3"
+      weight="fill"
       action={
         <>
           <Button
@@ -104,7 +104,6 @@ Or even both
             onClick={() => console.info('IconClose clicked')}
             priority="secondary"
             text="Cancel"
-            outlined
           />
         </>
       }
@@ -130,7 +129,6 @@ Or even both
             onClick={() => console.info('IconClose clicked')}
             priority="primary"
             text="Cancel"
-            outlined
           />
         </>
       }
@@ -156,7 +154,6 @@ Or even both
             onClick={() => console.info('IconClose clicked')}
             priority="default"
             text="Cancel"
-            outlined
           />
         </>
       }
@@ -178,16 +175,16 @@ Or even both
       background: 'grey',
     }}
   >
-    <Toast icon={<IconPlus />} priority="primary" weight="3">
+    <Toast icon={<IconPlus />} priority="primary" weight="fill">
       Перетащите файл формата XLS
     </Toast>
     <Toast icon={<IconPlus />} priority="primary">
       Перетащите файл формата XLS
     </Toast>
-    <Toast icon={<IconPlus />} weight="1">
+    <Toast icon={<IconPlus />} weight="goast">
       Перетащите файл формата XLS
     </Toast>
-    <Toast icon={<IconPlus />} priority="primary" weight="0">
+    <Toast icon={<IconPlus />} priority="primary" weight="transparent">
       Перетащите файл формата XLS
     </Toast>
   </block>
@@ -228,5 +225,5 @@ Sizi is controlled by the `component-level` block property not from the props.
 | `action`   | `React.ReactNode`  | `null`        | Block of action items (ex. One element or grop that can be clicked)   |
 | `icon`     | `React.ReactNode`  | `null`        | Component to show the icon near the text (ex.: Icon on the left side) |
 | `children` | ``React.ReactNode` | `null`        | Content block                                                         |
-| `weight`   | `string`           | `2`           | Set toast`s view (ex.: fill, outline, transparent, goast)             |
+| `weight`   | `string`           | `outline`     | Set toast`s view (ex.: fill, outline, transparent, goast)             |
 | `priority` | `string`           | `'secondary'` | Priority prop to style Toast component                                |
