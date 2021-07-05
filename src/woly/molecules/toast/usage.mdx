@@ -12,7 +12,7 @@ Siple Toast with text only
 
 <Playground>
   <block.L>
-    <Toast priority="primary" outlined>
+    <Toast priority="secondary" weight="transparent">
       Режим предпросмотра таблицы
     </Toast>
   </block.L>
@@ -24,7 +24,7 @@ Toast can be used with icon on the left side.
 
 <Playground>
   <block.L>
-    <Toast icon={<IconPlus />} priority="primary" outlined>
+    <Toast icon={<IconPlus />} priority="primary" weight="fill">
       Перетащите файл формата XLS
     </Toast>
   </block.L>
@@ -35,18 +35,16 @@ Toast can also consist action block
 <Playground>
   <block.L style={{ width: '1200px' }}>
     <Toast
-      priority="primary"
-      outlined
+      priority="secondary"
+      weight="outline"
       action={
         <>
           <Button
-            icon={<IconSearch />}
             onClick={() => console.info('IconClose clicked')}
-            priority="primary"
+            priority="secondary"
             text="Submit"
           />
           <Button
-            icon={<IconSearch />}
             onClick={() => console.info('IconClose clicked')}
             priority="secondary"
             text="Cancel"
@@ -67,7 +65,7 @@ Or even both
     <Toast
       icon={<IconPlus />}
       priority="primary"
-      outlined
+      weight="fill"
       action={
         <>
           <Button
@@ -79,7 +77,6 @@ Or even both
             onClick={() => console.info('IconClose clicked')}
             priority="primary"
             text="Cancel"
-            outlined
           />
         </>
       }
@@ -96,20 +93,17 @@ Or even both
     <Toast
       icon={<IconPlus />}
       priority="secondary"
-      outlined
       action={
         <>
           <Button
             onClick={() => console.info('IconClose clicked')}
             priority="secondary"
             text="Submit"
-            outlined
           />
           <Button
             onClick={() => console.info('IconClose clicked')}
             priority="secondary"
             text="Cancel"
-            outlined
           />
         </>
       }
@@ -124,20 +118,17 @@ Or even both
     <Toast
       icon={<IconPlus />}
       priority="primary"
-      outlined
       action={
         <>
           <Button
             onClick={() => console.info('IconClose clicked')}
             priority="primary"
             text="Submit"
-            outlined
           />
           <Button
             onClick={() => console.info('IconClose clicked')}
             priority="primary"
             text="Cancel"
-            outlined
           />
         </>
       }
@@ -147,12 +138,92 @@ Or even both
   </block.L>
 </Playground>
 
+<Playground>
+  <block.L style={{ width: '1200px' }}>
+    <Toast
+      icon={<IconPlus />}
+      priority="default"
+      action={
+        <>
+          <Button
+            onClick={() => console.info('IconClose clicked')}
+            priority="default"
+            text="Submit"
+          />
+          <Button
+            onClick={() => console.info('IconClose clicked')}
+            priority="default"
+            text="Cancel"
+          />
+        </>
+      }
+    >
+      Сохраните изменения, чтобы выйти из режима предпросмотра
+    </Toast>
+  </block.L>
+</Playground>
+
+## Weight
+
+<Playground>
+  <block
+    style={{
+      display: 'flex',
+      justifyContent: 'space-between',
+      flexWrap: 'wrap',
+      padding: '100px 10px',
+      background: 'grey',
+    }}
+  >
+    <Toast icon={<IconPlus />} priority="primary" weight="fill">
+      Перетащите файл формата XLS
+    </Toast>
+    <Toast icon={<IconPlus />} priority="primary">
+      Перетащите файл формата XLS
+    </Toast>
+    <Toast icon={<IconPlus />} weight="goast">
+      Перетащите файл формата XLS
+    </Toast>
+    <Toast icon={<IconPlus />} priority="primary" weight="transparent">
+      Перетащите файл формата XLS
+    </Toast>
+  </block>
+</Playground>
+
+## Size
+
+Sizi is controlled by the `component-level` block property not from the props.
+
+<Playground>
+  <block.N>
+    <Toast priority="secondary">Режим предпросмотра таблицы</Toast>
+  </block.N>
+  <block.XS>
+    <Toast priority="secondary">Режим предпросмотра таблицы</Toast>
+  </block.XS>
+  <block.S>
+    <Toast priority="secondary">Режим предпросмотра таблицы</Toast>
+  </block.S>
+  <block.M>
+    <Toast priority="secondary">Режим предпросмотра таблицы</Toast>
+  </block.M>
+  <block.L>
+    <Toast priority="secondary">Режим предпросмотра таблицы</Toast>
+  </block.L>
+  <block.XL>
+    <Toast priority="secondary">Режим предпросмотра таблицы</Toast>
+  </block.XL>
+  <block.H>
+    <Toast priority="secondary">Режим предпросмотра таблицы</Toast>
+  </block.H>
+</Playground>
+
 ### Props
 
 | Name       | Type               | Default       | Description                                                           |
 | ---------- | ------------------ | ------------- | --------------------------------------------------------------------- |
 | `action`   | `React.ReactNode`  | `null`        | Block of action items (ex. One element or grop that can be clicked)   |
-| `content`  | `React.ReactNode`  | `null`        | Component to show the icon near the text (ex.: Icon on the left side) |
+| `icon`     | `React.ReactNode`  | `null`        | Component to show the icon near the text (ex.: Icon on the left side) |
 | `children` | ``React.ReactNode` | `null`        | Content block                                                         |
-| `outlined` | `boolean`          | `false`       | Change toast`s view from filled to outlined                           |
+| `weight`   | `string`           | `outline`     | Set toast`s view (ex.: fill, outline, transparent, goast)             |
 | `priority` | `string`           | `'secondary'` | Priority prop to style Toast component                                |
