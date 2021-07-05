@@ -4,12 +4,12 @@ import { Priority } from 'lib/types';
 import { Surface } from 'ui/atoms';
 import { positionRelativeGet } from 'lib';
 
-type PositionProps = 'bottom' | 'left' | 'right' | 'top';
+type TooltipPosition = 'bottom' | 'left' | 'right' | 'top';
 
 interface TooltipProps {
   className?: string;
   content?: string | React.ReactNode;
-  position?: PositionProps;
+  position?: TooltipPosition;
 }
 
 const TooltipBase: React.FC<TooltipProps & Priority> = ({
@@ -19,7 +19,7 @@ const TooltipBase: React.FC<TooltipProps & Priority> = ({
   position = 'top',
   priority = 'secondary',
 }) => {
-  const [tooltipPosition, setPosition] = React.useState<PositionProps>('top');
+  const [tooltipPosition, setPosition] = React.useState<TooltipPosition>('top');
   const ref = React.useRef<HTMLDivElement>(null);
 
   const onScroll = React.useCallback(() => {
@@ -65,13 +65,13 @@ export const Tooltip = styled(TooltipBase)`
       (1px * var(--woly-main-level)) + (1px * var(--woly-main-level) * var(--woly-component-level))
     )
   );
-  --local-triangel: min(
+  --local-triangle: min(
     var(--woly-const-m),
     calc(1px * var(--woly-component-level) * var(--woly-const-m))
   );
 
   --tooltip-position: calc(100% + var(--woly-border-width) + var(--local-gap));
-  --local-tooltip-maxsize: 240px;
+  --local-tooltip-max-size: 240px;
   --local-icon-size: var(--woly-line-height);
 
   position: relative;
@@ -114,7 +114,7 @@ export const Tooltip = styled(TooltipBase)`
 
       border-color: var(--woly-background) transparent transparent transparent;
       border-style: solid;
-      border-width: var(--local-triangel);
+      border-width: var(--local-triangle);
     }
   }
 
