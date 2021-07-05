@@ -14,7 +14,7 @@ const ButtonIconBase: React.FC<Props & Priority> = ({
   icon,
   onClick,
   priority = 'secondary',
-  weight = '3',
+  weight = 'fill',
   ...p
 }) => (
   <button
@@ -60,7 +60,7 @@ export const ButtonIcon = styled(ButtonIconBase)`
     }
   }
 
-  &[data-weight='3'] {
+  &[data-weight='fill'] {
     --local-shape-color: var(--woly-shape-default);
     --local-icon-color: var(--woly-shape-text-default);
 
@@ -97,7 +97,7 @@ export const ButtonIcon = styled(ButtonIconBase)`
     }
   }
 
-  &[data-weight='2'] {
+  &[data-weight='outline'] {
     --local-shape-color: transparent;
     --local-icon-color: var(--woly-shape-default);
 
@@ -134,7 +134,7 @@ export const ButtonIcon = styled(ButtonIconBase)`
     }
   }
 
-  &[data-weight='1'] {
+  &[data-weight='goast'] {
     --local-shape-color: transparent;
     --local-icon-color: var(--woly-shape-text-default);
     --local-border-color: var(--woly-shape-text-default);
@@ -179,7 +179,7 @@ export const ButtonIcon = styled(ButtonIconBase)`
     }
   }
 
-  &[data-weight='0'] {
+  &[data-weight='transparent'] {
     --local-shape-color: transparent;
     --local-icon-color: var(--woly-shape-default);
 
