@@ -1,10 +1,13 @@
 import styled from 'styled-components';
 
 import { createPalette } from './palette';
+import { systemUi } from './font-stacks';
 
 export const Global = styled.div`
+  ${systemUi}
+
   * {
-    font-family: 'Helvetica Neue', sans-serif;
+    font-family: 'Helvetica Neue', var(--font-system-ui);
   }
 
   /* base colors */
@@ -16,7 +19,7 @@ export const Global = styled.div`
 
   /* primary palette */
   ${createPalette('255, 85%, 58%', 'primary')}
-  
+
   /* secondary palette */
   ${createPalette('223, 100%, 46%', 'secondary')}
 
