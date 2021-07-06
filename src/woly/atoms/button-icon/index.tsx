@@ -25,7 +25,7 @@ const ButtonIconBase: React.FC<Props & Priority> = ({
     type="button"
     {...p}
   >
-    <span data-icon>{icon}</span>
+    <span data-icon="button-icon">{icon}</span>
   </button>
 );
 
@@ -47,7 +47,7 @@ export const ButtonIcon = styled(ButtonIconBase)`
   border-radius: var(--woly-rounding);
   outline: none;
 
-  [data-icon] {
+  [data-icon='button-icon'] {
     display: flex;
     align-items: center;
     justify-content: center;

@@ -4,7 +4,7 @@ import styled, { StyledComponent } from 'styled-components';
 import { Priority } from 'lib/types';
 import { box } from 'ui/elements/box';
 
-export type Buttonprioritys =
+export type ButtonPriorities =
   | 'secondary'
   | 'primary'
   | 'default'
@@ -34,12 +34,12 @@ const ButtonBase: React.FC<ButtonProps & Priority> = ({
 }) => (
   <button
     type={type}
-    data-fullWidth={fullWidth}
+    data-full-width={fullWidth}
     data-outlined={outlined}
     data-priority={priority}
     {...p}
   >
-    {icon && <span data-icon="left">{icon}</span>}
+    {icon && <span data-icon="button">{icon}</span>}
     <span data-text>{text}</span>
   </button>
 );
@@ -76,11 +76,11 @@ export const Button = styled(ButtonBase)`
     }
   }
 
-  &[data-width='true'] {
+  &[data-full-width='true'] {
     width: 100%;
   }
 
-  [data-icon] {
+  [data-icon='button'] {
     --local-icon-size: var(--woly-line-height);
     display: flex;
     align-items: center;
