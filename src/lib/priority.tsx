@@ -4,7 +4,7 @@ interface PriorityType {
   bwPaletteName: string;
   paletteName?: string;
   priorityName: string;
-  weight: 'fill' | 'outline';
+  weight: 'fill' | 'transparent';
 }
 
 export const createPriority = ({
@@ -21,10 +21,10 @@ export const createPriority = ({
     'shape-hover': 'transparent',
     'shape-active': 'transparent',
 
-    'shape-text-default': `hsla(var(--${bwPaletteName}-0), 1)`,
+    'shape-text-default': `hsla(var(--${bwPaletteName}-1000), 1)`,
     'shape-text-disabled': `hsla(var(--${palette}-300), 1)`,
-    'shape-text-hover': `hsla(var(--${bwPaletteName}-600), 1)`,
-    'shape-text-active': `hsla(var(--${bwPaletteName}-700), 1)`,
+    'shape-text-hover': `hsla(var(--${bwPaletteName}-400), 1)`,
+    'shape-text-active': `hsla(var(--${bwPaletteName}-500), 1)`,
 
     'canvas-default': `transparent`,
     'canvas-disabled': `hsla(var(--${bwPaletteName}-200), 1)`,
@@ -49,6 +49,7 @@ export const createPriority = ({
 
     colors['canvas-hover'] = `hsla(var(--${palette}-600), 1)`;
     colors['canvas-active'] = `hsla(var(--${palette}-700), 1)`;
+
     colors['canvas-text-hover'] = `hsla(var(--${bwPaletteName}-0), 1)`;
     colors['canvas-text-active'] = `hsla(var(--${bwPaletteName}-0), 1)`;
   }

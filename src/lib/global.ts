@@ -74,7 +74,7 @@ export const Global = styled.div`
   ${createPriority({
     priorityName: 'white',
     bwPaletteName: 'bw',
-    weight: 'outline',
+    weight: 'transparent',
   })}
 
   ${createPriority({
