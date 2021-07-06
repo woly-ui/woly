@@ -1,5 +1,5 @@
 import {block, Playground} from 'lib/playground'
-import {Button, Input, Tooltip, Text, Box} from 'ui'
+import {Button, Input, Tooltip, Text, Box, BoxVertical} from 'ui'
 import {IconInfo} from 'static/icons';
 
 `Tooltip` is used to show additional information near the component. The information should be contextual, useful, and nonessential.
@@ -21,7 +21,7 @@ The top, right, bottom, and left positions appear outside the target element, ce
 <Playground>
   <block.S
     style={{
-      width: '800px',
+      width: '900px',
       display: 'flex',
       padding: '200px',
       alignItems: 'center',
@@ -35,24 +35,30 @@ The top, right, bottom, and left positions appear outside the target element, ce
           <Text type="S">Подсказка может быть написана в две строки и более</Text>
         </Box>
       }
-      position="bottom"
+      position="top"
     >
       <Button onClick={() => console.info('Hi!')} text="Button" variant="primary" />
     </Tooltip>
     <Tooltip
       content={
         <Box>
-          <Text type="S">Подсказка</Text>
+          <Text type="XS">4 Whitehall Street New York NY 10004</Text>
         </Box>
       }
-      position="top"
-      id="tooltip-top"
+      position="bottom"
+      variant="primary"
     >
-      <Button onClick={() => console.info('Hi!')} text="Button" variant="primary" />
+      <Input
+        name="adress"
+        value="4 Whitehall Street New York NY 10004"
+        onChange={() => console.info('On input change')}
+        type="text"
+        priority="default"
+      />
     </Tooltip>
     <Tooltip
       content={
-        <>
+        <BoxVertical>
           <Box>
             <Text type="S">
               Подсказка может быть написана в две и более строки, а также содержать блок с actions
@@ -68,28 +74,22 @@ The top, right, bottom, and left positions appear outside the target element, ce
               />
             </block.S>
           </Box>
-        </>
+        </BoxVertical>
       }
-      position="left"
+      position="right"
     >
       <Button onClick={() => console.info('Hi!')} text="Button" variant="primary" />
     </Tooltip>
     <Tooltip
       content={
         <Box>
-          <Text type="XS">4 Whitehall Street New York NY 10004</Text>
+          <Text type="S">Подсказка</Text>
         </Box>
       }
-      position="right"
-      variant="primary"
+      position="left"
+      id="tooltip-top"
     >
-      <Input
-        name="adress"
-        value="4 Whitehall Street New York NY 10004"
-        onChange={() => console.info('On input change')}
-        type="text"
-        priority="default"
-      />
+      <Button onClick={() => console.info('Hi!')} text="Button" variant="primary" />
     </Tooltip>
   </block.S>
 </Playground>

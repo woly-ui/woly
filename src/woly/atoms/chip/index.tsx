@@ -89,7 +89,7 @@ export const Chip = styled(ChipBase)`
     outline: none;
   }
 
-  [data-icon] {
+  [data-icon='chip-visual-block'] {
     display: flex;
     flex-shrink: 0;
     align-items: center;
@@ -104,7 +104,7 @@ export const Chip = styled(ChipBase)`
     --woly-component-level: 0;
   }
 
-  [data-icon='chip-visual-block'] {
+  [data-icon] {
     width: var(--local-icon-size);
     height: var(--local-icon-size);
     svg {
@@ -117,7 +117,7 @@ export const Chip = styled(ChipBase)`
     --local-shape-color: transparent;
     --local-text-color: var(--woly-shape-default);
 
-    svg > path {
+    [data-icon='chip-visual-block'] > svg > path {
       fill: var(--woly-shape-default);
     }
     &:hover {
