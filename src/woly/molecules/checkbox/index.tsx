@@ -51,15 +51,17 @@ const CheckboxBase: React.FC<CheckboxProps & Priority> = ({
       onKeyDown={onKeyDown}
       tabIndex={tabIndex}
     >
-      <span data-block="container" data-disabled={disabled} tabIndex={-1}>
-        <input type="checkbox" id={id} checked={checked} onChange={onChange} />
-        <span data-checkmark="unchecked" data-icon>
-          <IconFilledUnchecked />
+      <span data-container data-disabled={disabled} tabIndex={-1}>
+        <span data-icon="checkbox">
+          <input type="checkbox" id={id} checked={checked} onChange={onChange} />
+          <span data-unchecked>
+            <IconFilledUnchecked />
+          </span>
+          <span data-checked>
+            <IconCheckFilled />
+          </span>
         </span>
-        <span data-checkmark="checked" data-icon>
-          <IconCheckFilled />
-        </span>
-        {text && <span data-block="text">{text}</span>}
+        {text && <span data-text>{text}</span>}
       </span>
     </label>
   );
@@ -80,8 +82,6 @@ export const Checkbox = styled(CheckboxBase)`
   --local-text-color: var(--woly-canvas-text-default);
   --local-background-color: var(--woly-shape-default);
 
-  ${box}
-
   outline: none;
 
   user-select: none;
@@ -91,13 +91,15 @@ export const Checkbox = styled(CheckboxBase)`
     box-shadow: 0 0 0 var(--woly-border-width) var(--woly-focus);
   }
 
-  [data-block='container'] {
+  [data-container] {
+    ${box}
+
     display: flex;
     align-items: center;
 
     outline: none;
 
-    [data-block='text'] {
+    [data-text] {
       color: var(--local-text-color);
       font-size: var(--woly-font-size, 12px);
       line-height: var(--woly-line-height, 24px);
@@ -118,14 +120,14 @@ export const Checkbox = styled(CheckboxBase)`
       }
     }
 
-    [data-checkmark='unchecked'],
-    input:checked ~ [data-checkmark='checked'] {
+    [data-unchecked],
+    input:checked ~ [data-checked] {
       display: flex;
       align-items: center;
       justify-content: center;
     }
 
-    input:checked ~ [data-checkmark='checked'] {
+    input:checked ~ [data-checked] {
       svg > rect {
         fill: var(--local-icon-fill);
       }
@@ -140,12 +142,12 @@ export const Checkbox = styled(CheckboxBase)`
       }
     }
 
-    [data-checkmark='checked'],
-    input:checked ~ [data-checkmark='unchecked'] {
+    [data-checked],
+    input:checked ~ [data-unchecked] {
       display: none;
     }
 
-    [data-checkmark='unchecked'] {
+    [data-unchecked] {
       &:hover {
         svg > rect {
           stroke: var(--local-icon-stroke);
@@ -168,12 +170,13 @@ export const Checkbox = styled(CheckboxBase)`
       --local-text-color: var(--woly-shape-disabled);
     }
 
-    [data-checkmark] > svg {
+    [data-unchecked] > svg,
+    [data-checked] > svg {
       box-shadow: none;
     }
 
-    [data-checkmark='unchecked'],
-    input:checked ~ [data-checkmark='checked'] {
+    [data-unchecked],
+    input:checked ~ [data-checked] {
       display: flex;
       align-items: center;
       justify-content: center;
@@ -183,8 +186,8 @@ export const Checkbox = styled(CheckboxBase)`
       }
     }
 
-    [data-checkmark='checked'],
-    input:checked ~ [data-checkmark='unchecked'] {
+    [data-checked],
+    input:checked ~ [data-unchecked] {
       display: none;
     }
   }
