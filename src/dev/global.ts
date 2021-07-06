@@ -58,47 +58,39 @@ export const Global = styled(WolyGlobalStyles)`
     priorityName: 'primary',
     paletteName: 'primary',
     bwPaletteName: 'bw',
-    weight: 'filled',
+    weight: 'fill',
   })}
 
   ${createPriority({
     priorityName: 'secondary',
     paletteName: 'secondary',
     bwPaletteName: 'bw',
-    weight: 'filled',
+    weight: 'fill',
   })}
 
   ${createPriority({
     priorityName: 'default',
     bwPaletteName: 'bw',
-    weight: 'filled',
+    weight: 'fill',
   })}
 
   ${createPriority({
-    priorityName: 'goast',
+    priorityName: 'white',
     bwPaletteName: 'bw',
-    weight: 'transparent',
+    weight: 'outline',
   })}
 
   ${createPriority({
     priorityName: 'danger',
     paletteName: 'danger',
     bwPaletteName: 'bw',
-    weight: 'filled',
-  })}
-
-  /** for examples of priorities in button */
-  ${createPriority({
-    priorityName: 'primary-goast',
-    paletteName: 'primary',
-    bwPaletteName: 'bw',
-    weight: 'transparent',
+    weight: 'fill',
   })}
 
   ${createPriority({
-    priorityName: 'secondary-goast',
-    paletteName: 'secondary',
+    priorityName: 'success',
+    paletteName: 'success',
     bwPaletteName: 'bw',
-    weight: 'transparent',
+    weight: 'fill',
   })}
 `;
