@@ -77,7 +77,7 @@ export const Global = styled(WolyGlobalStyles)`
   ${createPriority({
     priorityName: 'white',
     bwPaletteName: 'bw',
-    weight: 'outline',
+    weight: 'transparent',
   })}
 
   ${createPriority({
