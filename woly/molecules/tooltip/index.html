@@ -40,6 +40,18 @@ data-styled.g11[id="sc-1akavvx-0"]{content:"gbzwhL,"}/*!sc*/
 .eqeVBK[data-dir='horizontal']{-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;-webkit-flex-wrap:wrap;-ms-flex-wrap:wrap;flex-wrap:wrap;}/*!sc*/
 .eqeVBK[data-dir='horizontal'] > *{margin-right:0.5rem;margin-bottom:0.5rem;}/*!sc*/
 data-styled.g12[id="sc-1akavvx-1"]{content:"eqeVBK,"}/*!sc*/
+.ktbYpT{--local-vertical:calc( 1px * var(--woly-component-level) * var(--woly-main-level) - var(--woly-border-width) );--local-horizontal:calc( var(--woly-const-m) + (1px * var(--woly-main-level)) + var(--local-vertical) - var(--woly-border-width) );--local-gap:calc(1px * var(--woly-component-level) * var(--woly-main-level));--local-compensate:var(--local-vertical);}/*!sc*/
+.ktbYpT > *{padding-top:var(--local-vertical);padding-bottom:var(--local-vertical);}/*!sc*/
+.ktbYpT >:first-child{padding-left:var(--local-horizontal);}/*!sc*/
+.ktbYpT >:last-child{padding-right:var(--local-horizontal);}/*!sc*/
+.ktbYpT > [data-icon]:first-child{padding-left:var(--local-compensate);}/*!sc*/
+.ktbYpT > [data-icon]:last-child{padding-right:var(--local-compensate);}/*!sc*/
+.ktbYpT >:not(:first-child){padding-left:var(--local-gap);}/*!sc*/
+data-styled.g23[id="sc-1k5wwwr-0"]{content:"ktbYpT,"}/*!sc*/
+.encOpS{--local-gap:var(--woly-const-m);}/*!sc*/
+.encOpS > *:not(:first-child){padding-top:var(--local-gap);}/*!sc*/
+.encOpS >:only-child{padding:0;}/*!sc*/
+data-styled.g24[id="sc-1k5wwwr-1"]{content:"encOpS,"}/*!sc*/
 .jyTUKs{--local-background-color:var(--woly-canvas-default);--local-border-color:var(--woly-shape-default);--local-icon-fill:var(--woly-canvas-text-default);--local-vertical:calc( 1px * var(--woly-component-level) * var(--woly-main-level) - var(--woly-border-width) );--local-horizontal:calc( var(--woly-const-m) + (1px * var(--woly-main-level)) + var(--local-vertical) - var(--woly-border-width) );--local-gap:calc(1px * var(--woly-component-level) * var(--woly-main-level));--local-compensate:var(--local-vertical);display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;box-sizing:border-box;width:100%;background:var(--local-background-color);border:var(--woly-border-width) solid var(--local-border-color);border-radius:var(--woly-rounding);outline:none;}/*!sc*/
 .jyTUKs > *{padding-top:var(--local-vertical);padding-bottom:var(--local-vertical);}/*!sc*/
 .jyTUKs >:first-child{padding-left:var(--local-horizontal);}/*!sc*/
@@ -66,19 +78,29 @@ data-styled.g31[id="sc-1qin5sy-0"]{content:"kVWUWl,"}/*!sc*/
 .iWqtTH{box-sizing:border-box;width:100%;}/*!sc*/
 .iWqtTH[data-disabled='true']{pointer-events:none;}/*!sc*/
 data-styled.g32[id="x0ea1f-0"]{content:"iWqtTH,"}/*!sc*/
-.gOAIeO{--woly-gap:calc( (1px * var(--woly-main-level)) + (1px * var(--woly-main-level) * var(--woly-component-level)) );--tooltip-position:calc(100% + 4px + var(--woly-gap,10px));position:relative;font-size:var(--woly-font-size,16px);line-height:21px;}/*!sc*/
-.gOAIeO:hover div[data-tooltip]{visibility:visible;opacity:1;-webkit-transition:0.3s linear;transition:0.3s linear;}/*!sc*/
-.gOAIeO div[data-tooltip]{position:absolute;z-index:1;box-sizing:border-box;width:-webkit-max-content;width:-moz-max-content;width:max-content;min-width:112px;max-width:240px;min-height:48px;color:var(--woly-color,#000000);background-color:var(--woly-background,#ffffff);border-color:var(--woly-border,var(--woly-background,#ffffff));border-style:solid;border-width:var(--woly-border-width);border-radius:var(--woly-rounding,6px);box-shadow:var(--woly-shadow);visibility:hidden;cursor:pointer;opacity:0;-webkit-transition:all 0.3s ease-in-out;transition:all 0.3s ease-in-out;}/*!sc*/
-.gOAIeO div[data-tooltip]::after{position:absolute;width:0;height:0;border-color:var(--woly-background,#ffffff) transparent transparent transparent;border-style:solid;border-width:4px 3px 0 3px;content:' ';}/*!sc*/
-.gOAIeO div[data-tooltip]:hover{visibility:visible;}/*!sc*/
-.gOAIeO[data-position='top'] > [data-tooltip]{bottom:var(--tooltip-position);}/*!sc*/
-.gOAIeO[data-position='top'] > [data-tooltip]::after{bottom:calc(-4px - var(--woly-border-width,0px));left:12px;-webkit-transform:initial;-ms-transform:initial;transform:initial;}/*!sc*/
-.gOAIeO[data-position='bottom'] > [data-tooltip]{top:var(--tooltip-position);}/*!sc*/
-.gOAIeO[data-position='bottom'] > [data-tooltip]::after{top:calc(-4px - var(--woly-border-width,0px));bottom:initial;left:12px;-webkit-transform:rotate(180deg);-ms-transform:rotate(180deg);transform:rotate(180deg);}/*!sc*/
-.gOAIeO[data-position='left'] > [data-tooltip]{top:0;right:var(--tooltip-position);}/*!sc*/
-.gOAIeO[data-position='left'] > [data-tooltip]::after{top:12px;right:calc(-5px - var(--woly-border-width,0px));-webkit-transform:rotate(-90deg);-ms-transform:rotate(-90deg);transform:rotate(-90deg);}/*!sc*/
-.gOAIeO[data-position='right'] > [data-tooltip]{top:0;left:var(--tooltip-position);}/*!sc*/
-.gOAIeO[data-position='right'] > [data-tooltip]::after{top:12px;right:initial;left:calc(-5px - var(--woly-border-width,0px));-webkit-transform:rotate(90deg);-ms-transform:rotate(90deg);transform:rotate(90deg);}/*!sc*/
+.daXrpY{background-color:var(--woly-shape-text-default);border-radius:var(--woly-rounding);box-shadow:var(--woly-box-shadow,3px 3px 8px rgba(11,31,53,0.04));}/*!sc*/
+data-styled.g38[id="sc-1f4b8pt-0"]{content:"daXrpY,"}/*!sc*/
+.iEjWFD{--local-color:var(--woly-canvas-text-default);margin:0;color:var(--local-color);font-weight:400;font-size:15px;line-height:21px;}/*!sc*/
+.iEjWFD[data-type='subtitle'][data-weight='medium']{font-weight:400;}/*!sc*/
+.iEjWFD[data-type='L']{font-size:21px;line-height:24px;}/*!sc*/
+.iEjWFD[data-type='S']{font-size:18px;line-height:24px;}/*!sc*/
+.iEjWFD[data-type='XS']{font-size:15px;line-height:24px;}/*!sc*/
+.iEjWFD[data-type='M']{font-size:12px;line-height:24px;}/*!sc*/
+.iEjWFD[data-type='hint']{color:var(--local-color);font-size:12px;line-height:15px;}/*!sc*/
+.iEjWFD[data-type='hint'][data-weight='light']{font-weight:300;}/*!sc*/
+data-styled.g45[id="sc-1t0l52d-0"]{content:"iEjWFD,"}/*!sc*/
+.gOAIeO{--local-gap:min( calc(1px * var(--woly-main-level) + var(--woly-const-m)),calc( (1px * var(--woly-main-level)) + (1px * var(--woly-main-level) * var(--woly-component-level)) ) );--local-triangel:min( var(--woly-const-m),calc(1px * var(--woly-component-level) * var(--woly-const-m)) );--tooltip-position:calc(100% + var(--woly-border-width) + var(--local-gap));--local-tooltip-maxsize:240px;--local-icon-size:var(--woly-line-height);position:relative;color:var(--woly-shape-text-default);font-size:var(--woly-font-size);line-height:var(--woly-line-height);outline:none;}/*!sc*/
+.gOAIeO [role='tooltip']{position:absolute;z-index:1;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;box-sizing:border-box;width:-webkit-max-content;width:-moz-max-content;width:max-content;max-width:var(--local-tooltip-maxsize);background-color:var(--woly-background);border-color:var(--woly-background);border-style:solid;border-width:var(--woly-border-width);border-radius:calc(var(--woly-rounding) * 2);box-shadow:var(--woly-shadow);visibility:hidden;opacity:0;-webkit-transition:0.3s ease-in-out;transition:0.3s ease-in-out;}/*!sc*/
+.gOAIeO [role='tooltip'] [data-triangle-height]{position:absolute;width:0;height:0;border-color:var(--woly-background) transparent transparent transparent;border-style:solid;border-width:var(--local-triangel);}/*!sc*/
+.gOAIeO:hover [role='tooltip'],.gOAIeO:focus [role='tooltip']{visibility:visible;opacity:1;}/*!sc*/
+.gOAIeO[data-position='top'] [role='tooltip']{bottom:var(--tooltip-position);}/*!sc*/
+.gOAIeO[data-position='top'] [role='tooltip'] [data-triangle]{bottom:calc(-1 * (var(--woly-const-m) + var(--woly-border-width)));left:calc(2 * var(--woly-const-m));}/*!sc*/
+.gOAIeO[data-position='bottom'] [role='tooltip']{top:var(--tooltip-position);}/*!sc*/
+.gOAIeO[data-position='bottom'] [role='tooltip'] [data-triangle]{top:calc(-1 * (var(--woly-const-m) + var(--woly-border-width)));left:calc(2 * var(--woly-const-m));-webkit-transform:rotate(180deg);-ms-transform:rotate(180deg);transform:rotate(180deg);}/*!sc*/
+.gOAIeO[data-position='left'] [role='tooltip']{top:0;right:var(--tooltip-position);}/*!sc*/
+.gOAIeO[data-position='left'] [role='tooltip'] [data-triangle]{top:calc(2 * var(--woly-const-m));right:calc(-1 * (var(--woly-const-m) + var(--woly-border-width)));-webkit-transform:rotate(-90deg);-ms-transform:rotate(-90deg);transform:rotate(-90deg);}/*!sc*/
+.gOAIeO[data-position='right'] [role='tooltip']{top:0;left:var(--tooltip-position);}/*!sc*/
+.gOAIeO[data-position='right'] [role='tooltip'] [data-triangle]{top:calc(2 * var(--woly-const-m));left:calc(-1 * (var(--woly-const-m) + var(--woly-border-width)));-webkit-transform:rotate(90deg);-ms-transform:rotate(90deg);transform:rotate(90deg);}/*!sc*/
 data-styled.g60[id="sc-2s41z5-0"]{content:"gOAIeO,"}/*!sc*/
 .fdAStl{display:block;position:fixed;top:20px;left:25px;height:30px;z-index:2;outline:none;display:none;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;}/*!sc*/
 .fdAStl input{display:block;width:40px;height:32px;position:absolute;top:-7px;left:-5px;cursor:pointer;opacity:0;z-index:2;-webkit-touch-callout:none;}/*!sc*/
@@ -106,41 +128,85 @@ data-styled.g78[id="sc-1yhkdrf-0"]{content:"fKJkq,"}/*!sc*/
 .buZNeV{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;padding:40px 0 0 240px;box-sizing:border-box;width:100%;max-width:1200px;}/*!sc*/
 @media screen and (max-width:768px){.buZNeV{padding:40px 0 0 15px;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;}}/*!sc*/
 data-styled.g79[id="sc-1yhkdrf-1"]{content:"buZNeV,"}/*!sc*/
-</style><link as="script" rel="preload" href="/webpack-runtime-ee9e08334bf3ce5f7ae4.js"/><link as="script" rel="preload" href="/framework-1ce6d99d2fbd49e100c4.js"/><link as="script" rel="preload" href="/app-e5b5b32a4cff4f8ef335.js"/><link as="script" rel="preload" href="/commons-417cf799695009e95810.js"/><link as="script" rel="preload" href="/component---node-modules-gatsby-theme-woly-src-templates-usage-js-c874c2e26b83e37dbda4.js"/><link as="fetch" rel="preload" href="/page-data/woly/molecules/tooltip/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1297603051.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div class="sc-1yhkdrf-0 fKJkq"><div class="sc-1s9fl72-0 fdAStl"><input type="checkbox"/><span></span><span></span><span></span></div><nav class="sc-1s9fl72-2 ftGFQg"><div><h3 class="sc-1s9fl72-3 hXUfyu">woly</h3><ul class="sc-1s9fl72-5 eaWEOc"><h4 class="sc-1s9fl72-4 iampJx">atoms</h4><li class="sc-1s9fl72-6 hxNUoH"><a href="/woly/atoms/avatar">avatar</a></li><li class="sc-1s9fl72-6 hxNUoH"><a href="/woly/atoms/backdrop">backdrop</a></li><li class="sc-1s9fl72-6 hxNUoH"><a href="/woly/atoms/box">box</a></li><li class="sc-1s9fl72-6 hxNUoH"><a href="/woly/atoms/button">button</a></li><li class="sc-1s9fl72-6 hxNUoH"><a href="/woly/atoms/button-icon">button-icon</a></li><li class="sc-1s9fl72-6 hxNUoH"><a href="/woly/atoms/chip">chip</a></li><li class="sc-1s9fl72-6 hxNUoH"><a href="/woly/atoms/header-panel">header-panel</a></li><li class="sc-1s9fl72-6 hxNUoH"><a href="/woly/atoms/heading">heading</a></li><li class="sc-1s9fl72-6 hxNUoH"><a href="/woly/atoms/icon-box">icon-box</a></li><li class="sc-1s9fl72-6 hxNUoH"><a href="/woly/atoms/input">input</a></li><li class="sc-1s9fl72-6 hxNUoH"><a href="/woly/atoms/label">label</a></li><li class="sc-1s9fl72-6 hxNUoH"><a href="/woly/atoms/link">link</a></li><li class="sc-1s9fl72-6 hxNUoH"><a href="/woly/atoms/list">list</a></li><li class="sc-1s9fl72-6 hxNUoH"><a href="/woly/atoms/loader">loader</a></li><li class="sc-1s9fl72-6 hxNUoH"><a href="/woly/atoms/separator">separator</a></li><li class="sc-1s9fl72-6 hxNUoH"><a href="/woly/atoms/surface">surface</a></li><li class="sc-1s9fl72-6 hxNUoH"><a href="/woly/atoms/table">table</a></li><li class="sc-1s9fl72-6 hxNUoH"><a href="/woly/atoms/text">text</a></li><li class="sc-1s9fl72-6 hxNUoH"><a href="/woly/atoms/text-area">text-area</a></li><li class="sc-1s9fl72-6 hxNUoH"><a href="/woly/atoms/upload-area">upload-area</a></li><h4 class="sc-1s9fl72-4 iampJx">molecules</h4><li class="sc-1s9fl72-6 hxNUoH"><a href="/woly/molecules/accordion">accordion</a></li><li class="sc-1s9fl72-6 hxNUoH"><a href="/woly/molecules/checkbox">checkbox</a></li><li class="sc-1s9fl72-6 hxNUoH"><a href="/woly/molecules/field">field</a></li><li class="sc-1s9fl72-6 hxNUoH"><a href="/woly/molecules/input-password">input-password</a></li><li class="sc-1s9fl72-6 hxNUoH"><a href="/woly/molecules/modal">modal</a></li><li class="sc-1s9fl72-6 hxNUoH"><a href="/woly/molecules/notification">notification</a></li><li class="sc-1s9fl72-6 hxNUoH"><a href="/woly/molecules/popover">popover</a></li><li class="sc-1s9fl72-6 hxNUoH"><a href="/woly/molecules/radio-button">radio-button</a></li><li class="sc-1s9fl72-6 hxNUoH"><a href="/woly/molecules/select">select</a></li><li class="sc-1s9fl72-6 hxNUoH"><a href="/woly/molecules/switch">switch</a></li><li class="sc-1s9fl72-6 hxNUoH"><a href="/woly/molecules/toast">toast</a></li><li class="sc-1s9fl72-6 hxNUoH"><a aria-current="page" class="" href="/woly/molecules/tooltip">tooltip</a></li><h4 class="sc-1s9fl72-4 iampJx">templates</h4><li class="sc-1s9fl72-6 hxNUoH"><a href="/woly/templates/grid">grid</a></li></ul></div><div><h3 class="sc-1s9fl72-3 hXUfyu">styleguide</h3><ul class="sc-1s9fl72-5 eaWEOc"><h4 class="sc-1s9fl72-4 iampJx">html</h4><li class="sc-1s9fl72-6 hxNUoH"><a href="/styleguide/html/data-attribute">data-attribute</a></li></ul></div></nav><main class="sc-1yhkdrf-1 buZNeV"><div><h2>tooltip</h2><pre>import <!-- -->{<!-- --> <!-- -->Tooltip<!-- --> <!-- -->}<!-- --> from &quot;<!-- -->woly<!-- -->&quot;;</pre><p><code>Tooltip</code> is used when you want to show addition information near component.
-Tooltip message is visible when user hover over component that is passed as a children to <code>Tooltip</code>.</p><h3>Example</h3><div class="sc-1akavvx-0 gbzwhL"><div class="sc-1jjs9kd-0 ekjFNl"><div class="sc-1eobcld-0 sc-1eobcld-4 iIavYj kuAMrX"><div data-dir="horizontal" class="sc-1akavvx-1 eqeVBK"><div style="display:flex;padding:100px" class="sc-1eobcld-0 sc-1eobcld-3 iIavYj ksDaJg"><div class="sc-2s41z5-0 gOAIeO" data-position="top" data-priority="secondary"><div data-element="true"><button type="button" data-full-width="false" data-outlined="false" data-priority="primary" style="margin-right:10px" class="sc-9x7hi8-0 ibdSPO"><span data-text="true">Button</span></button></div><div data-tooltip="true">Подсказка может быть написана в две строки и более</div></div><div class="sc-2s41z5-0 gOAIeO" data-position="top" data-priority="secondary"><div data-element="true"><button type="button" data-full-width="false" data-outlined="false" data-priority="primary" style="margin-right:10px" class="sc-9x7hi8-0 ibdSPO"><span data-text="true">Button</span></button></div><div data-tooltip="true">Подсказка</div></div><div class="sc-2s41z5-0 gOAIeO" data-position="top" data-priority="secondary"><div data-element="true"><button type="button" data-full-width="false" data-outlined="false" data-priority="primary" style="margin-right:10px" class="sc-9x7hi8-0 ibdSPO"><span data-text="true">Button</span></button></div><div data-tooltip="true">Подсказка может быть написана в две строки</div></div><div class="sc-2s41z5-0 gOAIeO" data-position="top" data-priority="primary"><div data-element="true"><div class="k56gab-0 jyTUKs x0ea1f-0 iWqtTH" data-disabled="false" data-priority="primary"><div data-input="true"><input type="text" class="sc-1qin5sy-0 kVWUWl x0ea1f-0 iWqtTH" name="name" autoComplete="off"/></div></div></div><div data-tooltip="true">Подсказка</div></div></div></div></div></div></div><pre><code class="language-jsx">&lt;Playground&gt;
-  &lt;block.S style={{ display: &#x27;flex&#x27;, padding: &#x27;100px&#x27; }}&gt;
-    &lt;Tooltip message=&quot;Подсказка может быть написана в две строки и более&quot; position=&quot;bottom&quot;&gt;
-      &lt;Button
-        onClick={() =&gt; console.info(&#x27;Hi!&#x27;)}
-        text=&quot;Button&quot;
-        priority=&quot;primary&quot;
-        style={{ marginRight: &#x27;10px&#x27; }}
-      /&gt;
+</style><link as="script" rel="preload" href="/webpack-runtime-ee9e08334bf3ce5f7ae4.js"/><link as="script" rel="preload" href="/framework-1ce6d99d2fbd49e100c4.js"/><link as="script" rel="preload" href="/app-c2a7535878750b10c683.js"/><link as="script" rel="preload" href="/commons-417cf799695009e95810.js"/><link as="script" rel="preload" href="/component---node-modules-gatsby-theme-woly-src-templates-usage-js-c874c2e26b83e37dbda4.js"/><link as="fetch" rel="preload" href="/page-data/woly/molecules/tooltip/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1297603051.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div class="sc-1yhkdrf-0 fKJkq"><div class="sc-1s9fl72-0 fdAStl"><input type="checkbox"/><span></span><span></span><span></span></div><nav class="sc-1s9fl72-2 ftGFQg"><div><h3 class="sc-1s9fl72-3 hXUfyu">woly</h3><ul class="sc-1s9fl72-5 eaWEOc"><h4 class="sc-1s9fl72-4 iampJx">atoms</h4><li class="sc-1s9fl72-6 hxNUoH"><a href="/woly/atoms/avatar">avatar</a></li><li class="sc-1s9fl72-6 hxNUoH"><a href="/woly/atoms/backdrop">backdrop</a></li><li class="sc-1s9fl72-6 hxNUoH"><a href="/woly/atoms/box">box</a></li><li class="sc-1s9fl72-6 hxNUoH"><a href="/woly/atoms/button">button</a></li><li class="sc-1s9fl72-6 hxNUoH"><a href="/woly/atoms/button-icon">button-icon</a></li><li class="sc-1s9fl72-6 hxNUoH"><a href="/woly/atoms/chip">chip</a></li><li class="sc-1s9fl72-6 hxNUoH"><a href="/woly/atoms/header-panel">header-panel</a></li><li class="sc-1s9fl72-6 hxNUoH"><a href="/woly/atoms/heading">heading</a></li><li class="sc-1s9fl72-6 hxNUoH"><a href="/woly/atoms/icon-box">icon-box</a></li><li class="sc-1s9fl72-6 hxNUoH"><a href="/woly/atoms/input">input</a></li><li class="sc-1s9fl72-6 hxNUoH"><a href="/woly/atoms/label">label</a></li><li class="sc-1s9fl72-6 hxNUoH"><a href="/woly/atoms/link">link</a></li><li class="sc-1s9fl72-6 hxNUoH"><a href="/woly/atoms/list">list</a></li><li class="sc-1s9fl72-6 hxNUoH"><a href="/woly/atoms/loader">loader</a></li><li class="sc-1s9fl72-6 hxNUoH"><a href="/woly/atoms/separator">separator</a></li><li class="sc-1s9fl72-6 hxNUoH"><a href="/woly/atoms/surface">surface</a></li><li class="sc-1s9fl72-6 hxNUoH"><a href="/woly/atoms/table">table</a></li><li class="sc-1s9fl72-6 hxNUoH"><a href="/woly/atoms/text">text</a></li><li class="sc-1s9fl72-6 hxNUoH"><a href="/woly/atoms/text-area">text-area</a></li><li class="sc-1s9fl72-6 hxNUoH"><a href="/woly/atoms/upload-area">upload-area</a></li><h4 class="sc-1s9fl72-4 iampJx">molecules</h4><li class="sc-1s9fl72-6 hxNUoH"><a href="/woly/molecules/accordion">accordion</a></li><li class="sc-1s9fl72-6 hxNUoH"><a href="/woly/molecules/checkbox">checkbox</a></li><li class="sc-1s9fl72-6 hxNUoH"><a href="/woly/molecules/field">field</a></li><li class="sc-1s9fl72-6 hxNUoH"><a href="/woly/molecules/input-password">input-password</a></li><li class="sc-1s9fl72-6 hxNUoH"><a href="/woly/molecules/modal">modal</a></li><li class="sc-1s9fl72-6 hxNUoH"><a href="/woly/molecules/notification">notification</a></li><li class="sc-1s9fl72-6 hxNUoH"><a href="/woly/molecules/popover">popover</a></li><li class="sc-1s9fl72-6 hxNUoH"><a href="/woly/molecules/radio-button">radio-button</a></li><li class="sc-1s9fl72-6 hxNUoH"><a href="/woly/molecules/select">select</a></li><li class="sc-1s9fl72-6 hxNUoH"><a href="/woly/molecules/switch">switch</a></li><li class="sc-1s9fl72-6 hxNUoH"><a href="/woly/molecules/toast">toast</a></li><li class="sc-1s9fl72-6 hxNUoH"><a aria-current="page" class="" href="/woly/molecules/tooltip">tooltip</a></li><h4 class="sc-1s9fl72-4 iampJx">templates</h4><li class="sc-1s9fl72-6 hxNUoH"><a href="/woly/templates/grid">grid</a></li></ul></div><div><h3 class="sc-1s9fl72-3 hXUfyu">styleguide</h3><ul class="sc-1s9fl72-5 eaWEOc"><h4 class="sc-1s9fl72-4 iampJx">html</h4><li class="sc-1s9fl72-6 hxNUoH"><a href="/styleguide/html/data-attribute">data-attribute</a></li></ul></div></nav><main class="sc-1yhkdrf-1 buZNeV"><div><h2>tooltip</h2><pre>import <!-- -->{<!-- --> <!-- -->Tooltip<!-- --> <!-- -->}<!-- --> from &quot;<!-- -->woly<!-- -->&quot;;</pre><p><code>Tooltip</code> is used to show additional information near the component. The information should be contextual, useful, and nonessential.</p><p>A tooltip can be a simple message box that is displayed when a user hovers over, clicks, or gives focus to a UI element
+such as an icon, a highlighted word, or a button that is passed as children to <code>Tooltip</code>.
+Also, the definition tooltip provides additional help or defines an item or term. It may be used on the label of a UI element,
+or on a word embedded in a paragraph.</p><p>Interactive tooltips may contain rich text and other interactive elements like buttons or links.
+In general, hiding interactive content in a tooltip is discouraged.
+Interactive tooltips are best used for onboarding experiences and product tours.</p><p>The tooltip position is flexible and changes depending on how close the element is to the edge of the screen.
+The top, right, bottom, and left positions appear outside the target element, center-aligned along the appropriate axis.</p><h3>Example</h3><div class="sc-1akavvx-0 gbzwhL"><div class="sc-1jjs9kd-0 ekjFNl"><div class="sc-1eobcld-0 sc-1eobcld-4 iIavYj kuAMrX"><div data-dir="horizontal" class="sc-1akavvx-1 eqeVBK"><div style="width:900px;display:flex;padding:200px;align-items:center;justify-content:space-between;background:grey" class="sc-1eobcld-0 sc-1eobcld-3 iIavYj ksDaJg"><div class="sc-2s41z5-0 gOAIeO" data-position="top" data-priority="secondary" tabindex="0"><div data-element="true"><button type="button" data-full-width="false" data-outlined="false" data-priority="secondary" variant="primary" class="sc-9x7hi8-0 ibdSPO"><span data-text="true">Button</span></button></div><div role="tooltip"><div data-triangle-height="true"></div><div data-priority="secondary" class="sc-1f4b8pt-0 daXrpY"><div class="sc-1k5wwwr-0 ktbYpT"><p type="S" data-priority="primary" data-type="S" data-weight="regular" class="sc-1t0l52d-0 iEjWFD">Подсказка может быть написана в две строки и более</p></div></div></div></div><div class="sc-2s41z5-0 gOAIeO" data-position="top" data-priority="secondary" tabindex="0"><div data-element="true"><div class="k56gab-0 jyTUKs x0ea1f-0 iWqtTH" data-disabled="false" data-priority="default"><div data-input="true"><input type="text" class="sc-1qin5sy-0 kVWUWl x0ea1f-0 iWqtTH" name="adress" value="4 Whitehall Street New York NY 10004" autoComplete="off"/></div></div></div><div role="tooltip"><div data-triangle-height="true"></div><div data-priority="secondary" class="sc-1f4b8pt-0 daXrpY"><div class="sc-1k5wwwr-0 ktbYpT"><p type="XS" data-priority="primary" data-type="XS" data-weight="regular" class="sc-1t0l52d-0 iEjWFD">4 Whitehall Street New York NY 10004</p></div></div></div></div><div class="sc-2s41z5-0 gOAIeO" data-position="top" data-priority="secondary" tabindex="0"><div data-element="true"><button type="button" data-full-width="false" data-outlined="false" data-priority="secondary" variant="primary" class="sc-9x7hi8-0 ibdSPO"><span data-text="true">Button</span></button></div><div role="tooltip"><div data-triangle-height="true"></div><div data-priority="secondary" class="sc-1f4b8pt-0 daXrpY"><div class="sc-1k5wwwr-1 encOpS"><div class="sc-1k5wwwr-0 ktbYpT"><p type="S" data-priority="primary" data-type="S" data-weight="regular" class="sc-1t0l52d-0 iEjWFD">Подсказка может быть написана в две и более строки, а также содержать блок с actions</p></div><div class="sc-1k5wwwr-0 ktbYpT"><div style="display:flex;flex-direction:column" class="sc-1eobcld-0 sc-1eobcld-3 iIavYj ksDaJg"><button type="button" data-full-width="false" data-outlined="false" data-priority="secondary" variant="primary" style="align-self:flex-end" class="sc-9x7hi8-0 ibdSPO"><span data-text="true">Got it</span></button></div></div></div></div></div></div><div class="sc-2s41z5-0 gOAIeO" data-position="top" data-priority="secondary" tabindex="0"><div data-element="true"><button type="button" data-full-width="false" data-outlined="false" data-priority="secondary" variant="primary" class="sc-9x7hi8-0 ibdSPO"><span data-text="true">Button</span></button></div><div role="tooltip"><div data-triangle-height="true"></div><div data-priority="secondary" class="sc-1f4b8pt-0 daXrpY"><div class="sc-1k5wwwr-0 ktbYpT"><p type="S" data-priority="primary" data-type="S" data-weight="regular" class="sc-1t0l52d-0 iEjWFD">Подсказка</p></div></div></div></div></div></div></div></div></div><pre><code class="language-jsx">&lt;Playground&gt;
+  &lt;block.S
+    style={{
+      width: &#x27;900px&#x27;,
+      display: &#x27;flex&#x27;,
+      padding: &#x27;200px&#x27;,
+      alignItems: &#x27;center&#x27;,
+      justifyContent: &#x27;space-between&#x27;,
+      background: &#x27;grey&#x27;,
+    }}
+  &gt;
+    &lt;Tooltip
+      content={
+        &lt;Box&gt;
+          &lt;Text type=&quot;S&quot;&gt;Подсказка может быть написана в две строки и более&lt;/Text&gt;
+        &lt;/Box&gt;
+      }
+      position=&quot;top&quot;
+    &gt;
+      &lt;Button onClick={() =&gt; console.info(&#x27;Hi!&#x27;)} text=&quot;Button&quot; variant=&quot;primary&quot; /&gt;
     &lt;/Tooltip&gt;
-    &lt;Tooltip message=&quot;Подсказка&quot; position=&quot;top&quot; id=&quot;tooltip-top&quot;&gt;
-      &lt;Button
-        onClick={() =&gt; console.info(&#x27;Hi!&#x27;)}
-        text=&quot;Button&quot;
-        priority=&quot;primary&quot;
-        style={{ marginRight: &#x27;10px&#x27; }}
-      /&gt;
-    &lt;/Tooltip&gt;
-    &lt;Tooltip message=&quot;Подсказка может быть написана в две строки&quot; position=&quot;left&quot;&gt;
-      &lt;Button
-        onClick={() =&gt; console.info(&#x27;Hi!&#x27;)}
-        text=&quot;Button&quot;
-        priority=&quot;primary&quot;
-        style={{ marginRight: &#x27;10px&#x27; }}
-      /&gt;
-    &lt;/Tooltip&gt;
-    &lt;Tooltip message=&quot;Подсказка&quot; position=&quot;right&quot; priority=&quot;primary&quot;&gt;
+    &lt;Tooltip
+      content={
+        &lt;Box&gt;
+          &lt;Text type=&quot;XS&quot;&gt;4 Whitehall Street New York NY 10004&lt;/Text&gt;
+        &lt;/Box&gt;
+      }
+      position=&quot;bottom&quot;
+      variant=&quot;primary&quot;
+    &gt;
       &lt;Input
-        name=&quot;name&quot;
+        name=&quot;adress&quot;
+        value=&quot;4 Whitehall Street New York NY 10004&quot;
         onChange={() =&gt; console.info(&#x27;On input change&#x27;)}
         type=&quot;text&quot;
-        priority=&quot;primary&quot;
+        priority=&quot;default&quot;
       /&gt;
+    &lt;/Tooltip&gt;
+    &lt;Tooltip
+      content={
+        &lt;BoxVertical&gt;
+          &lt;Box&gt;
+            &lt;Text type=&quot;S&quot;&gt;
+              Подсказка может быть написана в две и более строки, а также содержать блок с actions
+            &lt;/Text&gt;
+          &lt;/Box&gt;
+          &lt;Box&gt;
+            &lt;block.S style={{ display: &#x27;flex&#x27;, flexDirection: &#x27;column&#x27; }}&gt;
+              &lt;Button
+                onClick={() =&gt; console.info(&#x27;Hi!&#x27;)}
+                text=&quot;Got it&quot;
+                variant=&quot;primary&quot;
+                style={{ alignSelf: &#x27;flex-end&#x27; }}
+              /&gt;
+            &lt;/block.S&gt;
+          &lt;/Box&gt;
+        &lt;/BoxVertical&gt;
+      }
+      position=&quot;right&quot;
+    &gt;
+      &lt;Button onClick={() =&gt; console.info(&#x27;Hi!&#x27;)} text=&quot;Button&quot; variant=&quot;primary&quot; /&gt;
+    &lt;/Tooltip&gt;
+    &lt;Tooltip
+      content={
+        &lt;Box&gt;
+          &lt;Text type=&quot;S&quot;&gt;Подсказка&lt;/Text&gt;
+        &lt;/Box&gt;
+      }
+      position=&quot;left&quot;
+      id=&quot;tooltip-top&quot;
+    &gt;
+      &lt;Button onClick={() =&gt; console.info(&#x27;Hi!&#x27;)} text=&quot;Button&quot; variant=&quot;primary&quot; /&gt;
     &lt;/Tooltip&gt;
   &lt;/block.S&gt;
 &lt;/Playground&gt;
-</code></pre><h3>Props</h3><table><thead><tr><th>Name</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>children</code></td><td><code>React.ReactElement</code></td><td></td><td>The tooltip will be visible near <code>children</code> on hover</td></tr><tr><td><code>message</code></td><td><code>string</code></td><td></td><td>Message to show near component</td></tr><tr><td><code>position</code></td><td><code>&quot;top&quot; ӏ &quot;left&quot; ӏ&quot;bottom&quot; ӏ &quot;right&quot; </code></td><td></td><td>Width of tooltip block</td></tr><tr><td><code>priority</code></td><td><code>string</code></td><td><code>&#x27;secondary&#x27;</code></td><td>Priority prop to style Tooltip component</td></tr><tr><td><code>width</code></td><td><code>number</code></td><td></td><td>Width of tooltip block</td></tr></tbody></table></div></main></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/woly/molecules/tooltip";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"polyfill":["/polyfill-cbc2d9a4abb4abcbf641.js"],"app":["/app-e5b5b32a4cff4f8ef335.js"],"component---node-modules-gatsby-theme-woly-src-pages-404-js":["/component---node-modules-gatsby-theme-woly-src-pages-404-js-c63e72f7d6d835d3d813.js"],"component---node-modules-gatsby-theme-woly-src-pages-index-js":["/component---node-modules-gatsby-theme-woly-src-pages-index-js-a5281f7d9bfcab580c13.js"],"component---node-modules-gatsby-theme-woly-src-templates-usage-js":["/component---node-modules-gatsby-theme-woly-src-templates-usage-js-c874c2e26b83e37dbda4.js"]};/*]]>*/</script><script src="/polyfill-cbc2d9a4abb4abcbf641.js" nomodule=""></script><script src="/component---node-modules-gatsby-theme-woly-src-templates-usage-js-c874c2e26b83e37dbda4.js" async=""></script><script src="/commons-417cf799695009e95810.js" async=""></script><script src="/app-e5b5b32a4cff4f8ef335.js" async=""></script><script src="/framework-1ce6d99d2fbd49e100c4.js" async=""></script><script src="/webpack-runtime-ee9e08334bf3ce5f7ae4.js" async=""></script></body></html>
+</code></pre><h3>Props</h3><table><thead><tr><th>Name</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>children</code></td><td><code>React.ReactElement</code></td><td><code>null</code></td><td>The tooltip will be visible near <code>children</code> on hover or focus</td></tr><tr><td><code>content</code></td><td><code>React.ReactElement</code></td><td><code>null</code></td><td>Tooltip`s content</td></tr><tr><td><code>position</code></td><td><code>string</code></td><td><code>&#x27;top&#x27;</code></td><td>The positon of the tooltip aginst the relative element</td></tr><tr><td><code>priority</code></td><td><code>string</code></td><td><code>&#x27;secondary&#x27;</code></td><td>Priority prop to style Tooltip component</td></tr></tbody></table></div></main></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/woly/molecules/tooltip";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"polyfill":["/polyfill-cbc2d9a4abb4abcbf641.js"],"app":["/app-c2a7535878750b10c683.js"],"component---node-modules-gatsby-theme-woly-src-pages-404-js":["/component---node-modules-gatsby-theme-woly-src-pages-404-js-c63e72f7d6d835d3d813.js"],"component---node-modules-gatsby-theme-woly-src-pages-index-js":["/component---node-modules-gatsby-theme-woly-src-pages-index-js-a5281f7d9bfcab580c13.js"],"component---node-modules-gatsby-theme-woly-src-templates-usage-js":["/component---node-modules-gatsby-theme-woly-src-templates-usage-js-c874c2e26b83e37dbda4.js"]};/*]]>*/</script><script src="/polyfill-cbc2d9a4abb4abcbf641.js" nomodule=""></script><script src="/component---node-modules-gatsby-theme-woly-src-templates-usage-js-c874c2e26b83e37dbda4.js" async=""></script><script src="/commons-417cf799695009e95810.js" async=""></script><script src="/app-c2a7535878750b10c683.js" async=""></script><script src="/framework-1ce6d99d2fbd49e100c4.js" async=""></script><script src="/webpack-runtime-ee9e08334bf3ce5f7ae4.js" async=""></script></body></html>
