@@ -1,8 +1,7 @@
 import styled from 'styled-components';
 
-import { systemUi } from './font-stacks';
-
 import { createPalette } from './palette';
+import { systemUi } from './font-stacks';
 
 export const Global = styled.div`
   ${systemUi}
@@ -20,7 +19,7 @@ export const Global = styled.div`
 
   /* primary palette */
   ${createPalette('255, 85%, 58%', 'primary')}
-  
+
   /* secondary palette */
   ${createPalette('223, 100%, 46%', 'secondary')}
 
