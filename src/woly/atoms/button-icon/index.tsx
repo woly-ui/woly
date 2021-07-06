@@ -7,19 +7,19 @@ interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string;
   icon: React.ReactNode;
   onClick: React.MouseEventHandler<HTMLButtonElement>;
-  outlined?: boolean;
+  weight?: string;
 }
 
 const ButtonIconBase: React.FC<Props & Priority> = ({
   icon,
   onClick,
-  outlined = false,
   priority = 'secondary',
+  weight = 'fill',
   ...p
 }) => (
   <button
-    data-outlined={outlined}
     data-priority={priority}
+    data-weight={weight}
     onClick={onClick}
     role="button"
     type="button"
@@ -31,9 +31,8 @@ const ButtonIconBase: React.FC<Props & Priority> = ({
 
 export const ButtonIcon = styled(ButtonIconBase)`
   ${box}
-  --local-shape-color: var(--woly-shape-default);
+
   --local-icon-size: var(--woly-line-height);
-  --local-icon-color: var(--woly-shape-text-default);
 
   display: flex;
   align-items: center;
@@ -41,8 +40,10 @@ export const ButtonIcon = styled(ButtonIconBase)`
   box-sizing: border-box;
   padding: 0;
 
-  background: var(--local-shape-color);
-  border: var(--woly-border-width) solid var(--local-shape-color);
+  border-style: solid;
+
+  border-width: var(--woly-border-width);
+
   border-radius: var(--woly-rounding);
   outline: none;
 
@@ -57,41 +58,58 @@ export const ButtonIcon = styled(ButtonIconBase)`
       width: 100%;
       height: 100%;
     }
+  }
 
-    svg > path {
+  &[data-weight='fill'] {
+    --local-shape-color: var(--woly-shape-default);
+    --local-icon-color: var(--woly-shape-text-default);
+
+    background: var(--local-shape-color);
+    border-color: var(--local-shape-color);
+
+    [data-icon] > svg > path {
       fill: var(--local-icon-color);
     }
-
-    svg > g {
+    [data-icon] > svg > g {
       stroke: var(--local-icon-color);
+    }
+
+    &:hover {
+      --local-shape-color: var(--woly-shape-hover);
+      --local-icon-color: var(--woly-shape-text-hover);
+    }
+
+    &:active {
+      --local-shape-color: var(--woly-shape-active);
+      --local-icon-color: var(--woly-shape-text-active);
+    }
+
+    &:focus {
+      --local-shape-color: var(--woly-shape-active);
+      --local-icon-color: var(--woly-shape-text-active);
+      box-shadow: 0 0 0 var(--woly-border-width) var(--woly-focus-color);
+    }
+
+    &:disabled {
+      pointer-events: none;
+      --local-shape-color: var(--woly-canvas-disabled);
+      --local-icon-color: var(--woly-shape-text-disabled);
     }
   }
 
-  &:hover {
-    --local-shape-color: var(--woly-shape-hover);
-    --local-icon-color: var(--woly-shape-text-hover);
-  }
-
-  &:active {
-    --local-shape-color: var(--woly-shape-active);
-    --local-icon-color: var(--woly-shape-text-active);
-  }
-
-  &:focus {
-    --local-shape-color: var(--woly-shape-active);
-    --local-icon-color: var(--woly-shape-text-active);
-    box-shadow: 0 0 0 var(--woly-border-width) var(--woly-focus-color);
-  }
-
-  &:disabled {
-    pointer-events: none;
-    --local-shape-color: var(--woly-canvas-disabled);
-    --local-icon-color: var(--woly-shape-text-disabled);
-  }
-
-  &[data-outlined='true'] {
-    --local-shape-color: var(--woly-canvas-default);
+  &[data-weight='outline'] {
+    --local-shape-color: transparent;
     --local-icon-color: var(--woly-shape-default);
+
+    background: var(--local-shape-color);
+    border-color: var(--local-icon-color);
+
+    [data-icon] > svg > path {
+      fill: var(--local-icon-color);
+    }
+    [data-icon] > svg > g {
+      stroke: var(--local-icon-color);
+    }
 
     &:hover {
       --local-shape-color: transparent;
@@ -112,6 +130,88 @@ export const ButtonIcon = styled(ButtonIconBase)`
     &:disabled {
       pointer-events: none;
       --local-shape-color: var(--woly-shape-text-disabled);
+      --local-icon-color: var(--woly-canvas-text-disabled);
+    }
+  }
+
+  &[data-weight='goast'] {
+    --local-shape-color: transparent;
+    --local-icon-color: var(--woly-shape-text-default);
+    --local-border-color: var(--woly-shape-text-default);
+
+    --local-shadow: var(--woly-border-width) var(--woly-border-width)
+      calc(var(--woly-border-width) * 4) hsla(0, 0%, 100%, 50%);
+
+    background: var(--local-shape-color);
+    border-color: var(--local-border-color);
+    box-shadow: var(--local-shadow);
+
+    [data-icon] > svg > path {
+      fill: var(--local-icon-color);
+    }
+    [data-icon] > svg > g {
+      stroke: var(--local-icon-color);
+    }
+
+    &:hover {
+      --local-shape-color: transparent;
+      --local-icon-color: var(--woly-shape-text-hover);
+      --local-border-color: var(--woly-shape-text-hover);
+    }
+
+    &:active {
+      --local-shape-color: transparent;
+      --local-icon-color: var(--woly-shape-text-active);
+      --local-border-color: var(--woly-shape-text-active);
+    }
+
+    &:focus {
+      --local-shape-color: transparent;
+      --local-icon-color: var(--woly-shape-text-active);
+      --local-border-color: var(--woly-shape-text-active);
+      box-shadow: 0 0 0 var(--woly-border-width) var(--woly-focus-color);
+    }
+
+    &:disabled {
+      pointer-events: none;
+      --local-shape-color: var(--woly-shape-text-disabled);
+      --local-icon-color: var(--woly-shape-disabled);
+    }
+  }
+
+  &[data-weight='transparent'] {
+    --local-shape-color: transparent;
+    --local-icon-color: var(--woly-shape-default);
+
+    background: var(--local-shape-color);
+    border-color: var(--local-shape-color);
+
+    [data-icon] > svg > path {
+      fill: var(--local-icon-color);
+    }
+    [data-icon] > svg > g {
+      stroke: var(--local-icon-color);
+    }
+
+    &:hover {
+      --local-shape-color: transparent;
+      --local-icon-color: var(--woly-shape-hover);
+    }
+
+    &:active {
+      --local-shape-color: transparent;
+      --local-icon-color: var(--woly-canvas-active);
+    }
+
+    &:focus {
+      --local-shape-color: transparent;
+      --local-icon-color: var(--woly-canvas-active);
+      box-shadow: 0 0 0 var(--woly-border-width) var(--woly-focus-color);
+    }
+
+    &:disabled {
+      pointer-events: none;
+      --local-shape-color: transparent;
       --local-icon-color: var(--woly-canvas-text-disabled);
     }
   }

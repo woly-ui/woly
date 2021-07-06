@@ -116,7 +116,7 @@ export const Global = styled.div`
     --woly-canvas-text-active: hsla(var(--bw-0), 1);
   }
 
-  [data-priority='goast'] {
+  [data-priority='white'] {
     --woly-shape-default: transparent;
     --woly-shape-disabled: hsla(var(--bw-200), 1);
     --woly-shape-hover: transparent;

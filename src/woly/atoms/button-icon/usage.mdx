@@ -15,12 +15,19 @@ Also, icons can be used as toggle buttons when they allow selection, or deselect
     icon={<IconSearch />}
     onClick={() => console.info('ButtonIcon clicked')}
     priority="default"
+    weight="fill"
   />
   <ButtonIcon
     icon={<IconSearch />}
     onClick={() => console.info('ButtonIcon clicked')}
     priority="default"
-    outlined
+    weight="outline"
+  />
+  <ButtonIcon
+    icon={<IconSearch />}
+    onClick={() => console.info('ButtonIcon clicked')}
+    priority="default"
+    weight="transparent"
   />
 </Playground>
 
@@ -34,6 +41,7 @@ Button-icon's size can controlled by block-container and it`s width is equal to 
       icon={<IconSearch />}
       onClick={() => console.info('ButtonIcon clicked')}
       priority="default"
+      weight="fill"
     />
   </block.N>
   <block.XS>
@@ -41,6 +49,7 @@ Button-icon's size can controlled by block-container and it`s width is equal to 
       icon={<IconEyeOpened />}
       onClick={() => console.info('ButtonIcon clicked')}
       priority="primary"
+      weight="fill"
     />
   </block.XS>
   <block.S>
@@ -48,6 +57,7 @@ Button-icon's size can controlled by block-container and it`s width is equal to 
       icon={<IconSearch />}
       onClick={() => console.info('ButtonIcon clicked')}
       priority="secondary"
+      weight="fill"
     />
   </block.S>
   <block.M>
@@ -56,66 +66,101 @@ Button-icon's size can controlled by block-container and it`s width is equal to 
       onClick={() => console.info('ButtonIcon clicked')}
       priority="primary"
       disabled
+      weight="fill"
     />
   </block.M>
 </Playground>
 
 ### Weight and priority
 
-Button-icon can be represented in primary, secondary, default or goast priorities and can be styled with fill or outline.
-In case of choosing button-icon in goast priority with outline styles use the opposite background color to the text color of button-icon.
+Button-icon can be represented in primary, secondary or default priorities and can be styled by changing icon`s weight: fill, outline, transparent.
+In case of choosing button-icon in black-and-white priority with outline styles use the opposite background color to the text color of button-icon.
 
 <Playground>
-  <ButtonIcon
-    icon={<IconSearch />}
-    onClick={() => console.info('ButtonIcon clicked')}
-    priority="secondary"
-  />
-  <ButtonIcon
-    icon={<IconSearch />}
-    onClick={() => console.info('ButtonIcon clicked')}
-    priority="secondary"
-    outlined
-  />
-  <ButtonIcon
-    icon={<IconSearch />}
-    onClick={() => console.info('ButtonIcon clicked')}
-    priority="primary"
-  />
-  <ButtonIcon
-    icon={<IconSearch />}
-    onClick={() => console.info('ButtonIcon clicked')}
-    priority="primary"
-    outlined
-  />
-  <ButtonIcon
-    icon={<IconSearch />}
-    onClick={() => console.info('ButtonIcon clicked')}
-    priority="default"
-  />
-  <ButtonIcon
-    icon={<IconSearch />}
-    onClick={() => console.info('ButtonIcon clicked')}
-    priority="default"
-    outlined
-  />
-  <ButtonIcon
-    icon={<IconSearch />}
-    onClick={() => console.info('ButtonIcon clicked')}
-    priority="goast"
-  />
+  <block.L
+    style={{
+      display: 'flex',
+      justifyContent: 'space-between',
+      padding: '100px',
+      width: '900px',
+      background: 'lightgrey',
+    }}
+  >
+    <ButtonIcon
+      icon={<IconSearch />}
+      onClick={() => console.info('ButtonIcon clicked')}
+      priority="primary"
+      weight="fill"
+    />
+    <ButtonIcon
+      icon={<IconSearch />}
+      onClick={() => console.info('ButtonIcon clicked')}
+      priority="primary"
+      weight="outline"
+    />
+    <ButtonIcon
+      icon={<IconSearch />}
+      onClick={() => console.info('ButtonIcon clicked')}
+      priority="primary"
+      weight="transparent"
+    />
+    <ButtonIcon
+      icon={<IconSearch />}
+      onClick={() => console.info('ButtonIcon clicked')}
+      priority="secondary"
+      weight="fill"
+    />
+    <ButtonIcon
+      icon={<IconSearch />}
+      onClick={() => console.info('ButtonIcon clicked')}
+      priority="secondary"
+      weight="outline"
+    />
+    <ButtonIcon
+      icon={<IconSearch />}
+      onClick={() => console.info('ButtonIcon clicked')}
+      priority="secondary"
+      weight="transparent"
+    />
+    <ButtonIcon
+      icon={<IconSearch />}
+      onClick={() => console.info('ButtonIcon clicked')}
+      priority="default"
+      weight="fill"
+    />
+    <ButtonIcon
+      icon={<IconSearch />}
+      onClick={() => console.info('ButtonIcon clicked')}
+      priority="default"
+      weight="outline"
+    />
+    <ButtonIcon
+      icon={<IconSearch />}
+      onClick={() => console.info('ButtonIcon clicked')}
+      priority="default"
+      weight="transparent"
+    />
+    <ButtonIcon
+      icon={<IconSearch />}
+      onClick={() => console.info('ButtonIcon clicked')}
+      weight="goast"
+      priority="white"
+    />
+    <ButtonIcon
+      icon={<IconSearch />}
+      onClick={() => console.info('ButtonIcon clicked')}
+      priority="white"
+      weight="fill"
+    />
+  </block.L>
 </Playground>
-
-### Map of ButtonIcon
-
-<a href="/package/woly/component/button-icon-map">See map</a>
 
 ### Props
 
-| Name       | Type                                         | Default       | Description                                        |
-| ---------- | -------------------------------------------- | ------------- | -------------------------------------------------- |
-| `icon`     | `React.ReactNode`                            | `null`        | Set the icon component inside the button           |
-| `onClick`  | `React.MouseEventHandler<HTMLButtonElement>` |               | Callback when button clicked                       |
-| `outlined` | `boolean`                                    | `false`       | Change button-icon`s view from filled to outlined  |
-| `priority` | `string`                                     | `'secondary'` | Priority prop to style ButtonIcon component        |
-| `...`      | `HTMLButtonElement`                          | `{}`          | Other props are inherited from `HTMLButtonElement` |
+| Name       | Type                                         | Default       | Description                                                |
+| ---------- | -------------------------------------------- | ------------- | ---------------------------------------------------------- |
+| `icon`     | `React.ReactNode`                            | `null`        | Set the icon component inside the button                   |
+| `onClick`  | `React.MouseEventHandler<HTMLButtonElement>` |               | Callback when button clicked                               |
+| `priority` | `string`                                     | `'secondary'` | Priority prop to style ButtonIcon component                |
+| `weight`   | `string`                                     | `fill`        | Set button-icon`s weight (ex.: fill, outline, transparent) |
+| `...`      | `HTMLButtonElement`                          | `{}`          | Other props are inherited from `HTMLButtonElement`         |
