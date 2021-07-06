@@ -13,7 +13,7 @@ export const getHsl = (color: string) => {
   return { hue, saturation, lightness };
 };
 
-const lightnessFn = (number: number, saturation: number) => saturation + 50 - 0.1 * number;
+const lightnessFn = (number: number, lightness: number) => lightness + 50 - 0.1 * number;
 
 const saturationFn = (number: number, saturation: number) => {
   /** for black and white palette => saturation doesn't change */
