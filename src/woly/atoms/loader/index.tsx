@@ -104,7 +104,6 @@ export const Loader = styled(LoaderBase)`
 
   [data-description] {
     color: var(--woly-canvas-text-default);
-    font-weight: 400;
     font-size: 15px;
     line-height: 21px;
     text-align: center;
