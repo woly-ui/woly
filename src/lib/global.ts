@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import { createPalette } from './palette';
+
 export const Global = styled.div`
   * {
     font-family: 'Helvetica Neue', sans-serif;
@@ -10,70 +12,22 @@ export const Global = styled.div`
   --bw-1000: 0, 0%, 100%;
 
   /* bw palette */
-  --bw-100: 249, 7%, 81%;
-  --bw-200: 240, 7%, 92%;
-  --bw-300: 240, 9%, 98%;
-  --bw-400: 245, 6%, 66%;
-  --bw-500: 247, 7%, 48%;
-  --bw-600: 248, 7%, 40%;
-  --bw-700: 251, 7%, 30%;
-  --bw-800: 249, 7%, 21%;
-  --bw-900: 240, 7%, 11%;
+  ${createPalette('247, 7%, 48%', 'bw')}
 
   /* primary palette */
-  --primary-100: 257, 78%, 98%;
-  --primary-200: 256, 83%, 93%;
-  --primary-300: 255, 85%, 84%;
-  --primary-400: 256, 84%, 72%;
-  --primary-500: 255, 85%, 58%;
-  --primary-600: 255, 61%, 49%;
-  --primary-700: 255, 61%, 37%;
-  --primary-800: 255, 60%, 25%;
-  --primary-900: 256, 61%, 13%;
-
+  ${createPalette('255, 85%, 58%', 'primary')}
+  
   /* secondary palette */
-  --secondary-100: 223, 100%, 13%;
-  --secondary-200: 223, 100%, 22%;
-  --secondary-300: 223, 100%, 30%;
-  --secondary-400: 223, 100%, 40%;
-  --secondary-500: 223, 100%, 46%;
-  --secondary-600: 223, 100%, 58%;
-  --secondary-700: 223, 100%, 64%;
-  --secondary-800: 223, 100%, 78%;
-  --secondary-900: 223, 100%, 93%;
+  ${createPalette('223, 100%, 46%', 'secondary')}
 
   /* danger palette */
-  --danger-100: 345, 73%, 96%;
-  --danger-200: 344, 72%, 87%;
-  --danger-300: 345, 72%, 74%;
-  --danger-400: 345, 72%, 57%;
-  --danger-500: 345, 100%, 42%;
-  --danger-600: 345, 99%, 33%;
-  --danger-700: 345, 98%, 25%;
-  --danger-800: 345, 98%, 16%;
-  --danger-900: 346, 95%, 8%;
+  ${createPalette('345, 100%, 42%', 'danger')}
 
   /* accent palette */
-  --accent-100: 0, 100%, 98%;
-  --accent-200: 358, 95%, 92%;
-  --accent-300: 358, 97%, 85%;
-  --accent-400: 358, 97%, 76%;
-  --accent-500: 359, 96%, 67%;
-  --accent-600: 359, 53%, 53%;
-  --accent-700: 358, 47%, 39%;
-  --accent-800: 359, 47%, 25%;
-  --accent-900: 0, 46%, 11%;
+  ${createPalette('359, 96%, 67%', 'accent')}
 
   /* success palette */
-  --success-100: 120, 38%, 97%;
-  --success-200: 124, 40%, 92%;
-  --success-300: 125, 38%, 82%;
-  --success-400: 124, 39%, 73%;
-  --success-500: 124, 39%, 63%;
-  --success-600: 124, 23%, 50%;
-  --success-700: 124, 23%, 36%;
-  --success-800: 124, 23%, 24%;
-  --success-900: 124, 23%, 12%;
+  ${createPalette('124, 39%, 63%', 'success')}
 
   /* should be rewritten to formulas */
   --woly-main-level: 3;
