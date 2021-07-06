@@ -1,6 +1,6 @@
 {
   "name": "woly",
-  "version": "0.8.1",
+  "version": "0.9.0",
   "description": "Exhaustive component library for React",
   "main": "woly.js",
   "types": "woly.d.ts",
