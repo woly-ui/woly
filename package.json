@@ -11,7 +11,7 @@
     "lint:code": "eslint --ext .ts,.tsx src",
     "lint:code:fix": "yarn lint:code --fix",
     "lint:style": "stylelint './src/**/*.{js,css,ts,tsx}'",
-    "lint:style:fix": "stylelint './src/**/*.{js,css,ts,tsx}'",
+    "lint:style:fix": "stylelint './src/**/*.{js,css,ts,tsx}' --fix",
     "percy:cypress": "percy exec -- cypress run",
     "start": "gatsby clean && gatsby develop",
     "test:visual": "start-server-and-test 'yarn start' http://localhost:8000/package/woly/component/button 'yarn percy:cypress'",
