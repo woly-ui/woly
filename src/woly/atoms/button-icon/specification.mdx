@@ -1,0 +1,49 @@
+## Overview
+
+`ButtonIcon` is an interactive element that contains an icon and no (visible) accompanying text. An icon expresses what action will occur when the user interacts with it.
+
+**Recommended to use**
+
+- to trigger an action on an item, for example, to delete, to change, or add an element within a group; often comes with another 2 or 3 adjacent `ButtonIcon`.
+
+**Not recommended using**
+
+- to trigger actions that could influence the user’s flow, like submitting a form (use `Button` instead);
+- to navigate a user to another page or an external web resource (use a link instead);
+
+## Appearance
+
+### Icon
+
+Since the `ButtonIcon` has no label and therefore compact, it is commonly used in an interface where extra space matters. Its icon should be easily recognizable. You may pair `ButtonIcon` with a component `Tooltip` containing a hint about the `ButtonIcon` underlying action.
+
+Recommendations for a hint text:
+
+- make it short (2-3 words);
+- use “action” verbs first ( “save”, “send”, etc.);
+
+## Placement
+
+### Grouping
+
+If `ButtonIcon`s share related actions, they’re good to be in a group. For example, in a list of items (users, products, blog posts), each item can have a group of `ButtonIcon`s with actions like `delete`, `edit`, `move`. In most cases, all buttons within a group should have the same priority, weight and size. But it does not limit you to make one particular button with the main action as `primary` and with weight `fill` then make other buttons as `secondary` and weight `outline`.
+
+### Inside other components
+
+`ButtonIcon` can be used as a part of a more complex component, like a hide/show toggle in the `InputPassword` component. Here, `ButtonIcon` should have the same `priority` and `weight` as its parent for consistency.
+
+## Behaviors
+
+### Interactions
+
+_Mouse_
+
+Users can trigger a button by clicking anywhere within the button container.
+
+_Keyboard_
+
+Users can trigger a button by pressing `Enter` while it has focus.
+
+## Accessibility
+
+It’s recommended to provide `ButtonIcon` with an aria-label to describe the action to people using assistive technologies, such as screen readers.
