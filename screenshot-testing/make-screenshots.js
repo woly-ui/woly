@@ -13,10 +13,10 @@ function noEmptyString(value) {
 
 /**
  * 1. Test-runner awaits a test page to be fully loaded,
- * 2. then finds target `variant groups`. For example, button's
- *    variant groups could be `primary`, `secondary` and `tertiary`
- * 3. Inside variant group, test runner search for all
- *    `variants` – wrappers, that contains a unique variant of tested component
+ * 2. then finds components `variant groups` element in page. For example,
+ *    button's variants could be group by priority, e.g. `primary`, `secondary`, 'danger', etc.
+ * 3. Variant group element contains containes `variants`– wrapper elements,
+ *    that contains a unique variant of tested component
  * 4. The tested component element has all info about its props as dataset
  *    attributes
  * 5. that eventually will be mapped to human-readable string
@@ -27,31 +27,33 @@ function noEmptyString(value) {
  *    for further operations with these screenshots
  */
 
-async function makeScreenshots({ component, context, mapSelector, reporter, rootUrl }) {
+async function makeScreenshots({
+  configMeta,
+  context,
+  mapSelector,
+  reporter,
+  rootUrl,
+  wrapperSize,
+}) {
   const {
     name,
     url,
-    config: {
-      selector,
-      states,
-      screenshotElStyle = {
-        width: 400,
-        height: 200,
-      },
-    },
-  } = component;
+    config: { selector, states },
+  } = configMeta;
 
   reporter('\ncurrent component', name);
 
   const page = await context.newPage();
-  await page.goto(`${rootUrl}/${url}`);
-  await page.waitForSelector(mapSelector); /** 1 */
+
+  await page.goto(`${rootUrl}/${url}`, { timeout: 3000 });
+
+  await page.waitForSelector(mapSelector, { timeout: 3000 }); /** 1 */
 
   await page.addStyleTag({
     content: `
       ${mapSelector}__variant {
-        width: ${screenshotElStyle.width}px;
-        height: ${screenshotElStyle.height}px;
+        width: ${wrapperSize.width}px;
+        height: ${wrapperSize.height}px;
       }
     `,
   });
@@ -60,7 +62,7 @@ async function makeScreenshots({ component, context, mapSelector, reporter, root
 
   const variantGroups = await page.$$(`${mapSelector}__group`); /** 2 */
 
-  const meta = []; /** 7 */
+  const groupsMeta = []; /** 7 */
 
   for await (const variantGroup of variantGroups) {
     const stats = [];
@@ -78,6 +80,11 @@ async function makeScreenshots({ component, context, mapSelector, reporter, root
     for await (const variant of variants) {
       const el = await variant.$(selector);
 
+      if (!el) {
+        reporter(`Component el not found, check if ${name}'s selector is correct`);
+        continue;
+      }
+
       const props = await variant.evaluate((node) => node.dataset); /** 4 */
       const mappedProps = Object.entries(props).map(keyValueMapper).filter(noEmptyString); /** 5 */
 
@@ -88,14 +95,14 @@ async function makeScreenshots({ component, context, mapSelector, reporter, root
         const stateName = typeof state === 'string' ? state : state.name;
         const filename = `${fullname}~~${stateName}.png`;
         const path = `./screenshots/${name}/_temp/${filename}`;
-        const variation = mappedProps.concat(stateName).join(' ');
+        const variation = `[${stateName}] ${mappedProps.join(' ')}`;
 
         const inState = await bringToState({
-          state,
           el,
           elWrapper: variant,
           page,
           reporter,
+          state,
         }); /** 7 */
 
         await variant.screenshot({ path: resolve(__dirname, path) }); /** 8 */
@@ -106,25 +113,30 @@ async function makeScreenshots({ component, context, mapSelector, reporter, root
 
         /** 9 */
         stats.push({
-          path,
-          variation,
-          props,
           inState,
+          path,
+          props,
+          variation,
         });
       }
     }
 
-    meta.push({
-      name,
-      groupName,
-      stats,
-    });
+    if (stats.length > 0) {
+      groupsMeta.push({
+        groupName,
+        stats,
+        name,
+        states: states.length,
+      });
+    } else {
+      reporter(`Something went wrong, zero screenshots were taken for ${name}, group ${groupName}`);
+    }
   }
 
-  return { meta };
+  return { groupsMeta };
 }
 
-async function bringToState({ state, el, elWrapper, page, reporter }) {
+async function bringToState({ el, elWrapper, page, reporter, state }) {
   if (typeof state === 'string') {
     try {
       if (state === 'hover') {
@@ -142,7 +154,6 @@ async function bringToState({ state, el, elWrapper, page, reporter }) {
       return true;
     } catch (error) {
       reporter(error);
-      return false;
     }
   }
 
@@ -152,7 +163,6 @@ async function bringToState({ state, el, elWrapper, page, reporter }) {
       return true;
     } catch (error) {
       reporter(error);
-      return false;
     }
   }
   return false;

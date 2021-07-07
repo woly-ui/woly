@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { Global } from './global';
 
 export const Sizes = ['N', 'XS', 'S', 'M', 'L', 'XL', 'H'] as const;
-export const Priorities = ['primary', 'secondary', 'tertiary'];
+export const Priorities = ['default', 'primary', 'secondary', 'white', 'danger', 'success'];
 
 type ArrayElement<
   ArrayType extends readonly unknown[]
@@ -15,6 +15,10 @@ type ObjectVariations = Record<string, readonly unknown[]>;
 type StateMapRenderProps<Props extends ObjectVariations> = {
   [Key in keyof Props]: ArrayElement<Props[Key]>;
 };
+
+/**
+ * TODO: group by multiple props
+ */
 
 interface StateMapProps<Props extends ObjectVariations> {
   groupByProp: keyof Props & string;
@@ -75,7 +79,7 @@ const StateMapVariant = styled.div`
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
-  padding: 1.5rem;
+  padding: 1rem;
 `;
 
 // https://github.com/evgenykochetkov/react-storybook-addon-props-combinations/blob/master/src/utils.js

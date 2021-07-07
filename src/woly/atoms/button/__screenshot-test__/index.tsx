@@ -22,6 +22,7 @@ const ButtonStateMap = () => {
         return (
           <SizeBlock>
             <Button
+              className="button-st"
               text="button"
               icon={icon ? <IconPlus /> : undefined}
               priority={priority}

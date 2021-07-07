@@ -9,21 +9,12 @@ app.use('/screenshots', express.static(`${__dirname}/screenshots`));
 
 const port = 3000;
 
-async function makeSnapshots({ component, context, mapSelector, meta, reporter }) {
+async function makeSnapshots({ context, groupsMeta, mapSelector, reporter, wrapperSize }) {
   const screenshotServer = app.listen(port, () => {
     reporter(`booted screenshot server at http://localhost:${port}`);
   });
 
-  const {
-    config: {
-      screenshotElStyle = {
-        width: 400,
-        height: 200,
-      },
-    },
-  } = component;
-
-  for await (const { name, groupName, stats } of meta) {
+  for await (const { name, groupName, stats, states } of groupsMeta) {
     const page = await context.newPage();
 
     const variantGroup = `${name}-${groupName}`;
@@ -31,25 +22,25 @@ async function makeSnapshots({ component, context, mapSelector, meta, reporter }
     app.get(`/${variantGroup}`, (_req, res) => {
       res.render('screenshot-page-template', {
         stats,
-        screenshotElStyle,
+        wrapperSize,
       });
     });
 
     await page.goto(`http://localhost:${port}/${variantGroup}`);
 
-    if (process.env.PERCY_TOKEN) {
-      await sendPercy({ page, name: variantGroup });
-    }
-
     await page.waitForSelector(mapSelector);
 
-    reporter(`making debug screenshot for ${name}, group ${groupName}`);
+    if (process.env.PERCY_TOKEN) {
+      await sendPercy({ name: variantGroup, page, width: states * wrapperSize.width });
+    } else {
+      reporter(`making debug screenshot for ${name}, group ${groupName}`);
 
-    const stateMap = await page.$(mapSelector);
-    await stateMap.screenshot({
-      path: `${__dirname}/screenshots/${name}/${groupName}.png`,
-    });
-    await page.close();
+      const stateMap = await page.$(mapSelector);
+      await stateMap.screenshot({
+        path: `${__dirname}/screenshots/${name}/${groupName}.png`,
+      });
+      await page.close();
+    }
   }
 
   reporter('closed screenshot server');
@@ -57,7 +48,7 @@ async function makeSnapshots({ component, context, mapSelector, meta, reporter }
   screenshotServer.close();
 }
 
-async function sendPercy({ page, name }) {
+async function sendPercy({ name, page, width }) {
   const versions = require('../versions.json');
 
   await page.evaluate(await utils.fetchPercyDOM());
@@ -72,7 +63,7 @@ async function sendPercy({ page, name }) {
     // optional
     environmentInfo: 'localhost/playwright' /** meta info */,
     clientInfo: `woly/${versions.woly}` /** meta info */,
-    widths: [1024],
+    widths: [width],
     minHeight: 1024,
   });
 }

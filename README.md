@@ -58,7 +58,7 @@ button/
 │  ├─ index.tsx
 ├─ index.tsx
 ├─ usage.mdx
-├─ spec.mdx
+├─ specification.mdx
 
 ```
 
@@ -69,11 +69,12 @@ button/
 
 ##### **`config.json`**
 
-| Name       | Type      | Default value | Description                                                         |
-| ---------- | --------- | ------------- | ------------------------------------------------------------------- |
-| `name`     | `string`  | `null`        | Component's name                                                    |
-| `selector` | `string`  | `null`        | Selector, which test-runner uses to find a component in a test page |
-| `states`   | `State[]` | `[]`          | States to capture                                                   |
+| Name             | Type                               | Default value | Description                                                                                       |
+| ---------------- | ---------------------------------- | ------------- | ------------------------------------------------------------------------------------------------- |
+| `name`           | `string`                           | `null`        | Component's name                                                                                  |
+| `selector`       | `string`                           | `null`        | Selector, which test-runner uses to find a component in a test page                               |
+| `screenshotSize` | `{ width: number, height: number}` | `null`        | Screenshot's size. Final snapshot's width will be equal to `states amount` x `screenshot's width` |
+| `states`         | `State[]`                          | `[]`          | States to capture                                                                                 |
 
 ##### **`State`**
 
@@ -93,7 +94,7 @@ A `actions` function gets the following parameters:
 - `elWrapper` – a component's wrapper. The test-runner makes a screenshot of this element. Has the same methods as `el`
 - `page` – a test page (see [methods](https://playwright.dev/docs/api/class-page/))
 
-<span style="color:#dc3545">**Attention**</span>: When using a function for describing a state, be aware that test-runner unable to reset the state after capture it, state will be just passed on. It's totally on you.
+<span style="color:#dc3545">**Attention**</span>: When using a function for describing a state, be aware that test-runner unable to reset the state after capturing it, state will be just passed to the next one. It's totally on young to reset a component's state after testing.
 
 For example:
 
@@ -105,20 +106,20 @@ For example:
     await input.fill('qwerty');
 
     // reset
-    await input.fill(''); // removed the text in the input
-    await elWrapper.focus(); // removed the focus from the input
+    await input.fill(''); // remove the text in the input
+    await elWrapper.focus(); // remove the focus from the input
   },
 },
 ```
 
 ##### **`index.tsx`**
 
-Example is based on `button` component.
+The example is based on the `Button` component.
 
 ```ts
 import React from 'react';
 import { IconPlus } from 'static/icons';
-import { Sizes, StateMap, Variants } from 'lib/state-map';
+import { Sizes, StateMap, Priorities } from 'lib/state-map';
 import { block } from 'lib/block';
 
 import { Button } from '../index';
@@ -132,19 +133,22 @@ export const ButtonStateMap = () => {
         icon: [true, false],
         outlined: [true, false],
         size: Sizes,
-        variant: Variants,
+        priority: Priorities,
       }}
       // prop, by wich the variants will be grouped
       groupByProp="variant"
-      render={({ size, icon, variant, outlined, disabled }) => {
+      render={({ size, icon, priority, outlined, disabled }) => {
         const SizeBlock = block[size];
 
         return (
           <SizeBlock>
             <Button
+              // provide classname for component and match it
+              // in configs 'selector' option
+              className="button-st"
               text="button"
               icon={icon ? <IconPlus /> : undefined}
-              variant={variant}
+              priority={priority}
               outlined={outlined}
               disabled={disabled}
             />
@@ -163,6 +167,9 @@ export const ButtonStateMap = () => {
 
 Local testing can be run by the command `yarn test:screenshot`
 
-Debug logs are shown when the `DEBUG` env key is passed with the value `screenshot*`, e.g. `DEBUG=screenshot* yarn test:screenshot`
+Env variables:
 
-If you want to manually send snapshots to `percy`, pass `PERCY_TOKEN` env key with a token as the value (grab it in the `persy.io`'s `Project settings` section) and run test by the command `yarn percy exec`, e.g. `PERCY_TOKEN=***** yarn percy exec -- yarn test:screenshot`.
+- `DEBUG=screenshot:*` - shows debug lines
+- `EXCLUDE=first,second` - exclude components `first` and `second` from testing
+
+If you want to manually send snapshots to `percy`, pass `PERCY_TOKEN` env key with a token as the value (grab it in the `persy.io`'s `Project settings` section) and run test by the command `yarn percy exec`, e.g. `PERCY_TOKEN=***** yarn percy exec yarn test:screenshot`.

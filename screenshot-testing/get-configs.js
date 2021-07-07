@@ -1,12 +1,34 @@
 const path = require('path');
 
+/**
+ * 1. gastby-theme-woly plugin finds all screenshot-test configs and
+ * generate a page (returns JSON with configs meta) on build stage.
+ * Configs searcher heavly rely on file structure, so it should have
+ * this format – <root>/<package_name>/<category>/<component_name>.
+ * <root> is set in gatsby-config.js via plugin`s option `components`.
+ * 2. Test pages url repeat same format mentioned above
+ */
+
 async function getConfigs({ browser, configsUrl, reporter }) {
   const excludedComponents = process.env.EXCLUDE
     ? process.env.EXCLUDE.split(',').map((component) => component.trim())
     : [];
 
+  if (excludedComponents.length !== 0) {
+    reporter('excluded components', excludedComponents.join(', '));
+  }
+
   const page = await browser.newPage();
-  const response = await page.goto(configsUrl);
+  let response;
+
+  try {
+    const result = await page.goto(configsUrl); /** 1 */
+    if (result) {
+      response = result;
+    }
+  } catch (error) {
+    reporter('could not fetch configs, url is broken\n', error);
+  }
 
   const configs = [];
 
@@ -17,12 +39,13 @@ async function getConfigs({ browser, configsUrl, reporter }) {
       if (config && !excludedComponents.includes(meta.name)) {
         configs.push({
           config,
+          /** 2 */
           url: `${meta.package}/${meta.category}/${meta.name}/__screenshot-test__`,
           ...meta,
         });
       }
     } catch (error) {
-      reporter(error);
+      reporter('could not get config file\n', error);
     }
   }
 

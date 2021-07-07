@@ -1,4 +1,4 @@
 module.exports = {
-  selector: "button[type='button']",
+  selector: '.button-st',
   states: ['static', 'hover', 'active', 'focus'],
 };

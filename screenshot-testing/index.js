@@ -10,47 +10,68 @@ const { makeSnapshots } = require('./make-snapshots');
 /**
  * TODO: test in all major browsers
  * TODO: reduce testing time
- * TODO: make it work with production build
  */
 
 const defaultPageOptions = {
   deviceScaleFactor: 2,
   viewport: { width: 800, height: 400 },
-  defaultTimout: 300,
+  defaultTimout: 3000,
+};
+
+const defaultScreenshotSize = {
+  width: 250,
+  height: 200,
 };
 
 const startScreenshotTesting = async ({ rootUrl, mapSelector }) => {
-  await fs.remove(`${__dirname}/screenshots`); /** 0 */
+  await fs.remove(`${__dirname}/screenshots`);
 
-  reporter('booting playwright...'); /** 1 */
+  reporter('booting playwright...');
   const { browser } = await bootPlaywright();
 
-  reporter("loading component's config..."); /** 2 */
-  const components = await getConfigs({
+  reporter("loading component's config...");
+  const configsMeta = await getConfigs({
     browser,
     configsUrl: `${rootUrl}/screenshot-test-configs.json`,
     reporter,
   });
 
-  if (!components || components.length === 0) {
+  if (!configsMeta || configsMeta.length === 0) {
     reporter('components not found');
     process.exit();
   }
 
-  reporter('iterating over components to make screenshots...'); /** 3 */
+  reporter('iterating over configs...');
 
-  for await (const component of components) {
+  for await (const configMeta of configsMeta) {
     const context = await browser.newContext(defaultPageOptions);
 
-    const { meta } = await makeScreenshots({
-      component,
+    const {
+      config: { screenshotSize },
+    } = configMeta;
+
+    const wrapperSize = {
+      ...defaultScreenshotSize,
+      ...screenshotSize,
+    };
+
+    const { groupsMeta } = await makeScreenshots({
+      configMeta,
+      wrapperSize,
       context,
       mapSelector,
       reporter,
       rootUrl,
     });
 
-    await makeSnapshots({ component, context, mapSelector, meta, reporter });
+    if (!groupsMeta || groupsMeta.length === 0) {
+      reporter(
+        `zero screenshots were taken for ${configMeta.name || 'component'}, abort making snapshots`,
+      );
+      continue;
+    }
+
+    await makeSnapshots({ context, groupsMeta, mapSelector, reporter, wrapperSize });
   }
 
   reporter('closed playwright');
