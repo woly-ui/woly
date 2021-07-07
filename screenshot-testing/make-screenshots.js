@@ -23,7 +23,9 @@ function noEmptyString(value) {
  * 6. Test-runner iterates all states described in a config file,
  * 7. brings the tested component to a specific state,
  * 8. and makes a screenshot and saves it in temp folder.
- * 9. At the end of each iteration, the test-runner saves statistics
+ * 9. If complex state return a reset state function, it will be executed before
+ *    moving to the next state;
+ * 10. At the end of each iteration, the test-runner saves statistics
  *    for further operations with these screenshots
  */
 
@@ -97,23 +99,43 @@ async function makeScreenshots({
         const path = `./screenshots/${name}/_temp/${filename}`;
         const variation = `[${stateName}] ${mappedProps.join(' ')}`;
 
-        const inState = await bringToState({
-          el,
-          elWrapper: variant,
-          page,
-          reporter,
-          state,
-        }); /** 7 */
+        const makeScreenshot = async () => variant.screenshot({ path: resolve(__dirname, path) });
+        const disabled = props.disabled && props.disabled === 'true';
 
-        await variant.screenshot({ path: resolve(__dirname, path) }); /** 8 */
+        /** 7 */
+        if (typeof state === 'string') {
+          await bringToSimpleState({
+            el,
+            disabled,
+            page,
+            reporter,
+            state,
+          });
+          await makeScreenshot(); /** 8 */
+        } else {
+          const resetState = await bringToComplexState({
+            el,
+            elWrapper: variant,
+            disabled,
+            page,
+            reporter,
+            state,
+          });
+
+          await makeScreenshot(); /** 8 */
+
+          /** 9 */
+          if (resetState && typeof resetState === 'function') {
+            await resetState();
+          }
+        }
 
         // clean before next iteration
         await page.mouse.up();
         await variant.focus();
 
-        /** 9 */
+        /** 10 */
         stats.push({
-          inState,
           path,
           props,
           variation,
@@ -136,36 +158,31 @@ async function makeScreenshots({
   return { groupsMeta };
 }
 
-async function bringToState({ el, elWrapper, page, reporter, state }) {
-  if (typeof state === 'string') {
-    try {
-      if (state === 'hover') {
-        await el.hover();
-      }
-
-      if (state === 'active') {
-        const box = await el.boundingBox();
-        await page.mouse.down(box.x + box.width / 2, box.y + box.height / 2);
-      }
-
-      if (state === 'focus') {
-        await el.focus();
-      }
-      return true;
-    } catch (error) {
-      reporter(error);
-    }
+async function bringToComplexState({ el, elWrapper, disabled, page, reporter, state }) {
+  try {
+    return await state.actions({ el, page, disabled, elWrapper });
+  } catch (error) {
+    reporter(error);
   }
+}
 
-  if (typeof state.actions === 'function') {
-    try {
-      await state.actions({ el, page, elWrapper });
-      return true;
-    } catch (error) {
-      reporter(error);
+async function bringToSimpleState({ el, disabled, page, reporter, state }) {
+  try {
+    if (state === 'hover' && !disabled) {
+      await el.hover({ force: true });
     }
+
+    if (state === 'active') {
+      const box = await el.boundingBox();
+      await page.mouse.down(box.x + box.width / 2, box.y + box.height / 2);
+    }
+
+    if (state === 'focus') {
+      await el.focus();
+    }
+  } catch (error) {
+    reporter(error);
   }
-  return false;
 }
 
 module.exports = {

@@ -92,22 +92,27 @@ A `actions` function gets the following parameters:
 
 - `el` – the actual component (see [methods](https://playwright.dev/docs/api/class-elementhandle))
 - `elWrapper` – a component's wrapper. The test-runner makes a screenshot of this element. Has the same methods as `el`
+- `disabled` – if component is disabled, some `playwright` methods can't be triggered on component and it will throw an error (see [actionability checks](https://playwright.dev/docs/actionability)). Check for this boolean before invocing methods like `fill` on input elements
 - `page` – a test page (see [methods](https://playwright.dev/docs/api/class-page/))
 
-<span style="color:#dc3545">**Attention**</span>: When using a function for describing a state, be aware that test-runner unable to reset the state after capturing it, state will be just passed to the next one. It's totally on young to reset a component's state after testing.
+<span style="color:#dc3545">**Attention**</span>: When using a function for describing a state, be aware that test-runner unable to reset the state after capturing it, state will be just passed unchanged to the next one. If you don't want this behavior, you can return a `reset` function from `state` that will be called before moving to the next state.
 
 For example:
 
 ```js
 {
   name: 'text-filled',
-  actions: async ({ el, elWrapper, page }) => {
+  actions: async ({ el, elWrapper, disabled, page }) => {
     const input = await el.$('input[type="password"]');
-    await input.fill('qwerty');
+    await input.type('qwerty');
 
-    // reset
-    await input.fill(''); // remove the text in the input
-    await elWrapper.focus(); // remove the focus from the input
+    // reset function
+    return async () => {
+      if(!disabled) {
+        await input.fill(''); // remove the text in the input
+      }
+      await elWrapper.focus(); // remove the focus from the input
+    }
   },
 },
 ```
