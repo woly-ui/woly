@@ -1,24 +1,47 @@
-import React from 'react';
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import styled from 'styled-components';
+import React, { useRef } from 'react';
 
+import { ConfiguratorName, Configurators } from './configurators';
 import { Global } from './global';
 import { block } from './block';
+import { useSyncHeight } from './hooks/use-sync-height';
+import { useUniqueID } from './hooks/use-unique-id';
 
 export { block };
 
-export const Playground: React.FC<{
+interface Props {
   size: keyof typeof block;
   direction: 'vertical' | 'horizontal';
-}> = ({ size = 'M', direction = 'horizontal', children }) => {
+  configurators: ConfiguratorName[];
+}
+
+export const Playground: React.FC<Props> = ({
+  size = 'M',
+  direction = 'horizontal',
+  configurators = ['color'],
+  children,
+}) => {
+  const scopeId = useUniqueID();
+
+  const configuratorsRef = useRef<HTMLDivElement | null>(null);
+  const frameRef = useRef<HTMLDivElement | null>(null);
+  const { detectorJSX } = useSyncHeight({ of: frameRef, with: configuratorsRef });
+
   const Wrapper = block[size];
+
   return (
-    <Frame>
-      <Global>
-        <Wrapper>
-          <Container data-dir={direction}>{children}</Container>
-        </Wrapper>
-      </Global>
-    </Frame>
+    <PlaygroundWrapper>
+      <Frame ref={frameRef}>
+        <Global data-scope={scopeId}>
+          <Wrapper>
+            <Container data-dir={direction}>{children}</Container>
+          </Wrapper>
+        </Global>
+      </Frame>
+      <Configurators ref={configuratorsRef} id={scopeId} for={configurators} />
+      {detectorJSX}
+    </PlaygroundWrapper>
   );
 };
 
@@ -56,6 +79,18 @@ export const StateEvent = ({ initial, change, children }: StateType) => {
   return <>{children(value, onChange)}</>;
 };
 
+const PlaygroundWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+
+  & + .prism-code {
+    margin-top: 0;
+
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+`;
+
 const Frame = styled.div`
   box-sizing: border-box;
   width: 100%;
@@ -67,13 +102,6 @@ const Frame = styled.div`
   border-radius: 4px 4px 0 0;
 
   resize: both;
-
-  & + .prism-code {
-    margin-top: 0;
-
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
-  }
 `;
 
 const Container = styled.div`
