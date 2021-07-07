@@ -5,7 +5,7 @@
 **Recommended to use**
 
 - to trigger an action on an item, for example, to delete, to change, or add an element within a group; often comes with another 2 or 3 adjacent `ButtonIcon`.
-- to switch between two actions. One of the actions is always active, one is inactive ( e.g., "Like" icon-button).
+- to switch between two actions. One of the actions is always active, one is inactive ( e.g., "Like" icon-button, 'Hamburger' menu button). Offten comes with transtion animation betweet active and inactive states.
 
 **Not recommended using**
 
@@ -27,11 +27,11 @@ Recommendations for a hint text:
 
 ### Grouping
 
-If `ButtonIcon`s share related actions, they’re good to be in a group. For example, in a list of items (users, products, blog posts), each item can have a group of `ButtonIcon`s with actions like `delete`, `edit`, `move`. In most cases, all buttons within a group should have the same priority, weight and size. But it does not limit you to make one particular button with the main action as `primary` and with weight `fill` then make other buttons as `secondary` and weight `outline`.
+If `ButtonIcon`s share related actions, they’re good to be in a group. For example, in a list of items (users, products, blog posts), each item can have a group of `ButtonIcon`s with actions like `delete`, `edit`, `move`. Or app toolbars, containing a groups of button-icons with most offten used actions. In most cases, all buttons within a group should have the same priority, weight and size. But it does not limit you to make one particular button with the main action as `primary` and with weight `fill` then make other buttons as `secondary` and weight `outline`.
 
 ### Inside other components
 
-`ButtonIcon` can be used as a part of a more complex component, like a hide/show toggle in the `InputPassword` component. Here, `ButtonIcon` should have the same `priority` and `weight` as its parent for consistency.
+`ButtonIcon` can be used as a part of a more complex component, like a hide/show toggle in the `InputPassword` or remove button in `Chip`. Here, `ButtonIcon` should have the same `priority` as its parent for consistency.
 
 ## Behaviors
 
@@ -43,7 +43,7 @@ Users can trigger a button by clicking anywhere within the button container.
 
 _Keyboard_
 
-Users can trigger a button by pressing `Enter` or `Space`, while it has focus.
+Users can trigger a button by pressing `Enter` or `Space`, while it has focus. If the `ButtonIcon` is located in the toolbar for quick access, you should provide a keyboard shortcut for even easier access.
 
 ## Accessibility
 
