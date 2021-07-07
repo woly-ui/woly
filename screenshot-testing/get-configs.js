@@ -14,9 +14,13 @@ async function getConfigs({ browser, configsUrl, reporter }) {
     ? process.env.EXCLUDE.split(',').map((component) => component.trim())
     : [];
 
-  if (excludedComponents.length !== 0) {
-    reporter('excluded components', excludedComponents.join(', '));
-  }
+  const includedComponents = process.env.INCLUDE
+    ? process.env.INCLUDE.split(',').map((component) => component.trim())
+    : [];
+
+  const notDismissed = (name) =>
+    (includedComponents.length > 0 && includedComponents.includes(name)) ||
+    (excludedComponents.length > 0 && !excludedComponents.includes(name));
 
   const page = await browser.newPage();
   let response;
@@ -36,7 +40,7 @@ async function getConfigs({ browser, configsUrl, reporter }) {
     try {
       const config = require(path.resolve(__dirname, '../src', configPath));
 
-      if (config && !excludedComponents.includes(meta.name)) {
+      if (config && notDismissed(meta.name)) {
         configs.push({
           config,
           /** 2 */

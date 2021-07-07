@@ -170,6 +170,7 @@ Local testing can be run by the command `yarn test:screenshot`
 Env variables:
 
 - `DEBUG=screenshot:*` - shows debug lines
+- `INCLUDE=first,second` - include only components `first` and `second` to testing. Has higher priority than `EXCLUDE`.
 - `EXCLUDE=first,second` - exclude components `first` and `second` from testing
 
 If you want to manually send snapshots to `percy`, pass `PERCY_TOKEN` env key with a token as the value (grab it in the `persy.io`'s `Project settings` section) and run test by the command `yarn percy exec`, e.g. `PERCY_TOKEN=***** yarn percy exec yarn test:screenshot`.
