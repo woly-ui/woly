@@ -12,11 +12,6 @@ const common = {
   },
   sideEffects: false,
   contributors: [],
-  repository: {
-    type: 'git',
-    url: 'https://github.com/woly-ui/woly',
-    // directory: 'packages/???',
-  },
   homepage: 'https://github.com/woly-ui/woly',
   license: 'MIT',
   bugs: {
@@ -45,6 +40,12 @@ const esm = (name) => [`${name}.mjs`, `${name}.mjs.map`];
 const types = (name) => [`${name}.d.ts`];
 
 const getFiles = (name) => ['README.md', 'LICENSE', ...cjs(name), ...esm(name), ...types(name)];
+
+const getRepo = (name) => ({
+  type: 'git',
+  url: 'https://github.com/woly-ui/woly',
+  directory: `packages/${name}`,
+});
 
 const dependsPeer = {
   react: '^16.11.0',
@@ -82,6 +83,7 @@ const woly = {
   peerDependencies: {
     ...dependsPeer,
   },
+  repository: getRepo('woly'),
   ...common,
 };
 
@@ -97,6 +99,7 @@ const calendar = {
     ...dependsPeer,
     ...dependsOnWoly,
   },
+  repository: getRepo('calendar'),
   ...common,
 };
 
@@ -112,10 +115,8 @@ const upload = {
     ...dependsPeer,
     ...dependsOnWoly,
   },
+  repository: getRepo('upload'),
   ...common,
 };
-
-calendar.repository.directory = 'packages/calendar';
-upload.repository.directory = 'packages/upload';
 
 module.exports = { woly, calendar, upload };
