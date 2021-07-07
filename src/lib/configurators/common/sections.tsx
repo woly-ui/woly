@@ -62,9 +62,11 @@ const SectionNameWrapper = styled.div`
   flex-direction: row;
   align-items: center;
   width: 100%;
-  padding: 6px 0;
   margin: 6px 0;
+  padding: 6px 0;
+
   cursor: pointer;
+
   user-select: none;
 `;
 

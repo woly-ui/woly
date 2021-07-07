@@ -69,14 +69,16 @@ const StyledChromePicker = styled(ChromePicker)`
 `;
 
 const Wrapper = styled.button`
+  position: relative;
+
   width: 24px;
   height: 24px;
+  overflow: hidden;
+
   border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 4px;
   outline: none;
   cursor: pointer;
-  position: relative;
-  border-radius: 4px;
-  overflow: hidden;
 `;
 
 const Background = () => {
@@ -127,10 +129,11 @@ const Background = () => {
 };
 
 const Fill = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+
   display: block;
   width: 100%;
   height: 100%;
-  position: absolute;
-  left: 0;
-  top: 0;
 `;

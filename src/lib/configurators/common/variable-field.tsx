@@ -47,5 +47,6 @@ const VariableWrapper = styled.div`
 const VariableName = styled.span`
   display: inline-block;
   margin-left: 16px;
+
   font-size: 14px;
 `;

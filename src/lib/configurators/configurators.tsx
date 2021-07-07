@@ -112,9 +112,9 @@ const Menu: React.FC<{
 };
 
 const Wrapper = styled.div`
-  flex-grow: 1;
   display: flex;
   flex-direction: row;
+  flex-grow: 1;
   justify-content: flex-end;
   height: 100%;
 
@@ -124,13 +124,16 @@ const Wrapper = styled.div`
 `;
 
 const ResetButton = styled.button`
+  padding: 4px 8px;
+
+  color: white;
+
   font-size: 14px;
+  line-height: 1.25;
+
+  background: #b92843;
   border: none;
   border-radius: 2px;
-  padding: 4px 8px;
-  line-height: 1.25;
-  color: white;
-  background: #b92843;
   cursor: pointer;
 
   &:hover {
@@ -148,6 +151,7 @@ const Header = styled.div`
   align-items: center;
   justify-content: space-between;
   padding: 16px 20px;
+
   user-select: none;
 `;
 
@@ -157,14 +161,17 @@ const TabWrapper = styled.div`
   width: 100%;
   min-width: 240px;
   height: 100%;
-  background-color: black;
+
   color: white;
+
+  background-color: black;
 `;
 
 const TabTitle = styled.h3`
-  font-size: 16px;
   margin: 0;
   padding: 0;
+
+  font-size: 16px;
 `;
 
 const TabContent = styled.div`
@@ -176,13 +183,17 @@ const TabContent = styled.div`
 const MenuWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  background-color: black;
+
   color: white;
+
+  background-color: black;
 `;
 
 const MenuItemWrapper = styled.div`
   padding: 8px;
-  cursor: pointer;
-  font-size: 20px;
+
   color: white;
+  font-size: 20px;
+
+  cursor: pointer;
 `;
