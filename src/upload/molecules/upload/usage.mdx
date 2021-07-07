@@ -1,0 +1,91 @@
+import {Button} from 'ui'
+import {Playground, StateEvent,FormBlock} from 'lib/playground';
+import {Upload} from './index';
+
+# Upload
+
+Drag and drop for files.
+
+### Example
+
+<Playground>
+  <StateEvent initial={[]} change={(files) => files}>
+    {(files, change) => (
+      <div style={{ display: 'flex' }}>
+        <div style={{ minWidth: '600px', height: '300px', padding: '10px' }}>
+          <Upload
+            content={
+              <FormBlock style={{ alignItems: 'center' }}>
+                <div style={{ padding: '10px', textAlign: 'center' }}>
+                  {files.length === 0 ? (
+                    <>Drag 'n' drop some files here, or click to select files</>
+                  ) : (
+                    <> You chose {files.length} files</>
+                  )}
+                </div>
+                <Button text="Upload files " priority="primary" />
+              </FormBlock>
+            }
+            onDrop={change}
+          />
+        </div>
+        <div style={{ padding: '10px' }}>
+          {files.map((file) => (
+            <div key={file.name}>{file.name}</div>
+          ))}
+        </div>
+      </div>
+    )}
+  </StateEvent>
+</Playground>
+
+### Load only png files
+
+To set extensions of files that users can upload, you can pass an 'accept' property.
+
+<Playground>
+  <StateEvent initial={[]} change={(files) => files}>
+    {(files, change) => (
+      <div style={{ display: 'flex' }}>
+        <div style={{ minWidth: '600px', height: '300px', padding: '10px' }}>
+          <Upload
+            content="You can upload only png images"
+            onDrop={change}
+            accept="image/png"
+            center
+          />
+        </div>
+        <div style={{ padding: '10px' }}>
+          {files.map((file) => (
+            <div key={file.name}>{file.name}</div>
+          ))}
+        </div>
+      </div>
+    )}
+  </StateEvent>
+</Playground>
+
+### Disabled Upload
+
+<Playground>
+  <div style={{ minWidth: '600px', height: '300px', padding: '10px' }}>
+    <Upload
+      content={<Button text="Disabled button" priority="primary" disabled />}
+      disabled
+      center
+    />
+  </div>
+</Playground>
+
+### Props
+
+| Name        | Type                                                                                               | Default       | Description                                                                                                            |
+| ----------- | -------------------------------------------------------------------------------------------------- | ------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| `accept`    | `string ӏ string[]`                                                                                |               | File extensions that are accepted to load                                                                              |
+| `content`   | `React.ReactNode`                                                                                  |               | Pass any content within Upload component.                                                                              |
+| `disabled`  | `boolean`                                                                                          | `false`       | Enable/disable Upload                                                                                                  |
+| `maxFiles`  | `number`                                                                                           | `0`           | Max number of files to load. The default value is 0 which means there is no limitation to how many files are accepted. |
+| `maxSize`   | `number`                                                                                           | `Infinity`    | Max file size (in bytes)                                                                                               |
+| `onDrop`    | `<T extends File>(acceptedFiles: T[], fileRejections: FileRejection[], event: DropEvent) => void;` |               | Callback for when the drop event occurs                                                                                |
+| `priority`  | `string`                                                                                           | `'secondary'` | Priority prop to style UploadArea component                                                                            |
+| `validator` | `<T extends File>(file: T) => FileError \| FileError[] \| null;`                                   |               | Fn that validate loaded files                                                                                          |

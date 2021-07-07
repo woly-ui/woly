@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { DropzoneOptions, useDropzone } from 'react-dropzone';
 import { Priority } from 'lib/types';
 
-import { UploadArea } from '../../atoms';
+import { UploadArea } from '../../elements';
 
 interface UploadProps extends DropzoneOptions {
   accept?: DropzoneOptions['accept'];
@@ -18,7 +18,7 @@ interface UploadProps extends DropzoneOptions {
   validator?: DropzoneOptions['validator'];
 }
 
-export const DropzoneBase: React.FC<UploadProps & Priority> = ({
+export const UploadBase: React.FC<UploadProps & Priority> = ({
   accept,
   center = false,
   className,
@@ -45,16 +45,14 @@ export const DropzoneBase: React.FC<UploadProps & Priority> = ({
 
   const { ref, ...rootProps } = getRootProps();
 
-  const onFocus = React.useCallback(() => {
-    setFocus(true);
-  }, []);
-
-  const onBlur = React.useCallback(() => {
-    setFocus(false);
-  }, []);
-
   return (
-    <div data-area className={className} {...rootProps} onFocus={onFocus} onBlur={onBlur}>
+    <div
+      data-area
+      className={className}
+      {...rootProps}
+      onFocus={() => setFocus(true)}
+      onBlur={() => setFocus(false)}
+    >
       <UploadArea
         center={center}
         className={className}
@@ -67,7 +65,7 @@ export const DropzoneBase: React.FC<UploadProps & Priority> = ({
   );
 };
 
-export const Dropzone = styled(DropzoneBase)`
+export const Upload = styled(UploadBase)`
   position: relative;
 
   display: flex;

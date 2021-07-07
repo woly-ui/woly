@@ -14,6 +14,7 @@ interface UploadButtonProps {
   maxSize?: DropzoneOptions['maxFiles'];
   onChange: DropzoneOptions['onDrop'];
   onDrop: never;
+  validator?: DropzoneOptions['validator'];
   outlined?: boolean;
   text: React.ReactNode;
 }
@@ -28,7 +29,7 @@ export const UploadButtonBase: React.FC<UploadButtonProps & Priority> = ({
   onChange,
   outlined,
   text,
-  priority,
+  priority = 'secondary',
 }) => {
   const { getRootProps, getInputProps } = useDropzone({
     accept,

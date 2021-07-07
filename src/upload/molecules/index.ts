@@ -1,2 +1,2 @@
-export { Dropzone } from './dropzone';
+export { Upload } from './upload';
 export { UploadButton } from './upload-button';

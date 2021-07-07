@@ -1,9 +1,3 @@
----
-name: upload-button
-category: molecules
-package: upload
----
-
 import {Button} from 'ui'
 import {Playground, StateEvent,FormBlock} from 'lib/playground';
 import {IconPlus} from 'static/icons';
@@ -49,14 +43,15 @@ To set file types, you should set the 'accept' property.
 
 ### Props
 
-| Name       | Type                | Default     | Description                                                                                                            |
-| ---------- | ------------------- | ----------- | ---------------------------------------------------------------------------------------------------------------------- |
-| `accept`   | `string ӏ string[]` |             | File extensions that are accepted to load                                                                              |
-| `disabled` | `boolean`           | `false`     | Enable/disable upload button                                                                                           |
-| `icon`     | `React.ReactNode`   |             | Button icon                                                                                                            |
-| `maxFiles` | `number`            | `0`         | Max number of files to load. The default value is 0 which means there is no limitation to how many files are accepted. |
-| `maxSize`  | `number`            | `Infinity`  | Max file size (in bytes)                                                                                               |
-| `onChange` | `fn`                |             | Callback for change event                                                                                              |
-| `outlined` | `fn`                |             | Set button to be outlined                                                                                              |
-| `text`     | `string`            |             | Button text                                                                                                            |
-| `variant`  | `string`            | `'default'` | Variant prop to style UploadArea component                                                                             |
+| Name        | Type                                                             | Default       | Description                                                                                                            |
+| ----------- | ---------------------------------------------------------------- | ------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| `accept`    | `string ӏ string[]`                                              |               | File extensions that are accepted to load                                                                              |
+| `disabled`  | `boolean`                                                        | `false`       | Enable/disable upload button                                                                                           |
+| `icon`      | `React.ReactNode`                                                |               | Button icon                                                                                                            |
+| `maxFiles`  | `number`                                                         | `0`           | Max number of files to load. The default value is 0 which means there is no limitation to how many files are accepted. |
+| `maxSize`   | `number`                                                         | `Infinity`    | Max file size (in bytes)                                                                                               |
+| `onChange`  | `fn`                                                             |               | Callback for change event                                                                                              |
+| `outlined`  | `fn`                                                             |               | Set button to be outlined                                                                                              |
+| `priority`  | `string`                                                         | `'secondary'` | Priority prop to style UploadArea component                                                                            |
+| `text`      | `string`                                                         |               | Button text                                                                                                            |
+| `validator` | `<T extends File>(file: T) => FileError \| FileError[] \| null;` |               | Fn that validate loaded files                                                                                          |
