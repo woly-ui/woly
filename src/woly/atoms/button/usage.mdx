@@ -6,7 +6,7 @@ import {IconPlus, IconSearch} from 'static/icons';
 
 ### Example
 
-<Playground >
+<Playground>
   <Button
     icon={<IconSearch />}
     onClick={() => alert('Hi!')}
@@ -26,7 +26,7 @@ import {IconPlus, IconSearch} from 'static/icons';
 
 Button can span the entire width of the container or have a fixed width
 
-<Playground direction="horizontal" >
+<Playground direction="horizontal">
   <Button
     icon={<IconSearch />}
     onClick={() => alert('Hi!')}
@@ -47,7 +47,7 @@ Button can span the entire width of the container or have a fixed width
 
 Primary and danger priorities are should be used to focus user attention.
 
-<Playground >
+<Playground>
   <Button text="The main action on the page" priority="primary" />
   <Button text="The main action on the page" priority="primary" outlined />
   <Button text="Alternative action" priority="danger" outlined />
@@ -56,7 +56,7 @@ Primary and danger priorities are should be used to focus user attention.
 
 Secondary priority should be used as a default priority.
 
-<Playground >
+<Playground>
   <Button text="Alternative action" priority="secondary" />
   <Button text="Alternative action" priority="secondary" outlined />
 </Playground>
@@ -73,7 +73,7 @@ White priority should be used as an alternative priority to secondary and can`t 
 
 Button can be used with icon on the left side.
 
-<Playground >
+<Playground>
   <Button text="Icon on the left" priority="primary" icon={<IconPlus />} />
   <Button text="Disabled button" priority="primary" icon={<IconSearch />} disabled />
 </Playground>
@@ -82,7 +82,7 @@ Button can be used with icon on the left side.
 
 Size is controlled by the `component-level` block property not from the props.
 
-<Playground >
+<Playground>
   <block.N>
     <Button priority="primary" text="None" icon={<IconPlus />} />
   </block.N>
@@ -107,7 +107,7 @@ Size is controlled by the `component-level` block property not from the props.
 
 Buttons can be placed inside the container. Button width is equal to container size.
 
-<Playground direction="horizontal" >
+<Playground direction="horizontal">
   <block.S>
     <Button priority="primary" text="Small" />
   </block.S>
