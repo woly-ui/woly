@@ -45,7 +45,7 @@ const startScreenshotTesting = async ({ rootUrl, mapSelector }) => {
 
   reporter('iterating over configs...');
 
-  for await (const configMeta of configsMeta) {
+  const testComponent = async (configMeta) => {
     const context = await browser.newContext(defaultPageOptions);
 
     const {
@@ -70,11 +70,13 @@ const startScreenshotTesting = async ({ rootUrl, mapSelector }) => {
       reporter(
         `zero screenshots were taken for ${configMeta.name || 'component'}, abort making snapshots`,
       );
-      continue;
+      return;
     }
 
     await makeSnapshots({ context, groupsMeta, mapSelector, reporter, wrapperSize });
-  }
+  };
+
+  await Promise.all(configsMeta.map(testComponent));
 
   reporter('closed playwright');
   await browser.close();
