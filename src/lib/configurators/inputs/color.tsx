@@ -1,37 +1,29 @@
-import ColorLib from 'color';
 import React from 'react';
 import Tippy from '@tippyjs/react';
+import rgba from 'color-rgba';
 import styled from 'styled-components';
-import { ChromePicker } from 'react-color';
+import { RgbaColorPicker } from 'react-colorful';
 
 import { InputProps } from './types';
 
-type ColorInstance = ReturnType<typeof ColorLib.xyz>;
-
-interface ColorObject {
+interface RGBA {
   r: number;
   g: number;
   b: number;
-  a?: number;
+  a: number;
 }
 
-function toColorObject(color: ColorInstance): ColorObject {
-  const { r, g, b, alpha } = color.rgb().object();
-  return { r, g, b, a: alpha ?? 1 };
+function fromString(anyColor: string): RGBA {
+  const parsed = rgba(anyColor);
+  if (!parsed) return { r: 0, g: 0, b: 0, a: 0 };
+  const [r, g, b, a] = parsed;
+  return { r, g, b, a };
 }
 
-function fromColorObject(object: ColorObject): ColorInstance {
-  const { r, g, b, a } = object;
-  return ColorLib({ r, g, b, alpha: a ?? 1 });
+function toString(rgba: RGBA): string {
+  const { r, g, b, a } = rgba;
+  return `rgba(${r}, ${g}, ${b}, ${a})`;
 }
-
-const rgba = (value: string): ColorObject => {
-  if (value === 'transparent') {
-    return { r: 0, g: 0, b: 0, a: 0 };
-  }
-
-  return toColorObject(ColorLib.xyz(value));
-};
 
 export const ColorInput: React.FC<InputProps> = ({ value, onChange }) => {
   // wrap in div for better a11y
@@ -43,13 +35,9 @@ export const ColorInput: React.FC<InputProps> = ({ value, onChange }) => {
         animation={false}
         appendTo={document.body}
         content={
-          <StyledChromePicker
-            color={rgba(value)}
-            onChange={(result) => {
-              const instance = fromColorObject(result.rgb);
-              const string = instance.hsl().percentString();
-              onChange(string);
-            }}
+          <RgbaColorPicker
+            color={fromString(value)}
+            onChange={(rgba) => onChange(toString(rgba))}
           />
         }
       >
@@ -61,12 +49,6 @@ export const ColorInput: React.FC<InputProps> = ({ value, onChange }) => {
     </div>
   );
 };
-
-const StyledChromePicker = styled(ChromePicker)`
-  & .saturation-black + div {
-    pointer-events: none;
-  }
-`;
 
 const Wrapper = styled.button`
   position: relative;
