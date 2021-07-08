@@ -48,8 +48,8 @@ const getRepo = (name) => ({
 });
 
 const dependsPeer = {
-  react: '^16.11.0',
-  'styled-components': '^5.0.1',
+  react: '^16.14.0',
+  'styled-components': '^5.2.1',
 };
 
 const dependsOnWoly = {

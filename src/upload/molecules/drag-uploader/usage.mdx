@@ -1,10 +1,10 @@
 import {Button} from 'ui'
 import {Playground, StateEvent,FormBlock} from 'lib/playground';
-import {Upload} from './index';
+import {DragUploader} from './index';
 
-# Upload
+# DragUploader
 
-Drag and drop for files.
+Drag and drop for files. Show dialog on drop file or upload area click
 
 ### Example
 
@@ -13,7 +13,7 @@ Drag and drop for files.
     {(files, change) => (
       <div style={{ display: 'flex' }}>
         <div style={{ minWidth: '600px', height: '300px', padding: '10px' }}>
-          <Upload
+          <DragUploader
             content={
               <FormBlock style={{ alignItems: 'center' }}>
                 <div style={{ padding: '10px', textAlign: 'center' }}>
@@ -26,7 +26,6 @@ Drag and drop for files.
                 <Button text="Upload files " priority="primary" />
               </FormBlock>
             }
-            onDrop={change}
           />
         </div>
         <div style={{ padding: '10px' }}>
@@ -48,7 +47,7 @@ To set extensions of files that users can upload, you can pass an 'accept' prope
     {(files, change) => (
       <div style={{ display: 'flex' }}>
         <div style={{ minWidth: '600px', height: '300px', padding: '10px' }}>
-          <Upload
+          <DragUploader
             content="You can upload only png images"
             onDrop={change}
             accept="image/png"
@@ -65,11 +64,11 @@ To set extensions of files that users can upload, you can pass an 'accept' prope
   </StateEvent>
 </Playground>
 
-### Disabled Upload
+### Disabled DragUploader
 
 <Playground>
   <div style={{ minWidth: '600px', height: '300px', padding: '10px' }}>
-    <Upload
+    <DragUploader
       content={<Button text="Disabled button" priority="primary" disabled />}
       disabled
       center
@@ -82,10 +81,10 @@ To set extensions of files that users can upload, you can pass an 'accept' prope
 | Name        | Type                                                                                               | Default       | Description                                                                                                            |
 | ----------- | -------------------------------------------------------------------------------------------------- | ------------- | ---------------------------------------------------------------------------------------------------------------------- |
 | `accept`    | `string ӏ string[]`                                                                                |               | File extensions that are accepted to load                                                                              |
-| `content`   | `React.ReactNode`                                                                                  |               | Pass any content within Upload component.                                                                              |
-| `disabled`  | `boolean`                                                                                          | `false`       | Enable/disable Upload                                                                                                  |
+| `content`   | `React.ReactNode`                                                                                  |               | Pass any content within DragUploader component.                                                                        |
+| `disabled`  | `boolean`                                                                                          | `false`       | Enable/disable DragUploader                                                                                            |
 | `maxFiles`  | `number`                                                                                           | `0`           | Max number of files to load. The default value is 0 which means there is no limitation to how many files are accepted. |
 | `maxSize`   | `number`                                                                                           | `Infinity`    | Max file size (in bytes)                                                                                               |
 | `onDrop`    | `<T extends File>(acceptedFiles: T[], fileRejections: FileRejection[], event: DropEvent) => void;` |               | Callback for when the drop event occurs                                                                                |
-| `priority`  | `string`                                                                                           | `'secondary'` | Priority prop to style UploadArea component                                                                            |
+| `priority`  | `string`                                                                                           | `'secondary'` | Priority prop to style UploaderArea component                                                                          |
 | `validator` | `<T extends File>(file: T) => FileError \| FileError[] \| null;`                                   |               | Fn that validate loaded files                                                                                          |

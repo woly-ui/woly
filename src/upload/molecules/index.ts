@@ -1,2 +1,2 @@
-export { Upload } from './upload';
-export { UploadButton } from './upload-button';
+export { DragUploader } from './drag-uploader';
+export { ButtonUploader } from './button-uploader';

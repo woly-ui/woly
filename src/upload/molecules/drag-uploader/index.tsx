@@ -5,7 +5,7 @@ import { Priority } from 'lib/types';
 
 import { UploadArea } from '../../elements';
 
-interface UploadProps extends DropzoneOptions {
+interface DragUploaderProps extends DropzoneOptions {
   accept?: DropzoneOptions['accept'];
   center?: boolean;
   className: string;
@@ -18,7 +18,7 @@ interface UploadProps extends DropzoneOptions {
   validator?: DropzoneOptions['validator'];
 }
 
-export const UploadBase: React.FC<UploadProps & Priority> = ({
+export const DragUploaderBase: React.FC<DragUploaderProps & Priority> = ({
   accept,
   center = false,
   className,
@@ -47,39 +47,22 @@ export const UploadBase: React.FC<UploadProps & Priority> = ({
 
   return (
     <div
-      data-area
       className={className}
       {...rootProps}
       onFocus={() => setFocus(true)}
       onBlur={() => setFocus(false)}
     >
-      <UploadArea
-        center={center}
-        className={className}
-        content={content}
-        focus={focus}
-        priority={priority}
-      />
+      <UploadArea center={center} content={content} focus={focus} priority={priority} />
       <input data-file {...getInputProps()} />
     </div>
   );
 };
 
-export const Upload = styled(UploadBase)`
-  position: relative;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
+export const DragUploader = styled(DragUploaderBase)`
   width: 100%;
   height: 100%;
 
   outline: none;
-
-  &[data-area] {
-    width: 100%;
-    height: 100%;
-  }
 
   input[data-file] {
     display: none;

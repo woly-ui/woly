@@ -4,7 +4,7 @@ import { Button } from 'ui/atoms';
 import { DropzoneOptions, useDropzone } from 'react-dropzone';
 import { Priority } from 'lib/types';
 
-interface UploadButtonProps {
+interface ButtonUploaderProps {
   accept?: DropzoneOptions['accept'];
   children?: never;
   className?: string;
@@ -16,10 +16,10 @@ interface UploadButtonProps {
   onDrop: never;
   validator?: DropzoneOptions['validator'];
   outlined?: boolean;
-  text: React.ReactNode;
+  text: string;
 }
 
-export const UploadButtonBase: React.FC<UploadButtonProps & Priority> = ({
+export const ButtonUploaderBase: React.FC<ButtonUploaderProps & Priority> = ({
   accept,
   className,
   disabled,
@@ -30,6 +30,7 @@ export const UploadButtonBase: React.FC<UploadButtonProps & Priority> = ({
   outlined,
   text,
   priority = 'secondary',
+  validator,
 }) => {
   const { getRootProps, getInputProps } = useDropzone({
     accept,
@@ -38,6 +39,7 @@ export const UploadButtonBase: React.FC<UploadButtonProps & Priority> = ({
     maxSize,
     noDrag: true,
     onDrop: onChange,
+    validator,
   });
 
   return (
@@ -48,7 +50,7 @@ export const UploadButtonBase: React.FC<UploadButtonProps & Priority> = ({
   );
 };
 
-export const UploadButton = styled(UploadButtonBase)`
+export const ButtonUploader = styled(ButtonUploaderBase)`
   outline: none;
 
   input[data-file] {

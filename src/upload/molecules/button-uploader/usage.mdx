@@ -1,7 +1,7 @@
 import {Button} from 'ui'
 import {Playground, StateEvent,FormBlock} from 'lib/playground';
 import {IconPlus} from 'static/icons';
-import {UploadButton} from './index';
+import {ButtonUploader} from './index';
 
 # Upload Button
 
@@ -14,7 +14,12 @@ To set file types, you should set the 'accept' property.
   <StateEvent initial={[]} change={(files) => files}>
     {(files, change) => (
       <div style={{ display: 'flex' }}>
-        <UploadButton text="Upload files" icon={<IconPlus />} variant="primary" onChange={change} />
+        <ButtonUploader
+          text="Upload files"
+          icon={<IconPlus />}
+          priority="primary"
+          onChange={change}
+        />
         <div style={{ padding: '0 10px' }}>
           {files.map((file) => (
             <div key={file.name}>{file.name}</div>
@@ -30,11 +35,11 @@ To set file types, you should set the 'accept' property.
 <Playground>
   <StateEvent initial={[]} change={(files) => files}>
     {(files, change) => (
-      <UploadButton
+      <ButtonUploader
         text="You can't upload files"
         icon={<IconPlus />}
         onChange={change}
-        variant="primary"
+        priority="primary"
         disabled
       />
     )}
@@ -51,7 +56,7 @@ To set file types, you should set the 'accept' property.
 | `maxFiles`  | `number`                                                         | `0`           | Max number of files to load. The default value is 0 which means there is no limitation to how many files are accepted. |
 | `maxSize`   | `number`                                                         | `Infinity`    | Max file size (in bytes)                                                                                               |
 | `onChange`  | `fn`                                                             |               | Callback for change event                                                                                              |
-| `outlined`  | `fn`                                                             |               | Set button to be outlined                                                                                              |
-| `priority`  | `string`                                                         | `'secondary'` | Priority prop to style UploadArea component                                                                            |
+| `outlined`  | `boolean`                                                        | `false`       | Set button to be outlined                                                                                              |
+| `priority`  | `string`                                                         | `'secondary'` | Priority prop to style upload area                                                                                     |
 | `text`      | `string`                                                         |               | Button text                                                                                                            |
 | `validator` | `<T extends File>(file: T) => FileError \| FileError[] \| null;` |               | Fn that validate loaded files                                                                                          |
