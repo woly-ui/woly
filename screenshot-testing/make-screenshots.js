@@ -43,8 +43,6 @@ async function makeScreenshots({
     config: { selector, states },
   } = configMeta;
 
-  reporter('\ncurrent component', name);
-
   const page = await context.newPage();
 
   await page.goto(`${rootUrl}/${url}`, { timeout: 3000 });
@@ -60,8 +58,6 @@ async function makeScreenshots({
     `,
   });
 
-  reporter(`iterating over ${name} variant groups...`);
-
   const variantGroups = await page.$$(`${mapSelector}__group`); /** 2 */
 
   const groupsMeta = []; /** 7 */
@@ -73,11 +69,7 @@ async function makeScreenshots({
 
     const variants = await variantGroup.$$(`${mapSelector}__variant`); /** 3 */
 
-    reporter(
-      `making screenshots for ${name}, group ${groupName}, ${
-        variants.length * states.length
-      } screenshots in total...`,
-    );
+    reporter(`capturing ${name}-${groupName}, ${variants.length * states.length} in total`);
 
     const makeVariantScreenshot = async (variant) => {
       const el = await variant.$(selector);

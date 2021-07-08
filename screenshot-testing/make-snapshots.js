@@ -1,19 +1,14 @@
 const utils = require('@percy/sdk-utils');
-const express = require('express');
 
-const app = express();
-
-app.set('view engine', 'pug');
-app.set('views', __dirname);
-app.use('/screenshots', express.static(`${__dirname}/screenshots`));
-
-const port = 3000;
-
-async function makeSnapshots({ context, groupsMeta, mapSelector, reporter, wrapperSize }) {
-  const screenshotServer = app.listen(port, () => {
-    reporter(`booted screenshot server at http://localhost:${port}`);
-  });
-
+async function makeSnapshots({
+  app,
+  context,
+  groupsMeta,
+  mapSelector,
+  port,
+  reporter,
+  wrapperSize,
+}) {
   const makeGroupSnapshot = async ({ name, groupName, stats, states }) => {
     const page = await context.newPage();
 
@@ -33,8 +28,6 @@ async function makeSnapshots({ context, groupsMeta, mapSelector, reporter, wrapp
     if (process.env.PERCY_TOKEN) {
       await sendPercy({ name: variantGroup, page, width: states * wrapperSize.width });
     } else {
-      reporter(`making debug screenshot for ${name}, group ${groupName}`);
-
       const stateMap = await page.$(mapSelector);
       await stateMap.screenshot({
         path: `${__dirname}/screenshots/${name}/${groupName}.png`,
@@ -44,10 +37,6 @@ async function makeSnapshots({ context, groupsMeta, mapSelector, reporter, wrapp
   };
 
   await Promise.all(groupsMeta.map(makeGroupSnapshot));
-
-  reporter('closed screenshot server');
-
-  screenshotServer.close();
 }
 
 async function sendPercy({ name, page, width }) {

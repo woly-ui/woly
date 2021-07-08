@@ -92,10 +92,10 @@ A `actions` function gets the following parameters:
 
 - `el` – the actual component (see [methods](https://playwright.dev/docs/api/class-elementhandle))
 - `elWrapper` – a component's wrapper. The test-runner makes a screenshot of this element. Has the same methods as `el`
-- `disabled` – if component is disabled, some `playwright` methods can't be triggered on component and it will throw an error (see [actionability checks](https://playwright.dev/docs/actionability)). Check for this boolean before invocing methods like `fill` on input elements
+- `disabled` – if a component is disabled, some `playwright` methods can't be triggered on component and it will throw an error (see [actionability checks](https://playwright.dev/docs/actionability)). Check for this boolean before invocing methods like `fill` on input elements
 - `page` – a test page (see [methods](https://playwright.dev/docs/api/class-page/))
 
-<span style="color:#dc3545">**Attention**</span>: When using a function for describing a state, be aware that test-runner unable to reset the state after capturing it, state will be just passed unchanged to the next one. If you don't want this behavior, you can return a `reset` function from `state` that will be called before moving to the next state.
+<span style="color:#dc3545">**Attention**</span>: When using a function for describing a state, be aware that test-runner unable to reset the state after capturing it, a state will be just passed unchanged to the next one. If you don't want this behavior, you can return a `reset` function from `state` that will be called before moving to the next state.
 
 For example:
 
@@ -121,7 +121,7 @@ For example:
 
 The example is based on the `Button` component.
 
-```ts
+```tsx
 import React from 'react';
 import { IconPlus } from 'static/icons';
 import { Sizes, StateMap, Priorities } from 'lib/state-map';
@@ -170,12 +170,12 @@ export const ButtonStateMap = () => {
 
 ### Local testing
 
-Local testing can be run by the command `yarn test:screenshot`
+For local testing, run the command `yarn test:screenshot`
 
 Env variables:
 
-- `DEBUG=screenshot:*` - shows debug lines
+- `DEBUG=screenshot*` - shows debug lines
 - `INCLUDE=first,second` - include only components `first` and `second` to testing. Has higher priority than `EXCLUDE`.
 - `EXCLUDE=first,second` - exclude components `first` and `second` from testing
 
-If you want to manually send snapshots to `percy`, pass `PERCY_TOKEN` env key with a token as the value (grab it in the `persy.io`'s `Project settings` section) and run test by the command `yarn percy exec`, e.g. `PERCY_TOKEN=***** yarn percy exec yarn test:screenshot`.
+If you want to manually send snapshots to `percy`, you must pass `PERCY_TOKEN` env variable with a token as the value (grab it in the `persy.io`'s `Project settings` section) and run the test by the command `yarn percy:ci`, e.g. `PERCY_TOKEN=***** yarn percy:ci`.
