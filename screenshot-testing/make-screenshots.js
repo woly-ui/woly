@@ -79,12 +79,12 @@ async function makeScreenshots({
       } screenshots in total...`,
     );
 
-    for await (const variant of variants) {
+    const makeVariantScreenshot = async (variant) => {
       const el = await variant.$(selector);
 
       if (!el) {
         reporter(`Component el not found, check if ${name}'s selector is correct`);
-        continue;
+        return;
       }
 
       const props = await variant.evaluate((node) => node.dataset); /** 4 */
@@ -141,7 +141,9 @@ async function makeScreenshots({
           variation,
         });
       }
-    }
+    };
+
+    await Promise.all(variants.map(makeVariantScreenshot));
 
     if (stats.length > 0) {
       groupsMeta.push({

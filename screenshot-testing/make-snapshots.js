@@ -14,7 +14,7 @@ async function makeSnapshots({ context, groupsMeta, mapSelector, reporter, wrapp
     reporter(`booted screenshot server at http://localhost:${port}`);
   });
 
-  for await (const { name, groupName, stats, states } of groupsMeta) {
+  const makeGroupSnapshot = async ({ name, groupName, stats, states }) => {
     const page = await context.newPage();
 
     const variantGroup = `${name}-${groupName}`;
@@ -41,7 +41,9 @@ async function makeSnapshots({ context, groupsMeta, mapSelector, reporter, wrapp
       });
       await page.close();
     }
-  }
+  };
+
+  await Promise.all(groupsMeta.map(makeGroupSnapshot));
 
   reporter('closed screenshot server');
 
