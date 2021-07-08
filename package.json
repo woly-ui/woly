@@ -13,6 +13,7 @@
     "lint:style": "stylelint './src/**/*.{js,css,ts,tsx}'",
     "start": "gatsby clean && gatsby develop",
     "test:screenshot": "node screenshot-testing",
+    "percy:ci": "start-server-and-test 'yarn docs:build && gatsby serve -p 8000' 8000 'yarn percy exec yarn test:screenshot'",
     "test": "echo 'No tests provided'"
   },
   "devDependencies": {
