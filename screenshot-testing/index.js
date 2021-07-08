@@ -41,6 +41,8 @@ const startScreenshotTesting = async ({ rootUrl, mapSelector }) => {
     process.exit();
   }
 
+  reporter('got configs for –', configsMeta.map(({ name }) => name).join(', '));
+
   reporter('iterating over configs...');
 
   for await (const configMeta of configsMeta) {

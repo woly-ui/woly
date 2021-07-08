@@ -18,9 +18,15 @@ async function getConfigs({ browser, configsUrl, reporter }) {
     ? process.env.INCLUDE.split(',').map((component) => component.trim())
     : [];
 
-  const notDismissed = (name) =>
-    (includedComponents.length > 0 && includedComponents.includes(name)) ||
-    (excludedComponents.length > 0 && !excludedComponents.includes(name));
+  const notDismissed = (name) => {
+    if (!process.env.INCLUDE && !process.env.EXCLUDE) {
+      return true;
+    }
+    return (
+      (includedComponents.length > 0 && includedComponents.includes(name)) ||
+      (excludedComponents.length > 0 && !excludedComponents.includes(name))
+    );
+  };
 
   const page = await browser.newPage();
   let response;
