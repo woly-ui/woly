@@ -16,12 +16,9 @@
 
 ### Icon
 
-Since the `ButtonIcon` has no label and therefore compact, it is commonly used in an interface where extra space matters. Its icon should be easily recognizable. You may pair `ButtonIcon` with a component `Tooltip` containing a hint about the `ButtonIcon` underlying action.
+Since the `ButtonIcon` has no label and therefore compact, it is commonly used in an interface where extra space matters. Icon button has no text that tells the user the purpose of the button, thats why its important that icon should be easily recognizable. You may pair `ButtonIcon` with a component `Tooltip` containing a hint about the `ButtonIcon` underlying action.
 
-Recommendations for a hint text:
-
-- make it short (2-3 words);
-- use “action” verbs first ( “save”, “send”, etc.);
+### Weight and priority
 
 ## Placement
 
@@ -35,6 +32,8 @@ If `ButtonIcon`s share related actions, they’re good to be in a group. For exa
 
 ## Behaviors
 
+### States
+
 ### Interactions
 
 _Mouse_
@@ -43,7 +42,7 @@ Users can trigger a button by clicking anywhere within the button container.
 
 _Keyboard_
 
-Users can trigger a button by pressing `Enter` or `Space`, while it has focus. If the `ButtonIcon` is located in the toolbar for quick access, you should provide a keyboard shortcut for even easier access.
+Users can trigger a button by pressing `Enter` or `Space`, while it has focus and is not disabled. If the `ButtonIcon` is located in the toolbar, you should provide a keyboard shortcut for easier access.
 
 ## Accessibility
 
