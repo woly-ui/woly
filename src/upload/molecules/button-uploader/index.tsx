@@ -12,6 +12,7 @@ interface ButtonUploaderProps {
   icon?: React.ReactNode;
   maxFiles?: DropzoneOptions['maxFiles'];
   maxSize?: DropzoneOptions['maxFiles'];
+  multiple?: DropzoneOptions['multiple'];
   onChange: DropzoneOptions['onDrop'];
   onDrop: never;
   validator?: DropzoneOptions['validator'];
@@ -26,6 +27,7 @@ export const ButtonUploaderBase: React.FC<ButtonUploaderProps & Priority> = ({
   icon,
   maxFiles,
   maxSize,
+  multiple = false,
   onChange,
   outlined,
   text,
@@ -37,6 +39,7 @@ export const ButtonUploaderBase: React.FC<ButtonUploaderProps & Priority> = ({
     disabled,
     maxFiles,
     maxSize,
+    multiple,
     noDrag: true,
     onDrop: onChange,
     validator,

@@ -4,7 +4,9 @@ import {DragUploader} from './index';
 
 # DragUploader
 
-Drag and drop for files. Show dialog on drop file or upload area click
+Drag and drop for files. To upload files, click or drop file on uploading area, choose files in an opened dialog window.
+To set file types, you should set the 'accept' property. You can pass any content to show over uploading area.
+DragUploader pass priority to style uploading area.
 
 ### Example
 
@@ -85,6 +87,7 @@ To set extensions of files that users can upload, you can pass an 'accept' prope
 | `disabled`  | `boolean`                                                                                          | `false`       | Enable/disable DragUploader                                                                                            |
 | `maxFiles`  | `number`                                                                                           | `0`           | Max number of files to load. The default value is 0 which means there is no limitation to how many files are accepted. |
 | `maxSize`   | `number`                                                                                           | `Infinity`    | Max file size (in bytes)                                                                                               |
+| `multiple`  | `boolean`                                                                                          | `false`       | allow add multiple files                                                                                               |
 | `onDrop`    | `<T extends File>(acceptedFiles: T[], fileRejections: FileRejection[], event: DropEvent) => void;` |               | Callback for when the drop event occurs                                                                                |
 | `priority`  | `string`                                                                                           | `'secondary'` | Priority prop to style UploaderArea component                                                                          |
 | `validator` | `<T extends File>(file: T) => FileError \| FileError[] \| null;`                                   |               | Fn that validate loaded files                                                                                          |
