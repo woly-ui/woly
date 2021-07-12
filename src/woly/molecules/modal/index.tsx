@@ -4,6 +4,7 @@ import { Backdrop, ButtonIcon, Heading, Surface } from 'ui/atoms';
 import { IconClose } from 'static/icons';
 import { Priority } from 'lib/types';
 import { box } from 'ui/elements/box';
+import { useScrollLock } from 'lib/use-scroll-lock';
 
 interface ModalProps {
   className?: string;
@@ -20,6 +21,19 @@ const ModalBase: React.FC<ModalProps & Priority> = ({
   title,
   visible = false,
 }) => {
+  const modalRef = React.useRef<HTMLDivElement | null>(null);
+
+  const { disableScroll, enableScroll } = useScrollLock();
+
+  React.useEffect(() => {
+    if (visible && modalRef.current) {
+      disableScroll(modalRef.current);
+    }
+    if (!visible && modalRef.current) {
+      enableScroll();
+    }
+  }, [visible]);
+
   const onKeyDown = React.useCallback(
     (event) => {
       if (visible && onClose && event.key === 'Escape') {
@@ -37,16 +51,27 @@ const ModalBase: React.FC<ModalProps & Priority> = ({
   }, [onKeyDown]);
 
   return (
-    <div className={className} data-priority={priority} data-visible={visible} tabIndex={-1}>
+    <div
+      className={className}
+      data-priority={priority}
+      data-visible={visible}
+      tabIndex={-1}
+      ref={modalRef}
+    >
       <Backdrop onClick={onClose} />
       <Shape data-priority={priority}>
         <div data-header>
-          <Heading data-title size={2}>
+          <Heading data-title size={3}>
             {title}
           </Heading>
           {onClose && (
             <div data-button="modal-close">
-              <ButtonIcon onClick={onClose} icon={<IconClose />} priority={priority} />
+              <ButtonIcon
+                onClick={onClose}
+                icon={<IconClose />}
+                priority="default"
+                weight="transparent"
+              />
             </div>
           )}
         </div>
@@ -65,7 +90,7 @@ const Shape = styled(Surface)`
 
   box-sizing: border-box;
   min-width: 20%;
-  max-width: 70%;
+  max-width: 60%;
   max-height: 100%;
 
   padding: var(--local-vertical) var(--local-horizontal);
@@ -74,6 +99,7 @@ const Shape = styled(Surface)`
 export const Modal = styled(ModalBase)`
   ${box}
 
+  /* TODO: rewrite formulas */
   --local-gap: calc(3px * var(--woly-component-level) * var(--woly-main-level));
   --local-vertical: calc(var(--woly-const-m) * (var(--woly-component-level) + 1));
 
@@ -100,16 +126,17 @@ export const Modal = styled(ModalBase)`
 
   [data-button='modal-close'] {
     --woly-component-level: 1;
-    margin-left: auto;
+    flex-shrink: 0;
   }
 
   [data-header] {
     display: flex;
+    align-items: center;
     width: 100%;
   }
 
   [data-title] {
-    max-width: calc(36px * var(--woly-component-level) * var(--woly-main-level));
+    flex: 1;
 
     & + [data-button='modal-close'] {
       margin-left: var(--local-gap);
@@ -118,7 +145,6 @@ export const Modal = styled(ModalBase)`
 
   [data-content] {
     padding-top: var(--local-gap);
-    overflow-x: hidden;
-    overflow-y: auto;
+    overflow: auto;
   }
 ` as StyledComponent<'div', Record<string, unknown>, ModalProps & Priority>;
