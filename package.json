@@ -43,6 +43,7 @@
     "@rollup/plugin-url": "^6.0.0",
     "@types/node": "^14.14.25",
     "@types/react": "^17.0.1",
+    "@types/react-dropzone": "^5.1.0",
     "@types/styled-components": "^5.1.7",
     "@types/webpack": "^4.41.26",
     "@typescript-eslint/eslint-plugin": "^4.15.0",
@@ -96,6 +97,7 @@
   "dependencies": {
     "react": "16.14.0",
     "react-dom": "16.14.0",
+    "react-dropzone": "^11.3.4",
     "styled-components": "^5.2.1"
   },
   "config": {
