@@ -3,6 +3,7 @@ import styled, { StyledComponent } from 'styled-components';
 import { Backdrop, ButtonIcon, Heading, Surface } from 'ui/atoms';
 import { IconClose } from 'static/icons';
 import { Priority } from 'lib/types';
+import { box } from 'ui/elements/box';
 
 interface ModalProps {
   className?: string;
@@ -45,7 +46,7 @@ const ModalBase: React.FC<ModalProps & Priority> = ({
           </Heading>
           {onClose && (
             <div data-button="modal-close">
-              <ButtonIcon onClick={onClose} icon={<IconClose />} />
+              <ButtonIcon onClick={onClose} icon={<IconClose />} priority={priority} />
             </div>
           )}
         </div>
@@ -71,8 +72,9 @@ const Shape = styled(Surface)`
 `;
 
 export const Modal = styled(ModalBase)`
+  ${box}
+
   --local-gap: calc(3px * var(--woly-component-level) * var(--woly-main-level));
-  --local-horizontal: calc(var(--local-gap) - 1px * var(--woly-main-level));
   --local-vertical: calc(var(--woly-const-m) * (var(--woly-component-level) + 1));
 
   position: fixed;
@@ -80,7 +82,6 @@ export const Modal = styled(ModalBase)`
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: 999;
 
   display: flex;
   align-items: center;
@@ -91,8 +92,6 @@ export const Modal = styled(ModalBase)`
 
   visibility: hidden;
   opacity: 0;
-
-  -webkit-overflow-scrolling: touch;
 
   &[data-visible='true'] {
     visibility: visible;
@@ -107,7 +106,6 @@ export const Modal = styled(ModalBase)`
   [data-header] {
     display: flex;
     width: 100%;
-    padding-right: calc(var(--local-compensate) * 2 + var(--woly-line-height));
   }
 
   [data-title] {
