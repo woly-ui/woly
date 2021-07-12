@@ -3,7 +3,6 @@ import styled, { StyledComponent } from 'styled-components';
 import { Backdrop, ButtonIcon, Heading, Surface } from 'ui/atoms';
 import { IconClose } from 'static/icons';
 import { Priority } from 'lib/types';
-import { block } from 'lib/block';
 
 interface ModalProps {
   className?: string;
@@ -45,9 +44,9 @@ const ModalBase: React.FC<ModalProps & Priority> = ({
             {title}
           </Heading>
           {onClose && (
-            <block.XS data-button="modal-close">
+            <div data-button="modal-close">
               <ButtonIcon onClick={onClose} icon={<IconClose />} />
-            </block.XS>
+            </div>
           )}
         </div>
         <div data-content>{children}</div>
@@ -101,6 +100,7 @@ export const Modal = styled(ModalBase)`
   }
 
   [data-button='modal-close'] {
+    --woly-component-level: 1;
     margin-left: auto;
   }
 
@@ -112,7 +112,10 @@ export const Modal = styled(ModalBase)`
 
   [data-title] {
     max-width: calc(36px * var(--woly-component-level) * var(--woly-main-level));
-    padding-right: ${(props) => (props.onClose ? ' var(--local-gap)' : '0')};
+
+    & + [data-button='modal-close'] {
+      margin-left: var(--local-gap);
+    }
   }
 
   [data-content] {
