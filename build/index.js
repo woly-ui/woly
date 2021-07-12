@@ -61,7 +61,7 @@ function run({ tasks, name, config }) {
     })
     .catch((error) => {
       console.log('FAIL', name, 'task failed');
-      console.error(error);
+      throw error;
     });
   /* eslint-enable no-console */
 }

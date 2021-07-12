@@ -1,22 +1,22 @@
 '@atoms':
-  - src/ui/atoms/**/*
+  - src/woly/atoms/**/*
   - src/atoms/**/*
 
 '@molecules':
-  - src/ui/molecules/**/*
+  - src/woly/molecules/**/*
   - src/molecules/**/*
 
 '@organisms':
-  - src/ui/organisms/**/*
+  - src/woly/organisms/**/*
   - src/organisms/**/*
- 
+
 '@templates':
-  - src/ui/templates/**/*
+  - src/woly/templates/**/*
   - src/templates/**/*
-  
+
 packages:
   - packages/**/*
-  
+
 build:
   - build/**/*
 

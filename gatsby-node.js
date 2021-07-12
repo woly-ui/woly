@@ -6,7 +6,7 @@ exports.onCreateWebpackConfig = ({ actions }) => {
       alias: {
         lib: path.resolve(__dirname, './src/lib/'),
         static: path.resolve(__dirname, './src/static/'),
-        ui: path.resolve(__dirname, './src/ui/'),
+        ui: path.resolve(__dirname, './src/woly/'),
       },
     },
   });

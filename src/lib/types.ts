@@ -1,10 +1,10 @@
 export type IfEmpty<T> = keyof T extends never
   ? {
-      variant?: string;
+      priority?: string;
     }
   : T;
 
-export type Variant = IfEmpty<DefaultVariant>;
+export type Priority = IfEmpty<DefaultPriority>;
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface DefaultVariant {}
+export interface DefaultPriority {}
