@@ -64,6 +64,10 @@ export const InputContainer = styled(InputContainerBase)`
     }
   }
 
+  [data-icon='right'] {
+    --woly-component-level: calc(var(--local-size) - 2);
+  }
+
   &:hover {
     --local-border-color: var(--woly-shape-hover);
     --local-icon-fill: var(--woly-canvas-text-default);
