@@ -27,6 +27,7 @@ const FieldBase: React.FC<FieldProps & Priority> = ({
 export const Field = styled(FieldBase)`
   --local-gap: calc(1px * var(--woly-component-level) * var(--woly-main-level));
 
+  display: block;
   box-sizing: border-box;
   width: 100%;
 
