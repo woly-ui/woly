@@ -5,7 +5,6 @@ import React, { useRef } from 'react';
 import { ConfiguratorName, Configurators } from './configurators';
 import { Global } from './global';
 import { block } from './block';
-import { useSyncHeight } from './hooks/use-sync-height';
 import { useUniqueID } from './hooks/use-unique-id';
 
 export { block };
@@ -26,7 +25,7 @@ export const Playground: React.FC<Props> = ({
 
   const configuratorsRef = useRef<HTMLDivElement | null>(null);
   const frameRef = useRef<HTMLDivElement | null>(null);
-  const { detectorJSX } = useSyncHeight({ of: frameRef, with: configuratorsRef });
+  // const { detectorJSX } = useSyncHeight({ of: frameRef, with: configuratorsRef });
 
   const Wrapper = block[size];
 
@@ -40,7 +39,7 @@ export const Playground: React.FC<Props> = ({
         </Global>
       </Frame>
       <Configurators ref={configuratorsRef} id={scopeId} for={configurators} />
-      {detectorJSX}
+      {/*{detectorJSX}*/}
     </PlaygroundWrapper>
   );
 };
@@ -81,7 +80,7 @@ export const StateEvent = ({ initial, change, children }: StateType) => {
 
 const PlaygroundWrapper = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 
   & + .prism-code {
     margin-top: 0;
@@ -99,6 +98,7 @@ const Frame = styled.div`
   overflow: auto;
 
   border: 2px solid rgb(246, 248, 250);
+  border-bottom-width: 0;
   border-radius: 4px 4px 0 0;
 
   resize: both;

@@ -57,7 +57,7 @@ const Wrapper = styled.button`
   height: 24px;
   overflow: hidden;
 
-  border: 1px solid rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(0, 0, 0, 0.35);
   border-radius: 4px;
   outline: none;
   cursor: pointer;

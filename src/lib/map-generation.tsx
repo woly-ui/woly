@@ -1,11 +1,10 @@
 /* eslint-disable react/no-array-index-key */
-import React, { useRef } from 'react';
+import React from 'react';
 import styled, { StyledComponent } from 'styled-components';
 import { Global } from 'lib/global';
 import { Grid, Heading } from 'ui';
 
 import { ConfiguratorName, Configurators } from './configurators';
-import { useSyncHeight } from './hooks/use-sync-height';
 import { useUniqueID } from './hooks/use-unique-id';
 
 export type SizeProps = 'N' | 'XS' | 'S' | 'M' | 'L' | 'XL' | 'H';
@@ -37,10 +36,6 @@ export const GenerateMap: React.FC<
 > = ({ configurators = ['color'], sizes, variants, otherProps, component }) => {
   const scopeId = useUniqueID();
 
-  const contentRef = useRef<HTMLDivElement | null>(null);
-  const sideBarRef = useRef<HTMLDivElement | null>(null);
-  const { detectorJSX } = useSyncHeight({ of: contentRef, with: sideBarRef });
-
   const Component = component;
   const variantsMap = generateMap({ y: sizes, x: variants, otherProps });
 
@@ -49,7 +44,7 @@ export const GenerateMap: React.FC<
   return (
     <Main data-scope={scopeId}>
       <PlaygroundLayout>
-        <PlaygroundContent ref={contentRef}>
+        <PlaygroundContent>
           {variantsMap.map((variant, i) => (
             <VariantBlock key={i}>
               <Header>{variant.name}</Header>
@@ -75,29 +70,13 @@ export const GenerateMap: React.FC<
             </VariantBlock>
           ))}
         </PlaygroundContent>
-        <PlaygroundSideBar ref={sideBarRef}>
+        <PlaygroundSideBar>
           <Configurators id={scopeId} for={configurators} />
         </PlaygroundSideBar>
-        {detectorJSX}
       </PlaygroundLayout>
     </Main>
   );
 };
-
-const PlaygroundLayout = styled.div`
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-`;
-
-const PlaygroundContent = styled.div`
-  display: flex;
-  flex-direction: row;
-  flex-grow: 1;
-  overflow-y: auto;
-`;
-
-const PlaygroundSideBar = styled.div``;
 
 /** TODO */
 export const generateMap = ({ x, y, otherProps }: any) => {
@@ -146,6 +125,21 @@ const deepCopy = (obj: Array<Record<string, unknown>>) => JSON.parse(JSON.string
 export const headCreate = (props: Record<string, unknown>) =>
   Object.keys(props).reduce((acc, key) => acc + (props[key] ? key + '\n' : ''), '');
 
+const PlaygroundLayout = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+`;
+
+const PlaygroundContent = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-grow: 1;
+  overflow-y: auto;
+`;
+
+const PlaygroundSideBar = styled.div``;
+
 const VariantBlock = styled.div`
   display: flex;
   flex-direction: column;
@@ -188,6 +182,13 @@ export const Main = styled(Global)`
   overflow: scroll;
 
   white-space: nowrap;
+
+  & + .prism-code {
+    margin-top: 0;
+
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
 `;
 
 export const SizeBlock = styled.div.attrs(map)`

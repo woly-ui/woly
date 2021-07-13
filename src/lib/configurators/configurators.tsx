@@ -38,8 +38,8 @@ export const Configurators = forwardRef<HTMLDivElement, Props>(
     return (
       <LocalConfiguratorsStateProvider value={state}>
         <Wrapper ref={forwardedRef} data-is-open={Boolean(active)}>
-          <Tab />
           <Menu show={show} hide={hide} />
+          <Tab />
           {stylesheets.render()}
         </Wrapper>
       </LocalConfiguratorsStateProvider>
@@ -113,14 +113,10 @@ const Menu: React.FC<{
 
 const Wrapper = styled.div`
   display: flex;
-  flex-direction: row;
-  flex-grow: 1;
-  justify-content: flex-end;
-  height: 100%;
+  flex-direction: column;
+  width: 100%;
 
-  &[data-is-open='true'] {
-    min-height: 300px;
-  }
+  resize: vertical;
 `;
 
 const ResetButton = styled.button`
@@ -158,13 +154,18 @@ const Header = styled.div`
 const TabWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  box-sizing: border-box;
   width: 100%;
   min-width: 240px;
   height: 100%;
 
-  color: white;
+  color: black;
 
-  background-color: black;
+  background-color: white;
+
+  border: 2px solid rgb(246, 248, 250);
+  border-top-width: 0;
+  border-bottom-width: 0;
 `;
 
 const TabTitle = styled.h3`
@@ -182,18 +183,23 @@ const TabContent = styled.div`
 
 const MenuWrapper = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
 
-  color: white;
+  width: 100%;
 
-  background-color: black;
+  color: black;
+
+  background-color: #dedede;
 `;
 
 const MenuItemWrapper = styled.div`
   padding: 8px;
 
-  color: white;
-  font-size: 20px;
+  font-size: 0;
 
   cursor: pointer;
+
+  & svg {
+    font-size: 20px;
+  }
 `;
