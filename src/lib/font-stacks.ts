@@ -13,7 +13,7 @@ export const systemUi = css`
       /* Windows 8.1+ */
       local("Segoe UI Emoji"),
       /* Android */
-      local("Noto Color Emoji")
+      local("Noto Color Emoji"),
       local("Android Emoji"),
       /* Linux */
       local("Emoji One Color"),
