@@ -5,7 +5,7 @@ const {
   massCopy,
   // publishScript,
 } = require('./tasks');
-const { buildWoly, buildCalendar } = require('./builder');
+const { buildWoly, buildCalendar, buildUpload } = require('./builder');
 
 const woly = [
   generatePackageJson('woly'),
@@ -23,6 +23,15 @@ const calendar = [
   massCopy('packages/calendar', 'dist/calendar', ['package.json']),
   buildCalendar,
   // publishScript('calendar', '@woly/calendar'),
+];
+
+const upload = [
+  generatePackageJson('upload'),
+  copyLicense('upload'),
+  massCopy('packages/upload', 'dist/upload', ['README.md']),
+  massCopy('packages/upload', 'dist/upload', ['package.json']),
+  buildUpload,
+  // publishScript('upload', '@woly/upload'),
 ];
 
 main();
@@ -45,6 +54,7 @@ function main() {
   Promise.all([
     run({ tasks: woly, name: 'woly', config }),
     run({ tasks: calendar, name: 'calendar', config }),
+    run({ tasks: upload, name: 'upload', config }),
   ]);
 }
 

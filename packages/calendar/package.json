@@ -34,6 +34,11 @@
     "styled-components": "^5.0.1",
     "woly": "^0.9.0"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/woly-ui/woly",
+    "directory": "packages/calendar"
+  },
   "scripts": {},
   "author": {
     "name": "Sergey Sova",
@@ -45,11 +50,6 @@
   },
   "sideEffects": false,
   "contributors": [],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/woly-ui/woly",
-    "directory": "packages/calendar"
-  },
   "homepage": "https://github.com/woly-ui/woly",
   "license": "MIT",
   "bugs": {
