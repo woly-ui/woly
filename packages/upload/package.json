@@ -1,18 +1,17 @@
 {
-  "name": "woly",
-  "version": "0.9.0",
-  "description": "Exhaustive component library for React",
-  "main": "woly.js",
-  "types": "woly.d.ts",
-  "typings": "woly.d.ts",
+  "name": "@woly/upload",
+  "description": "Upload components for Woly React library",
+  "main": "upload.js",
+  "types": "upload.d.ts",
+  "typings": "upload.d.ts",
   "files": [
     "README.md",
     "LICENSE",
-    "woly.js",
-    "woly.js.map",
-    "woly.mjs",
-    "woly.mjs.map",
-    "woly.d.ts"
+    "upload.js",
+    "upload.js.map",
+    "upload.mjs",
+    "upload.mjs.map",
+    "upload.d.ts"
   ],
   "keywords": [
     "component",
@@ -23,17 +22,19 @@
     "react",
     "system",
     "ui",
-    "woly"
+    "woly",
+    "upload"
   ],
   "dependencies": {},
   "peerDependencies": {
     "react": "^16.11.0",
-    "styled-components": "^5.0.1"
+    "styled-components": "^5.0.1",
+    "woly": "^0.9.0"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/woly-ui/woly",
-    "directory": "packages/woly"
+    "directory": "packages/upload"
   },
   "scripts": {},
   "author": {
