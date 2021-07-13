@@ -98,7 +98,15 @@ function getPlugins(name, { isEsm = false } = {}) {
       },
     }),
     typescript: typescript({ tsconfig: 'tsconfig.json' }),
-    reactSvg: reactSvg(),
+    reactSvg: reactSvg({
+      svgo: {
+        plugins: [
+          {
+            removeViewBox: false,
+          },
+        ],
+      },
+    }),
   };
 }
 
