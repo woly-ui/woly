@@ -1,0 +1,195 @@
+import {InputPassword} from './index';
+import {block, Playground, State} from 'lib/playground';
+
+`InputPassword` provide a way for the user to securely enter a password
+The component includes a button-icon that toggle to hide and show the
+password as well as a meter to show the current strength of the password.
+
+InputPassword can be used in an authorization form or to confirm user action.
+
+### Example
+
+<Playground>
+  <State initial={false} change={(i) => !i}>
+    {(value, change) => (
+      <InputPassword
+        onClick={change}
+        name="name"
+        placeholder="Enter password"
+        onChange={(event) => console.info('On input change')}
+        priority="primary"
+      />
+    )}
+  </State>
+</Playground>
+
+### Disabled
+
+Disabled text fields are uneditable. They have less opacity so that they appear less tappable.
+
+<Playground>
+  <InputPassword
+    disabled
+    onClick={(event) => console.info('OnClick')}
+    priority="primary"
+    name="name"
+    placeholder="Enter password"
+    priority="primary"
+  />
+</Playground>
+
+### Priorities
+
+Primary and danger priorities are should be used to focus user attention.
+
+<Playground direction="vertical">
+  <State initial={false} change={(i) => !i}>
+    {(value, change) => (
+      <InputPassword
+        onClick={change}
+        name="name"
+        placeholder="Enter password"
+        onChange={(event) => console.info('On input change')}
+        priority="primary"
+      />
+    )}
+  </State>
+  <State initial={false} change={(i) => !i}>
+    {(value, change) => (
+      <InputPassword
+        onClick={change}
+        name="name"
+        placeholder="Enter password"
+        onChange={(event) => console.info('On input change')}
+        priority="danger"
+      />
+    )}
+  </State>
+</Playground>
+
+Secondary priority should be used as a default priority.
+
+<Playground direction="vertical">
+  <State initial={false} change={(i) => !i}>
+    {(value, change) => (
+      <InputPassword
+        onClick={change}
+        name="name"
+        placeholder="Enter password"
+        onChange={(event) => console.info('On input change')}
+        priority="secondary"
+      />
+    )}
+  </State>
+</Playground>
+
+### Sizes
+
+Size controlled by the `component-level` block property not from the props.
+
+<Playground direction="vertical">
+  <block.S>
+    <State initial={false} change={(i) => !i}>
+      {(value, change) => (
+        <InputPassword
+          onClick={change}
+          priority="primary"
+          name="name"
+          placeholder="Enter password"
+          onChange={(event) => console.info('On input change')}
+          priority="primary"
+        />
+      )}
+    </State>
+  </block.S>
+  <block.M>
+    <State initial={false} change={(i) => !i}>
+      {(value, change) => (
+        <InputPassword
+          onClick={change}
+          priority="primary"
+          name="name"
+          placeholder="Enter password"
+          onChange={(event) => console.info('On input change')}
+          priority="primary"
+        />
+      )}
+    </State>
+  </block.M>
+  <block.L>
+    <State initial={false} change={(i) => !i}>
+      {(value, change) => (
+        <InputPassword
+          onClick={change}
+          priority="primary"
+          name="name"
+          placeholder="Enter password"
+          onChange={(event) => console.info('On input change')}
+          priority="primary"
+        />
+      )}
+    </State>
+  </block.L>
+  <block.XL>
+    <State initial={false} change={(i) => !i}>
+      {(value, change) => (
+        <InputPassword
+          onClick={change}
+          priority="primary"
+          name="name"
+          placeholder="Enter password"
+          onChange={(event) => console.info('On input change')}
+          priority="primary"
+        />
+      )}
+    </State>
+  </block.XL>
+  <block.H>
+    <State initial={false} change={(i) => !i}>
+      {(value, change) => (
+        <InputPassword
+          onClick={change}
+          priority="primary"
+          name="name"
+          placeholder="Enter password"
+          onChange={(event) => console.info('On input change')}
+          priority="primary"
+        />
+      )}
+    </State>
+  </block.H>
+</Playground>
+
+### Container
+
+Inputs can be placed inside the container. Input width is equal to container size.
+
+<Playground direction="vertical">
+  <block.L>
+    <State initial={false} change={(i) => !i}>
+      {(value, change) => (
+        <InputPassword
+          onClick={change}
+          priority="primary"
+          name="name"
+          placeholder="Enter password"
+          onChange={(event) => console.info('On input change')}
+          priority="primary"
+        />
+      )}
+    </State>
+  </block.L>
+</Playground>
+
+### Props
+
+| Name          | Type                                         | Default       | Description                                                 |
+| ------------- | -------------------------------------------- | ------------- | ----------------------------------------------------------- |
+| `disabled`    | `boolean`                                    | `false`       | HTML disabled attribute                                     |
+| `name`        | `string`                                     |               | HTML name attribute                                         |
+| `onChange`    | `React.ChangeEventHandler<HTMLInputElement>` |               | Callback when input is changed                              |
+| `placeholder` | `string`                                     | ''            | CSS pseudo-element represents the placeholder text          |
+| `priority`    | `string`                                     | `'secondary'` | Priority prop to style InputPassword component              |
+| `rightIcon`   | `React.ReactNode`                            | `null`        | Component to show on the right side of the text (ex.: Icon) |
+| `value`       | `HTMLInputElement['value']`                  | `null`        | HTML value attribute                                        |
+| `...`         | `HTMLInputElement`                           | `{}`          | Other props are inherited from `HTMLInputElement`           |

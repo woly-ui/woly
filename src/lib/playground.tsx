@@ -28,6 +28,11 @@ interface StateType {
   initial: any;
 }
 
+export interface StateCallback {
+  change: (value: any) => any;
+  value: any;
+}
+
 export const State = ({ initial, change, children }: StateType) => {
   const [value, setValue] = React.useState(initial);
 

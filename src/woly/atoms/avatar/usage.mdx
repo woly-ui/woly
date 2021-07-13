@@ -1,0 +1,67 @@
+import {Avatar} from 'ui'
+import {Playground, block} from 'lib/playground'
+
+`Avatar` shows user avatar
+
+### Example
+
+<Playground>
+  <Avatar src="https://image.flaticon.com/icons/png/512/168/168726.png" />
+</Playground>
+
+### Sizes
+
+<Playground>
+  <block.N>
+    <Avatar src="https://image.flaticon.com/icons/png/512/168/168726.png" />
+  </block.N>
+  <block.S>
+    <Avatar src="https://image.flaticon.com/icons/png/512/168/168726.png" />
+  </block.S>
+  <block.M>
+    <Avatar src="https://image.flaticon.com/icons/png/512/168/168726.png" />
+  </block.M>
+  <block.L>
+    <Avatar src="https://image.flaticon.com/icons/png/512/168/168726.png" />
+  </block.L>
+  <block.XL>
+    <Avatar src="https://image.flaticon.com/icons/png/512/168/168726.png" />
+  </block.XL>
+  <block.H>
+    <Avatar src="https://image.flaticon.com/icons/png/512/168/168726.png" />
+  </block.H>
+</Playground>
+
+### Fallback
+
+<Playground>
+  <Avatar src="http://broken.url/image" />
+</Playground>
+
+### Custom child component
+
+<Playground>
+  <Avatar>
+    <div
+      style={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: 'black',
+        color: 'white',
+        fontSize: '20px',
+      }}
+    >
+      RC
+    </div>
+  </Avatar>
+</Playground>
+
+### Props
+
+| Name       | Type              | Default     | Description                              |
+| ---------- | ----------------- | ----------- | ---------------------------------------- |
+| `alt`      | `string`          | `''`        | text description of the image            |
+| `children` | `React.ReactNode` | `undefined` | use if no src attributes provided        |
+| `src`      | `string`          | `''`        | avatar src                               |
+| `srcSet`   | `string`          | `''`        | avatar src set for multiple screen sizes |
