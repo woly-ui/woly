@@ -61,17 +61,12 @@ const ModalBase: React.FC<ModalProps & Priority> = ({
       <Backdrop onClick={onClose} />
       <Shape data-priority={priority}>
         <div data-header>
-          <Heading data-title size={3}>
+          <Heading data-title size={2}>
             {title}
           </Heading>
           {onClose && (
             <div data-button="modal-close">
-              <ButtonIcon
-                onClick={onClose}
-                icon={<IconClose />}
-                priority="default"
-                weight="transparent"
-              />
+              <ButtonIcon onClick={onClose} icon={<IconClose />} priority="default" weight="fill" />
             </div>
           )}
         </div>
@@ -89,8 +84,9 @@ const Shape = styled(Surface)`
   flex-direction: column;
 
   box-sizing: border-box;
-  min-width: 20%;
-  max-width: 60%;
+  min-width: calc((100% - (var(--local-inset-padding) * 2)) / 3);
+  max-width: calc((100% - (var(--local-inset-padding) * 2)) / 3 * 2);
+
   max-height: 100%;
 
   padding: var(--local-vertical) var(--local-horizontal);
@@ -102,6 +98,7 @@ export const Modal = styled(ModalBase)`
   /* TODO: rewrite formulas */
   --local-gap: calc(3px * var(--woly-component-level) * var(--woly-main-level));
   --local-vertical: calc(var(--woly-const-m) * (var(--woly-component-level) + 1));
+  --local-inset-padding: 36px;
 
   position: fixed;
   top: 0;
@@ -114,7 +111,7 @@ export const Modal = styled(ModalBase)`
   justify-content: center;
   box-sizing: border-box;
   max-height: 100vh;
-  padding: 20px;
+  padding: --local-inset-padding;
 
   visibility: hidden;
   opacity: 0;
