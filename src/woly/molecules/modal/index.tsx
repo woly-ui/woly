@@ -66,7 +66,12 @@ const ModalBase: React.FC<ModalProps & Priority> = ({
           </Heading>
           {onClose && (
             <div data-button="modal-close">
-              <ButtonIcon onClick={onClose} icon={<IconClose />} priority="default" weight="fill" />
+              <ButtonIcon
+                onClick={onClose}
+                icon={<IconClose />}
+                priority="default"
+                weight="transparent"
+              />
             </div>
           )}
         </div>
