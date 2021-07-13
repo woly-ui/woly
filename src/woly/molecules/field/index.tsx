@@ -18,15 +18,16 @@ const FieldBase: React.FC<FieldProps & Priority> = ({
   priority = 'secondary',
   row = false,
 }) => (
-  <Label data-field="label" className={className} data-row={row} data-priority={priority}>
+  <Label className={className} data-row={row} data-priority={priority} data-label>
     <span>{label}</span>
-    <div data-field="content">{children}</div>
+    <div data-content>{children}</div>
   </Label>
 );
 
 export const Field = styled(FieldBase)`
   --local-gap: calc(1px * var(--woly-component-level) * var(--woly-main-level));
 
+  display: block;
   box-sizing: border-box;
   width: 100%;
 

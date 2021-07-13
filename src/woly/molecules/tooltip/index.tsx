@@ -1,35 +1,25 @@
 import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
 import { Priority } from 'lib/types';
+import { Surface } from 'ui/atoms';
 import { positionRelativeGet } from 'lib';
 
-/**
- * --woly-font-size
- * --woly-line-height
- * --woly-color
- * --woly-background
- * --woly-border
- * --woly-border-width
- * --woly-rounding
- *
- */
-
-type PositionProps = 'bottom' | 'top' | 'left' | 'right';
+type TooltipPosition = 'bottom' | 'left' | 'right' | 'top';
 
 interface TooltipProps {
   className?: string;
-  message: React.ReactNode;
-  position?: PositionProps;
+  content?: string | React.ReactNode;
+  position?: TooltipPosition;
 }
 
 const TooltipBase: React.FC<TooltipProps & Priority> = ({
   children,
   className,
-  message,
+  content,
   position = 'top',
   priority = 'secondary',
 }) => {
-  const [tooltipPosition, setPosition] = React.useState<PositionProps>('top');
+  const [tooltipPosition, setPosition] = React.useState<TooltipPosition>('top');
   const ref = React.useRef<HTMLDivElement>(null);
 
   const onScroll = React.useCallback(() => {
@@ -49,121 +39,111 @@ const TooltipBase: React.FC<TooltipProps & Priority> = ({
       document.removeEventListener('scroll', onScroll);
     };
   }, [position, ref]);
-
   return (
-    <div className={className} data-position={tooltipPosition} data-priority={priority} ref={ref}>
+    <div
+      className={className}
+      data-position={tooltipPosition}
+      data-priority={priority}
+      ref={ref}
+      tabIndex={0}
+    >
       <div data-element>{children}</div>
-      <div data-tooltip>{message}</div>
+      <div role="tooltip">
+        <div data-triangle-height />
+        <Surface data-priority={priority}>{content}</Surface>
+      </div>
     </div>
   );
 };
 
 export const Tooltip = styled(TooltipBase)`
-  --woly-gap: calc(
-    (1px * var(--woly-main-level)) + (1px * var(--woly-main-level) * var(--woly-component-level))
+  --local-gap: min(
+    calc(1px * var(--woly-main-level) + var(--woly-const-m)),
+    calc(
+      (1px * var(--woly-main-level)) + (1px * var(--woly-main-level) * var(--woly-component-level))
+    )
   );
-
-  --tooltip-position: calc(100% + 4px + var(--woly-gap, 10px));
-
+  --local-triangel: min(
+    var(--woly-const-m),
+    calc(1px * var(--woly-component-level) * var(--woly-const-m))
+  );
+  --tooltip-position: calc(100% + var(--woly-border-width) + var(--local-gap));
+  --local-tooltip-maxsize: 240px;
+  --local-icon-size: var(--woly-line-height);
   position: relative;
 
-  font-size: var(--woly-font-size, 16px);
-  line-height: 21px;
+  color: var(--woly-shape-text-default);
+  font-size: var(--woly-font-size);
+  line-height: var(--woly-line-height);
 
-  &:hover {
-    div[data-tooltip] {
-      visibility: visible;
-      opacity: 1;
-
-      transition: 0.3s linear;
-    }
-  }
-
-  div[data-tooltip] {
+  outline: none;
+  [role='tooltip'] {
     position: absolute;
     z-index: 1;
 
+    align-items: center;
     box-sizing: border-box;
     width: max-content;
-    min-width: 112px;
-    max-width: 240px;
-    min-height: 48px;
+    max-width: var(--local-tooltip-maxsize);
 
-    color: var(--woly-color, #000000);
-
-    background-color: var(--woly-background, #ffffff);
-    border-color: var(--woly-border, var(--woly-background, #ffffff));
+    background-color: var(--woly-background);
+    border-color: var(--woly-background);
     border-style: solid;
     border-width: var(--woly-border-width);
-    border-radius: var(--woly-rounding, 6px);
+    border-radius: calc(var(--woly-rounding) * 2);
     box-shadow: var(--woly-shadow);
     visibility: hidden;
-    cursor: pointer;
     opacity: 0;
 
-    transition: all 0.3s ease-in-out;
-
-    &::after {
+    transition: 0.3s ease-in-out;
+    [data-triangle-height] {
       position: absolute;
 
       width: 0;
       height: 0;
 
-      border-color: var(--woly-background, #ffffff) transparent transparent transparent;
+      border-color: var(--woly-background) transparent transparent transparent;
       border-style: solid;
-      border-width: 4px 3px 0 3px;
-
-      content: ' ';
-    }
-
-    &:hover {
-      visibility: visible;
+      border-width: var(--local-triangel);
     }
   }
-
-  &[data-position='top'] > [data-tooltip] {
+  &:hover [role='tooltip'],
+  &:focus [role='tooltip'] {
+    visibility: visible;
+    opacity: 1;
+  }
+  &[data-position='top'] [role='tooltip'] {
     bottom: var(--tooltip-position);
-
-    &::after {
-      bottom: calc(-4px - var(--woly-border-width, 0px));
-      left: 12px;
-
-      transform: initial;
+    [data-triangle] {
+      bottom: calc(-1 * (var(--woly-const-m) + var(--woly-border-width)));
+      left: calc(2 * var(--woly-const-m));
     }
   }
-
-  &[data-position='bottom'] > [data-tooltip] {
+  &[data-position='bottom'] [role='tooltip'] {
     top: var(--tooltip-position);
-
-    &::after {
-      top: calc(-4px - var(--woly-border-width, 0px));
-      bottom: initial;
-      left: 12px;
+    [data-triangle] {
+      top: calc(-1 * (var(--woly-const-m) + var(--woly-border-width)));
+      left: calc(2 * var(--woly-const-m));
 
       transform: rotate(180deg);
     }
   }
-
-  &[data-position='left'] > [data-tooltip] {
+  &[data-position='left'] [role='tooltip'] {
     top: 0;
     right: var(--tooltip-position);
-
-    &::after {
-      top: 12px;
-      right: calc(-5px - var(--woly-border-width, 0px));
+    [data-triangle] {
+      top: calc(2 * var(--woly-const-m));
+      right: calc(-1 * (var(--woly-const-m) + var(--woly-border-width)));
 
       transform: rotate(-90deg);
     }
   }
-
-  &[data-position='right'] > [data-tooltip] {
+  &[data-position='right'] [role='tooltip'] {
     top: 0;
     left: var(--tooltip-position);
-
-    &::after {
-      top: 12px;
-      right: initial;
-      left: calc(-5px - var(--woly-border-width, 0px));
+    [data-triangle] {
+      top: calc(2 * var(--woly-const-m));
+      left: calc(-1 * (var(--woly-const-m) + var(--woly-border-width)));
 
       transform: rotate(90deg);
     }

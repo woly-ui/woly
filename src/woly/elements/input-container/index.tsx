@@ -20,9 +20,9 @@ const InputContainerBase: React.FC<InputContainerProps & Priority> = ({
   rightIcon,
 }) => (
   <div className={className} data-disabled={disabled} data-priority={priority}>
-    {leftIcon && <span data-icon="left">{leftIcon}</span>}
-    <div data-input="input">{children}</div>
-    {rightIcon && <span data-icon="right">{rightIcon}</span>}
+    {leftIcon && <span data-icon="input">{leftIcon}</span>}
+    <div data-input>{children}</div>
+    {rightIcon && <span data-icon="input">{rightIcon}</span>}
   </div>
 );
 
@@ -46,7 +46,7 @@ export const InputContainer = styled(InputContainerBase)`
   border-radius: var(--woly-rounding);
   outline: none;
 
-  [data-input='input'] {
+  [data-input] {
     flex: 1;
 
     input {
@@ -54,7 +54,7 @@ export const InputContainer = styled(InputContainerBase)`
     }
   }
 
-  [data-icon] {
+  [data-icon='input'] {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -62,6 +62,10 @@ export const InputContainer = styled(InputContainerBase)`
     svg > path {
       fill: var(--local-icon-fill);
     }
+  }
+
+  [data-icon='right'] {
+    --woly-component-level: calc(var(--local-size) - 2);
   }
 
   &:hover {

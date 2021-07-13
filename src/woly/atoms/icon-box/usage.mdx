@@ -1,0 +1,128 @@
+import { IconBox, Box, Tooltip, Text, Input } from 'ui';
+import {IconClose, IconInfo} from 'static/icons';
+import {block, Playground} from 'lib/playground';
+
+### Example
+
+<!-- TODO update example with PRs FRNT-4transparent1 & FRNT-520 -->
+
+`IconBox` is an icon-wrapper component that adds a box model to static icon elements.
+
+## Weight
+
+<Playground>
+  <IconBox priority="primary" weight="transparent">
+    <IconClose />
+  </IconBox>
+  <IconBox priority="primary" weight="outline">
+    <IconClose />
+  </IconBox>
+  <IconBox priority="primary" weight="fill">
+    <IconClose />
+  </IconBox>
+</Playground>
+
+## Priority
+
+<Playground>
+  <IconBox priority="secondary" weight="transparent">
+    <IconClose />
+  </IconBox>
+  <IconBox priority="secondary" weight="outline">
+    <IconClose />
+  </IconBox>
+  <IconBox priority="secondary" weight="fill">
+    <IconClose />
+  </IconBox>
+</Playground>
+
+## Size
+
+Size is controlled by the component-level block property, not by the props.
+
+<Playground>
+  <block.N>
+    <IconBox priority="secondary" weight="fill">
+      <IconClose />
+    </IconBox>
+  </block.N>
+  <block.XS>
+    <IconBox priority="secondary" weight="fill">
+      <IconClose />
+    </IconBox>
+  </block.XS>
+  <block.S>
+    <IconBox priority="secondary" weight="fill">
+      <IconClose />
+    </IconBox>
+  </block.S>
+  <block.M>
+    <IconBox priority="secondary" weight="fill">
+      <IconClose />
+    </IconBox>
+  </block.M>
+  <block.L>
+    <IconBox priority="secondary" weight="fill">
+      <IconClose />
+    </IconBox>
+  </block.L>
+</Playground>
+
+## Example with other components
+
+<Playground>
+  <block.L style={{ width: '400px', padding: '120px' }}>
+    <Tooltip
+      message={
+        <div style={{ display: 'flex', alignItems: 'flex-start' }}>
+          <IconBox priority="default" weight="goast">
+            <IconInfo />
+          </IconBox>
+          <Box>
+            <Text>г. Комсомольск на Амуре, ул. 1-го октября, д. 145, корп. 9, кв. 16</Text>
+          </Box>
+        </div>
+      }
+      position="bottom"
+    >
+      <Input
+        leftIcon={<IconInfo />}
+        name="adress"
+        onChange={() => console.info('On input change')}
+        type="text"
+        priority="primary"
+        value="г. Комсомольск на Амуре, ул. 1-го октября, д. 145, корп. 9, кв. 16"
+      />
+    </Tooltip>
+  </block.L>
+</Playground>
+
+<Playground>
+  <block.L style={{ display: 'flex', alignItems: 'center', padding: '120px' }}>
+    <Tooltip
+      message={
+        <Box>
+          <Text>Для перехода на страницу с достопримечательностями кликните по ссылке </Text>
+        </Box>
+      }
+      position="bottom"
+    >
+      <block.S>
+        <IconBox priority="default" weight="goast" style={{ alignSelf: 'flex-start' }}>
+          <IconInfo />
+        </IconBox>
+      </block.S>
+    </Tooltip>
+    <Box>
+      <a href="/">Посетите город Комсомольск на Амуре </a>
+    </Box>
+  </block.L>
+</Playground>
+
+### Props
+
+| Name       | Type              | Default       | Description                                            |
+| ---------- | ----------------- | ------------- | ------------------------------------------------------ |
+| `children` | `React.ReactNode` | `null`        | Component to show as content (ex.: svg-icon)           |
+| `weight`   | `string`          | `transparent` | Change icon`s styles (ex.: fill, outline, transparent) |
+| `priority` | `string`          | `'secondary'` | Priority prop to style Icon component                  |

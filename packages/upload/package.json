@@ -1,0 +1,59 @@
+{
+  "name": "@woly/upload",
+  "description": "Upload components for Woly React library",
+  "main": "upload.js",
+  "types": "upload.d.ts",
+  "typings": "upload.d.ts",
+  "files": [
+    "README.md",
+    "LICENSE",
+    "upload.js",
+    "upload.js.map",
+    "upload.mjs",
+    "upload.mjs.map",
+    "upload.d.ts"
+  ],
+  "keywords": [
+    "component",
+    "components",
+    "design",
+    "library",
+    "react-component",
+    "react",
+    "system",
+    "ui",
+    "woly",
+    "upload"
+  ],
+  "dependencies": {},
+  "peerDependencies": {
+    "react": "^16.11.0",
+    "styled-components": "^5.0.1",
+    "woly": "^0.9.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/woly-ui/woly",
+    "directory": "packages/upload"
+  },
+  "scripts": {},
+  "author": {
+    "name": "Sergey Sova",
+    "email": "mail@sergeysova.com",
+    "url": "https://sova.dev"
+  },
+  "engines": {
+    "node": ">=8.0.0"
+  },
+  "sideEffects": false,
+  "contributors": [],
+  "homepage": "https://github.com/woly-ui/woly",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/woly-ui/woly/issues",
+    "email": "woly@sergeysova.com"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

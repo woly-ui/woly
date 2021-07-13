@@ -1,6 +1,6 @@
 {
   "name": "woly",
-  "version": "0.8.1",
+  "version": "0.9.0",
   "description": "Exhaustive component library for React",
   "main": "woly.js",
   "types": "woly.d.ts",
@@ -30,6 +30,11 @@
     "react": "^16.11.0",
     "styled-components": "^5.0.1"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/woly-ui/woly",
+    "directory": "packages/woly"
+  },
   "scripts": {},
   "author": {
     "name": "Sergey Sova",
@@ -41,11 +46,6 @@
   },
   "sideEffects": false,
   "contributors": [],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/woly-ui/woly",
-    "directory": "packages/calendar"
-  },
   "homepage": "https://github.com/woly-ui/woly",
   "license": "MIT",
   "bugs": {
