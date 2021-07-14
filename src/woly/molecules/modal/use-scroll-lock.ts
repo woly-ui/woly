@@ -70,5 +70,5 @@ export const useScrollLock = (options: ScrollLockOptions = { reserveScrollBarGap
     restoreOverflowSetting();
   };
 
-  return { enableScroll, disableScroll, isScrollBlocked: Boolean(lock) };
+  return { enableScroll, disableScroll };
 };

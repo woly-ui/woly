@@ -24,17 +24,17 @@ const ModalBase: React.FC<ModalProps & Priority> = ({
 }) => {
   const modalRef = React.useRef<HTMLDivElement | null>(null);
 
-  const { disableScroll, enableScroll, isScrollBlocked } = useScrollLock();
+  const { disableScroll, enableScroll } = useScrollLock();
 
   React.useEffect(() => {
     if (!modalRef.current) return;
 
     if (visible) {
       disableScroll(modalRef.current);
-    } else if (isScrollBlocked) {
+    } else {
       enableScroll();
     }
-  }, [visible, isScrollBlocked]);
+  }, [visible]);
 
   const onKeyDown = React.useCallback(
     (event) => {
