@@ -5,28 +5,25 @@ import { Button, Checkbox, ListContainer, Popover, Surface } from '../../index';
 import { IconArrowDown } from '../../../static/icons';
 import { box } from '../../elements/box';
 
-interface RangeProps {
-  value: {
-    from: number;
-    to: number;
-  };
-  placeholder: string;
+interface Option {
+  name: string;
+  value: string;
 }
 
 interface FilterProps {
-  options: Array<Record<string, string>>;
-  title: string;
+  options: Option[];
+  title: React.ReactNode | string;
 }
-
-export const RangeCell: React.FC<RangeProps> = ({ value, placeholder }) => (
-  <span>
-    from {value.from || placeholder} to {value.to || placeholder}
-  </span>
-);
 
 export const Filter: React.FC<FilterProps> = ({ options, title }) => {
   const [isOpen, setOpen] = React.useReducer((is) => !is, false);
-  const [isChecked, setChecked] = React.useReducer((is) => !is, false);
+  const [checkedItems, setCheckedItems] = React.useState<string[]>([]);
+
+  const createCheckHandler = (value: string) => () =>
+    setCheckedItems((current) => {
+      if (current.includes(value)) return current.filter((item) => item !== value);
+      return current.concat(value);
+    });
 
   if (options.length === 0) {
     console.log('No options are passed to filter');
@@ -45,9 +42,9 @@ export const Filter: React.FC<FilterProps> = ({ options, title }) => {
                   id={value}
                   key={value}
                   text={name}
-                  onChange={setChecked}
+                  onChange={createCheckHandler(value)}
                   priority="primary"
-                  checked={isChecked}
+                  checked={checkedItems.includes(value)}
                 />
               ))}
               <Button priority="primary" outlined text="Применить" />
