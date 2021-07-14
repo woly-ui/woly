@@ -3,51 +3,55 @@ import { Priority } from 'lib/types';
 
 import { Table, Tbody, Td, Th, Thead, Tr } from '../../atoms/table';
 
-type CellType<T> = {
-  id: string;
-} & Record<string, T>;
+type CellType<TValue, TRowKey extends string> = {
+  [key in TRowKey]: string;
+} &
+  Record<string, TValue>;
 
 interface HeadProps {
   title: React.ReactNode | string;
 }
 
-interface CellProps<T> {
+interface CellProps<TValue> {
   placeholder?: React.ReactNode | string;
-  value: T;
+  value: TValue;
 }
 
-interface ColumnProps<T> {
+interface DataColumn<TValue> {
   title: React.ReactNode | string;
   property: string;
   head?: React.FC<HeadProps>;
-  cell?: React.FC<CellProps<T>>;
+  cell?: React.FC<CellProps<TValue>>;
   placeholder?: React.ReactNode | string;
 }
 
-interface DataTableProps<T> {
-  className: string;
-  columns: Array<ColumnProps<T>>;
-  placeholder?: React.ReactNode | string;
-  values: Array<CellType<T>>;
+type DataTableProps<TValue, TRowKey extends string> = React.HTMLAttributes<HTMLTableElement> &
+  Priority & {
+    rowKey: string;
+    columns: Array<DataColumn<TValue>>;
+    placeholder?: React.ReactNode | string;
+    values: Array<CellType<TValue, TRowKey>>;
+  };
+
+interface HeadGroupProps<TValue> {
+  columns: Array<DataColumn<TValue>>;
 }
 
-interface HeadGroupProps<T> {
-  columns: Array<ColumnProps<T>>;
-}
-
-export function DataTable<T>({
-  className,
+export function DataTable<TValue, TRowKey extends string>({
+  rowKey,
   columns,
   placeholder = '----',
   priority = 'secondary',
   values,
-}: DataTableProps<T> & Priority) {
+  ...rest
+}: DataTableProps<TValue, TRowKey>) {
   return (
-    <Table columns={columns.length} priority={priority} className={className}>
+    // eslint-disable-next-line react/jsx-props-no-spreading
+    <Table columns={columns.length} priority={priority} {...rest}>
       <TableHeadGroup columns={columns} />
       <Tbody>
-        {values.map(({ id, ...row }) => (
-          <Tr key={id}>
+        {values.map((row) => (
+          <Tr key={row[rowKey as TRowKey]}>
             {columns.map((column) => {
               const Cell = column.cell || DefaultCell;
               const finalPlaceholder = column.placeholder || placeholder;
