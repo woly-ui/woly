@@ -25,7 +25,7 @@ const PopoverBase: React.FC<Props & Priority> = ({
 }) => {
   const ref = React.useRef<HTMLDivElement>(null);
 
-  const [isVisible, setVisibility] = React.useReducer((is) => !is, isOpen);
+  const [isVisible, setVisibility] = React.useState(isOpen);
   const [popoverPosition, setPosition] = React.useState<PopoverPositionType>('bottom');
 
   const onScroll = React.useCallback(() => {
@@ -43,7 +43,7 @@ const PopoverBase: React.FC<Props & Priority> = ({
 
       const trigger = ref.current;
       if (isVisible && !trigger?.contains(event.target)) {
-        setVisibility();
+        setVisibility(false);
         clickOutside?.();
       }
     },
@@ -53,7 +53,7 @@ const PopoverBase: React.FC<Props & Priority> = ({
   const onKeyDown = React.useCallback(
     ({ key }) => {
       if (isVisible && key === 'Escape') {
-        setVisibility();
+        setVisibility(false);
       }
     },
     [ref, isVisible],
@@ -77,7 +77,7 @@ const PopoverBase: React.FC<Props & Priority> = ({
 
   return (
     <div className={className} ref={ref} data-priority={priority}>
-      <div onClick={setVisibility} onKeyDown={onKeyDown}>
+      <div onClick={() => {setVisibility(true)}} onKeyDown={onKeyDown}>
         {children}
       </div>
       <Surface
@@ -98,17 +98,18 @@ export const Popover = styled(PopoverBase)`
   --popover-position: calc(100% + var(--local-gap));
   position: relative;
 
-  & > [data-popover] {
+  width: 100%;
+
+  [data-open] {
     position: absolute;
     z-index: 1;
 
     display: none;
-
-    min-width: 100%;
   }
 
-  & > [data-open='true'] {
+  [data-open='true'] {
     display: block;
+    width: 100%;
   }
 
   & > [data-position='top'] {

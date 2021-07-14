@@ -10,7 +10,7 @@ interface SelectOptionProps {
   as?: 'a' | 'li';
   value: string;
   disabled?: boolean;
-  href?: string;
+  path?: string;
   iconLeft?: React.ReactNode;
   iconRight?: React.ReactNode;
   id: string;
@@ -40,39 +40,39 @@ export const SelectBase: React.FC<SelectProps & Priority> = ({
   selected,
   priority = 'secondary',
 }) => {
-  const [isOpen, setIsOpen] = React.useReducer((is) => !is, false);
+  const [isOpen, setIsOpen] = React.useState(false);
   const selectRef = React.useRef(null);
   const dropdownRef = React.useRef(null);
   const tabIndex = disabled ? -1 : 0;
   const select = selected ?? placeholder;
 
-  const onKeyDown = React.useCallback(
-    (event: React.KeyboardEvent) => {
-      const selectNode = selectRef.current;
-      const dropdownNode = dropdownRef.current;
+  // const onKeyDown = React.useCallback(
+  //   (event: React.KeyboardEvent) => {
+  //     const selectNode = selectRef.current;
+  //     const dropdownNode = dropdownRef.current;
 
-      if (!document || !selectNode || !dropdownNode || event.key === 'Tab') {
-        return;
-      }
+  //     if (!document || !selectNode || !dropdownNode || event.key === 'Tab') {
+  //       return;
+  //     }
 
-      event.preventDefault();
-      const kh = keyHandlerGet({
-        dropdownNode,
-        isOpen,
-        onChange,
-        selectNode,
-        setIsOpen,
-      });
-      const shiftKeyHandler = { arrowDown: setIsOpen };
+  //     event.preventDefault();
+  //     const keyHandler = keyHandlerGet({
+  //       dropdownNode,
+  //       isOpen,
+  //       onChange,
+  //       selectNode,
+  //       setIsOpen(isOpen: true)
+  //     });
+  //     const shiftKeyHandler = { arrowDown: setIsOpen(false) };
 
-      keyboardEventHandle({
-        event,
-        keyHandler: kh,
-        shiftKeyHandler,
-      });
-    },
-    [selectRef, dropdownRef, isOpen, onChange],
-  );
+  //     keyboardEventHandle({
+  //       event,
+  //       keyHandler: keyHandler,
+  //       shiftKeyHandler
+  //     });
+  //   },
+  //   [selectRef, dropdownRef, isOpen, onChange],
+  // );
   return (
     <div
       className={className}
@@ -81,16 +81,15 @@ export const SelectBase: React.FC<SelectProps & Priority> = ({
       data-select
       data-priority={priority}
       onBlur={onBlur}
-      onClick={setIsOpen}
+      onClick={() => setIsOpen(!isOpen)}
       onFocus={onFocus}
-      onKeyDown={onKeyDown}
       ref={selectRef}
       tabIndex={tabIndex}
     >
       <Popover
         isOpen={isOpen}
         priority={priority}
-        onClickOutside={setIsOpen}
+        onClickOutside={() => setIsOpen(false)}
         content={
           <Surface priority={priority}>
             <ListContainer 
@@ -100,11 +99,11 @@ export const SelectBase: React.FC<SelectProps & Priority> = ({
               aria-activedescendant={select} 
               ref={dropdownRef}
             >
-              {options.map(({ value, disabled, as, href, iconLeft, iconRight }) => (
+              {options.map(({ value, disabled, as, path, iconLeft, iconRight }) => (
                 <ListItem
                   as={as}
                   disabled={disabled}
-                  href={href}
+                  href={path}
                   iconLeft={iconLeft}
                   iconRight={iconRight}
                   key={value}
@@ -128,50 +127,52 @@ export const SelectBase: React.FC<SelectProps & Priority> = ({
 };
 
 export const Select = styled(SelectBase)`
-  ${box}
-
-  --local-background: var(--woly-canvas-default);
-  --local-border-input-color: var(--woly-canvas-text-active);
-  --local-shape-color: var(--woly-canvas-text-default);
   --local-list-background: var(--woly-shape-text-default);
   --local-border-list: var(--woly-canvas-default);
-  --local-icon-size: var(--woly-line-height);
+  --local-background: var(--woly-canvas-default);
+  --local-shape-color: var(--woly-canvas-text-default);
+  --local-border-input-color: var(--woly-canvas-text-active);
+
   position: relative;
 
+  display: flex;
   align-items: center;
   box-sizing: border-box;
 
   outline: none;
   cursor: pointer;
-  [data-selected] {
+  
+  & > div [data-selected] {
+    ${box}
+  
     display: flex;
     align-items: center;
-    width: 100%;
-    padding: var(--local-vertical) var(--local-horizontal);
 
     color: var(--local-shape-color);
 
     background: var(--local-background);
     border: var(--woly-border-width) solid var(--local-border-input-color);
     border-radius: var(--woly-rounding);
+    
     [data-value] {
       flex: 1;
     }
   }
   [data-icon] {
+    --local-icon-size: var(--woly-line-height);
+
     display: flex;
-    flex-shrink: 1;
+    flex-shrink: 0;
     align-items: center;
     justify-content: center;
     width: var(--local-icon-size);
     height: var(--local-icon-size);
+    
     svg > path {
-      width: 100%;
-      height: 100%;
-
-      fill: var(--local-shape-color);
+        fill: var(--local-shape-color);
     }
   }
+
   ${ListContainer} {
     position: absolute;
     z-index: 1;
@@ -180,23 +181,30 @@ export const Select = styled(SelectBase)`
     width: 100%;
     margin-top: var(--local-gap);
   }
+
   &[data-open='true'] ${ListContainer} {
     display: flex;
     flex-direction: column;
-    box-sizing: border-box;
   }
+
   [data-icon='true'] > svg {
       transform: rotate(180deg);
   }
-  &:focus > div[data-selected],
-  &:active > div[data-selected] {
-    --local-border-color: var(--woly-focus);
-    box-shadow: 0 0 0 var(--woly-border-width) var(--woly-focus);
+
+  &:focus,
+  &:active {
+    div[data-selected]{
+      --local-border-color: var(--woly-focus-color);
+      box-shadow: 0 0 0 var(--woly-border-width) var(--woly-focus-color);
+    }
+   
   }
+
   &[data-open='true'] > div[data-selected] {
-    border-color: var(--woly-focus);
+    border-color: var(--woly-focus-color);
     --local-shape-color: var(--woly-canvas-text-default);
   }
+
   &[data-disabled='true'] {
     pointer-events: none;
     --local-shape-color: var(--woly-canvas-text-disabled);

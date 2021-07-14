@@ -2,13 +2,13 @@ import React from 'react';
 
 interface KeyboardEventProps {
   event: React.KeyboardEvent;
-  keyHandler?: HandlerType;
-  shiftKeyHandler?: HandlerType;
+  keyHandler?: any;
+  shiftKeyHandler?: any;
 }
 
-interface HandlerType {
-  [key: string]: (event: React.SyntheticEvent<Element, Event>) => void;
-}
+// interface HandlerType {
+//   [key: string]: (event: any) => void;
+// }
 
 const camelCase = (string: string) => string.charAt(0).toLowerCase() + string.slice(1);
 
