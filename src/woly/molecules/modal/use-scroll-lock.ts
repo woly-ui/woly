@@ -21,10 +21,9 @@ export const useScrollLock = (options: ScrollLockOptions = { reserveScrollBarGap
 
   const setOverflowHidden = React.useCallback(() => {
     if (previousBodyPaddingRight === null) {
-      const reserveScrollBarGap = options.reserveScrollBarGap === true;
       const scrollBarGap = window.innerWidth - document.documentElement.clientWidth;
 
-      if (reserveScrollBarGap && scrollBarGap > 0) {
+      if (options.reserveScrollBarGap === true && scrollBarGap > 0) {
         const computedBodyPaddingRight = Number.parseInt(
           window.getComputedStyle(document.body).getPropertyValue('padding-right'),
           10,
@@ -46,7 +45,7 @@ export const useScrollLock = (options: ScrollLockOptions = { reserveScrollBarGap
         return;
       }
 
-      setLock(lock);
+      setLock(targetElement);
       setOverflowHidden();
     },
     [lock],
@@ -71,5 +70,5 @@ export const useScrollLock = (options: ScrollLockOptions = { reserveScrollBarGap
     restoreOverflowSetting();
   };
 
-  return { enableScroll, disableScroll };
+  return { enableScroll, disableScroll, isScrollBlocked: Boolean(lock) };
 };

@@ -24,16 +24,17 @@ const ModalBase: React.FC<ModalProps & Priority> = ({
 }) => {
   const modalRef = React.useRef<HTMLDivElement | null>(null);
 
-  const { disableScroll, enableScroll } = useScrollLock();
+  const { disableScroll, enableScroll, isScrollBlocked } = useScrollLock();
 
   React.useEffect(() => {
-    if (visible && modalRef.current) {
+    if (!modalRef.current) return;
+
+    if (visible) {
       disableScroll(modalRef.current);
-    }
-    if (!visible && modalRef.current) {
+    } else if (isScrollBlocked) {
       enableScroll();
     }
-  }, [visible]);
+  }, [visible, isScrollBlocked]);
 
   const onKeyDown = React.useCallback(
     (event) => {
@@ -101,7 +102,7 @@ const Shape = styled(Surface)`
 export const Modal = styled(ModalBase)`
   ${box}
 
-  /* TODO: rewrite formulas */
+  /* TODO: rewrite formulas [13.07.21]*/
   --local-gap: calc(3px * var(--woly-component-level) * var(--woly-main-level));
   --local-vertical: calc(var(--woly-const-m) * (var(--woly-component-level) + 1));
   --local-inset-padding: 36px;
