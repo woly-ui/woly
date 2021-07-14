@@ -60,6 +60,10 @@ export const ButtonIcon = styled(ButtonIconBase)`
     }
   }
 
+  &:focus {
+    box-shadow: 0 0 0 var(--woly-border-width) var(--woly-focus-color);
+  }
+
   &[data-weight='fill'] {
     --local-shape-color: var(--woly-shape-default);
     --local-icon-color: var(--woly-shape-text-default);
@@ -82,12 +86,6 @@ export const ButtonIcon = styled(ButtonIconBase)`
     &:active {
       --local-shape-color: var(--woly-shape-active);
       --local-icon-color: var(--woly-shape-text-active);
-    }
-
-    &:focus {
-      --local-shape-color: var(--woly-shape-active);
-      --local-icon-color: var(--woly-shape-text-active);
-      box-shadow: 0 0 0 var(--woly-border-width) var(--woly-focus-color);
     }
 
     &:disabled {
@@ -119,12 +117,6 @@ export const ButtonIcon = styled(ButtonIconBase)`
     &:active {
       --local-shape-color: transparent;
       --local-icon-color: var(--woly-canvas-active);
-    }
-
-    &:focus {
-      --local-shape-color: transparent;
-      --local-icon-color: var(--woly-canvas-active);
-      box-shadow: 0 0 0 var(--woly-border-width) var(--woly-focus-color);
     }
 
     &:disabled {
@@ -165,13 +157,6 @@ export const ButtonIcon = styled(ButtonIconBase)`
       --local-border-color: var(--woly-shape-text-active);
     }
 
-    &:focus {
-      --local-shape-color: transparent;
-      --local-icon-color: var(--woly-shape-text-active);
-      --local-border-color: var(--woly-shape-text-active);
-      box-shadow: 0 0 0 var(--woly-border-width) var(--woly-focus-color);
-    }
-
     &:disabled {
       pointer-events: none;
       --local-shape-color: var(--woly-shape-text-disabled);
@@ -182,9 +167,10 @@ export const ButtonIcon = styled(ButtonIconBase)`
   &[data-weight='transparent'] {
     --local-shape-color: transparent;
     --local-icon-color: var(--woly-shape-default);
+    --local-border-color: transparent;
 
     background: var(--local-shape-color);
-    border-color: var(--local-shape-color);
+    border-color: var(--local-border-color);
 
     [data-icon] > svg > path {
       fill: var(--local-icon-color);
@@ -194,19 +180,13 @@ export const ButtonIcon = styled(ButtonIconBase)`
     }
 
     &:hover {
-      --local-shape-color: transparent;
+      --local-shape-color: var(--woly-canvas-disabled);
       --local-icon-color: var(--woly-shape-hover);
     }
 
     &:active {
-      --local-shape-color: transparent;
+      --local-shape-color: var(--woly-shape-text-disabled);
       --local-icon-color: var(--woly-canvas-active);
-    }
-
-    &:focus {
-      --local-shape-color: transparent;
-      --local-icon-color: var(--woly-canvas-active);
-      box-shadow: 0 0 0 var(--woly-border-width) var(--woly-focus-color);
     }
 
     &:disabled {
