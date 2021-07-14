@@ -7,26 +7,32 @@ type CellType<T> = {
   id: string;
 } & Record<string, T>;
 
+interface HeadProps {
+  title: React.ReactNode | string;
+}
+
 interface CellProps<T> {
-  placeholder?: string;
+  placeholder?: React.ReactNode | string;
   value: T;
 }
 
 interface ColumnProps<T> {
-  cell?: React.FC<CellProps<T>>;
-  property: string;
   title: React.ReactNode | string;
+  property: string;
+  head?: React.FC<HeadProps>;
+  cell?: React.FC<CellProps<T>>;
+  placeholder?: React.ReactNode | string;
 }
 
 interface DataTableProps<T> {
   className: string;
   columns: Array<ColumnProps<T>>;
-  placeholder?: string;
+  placeholder?: React.ReactNode | string;
   values: Array<CellType<T>>;
 }
 
-interface TableHeadProps<T> {
-  head: Array<ColumnProps<T>>;
+interface HeadGroupProps<T> {
+  columns: Array<ColumnProps<T>>;
 }
 
 export function DataTable<T>({
@@ -38,15 +44,17 @@ export function DataTable<T>({
 }: DataTableProps<T> & Priority) {
   return (
     <Table columns={columns.length} priority={priority} className={className}>
-      <TableHead head={columns} />
+      <TableHeadGroup columns={columns} />
       <Tbody>
         {values.map(({ id, ...row }) => (
           <Tr key={id}>
-            {columns.map(({ property, cell }) => {
-              const Cell = cell || DefaultCell;
+            {columns.map((column) => {
+              const Cell = column.cell || DefaultCell;
+              const finalPlaceholder = column.placeholder || placeholder;
+
               return (
-                <Td key={property}>
-                  <Cell value={row[property]} placeholder={placeholder} />
+                <Td key={column.property}>
+                  <Cell value={row[column.property]} placeholder={finalPlaceholder} />
                 </Td>
               );
             })}
@@ -61,15 +69,21 @@ function DefaultCell<T>({ value, placeholder }: CellProps<T>) {
   return <>{value || placeholder}</>;
 }
 
-function TableHead<T>({ head }: TableHeadProps<T>) {
+function DefaultHead({ title }: HeadProps) {
+  return <>{title}</>;
+}
+
+function TableHeadGroup<T>({ columns }: HeadGroupProps<T>) {
   return (
     <Thead>
       <Tr>
-        {head.map(({ property, title }) => {
-          const paddingStyle = isComponent(title) && '0';
+        {columns.map(({ title, property, head }) => {
+          const Head = head || DefaultHead;
+          const padding = isReactEntity(title) ? '0' : '';
+
           return (
-            <Th key={property} style={{ padding: `${paddingStyle}` }}>
-              {title}
+            <Th key={property} style={{ padding }}>
+              <Head title={title} />
             </Th>
           );
         })}
@@ -78,4 +92,6 @@ function TableHead<T>({ head }: TableHeadProps<T>) {
   );
 }
 
-const isComponent = (title: unknown) => typeof title === 'object';
+const isReactComponent = (value: unknown) => typeof value === 'function';
+const isReactElement = (value: unknown) => typeof value === 'object';
+const isReactEntity = (value: unknown) => isReactComponent(value) || isReactElement(value);

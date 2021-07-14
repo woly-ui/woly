@@ -43,12 +43,14 @@ export const columns = [
     property: 'id-credit',
   },
   {
-    title:  <Filter options={bankNames} title="Название банка"  />,
+    title: 'Название банка',
     property: 'bank-name',
+    head: ({ title }) => <Filter options={bankNames} title={title} />,
   },
   {
-    title:  <Filter options={paymentSystems} title='Платежная система'/>,
+    title: 'Платежная система',
     property: 'payment-system',
+    head: ({ title }) => <Filter options={bankNames} title={title} />,
   },
   {
     title: 'Диапазон',
@@ -145,14 +147,22 @@ export const values = [
 | Name          | Type                               | Default       | Description                                  |
 | ------------- | ---------------------------------- | ------------- | -------------------------------------------- |
 | `columns`     | `Array<ColumnProps>`               |               | Table head                                   |
-| `placeholder` | `string`                           | `'----'`      | String that is displayed when value is empty |
+| `placeholder` | `React.ReactNode ӏ string`         | `'----'`      | String that is displayed when value is empty |
 | `values`      | `Array<Record<string, CellProps>>` |               | Table content                                |
 | `priority`    | `string`                           | `'secondary'` | Priority prop to style DataTable component   |
 
+### HeadProps
+
+| Name    | Type                       | Default | Description                                       |
+| ------- | -------------------------- | ------- | ------------------------------------------------- |
+| `title` | `React.ReactNode ӏ string` |         | A column name passed via `title` of `ColumnProps` |
+
 ### ColumnProps
 
-| Name       | Type                       | Default | Description                                                                         |
-| ---------- | -------------------------- | ------- | ----------------------------------------------------------------------------------- |
-| `property` | `string`                   |         | Unique property of column to connect head with value in a row                       |
-| `title`    | `React.ReactNode ӏ string` |         | Head of column to show. Can be a simple string or a component (ex. Filter dropdown) |
-| `cell`     | `React.FC<CellProps>`      | null    | FC to render cell                                                                   |
+| Name          | Type                       | Default | Description                                                   |
+| ------------- | -------------------------- | ------- | ------------------------------------------------------------- |
+| `title`       | `React.ReactNode ӏ string` |         | A column name. Can be a simple string or a react node         |
+| `property`    | `string`                   |         | Unique property of column to connect head with value in a row |
+| `head`        | `React.FC<HeadProps>`      |         | FC to render head                                             |
+| `cell`        | `React.FC<CellProps>`      | null    | FC to render cell                                             |
+| `placeholder` | `React.ReactNode ӏ string` |         | A column-specific placeholder                                 |

@@ -27,6 +27,7 @@ export const RangeCell: React.FC<RangeProps> = ({ value, placeholder }) => (
 export const Filter: React.FC<FilterProps> = ({ options, title }) => {
   const [isOpen, setOpen] = React.useReducer((is) => !is, false);
   const [isChecked, setChecked] = React.useReducer((is) => !is, false);
+
   if (options.length === 0) {
     console.log('No options are passed to filter');
     return null;
