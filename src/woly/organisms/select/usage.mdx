@@ -1,12 +1,3 @@
-<<<<<<< HEAD:src/woly/organisms/select/usage.mdx
----
-name: select
-category: organisms
-package: 'woly'
----
-
-=======
->>>>>>> 964d18a1ed696efe0ec51e23d417d264818da2e9:src/woly/molecules/select/usage.mdx
 import {Select} from 'ui';
 import {Playground, StateEvent} from 'lib/playground';
 import {IconArrowDown} from 'static/icons';
@@ -25,7 +16,10 @@ If any initial value hasn`t been selected yet, you can pass a placeholder.
 
 <Playground>
   <div style={{ height: '250px', width: '250px' }}>
-    <StateEvent initial={null} change={(event) => event?.target?.textContent}>
+    <StateEvent
+      initial={null}
+      change={(event) => event?.target?.textContent}
+    >
       {(value, change) => (
         <Select
           icon={<IconArrowDown />}
@@ -123,41 +117,6 @@ Primary and dander priorities should focus user attention.
 <Playground>
   <StateEvent initial="Cats" change={(event) => event?.target?.textContent}>
     {(value, change) => (
-<<<<<<< HEAD:src/woly/organisms/select/usage.mdx
-      <div style={{ width: '250px', height: '250px',  }}>
-        <Select
-          icon={<IconArrowDown />}
-          onChange={change}
-          options={[
-            { children: 'Cats', value: 'Cats' },
-            { children: 'Dogs', value: 'Dogs' },
-            { children: 'Birds', value: 'Birds' },
-          ]}
-          selected={value}
-          variant="primary"
-        />
-      </div>
-    )}
-  </StateEvent>
-</Playground>
-
-<Playground>
-  <StateEvent initial="BMW" change={(event) => event?.target?.textContent}>
-    {(value, change) => (
-      <div style={{ width: '250px', height: '250px' }}>
-        <Select
-          icon={<IconArrowDown />}
-          onChange={change}
-          options={[
-            { children: 'Toyota', value: 'Toyota' },
-            { children: 'Opel', value: 'Opel' },
-            { children: 'BMW', value: 'BMW' },
-          ]}
-          selected={value}
-          variant="danger"
-        />
-      </div>
-=======
       <>
         <div style={{ width: '250px', height: '250px' }}>
           <Select
@@ -186,7 +145,6 @@ Primary and dander priorities should focus user attention.
           />
         </div>
       </>
->>>>>>> 964d18a1ed696efe0ec51e23d417d264818da2e9:src/woly/molecules/select/usage.mdx
     )}
   </StateEvent>
 </Playground>

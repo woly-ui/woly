@@ -6,7 +6,6 @@ export { Notification } from './notification';
 export { Modal } from './modal';
 export { Popover } from './popover';
 export { RadioButton } from './radio-button';
-export { Select } from './select';
 export { Switch } from './switch';
 export { Toast } from './toast';
 export { Tooltip } from './tooltip';

@@ -70,12 +70,12 @@ export const ListItem: React.FC<ListItemProps & ListElementsProps & Priority> = 
 
 const ListItemContainer = styled.div.attrs(mapItem)`
   ${box}
-  
+
   --local-icon-color: var(--woly-shape-text-default);
   --local-backgound: var(--woly-shape-default);
   --local-color: var(--woly-shape-text-default);
   --local-icon-size: var(--woly-line-height);
-  
+
   display: flex;
   align-items: center;
 
@@ -91,7 +91,6 @@ const ListItemContainer = styled.div.attrs(mapItem)`
 
   background: var(--local-backgound);
   cursor: pointer;
-
 
   [data-icon] {
     display: flex;
@@ -119,7 +118,6 @@ const ListItemContainer = styled.div.attrs(mapItem)`
     --local-backgound: var(--woly-shape-hover);
     --local-icon-color: var(--woly-shape-text-hover);
     --local-color: var(--woly-shape-text-hover);
-
   }
 
   &:active {

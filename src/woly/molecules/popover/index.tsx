@@ -77,7 +77,12 @@ const PopoverBase: React.FC<Props & Priority> = ({
 
   return (
     <div className={className} ref={ref} data-priority={priority}>
-      <div onClick={() => {setVisibility(true)}} onKeyDown={onKeyDown}>
+      <div
+        onClick={() => {
+          setVisibility(true);
+        }}
+        onKeyDown={onKeyDown}
+      >
         {children}
       </div>
       <Surface
@@ -94,7 +99,7 @@ const PopoverBase: React.FC<Props & Priority> = ({
 
 export const Popover = styled(PopoverBase)`
   --local-gap: var(--woly-const-m);
-  
+
   --popover-position: calc(100% + var(--local-gap));
   position: relative;
 
