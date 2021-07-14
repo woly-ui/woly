@@ -1,18 +1,17 @@
 {
-  "name": "@woly/calendar",
-  "version": "0.3.1",
-  "description": "Date and time components for Woly React library",
-  "main": "calendar.js",
-  "types": "calendar.d.ts",
-  "typings": "calendar.d.ts",
+  "name": "@woly/upload",
+  "description": "Upload components for Woly React library",
+  "main": "upload.js",
+  "types": "upload.d.ts",
+  "typings": "upload.d.ts",
   "files": [
     "README.md",
     "LICENSE",
-    "calendar.js",
-    "calendar.js.map",
-    "calendar.mjs",
-    "calendar.mjs.map",
-    "calendar.d.ts"
+    "upload.js",
+    "upload.js.map",
+    "upload.mjs",
+    "upload.mjs.map",
+    "upload.d.ts"
   ],
   "keywords": [
     "component",
@@ -24,9 +23,7 @@
     "system",
     "ui",
     "woly",
-    "calendar",
-    "date",
-    "time"
+    "upload"
   ],
   "dependencies": {},
   "peerDependencies": {
@@ -37,7 +34,7 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/woly-ui/woly",
-    "directory": "packages/calendar"
+    "directory": "packages/upload"
   },
   "scripts": {},
   "author": {

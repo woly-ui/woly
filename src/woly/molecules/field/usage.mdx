@@ -1,5 +1,5 @@
 import {Playground, State} from 'lib/playground';
-import {Checkbox, Field, Input, InputPassword, Switch, TextArea} from 'ui';
+import {Checkbox, Field, Input, InputPassword, Switch, TextArea} from 'ui'
 import {IconEyeClosed, IconEyeOpened} from 'static/icons';
 import { block } from 'lib/block';
 
@@ -20,17 +20,15 @@ The input line indicates where to enter text, displayed below the label.
 ### Example
 
 <Playground>
-  <block.L>
-    <Field label="Label">
-      <Input
-        priority="primary"
-        name="name"
-        onChange={(event) => console.info('On input change')}
-        placeholder="Placeholder"
-        type="text"
-      />
-    </Field>
-   </block.L>
+  <Field label="Label">
+    <Input
+      priority="primary"
+      name="name"
+      onChange={(event) => console.info('On input change')}
+      placeholder="Placeholder"
+      type="text"
+    />
+  </Field>
 </Playground>
 
 ### Labels
@@ -65,7 +63,7 @@ or also as a label of group of component, eg checkbox or radiobutton groups.
       priority="primary"
     />
   </Field>
-</Playground>{' '}
+</Playground>
 
 Labels and children component can be replaced in row
 

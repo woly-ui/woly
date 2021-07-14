@@ -7,22 +7,12 @@ interface LabelProps extends React.LabelHTMLAttributes<HTMLLabelElement> {
   children: React.ReactNode;
 }
 
-const LabelBase: React.FC<LabelProps & Priority> = ({
-  children,
-  className,
-  priority = 'secondary',
-}) => (
-  <label className={className} data-priority={priority}>
-    {children}
-  </label>
-);
+const map = (properties: LabelProps & Priority) => ({
+  'data-priority': properties.priority || 'secondary',
+});
 
-export const Label = styled(LabelBase)`
+export const Label = styled.div.attrs(map)`
   ${box}
-  /* --local-vertical: calc(1px * var(--woly-component-level) * var(--woly-main-level));
-  --local-horizontal: calc(
-    var(--woly-const-m) + (1px * var(--woly-main-level)) + var(--local-vertical)
-  ); */
 
   --local-color: var(--woly-canvas-text-default);
 

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
 <<<<<<< HEAD:src/woly/organisms/select/index.tsx
+<<<<<<< HEAD:src/woly/organisms/select/index.tsx
 import { ListContainer, ListItem, Popover } from 'ui';
 import { Variant } from 'lib/types';
 import { box } from 'ui/elements';
@@ -8,6 +9,10 @@ import { box } from 'ui/elements';
 import { Priority } from 'lib/types';
 import { box } from 'ui/elements/box';
 >>>>>>> 964d18a1ed696efe0ec51e23d417d264818da2e9:src/woly/molecules/select/index.tsx
+=======
+import { Priority } from 'lib/types';
+import { box } from 'ui/elements/box';
+>>>>>>> 76aab5df582124dcd900f1dcc7e9f44c2608dcff:src/woly/molecules/select/index.tsx
 import { keyHandlerGet, keyboardEventHandle } from 'lib';
 
 interface SelectOptionProps {
@@ -148,7 +153,10 @@ export const SelectBase: React.FC<SelectProps & Priority> = ({
 
 export const Select = styled(SelectBase)`
 <<<<<<< HEAD:src/woly/organisms/select/index.tsx
+<<<<<<< HEAD:src/woly/organisms/select/index.tsx
 =======
+=======
+>>>>>>> 76aab5df582124dcd900f1dcc7e9f44c2608dcff:src/woly/molecules/select/index.tsx
   --local-gap: var(--woly-const-m);
 
 >>>>>>> 964d18a1ed696efe0ec51e23d417d264818da2e9:src/woly/molecules/select/index.tsx
@@ -181,7 +189,10 @@ export const Select = styled(SelectBase)`
     width: 100%;
 =======
     box-sizing: border-box;
+<<<<<<< HEAD:src/woly/organisms/select/index.tsx
 >>>>>>> 964d18a1ed696efe0ec51e23d417d264818da2e9:src/woly/molecules/select/index.tsx
+=======
+>>>>>>> 76aab5df582124dcd900f1dcc7e9f44c2608dcff:src/woly/molecules/select/index.tsx
 
     color: var(--local-shape-color);
 

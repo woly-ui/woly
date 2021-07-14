@@ -6,6 +6,7 @@ const Block = styled.div`
 
 const N = styled(Block)`
   --woly-component-level: 0;
+  --woly-line-height: 21px;
 `;
 
 const XS = styled(Block)`

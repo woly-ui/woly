@@ -7,5 +7,5 @@ export const Backdrop = styled.div`
   bottom: 0;
   left: 0;
 
-  background: rgba(0, 0, 0, 0.3);
+  background: var(--woly-backdrop);
 `;

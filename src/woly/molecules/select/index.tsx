@@ -27,6 +27,8 @@ interface SelectProps {
   placeholder?: string;
   selected: string | null;
 }
+// in the future, should to set the number of items in the list
+// and decide whether the list of select will contain a scroll or something else
 
 export const SelectBase: React.FC<SelectProps & Priority> = ({
   className,
@@ -148,6 +150,7 @@ export const Select = styled(SelectBase)`
     display: flex;
     align-items: center;
 
+
     color: var(--local-shape-color);
 
     background: var(--local-background);
@@ -158,6 +161,7 @@ export const Select = styled(SelectBase)`
       flex: 1;
     }
   }
+  
   [data-icon] {
     --local-icon-size: var(--woly-line-height);
 
@@ -201,8 +205,9 @@ export const Select = styled(SelectBase)`
   }
 
   &[data-open='true'] > div[data-selected] {
+    background-color: var(--local-list-background);
+    border: var(--woly-border-width) solid var(--local-border-list);
     border-color: var(--woly-focus-color);
-    --local-shape-color: var(--woly-canvas-text-default);
   }
 
   &[data-disabled='true'] {

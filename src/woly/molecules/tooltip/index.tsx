@@ -47,9 +47,11 @@ const TooltipBase: React.FC<TooltipProps & Priority> = ({
       ref={ref}
       tabIndex={0}
     >
-      <div data-element>{children}</div>
-      <div role="tooltip">
-        <div data-triangle-height />
+      <div data-element="notifications" aria-labelledby="notifications-desc">
+        {children}
+      </div>
+      <div role="tooltip" id="notifications-desc">
+        <div data-triangle />
         <Surface data-priority={priority}>{content}</Surface>
       </div>
     </div>
@@ -63,7 +65,7 @@ export const Tooltip = styled(TooltipBase)`
       (1px * var(--woly-main-level)) + (1px * var(--woly-main-level) * var(--woly-component-level))
     )
   );
-  --local-triangel: min(
+  --local-triangle: min(
     var(--woly-const-m),
     calc(1px * var(--woly-component-level) * var(--woly-const-m))
   );
@@ -96,7 +98,7 @@ export const Tooltip = styled(TooltipBase)`
     opacity: 0;
 
     transition: 0.3s ease-in-out;
-    [data-triangle-height] {
+    [data-triangle] {
       position: absolute;
 
       width: 0;
@@ -104,7 +106,7 @@ export const Tooltip = styled(TooltipBase)`
 
       border-color: var(--woly-background) transparent transparent transparent;
       border-style: solid;
-      border-width: var(--local-triangel);
+      border-width: var(--local-triangle);
     }
   }
   &:hover [role='tooltip'],

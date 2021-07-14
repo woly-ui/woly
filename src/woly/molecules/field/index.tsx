@@ -1,6 +1,6 @@
 import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
-import { Label, Box } from 'ui/atoms';
+import { Label } from 'ui/atoms';
 import { Priority } from 'lib/types';
 import { boxVertical } from 'ui/elements/box';
 
@@ -19,7 +19,7 @@ const FieldBase: React.FC<FieldProps & Priority> = ({
   row = false,
 }) => (
   <Label className={className} data-row={row} data-priority={priority} data-label>
-    <Box>{label}</Box>
+    <span>{label}</span>
     <div data-content>{children}</div>
   </Label>
 );
@@ -27,6 +27,7 @@ const FieldBase: React.FC<FieldProps & Priority> = ({
 export const Field = styled(FieldBase)`
   --local-gap: calc(1px * var(--woly-component-level) * var(--woly-main-level));
 
+  display: block;
   box-sizing: border-box;
   width: 100%;
 

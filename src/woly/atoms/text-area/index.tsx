@@ -106,8 +106,6 @@ export const TextArea = styled(TextAreaBase)`
   box-sizing: border-box;
 
   width: 100%;
-  height: 100%;
-  
   overflow: hidden;
 
   background-color: var(--local-background-color);
