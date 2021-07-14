@@ -4,7 +4,8 @@ import { Backdrop, ButtonIcon, Heading, Surface } from 'ui/atoms';
 import { IconClose } from 'static/icons';
 import { Priority } from 'lib/types';
 import { box } from 'ui/elements/box';
-import { useScrollLock } from 'lib/use-scroll-lock';
+
+import { useScrollLock } from './use-scroll-lock';
 
 interface ModalProps {
   className?: string;
