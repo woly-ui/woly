@@ -23,7 +23,7 @@ export const useScrollLock = (options: ScrollLockOptions = { reserveScrollBarGap
     if (previousBodyPaddingRight === null) {
       const scrollBarGap = window.innerWidth - document.documentElement.clientWidth;
 
-      if (options.reserveScrollBarGap === true && scrollBarGap > 0) {
+      if (options.reserveScrollBarGap && scrollBarGap > 0) {
         const computedBodyPaddingRight = Number.parseInt(
           window.getComputedStyle(document.body).getPropertyValue('padding-right'),
           10,
