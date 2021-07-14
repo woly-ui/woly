@@ -34,9 +34,7 @@ export const box = css`
 `;
 
 export const boxInline = css`
-  --local-vertical: calc(
-    1px * var(--woly-component-level) * var(--woly-main-level) - var(--woly-border-width)
-  );
+  --local-vertical: calc(1px * var(--woly-component-level) * var(--woly-main-level) / 2);
 
   & > * {
     padding-top: var(--local-vertical);

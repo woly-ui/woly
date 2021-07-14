@@ -97,8 +97,8 @@ export const Checkbox = styled(CheckboxBase)`
       margin-left: var(--local-gap);
 
       color: var(--local-text-color);
-      font-size: var(--woly-font-size, 12px);
-      line-height: var(--woly-line-height, 24px);
+      font-size: var(--woly-font-size);
+      line-height: var(--woly-line-height);
     }
 
     input {
