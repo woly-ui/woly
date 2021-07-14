@@ -106,7 +106,7 @@ export const Button = styled(ButtonBase)`
   }
 
   &:focus {
-    box-shadow: 0 0 0 var(--woly-border-width) var(--woly-focus);
+    box-shadow: 0 0 0 var(--woly-border-width) var(--woly-focus-color);
   }
 
   &:disabled {
