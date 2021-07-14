@@ -33,6 +33,17 @@ export const box = css`
   }
 `;
 
+export const boxInline = css`
+  --local-vertical: calc(
+    1px * var(--woly-component-level) * var(--woly-main-level) - var(--woly-border-width)
+  );
+
+  & > * {
+    padding-top: var(--local-vertical);
+    padding-bottom: var(--local-vertical);
+  }
+`;
+
 export const boxVertical = css`
   & > *:not(:first-child) {
     padding-top: var(--local-gap);
