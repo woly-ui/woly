@@ -1,41 +1,12 @@
 import * as React from 'react';
-import { Priority } from 'lib/types';
+import {
+  CellProps,
+  DataTableProps,
+  HeadGroupProps,
+  HeadProps,
+} from 'ui/molecules/data-table/types';
 
 import { Table, Tbody, Td, Th, Thead, Tr } from '../../atoms/table';
-
-type CellType<TValue, TRowKey extends string> = {
-  [key in TRowKey]: string;
-} &
-  Record<string, TValue>;
-
-interface HeadProps {
-  title: React.ReactNode | string;
-}
-
-interface CellProps<TValue> {
-  placeholder?: React.ReactNode | string;
-  value: TValue;
-}
-
-interface DataColumn<TValue> {
-  title: React.ReactNode | string;
-  property: string;
-  head?: React.FC<HeadProps>;
-  cell?: React.FC<CellProps<TValue>>;
-  placeholder?: React.ReactNode | string;
-}
-
-type DataTableProps<TValue, TRowKey extends string> = React.HTMLAttributes<HTMLTableElement> &
-  Priority & {
-    rowKey: string;
-    columns: Array<DataColumn<TValue>>;
-    placeholder?: React.ReactNode | string;
-    values: Array<CellType<TValue, TRowKey>>;
-  };
-
-interface HeadGroupProps<TValue> {
-  columns: Array<DataColumn<TValue>>;
-}
 
 export function DataTable<TValue, TRowKey extends string>({
   rowKey,
