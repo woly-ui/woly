@@ -48,6 +48,7 @@ export const Global = styled.div`
   --woly-focus-color: hsla(var(--primary-700), 1);
   --woly-danger-color: hsla(var(--danger-500), 1);
 
+  --woly-backdrop: hsla(var(--bw-0), 0.3);
   --woly-shadow: 3px 3px 9px hsla(0, 0%, 22%, 12%);
 
   [data-priority='default'] {

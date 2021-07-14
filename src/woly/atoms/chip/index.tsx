@@ -94,23 +94,20 @@ export const Chip = styled(ChipBase)`
     flex-shrink: 0;
     align-items: center;
     justify-content: center;
+    width: var(--local-icon-size);
+    height: var(--local-icon-size);
 
-    svg > path {
-      fill: var(--local-text-color);
+    svg {
+      width: 100%;
+      height: 100%;
+      path {
+        fill: var(--local-text-color);
+      }
     }
   }
 
   [data-icon='chip-action-block'] {
     --woly-component-level: 0;
-  }
-
-  [data-icon] {
-    width: var(--local-icon-size);
-    height: var(--local-icon-size);
-    svg {
-      width: 100%;
-      height: 100%;
-    }
   }
 
   &[data-outlined='true'] {
