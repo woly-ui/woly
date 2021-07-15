@@ -2,7 +2,7 @@ import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
 import { IconCheckFilled, IconFilledUnchecked } from 'static/icons';
 import { Priority, keyboardEventHandle } from 'lib';
-import { box } from 'ui/elements/box';
+import { boxInline } from 'ui/elements/box';
 
 interface CheckboxProps {
   className?: string;
@@ -68,19 +68,15 @@ const CheckboxBase: React.FC<CheckboxProps & Priority> = ({
 };
 
 export const Checkbox = styled(CheckboxBase)`
-  --local-vertical: calc(1px * var(--woly-component-level) * var(--woly-main-level));
-  --local-horizontal: calc(
-    var(--woly-const-m) + (1px * var(--woly-main-level)) + var(--local-vertical)
-  );
-  --local-gap: calc(
-    (1px * var(--woly-main-level)) + (1px * var(--woly-main-level) * var(--woly-component-level))
-  );
+  ${boxInline}
 
-  --local-icon-size: 24px;
+  --local-icon-size: var(--woly-line-height);
   --local-icon-fill: var(--local-background-color);
   --local-icon-stroke: var(--woly-shape-default);
   --local-text-color: var(--woly-canvas-text-default);
   --local-background-color: var(--woly-shape-default);
+  /* TODO: rewrite to actual formula */
+  --local-gap: var(--woly-const-m);
 
   outline: none;
 
@@ -92,17 +88,17 @@ export const Checkbox = styled(CheckboxBase)`
   }
 
   [data-container] {
-    ${box}
-
     display: flex;
     align-items: center;
 
     outline: none;
 
     [data-text] {
+      margin-left: var(--local-gap);
+
       color: var(--local-text-color);
-      font-size: var(--woly-font-size, 12px);
-      line-height: var(--woly-line-height, 24px);
+      font-size: var(--woly-font-size);
+      line-height: var(--woly-line-height);
     }
 
     input {
