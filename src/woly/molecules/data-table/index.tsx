@@ -70,3 +70,5 @@ function TableHeadGroup<T>({ columns }: HeadGroupProps<T>) {
 const isReactComponent = (value: unknown) => typeof value === 'function';
 const isReactElement = (value: unknown) => typeof value === 'object';
 const isReactEntity = (value: unknown) => isReactComponent(value) || isReactElement(value);
+
+export { DataTableColumn } from './types';
