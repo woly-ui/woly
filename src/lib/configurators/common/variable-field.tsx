@@ -2,18 +2,19 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { ColorInput } from '../inputs/color';
+import { ConfiguratorName, Scope, Variable, VariableType } from '../types';
 import { InputProps } from '../inputs/types';
-import { Scope, Variable, VariableType } from '../types';
 import { useCssVariable } from '../stylesheet';
 
 interface Props {
+  configurator: ConfiguratorName;
   scope: Scope;
   variable: Variable;
 }
 
-export const VariableField: React.FC<Props> = ({ scope, variable }) => {
+export const VariableField: React.FC<Props> = ({ configurator, scope, variable }) => {
   const [value, setValue] = useCssVariable({
-    configurator: 'color',
+    configurator,
     selector: scope.selector,
     variable: variable.name,
   });

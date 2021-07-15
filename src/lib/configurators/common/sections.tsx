@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import React, { useState } from 'react';
 import { IconArrowDown } from 'static/icons';
 
-import { Scope } from '../types';
+import { ConfiguratorName, Scope } from '../types';
 import { VariableField } from './variable-field';
 import { getInitialVariableValue } from '../stylesheet';
 import { useLocalConfiguratorsState } from '../context';
@@ -23,7 +23,7 @@ const Section: React.FC<{ name: string }> = ({ name, children }) => {
   );
 };
 
-export function useSectionsJSX(scopes: Scope[]) {
+export function useSectionsJSX(configurator: ConfiguratorName, scopes: Scope[]) {
   const { id } = useLocalConfiguratorsState();
 
   const sections = scopes.map((scope) => {
@@ -39,7 +39,14 @@ export function useSectionsJSX(scopes: Scope[]) {
           return null;
         }
 
-        return <VariableField key={variable.name} scope={scope} variable={variable} />;
+        return (
+          <VariableField
+            key={variable.name}
+            configurator={configurator}
+            scope={scope}
+            variable={variable}
+          />
+        );
       })
       .filter(Boolean);
 
