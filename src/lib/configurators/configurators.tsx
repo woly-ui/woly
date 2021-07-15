@@ -37,7 +37,7 @@ export const Configurators = forwardRef<HTMLDivElement, Props>(
 
     return (
       <LocalConfiguratorsStateProvider value={state}>
-        <Wrapper ref={forwardedRef} data-is-open={Boolean(active)}>
+        <Wrapper ref={forwardedRef}>
           <Menu show={show} hide={hide} />
           <Tab />
           {stylesheets.render()}
