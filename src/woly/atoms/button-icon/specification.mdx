@@ -4,35 +4,47 @@
 
 **Recommended to use**
 
-- to trigger an action on an item, for example, to delete, to change, or add an element within a group; often comes with another 2 or 3 adjacent `ButtonIcon`.
-- to switch between two actions. One of the actions is always active, another is inactive ( e.g., "Like" icon-button, 'Hamburger' menu button). Often comes with transition animation between these two states.
+- to trigger an action that takes effect immediately without additional input. These buttons are either grouped and placed in a distinguishable interface frame or container and their actions affect globally (e.g. toolbars, toolbox), or placed right next to an object on which the action is performed (e.g. list item, which we can remove, edit, make favorite, etc.).
+- to switch between two actions. One of the actions is always active, another is inactive ( e.g., "favorite", "hamburger"). Icons of such buttons have a different appearance for their states (e.g., different shape, fill color, transition animation)
 
 **Not recommended using**
 
-- to trigger actions that could influence the user’s flow, like submitting a form (use `Button` instead);
+- to trigger actions that could influence the user’s flow, like submitting a form, because `ButtonIcon` can't have a primary action in the current user scenario (use `Button` instead);
 - to navigate a user to another page or an external web resource (use a link instead);
 
 ## Appearance
 
 ### Icon
 
-Since the `ButtonIcon` has no label and therefore compact, it is commonly used in an interface where extra space matters. Icon button has no text that tells the user the purpose of the button, thats why its important that icon should be easily recognizable. You may pair `ButtonIcon` with a component `Tooltip` containing a hint about the `ButtonIcon` underlying action.
+`ButtonIcon` has no label, that would clarify its meaning in that particular context, and all responsibility for this task is placed on the icon. Some icons are fairly fast to recognize at a glance, icons for home, print, and the magnifying glass for search are such instances. Outside of these examples, most icons continue to be ambiguous to users due to their association with different meanings across various interfaces. That's why it's important to make icon easily recognizable and have a meaning that corresponds to the action performed by the `ButtonIcon`. To help overcome the ambiguity that almost all icons face, you may pair `ButtonIcon` with a component `Tooltip` containing a hint about the `ButtonIcon` underlying action.
 
 ### Weight and priority
 
+Styles are primarily used to differentiate more important actions from less important ones. Create a hierarchy of actions that will guide the user where there are multitudes of choices. You can do it by changing the button's priority and weight. Usually, you can have a single prominent button (that style is often called "primary"), and several medium "secondary" and low emphasis "tertiary" actions ('default' priority).
+
 ## Placement
+
+Put buttons where users expect to find them. Buttons should be located in places where users can easily find them or expect to see them. Don’t make users hunt for buttons. If users can’t find a button, they won’t know that it exists.
 
 ### Grouping
 
-If `ButtonIcon`s share related actions, they’re good to be in a group. For example, in a list of items (users, products, blog posts), each item can have a group of `ButtonIcon`s with actions like `delete`, `edit`, `move`. Or app toolbars, containing a groups of button-icons with most offten used actions. In most cases, all buttons within a group should have the same priority, weight and size. But it does not limit you to make one particular button with the main action as `primary` and with weight `fill` then make other buttons as `secondary` and weight `outline`.
+If `ButtonIcon`s share related actions, they’re good to be in a group and should be placed either globally (toolbar, toolbox, etc) or next to an object on which the action is performed. In most cases, all buttons within a group should have the same priority, weight, and size. But it does not limit you to make one particular button with the main action as `primary` and others as `secondary`.
 
 ### Inside other components
 
-`ButtonIcon` can be used as a part of a more complex component, like a hide/show toggle in the `InputPassword` or remove button in `Chip`. Here, `ButtonIcon` should have the same `priority` as its parent for consistency.
+`ButtonIcon` can be used as a part of a more complex component, like a hide/show toggle in the `InputPassword` or remove button in `Chip`. It's recommended to place `ButtonIcon` on the right side after component's content and match its `priority` with its parent for consistency.
 
 ## Behaviors
 
 ### States
+
+`ButtonIcon` has a common set of states for an interactive element:
+
+- **normal** — communicates that component is interactive and enabled.
+- **focus** — communicates that the user has highlighted an element, using a keyboard or other input method.
+- **hover** — communicates when a user has placed a cursor above an interactive element.
+- **active** — or pressed state communicates that the user had tapped on the button.
+- **disabled** — communicates that component is currently noninteractive but can be enabled in the future.
 
 ### Interactions
 
