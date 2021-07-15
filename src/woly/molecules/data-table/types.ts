@@ -28,7 +28,7 @@ export type DataTableProps<
   TRowKey extends string
 > = React.HTMLAttributes<HTMLTableElement> &
   Priority & {
-    rowKey: string;
+    rowKey: TRowKey;
     columns: Array<DataTableColumn<TValue>>;
     placeholder?: React.ReactNode | string;
     values: Array<CellType<TValue, TRowKey>>;

@@ -22,7 +22,7 @@ export function DataTable<TValue, TRowKey extends string>({
       <TableHeadGroup columns={columns} />
       <Tbody>
         {values.map((row) => (
-          <Tr key={row[rowKey as TRowKey]}>
+          <Tr key={row[rowKey]}>
             {columns.map((column) => {
               const Cell = column.cell || DefaultCell;
               const finalPlaceholder = column.placeholder || placeholder;
