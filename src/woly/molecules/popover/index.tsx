@@ -9,6 +9,7 @@ interface Props {
   content: React.ReactNode;
   isOpen: boolean;
   position?: PopoverPositionType;
+  onClickOutside?: () => void;
 }
 
 type PopoverPositionType = 'top' | 'bottom';
@@ -20,10 +21,11 @@ const PopoverBase: React.FC<Props & Priority> = ({
   isOpen,
   position = 'bottom',
   priority = 'secondary',
+  onClickOutside: clickOutside,
 }) => {
   const ref = React.useRef<HTMLDivElement>(null);
 
-  const [isVisible, setVisibility] = React.useReducer((is) => !is, isOpen);
+  const [isVisible, setVisibility] = React.useState(isOpen);
   const [popoverPosition, setPosition] = React.useState<PopoverPositionType>('bottom');
 
   const onScroll = React.useCallback(() => {
@@ -41,7 +43,8 @@ const PopoverBase: React.FC<Props & Priority> = ({
 
       const trigger = ref.current;
       if (isVisible && !trigger?.contains(event.target)) {
-        setVisibility();
+        setVisibility(false);
+        clickOutside?.();
       }
     },
     [ref, isVisible],
@@ -50,7 +53,7 @@ const PopoverBase: React.FC<Props & Priority> = ({
   const onKeyDown = React.useCallback(
     ({ key }) => {
       if (isVisible && key === 'Escape') {
-        setVisibility();
+        setVisibility(false);
       }
     },
     [ref, isVisible],
@@ -73,8 +76,13 @@ const PopoverBase: React.FC<Props & Priority> = ({
   }, [onScroll, onClickOutside]);
 
   return (
-    <div className={className} ref={ref}>
-      <div onClick={setVisibility} onKeyDown={onKeyDown}>
+    <div className={className} ref={ref} data-priority={priority}>
+      <div
+        onClick={() => {
+          setVisibility(true);
+        }}
+        onKeyDown={onKeyDown}
+      >
         {children}
       </div>
       <Surface
@@ -90,25 +98,23 @@ const PopoverBase: React.FC<Props & Priority> = ({
 };
 
 export const Popover = styled(PopoverBase)`
-  --woly-gap: calc(
-    (1px * var(--woly-main-level)) + (1px * var(--woly-main-level) * var(--woly-component-level))
-  );
-  --popover-position: calc(100% + 4px + var(--woly-gap, 10px));
+  --local-gap: var(--woly-const-m);
+
+  --popover-position: calc(100% + var(--local-gap));
   position: relative;
 
-  [data-popover] {
+  width: 100%;
+
+  [data-open] {
     position: absolute;
     z-index: 1;
 
-    min-width: 100%;
-
-    visibility: hidden;
-    opacity: 0;
+    display: none;
   }
 
-  & > [data-open='true'] {
-    visibility: visible;
-    opacity: 1;
+  [data-open='true'] {
+    display: block;
+    width: 100%;
   }
 
   & > [data-position='top'] {

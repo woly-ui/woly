@@ -7,6 +7,8 @@ interface ListElementsProps {
   iconLeft?: React.ReactNode;
   iconRight?: React.ReactNode;
   text: React.ReactNode;
+  onClick?: React.EventHandler<React.SyntheticEvent>;
+  role?: string;
 }
 
 interface ListItemProps {
@@ -32,6 +34,7 @@ export const ListContainer = styled.div.attrs(mapContainer)`
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--local-gap);
+
   margin: 0;
   padding: 0;
 
@@ -44,6 +47,8 @@ export const ListItem: React.FC<ListItemProps & ListElementsProps & Priority> = 
   href,
   iconLeft,
   iconRight,
+  onClick,
+  role,
   priority = 'secondary',
   tabIndex,
   text,
@@ -52,48 +57,79 @@ export const ListItem: React.FC<ListItemProps & ListElementsProps & Priority> = 
     as={as}
     href={href}
     disabled={disabled}
+    onClick={onClick}
+    role={role}
     tabIndex={disabled ? -1 : tabIndex}
     priority={priority}
   >
     {iconLeft && <span data-icon>{iconLeft}</span>}
-    <span>{text}</span>
+    <span data-item-text>{text}</span>
     {iconRight && <span data-icon>{iconRight}</span>}
   </ListItemContainer>
 );
 
-/**
- * Fix ListItemContainer after implementing box element
- */
 const ListItemContainer = styled.div.attrs(mapItem)`
   ${box}
-  --local-icon-color: var(--woly-canvas-text-default);
-  --local-backgound: var(--woly-canvas-default);
-  --local-color: var(--woly-canvas-text-default);
+
+  --local-icon-color: var(--woly-shape-text-default);
+  --local-backgound: var(--woly-shape-default);
+  --local-color: var(--woly-shape-text-default);
+  --local-icon-size: var(--woly-line-height);
+
+  display: flex;
+  align-items: center;
+
+  width: 100%;
 
   color: var(--local-color);
   font-size: var(--woly-font-size);
   line-height: var(--woly-line-height);
+
   text-decoration: none;
 
   list-style-type: none;
 
-  background-color: var(--local-backgound);
+  background: var(--local-backgound);
   cursor: pointer;
 
-  span {
+  [data-icon] {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+
+    width: var(--local-icon-size);
+    height: var(--local-icon-size);
+
     svg > path {
+      width: 100%;
+      height: 100%;
+
       fill: var(--local-icon-color);
     }
   }
 
+  [data-item-text] {
+    flex: 1;
+    flex-wrap: nowrap;
+  }
+
   &:hover {
-    --local-backgound: var(--woly-canvas-disabled);
+    --local-backgound: var(--woly-shape-hover);
+    --local-icon-color: var(--woly-shape-text-hover);
+    --local-color: var(--woly-shape-text-hover);
+  }
+
+  &:active {
+    --local-backgound: var(--woly-shape-active);
+    --local-icon-color: var(--woly-shape-text-active);
+    --local-color: var(--woly-shape-text-active);
   }
 
   &[data-type='a']:focus-within,
   &[data-type='li']:focus {
+    --local-backgound: var(--woly-shape-active);
     --local-icon-color: var(--woly-shape-text-active);
-    --local-backgound: var(--woly-focus);
     --local-color: var(--woly-shape-text-active);
 
     outline: none;
@@ -101,8 +137,9 @@ const ListItemContainer = styled.div.attrs(mapItem)`
   }
 
   &[data-disabled='true'] {
-    --local-icon-color: var(--woly-canvas-text-disabled);
-    --local-color: var(--woly-canvas-text-disabled);
+    --local-backgound: var(--woly-shape-disabled);
+    --local-icon-color: var(--woly-shape-text-disabled);
+    --local-color: var(--woly-shape-text-disabled);
 
     pointer-events: none;
   }

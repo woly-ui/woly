@@ -1,11 +1,8 @@
 import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
-import { Backdrop, ButtonIcon, Heading, Surface } from 'ui/atoms';
+import { Backdrop, Heading, Surface } from 'ui/atoms';
 import { IconClose } from 'static/icons';
 import { Priority } from 'lib/types';
-import { box } from 'ui/elements/box';
-
-import { useScrollLock } from './use-scroll-lock';
 
 interface ModalProps {
   className?: string;
@@ -22,19 +19,11 @@ const ModalBase: React.FC<ModalProps & Priority> = ({
   title,
   visible = false,
 }) => {
-  const modalRef = React.useRef<HTMLDivElement | null>(null);
+  let icon = null;
 
-  const { disableScroll, enableScroll } = useScrollLock();
-
-  React.useEffect(() => {
-    if (!modalRef.current) return;
-
-    if (visible) {
-      disableScroll(modalRef.current);
-    } else {
-      enableScroll();
-    }
-  }, [visible]);
+  if (onClose) {
+    icon = <IconClose onClick={onClose} data-icon="modal-close" />;
+  }
 
   const onKeyDown = React.useCallback(
     (event) => {
@@ -53,30 +42,11 @@ const ModalBase: React.FC<ModalProps & Priority> = ({
   }, [onKeyDown]);
 
   return (
-    <div
-      className={className}
-      data-priority={priority}
-      data-visible={visible}
-      tabIndex={-1}
-      ref={modalRef}
-    >
+    <div className={className} data-priority={priority} data-visible={visible} tabIndex={-1}>
       <Backdrop onClick={onClose} />
       <Shape data-priority={priority}>
-        <div data-header>
-          <Heading data-title size={2}>
-            {title}
-          </Heading>
-          {onClose && (
-            <div data-button="modal-close">
-              <ButtonIcon
-                onClick={onClose}
-                icon={<IconClose />}
-                priority="default"
-                weight="transparent"
-              />
-            </div>
-          )}
-        </div>
+        {icon}
+        <Heading size={2}>{title}</Heading>
         <div data-content>{children}</div>
       </Shape>
     </div>
@@ -85,40 +55,36 @@ const ModalBase: React.FC<ModalProps & Priority> = ({
 
 const Shape = styled(Surface)`
   position: relative;
+  top: 50%;
+
+  left: 50%;
   z-index: 1;
 
-  display: flex;
-  flex-direction: column;
-
   box-sizing: border-box;
-  min-width: calc((100% - (var(--local-inset-padding) * 2)) / 3);
-  max-width: calc((100% - (var(--local-inset-padding) * 2)) / 3 * 2);
 
-  max-height: 100%;
+  width: fit-content;
+  max-height: 100vh;
+  padding: var(--local-padding-top) var(--local-padding) var(--local-padding);
+  overflow: scroll;
 
-  padding: var(--local-vertical) var(--local-horizontal);
+  transform: translate(-50%, -50%);
 `;
 
 export const Modal = styled(ModalBase)`
-  ${box}
+  --local-icon-size: var(--woly-line-height);
+  --local-icon-position: calc(1px * var(--woly-component-level) * var(--woly-main-level));
+  --local-icon-padding: calc(1px * var(--woly-component-level) * var(--woly-main-level));
 
-  /* TODO: rewrite formulas [13.07.21]*/
-  --local-gap: calc(3px * var(--woly-component-level) * var(--woly-main-level));
-  --local-vertical: calc(var(--woly-const-m) * (var(--woly-component-level) + 1));
-  --local-inset-padding: 36px;
-
+  --local-gap: calc(5px * var(--woly-component-level) * var(--woly-main-level));
+  --local-padding: calc(var(--local-gap) - 1px * var(--woly-main-level));
+  --local-padding-top: calc(
+    var(--woly-const-m) * (var(--woly-component-level) + 1) + var(--local-padding)
+  );
   position: fixed;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-sizing: border-box;
-  max-height: 100vh;
-  padding: --local-inset-padding;
 
   visibility: hidden;
   opacity: 0;
@@ -128,27 +94,17 @@ export const Modal = styled(ModalBase)`
     opacity: 1;
   }
 
-  [data-button='modal-close'] {
-    --woly-component-level: 1;
-    flex-shrink: 0;
-  }
+  [data-icon='modal-close'] {
+    position: absolute;
+    top: var(--local-icon-position);
+    right: var(--local-icon-position);
 
-  [data-header] {
-    display: flex;
-    align-items: center;
-    width: 100%;
-  }
-
-  [data-title] {
-    flex: 1;
-
-    & + [data-button='modal-close'] {
-      margin-left: var(--local-gap);
-    }
+    width: var(--local-icon-size);
+    height: var(--local-icon-size);
+    padding: var(--local-icon-padding);
   }
 
   [data-content] {
     padding-top: var(--local-gap);
-    overflow: auto;
   }
 ` as StyledComponent<'div', Record<string, unknown>, ModalProps & Priority>;

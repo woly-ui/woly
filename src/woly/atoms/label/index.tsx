@@ -1,6 +1,7 @@
 import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
 import { Priority } from 'lib/types';
+import { box } from 'ui/elements/box';
 
 interface LabelProps extends React.LabelHTMLAttributes<HTMLLabelElement> {
   children: React.ReactNode;
@@ -10,11 +11,8 @@ const map = (properties: LabelProps & Priority) => ({
   'data-priority': properties.priority || 'secondary',
 });
 
-export const Label = styled.label.attrs(map)`
-  --local-vertical: calc(1px * var(--woly-component-level) * var(--woly-main-level));
-  --local-horizontal: calc(
-    var(--woly-const-m) + (1px * var(--woly-main-level)) + var(--local-vertical)
-  );
+export const Label = styled.div.attrs(map)`
+  ${box}
 
   --local-color: var(--woly-canvas-text-default);
 

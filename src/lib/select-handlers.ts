@@ -6,7 +6,7 @@ interface EnterProps {
   isOpen: boolean;
   onChange: React.EventHandler<React.SyntheticEvent>;
   selectNode: HTMLElement;
-  setIsOpen: () => void;
+  setIsOpen: (isOpen: boolean) => void;
 }
 
 const LI_TAG = 'LI';
@@ -33,7 +33,7 @@ const onEnter = ({ isOpen, onChange, selectNode, setIsOpen }: EnterProps) => (
   if (isOpen && document.activeElement?.tagName === LI_TAG) {
     onChange(event);
   }
-  setIsOpen();
+  setIsOpen(false);
   selectNode.focus();
 };
 
