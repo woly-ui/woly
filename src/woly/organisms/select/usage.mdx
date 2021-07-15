@@ -16,10 +16,7 @@ If any initial value hasn`t been selected yet, you can pass a placeholder.
 
 <Playground>
   <div style={{ height: '250px', width: '250px' }}>
-    <StateEvent
-      initial={null}
-      change={(event) => event?.target?.textContent}
-    >
+    <StateEvent initial={null} change={(event) => event?.target?.textContent}>
       {(value, change) => (
         <Select
           icon={<IconArrowDown />}

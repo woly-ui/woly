@@ -14,19 +14,11 @@ const UploadAreaBase: React.FC<UploadAreaProps & Priority> = ({
   center = false,
   className,
   content,
-<<<<<<< HEAD:src/woly/atoms/upload-area/index.tsx
-  priority = 'default',
-}) => (
-  <div className={className} data-priority={priority} tabIndex={0}>
-    <div data-content data-center={center}>
-      <div data-overlay />
-=======
   focus = false,
   priority = 'default',
 }) => (
   <div className={className} data-priority={priority} data-focus={focus}>
     <div data-content data-position-center={center}>
->>>>>>> 76aab5df582124dcd900f1dcc7e9f44c2608dcff:src/upload/elements/upload-area/index.tsx
       {content}
     </div>
     <div data-overlay />
