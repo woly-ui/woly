@@ -32,21 +32,26 @@ The top, right, bottom, and left positions appear outside the target element, ce
     <Tooltip
       content={
         <Box>
-          <Text type="S">Подсказка может быть написана в две строки и более</Text>
+          <Text type="XS">Подсказка может быть написана в две строки и более</Text>
         </Box>
       }
       position="top"
+      priority="primary"
+      weight="fill"
     >
-      <Button onClick={() => console.info('Hi!')} text="Button" variant="primary" />
+      <Button onClick={() => console.info('Hi!')} text="Button" priority="primary" />
     </Tooltip>
     <Tooltip
       content={
         <Box>
-          <Text type="XS">4 Whitehall Street New York NY 10004</Text>
+          <Text priority="white" type="XS">
+            4 Whitehall Street New York NY 10004
+          </Text>
         </Box>
       }
       position="bottom"
-      variant="primary"
+      priority="white"
+      weight="goast"
     >
       <Input
         name="adress"
@@ -57,10 +62,12 @@ The top, right, bottom, and left positions appear outside the target element, ce
       />
     </Tooltip>
     <Tooltip
+      priority="secondary"
+      weight="fill"
       content={
         <BoxVertical>
           <Box>
-            <Text type="S">
+            <Text type="XS">
               Подсказка может быть написана в две и более строки, а также содержать блок с actions
             </Text>
           </Box>
@@ -69,7 +76,7 @@ The top, right, bottom, and left positions appear outside the target element, ce
               <Button
                 onClick={() => console.info('Hi!')}
                 text="Got it"
-                variant="primary"
+                priority="primary"
                 style={{ alignSelf: 'flex-end' }}
               />
             </block.S>
@@ -78,18 +85,21 @@ The top, right, bottom, and left positions appear outside the target element, ce
       }
       position="right"
     >
-      <Button onClick={() => console.info('Hi!')} text="Button" variant="primary" />
+      <Button onClick={() => console.info('Hi!')} text="Button" priority="primary" />
     </Tooltip>
     <Tooltip
       content={
         <Box>
-          <Text type="S">Подсказка</Text>
+          <Text priority="white" type="S">
+            Подсказка
+          </Text>
         </Box>
       }
       position="left"
       id="tooltip-top"
+      priority="primary"
     >
-      <Button onClick={() => console.info('Hi!')} text="Button" variant="primary" />
+      <Button onClick={() => console.info('Hi!')} text="Button" priority="primary" />
     </Tooltip>
   </block.S>
 </Playground>
@@ -102,3 +112,4 @@ The top, right, bottom, and left positions appear outside the target element, ce
 | `content`  | `React.ReactElement` | `null`        | Tooltip`s content                                             |
 | `position` | `string`             | `'top'`       | The positon of the tooltip aginst the relative element        |
 | `priority` | `string`             | `'secondary'` | Priority prop to style Tooltip component                      |
+| `weight`   | `string`             | `goast`       | Set tooltip`s weight (ex.: fill, goast)                       |

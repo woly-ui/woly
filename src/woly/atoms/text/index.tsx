@@ -15,7 +15,7 @@ const map = (properties: TextProps & Priority) => ({
 });
 
 export const Text = styled.p.attrs(map)`
-  --local-color: var(--woly-canvas-text-default);
+  --local-color: var(--woly-shape-text-default);
 
   margin: 0;
 

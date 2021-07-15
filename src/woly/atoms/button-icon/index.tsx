@@ -128,8 +128,8 @@ export const ButtonIcon = styled(ButtonIconBase)`
 
   &[data-weight='goast'] {
     --local-shape-color: transparent;
-    --local-icon-color: var(--woly-shape-text-default);
-    --local-border-color: var(--woly-shape-text-default);
+    --local-icon-color: var(--woly-shape-default);
+    --local-border-color: var(--woly-shape-default);
 
     --local-shadow: var(--woly-border-width) var(--woly-border-width)
       calc(var(--woly-border-width) * 4) hsla(0, 0%, 100%, 50%);
