@@ -15,7 +15,7 @@ export interface CellProps<TValue> {
   value: TValue;
 }
 
-export interface DataColumn<TValue> {
+export interface DataTableColumn<TValue> {
   title: React.ReactNode | string;
   property: string;
   head?: React.FC<HeadProps>;
@@ -29,11 +29,11 @@ export type DataTableProps<
 > = React.HTMLAttributes<HTMLTableElement> &
   Priority & {
     rowKey: string;
-    columns: Array<DataColumn<TValue>>;
+    columns: Array<DataTableColumn<TValue>>;
     placeholder?: React.ReactNode | string;
     values: Array<CellType<TValue, TRowKey>>;
   };
 
 export interface HeadGroupProps<TValue> {
-  columns: Array<DataColumn<TValue>>;
+  columns: Array<DataTableColumn<TValue>>;
 }

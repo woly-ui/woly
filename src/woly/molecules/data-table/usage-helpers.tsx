@@ -2,6 +2,7 @@ import * as React from 'react';
 
 import { Filter } from './filter';
 /* eslint-disable sonarjs/no-duplicate-string */
+/* eslint-disable react-hooks/rules-of-hooks */
 import { HeadProps } from './types';
 
 interface RangeProps {
@@ -60,12 +61,16 @@ export const columns = [
   {
     title: 'Название банка',
     property: 'bank-name',
-    head: ({ title }: HeadProps) => <Filter options={bankNames} title={title} />,
+    head: ({ title }: HeadProps) => (
+      <Filter value={[]} onChange={() => {}} options={bankNames} title={title} />
+    ),
   },
   {
     title: 'Платежная система',
     property: 'payment-system',
-    head: ({ title }: HeadProps) => <Filter options={paymentSystems} title={title} />,
+    head: ({ title }: HeadProps) => (
+      <Filter value={[]} onChange={() => {}} options={paymentSystems} title={title} />
+    ),
   },
   {
     title: 'Диапазон',

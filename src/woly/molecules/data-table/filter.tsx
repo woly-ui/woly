@@ -11,19 +11,33 @@ interface Option {
 }
 
 interface FilterProps {
-  options: Option[];
   title: React.ReactNode | string;
+  options: Option[];
+  value: string[];
+  onChange: (value: string[]) => void;
 }
 
-export const Filter: React.FC<FilterProps> = ({ options, title }) => {
+export const Filter: React.FC<FilterProps> = ({
+  title,
+  options,
+  value: checkedValues,
+  onChange,
+}) => {
   const [isOpen, setOpen] = React.useReducer((is) => !is, false);
-  const [checkedItems, setCheckedItems] = React.useState<string[]>([]);
 
-  const createCheckHandler = (value: string) => () =>
-    setCheckedItems((current) => {
-      if (current.includes(value)) return current.filter((item) => item !== value);
-      return current.concat(value);
-    });
+  const getUpdatedValue = (value: string) => {
+    if (checkedValues.includes(value)) {
+      // remove
+      return checkedValues.filter((item) => item !== value);
+    }
+
+    // add
+    return checkedValues.concat(value);
+  };
+
+  const createCheckHandler = (item: string) => {
+    return () => onChange(getUpdatedValue(item));
+  };
 
   if (options.length === 0) {
     console.log('No options are passed to filter');
@@ -42,9 +56,9 @@ export const Filter: React.FC<FilterProps> = ({ options, title }) => {
                   id={value}
                   key={value}
                   text={name}
+                  checked={checkedValues.includes(value)}
                   onChange={createCheckHandler(value)}
                   priority="primary"
-                  checked={checkedItems.includes(value)}
                 />
               ))}
               <Button priority="primary" outlined text="Применить" />
