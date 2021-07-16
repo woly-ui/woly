@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import React, { forwardRef, useState } from 'react';
+import React, { useState } from 'react';
 import { IconColorPalette } from 'static/icons';
 
 import { ColorConfigurator } from './color';
@@ -16,36 +16,34 @@ interface Props {
   for?: ConfiguratorName[];
 }
 
-export const Configurators = forwardRef<HTMLDivElement, Props>(
-  ({ id, for: configurators = [] }, forwardedRef) => {
-    const [active, setActive] = useState<ConfiguratorName | null>(null);
-    const stylesheets = useStylesheets(id);
+export const Configurators: React.FC<Props> = ({ id, for: configurators = [] }) => {
+  const [active, setActive] = useState<ConfiguratorName | null>(null);
+  const stylesheets = useStylesheets(id);
 
-    if (configurators.length === 0) {
-      return null;
-    }
+  if (configurators.length === 0) {
+    return null;
+  }
 
-    const state: LocalConfiguratorsState = {
-      id,
-      configurators,
-      active,
-      stylesheets,
-    };
+  const state: LocalConfiguratorsState = {
+    id,
+    configurators,
+    active,
+    stylesheets,
+  };
 
-    const show = (name: ConfiguratorName) => setActive(name);
-    const hide = () => setActive(null);
+  const show = (name: ConfiguratorName) => setActive(name);
+  const hide = () => setActive(null);
 
-    return (
-      <LocalConfiguratorsStateProvider value={state}>
-        <Wrapper ref={forwardedRef}>
-          <Menu show={show} hide={hide} />
-          <Tab />
-          {stylesheets.render()}
-        </Wrapper>
-      </LocalConfiguratorsStateProvider>
-    );
-  },
-);
+  return (
+    <LocalConfiguratorsStateProvider value={state}>
+      <Wrapper>
+        <Menu show={show} hide={hide} />
+        <Tab />
+        {stylesheets.render()}
+      </Wrapper>
+    </LocalConfiguratorsStateProvider>
+  );
+};
 
 const Wrapper = styled.div`
   display: flex;
