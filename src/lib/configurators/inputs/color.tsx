@@ -83,7 +83,9 @@ const background = css`
   height: 100%;
 `;
 
-const TransparencyWrapper = styled.svg`
+const TransparencyWrapper = styled.svg.attrs({
+  viewBox: '0 0 24 24',
+})`
   ${background}
 
   & > rect {
