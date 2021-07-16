@@ -136,7 +136,7 @@ export function useStylesheets(id: string): Stylesheets {
   };
 
   /*
-   * Get the actual style record for variable
+   * Set the actual style record for variable
    */
   const set: Stylesheets['set'] = (path, value) => {
     const key = getKey(path);
