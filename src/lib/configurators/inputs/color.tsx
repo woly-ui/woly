@@ -1,7 +1,7 @@
-import React from 'react';
 import Tippy from '@tippyjs/react';
 import rgba from 'color-rgba';
-import styled from 'styled-components';
+import React, { forwardRef } from 'react';
+import styled, { css } from 'styled-components';
 import { RgbaColorPicker } from 'react-colorful';
 
 import { InputProps } from './types';
@@ -41,14 +41,25 @@ export const ColorInput: React.FC<InputProps> = ({ value, onChange }) => {
           />
         }
       >
-        <Wrapper>
-          <Background />
-          <Fill style={{ background: value }} />
-        </Wrapper>
+        <ColorIndicator value={value} />
       </Tippy>
     </div>
   );
 };
+
+const ColorIndicator = forwardRef<HTMLButtonElement, { value: string }>(({ value }, ref) => {
+  return (
+    <Wrapper ref={ref}>
+      <TransparencyWrapper>
+        <rect y="0" x="0" fill="#cccccc" />
+        <rect y="50%" x="50%" fill="#cccccc" />
+        <rect y="0" x="50%" fill="#fcfcfc" />
+        <rect y="50%" x="0" fill="#fcfcfc" />
+      </TransparencyWrapper>
+      <Fill style={{ background: value }} />
+    </Wrapper>
+  );
+});
 
 const Wrapper = styled.button`
   position: relative;
@@ -63,59 +74,26 @@ const Wrapper = styled.button`
   cursor: pointer;
 `;
 
-const Background = () => {
-  return (
-    <div style={{ position: 'absolute', left: 0, top: 0, width: '100%', height: '100%' }}>
-      <div
-        style={{
-          position: 'absolute',
-          left: 0,
-          top: 0,
-          width: '50%',
-          height: '50%',
-          background: 'white',
-        }}
-      />
-      <div
-        style={{
-          position: 'absolute',
-          right: 0,
-          top: 0,
-          width: '50%',
-          height: '50%',
-          background: '#b1b1b1',
-        }}
-      />
-      <div
-        style={{
-          position: 'absolute',
-          right: 0,
-          bottom: 0,
-          width: '50%',
-          height: '50%',
-          background: 'white',
-        }}
-      />
-      <div
-        style={{
-          position: 'absolute',
-          left: 0,
-          bottom: 0,
-          width: '50%',
-          height: '50%',
-          background: '#b1b1b1',
-        }}
-      />
-    </div>
-  );
-};
-
-const Fill = styled.div`
+const background = css`
   position: absolute;
   top: 0;
   left: 0;
-
-  display: block;
   width: 100%;
   height: 100%;
+`;
+
+const TransparencyWrapper = styled.svg.attrs({
+  xmlns: 'http://www.w3.org/2000/svg',
+})`
+  ${background}
+
+  & > rect {
+    width: 50%;
+    height: 50%;
+    stroke-width: 0;
+  }
+`;
+
+const Fill = styled.div`
+  ${background}
 `;
