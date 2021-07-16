@@ -20,9 +20,7 @@ function createRule(id: string, path: Path, value: string) {
 }
 
 function hasRule(stylesheet: CSSStyleSheet, rule: string) {
-  const ruleCount = stylesheet.rules.length;
-  if (ruleCount === 0) return false;
-
+  if (stylesheet.rules.length === 0) return false;
   const foundRule = stylesheet.rules[0];
   return foundRule.cssText === rule;
 }
