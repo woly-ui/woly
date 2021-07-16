@@ -23,21 +23,18 @@ export const Playground: React.FC<Props> = ({
 }) => {
   const scopeId = useUniqueID();
 
-  const configuratorsRef = useRef<HTMLDivElement | null>(null);
-  const frameRef = useRef<HTMLDivElement | null>(null);
-
   const Wrapper = block[size];
 
   return (
     <PlaygroundWrapper>
-      <Frame ref={frameRef}>
+      <Frame>
         <Global data-scope={scopeId}>
           <Wrapper>
             <Container data-dir={direction}>{children}</Container>
           </Wrapper>
         </Global>
       </Frame>
-      <Configurators ref={configuratorsRef} id={scopeId} for={configurators} />
+      <Configurators id={scopeId} for={configurators} />
     </PlaygroundWrapper>
   );
 };
