@@ -7,21 +7,60 @@ import { VariableField } from './variable-field';
 import { getInitialVariableValue } from '../stylesheet';
 import { useLocalConfiguratorsState } from '../context';
 
-const Section: React.FC<{ name: string }> = ({ name, children }) => {
+type SectionProps = React.HTMLAttributes<HTMLElement> & { name: string };
+
+const SectionView: React.FC<SectionProps> = ({ name, children, ...rest }) => {
   const [isOpen, setOpen] = useState(false);
 
   const toggle = () => setOpen((is) => !is);
 
   return (
-    <SectionWrapper>
-      <SectionNameWrapper onClick={toggle}>
-        <StyledArrowIcon data-reversed={isOpen} />
-        <SectionName>{name}</SectionName>
-      </SectionNameWrapper>
-      {isOpen && <SectionContent>{children}</SectionContent>}
-    </SectionWrapper>
+    <section {...rest}>
+      <div data-name-wrapper={true} onClick={toggle}>
+        <IconArrowDown data-arrow-icon={true} data-reversed={isOpen} />
+        <span data-section-name={true}>{name}</span>
+      </div>
+      {isOpen && <div data-section-content={true}>{children}</div>}
+    </section>
   );
 };
+
+export const Section = styled(SectionView)`
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+
+  & [data-name-wrapper] {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    margin: 6px 0;
+    padding: 6px 0;
+
+    cursor: pointer;
+
+    user-select: none;
+  }
+
+  & [data-arrow-icon] {
+    & path {
+      fill: currentColor;
+    }
+
+    &[data-reversed='true'] {
+      transform: rotate(180deg);
+    }
+  }
+
+  & [data-section-name] {
+    margin-left: 12px;
+  }
+
+  & [data-section-content] {
+    margin: 12px 0;
+  }
+`;
 
 export function useSectionsJSX(configurator: ConfiguratorName, scopes: Scope[]) {
   const { id } = useLocalConfiguratorsState();
@@ -63,40 +102,3 @@ export function useSectionsJSX(configurator: ConfiguratorName, scopes: Scope[]) 
 
   return <>{sections}</>;
 }
-
-const SectionNameWrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  width: 100%;
-  margin: 6px 0;
-  padding: 6px 0;
-
-  cursor: pointer;
-
-  user-select: none;
-`;
-
-const SectionName = styled.span`
-  margin-left: 12px;
-`;
-
-const StyledArrowIcon = styled(IconArrowDown)`
-  & path {
-    fill: currentColor;
-  }
-
-  &[data-reversed='true'] {
-    transform: rotate(180deg);
-  }
-`;
-
-const SectionWrapper = styled.section`
-  &:last-of-type {
-    margin-bottom: 0;
-  }
-`;
-
-const SectionContent = styled.div`
-  margin: 12px 0;
-`;
