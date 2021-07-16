@@ -41,6 +41,46 @@ const CONFIGURABLE_COLORS: Variable[] = [
     name: '--woly-shape-text-active',
     type: 'color',
   },
+  {
+    displayName: 'Canvas (default)',
+    name: '--woly-canvas-default',
+    type: 'color',
+  },
+  {
+    displayName: 'Canvas text (default)',
+    name: '--woly-canvas-text-default',
+    type: 'color',
+  },
+  {
+    displayName: 'Canvas (disabled)',
+    name: '--woly-canvas-disabled',
+    type: 'color',
+  },
+  {
+    displayName: 'Canvas text (disabled)',
+    name: '--woly-canvas-text-disabled',
+    type: 'color',
+  },
+  {
+    displayName: 'Canvas (hover)',
+    name: '--woly-canvas-hover',
+    type: 'color',
+  },
+  {
+    displayName: 'Canvas text (hover)',
+    name: '--woly-canvas-text-hover',
+    type: 'color',
+  },
+  {
+    displayName: 'Canvas (active)',
+    name: '--woly-canvas-active',
+    type: 'color',
+  },
+  {
+    displayName: 'Canvas text (active)',
+    name: '--woly-canvas-text-active',
+    type: 'color',
+  },
 ];
 
 export const SCOPES: Scope[] = [
