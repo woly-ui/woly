@@ -47,6 +47,14 @@ export const Configurators = forwardRef<HTMLDivElement, Props>(
   },
 );
 
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  resize: vertical;
+`;
+
 interface ConfiguratorOptions {
   title: string;
   Icon: React.FC;
@@ -61,7 +69,9 @@ const mapNameToOptions: Record<ConfiguratorName, ConfiguratorOptions> = {
   },
 };
 
-const Tab: React.FC = () => {
+type TabProps = React.HTMLAttributes<HTMLDivElement>;
+
+const TabView: React.FC<TabProps> = ({ ...rest }) => {
   const { active, stylesheets } = useLocalConfiguratorsState();
   if (!active) return null;
 
@@ -72,51 +82,56 @@ const Tab: React.FC = () => {
   };
 
   return (
-    <TabWrapper data-active={active}>
-      <Header>
-        <TabTitle>{title}</TabTitle>
+    <div {...rest}>
+      <div data-tab-header={true}>
+        <h3 data-tab-title={true}>{title}</h3>
         <ResetButton onClick={reset}>Reset</ResetButton>
-      </Header>
-      <TabContent>
+      </div>
+      <div data-tab-content={true}>
         <Component />
-      </TabContent>
-    </TabWrapper>
+      </div>
+    </div>
   );
 };
 
-const Menu: React.FC<{
-  show: (name: ConfiguratorName) => void;
-  hide: () => void;
-}> = ({ show, hide }) => {
-  const { active, configurators } = useLocalConfiguratorsState();
-
-  return (
-    <MenuWrapper>
-      {configurators.map((name) => {
-        const { Icon } = mapNameToOptions[name];
-        const isActive = name === active;
-
-        const handleClick = () => {
-          if (isActive) hide();
-          else show(name);
-        };
-
-        return (
-          <MenuItemWrapper key={name} onClick={handleClick}>
-            <Icon />
-          </MenuItemWrapper>
-        );
-      })}
-    </MenuWrapper>
-  );
-};
-
-const Wrapper = styled.div`
+const Tab = styled(TabView)`
   display: flex;
   flex-direction: column;
+  box-sizing: border-box;
   width: 100%;
+  min-width: 240px;
+  height: 100%;
 
-  resize: vertical;
+  color: black;
+
+  background-color: white;
+
+  border: 2px solid rgb(246, 248, 250);
+  border-top-width: 0;
+  border-bottom-width: 0;
+
+  & [data-tab-header] {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+
+    user-select: none;
+  }
+
+  & [data-tab-title] {
+    margin: 0;
+    padding: 0;
+
+    font-size: 16px;
+  }
+
+  & [data-tab-content] {
+    flex-grow: 1;
+    padding: 0 20px 20px;
+    overflow-y: auto;
+  }
 `;
 
 const ResetButton = styled.button`
@@ -141,65 +156,57 @@ const ResetButton = styled.button`
   }
 `;
 
-const Header = styled.div`
+type MenuProps = React.HTMLAttributes<HTMLUListElement> & {
+  show: (name: ConfiguratorName) => void;
+  hide: () => void;
+};
+
+const MenuView: React.FC<MenuProps> = ({ show, hide, ...rest }) => {
+  const { active, configurators } = useLocalConfiguratorsState();
+
+  return (
+    <ul {...rest}>
+      {configurators.map((name) => {
+        const { Icon } = mapNameToOptions[name];
+        const isActive = name === active;
+
+        const handleClick = () => {
+          if (isActive) hide();
+          else show(name);
+        };
+
+        return (
+          <li data-menu-item={true} key={name} onClick={handleClick}>
+            <Icon />
+          </li>
+        );
+      })}
+    </ul>
+  );
+};
+
+const Menu = styled(MenuView)`
   display: flex;
   flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  padding: 16px 20px;
-
-  user-select: none;
-`;
-
-const TabWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
   width: 100%;
-  min-width: 240px;
-  height: 100%;
-
-  color: black;
-
-  background-color: white;
-
-  border: 2px solid rgb(246, 248, 250);
-  border-top-width: 0;
-  border-bottom-width: 0;
-`;
-
-const TabTitle = styled.h3`
   margin: 0;
   padding: 0;
 
-  font-size: 16px;
-`;
-
-const TabContent = styled.div`
-  flex-grow: 1;
-  padding: 0 20px 20px;
-  overflow-y: auto;
-`;
-
-const MenuWrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-
-  width: 100%;
-
   color: black;
 
+  list-style: none;
+
   background-color: #dedede;
-`;
 
-const MenuItemWrapper = styled.div`
-  padding: 8px;
+  & [data-menu-item] {
+    padding: 8px;
 
-  font-size: 0;
+    font-size: 0;
 
-  cursor: pointer;
+    cursor: pointer;
 
-  & svg {
-    font-size: 20px;
+    & svg {
+      font-size: 20px;
+    }
   }
 `;
