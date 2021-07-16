@@ -100,7 +100,8 @@ const Tab = styled(TabView)`
   box-sizing: border-box;
   width: 100%;
   min-width: 240px;
-  height: 100%;
+  max-height: 400px;
+  overflow: auto;
 
   color: black;
 
