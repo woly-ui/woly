@@ -33,9 +33,9 @@ export type StylesheetSubscriber = () => void;
 
 export interface Stylesheets {
   subscribe(path: Path, callback: StylesheetSubscriber): () => void;
-  initialize(params: Path): void;
+  initialize(path: Path): void;
   get(path: Path): Style | null;
-  set(params: Path & { value: string }): void;
+  set(path: Path, value: string): void;
   reset(params: { configurator: ConfiguratorName }): void;
   render(): JSX.Element[];
 }

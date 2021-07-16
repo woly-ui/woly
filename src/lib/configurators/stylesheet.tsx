@@ -16,6 +16,8 @@ function getStylesheet(ref: ElementRef) {
 function createRule(id: string, path: Path, value: string) {
   const { selector, variable } = path;
   const rule = `[data-scope='${id}'] ${selector} { ${variable}: ${value}; }`;
+
+  // we need to get exact the same string as the browser does
   return rule.replace(/'/g, '"');
 }
 
@@ -41,10 +43,25 @@ export function getInitialVariableValue(
 type Subscribers = Record<string, StylesheetSubscriber[]>;
 
 export function useStylesheets(id: string): Stylesheets {
-  const initialValue = { map: new Map<string, Style>() };
-  const [{ map }, setStyles] = useState(initialValue);
+  /*
+   * We use Map for more declarative code
+   * It is wrapped in object for immutable state updates
+   */
+  const initialStyles = { map: new Map<string, Style>() };
+  const [{ map }, setStyles] = useState(initialStyles);
+
+  /*
+   * We don't need any re-renders on subscribe/unsubscribe
+   * So we use the Ref
+   */
   const subscribersRef = useRef<Subscribers>({});
 
+  /*
+   * Subscribition can be used to catch a css-variable updates
+   * and force re-render of variable field
+   *
+   * Returns the "unsubscribe" function
+   */
   const subscribe: Stylesheets['subscribe'] = (path, callback) => {
     const key = getKey(path);
     const subscribers = subscribersRef.current;
@@ -68,6 +85,10 @@ export function useStylesheets(id: string): Stylesheets {
     subscribers[key].forEach((cb) => cb());
   };
 
+  /*
+   * "initialize" is called on the variable field mount
+   * It used to setup the variable's initial state
+   */
   const initialize: Stylesheets['initialize'] = (path) => {
     const key = getKey(path);
 
@@ -77,12 +98,22 @@ export function useStylesheets(id: string): Stylesheets {
     const initialValue = getInitialVariableValue(id, path);
     if (!initialValue) return;
 
+    /*
+     * We use <style/> element for overriding the css variables
+     * The changes are applied through the Ref, to skip the unnecessary re-renders
+     */
     const elementRef = createRef<HTMLStyleElement>() as ElementRef;
+    const element = <style key={key} ref={elementRef} />;
+
+    /*
+     * The "valueRef" is used to get the initialValue for fields
+     * which variables were already initialized before
+     */
     const valueRef = createRef<string>() as ValueRef;
     valueRef.current = initialValue;
 
     map.set(key, {
-      element: <style key={key} ref={elementRef} />,
+      element,
       elementRef,
       initialValue,
       valueRef,
@@ -92,6 +123,9 @@ export function useStylesheets(id: string): Stylesheets {
     callSubscribers(key);
   };
 
+  /*
+   * Get the actual style record for variable
+   */
   const get: Stylesheets['get'] = (path) => {
     const key = getKey(path);
 
@@ -101,8 +135,11 @@ export function useStylesheets(id: string): Stylesheets {
     return style;
   };
 
-  const set: Stylesheets['set'] = (params) => {
-    const key = getKey(params);
+  /*
+   * Get the actual style record for variable
+   */
+  const set: Stylesheets['set'] = (path, value) => {
+    const key = getKey(path);
 
     const style = map.get(key);
     if (!style) return;
@@ -110,21 +147,30 @@ export function useStylesheets(id: string): Stylesheets {
     const stylesheet = getStylesheet(style.elementRef);
     if (!stylesheet) return;
 
-    const rule = createRule(id, params, params.value);
+    // generate the updated rule
+    const rule = createRule(id, path, value);
 
     if (hasRule(stylesheet, rule)) {
+      // the rule string is the same, skip
       return;
     }
 
     if (stylesheet.rules.length > 0) {
+      // delete the previous rule
       stylesheet.deleteRule(0);
     }
 
+    // insert the new rule on the same place
     stylesheet.insertRule(rule);
-    style.valueRef.current = params.value;
+    style.valueRef.current = value;
+
+    // notify the subscribers
     callSubscribers(key);
   };
 
+  /*
+   * Used to reset the all variables for specific configurator
+   */
   const reset: Stylesheets['reset'] = ({ configurator }) => {
     for (const [key, style] of map.entries()) {
       const { elementRef, valueRef, initialValue } = style;
@@ -138,6 +184,9 @@ export function useStylesheets(id: string): Stylesheets {
     }
   };
 
+  /*
+   * Get the all style elements for rendering
+   */
   const render: Stylesheets['render'] = () => {
     return Array.from(map.values()).map((style) => style.element);
   };
@@ -169,7 +218,7 @@ export function useCssVariable(path: Path) {
 
   const setValue = (value: Value) => {
     if (!value) return;
-    stylesheets.set({ ...path, value });
+    stylesheets.set(path, value);
   };
 
   return [value, setValue] as const;
