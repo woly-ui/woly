@@ -82,9 +82,7 @@ const background = css`
   height: 100%;
 `;
 
-const TransparencyWrapper = styled.svg.attrs({
-  xmlns: 'http://www.w3.org/2000/svg',
-})`
+const TransparencyWrapper = styled.svg`
   ${background}
 
   & > rect {
