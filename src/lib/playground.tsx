@@ -25,7 +25,6 @@ export const Playground: React.FC<Props> = ({
 
   const configuratorsRef = useRef<HTMLDivElement | null>(null);
   const frameRef = useRef<HTMLDivElement | null>(null);
-  // const { detectorJSX } = useSyncHeight({ of: frameRef, with: configuratorsRef });
 
   const Wrapper = block[size];
 
@@ -39,7 +38,6 @@ export const Playground: React.FC<Props> = ({
         </Global>
       </Frame>
       <Configurators ref={configuratorsRef} id={scopeId} for={configurators} />
-      {/*{detectorJSX}*/}
     </PlaygroundWrapper>
   );
 };
