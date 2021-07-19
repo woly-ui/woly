@@ -25,11 +25,13 @@ export function DataTable<TValue, TRowKey extends string>({
           <Tr key={row[rowKey]}>
             {columns.map((column) => {
               const Cell = column.cell || DefaultCell;
-              const finalPlaceholder = column.placeholder || placeholder;
 
               return (
                 <Td key={column.property}>
-                  <Cell value={row[column.property]} placeholder={finalPlaceholder} />
+                  <Cell
+                    value={row[column.property]}
+                    placeholder={column.placeholder || placeholder}
+                  />
                 </Td>
               );
             })}
