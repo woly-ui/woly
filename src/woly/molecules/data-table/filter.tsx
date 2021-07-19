@@ -2,8 +2,8 @@ import * as React from 'react';
 import styled from 'styled-components';
 
 import { Button, Checkbox, ListContainer, Popover, Surface } from '../../index';
-import { IconArrowDown } from '../../../static/icons';
-import { box } from '../../elements/box';
+import { IconArrowDown } from 'static/icons';
+import { box } from 'ui/elements/box';
 
 interface Option {
   name: string;
