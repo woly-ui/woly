@@ -1,1 +1,20 @@
-[]
+[
+  {
+    "path": "woly/atoms/button/__screenshot-test__/config.js",
+    "name": "button",
+    "category": "atoms",
+    "package": "woly"
+  },
+  {
+    "path": "woly/atoms/chip/__screenshot-test__/config.js",
+    "name": "chip",
+    "category": "atoms",
+    "package": "woly"
+  },
+  {
+    "path": "woly/molecules/input-password/__screenshot-test__/config.js",
+    "name": "input-password",
+    "category": "molecules",
+    "package": "woly"
+  }
+]
