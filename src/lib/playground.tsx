@@ -1,24 +1,41 @@
-import React from 'react';
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import styled from 'styled-components';
+import React, { useRef } from 'react';
 
+import { ConfiguratorName, Configurators } from './configurators';
 import { Global } from './global';
 import { block } from './block';
+import { useUniqueID } from './hooks/use-unique-id';
 
 export { block };
 
-export const Playground: React.FC<{
+interface Props {
   size: keyof typeof block;
   direction: 'vertical' | 'horizontal';
-}> = ({ size = 'M', direction = 'horizontal', children }) => {
+  configurators: ConfiguratorName[];
+}
+
+export const Playground: React.FC<Props> = ({
+  size = 'M',
+  direction = 'horizontal',
+  configurators = ['color'],
+  children,
+}) => {
+  const scopeId = useUniqueID();
+
   const Wrapper = block[size];
+
   return (
-    <Frame>
-      <Global>
-        <Wrapper>
-          <Container data-dir={direction}>{children}</Container>
-        </Wrapper>
-      </Global>
-    </Frame>
+    <PlaygroundWrapper>
+      <Frame>
+        <Global data-scope={scopeId}>
+          <Wrapper>
+            <Container data-dir={direction}>{children}</Container>
+          </Wrapper>
+        </Global>
+      </Frame>
+      <Configurators id={scopeId} for={configurators} />
+    </PlaygroundWrapper>
   );
 };
 
@@ -56,6 +73,18 @@ export const StateEvent = ({ initial, change, children }: StateType) => {
   return <>{children(value, onChange)}</>;
 };
 
+const PlaygroundWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  & + .prism-code {
+    margin-top: 0;
+
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+`;
+
 const Frame = styled.div`
   box-sizing: border-box;
   width: 100%;
@@ -64,16 +93,10 @@ const Frame = styled.div`
   overflow: auto;
 
   border: 2px solid rgb(246, 248, 250);
+  border-bottom-width: 0;
   border-radius: 4px 4px 0 0;
 
   resize: both;
-
-  & + .prism-code {
-    margin-top: 0;
-
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
-  }
 `;
 
 const Container = styled.div`

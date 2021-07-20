@@ -1,9 +1,11 @@
-/* eslint-disable no-loop-func */
 /* eslint-disable react/no-array-index-key */
-import * as React from 'react';
+import React from 'react';
 import styled, { StyledComponent } from 'styled-components';
 import { Global } from 'lib/global';
 import { Grid, Heading } from 'ui';
+
+import { ConfiguratorName, Configurators } from './configurators';
+import { useUniqueID } from './hooks/use-unique-id';
 
 export type SizeProps = 'N' | 'XS' | 'S' | 'M' | 'L' | 'XL' | 'H';
 
@@ -18,6 +20,7 @@ interface GenerateMapProps {
   otherProps: Record<string, Array<unknown>>;
   sizes: ComponentProps;
   variants: ComponentProps;
+  configurators: ConfiguratorName[];
 }
 
 interface SizesProps {
@@ -30,38 +33,47 @@ const map = ({ size }: SizesProps) => ({
 
 export const GenerateMap: React.FC<
   GenerateMapProps & { component: React.ComponentType<unknown> }
-> = ({ sizes, variants, otherProps, component }) => {
+> = ({ configurators = ['color'], sizes, variants, otherProps, component }) => {
+  const scopeId = useUniqueID();
+
   const Component = component;
   const variantsMap = generateMap({ y: sizes, x: variants, otherProps });
 
   if (!variantsMap) return null;
 
   return (
-    <Main>
-      {variantsMap.map((variant, i) => (
-        <VariantBlock key={i}>
-          <Header>{variant.name}</Header>
-          <GridTemplate columns={variant.columns}>
-            <AreaVariants>
-              <div />
-              {/** TODO: replace */}
-              {variant.values[0].values.map(({ variants, sizes, ...prop }, headKey) => (
-                <div key={`head-${headKey}`}>{headCreate(prop)}</div>
-              ))}
-              {variant.values.map((props, j) => (
-                <>
-                  <b>{props.name}</b>
-                  {props.values.map((prop, propKey) => (
-                    <SizeBlock size={props.name as SizeProps} key={j}>
-                      <Component prop={prop} key={`prop-${propKey}`} />
-                    </SizeBlock>
+    <Main data-scope={scopeId}>
+      <PlaygroundLayout>
+        <PlaygroundContent>
+          {variantsMap.map((variant, i) => (
+            <VariantBlock key={i}>
+              <Header>{variant.name}</Header>
+              <GridTemplate columns={variant.columns}>
+                <AreaVariants>
+                  <div />
+                  {/** TODO: replace */}
+                  {variant.values[0].values.map(({ variants, sizes, ...prop }, headKey) => (
+                    <div key={`head-${headKey}`}>{headCreate(prop)}</div>
                   ))}
-                </>
-              ))}
-            </AreaVariants>
-          </GridTemplate>
-        </VariantBlock>
-      ))}
+                  {variant.values.map((props, j) => (
+                    <>
+                      <b>{props.name}</b>
+                      {props.values.map((prop, propKey) => (
+                        <SizeBlock size={props.name as SizeProps} key={j}>
+                          <Component prop={prop} key={`prop-${propKey}`} />
+                        </SizeBlock>
+                      ))}
+                    </>
+                  ))}
+                </AreaVariants>
+              </GridTemplate>
+            </VariantBlock>
+          ))}
+        </PlaygroundContent>
+        <PlaygroundSideBar>
+          <Configurators id={scopeId} for={configurators} />
+        </PlaygroundSideBar>
+      </PlaygroundLayout>
     </Main>
   );
 };
@@ -113,6 +125,21 @@ const deepCopy = (obj: Array<Record<string, unknown>>) => JSON.parse(JSON.string
 export const headCreate = (props: Record<string, unknown>) =>
   Object.keys(props).reduce((acc, key) => acc + (props[key] ? key + '\n' : ''), '');
 
+const PlaygroundLayout = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+`;
+
+const PlaygroundContent = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-grow: 1;
+  overflow-y: auto;
+`;
+
+const PlaygroundSideBar = styled.div``;
+
 const VariantBlock = styled.div`
   display: flex;
   flex-direction: column;
@@ -155,6 +182,13 @@ export const Main = styled(Global)`
   overflow: scroll;
 
   white-space: nowrap;
+
+  & + .prism-code {
+    margin-top: 0;
+
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
 `;
 
 export const SizeBlock = styled.div.attrs(map)`
