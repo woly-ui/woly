@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import React, { useState } from 'react';
+import React, { useReducer, useState } from 'react';
 import { IconArrowDown } from 'static/icons';
 
 import { ConfiguratorName, Scope } from '../types';
@@ -10,13 +10,11 @@ import { useLocalConfiguratorsState } from '../context';
 type SectionProps = React.HTMLAttributes<HTMLElement> & { name: string };
 
 const SectionView: React.FC<SectionProps> = ({ name, children, ...rest }) => {
-  const [isOpen, setOpen] = useState(false);
-
-  const toggle = () => setOpen((is) => !is);
+  const [isOpen, toggleOpen] = useReducer((is) => !is, false);
 
   return (
     <section {...rest}>
-      <div data-name-wrapper={true} onClick={toggle}>
+      <div data-name-wrapper={true} onClick={toggleOpen}>
         <IconArrowDown data-arrow-icon={true} data-reversed={isOpen} />
         <span data-section-name={true}>{name}</span>
       </div>
