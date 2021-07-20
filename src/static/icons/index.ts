@@ -13,3 +13,4 @@ export { default as IconFilledUnchecked } from './check-filled-unchecked.svg';
 export { default as IconSpinner } from './spinner.svg';
 export { default as IconProfile } from './profile.svg';
 export { default as IconColorPalette } from './color-palette.svg';
+export { default as Threebars } from './threebars.svg';

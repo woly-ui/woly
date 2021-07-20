@@ -84,6 +84,8 @@ const ModalBase: React.FC<ModalProps & Priority> = ({
 };
 
 const Shape = styled(Surface)`
+  /* TODO: rewrite formulas [13.07.21]*/
+  --local-inset-padding: 36px;
   position: relative;
   z-index: 1;
 
@@ -95,8 +97,6 @@ const Shape = styled(Surface)`
   max-width: calc((100% - (var(--local-inset-padding) * 2)) / 3 * 2);
 
   max-height: 100%;
-
-  padding: var(--local-vertical) var(--local-horizontal);
 `;
 
 export const Modal = styled(ModalBase)`
@@ -104,8 +104,8 @@ export const Modal = styled(ModalBase)`
 
   /* TODO: rewrite formulas [13.07.21]*/
   --local-gap: calc(3px * var(--woly-component-level) * var(--woly-main-level));
-  --local-vertical: calc(var(--woly-const-m) * (var(--woly-component-level) + 1));
   --local-inset-padding: 36px;
+  --local-vertical: calc(var(--woly-const-m) * (var(--woly-component-level) + 1));
 
   position: fixed;
   top: 0;
@@ -118,7 +118,8 @@ export const Modal = styled(ModalBase)`
   justify-content: center;
   box-sizing: border-box;
   max-height: 100vh;
-  padding: --local-inset-padding;
+
+  padding: var(--local-inset-padding);
 
   visibility: hidden;
   opacity: 0;

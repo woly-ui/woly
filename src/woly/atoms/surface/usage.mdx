@@ -7,8 +7,31 @@ import {
   Playground,
   State
 } from 'lib/playground'
-import {Button, ButtonIcon, Input, Label, Surface} from 'ui'
-import {IconClose} from 'static/icons';
+import {Button, ButtonIcon, Input, Label, Surface, Popover, ListContainer, ListItem, Text} from 'ui';
+import {IconClose, Threebars} from 'static/icons';
+
+export const links = [
+  {
+    id: "fwed324fcse",
+    content: "John",
+    disabled: false
+  },
+  {
+    id: "fwed32q4fcss",
+    content: "Alex",
+    disabled: true
+  },
+  {
+    id: "fwed32q4fcsw",
+    content: "Michael",
+    disabled: false
+  },
+  {
+    id: "fwed32q4fcsb",
+    content: "Donald",
+    disabled: false
+  }
+];
 
 `Surface` is a simple layer that contains information. Surface can be used inside Popover or Sidebar component.
 
@@ -17,8 +40,10 @@ import {IconClose} from 'static/icons';
 Simple text inside `Surface`.
 
 <Playground>
-  <Surface>
-    <Content>Surface content</Content>
+  <Surface priority="primary" weight="fill">
+    <Content>
+      <Text type="XS">Surface content</Text>
+    </Content>
   </Surface>
 </Playground>
 
@@ -29,41 +54,41 @@ Sign in form based on `Surface`.
 <Playground>
   <State initial={false} change={(i) => !i}>
     {(value, change) => (
-      <block.S style={{ padding: '20px' }}>
-        <Button onClick={change} text="Sign in" priority="primary" />
-        <div
-          style={{
-            visibility: value ? 'visible' : 'hidden',
-            marginTop: '20px',
-          }}
+      <block.L style={{ width: '300px', padding: '350px 0' }}>
+        <Popover
+          isOpen={false}
+          content={
+            <Surface priority="primary" weight="goast">
+              <FormBlock>
+                <Label priority="primary">Name</Label>
+                <Input
+                  name="name"
+                  onChange={() => console.info('On input change')}
+                  placeholder="Ivan Ivanov"
+                  type="text"
+                  priority="primary"
+                />
+                <Label priority="primary">Password</Label>
+                <Input
+                  name="password"
+                  onChange={() => console.info('On input change')}
+                  type="password"
+                  priority="primary"
+                />
+                <Button
+                  style={{ marginTop: '20px' }}
+                  onClick={() => {}}
+                  text="Submit"
+                  type="submit"
+                  priority="primary"
+                />
+              </FormBlock>
+            </Surface>
+          }
         >
-          <Surface>
-            <FormBlock>
-              <Label priority="primary">Name</Label>
-              <Input
-                name="name"
-                onChange={() => console.info('On input change')}
-                placeholder="Ivan Ivanov"
-                type="text"
-                priority="primary"
-              />
-              <Label priority="primary">Password</Label>
-              <Input
-                name="password"
-                onChange={() => console.info('On input change')}
-                type="password"
-                priority="primary"
-              />
-              <Button
-                style={{ marginTop: '20px' }}
-                onClick={() => {}}
-                text="Sign in"
-                priority="primary"
-              />
-            </FormBlock>
-          </Surface>
-        </div>
-      </block.S>
+          <Button onClick={change} text="Sign in" priority="primary" />
+        </Popover>
+      </block.L>
     )}
   </State>
 </Playground>
@@ -75,37 +100,41 @@ Aside menu based on `Surface`.
 <Playground>
   <State initial={false} change={(i) => !i}>
     {(value, change) => (
-      <block.S style={{ paddingLeft: '320px', position: 'relative', height: '300px' }}>
+      <block style={{ position: 'relative', width: '400px', padding: '0 0 350px 0' }}>
         <ButtonIcon
           onClick={change}
-          priority="secondary"
-          style={{ position: 'absolute', left: 0, zIndex: 1 }}
-          icon={
-            <div
-              style={{
-                transform: value ? '' : 'rotate(45deg)',
-                transition: '0.5s',
-              }}
-            >
-              <IconClose />
-            </div>
-          }
-        />
-        <Aside
+          priority="default"
+          weight="transparent"
           style={{
-            width: value ? '250px' : '0',
+            position: 'absolute',
+            left: value ? '250px' : '60px',
+            zIndex: 2,
+            transition: '1s',
           }}
-        >
-          <Surface>
-            <Menu>
-              <li>Home</li>
-              <li>Shop</li>
-              <li>About</li>
-              <li>Contacts</li>
-            </Menu>
+          icon={value ? <IconClose /> : <Threebars />}
+        />
+        <Aside style={{ width: value ? '250px' : '40px', paddingLeft: value ? '10px' : '60px' }}>
+          <Surface priority="primary" weight="goast">
+            <ListContainer
+              style={{ paddingLeft: '30px', paddingTop: '70px' }}
+              priority="primary"
+              as="ul"
+            >
+              {links.map(({ id, content }) => (
+                <ListItem
+                  key={id}
+                  as="a"
+                  href={`#${id}`}
+                  onClick={() => {
+                    console.log(id);
+                  }}
+                  text={content}
+                />
+              ))}
+            </ListContainer>
           </Surface>
         </Aside>
-      </block.S>
+      </block>
     )}
   </State>
 </Playground>
@@ -122,3 +151,4 @@ Aside menu based on `Surface`.
 | ---------- | ----------------- | ------------- | ----------------------------------------------------------------- |
 | `children` | `React.ReactNode` |               | Pass any content as a children property within Surface component. |
 | `priority` | `string`          | `'secondary'` | Priority prop to style Surface component                          |
+| `weight`   | `string`          | `goast`       | Set surface`s weight (ex.: fill, goast)                           |

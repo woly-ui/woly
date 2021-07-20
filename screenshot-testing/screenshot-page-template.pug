@@ -1,0 +1,39 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Component
+    style(type="text/css").
+      body {
+        margin: 0;
+      }
+
+      .state-map {
+        display: flex;
+        flex-wrap: wrap;
+      }
+      .state-map__cell {
+        outline: 1px solid #ccc;
+        position: relative;
+      }
+
+      .state-map__cell img { max-width: 100%; display: block;}
+
+      .state-map__cell::before {
+        position: absolute;
+        top: 2px;
+        left: 2px;
+        display: block;
+        content: attr(data-variation);
+        font-size: 0.8rem;
+        min-height: 20px;
+        box-sizing: border-box;
+        padding: 2px;
+      }
+  body
+    .state-map
+      for stat in stats
+        .state-map__cell(data-variation=`${stat.variation}` style=`width: ${wrapperSize.width}px;height: ${wrapperSize.height}px`)
+          img(src=`${stat.path}`)
