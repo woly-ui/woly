@@ -2479,6 +2479,13 @@
   dependencies:
     defer-to-connect "^2.0.0"
 
+"@tippyjs/react@^4.2.5":
+  version "4.2.5"
+  resolved "https://registry.yarnpkg.com/@tippyjs/react/-/react-4.2.5.tgz#9b5837db93a1cac953962404df906aef1a18e80d"
+  integrity sha512-YBLgy+1zznBNbx4JOoOdFXWMLXjBh9hLPwRtq3s8RRdrez2l3tPBRt2m2909wZd9S1KUeKjOOYYsnitccI9I3A==
+  dependencies:
+    tippy.js "^6.3.1"
+
 "@tokenizer/token@^0.1.1":
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/@tokenizer/token/-/token-0.1.1.tgz#f0d92c12f87079ddfd1b29f614758b9696bc29e3"
@@ -2543,6 +2550,30 @@
     "@types/keyv" "*"
     "@types/node" "*"
     "@types/responselike" "*"
+
+"@types/color-convert@*":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@types/color-convert/-/color-convert-2.0.0.tgz#8f5ee6b9e863dcbee5703f5a517ffb13d3ea4e22"
+  integrity sha512-m7GG7IKKGuJUXvkZ1qqG3ChccdIM/qBBo913z+Xft0nKCX4hAU/IxKwZBU4cpRZ7GS5kV4vOblUkILtSShCPXQ==
+  dependencies:
+    "@types/color-name" "*"
+
+"@types/color-name@*":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@types/color-name/-/color-name-1.1.1.tgz#1c1261bbeaa10a8055bbc5d8ab84b7b2afc846a0"
+  integrity sha512-rr+OQyAjxze7GgWrSaJwydHStIhHq2lvY3BOC2Mj7KnzI7XK0Uw1TOOdI9lDoajEbSWLiYgoo4f1R51erQfhPQ==
+
+"@types/color-rgba@^2.1.0":
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/@types/color-rgba/-/color-rgba-2.1.0.tgz#0182795370deae5c2c62f71ea6e91c6bab87394d"
+  integrity sha512-tWcJLEiKdZ3ihJdThfLCe6Kw5vo0lgGcuucGkbtzcp1zifDA1E2Z96wxeSS/r+ytpHD15NCAWabX8GV911ywCA==
+
+"@types/color@^3.0.1":
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/@types/color/-/color-3.0.2.tgz#3779043e782f562aa9157b5fc6bd07e14fd8e7f3"
+  integrity sha512-INiJl6sfNn8iyC5paxVzqiVUEj2boIlFki02uRTAkKwAj++7aAF+ZfEv/XrIeBa0XI/fTZuDHW8rEEcEVnON+Q==
+  dependencies:
+    "@types/color-convert" "*"
 
 "@types/common-tags@^1.8.0":
   version "1.8.0"
@@ -2802,6 +2833,14 @@
   dependencies:
     "@types/react" "*"
 
+"@types/react-color@^3.0.4":
+  version "3.0.5"
+  resolved "https://registry.yarnpkg.com/@types/react-color/-/react-color-3.0.5.tgz#b8bdf8df7085bd1577658fb37d9a18d7ba3963bb"
+  integrity sha512-0VZy8Uq5x04cW5QFz24Qw8MMMlsMi8Bb+XG5h59ATqPnWVq6OheHtrwv5LeakdTRDaECQnExJNSFOsSe4Eo/zQ==
+  dependencies:
+    "@types/react" "*"
+    "@types/reactcss" "*"
+
 "@types/react-dropzone@^5.1.0":
   version "5.1.0"
   resolved "https://registry.yarnpkg.com/@types/react-dropzone/-/react-dropzone-5.1.0.tgz#5e27eb0b1ccadd7964ce4d328e1926fcd1c1f1ef"
@@ -2818,6 +2857,13 @@
     "@types/scheduler" "*"
     csstype "^3.0.2"
 
+"@types/reactcss@*":
+  version "1.2.4"
+  resolved "https://registry.yarnpkg.com/@types/reactcss/-/reactcss-1.2.4.tgz#66c5f6afe123ffa1a50dbe724aa1fe68eb9fab00"
+  integrity sha512-1rhVqteMSD6KQjO+dPBObE1OkKadw00HVJkG5WCYsyvMwGgdTZ530wF7Bkrg/4TWxB2AtINIzFotjW51eViw+w==
+  dependencies:
+    "@types/react" "*"
+
 "@types/readable-stream@^2.3.9":
   version "2.3.10"
   resolved "https://registry.yarnpkg.com/@types/readable-stream/-/readable-stream-2.3.10.tgz#0f1a512ca30bec5e53d3282133b9237a703e7562"
@@ -2825,6 +2871,11 @@
   dependencies:
     "@types/node" "*"
     safe-buffer "*"
+
+"@types/resize-observer-browser@^0.1.5":
+  version "0.1.6"
+  resolved "https://registry.yarnpkg.com/@types/resize-observer-browser/-/resize-observer-browser-0.1.6.tgz#d8e6c2f830e2650dc06fe74464472ff64b54a302"
+  integrity sha512-61IfTac0s9jvNtBCpyo86QeaN8qqpMGHdK0uGKCCIy2dt5/Yk84VduHIdWAcmkC5QvdkPL0p5eWYgUZtHKKUVg==
 
 "@types/resolve@0.0.8":
   version "0.0.8"
@@ -11635,11 +11686,6 @@ lodash.some@^4.4.0:
   resolved "https://registry.yarnpkg.com/lodash.some/-/lodash.some-4.6.0.tgz#1bb9f314ef6b8baded13b549169b2a945eb68e4d"
   integrity sha1-G7nzFO9ri63tE7VJFpsqlF62jk0=
 
-lodash.throttle@^4.1.1:
-  version "4.1.1"
-  resolved "https://registry.yarnpkg.com/lodash.throttle/-/lodash.throttle-4.1.1.tgz#c23e91b710242ac70c37f1e1cda9274cc39bf2f4"
-  integrity sha1-wj6RtxAkKscMN/HhzaknTMOb8vQ=
-
 lodash.template@^4.4.0:
   version "4.5.0"
   resolved "https://registry.yarnpkg.com/lodash.template/-/lodash.template-4.5.0.tgz#f976195cf3f347d0d5f52483569fe8031ccce8ab"
@@ -11654,6 +11700,11 @@ lodash.templatesettings@^4.0.0:
   integrity sha512-stgLz+i3Aa9mZgnjr/O+v9ruKZsPsndy7qPZOchbqk2cnTU1ZaldKK+v7m54WoKIyxiuMZTKT2H81F8BeAc3ZQ==
   dependencies:
     lodash._reinterpolate "^3.0.0"
+
+lodash.throttle@^4.1.1:
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/lodash.throttle/-/lodash.throttle-4.1.1.tgz#c23e91b710242ac70c37f1e1cda9274cc39bf2f4"
+  integrity sha1-wj6RtxAkKscMN/HhzaknTMOb8vQ=
 
 lodash.truncate@^4.4.2:
   version "4.4.2"
@@ -12583,6 +12634,13 @@ multimap@^1.0.2:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/multimap/-/multimap-1.1.0.tgz#5263febc085a1791c33b59bb3afc6a76a2a10ca8"
   integrity sha512-0ZIR9PasPxGXmRsEF8jsDzndzHDj7tIav+JUmvIFB/WHswliFnquxECT/De7GR4yg99ky/NlRKJT82G1y271bw==
+
+mumath@^3.3.4:
+  version "3.3.4"
+  resolved "https://registry.yarnpkg.com/mumath/-/mumath-3.3.4.tgz#48d4a0f0fd8cad4e7b32096ee89b161a63d30bbf"
+  integrity sha1-SNSg8P2MrU57Mglu6JsWGmPTC78=
+  dependencies:
+    almost-equal "^1.1.0"
 
 mute-stream@0.0.7:
   version "0.0.7"
