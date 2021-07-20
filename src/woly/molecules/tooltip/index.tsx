@@ -10,6 +10,7 @@ interface TooltipProps {
   className?: string;
   content?: string | React.ReactNode;
   position?: TooltipPosition;
+  weight?: string;
 }
 
 const TooltipBase: React.FC<TooltipProps & Priority> = ({
@@ -18,6 +19,7 @@ const TooltipBase: React.FC<TooltipProps & Priority> = ({
   content,
   position = 'top',
   priority = 'secondary',
+  weight = 'goast',
 }) => {
   const [tooltipPosition, setPosition] = React.useState<TooltipPosition>('top');
   const ref = React.useRef<HTMLDivElement>(null);
@@ -44,6 +46,7 @@ const TooltipBase: React.FC<TooltipProps & Priority> = ({
       className={className}
       data-position={tooltipPosition}
       data-priority={priority}
+      data-weight={weight}
       ref={ref}
       tabIndex={0}
     >
@@ -52,7 +55,9 @@ const TooltipBase: React.FC<TooltipProps & Priority> = ({
       </div>
       <div role="tooltip" id="notifications-desc">
         <div data-triangle />
-        <Surface data-priority={priority}>{content}</Surface>
+        <Surface priority={priority} weight={weight}>
+          {content}
+        </Surface>
       </div>
     </div>
   );
@@ -72,6 +77,7 @@ export const Tooltip = styled(TooltipBase)`
   --tooltip-position: calc(100% + var(--woly-border-width) + var(--local-gap));
   --local-tooltip-maxsize: 240px;
   --local-icon-size: var(--woly-line-height);
+
   position: relative;
 
   color: var(--woly-shape-text-default);
@@ -79,6 +85,7 @@ export const Tooltip = styled(TooltipBase)`
   line-height: var(--woly-line-height);
 
   outline: none;
+
   [role='tooltip'] {
     position: absolute;
     z-index: 1;
@@ -88,64 +95,76 @@ export const Tooltip = styled(TooltipBase)`
     width: max-content;
     max-width: var(--local-tooltip-maxsize);
 
-    background-color: var(--woly-background);
-    border-color: var(--woly-background);
-    border-style: solid;
-    border-width: var(--woly-border-width);
     border-radius: calc(var(--woly-rounding) * 2);
-    box-shadow: var(--woly-shadow);
     visibility: hidden;
     opacity: 0;
 
     transition: 0.3s ease-in-out;
+
     [data-triangle] {
       position: absolute;
 
       width: 0;
       height: 0;
 
-      border-color: var(--woly-background) transparent transparent transparent;
       border-style: solid;
       border-width: var(--local-triangle);
     }
   }
+
+  &[data-weight='goast'] {
+    [role='tooltip'] [data-triangle] {
+      border-color: var(--woly-background) transparent transparent transparent;
+    }
+  }
+
+  &[data-weight='fill'] {
+    [role='tooltip'] [data-triangle] {
+      border-color: var(--woly-shape-default) transparent transparent transparent;
+    }
+  }
+
   &:hover [role='tooltip'],
   &:focus [role='tooltip'] {
     visibility: visible;
     opacity: 1;
   }
+
   &[data-position='top'] [role='tooltip'] {
     bottom: var(--tooltip-position);
     [data-triangle] {
-      bottom: calc(-1 * (var(--woly-const-m) + var(--woly-border-width)));
+      bottom: calc(-1 * (var(--woly-const-m)));
       left: calc(2 * var(--woly-const-m));
     }
   }
+
   &[data-position='bottom'] [role='tooltip'] {
     top: var(--tooltip-position);
     [data-triangle] {
-      top: calc(-1 * (var(--woly-const-m) + var(--woly-border-width)));
+      top: calc(-1 * (var(--woly-const-m)));
       left: calc(2 * var(--woly-const-m));
 
       transform: rotate(180deg);
     }
   }
+
   &[data-position='left'] [role='tooltip'] {
     top: 0;
     right: var(--tooltip-position);
     [data-triangle] {
       top: calc(2 * var(--woly-const-m));
-      right: calc(-1 * (var(--woly-const-m) + var(--woly-border-width)));
+      right: calc(-1 * (var(--woly-const-m)));
 
       transform: rotate(-90deg);
     }
   }
+
   &[data-position='right'] [role='tooltip'] {
     top: 0;
     left: var(--tooltip-position);
     [data-triangle] {
       top: calc(2 * var(--woly-const-m));
-      left: calc(-1 * (var(--woly-const-m) + var(--woly-border-width)));
+      left: calc(-1 * (var(--woly-const-m)));
 
       transform: rotate(90deg);
     }
