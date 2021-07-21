@@ -16,15 +16,15 @@ export function LevelDecrement({
   className = '',
   wrapperAs = 'div',
   wrapperClassName = '',
-  ...props
-}: LevelDecrementProps) {
+  ...rest
+}: LevelDecrementProps & React.HTMLAttributes<HTMLElement>) {
   const Wrapper = wrapperAs;
   const Inner = as;
 
   return (
     <Wrapper data-woly-component-level-decrement-wrapper={true} className={wrapperClassName}>
       {/* eslint-disable-next-line react/jsx-props-no-spreading */}
-      <Inner {...props} data-woly-component-level-decrement-inner={true} className={className}>
+      <Inner {...rest} data-woly-component-level-decrement-inner={true} className={className}>
         {children}
       </Inner>
     </Wrapper>
