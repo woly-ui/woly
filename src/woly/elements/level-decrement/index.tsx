@@ -1,41 +1,32 @@
 import React from 'react';
-import styled, { StyledComponent } from 'styled-components';
 
 type AsC = string | React.ComponentType<{ className: string; children: React.ReactNode }>;
 
 interface LevelDecrementProps {
   as?: AsC;
   className?: string;
-  innerAs?: AsC;
-  innerClassName?: string;
+  wrapperAs?: AsC;
+  wrapperClassName?: string;
   children: React.ReactNode;
 }
 
-function LevelDecrementBase({
+export function LevelDecrement({
   children,
   as = 'div',
   className = '',
-  innerAs = 'div',
-  innerClassName = '',
+  wrapperAs = 'div',
+  wrapperClassName = '',
   ...props
 }: LevelDecrementProps) {
-  const Container = as;
-  const Inner = innerAs;
+  const Wrapper = wrapperAs;
+  const Inner = as;
 
   return (
-    // eslint-disable-next-line react/jsx-props-no-spreading
-    <Container {...props} className={className}>
-      <Inner data-decrement-inner={true} className={innerClassName}>
+    <Wrapper data-woly-component-level-decrement-wrapper={true} className={wrapperClassName}>
+      {/* eslint-disable-next-line react/jsx-props-no-spreading */}
+      <Inner {...props} data-woly-component-level-decrement-inner={true} className={className}>
         {children}
       </Inner>
-    </Container>
+    </Wrapper>
   );
 }
-
-export const LevelDecrement = styled(LevelDecrementBase)`
-  --woly-component-level-temp: max(calc(var(--woly-component-level) - 1), 0);
-
-  & > [data-decrement-inner] {
-    --woly-component-level: var(--woly-component-level-temp);
-  }
-` as StyledComponent<'div', Record<string, unknown>, LevelDecrementProps>;
