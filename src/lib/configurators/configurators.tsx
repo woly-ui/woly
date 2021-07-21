@@ -139,7 +139,7 @@ const ResetButton = styled.button`
   color: white;
 
   font-size: 14px;
-  line-height: 1.25;
+  line-height: 17.5px;
 
   background: #b92843;
   border: none;
