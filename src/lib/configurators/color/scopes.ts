@@ -100,13 +100,13 @@ export const SCOPES: Scope[] = [
     variables: CONFIGURABLE_COLORS,
   },
   {
-    displayName: 'Priorities: Tertiary',
-    selector: `[data-priority='tertiary']`,
+    displayName: 'Priorities: White',
+    selector: `[data-priority='white']`,
     variables: CONFIGURABLE_COLORS,
   },
   {
-    displayName: 'Priorities: White',
-    selector: `[data-priority='white']`,
+    displayName: 'Priorities: Success',
+    selector: `[data-priority='success']`,
     variables: CONFIGURABLE_COLORS,
   },
   {
