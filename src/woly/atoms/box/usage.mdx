@@ -4,7 +4,6 @@ import {block, Playground, State} from 'dev/playground';
 import {IconInfo} from 'static/icons';
 
 `Box` and `BoxVertical` are wrapper components, that add a box model to elements that don't have it.
-`Box` and `BoxVertical` also decrease current component level value by 1
 
 ## Example with Box
 
@@ -113,17 +112,4 @@ import {IconInfo} from 'static/icons';
       </Box>
     </BoxVertical>
   </Accordion>
-</Playground>
-
-## Level Decrement
-
-<Playground>
-  <Box>
-    <Input value="Input size S" />
-  </Box>
-  <Box>
-    <Box>
-      <Input value="Input size XS" />
-    </Box>
-  </Box>
 </Playground>

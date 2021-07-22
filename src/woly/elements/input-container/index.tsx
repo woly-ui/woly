@@ -1,6 +1,7 @@
 import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
 import { Priority } from 'lib/types';
+import { levelDowngrade } from 'lib/level-downgrade';
 
 import { box } from '../box';
 
@@ -19,10 +20,19 @@ const InputContainerBase: React.FC<InputContainerProps & Priority> = ({
   priority = 'secondary',
   rightIcon,
 }) => (
-  <div className={className} data-disabled={disabled} data-priority={priority}>
+  <div
+    {...levelDowngrade.wrapperProps()}
+    className={className}
+    data-disabled={disabled}
+    data-priority={priority}
+  >
     {leftIcon && <span data-icon="input">{leftIcon}</span>}
     <div data-element="input">{children}</div>
-    {rightIcon && <span data-icon="input">{rightIcon}</span>}
+    {rightIcon && (
+      <span {...levelDowngrade.props({ diff: 2 })} data-icon="input">
+        {rightIcon}
+      </span>
+    )}
   </div>
 );
 
@@ -62,10 +72,6 @@ export const InputContainer = styled(InputContainerBase)`
     svg > path {
       fill: var(--local-icon-fill);
     }
-  }
-
-  [data-icon='right'] {
-    --woly-component-level: calc(var(--local-size) - 2);
   }
 
   &:hover {

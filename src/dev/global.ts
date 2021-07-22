@@ -1,9 +1,10 @@
+import * as wolyGlobal from 'ui/global';
 import styled from 'styled-components';
 import { createPalette } from 'lib/palette';
 
 import { systemUi } from './font-stacks';
 
-export const Global = styled.div`
+export const Global = styled(wolyGlobal.Global)`
   ${systemUi}
 
   * {
@@ -159,13 +160,5 @@ export const Global = styled.div`
     --woly-canvas-text-disabled: hsla(var(--danger-300), 1);
     --woly-canvas-text-hover: hsla(var(--danger-600), 1);
     --woly-canvas-text-active: hsla(var(--danger-700), 1);
-  }
-
-  [data-woly-component-level-decrement-wrapper] {
-    --woly-component-level-temp: max(calc(var(--woly-component-level) - 1), 0);
-  }
-
-  [data-woly-component-level-decrement-wrapper] > [data-woly-component-level-decrement-inner] {
-    --woly-component-level: var(--woly-component-level-temp);
   }
 `;
