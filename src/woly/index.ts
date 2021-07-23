@@ -1,4 +1,4 @@
 export * from './atoms';
 export * from './molecules';
 export * from './templates';
-export { Global } from './global';
+export { WolyGlobalStyles } from './woly-global-styles';

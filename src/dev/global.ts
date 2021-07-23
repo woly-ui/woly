@@ -1,10 +1,10 @@
-import * as wolyGlobal from 'ui/global';
 import styled from 'styled-components';
 import { createPalette } from 'lib/palette';
+import { WolyGlobalStyles } from 'ui/woly-global-styles';
 
 import { systemUi } from './font-stacks';
 
-export const Global = styled(wolyGlobal.Global)`
+export const Global = styled(WolyGlobalStyles)`
   ${systemUi}
 
   * {
