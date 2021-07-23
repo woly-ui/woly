@@ -100,7 +100,7 @@ Ensure that all tabs are always enabled, and explain why a tab’s content is un
         <Tab
           active={active}
           key={id}
-          href={`#${id}`}
+          path={`#${id}`}
           iconAction={
             <ButtonIcon
               icon={<IconClose />}
@@ -132,7 +132,7 @@ Primary priority can be used to style tabs in brand color.
           weight="3"
           active={active}
           key={id}
-          href={`#${id}`}
+          path={`#${id}`}
           iconAction={
             <ButtonIcon
               icon={<IconClose />}
@@ -161,7 +161,7 @@ Secondary priority should be used as default variant.
           weight="1"
           active={active}
           key={id}
-          href={`#${id}`}
+          path={`#${id}`}
           text={content}
           onClick={() => console.log(`click ${id}`)}
           priority="default"
@@ -182,7 +182,7 @@ Tab can have an optional icon on the left side ex. icon, logo or avatar.
         <Tab
           active={active}
           key={id}
-          href={`#${id}`}
+          path={`#${id}`}
           iconLeft={<IconPlus />}
           iconAction={
             <ButtonIcon
@@ -210,7 +210,7 @@ Tab can have an optional icon on the left side ex. icon, logo or avatar.
         <Tab
           active={active}
           key={id}
-          href={`#${id}`}
+          path={`#${id}`}
           iconLeft={<IconPlus />}
           iconAction={
             <ButtonIcon
@@ -233,7 +233,7 @@ Tab can have an optional icon on the left side ex. icon, logo or avatar.
 
 | Name         | Type                               | Default       | Description                                                                                         |
 | ------------ | ---------------------------------- | ------------- | --------------------------------------------------------------------------------------------------- |
-| `href`       | `string`                           |               | Href - attribute that adds url adress to tab component                                              |
+| `path`       | `string`                           |               | Href - attribute that adds url adress to tab component                                              |
 | `iconAction` | `React.ReactNode`                  | `null`        | Element appears on right side near tab component`s text (ex.: action block, that consists a button) |
 | `iconLeft`   | `React.ReactNode`                  | `null`        | Element appears on left side near tab component`s text (ex.: icon or avatar)                        |
 | `onClick`    | `React.MouseEvent<HTMLDivElement>` | `null`        | Callback when tab component is clicked                                                              |

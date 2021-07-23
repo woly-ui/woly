@@ -12,7 +12,8 @@ interface TabElementProps {
 interface TabProps {
   active?: boolean;
   className?: string;
-  href?: string;
+  disabled?: boolean;
+  path?: string;
   weight?: string;
 }
 
@@ -40,43 +41,35 @@ export const Tabs = styled.div.attrs(mapTabs)`
 const TabBase: React.FC<TabProps & TabElementProps & Priority> = ({
   active,
   className,
-  href,
-  iconLeft,
+  disabled = false,
   iconAction,
+  iconLeft,
   onClick,
-  weight = '2',
-  text,
+  path,
   priority,
-}) => {
-  const ref = React.useRef<HTMLDivElement>(null);
-
-  return (
-    <div
+  text,
+  weight = '2',
+}) =>
+  ( <div
       className={className}
-      data-href={href}
+      data-active={active}
+      data-disabled={disabled}
+      data-path={path}
+      data-priority={priority}
       data-weight={weight}
       onClick={onClick}
       tabIndex={0}
-      data-active={active}
-      data-priority={priority}
     >
       {iconLeft && <span data-icon="link-icon">{iconLeft}</span>}
       <span data-link="link-text">{text}</span>
       {iconAction && <span data-icon="tab-action">{iconAction}</span>}
     </div>
-  );
-};
+);
 
 export const Tab = styled(TabBase)`
   --local-icon-size: var(--woly-line-height);
   --local-tab-max-size: 201px;
   --local-tab-min-size: 67px;
-
-  --local-gradient-color: linear-gradient(
-    45deg,
-    rgba(var(--woly-shape-default), 0.2),
-    var(--woly-shape-default) 100%
-  );
 
   ${box}
 
@@ -108,17 +101,6 @@ export const Tab = styled(TabBase)`
 
     white-space: nowrap;
     text-align: center;
-
-    &::after {
-      position: absolute;
-      top: 0;
-      right: 0;
-
-      width: 20%;
-      height: 100%;
-
-      content: '';
-    }
   }
 
   [data-icon] {
@@ -168,6 +150,11 @@ export const Tab = styled(TabBase)`
     &[data-active='true'] {
       --local-text-color: var(--woly-focus-color);
     }
+
+    &[data-disabled='true'] {
+      --local-text-color: var(--woly-canvas-text-disabled);
+      pointer-events: none;
+    }
   }
 
   &[data-weight='2'] {
@@ -184,30 +171,20 @@ export const Tab = styled(TabBase)`
       fill: var(--local-text-color);
     }
 
-    [data-link='link-text'] {
-      &::after {
-        --local-gradient-color: linear-gradient(
-          to right,
-          rgba(255, 255, 255, 0.2),
-          var(--woly-shape-disabled) 100%
-        );
-        background: var(--local-gradient-color);
-      }
-    }
-
     &[data-active='true'] {
       --local-background: var(--woly-background);
       --local-text-color: var(--woly-canvas-text-active);
 
       [data-link='link-text'] {
         --local-background: var(--woly-background);
-        &::after {
-          --local-gradient-color: linear-gradient(
-            to right,
-            rgba(255, 255, 255, 0.2),
-            var(--woly-background) 100%
-          );
-        }
+      }
+    }
+
+      &[data-disabled='true'] {
+        --local-text-color: var(--woly-canvas-text-disabled);
+        --local-background: var(--woly-shape-disabled);
+        --local-border-color: var(--woly-shape-disabled);
+        pointer-events: none;
       }
     }
 
@@ -215,28 +192,14 @@ export const Tab = styled(TabBase)`
       --local-background: transparent;
       --local-text-color: var(--woly-shape-hover);
       --local-border-color: var(--woly-shape-active);
-      [data-link='link-text'] {
-        &::after {
-          --local-gradient-color: linear-gradient(
-            to right,
-            rgba(255, 255, 255, 0.2),
-            var(--woly-background) 100%
-          );
-        }
-      }
+    }
 
       &:focus-within {
         z-index: 1;
 
         outline: none;
         box-shadow: 0 var(--woly-border-width) 0 0 var(--woly-focus-color);
-        --local-gradient-color: linear-gradient(
-          45deg,
-          rgba(255, 255, 255, 0.2),
-          var(--woly-background) 100%
-        );
       }
-    }
 
     &[data-weight='3'] {
       --local-background: var(--woly-shape-default);
@@ -250,10 +213,6 @@ export const Tab = styled(TabBase)`
 
       [data-link='link-text'] {
         background-color: var(--local-background);
-
-        &::after {
-          background: var(--local-gradient-color);
-        }
       }
 
       [data-icon='link-icon'] > svg > path {
@@ -275,6 +234,12 @@ export const Tab = styled(TabBase)`
         --local-text-color: var(--woly-canvas-text-active);
         --local-background: var(--woly-background);
       }
+
+      &[data-disabled='true'] {
+        --local-text-color: var(--woly-canvas-text-disabled);
+        --local-background: var(--woly-shape-disabled);
+        --local-border-color: var(--woly-shape-disabled);
+        pointer-events: none;
+      }
     }
-  }
 ` as StyledComponent<'div', Record<string, unknown>, TabProps & TabElementProps & Priority>;
