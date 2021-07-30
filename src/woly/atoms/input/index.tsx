@@ -3,7 +3,7 @@ import styled, { StyledComponent } from 'styled-components';
 import { InputContainer, InputElement } from 'ui/elements';
 import { Priority } from 'lib/types';
 
-interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   autoComplete?: 'on' | 'off';
   className?: string;
   disabled?: boolean;

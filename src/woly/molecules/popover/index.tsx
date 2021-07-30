@@ -3,12 +3,16 @@ import styled, { StyledComponent } from 'styled-components';
 import { Priority } from 'lib/types';
 import { Surface } from 'ui/atoms';
 import { positionRelativeGet } from 'lib/position-relative';
+import { useUpdateEffect } from 'lib/hooks';
 
 interface Props {
   className?: string;
   content: React.ReactNode;
   isOpen: boolean;
   position?: PopoverPositionType;
+  onClose?: () => void;
+  fullWidth?: boolean;
+  disabled?: boolean;
 }
 
 type PopoverPositionType = 'top' | 'bottom';
@@ -20,6 +24,9 @@ const PopoverBase: React.FC<Props & Priority> = ({
   isOpen,
   position = 'bottom',
   priority = 'secondary',
+  onClose = () => {},
+  fullWidth = true,
+  disabled = false,
 }) => {
   const ref = React.useRef<HTMLDivElement>(null);
 
@@ -60,6 +67,12 @@ const PopoverBase: React.FC<Props & Priority> = ({
     setPosition(position);
   }, [position]);
 
+  useUpdateEffect(() => {
+    if (!isVisible) {
+      onClose();
+    }
+  }, [isVisible]);
+
   React.useEffect(() => {
     if (typeof window === 'undefined' || !window.document) return;
 
@@ -79,7 +92,8 @@ const PopoverBase: React.FC<Props & Priority> = ({
       </div>
       <Surface
         data-element="popover"
-        data-open={isVisible}
+        data-full-width={fullWidth}
+        data-open={!disabled && isVisible}
         data-position={popoverPosition}
         data-priority={priority}
       >
@@ -104,6 +118,11 @@ export const Popover = styled(PopoverBase)`
 
     visibility: hidden;
     opacity: 0;
+  }
+
+  [data-full-width='false'] {
+    width: auto;
+    min-width: unset;
   }
 
   & > [data-open='true'] {
