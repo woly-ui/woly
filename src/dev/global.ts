@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { createPalette } from 'lib/palette';
 import { WolyGlobalStyles } from 'ui/woly-global-styles';
+import { createPalette } from 'lib/palette';
 
 import { systemUi } from './font-stacks';
 

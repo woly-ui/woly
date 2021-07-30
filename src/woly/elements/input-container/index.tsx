@@ -21,7 +21,7 @@ const InputContainerBase: React.FC<InputContainerProps & Priority> = ({
   rightIcon,
 }) => (
   <div
-    {...levelDowngrade.wrapperProps()}
+    {...levelDowngrade.setup()}
     className={className}
     data-disabled={disabled}
     data-priority={priority}
@@ -29,7 +29,7 @@ const InputContainerBase: React.FC<InputContainerProps & Priority> = ({
     {leftIcon && <span data-icon="input">{leftIcon}</span>}
     <div data-element="input">{children}</div>
     {rightIcon && (
-      <span {...levelDowngrade.props({ diff: 2 })} data-icon="input">
+      <span {...levelDowngrade.use({ diff: 2 })} data-icon="input">
         {rightIcon}
       </span>
     )}

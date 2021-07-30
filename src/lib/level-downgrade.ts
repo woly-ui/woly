@@ -24,10 +24,10 @@ export const levelDowngradeCss = css`
 `;
 
 export const levelDowngrade = {
-  wrapperProps: () => ({
+  setup: () => ({
     'data-woly-component-level-downgrade-wrapper': true,
   }),
-  props: ({ diff } = { diff: 1 }) => ({
+  use: ({ diff } = { diff: 1 }) => ({
     'data-woly-component-level-downgrade': diff,
   }),
 };
