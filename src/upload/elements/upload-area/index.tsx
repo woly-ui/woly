@@ -18,10 +18,10 @@ const UploadAreaBase: React.FC<UploadAreaProps & Priority> = ({
   priority = 'default',
 }) => (
   <div className={className} data-priority={priority} data-focus={focus}>
-    <div data-content data-position-center={center}>
+    <div data-element="content" data-position-center={center}>
       {content}
     </div>
-    <div data-overlay />
+    <div data-element="overlay" />
   </div>
 );
 
@@ -51,7 +51,7 @@ export const UploadArea = styled(UploadAreaBase)`
 
     outline: none;
 
-    [data-overlay] {
+    [data-element='overlay'] {
       position: absolute;
       top: 50%;
       left: 50%;

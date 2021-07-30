@@ -38,7 +38,7 @@ export const IconBox = styled(IconBoxBase)`
   border-radius: var(--woly-rounding);
   outline: none;
 
-  [data-icon] {
+  [data-element='icon'] {
     display: flex;
     flex-shrink: 0;
     align-items: center;

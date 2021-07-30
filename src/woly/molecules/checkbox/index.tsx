@@ -51,7 +51,7 @@ const CheckboxBase: React.FC<CheckboxProps & Priority> = ({
       onKeyDown={onKeyDown}
       tabIndex={tabIndex}
     >
-      <span data-container data-disabled={disabled} tabIndex={-1}>
+      <span data-element="container" data-disabled={disabled} tabIndex={-1}>
         <span data-icon="checkbox">
           <input type="checkbox" id={id} checked={checked} onChange={onChange} />
           <span data-unchecked>
@@ -61,7 +61,7 @@ const CheckboxBase: React.FC<CheckboxProps & Priority> = ({
             <IconCheckFilled />
           </span>
         </span>
-        {text && <span data-text>{text}</span>}
+        {text && <span data-element="text">{text}</span>}
       </span>
     </label>
   );
@@ -82,18 +82,18 @@ export const Checkbox = styled(CheckboxBase)`
 
   user-select: none;
 
-  &:focus [data-checkmark] > svg,
-  &:active [data-checkmark] > svg {
+  &:focus [data-element='checkmark'] > svg,
+  &:active [data-element='checkmark'] > svg {
     box-shadow: 0 0 0 var(--woly-border-width) var(--woly-focus);
   }
 
-  [data-container] {
+  [data-element='container'] {
     display: flex;
     align-items: center;
 
     outline: none;
 
-    [data-text] {
+    [data-element='text'] {
       margin-left: var(--local-gap);
 
       color: var(--local-text-color);

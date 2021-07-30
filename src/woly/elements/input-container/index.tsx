@@ -21,7 +21,7 @@ const InputContainerBase: React.FC<InputContainerProps & Priority> = ({
 }) => (
   <div className={className} data-disabled={disabled} data-priority={priority}>
     {leftIcon && <span data-icon="input">{leftIcon}</span>}
-    <div data-input>{children}</div>
+    <div data-element="input">{children}</div>
     {rightIcon && <span data-icon="input">{rightIcon}</span>}
   </div>
 );
@@ -46,7 +46,7 @@ export const InputContainer = styled(InputContainerBase)`
   border-radius: var(--woly-rounding);
   outline: none;
 
-  [data-input] {
+  [data-element='input'] {
     flex: 1;
 
     input {

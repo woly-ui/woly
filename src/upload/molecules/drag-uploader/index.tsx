@@ -53,7 +53,7 @@ export const DragUploaderBase: React.FC<DragUploaderProps & Priority> = ({
       onBlur={() => setFocus(false)}
     >
       <UploadArea center={center} content={content} focus={focus} priority={priority} />
-      <input data-file {...getInputProps()} />
+      <input data-element="file" {...getInputProps()} />
     </div>
   );
 };
@@ -64,7 +64,7 @@ export const DragUploader = styled(DragUploaderBase)`
 
   outline: none;
 
-  input[data-file] {
+  input[data-element='file'] {
     display: none;
   }
 `;

@@ -40,7 +40,7 @@ const ButtonBase: React.FC<ButtonProps & Priority> = ({
     {...p}
   >
     {icon && <span data-icon="button">{icon}</span>}
-    <span data-text>{text}</span>
+    <span data-element="text">{text}</span>
   </button>
 );
 

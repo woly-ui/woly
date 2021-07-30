@@ -16,9 +16,9 @@ const LoaderBase = ({
 }: LoaderProps & Priority) => {
   return (
     <div className={className} data-priority={priority}>
-      <div data-loader>
-        <IconSpinner data-track />
-        <div data-description>{description}</div>
+      <div data-element="loader">
+        <IconSpinner data-element="track" />
+        <div data-element="description">{description}</div>
       </div>
     </div>
   );
@@ -71,13 +71,13 @@ export const Loader = styled(LoaderBase)`
   width: 100%;
   height: 100%;
 
-  [data-loader] {
+  [data-element='loader'] {
     display: flex;
     flex-direction: column;
     align-items: center;
   }
 
-  [data-track] {
+  [data-element='track'] {
     width: var(--local-track-size);
     height: var(--local-track-size);
     margin-bottom: var(--local-vertical-gap);
@@ -89,7 +89,7 @@ export const Loader = styled(LoaderBase)`
     fill: transparent;
   }
 
-  [data-track] circle {
+  [data-element='track'] circle {
     transform-origin: 50% 50%;
 
     animation: 1.4s ease-in-out infinite both ${spinnerAnimation};
@@ -102,7 +102,7 @@ export const Loader = styled(LoaderBase)`
     stroke-dasharray: 283;
   }
 
-  [data-description] {
+  [data-element='description'] {
     color: var(--woly-canvas-text-default);
     font-size: 15px;
     line-height: 21px;

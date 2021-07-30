@@ -62,8 +62,8 @@ const ModalBase: React.FC<ModalProps & Priority> = ({
     >
       <Backdrop onClick={onClose} />
       <Shape data-priority={priority}>
-        <div data-header>
-          <Heading data-title size={2}>
+        <div data-element="header">
+          <Heading data-element="title" size={2}>
             {title}
           </Heading>
           {onClose && (
@@ -77,7 +77,7 @@ const ModalBase: React.FC<ModalProps & Priority> = ({
             </div>
           )}
         </div>
-        <div data-content>{children}</div>
+        <div data-element="content">{children}</div>
       </Shape>
     </div>
   );
@@ -134,13 +134,13 @@ export const Modal = styled(ModalBase)`
     flex-shrink: 0;
   }
 
-  [data-header] {
+  [data-element='header'] {
     display: flex;
     align-items: center;
     width: 100%;
   }
 
-  [data-title] {
+  [data-element='title'] {
     flex: 1;
 
     & + [data-button='modal-close'] {
@@ -148,7 +148,7 @@ export const Modal = styled(ModalBase)`
     }
   }
 
-  [data-content] {
+  [data-element='content'] {
     padding-top: var(--local-gap);
     overflow: auto;
   }
