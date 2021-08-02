@@ -1,6 +1,6 @@
 import React from 'react';
 import { ListContainer, ListItem } from 'ui';
-import { StateCallback } from 'lib/playground';
+import { StateCallback } from 'dev/playground';
 
 export const loadUsers = async ({ value, change }: StateCallback) => {
   change({ ...value, loading: true });

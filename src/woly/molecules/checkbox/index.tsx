@@ -1,8 +1,9 @@
 import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
 import { IconCheckFilled, IconFilledUnchecked } from 'static/icons';
-import { Priority, keyboardEventHandle } from 'lib';
+import { Priority } from 'lib/types';
 import { boxInline } from 'ui/elements/box';
+import { keyboardEventHandle } from 'lib/keyboard';
 
 interface CheckboxProps {
   className?: string;
