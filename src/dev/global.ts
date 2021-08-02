@@ -1,6 +1,6 @@
 import styled from 'styled-components';
+import { createPalette } from 'lib/palette';
 
-import { createPalette } from './palette';
 import { systemUi } from './font-stacks';
 
 export const Global = styled.div`

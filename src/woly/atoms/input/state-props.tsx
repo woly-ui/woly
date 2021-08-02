@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { GenerateMap, SizeBlock, SizeProps } from 'lib/map-generation';
+import { GenerateMap, SizeBlock, SizeProps } from 'dev/map-generation';
 import { IconSearch } from 'static/icons';
 
 import { Input } from '.';

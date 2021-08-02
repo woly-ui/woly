@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ButtonIcon, Chip } from 'ui';
-import { GenerateMap, SizeBlock, SizeProps } from 'lib/map-generation';
+import { GenerateMap, SizeBlock, SizeProps } from 'dev/map-generation';
 import { IconSearch } from 'static/icons';
 
 interface ChipProps {

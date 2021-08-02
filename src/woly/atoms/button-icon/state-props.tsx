@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ButtonIcon } from 'ui';
-import { GenerateMap, SizeProps } from 'lib/map-generation';
+import { GenerateMap, SizeProps } from 'dev/map-generation';
 import { IconSearch } from 'static/icons';
 
 interface ComponentProps {

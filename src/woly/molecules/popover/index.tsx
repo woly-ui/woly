@@ -2,7 +2,7 @@ import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
 import { Priority } from 'lib/types';
 import { Surface } from 'ui/atoms';
-import { positionRelativeGet } from 'lib';
+import { positionRelativeGet } from 'lib/position-relative';
 
 interface Props {
   className?: string;
