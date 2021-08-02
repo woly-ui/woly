@@ -4,7 +4,7 @@ import { Priority } from 'lib/types';
 
 const SeparatorBase: React.FC<{ className: string } & Priority> = ({ className, priority }) => (
   <div className={className} data-priority={priority}>
-    <div data-line />
+    <div data-element="line" />
   </div>
 );
 
@@ -14,7 +14,7 @@ export const Separator = styled(SeparatorBase)`
   width: 100%;
   padding: calc(var(--local-padding) - (var(--woly-border-width) / 2)) 0;
 
-  [data-line] {
+  [data-element='line'] {
     height: var(--woly-border-width);
 
     background: var(--woly-canvas-disabled);

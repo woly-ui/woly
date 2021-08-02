@@ -80,7 +80,7 @@ export const Chip = styled(ChipBase)`
   border-radius: var(--woly-rounding);
   outline: none;
 
-  [data-text] {
+  [data-element='text'] {
     display: flex;
     flex: 1;
 

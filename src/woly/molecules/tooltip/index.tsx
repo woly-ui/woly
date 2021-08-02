@@ -54,7 +54,7 @@ const TooltipBase: React.FC<TooltipProps & Priority> = ({
         {children}
       </div>
       <div role="tooltip" id="notifications-desc">
-        <div data-triangle />
+        <div data-element="triangle" />
         <Surface priority={priority} weight={weight}>
           {content}
         </Surface>
@@ -101,7 +101,7 @@ export const Tooltip = styled(TooltipBase)`
 
     transition: 0.3s ease-in-out;
 
-    [data-triangle] {
+    [data-element='triangle'] {
       position: absolute;
 
       width: 0;
@@ -113,13 +113,13 @@ export const Tooltip = styled(TooltipBase)`
   }
 
   &[data-weight='goast'] {
-    [role='tooltip'] [data-triangle] {
+    [role='tooltip'] [data-element='triangle'] {
       border-color: var(--woly-background) transparent transparent transparent;
     }
   }
 
   &[data-weight='fill'] {
-    [role='tooltip'] [data-triangle] {
+    [role='tooltip'] [data-element='triangle'] {
       border-color: var(--woly-shape-default) transparent transparent transparent;
     }
   }
@@ -132,7 +132,7 @@ export const Tooltip = styled(TooltipBase)`
 
   &[data-position='top'] [role='tooltip'] {
     bottom: var(--tooltip-position);
-    [data-triangle] {
+    [data-element='triangle'] {
       bottom: calc(-1 * (var(--woly-const-m)));
       left: calc(2 * var(--woly-const-m));
     }
@@ -140,7 +140,7 @@ export const Tooltip = styled(TooltipBase)`
 
   &[data-position='bottom'] [role='tooltip'] {
     top: var(--tooltip-position);
-    [data-triangle] {
+    [data-element='triangle'] {
       top: calc(-1 * (var(--woly-const-m)));
       left: calc(2 * var(--woly-const-m));
 
@@ -151,7 +151,7 @@ export const Tooltip = styled(TooltipBase)`
   &[data-position='left'] [role='tooltip'] {
     top: 0;
     right: var(--tooltip-position);
-    [data-triangle] {
+    [data-element='triangle'] {
       top: calc(2 * var(--woly-const-m));
       right: calc(-1 * (var(--woly-const-m)));
 
@@ -162,7 +162,7 @@ export const Tooltip = styled(TooltipBase)`
   &[data-position='right'] [role='tooltip'] {
     top: 0;
     left: var(--tooltip-position);
-    [data-triangle] {
+    [data-element='triangle'] {
       top: calc(2 * var(--woly-const-m));
       left: calc(-1 * (var(--woly-const-m)));
 

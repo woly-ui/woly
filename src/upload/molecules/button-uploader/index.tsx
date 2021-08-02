@@ -48,7 +48,7 @@ export const ButtonUploaderBase: React.FC<ButtonUploaderProps & Priority> = ({
   return (
     <div className={className} {...getRootProps()}>
       <Button text={text} disabled={disabled} icon={icon} outlined={outlined} priority={priority} />
-      <input data-file {...getInputProps()} />
+      <input data-element="file" {...getInputProps()} />
     </div>
   );
 };
@@ -56,7 +56,7 @@ export const ButtonUploaderBase: React.FC<ButtonUploaderProps & Priority> = ({
 export const ButtonUploader = styled(ButtonUploaderBase)`
   outline: none;
 
-  input[data-file] {
+  input[data-element='file'] {
     display: none;
   }
 `;
