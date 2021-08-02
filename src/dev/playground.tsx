@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import styled from 'styled-components';
 import React, { useRef } from 'react';
+import { useUniqueID } from 'lib/hooks';
 
 import { ConfiguratorName, Configurators } from './configurators';
 import { Global } from './global';
 import { block } from './block';
-import { useUniqueID } from './hooks/use-unique-id';
 
 export { block };
 

@@ -124,8 +124,8 @@ The example is based on the `Button` component.
 ```tsx
 import React from 'react';
 import { IconPlus } from 'static/icons';
-import { Sizes, StateMap, Priorities } from 'lib/state-map';
-import { block } from 'lib/block';
+import { Sizes, StateMap, Priorities } from 'dev/state-map';
+import { block } from 'dev/block';
 
 import { Button } from '../index';
 

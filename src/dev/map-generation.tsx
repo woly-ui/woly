@@ -1,11 +1,11 @@
 /* eslint-disable react/no-array-index-key */
 import React from 'react';
 import styled, { StyledComponent } from 'styled-components';
-import { Global } from 'lib/global';
+import { Global } from 'dev/global';
 import { Grid, Heading } from 'ui';
+import { useUniqueID } from 'lib/hooks';
 
 import { ConfiguratorName, Configurators } from './configurators';
-import { useUniqueID } from './hooks/use-unique-id';
 
 export type SizeProps = 'N' | 'XS' | 'S' | 'M' | 'L' | 'XL' | 'H';
 

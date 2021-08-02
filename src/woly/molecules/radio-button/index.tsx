@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
 import { Priority } from 'lib/types';
-import { keyboardEventHandle } from 'lib';
+import { keyboardEventHandle } from 'lib/keyboard';
 
 interface RadioButtonProps {
   className?: string;

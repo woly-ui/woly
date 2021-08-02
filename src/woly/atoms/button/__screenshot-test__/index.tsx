@@ -1,7 +1,7 @@
 import React from 'react';
 import { IconPlus } from 'static/icons';
-import { Priorities, Sizes, StateMap } from 'lib/state-map';
-import { block } from 'lib/block';
+import { Priorities, Sizes, StateMap } from 'dev/state-map';
+import { block } from 'dev/block';
 
 import { Button } from '../index';
 
