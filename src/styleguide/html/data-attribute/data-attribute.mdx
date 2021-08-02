@@ -6,18 +6,10 @@ You can access them from CSS to add styles to the tag that have specific data-at
 
 It's simpler and cleaner to write data attributes as data-name, where a name is a concrete name of a data attribute.
 
-You **should not** write unnecessary data-block='name' or data-container='name' because data-attribute has only one definition and doesn't change.
-
-Bad code example:
+Use `data-element` attribute for styling (it is semantic and consistent):
 
 ```html
-<div data-block="input"></div>
-```
-
-Good code example:
-
-```html
-<div data-input></div>
+<div data-element="input"></div>
 ```
 
 If you have several values of component states that you need to pass to a data attribute, make data attribute more unique with adding a name to data attribute.

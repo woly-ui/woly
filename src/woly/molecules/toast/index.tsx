@@ -20,8 +20,8 @@ const ToastBase: React.FC<ToastProps & Priority> = ({
 }) => (
   <div className={className} data-weight={weight} data-priority={priority}>
     {icon && <span data-icon="toast">{icon}</span>}
-    <div data-content>{children}</div>
-    {action && <span data-action>{action}</span>}
+    <div data-element="content">{children}</div>
+    {action && <span data-element="action">{action}</span>}
   </div>
 );
 
@@ -47,7 +47,7 @@ export const Toast = styled(ToastBase)`
   border-radius: var(--woly-rounding);
   outline: none;
 
-  [data-content] {
+  [data-element='content'] {
     display: flex;
     flex: 1;
     flex-wrap: nowrap;
@@ -62,7 +62,7 @@ export const Toast = styled(ToastBase)`
     height: var(--local-icon-size);
   }
 
-  [data-action] {
+  [data-element='action'] {
     --woly-component-level: 0;
     display: flex;
     align-items: center;

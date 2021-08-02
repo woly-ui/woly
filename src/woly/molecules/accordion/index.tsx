@@ -29,18 +29,18 @@ const AccordionBase: React.FC<AccordionProps & Priority> = ({
   return (
     <div className={className} data-priority={priority}>
       <div
-        data-header
+        data-element="header"
         data-open={isContentVisible}
         onClick={setContentVisible}
         onKeyDown={onKeyDown}
         tabIndex={0}
       >
-        <div data-title>{title}</div>
-        <div data-icon>
+        <div data-element="title">{title}</div>
+        <div data-element="icon">
           <IconArrowDown />
         </div>
       </div>
-      <div data-content>{children}</div>
+      <div data-element="content">{children}</div>
     </div>
   );
 };
@@ -71,7 +71,7 @@ export const Accordion = styled(AccordionBase)`
     outline: none;
   }
 
-  [data-header] {
+  [data-element='header'] {
     display: flex;
     align-items: center;
 
@@ -96,11 +96,11 @@ export const Accordion = styled(AccordionBase)`
     }
   }
 
-  [data-title] {
+  [data-element='title'] {
     flex: 1;
   }
 
-  [data-icon] {
+  [data-element='icon'] {
     display: flex;
     flex-shrink: 0;
     align-items: center;
@@ -114,7 +114,7 @@ export const Accordion = styled(AccordionBase)`
     }
   }
 
-  [data-content] {
+  [data-element='content'] {
     display: none;
   }
 
@@ -123,11 +123,11 @@ export const Accordion = styled(AccordionBase)`
     --local-border-color: var(--woly-canvas-default);
   }
 
-  [data-open='true'] > [data-icon] {
+  [data-open='true'] > [data-element='icon'] {
     transform: rotate(180deg);
   }
 
-  [data-open='true'] ~ [data-content] {
+  [data-open='true'] ~ [data-element='content'] {
     display: inline-block;
     width: 100%;
 

@@ -3,7 +3,6 @@ import styled, { StyledComponent } from 'styled-components';
 import { ButtonIcon, Input } from 'ui/atoms';
 import { IconEyeClosed, IconEyeOpened } from 'static/icons';
 import { Priority } from 'lib/types';
-import { block } from 'lib/block';
 
 interface InputPasswordProps {
   className?: string;

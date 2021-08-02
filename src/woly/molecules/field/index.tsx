@@ -18,9 +18,9 @@ const FieldBase: React.FC<FieldProps & Priority> = ({
   priority = 'secondary',
   row = false,
 }) => (
-  <Label className={className} data-row={row} data-priority={priority} data-label>
+  <Label className={className} data-row={row} data-priority={priority} data-element="label">
     <span>{label}</span>
-    <div data-content>{children}</div>
+    <div data-element="content">{children}</div>
   </Label>
 );
 
