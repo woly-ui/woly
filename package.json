@@ -4,8 +4,9 @@
   "license": "MIT",
   "scripts": {
     "build": "rm -rf dist && node build",
+    "clean": "gatsby clean && rm -rf .temp",
     "commit": "git-cz",
-    "docs:build": "gatsby clean && gatsby build --prefix-paths",
+    "docs:build": "yarn clean && gatsby build --prefix-paths",
     "format": "prettier --check '{src,build,.storybook,packages}/**/**.{ts,tsx,js,md,mdx,json}'",
     "format:fix": "prettier --write '{src,build,.storybook,packages}/**/**.{ts,tsx,js,md,mdx,json}'",
     "lint:code": "eslint --ext .ts,.tsx src",
@@ -13,7 +14,7 @@
     "lint:style": "stylelint './src/**/*.{js,css,ts,tsx}'",
     "lint:style:fix": "stylelint './src/**/*.{js,css,ts,tsx}' --fix",
     "percy:cypress": "percy exec -- cypress run",
-    "start": "gatsby clean && gatsby develop",
+    "start": "yarn clean && gatsby develop",
     "test:screenshot": "node screenshot-testing",
     "percy:ci": "start-server-and-test 'yarn docs:build && gatsby serve -p 8000' 8000 'yarn percy exec yarn test:screenshot'",
     "test": "echo 'No tests provided'"
@@ -73,7 +74,7 @@
     "fs-extra": "^9.1.0",
     "gatsby": "^3.0.4",
     "gatsby-plugin-react-svg": "^3.0.0",
-    "gatsby-theme-woly": "^0.7.5",
+    "gatsby-theme-woly": "^0.8.0",
     "husky": "^5.0.9",
     "import-sort-style-sova": "^0.1.0",
     "inquirer": "^7.3.3",
@@ -111,8 +112,8 @@
     "react": "16.14.0",
     "react-colorful": "^5.2.3",
     "react-dom": "16.14.0",
-    "react-resize-detector": "^6.7.4",
     "react-dropzone": "^11.3.4",
+    "react-resize-detector": "^6.7.4",
     "styled-components": "^5.2.1"
   },
   "config": {
