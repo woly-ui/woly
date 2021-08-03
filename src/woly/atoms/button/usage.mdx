@@ -6,21 +6,28 @@ import {IconPlus, IconSearch} from 'static/icons';
 
 ### Example
 
-<Playground>
-  <Button
-    icon={<IconSearch />}
-    onClick={() => alert('Hi!')}
-    text="Just a button"
-    priority="default"
-  />
-  <Button
-    icon={<IconSearch />}
-    onClick={() => alert('Hi!')}
-    text="Just a button"
-    priority="default"
-    outlined
-  />
-</Playground>
+```tsx playground
+import { Button } from 'woly';
+import { IconSearch } from 'static/icons';
+
+export function Example() {
+  return <Playground>
+    <Button
+      icon={<IconSearch />}
+      onClick={() => alert('Hi!')}
+      text="Just a button"
+      priority="default"
+    />
+    <Button
+      icon={<IconSearch />}
+      onClick={() => alert('Hi!')}
+      text="Just a button"
+      priority="default"
+      outlined
+    />
+  </Playground>
+}
+```
 
 ### Width
 
