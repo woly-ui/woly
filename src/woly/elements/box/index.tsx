@@ -33,13 +33,15 @@ export const box = css`
   }
 `;
 
-export const boxInline = css`
+export const boxLine = css`
   --local-vertical: calc(1px * var(--woly-component-level) * var(--woly-main-level));
+  --local-gap: max(
+    var(--woly-const-m),
+    calc((1px * var(--woly-component-level) * var(--woly-main-level)) / 2)
+  );
 
-  & > * {
-    padding-top: var(--local-vertical);
-    padding-bottom: var(--local-vertical);
-  }
+  padding-top: var(--local-vertical);
+  padding-bottom: var(--local-vertical);
 `;
 
 export const boxVertical = css`

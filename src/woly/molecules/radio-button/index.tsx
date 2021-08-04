@@ -1,6 +1,7 @@
 import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
 import { Priority } from 'lib/types';
+import { boxLine } from 'ui/elements/box';
 import { keyboardEventHandle } from 'lib/keyboard';
 
 interface RadioButtonProps {
@@ -20,7 +21,7 @@ const RadioButtonBase: React.FC<RadioButtonProps & Priority> = ({
   id,
   name,
   onChange,
-  priority = 'primary',
+  priority = 'secondary',
   text,
   ...p
 }) => {
@@ -46,30 +47,27 @@ const RadioButtonBase: React.FC<RadioButtonProps & Priority> = ({
   );
 
   return (
-    <div
+    <label
+      htmlFor={id}
       className={className}
       data-disabled={disabled}
       data-priority={priority}
       onKeyDown={onKeyDown}
       tabIndex={tabIndex}
     >
-      <label htmlFor={id}>
-        <input checked={checked} id={id} name={name} onChange={onChange} type="radio" {...p} />
+      <span data-element="container" data-disabled={disabled} tabIndex={-1}>
+        <input type="radio" checked={checked} id={id} name={name} onChange={onChange} {...p} />
         <span data-element="checkbox" />
-        <span data-element="text">{text}</span>
-      </label>
-    </div>
+        {text && <span data-element="text">{text}</span>}
+      </span>
+    </label>
   );
 };
 
 export const RadioButton = styled(RadioButtonBase)`
-  --local-vertical: calc(1px * var(--woly-component-level) * var(--woly-main-level));
-  --local-horizontal: calc(
-    var(--woly-const-m) + (1px * var(--woly-main-level)) + var(--local-vertical)
-  );
-  --local-gap: var(--woly-const-m);
+  ${boxLine}
 
-  --local-radio-size: 18px;
+  --local-radio-size: 17px;
   --local-ellipse-size: 10px;
 
   --local-color-text: var(--woly-canvas-text-default);
@@ -80,25 +78,40 @@ export const RadioButton = styled(RadioButtonBase)`
   --local-border-color: var(--woly-canvas-hover);
   --local-border-rounding: 50%;
 
-  display: flex;
-  align-items: center;
+  display: block;
 
-  margin-right: var(--local-vertical);
-
-  border-radius: var(--local-border-rounding);
   outline: none;
 
-  label {
+  user-select: none;
+
+  &:focus [data-element='checkbox'] {
+    box-shadow: 0 0 0 var(--woly-border-width) var(--woly-focus-color);
+  }
+
+  &:active [data-element='checkbox'] {
+    --local-border-color: var(--woly-shape-active);
+  }
+
+  &:hover {
+    --local-border-color: var(--woly-shape-hover);
+  }
+
+  input {
+    display: none;
+
+    outline: none;
+  }
+
+  [data-element='container'] {
     display: flex;
-    align-items: center;
 
-    cursor: pointer;
+    outline: none;
+  }
 
-    input {
-      display: none;
-
-      outline: none;
-    }
+  [data-element='text'] {
+    color: var(--local-color-text);
+    font-size: var(--woly-font-size);
+    line-height: var(--woly-line-height);
   }
 
   [data-element='checkbox'] {
@@ -138,24 +151,6 @@ export const RadioButton = styled(RadioButtonBase)`
       --local-border-color: var(--woly-shape-active);
       --local-icon-fill: var(--woly-shape-active);
     }
-  }
-
-  &:focus > label > [data-element='checkbox'] {
-    box-shadow: 0 0 0 var(--woly-border-width) var(--woly-focus);
-  }
-
-  &:active > label > [data-element='checkbox'] {
-    --local-border-color: var(--woly-shape-active);
-  }
-
-  &:hover {
-    --local-border-color: var(--woly-shape-hover);
-  }
-
-  [data-element='text'] {
-    color: var(--local-color-text);
-    font-size: var(--woly-font-size);
-    line-height: var(--woly-line-height);
   }
 
   &[data-disabled='true'] {
