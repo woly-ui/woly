@@ -33,7 +33,7 @@ export const box = css`
   }
 `;
 
-export const boxLine = css`
+export const lineBox = css`
   --local-vertical: calc(1px * var(--woly-component-level) * var(--woly-main-level));
   --local-gap: max(
     var(--woly-const-m),

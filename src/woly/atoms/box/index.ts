@@ -1,13 +1,13 @@
 import styled, { StyledComponent } from 'styled-components';
-import { box, boxLine, boxVertical } from 'ui/elements/box';
+import { box, boxVertical, lineBox } from 'ui/elements/box';
 
 export const Box = styled.div`
   ${box}
 ` as StyledComponent<'div', Record<string, unknown>>;
 
-export const BoxLine = styled.div`
+export const LineBox = styled.div`
   > * {
-    ${boxLine}
+    ${lineBox}
   }
 ` as StyledComponent<'div', Record<string, unknown>>;
 

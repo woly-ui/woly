@@ -1,8 +1,8 @@
 import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
 import { Priority } from 'lib/types';
-import { boxLine } from 'ui/elements/box';
 import { keyboardEventHandle } from 'lib/keyboard';
+import { lineBox } from 'ui/elements/box';
 
 interface RadioButtonProps {
   className?: string;
@@ -65,7 +65,7 @@ const RadioButtonBase: React.FC<RadioButtonProps & Priority> = ({
 };
 
 export const RadioButton = styled(RadioButtonBase)`
-  ${boxLine}
+  ${lineBox}
 
   --local-radio-size: 17px;
   --local-ellipse-size: 10px;

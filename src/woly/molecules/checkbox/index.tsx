@@ -2,8 +2,8 @@ import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
 import { IconCheckFilled, IconFilledUnchecked } from 'static/icons';
 import { Priority } from 'lib/types';
-import { boxLine } from 'ui/elements/box';
 import { keyboardEventHandle } from 'lib/keyboard';
+import { lineBox } from 'ui/elements/box';
 
 interface CheckboxProps {
   className?: string;
@@ -76,7 +76,7 @@ const CheckboxBase: React.FC<CheckboxProps & Priority> = ({
 };
 
 export const Checkbox = styled(CheckboxBase)`
-  ${boxLine}
+  ${lineBox}
 
   --local-icon-size: var(--woly-line-height);
   --local-icon-fill: var(--local-background-color);
