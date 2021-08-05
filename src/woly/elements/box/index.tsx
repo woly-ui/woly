@@ -15,11 +15,11 @@ export const box = css`
     padding: var(--local-vertical) var(--local-horizontal);
   }
 
-  & > [data-element='icon']:only-child {
+  & > [data-box-role='icon']:only-child {
     padding: var(--local-vertical);
   }
 
-  & > [data-element='icon']:first-child:not(:only-child) {
+  & > [data-box-role='icon']:first-child:not(:only-child) {
     padding-right: 0;
     padding-left: var(--local-compensate);
   }
@@ -27,7 +27,7 @@ export const box = css`
   & > :not(:first-child) {
     padding-left: var(--local-gap);
   }
-  & > [data-element='icon']:last-child:not(:only-child) {
+  & > [data-box-role='icon']:last-child:not(:only-child) {
     padding-right: var(--local-vertical);
     padding-left: 0;
   }
