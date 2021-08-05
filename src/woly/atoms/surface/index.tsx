@@ -1,6 +1,7 @@
 import React from 'react';
 import styled, { StyledComponent } from 'styled-components';
 import { Priority } from 'lib/types';
+import { mapColoring } from 'lib/coloring';
 
 interface SurfaceProps {
   weight?: string;
@@ -9,6 +10,9 @@ interface SurfaceProps {
 const map = (properties: SurfaceProps & Priority) => ({
   'data-priority': properties.priority || 'secondary',
   'data-weight': properties.weight || 'goast',
+  'data-coloring': mapColoring({
+    inversed: properties.weight === 'fill',
+  }),
 });
 
 export const Surface = styled.div.attrs(map)`

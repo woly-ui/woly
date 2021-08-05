@@ -6,18 +6,21 @@ import { useUniqueID } from 'lib/hooks';
 import { ConfiguratorName, Configurators } from './configurators';
 import { Global } from './global';
 import { block } from './block';
+import { mapColoring } from '../lib/coloring';
 
 export { block };
 
 interface Props {
   size: keyof typeof block;
   direction: 'vertical' | 'horizontal';
+  filled: boolean;
   configurators: ConfiguratorName[];
 }
 
 export const Playground: React.FC<Props> = ({
   size = 'M',
   direction = 'horizontal',
+  filled = true,
   configurators = ['color'],
   children,
 }) => {
@@ -25,15 +28,19 @@ export const Playground: React.FC<Props> = ({
 
   const Wrapper = block[size];
 
+  const coloring = mapColoring({
+    inversed: filled,
+  });
+
   return (
     <PlaygroundWrapper>
-      <Frame>
-        <Global data-scope={scopeId}>
+      <Global data-scope={scopeId} data-coloring="default">
+        <Frame data-coloring={coloring} data-priority="primary">
           <Wrapper>
             <Container data-dir={direction}>{children}</Container>
           </Wrapper>
-        </Global>
-      </Frame>
+        </Frame>
+      </Global>
       <Configurators id={scopeId} for={configurators} />
     </PlaygroundWrapper>
   );
@@ -97,6 +104,11 @@ const Frame = styled.div`
   border-radius: 4px 4px 0 0;
 
   resize: both;
+
+  &[data-coloring='inversed'] {
+    background-color: var(--woly-shape-default);
+    border-color: var(--woly-shape-default);
+  }
 `;
 
 const Container = styled.div`

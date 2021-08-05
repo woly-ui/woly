@@ -31,7 +31,7 @@ const InputElementBase: React.FC<InputElementProps> = ({
 );
 
 export const InputElement = styled(InputElementBase)`
-  --local-value-color: var(--woly-canvas-text-default);
+  --local-value-color: var(--woly-text);
   --local-background: var(--woly-canvas-default);
 
   width: 100%;
