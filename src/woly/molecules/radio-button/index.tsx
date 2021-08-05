@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
 import { Priority } from 'lib/types';
-import { keyboardEventHandle } from 'lib';
+import { keyboardEventHandle } from 'lib/keyboard';
 
 interface RadioButtonProps {
   className?: string;
@@ -55,8 +55,8 @@ const RadioButtonBase: React.FC<RadioButtonProps & Priority> = ({
     >
       <label htmlFor={id}>
         <input checked={checked} id={id} name={name} onChange={onChange} type="radio" {...p} />
-        <span data-checkbox />
-        <span data-text>{text}</span>
+        <span data-element="checkbox" />
+        <span data-element="text">{text}</span>
       </label>
     </div>
   );
@@ -101,7 +101,7 @@ export const RadioButton = styled(RadioButtonBase)`
     }
   }
 
-  [data-checkbox] {
+  [data-element='checkbox'] {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -116,7 +116,7 @@ export const RadioButton = styled(RadioButtonBase)`
     border-radius: var(--local-border-rounding);
   }
 
-  input:checked + [data-checkbox] {
+  input:checked + [data-element='checkbox'] {
     --local-border-color: var(--woly-shape-default);
 
     &:before {
@@ -140,11 +140,11 @@ export const RadioButton = styled(RadioButtonBase)`
     }
   }
 
-  &:focus > label > [data-checkbox] {
+  &:focus > label > [data-element='checkbox'] {
     box-shadow: 0 0 0 var(--woly-border-width) var(--woly-focus);
   }
 
-  &:active > label > [data-checkbox] {
+  &:active > label > [data-element='checkbox'] {
     --local-border-color: var(--woly-shape-active);
   }
 
@@ -152,7 +152,7 @@ export const RadioButton = styled(RadioButtonBase)`
     --local-border-color: var(--woly-shape-hover);
   }
 
-  [data-text] {
+  [data-element='text'] {
     color: var(--local-color-text);
     font-size: var(--woly-font-size);
     line-height: var(--woly-line-height);
@@ -161,16 +161,16 @@ export const RadioButton = styled(RadioButtonBase)`
   &[data-disabled='true'] {
     pointer-events: none;
 
-    [data-checkbox] {
+    [data-element='checkbox'] {
       --local-border-color: var(--woly-shape-disabled);
     }
 
-    input:checked + [data-checkbox] {
+    input:checked + [data-element='checkbox'] {
       --local-border-color: var(--woly-shape-disabled);
       --local-icon-fill: var(--woly-shape-disabled);
     }
 
-    [data-text] {
+    [data-element='text'] {
       --local-color-text: var(--woly-canvas-text-disabled);
     }
   }

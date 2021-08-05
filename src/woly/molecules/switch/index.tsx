@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
 import { Priority } from 'lib/types';
-import { keyboardEventHandle } from 'lib';
+import { keyboardEventHandle } from 'lib/keyboard';
 
 interface SwitchProps extends React.InputHTMLAttributes<HTMLInputElement> {
   className?: string;
@@ -51,7 +51,7 @@ const SwitchBase: React.FC<SwitchProps & Priority> = ({
     >
       <label htmlFor={id}>
         <input checked={checked} id={id} onChange={onChange} type="checkbox" {...p} />
-        <span data-checkbox />
+        <span data-element="checkbox" />
       </label>
     </div>
   );
@@ -93,7 +93,7 @@ export const Switch = styled(SwitchBase)`
     }
   }
 
-  [data-checkbox] {
+  [data-element='checkbox'] {
     position: absolute;
 
     width: var(--local-switch-width);
@@ -116,7 +116,7 @@ export const Switch = styled(SwitchBase)`
     }
   }
 
-  input:checked + [data-checkbox] {
+  input:checked + [data-element='checkbox'] {
     --local-shape: var(--woly-shape-default);
 
     &:before {
@@ -128,11 +128,11 @@ export const Switch = styled(SwitchBase)`
     pointer-events: none;
   }
 
-  &[data-disabled='true'] > label > [data-checkbox] {
+  &[data-disabled='true'] > label > [data-element='checkbox'] {
     --local-shape: var(--woly-shape-disabled);
   }
 
-  &:focus > label > [data-checkbox] {
+  &:focus > label > [data-element='checkbox'] {
     box-shadow: 0 0 0 var(--woly-border-width) var(--local-border);
 
     &:before {
@@ -140,11 +140,11 @@ export const Switch = styled(SwitchBase)`
     }
   }
 
-  &:hover > label > [data-checkbox] {
+  &:hover > label > [data-element='checkbox'] {
     --local-shape: var(--woly-shape-hover);
   }
 
-  &:active > label > [data-checkbox] {
+  &:active > label > [data-element='checkbox'] {
     box-shadow: none;
 
     &:before {

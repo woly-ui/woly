@@ -1,5 +1,5 @@
 import {Select} from 'ui';
-import {Playground, StateEvent} from 'lib/playground';
+import {Playground, StateEvent} from 'dev/playground';
 import {IconArrowDown} from 'static/icons';
 
 Select is a type of input that is used in forms,
@@ -84,7 +84,7 @@ Disabled selects are uneditable. They have less opacity so that they appear less
   </div>
 </Playground>
 
-### prioritys
+### Priorities
 
 Secondary priority should be used as default priority.
 
@@ -109,7 +109,7 @@ Secondary priority should be used as default priority.
   </div>
 </Playground>
 
-Primary and dander prioritys should focus user attention.
+Primary and dander priorities should focus user attention.
 
 <Playground direction="vertical">
   <StateEvent initial="Cats" change={(event) => event?.target?.dataset.value}>

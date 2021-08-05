@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
 import { Priority } from 'lib/types';
-import { box } from 'ui/elements';
+import { box } from 'ui/elements/box';
 
 interface ChipProps {
   text?: string;
@@ -80,7 +80,7 @@ export const Chip = styled(ChipBase)`
   border-radius: var(--woly-rounding);
   outline: none;
 
-  [data-text] {
+  [data-element='text'] {
     display: flex;
     flex: 1;
 
@@ -89,14 +89,20 @@ export const Chip = styled(ChipBase)`
     outline: none;
   }
 
-  [data-icon] {
+  [data-icon='chip-visual-block'] {
     display: flex;
     flex-shrink: 0;
     align-items: center;
     justify-content: center;
+    width: var(--local-icon-size);
+    height: var(--local-icon-size);
 
-    svg > path {
-      fill: var(--local-text-color);
+    svg {
+      width: 100%;
+      height: 100%;
+      path {
+        fill: var(--local-text-color);
+      }
     }
   }
 
@@ -104,20 +110,11 @@ export const Chip = styled(ChipBase)`
     --woly-component-level: 0;
   }
 
-  [data-icon='chip-visual-block'] {
-    width: var(--local-icon-size);
-    height: var(--local-icon-size);
-    svg {
-      width: 100%;
-      height: 100%;
-    }
-  }
-
   &[data-outlined='true'] {
     --local-shape-color: transparent;
     --local-text-color: var(--woly-shape-default);
 
-    svg > path {
+    [data-icon='chip-visual-block'] > svg > path {
       fill: var(--woly-shape-default);
     }
     &:hover {

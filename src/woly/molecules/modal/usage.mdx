@@ -1,5 +1,5 @@
-import {Playground, State} from 'lib/playground'
-import {Button, Field, Input, Modal} from 'ui';
+import {Playground, State} from 'dev/playground'
+import {Button, Field, Input, Modal, Checkbox} from 'ui';
 import {IconSearch} from 'static/icons';
 
 Modal component is used for creating dialogs.
@@ -31,6 +31,7 @@ Modal component is used for creating dialogs.
                 type="text"
               />
             </Field>
+            <Checkbox checked={true} text="Accept all cookies" />
             <div style={{ display: 'flex', justifyContent: 'space-between' }}>
               <Button onClick={() => alert('Change clicked!')} text="Change" priority="primary" />
               <Button onClick={change} text="Cancel" priority="primary" outlined />

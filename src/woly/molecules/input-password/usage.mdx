@@ -1,5 +1,5 @@
 import {InputPassword} from './index';
-import {block, Playground, State} from 'lib/playground';
+import {block, Playground, State} from 'dev/playground';
 
 `InputPassword` provide a way for the user to securely enter a password
 The component includes a button-icon that toggle to hide and show the
@@ -35,12 +35,13 @@ Disabled text fields are uneditable. They have less opacity so that they appear 
     name="name"
     placeholder="Enter password"
     priority="primary"
+    weight="transparent"
   />
 </Playground>
 
-### prioritys
+### Priorities
 
-Primary and danger prioritys are should be used to focus user attention.
+Primary and danger priorities are should be used to focus user attention.
 
 <Playground direction="vertical">
   <State initial={false} change={(i) => !i}>
@@ -51,6 +52,7 @@ Primary and danger prioritys are should be used to focus user attention.
         placeholder="Enter password"
         onChange={(event) => console.info('On input change')}
         priority="primary"
+        weight="transparent"
       />
     )}
   </State>
@@ -62,6 +64,7 @@ Primary and danger prioritys are should be used to focus user attention.
         placeholder="Enter password"
         onChange={(event) => console.info('On input change')}
         priority="danger"
+        weight="transparent"
       />
     )}
   </State>
@@ -98,6 +101,7 @@ Size controlled by the `component-level` block property not from the props.
           placeholder="Enter password"
           onChange={(event) => console.info('On input change')}
           priority="primary"
+          weight="transparent"
         />
       )}
     </State>
@@ -112,6 +116,7 @@ Size controlled by the `component-level` block property not from the props.
           placeholder="Enter password"
           onChange={(event) => console.info('On input change')}
           priority="primary"
+          weight="transparent"
         />
       )}
     </State>
@@ -126,6 +131,7 @@ Size controlled by the `component-level` block property not from the props.
           placeholder="Enter password"
           onChange={(event) => console.info('On input change')}
           priority="primary"
+          weight="transparent"
         />
       )}
     </State>
@@ -140,6 +146,7 @@ Size controlled by the `component-level` block property not from the props.
           placeholder="Enter password"
           onChange={(event) => console.info('On input change')}
           priority="primary"
+          weight="transparent"
         />
       )}
     </State>
@@ -154,6 +161,7 @@ Size controlled by the `component-level` block property not from the props.
           placeholder="Enter password"
           onChange={(event) => console.info('On input change')}
           priority="primary"
+          weight="transparent"
         />
       )}
     </State>
@@ -175,6 +183,7 @@ Inputs can be placed inside the container. Input width is equal to container siz
           placeholder="Enter password"
           onChange={(event) => console.info('On input change')}
           priority="primary"
+          weight="transparent"
         />
       )}
     </State>
@@ -192,4 +201,5 @@ Inputs can be placed inside the container. Input width is equal to container siz
 | `priority`    | `string`                                     | `'secondary'` | Priority prop to style InputPassword component              |
 | `rightIcon`   | `React.ReactNode`                            | `null`        | Component to show on the right side of the text (ex.: Icon) |
 | `value`       | `HTMLInputElement['value']`                  | `null`        | HTML value attribute                                        |
+| `weight`      | `string`                                     | `fill`        | Set button-icon`s weight (ex.: fill, outline, transparent)  |
 | `...`         | `HTMLInputElement`                           | `{}`          | Other props are inherited from `HTMLInputElement`           |

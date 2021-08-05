@@ -1,12 +1,32 @@
+import React from 'react';
 import styled, { StyledComponent } from 'styled-components';
 import { Priority } from 'lib/types';
 
-const map = (properties: Priority) => ({
+interface SurfaceProps {
+  weight?: string;
+}
+
+const map = (properties: SurfaceProps & Priority) => ({
   'data-priority': properties.priority || 'secondary',
+  'data-weight': properties.weight || 'goast',
 });
 
 export const Surface = styled.div.attrs(map)`
-  background-color: var(--woly-shape-text-default);
+  z-index: 1;
+
+  width: 100%;
+
   border-radius: var(--woly-rounding);
-  box-shadow: var(--woly-box-shadow, 3px 3px 8px rgba(11, 31, 53, 0.04));
-` as StyledComponent<'div', Record<string, unknown>, Priority>;
+
+  &[data-weight='fill'] {
+    background-color: var(--woly-shape-default);
+    border-color: var(--woly-shape-default);
+    box-shadow: 3px 3px 8px var(--woly-shape-default);
+  }
+
+  &[data-weight='goast'] {
+    background-color: var(--woly-background);
+    border-color: var(--woly-background);
+    box-shadow: 3px 3px 8px var(--woly-shape-text-disabled);
+  }
+` as StyledComponent<'div', Record<string, unknown>, SurfaceProps & Priority>;

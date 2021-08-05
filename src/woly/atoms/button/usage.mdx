@@ -1,26 +1,33 @@
 import {Button} from './index'
-import {block, Playground} from 'lib/playground'
+import {block, Playground} from 'dev/playground'
 import {IconPlus, IconSearch} from 'static/icons';
 
 `Button` allows users to take actions and make choices with a single tap.
 
 ### Example
 
-<Playground>
-  <Button
-    icon={<IconSearch />}
-    onClick={() => alert('Hi!')}
-    text="Just a button"
-    priority="default"
-  />
-  <Button
-    icon={<IconSearch />}
-    onClick={() => alert('Hi!')}
-    text="Just a button"
-    priority="default"
-    outlined
-  />
-</Playground>
+```tsx playground
+import { Button } from 'woly';
+import { IconSearch } from 'static/icons';
+
+export function Example() {
+  return <Playground>
+    <Button
+      icon={<IconSearch />}
+      onClick={() => alert('Hi!')}
+      text="Just a button"
+      priority="default"
+    />
+    <Button
+      icon={<IconSearch />}
+      onClick={() => alert('Hi!')}
+      text="Just a button"
+      priority="default"
+      outlined
+    />
+  </Playground>
+}
+```
 
 ### Width
 
@@ -43,9 +50,9 @@ Button can span the entire width of the container or have a fixed width
   />
 </Playground>
 
-### prioritys
+### Priorities
 
-Primary and danger prioritys are should be used to focus user attention.
+Primary and danger priorities are should be used to focus user attention.
 
 <Playground>
   <Button text="The main action on the page" priority="primary" />
@@ -61,10 +68,12 @@ Secondary priority should be used as a default priority.
   <Button text="Alternative action" priority="secondary" outlined />
 </Playground>
 
-Tertiary priority should be used as an alternative priority to secondary and can`t be used with outline.
+White priority should be used as an alternative priority to secondary and can`t be used with outline.
 
 <Playground>
-  <Button text="Alternative action" priority="tertiary" />
+  <block style={{ width: '400px', padding: '30px 50px', background: 'grey' }}>
+    <Button text="Alternative action" priority="white" />
+  </block>
 </Playground>
 
 ### Icons
@@ -78,7 +87,7 @@ Button can be used with icon on the left side.
 
 ### Sizes
 
-Size controlled by the `component-level` block property not from the props.
+Size is controlled by the `component-level` block property not from the props.
 
 <Playground>
   <block.N>

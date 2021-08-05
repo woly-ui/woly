@@ -1,6 +1,6 @@
 import React from 'react';
 import { ListContainer, ListItem } from 'ui';
-import { StateCallback } from 'lib/playground';
+import { StateCallback } from 'dev/playground';
 
 export const loadUsers = async ({ value, change }: StateCallback) => {
   change({ ...value, loading: true });
@@ -26,7 +26,7 @@ interface UsersListProps {
 }
 
 export const UsersList = ({ data }: UsersListProps) => (
-  <ListContainer variant="primary" style={{ width: '100%' }}>
+  <ListContainer priority="primary" style={{ width: '100%' }}>
     {data.map(({ id, name }) => (
       <ListItem key={id} as="li" text={name} />
     ))}

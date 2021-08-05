@@ -3,7 +3,6 @@ import styled, { StyledComponent } from 'styled-components';
 import { ButtonIcon, Input } from 'ui/atoms';
 import { IconEyeClosed, IconEyeOpened } from 'static/icons';
 import { Priority } from 'lib/types';
-import { block } from 'lib/block';
 
 interface InputPasswordProps {
   className?: string;
@@ -13,6 +12,7 @@ interface InputPasswordProps {
   placeholder?: string;
   type: 'text' | 'password' | 'email';
   value?: HTMLInputElement['value'];
+  weight?: string;
 }
 
 export const InputPasswordBase: React.FC<InputPasswordProps & Priority> = ({
@@ -24,33 +24,31 @@ export const InputPasswordBase: React.FC<InputPasswordProps & Priority> = ({
   priority = 'secondary',
   type = 'text',
   value,
+  weight,
 }) => {
   const [isVisible, onClick] = React.useReducer((is) => !is, false);
 
   return (
-    <div className={className}>
-      <Input
-        className={className}
-        disabled={disabled}
-        name={name}
-        onChange={onChange}
-        placeholder={placeholder}
-        type={isVisible ? type : 'password'}
-        value={value}
-        priority={priority}
-        rightIcon={
-          <block.S>
-            <ButtonIcon
-              className={className}
-              onClick={onClick}
-              disabled={disabled}
-              icon={isVisible ? <IconEyeClosed /> : <IconEyeOpened />}
-              priority={priority}
-            />
-          </block.S>
-        }
-      />
-    </div>
+    <Input
+      className={className}
+      disabled={disabled}
+      name={name}
+      onChange={onChange}
+      placeholder={placeholder}
+      type={isVisible ? type : 'password'}
+      value={value}
+      priority={priority}
+      rightIcon={
+        <ButtonIcon
+          className={className}
+          onClick={onClick}
+          disabled={disabled}
+          icon={isVisible ? <IconEyeClosed /> : <IconEyeOpened />}
+          priority={priority}
+          weight={weight}
+        />
+      }
+    />
   );
 };
 

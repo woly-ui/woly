@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
 import { Priority } from 'lib/types';
-import { box } from 'ui/elements';
+import { box } from 'ui/elements/box';
 
 interface ListElementsProps {
   iconLeft?: React.ReactNode;
@@ -55,9 +55,9 @@ export const ListItem: React.FC<ListItemProps & ListElementsProps & Priority> = 
     tabIndex={disabled ? -1 : tabIndex}
     priority={priority}
   >
-    {iconLeft && <span data-icon>{iconLeft}</span>}
+    {iconLeft && <span data-element="icon">{iconLeft}</span>}
     <span>{text}</span>
-    {iconRight && <span data-icon>{iconRight}</span>}
+    {iconRight && <span data-element="icon">{iconRight}</span>}
   </ListItemContainer>
 );
 

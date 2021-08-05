@@ -2,7 +2,7 @@ import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
 import { Priority } from 'lib/types';
 import { Surface } from 'ui/atoms';
-import { positionRelativeGet } from 'lib';
+import { positionRelativeGet } from 'lib/position-relative';
 
 interface Props {
   className?: string;
@@ -78,7 +78,7 @@ const PopoverBase: React.FC<Props & Priority> = ({
         {children}
       </div>
       <Surface
-        data-popover
+        data-element="popover"
         data-open={isVisible}
         data-position={popoverPosition}
         data-priority={priority}
@@ -96,7 +96,7 @@ export const Popover = styled(PopoverBase)`
   --popover-position: calc(100% + 4px + var(--woly-gap, 10px));
   position: relative;
 
-  [data-popover] {
+  [data-element='popover'] {
     position: absolute;
     z-index: 1;
 

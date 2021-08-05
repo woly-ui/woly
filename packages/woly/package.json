@@ -1,6 +1,6 @@
 {
   "name": "woly",
-  "version": "0.7.0",
+  "version": "0.10.0",
   "description": "Exhaustive component library for React",
   "main": "woly.js",
   "types": "woly.d.ts",
@@ -27,8 +27,13 @@
   ],
   "dependencies": {},
   "peerDependencies": {
-    "react": "^16.11.0",
-    "styled-components": "^5.0.1"
+    "react": "^16.14.0",
+    "styled-components": "^5.2.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/woly-ui/woly",
+    "directory": "packages/woly"
   },
   "scripts": {},
   "author": {
@@ -41,11 +46,6 @@
   },
   "sideEffects": false,
   "contributors": [],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/woly-ui/woly",
-    "directory": "packages/calendar"
-  },
   "homepage": "https://github.com/woly-ui/woly",
   "license": "MIT",
   "bugs": {

@@ -1,0 +1,115 @@
+import {block, Playground} from 'dev/playground'
+import {Button, Input, Tooltip, Text, Box, BoxVertical} from 'ui'
+import {IconInfo} from 'static/icons';
+
+`Tooltip` is used to show additional information near the component. The information should be contextual, useful, and nonessential.
+
+A tooltip can be a simple message box that is displayed when a user hovers over, clicks, or gives focus to a UI element
+such as an icon, a highlighted word, or a button that is passed as children to `Tooltip`.
+Also, the definition tooltip provides additional help or defines an item or term. It may be used on the label of a UI element,
+or on a word embedded in a paragraph.
+
+Interactive tooltips may contain rich text and other interactive elements like buttons or links.
+In general, hiding interactive content in a tooltip is discouraged.
+Interactive tooltips are best used for onboarding experiences and product tours.
+
+The tooltip position is flexible and changes depending on how close the element is to the edge of the screen.
+The top, right, bottom, and left positions appear outside the target element, center-aligned along the appropriate axis.
+
+### Example
+
+<Playground>
+  <block.S
+    style={{
+      width: '900px',
+      display: 'flex',
+      padding: '200px',
+      alignItems: 'center',
+      justifyContent: 'space-between',
+      background: 'grey',
+    }}
+  >
+    <Tooltip
+      content={
+        <Box>
+          <Text type="XS">Подсказка может быть написана в две строки и более</Text>
+        </Box>
+      }
+      position="top"
+      priority="primary"
+      weight="fill"
+    >
+      <Button onClick={() => console.info('Hi!')} text="Button" priority="primary" />
+    </Tooltip>
+    <Tooltip
+      content={
+        <Box>
+          <Text priority="white" type="XS">
+            4 Whitehall Street New York NY 10004
+          </Text>
+        </Box>
+      }
+      position="bottom"
+      priority="white"
+      weight="goast"
+    >
+      <Input
+        name="adress"
+        value="4 Whitehall Street New York NY 10004"
+        onChange={() => console.info('On input change')}
+        type="text"
+        priority="default"
+      />
+    </Tooltip>
+    <Tooltip
+      priority="secondary"
+      weight="fill"
+      content={
+        <BoxVertical>
+          <Box>
+            <Text type="XS">
+              Подсказка может быть написана в две и более строки, а также содержать блок с actions
+            </Text>
+          </Box>
+          <Box>
+            <block.S style={{ display: 'flex', flexDirection: 'column' }}>
+              <Button
+                onClick={() => console.info('Hi!')}
+                text="Got it"
+                priority="primary"
+                style={{ alignSelf: 'flex-end' }}
+              />
+            </block.S>
+          </Box>
+        </BoxVertical>
+      }
+      position="right"
+    >
+      <Button onClick={() => console.info('Hi!')} text="Button" priority="primary" />
+    </Tooltip>
+    <Tooltip
+      content={
+        <Box>
+          <Text priority="white" type="S">
+            Подсказка
+          </Text>
+        </Box>
+      }
+      position="left"
+      id="tooltip-top"
+      priority="primary"
+    >
+      <Button onClick={() => console.info('Hi!')} text="Button" priority="primary" />
+    </Tooltip>
+  </block.S>
+</Playground>
+
+### Props
+
+| Name       | Type                 | Default       | Description                                                   |
+| ---------- | -------------------- | ------------- | ------------------------------------------------------------- |
+| `children` | `React.ReactElement` | `null`        | The tooltip will be visible near `children` on hover or focus |
+| `content`  | `React.ReactElement` | `null`        | Tooltip`s content                                             |
+| `position` | `string`             | `'top'`       | The positon of the tooltip aginst the relative element        |
+| `priority` | `string`             | `'secondary'` | Priority prop to style Tooltip component                      |
+| `weight`   | `string`             | `goast`       | Set tooltip`s weight (ex.: fill, goast)                       |

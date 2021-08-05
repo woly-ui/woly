@@ -5,7 +5,17 @@ module.exports = {
   plugins: [
     {
       resolve: `gatsby-theme-woly`,
-      options: { components: `src` },
+      options: {
+        components: `src`,
+        examplesGlobalImports: {
+          'dev/playground': {
+            namedImports: [
+              { name: 'block', value: 'block' },
+              { name: 'Playground', value: 'Playground' },
+            ],
+          },
+        },
+      },
     },
     {
       resolve: 'gatsby-plugin-react-svg',

@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import * as React from 'react';
-import { GenerateMap } from 'lib/map-generation';
+import { GenerateMap } from 'dev/map-generation';
 import { IconSearch } from 'static/icons';
 
 import { Button } from '.';

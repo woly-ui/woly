@@ -1,8 +1,8 @@
 import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
 import { Priority } from 'lib/types';
-import { box } from 'ui/elements';
-import { keyHandlerGet, keyboardEventHandle } from 'lib';
+import { box } from 'ui/elements/box';
+import { keyHandlerGet, keyboardEventHandle } from 'lib/keyboard';
 
 interface SelectOptionProps {
   children: React.ReactNode;
@@ -71,7 +71,7 @@ export const SelectBase: React.FC<SelectProps & Priority> = ({
       className={className}
       data-disabled={disabled}
       data-open={isOpen}
-      data-select
+      data-element="select"
       data-priority={priority}
       onBlur={onBlur}
       onClick={setIsOpen}
@@ -80,8 +80,8 @@ export const SelectBase: React.FC<SelectProps & Priority> = ({
       ref={selectRef}
       tabIndex={tabIndex}
     >
-      <div data-selected>
-        <div data-text>{select}</div>
+      <div data-selected={true}>
+        <div data-element="text">{select}</div>
         <span data-icon={isOpen}>{icon}</span>
       </div>
       {/* В дальнейшем использовать Popover и List для создания выпадающего списка элементов */}
@@ -94,7 +94,7 @@ export const SelectBase: React.FC<SelectProps & Priority> = ({
       >
         {options.map(({ children, value }) => (
           <li data-value={value} key={value} onClick={onChange} role="option" tabIndex={-1}>
-            <span data-text>{children}</span>
+            <span data-element="text">{children}</span>
           </li>
         ))}
       </ul>
@@ -136,7 +136,7 @@ export const Select = styled(SelectBase)`
     border: var(--woly-border-width) solid var(--local-border-input-color);
     border-radius: var(--woly-rounding);
 
-    [data-text] {
+    [data-element='text'] {
       flex: 1;
     }
   }
@@ -145,7 +145,7 @@ export const Select = styled(SelectBase)`
     transform: rotate(180deg);
   }
 
-  [data-icon] {
+  [data-element='icon'] {
     display: flex;
     flex-shrink: 1;
     align-items: center;

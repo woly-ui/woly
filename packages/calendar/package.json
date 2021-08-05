@@ -30,9 +30,14 @@
   ],
   "dependencies": {},
   "peerDependencies": {
-    "react": "^16.11.0",
-    "styled-components": "^5.0.1",
-    "woly": "^0.7.0"
+    "react": "^16.14.0",
+    "styled-components": "^5.2.1",
+    "woly": "^0.10.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/woly-ui/woly",
+    "directory": "packages/calendar"
   },
   "scripts": {},
   "author": {
@@ -45,11 +50,6 @@
   },
   "sideEffects": false,
   "contributors": [],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/woly-ui/woly",
-    "directory": "packages/calendar"
-  },
   "homepage": "https://github.com/woly-ui/woly",
   "license": "MIT",
   "bugs": {

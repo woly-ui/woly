@@ -13,8 +13,8 @@ Woly это система компонентов, основной целью �
 
 ```jsx
 <>
-<Button variant="primary" />
-<Button variant="custom" />
+  <Button variant="primary" />
+  <Button variant="custom" />
 </>
 ```
 
@@ -102,9 +102,9 @@ const Container = styled.div`
 ```jsx
 const CompoundBase = (props) => (
   <div className={props.className}>
-    <div data-title>{props.title}</div>
-    <div data-content>{props.content}</div>
-    {props.error ? <div data-error>{props.error}</div> : null}
+    <div data-element="title">{props.title}</div>
+    <div data-element="content">{props.content}</div>
+    {props.error ? <div data-element="error">{props.error}</div> : null}
   </div>
 )
 
@@ -112,15 +112,15 @@ export const Compound = styled(CompoundBase)`
   display: grid;
   width: ${p => p.size === 'wide' ? '100%' : 'auto'};
 
-  [data-title] {
+  [data-element='title'] {
     grid-column: span 2;
   }
 
-  [data-content] {
+  [data-element='content'] {
     grid-row: 1 / 2;
   }
 
-  [data-error] {
+  [data-element='error'] {
     padding-top: 1rem;
   }
 `
@@ -137,9 +137,9 @@ export const Compound = styled(CompoundBase)`
 ```jsx
 const CompoundBase = (props) => (
   <div className={props.className} data-size={props.size}>
-    <div data-title>{props.title}</div>
-    <div data-content>{props.content}</div>
-    {props.error ? <div data-error>{props.error}</div> : null}
+    <div data-element="title">{props.title}</div>
+    <div data-element="content">{props.content}</div>
+    {props.error ? <div data-element="error">{props.error}</div> : null}
   </div>
 )
 
@@ -151,15 +151,15 @@ export const Compound = styled(CompoundBase)`
     width: 100%;
   }
 
-  [data-title] {
+  [data-element='title'] {
     grid-column: span 2;
   }
 
-  [data-content] {
+  [data-element='content'] {
     grid-row: 1 / 2;
   }
 
-  [data-error] {
+  [data-element='error'] {
     padding-top: 1rem;
   }
 `
