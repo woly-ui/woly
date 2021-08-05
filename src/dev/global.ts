@@ -13,8 +13,8 @@ export const Global = styled(WolyGlobalStyles)`
   }
 
   /* base colors */
-  --bw-0: 0, 0%, 0%;
-  --bw-1000: 0, 0%, 100%;
+  --bw-0: 0, 0%, 100%;
+  --bw-1000: 0, 0%, 0%;
 
   /* bw palette */
   ${createPalette('247, 7%, 48%', 'bw')}
