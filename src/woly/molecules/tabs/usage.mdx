@@ -129,7 +129,7 @@ Primary priority can be used to style tabs in brand color.
     <Tabs priority="primary">
       {links.map(({ active, id, content, iconLeft }) => (
         <Tab
-          weight="3"
+          weight="fill"
           active={active}
           key={id}
           path={`#${id}`}
@@ -158,7 +158,7 @@ Secondary priority should be used as default variant.
     <div style={{ display: 'flex' }}>
       {links.map(({ active, id, content }) => (
         <Tab
-          weight="1"
+          weight="transparent"
           active={active}
           key={id}
           path={`#${id}`}
@@ -191,7 +191,7 @@ Tab can have an optional icon on the left side ex. icon, logo or avatar.
                 console.log('click icon');
               }}
               priority="default"
-              outlined
+              weight="outlined"
             />
           }
           text={content}
@@ -240,7 +240,7 @@ Tab can have an optional icon on the left side ex. icon, logo or avatar.
 | `priority`   | `string`                           | `'secondary'` | Priority prop to style Tab component                                                                |
 | `tabIndex`   | `number`                           |               | Set tabIndex to Tab component                                                                       |
 | `text`       | `string`                           |               | Tab component`s text (ex.: url adress as ussual, in such cases text)                                |
-| `weight`     | `string`                           | `2`           | Add weight to style Tab component                                                                   |
+| `weight`     | `string`                           | `outline`     | Add weight to style Tab component                                                                   |
 
 ### Tabs Props
 

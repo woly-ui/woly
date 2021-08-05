@@ -48,7 +48,7 @@ const TabBase: React.FC<TabProps & TabElementProps & Priority> = ({
   path,
   priority,
   text,
-  weight = '2',
+  weight = 'outline',
 }) =>
   ( <div
       className={className}
@@ -131,7 +131,7 @@ export const Tab = styled(TabBase)`
     }
   }
 
-  &[data-weight='1'] {
+  &[data-weight='transparent'] {
     --local-text-color: var(--woly-canvas-text-default);
     color: var(--local-text-color);
 
@@ -157,7 +157,7 @@ export const Tab = styled(TabBase)`
     }
   }
 
-  &[data-weight='2'] {
+  &[data-weight='outline'] {
     --local-text-color: var(--woly-shape-default);
     --local-background: var(--woly-shape-disabled);
     --local-border-color: var(--woly-shape-default);
@@ -201,7 +201,7 @@ export const Tab = styled(TabBase)`
         box-shadow: 0 var(--woly-border-width) 0 0 var(--woly-focus-color);
       }
 
-    &[data-weight='3'] {
+    &[data-weight='fill'] {
       --local-background: var(--woly-shape-default);
       --local-text-color: var(--woly-shape-text-default);
       --local-border-color: var(--woly-shape-default);

@@ -26,10 +26,6 @@
       },
       "alias": [
         [
-          "lib/playground",
-          "./src/lib/lib/playground"
-        ],
-        [
           "lib",
           "./src/lib"
         ],
