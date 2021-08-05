@@ -22,7 +22,7 @@ const saturationFn = (number: number, saturation: number) => {
   return saturation - 10;
 };
 
-const COLOR_NUMBERS = [100, 200, 300, 400, 500, 600, 700, 800];
+const COLOR_NUMBERS = [100, 200, 300, 400, 500, 600, 700, 800, 900];
 
 export const createPalette = (color: string, name: string) => {
   const hsl = getHsl(color);
