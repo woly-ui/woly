@@ -1,9 +1,8 @@
 import styled from 'styled-components';
 import { WolyGlobalStyles } from 'ui/woly-global-styles';
 import { createPalette } from 'lib/palette';
+import { createPriority } from 'lib/priority';
 
-import { createPalette } from './palette';
-import { createPriority } from './priority';
 import { systemUi } from './font-stacks';
 
 export const Global = styled(WolyGlobalStyles)`
