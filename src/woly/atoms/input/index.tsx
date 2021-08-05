@@ -8,11 +8,15 @@ type BaseInputProps = React.InputHTMLAttributes<HTMLInputElement> & Priority;
 
 export type InputProps = BaseInputProps & {
   autoComplete?: 'on' | 'off';
+  autoFocus?: boolean;
   disabled?: boolean;
   leftIcon?: React.ReactNode;
   name: string;
-  onChange: React.EventHandler<React.SyntheticEvent>;
   onBlur?: React.EventHandler<React.SyntheticEvent>;
+  onChange: React.EventHandler<React.SyntheticEvent>;
+  onFocus?: React.EventHandler<React.SyntheticEvent>;
+  onKeyDown?: React.EventHandler<React.SyntheticEvent>;
+  onKeyUp?: React.EventHandler<React.SyntheticEvent>;
   placeholder?: string;
   rightIcon?: React.ReactNode;
   type: 'text' | 'password' | 'email';
@@ -23,11 +27,15 @@ const InputBase = forwardRef<HTMLInputElement, InputProps>(
   (
     {
       autoComplete = 'off',
+      autoFocus = false,
       disabled = false,
       leftIcon,
       name,
-      onChange,
       onBlur = () => {},
+      onChange,
+      onFocus,
+      onKeyDown,
+      onKeyUp,
       placeholder,
       priority = 'secondary',
       rightIcon,
@@ -48,10 +56,14 @@ const InputBase = forwardRef<HTMLInputElement, InputProps>(
     >
       <InputElement
         autoComplete={autoComplete}
+        autoFocus={autoFocus}
         disabled={disabled}
         name={name}
-        onChange={onChange}
         onBlur={onBlur}
+        onChange={onChange}
+        onFocus={onFocus}
+        onKeyDown={onKeyDown}
+        onKeyUp={onKeyUp}
         placeholder={placeholder}
         type={type}
         value={value}
