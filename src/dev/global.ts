@@ -54,6 +54,20 @@ export const Global = styled(WolyGlobalStyles)`
   --woly-shadow: 3px 3px 9px hsla(0, 0%, 22%, 12%);
 
   ${createPriority({
+    priorityName: 'default',
+    paletteName: 'bw',
+    bwPaletteName: 'bw',
+    weight: 'fill',
+  })}
+
+  ${createPriority({
+    priorityName: 'white',
+    paletteName: 'bw',
+    bwPaletteName: 'bw',
+    weight: 'transparent',
+  })}
+
+  ${createPriority({
     priorityName: 'primary',
     paletteName: 'primary',
     bwPaletteName: 'bw',
@@ -67,17 +81,6 @@ export const Global = styled(WolyGlobalStyles)`
     weight: 'fill',
   })}
 
-  ${createPriority({
-    priorityName: 'default',
-    bwPaletteName: 'bw',
-    weight: 'fill',
-  })}
-
-  ${createPriority({
-    priorityName: 'white',
-    bwPaletteName: 'bw',
-    weight: 'transparent',
-  })}
 
   ${createPriority({
     priorityName: 'danger',
