@@ -6,7 +6,7 @@ package: 'woly'
 
 import {ButtonIcon, Tabs, Tab} from 'ui';
 import {IconClose, IconPlus} from 'static/icons';
-import { block, Playground } from 'lib/playground';
+import { block, Playground } from 'dev/playground';
 
 export const links = [
   {
@@ -108,7 +108,7 @@ Ensure that all tabs are always enabled, and explain why a tab’s content is un
                 console.log('click icon');
               }}
               priority="default"
-              outlined
+              weight="transparent"
             />
           }
           text={content}
@@ -191,7 +191,7 @@ Tab can have an optional icon on the left side ex. icon, logo or avatar.
                 console.log('click icon');
               }}
               priority="default"
-              weight="outlined"
+              weight="outline"
             />
           }
           text={content}
@@ -217,7 +217,7 @@ Tab can have an optional icon on the left side ex. icon, logo or avatar.
               icon={<IconClose />}
               onClick={console.log('click')}
               priority="default"
-              outlined
+              weight="transparent"
             />
           }
           text={content}
