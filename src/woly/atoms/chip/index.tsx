@@ -42,7 +42,7 @@ const ChipBase: React.FC<ChipProps & Priority> = ({
       data-priority={priority}
     >
       {leftIcon && (
-        <div data-icon="chip-visual-block" onClick={onClick} onKeyDown={onKeyDown}>
+        <div data-element="icon" data-box-role="icon" onClick={onClick} onKeyDown={onKeyDown}>
           {leftIcon}
         </div>
       )}
@@ -55,7 +55,11 @@ const ChipBase: React.FC<ChipProps & Priority> = ({
       >
         {text}
       </div>
-      {rightIcon && <div data-icon="chip-action-block">{rightIcon}</div>}
+      {rightIcon && (
+        <div data-element="action-icon" data-box-role="icon">
+          {rightIcon}
+        </div>
+      )}
     </div>
   );
 };
@@ -89,7 +93,7 @@ export const Chip = styled(ChipBase)`
     outline: none;
   }
 
-  [data-icon='chip-visual-block'] {
+  [data-element='icon'] {
     display: flex;
     flex-shrink: 0;
     align-items: center;
@@ -106,7 +110,7 @@ export const Chip = styled(ChipBase)`
     }
   }
 
-  [data-icon='chip-action-block'] {
+  [data-element='action-icon'] {
     --woly-component-level: 0;
   }
 
@@ -114,9 +118,10 @@ export const Chip = styled(ChipBase)`
     --local-shape-color: transparent;
     --local-text-color: var(--woly-shape-default);
 
-    [data-icon='chip-visual-block'] > svg > path {
+    [data-element='icon'] > svg > path {
       fill: var(--woly-shape-default);
     }
+
     &:hover {
       --local-shape-color: transparent;
       --local-text-color: var(--woly-shape-hover);

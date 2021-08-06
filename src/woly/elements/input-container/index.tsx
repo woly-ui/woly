@@ -26,10 +26,14 @@ const InputContainerBase: React.FC<InputContainerProps & Priority> = ({
     data-disabled={disabled}
     data-priority={priority}
   >
-    {leftIcon && <span data-icon="input">{leftIcon}</span>}
+    {leftIcon && (
+      <span data-element="icon" data-box-role="icon">
+        {leftIcon}
+      </span>
+    )}
     <div data-element="input">{children}</div>
     {rightIcon && (
-      <span {...levelDowngrade.use({ diff: 2 })} data-icon="input">
+      <span {...levelDowngrade.use({ diff: 2 })} data-element="icon" data-box-role="icon">
         {rightIcon}
       </span>
     )}
@@ -64,7 +68,7 @@ export const InputContainer = styled(InputContainerBase)`
     }
   }
 
-  [data-icon='input'] {
+  [data-element='icon'] {
     display: flex;
     align-items: center;
     justify-content: center;
