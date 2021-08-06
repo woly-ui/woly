@@ -9,5 +9,6 @@ export { Popover } from './popover';
 export { RadioButton } from './radio-button';
 export { Select } from './select';
 export { Switch } from './switch';
+export { Tab, Tabs } from './tabs';
 export { Toast } from './toast';
 export { Tooltip } from './tooltip';

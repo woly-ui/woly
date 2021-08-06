@@ -71,10 +71,10 @@ export const ButtonIcon = styled(ButtonIconBase)`
     background: var(--local-shape-color);
     border-color: var(--local-shape-color);
 
-    [data-element='icon'] > svg > path {
+    [data-icon] > svg > path {
       fill: var(--local-icon-color);
     }
-    [data-element='icon'] > svg > g {
+    [data-icon] > svg > g {
       stroke: var(--local-icon-color);
     }
 
@@ -102,10 +102,10 @@ export const ButtonIcon = styled(ButtonIconBase)`
     background: var(--local-shape-color);
     border-color: var(--local-icon-color);
 
-    [data-element='icon'] > svg > path {
+    [data-icon] > svg > path {
       fill: var(--local-icon-color);
     }
-    [data-element='icon'] > svg > g {
+    [data-icon] > svg > g {
       stroke: var(--local-icon-color);
     }
 
@@ -138,10 +138,10 @@ export const ButtonIcon = styled(ButtonIconBase)`
     border-color: var(--local-border-color);
     box-shadow: var(--local-shadow);
 
-    [data-element='icon'] > svg > path {
+    [data-icon] > svg > path {
       fill: var(--local-icon-color);
     }
-    [data-element='icon'] > svg > g {
+    [data-icon] > svg > g {
       stroke: var(--local-icon-color);
     }
 
@@ -172,10 +172,10 @@ export const ButtonIcon = styled(ButtonIconBase)`
     background: var(--local-shape-color);
     border-color: var(--local-border-color);
 
-    [data-element='icon'] > svg > path {
+    [data-icon] > svg > path {
       fill: var(--local-icon-color);
     }
-    [data-element='icon'] > svg > g {
+    [data-icon] > svg > g {
       stroke: var(--local-icon-color);
     }
 
