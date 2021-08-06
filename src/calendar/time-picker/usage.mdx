@@ -1,4 +1,4 @@
-import {block, Playground, StateEvent} from 'lib/playground'
+import {block, Playground, StateEvent} from 'dev/playground'
 import {TimePicker} from 'calendar';
 
 ### Example
@@ -23,7 +23,7 @@ import {TimePicker} from 'calendar';
       <StateEvent initial="" change={(v) => v}>
         {(value, onChange) => (
           <TimePicker
-            view="HH:mm:ss"
+            format="HH:mm:ss"
             priority="default"
             name="time"
             value={value}
@@ -56,7 +56,7 @@ import {TimePicker} from 'calendar';
 
 | Name       | Type                                          | Default   | Description                                                                           |
 | ---------- | --------------------------------------------- | --------- | ------------------------------------------------------------------------------------- |
-| `view`     | `'HH:mm:ss' l 'hh:mm:ss' l 'HH:mm' l 'hh:mm'` | `'HH:mm'` | time format                                                                           |
+| `format`   | `'HH:mm:ss' l 'hh:mm:ss' l 'HH:mm' l 'hh:mm'` | `'HH:mm'` | time format                                                                           |
 | `hourStep` | `number`                                      | `1`       | define set of available values for hour (eg. hourStep = 3, options = [0, 3, 6, 9...]) |
 | `minStep`  | `number`                                      | `1`       | define set of available values for min                                                |
 | `secStep`  | `number`                                      | `1`       | define set of available values for sec                                                |

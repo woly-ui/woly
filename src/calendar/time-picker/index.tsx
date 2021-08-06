@@ -1,27 +1,14 @@
 import styled from 'styled-components';
-import React, { ChangeEvent, useEffect, useMemo, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Input, ListContainer, ListItem, Popover } from 'ui';
 import { Priority } from 'lib/types';
-import { useUpdateEffect } from 'lib/hooks';
 
-import { TimePickerProps, View } from './types';
-
-interface TimeRangeMap<T> {
-  hour: T;
-  min: T;
-  sec: T;
-}
-
-type Value = TimeRangeMap<string>;
-type Options = TimeRangeMap<string[]>;
-
-type TimeRange = keyof TimeRangeMap<unknown>;
-
-const timeRanges: TimeRange[] = ['hour', 'min', 'sec'];
+import { TimePickerProps } from './types';
+import { useTimePicker } from './use-time-picker';
 
 export function TimePicker({
-  view = 'HH:mm',
-  value: rawValue,
+  format = 'HH:mm',
+  value,
   name,
   hourStep = 1,
   minStep = 1,
@@ -31,58 +18,26 @@ export function TimePicker({
   disabled = false,
   ...rest
 }: TimePickerProps) {
-  const timeRangeOptions = useMemo(
-    () => getTimeRangeOptions(view, { hour: hourStep, min: minStep, sec: secStep }),
-    [view, hourStep, minStep, secStep],
-  );
-  const [innerInputValue, setInnerInputValue] = useState(
-    validateValue(rawValue, view, timeRangeOptions) ? rawValue : '',
-  );
-
-  /**
-   * См. handleBlur
-   */
-  const _innerIputValueRef = useRef('');
-  _innerIputValueRef.current = innerInputValue;
+  const { getInputProps, getPickers, onClose } = useTimePicker({
+    format,
+    value,
+    hourStep,
+    minStep,
+    secStep,
+    onChange,
+  });
 
   const scrollCallbacks = useRef<(() => void)[]>([]);
-
-  useUpdateEffect(() => {
-    setInnerInputValue(validateValue(rawValue, view, timeRangeOptions) ? rawValue : '');
-  }, [rawValue]);
-
-  const value = parseValue(rawValue, { fallback: pad(0) });
-
-  const selectRangeItem = (timeRangeValue: string, timeRange: TimeRange) => {
-    onChange(formatValue({ ...value, [timeRange]: timeRangeValue }, view));
-  };
-
-  const timeRanges = getTimeRangesForView(view);
-
-  function handleBlur() {
-    /**
-     * Тут странная тема
-     * Если использовать значение из useState, коллбек вызывается с предыдущим значением, а не с текущим
-     */
-    const innerInputValue = _innerIputValueRef.current;
-
-    const isValid = validateValue(innerInputValue, view, timeRangeOptions);
-
-    if (isValid) {
-      if (innerInputValue !== rawValue) {
-        onChange(innerInputValue);
-      }
-    } else {
-      setInnerInputValue(rawValue);
-    }
-
-    scrollToSelectedItems();
-  }
 
   function scrollToSelectedItems() {
     for (const cb of scrollCallbacks.current) {
       cb();
     }
+  }
+
+  function close() {
+    onClose();
+    scrollToSelectedItems();
   }
 
   return (
@@ -92,19 +47,19 @@ export function TimePicker({
       position="bottom"
       fullWidth={false}
       disabled={disabled}
-      onClose={handleBlur}
+      onClose={close}
       content={
         <Content>
-          {timeRanges.map((timeRange) => (
+          {getPickers().map(({ name, value, options, onChange }) => (
             <RangeSelect
-              key={timeRange}
-              value={value[timeRange]}
+              key={name}
+              value={value}
               priority={priority}
-              options={timeRangeOptions[timeRange]}
+              options={options}
               setScrollCallback={(cb) => {
                 scrollCallbacks.current.push(cb);
               }}
-              onChange={(value) => selectRangeItem(value, timeRange)}
+              onChange={onChange}
             />
           ))}
         </Content>
@@ -113,18 +68,17 @@ export function TimePicker({
       <Input
         // eslint-disable-next-line react/jsx-props-no-spreading
         {...rest}
+        // eslint-disable-next-line react/jsx-props-no-spreading
+        {...getInputProps()}
         autoComplete="off"
         disabled={disabled}
         type="text"
         name={name}
         priority={priority}
-        value={innerInputValue}
-        onChange={(e: ChangeEvent<HTMLInputElement>) => setInnerInputValue(e.target.value)}
       />
     </Popover>
   );
 }
-
 interface RangeSelectProps {
   value: string;
   options: string[];
@@ -145,7 +99,7 @@ const Content = styled.div`
   --local-border-color: var(--woly-shape-default);
 
   & > *:not(:last-child) {
-    border-right: 1px solid var(--woly-shape-default);
+    border-right: var(--woly-border-width) solid var(--woly-shape-default);
   }
 `;
 
@@ -202,54 +156,4 @@ function scrollToSelectedItem(selectEl: HTMLElement) {
   const selectedItem = selectEl.querySelector('[data-selected="true"]') as HTMLElement | null;
   if (!selectedItem) return;
   selectEl.scrollTo({ top: selectedItem.offsetTop, behavior: 'smooth' });
-}
-
-function parseValue<T>(rawValue: string, { fallback }: { fallback: T }): TimeRangeMap<string | T> {
-  const [hour, min, sec] = rawValue.split(':');
-  return {
-    hour: hour || fallback,
-    min: min || fallback,
-    sec: sec || fallback,
-  };
-}
-
-const pad = (num: number) => num.toString().padStart(2, '0');
-
-function validateValue(rawValue: string, view: View, options: Options) {
-  const value = parseValue(rawValue, { fallback: null });
-  const timeRanges = getTimeRangesForView(view);
-  return (
-    rawValue.length === view.length &&
-    timeRanges.every((timeRange) => {
-      const availableVariants = options[timeRange];
-      const timeRangeValue = value[timeRange];
-      return timeRangeValue !== null && availableVariants.includes(timeRangeValue);
-    })
-  );
-}
-
-function getTimeRangeOptions(view: View, step: TimeRangeMap<number>): Options {
-  return {
-    hour: range(0, view.includes('HH') ? 24 : 12, step.hour).map(pad),
-    min: range(0, 60, step.min).map(pad),
-    sec: range(0, 60, step.sec).map(pad),
-  };
-}
-
-function getTimeRangesForView(view: View) {
-  return timeRanges.slice(0, view.includes('ss') ? 3 : 2);
-}
-
-function range(start: number, end: number, step: number) {
-  const result = [];
-  for (let i = start; i < end; i += step) {
-    result.push(i);
-  }
-  return result;
-}
-
-function formatValue(value: Value, view: View) {
-  return getTimeRangesForView(view)
-    .map((range) => value[range])
-    .join(':');
 }

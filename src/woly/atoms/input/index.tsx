@@ -10,6 +10,7 @@ export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> 
   leftIcon?: React.ReactNode;
   name: string;
   onChange: React.EventHandler<React.SyntheticEvent>;
+  onBlur?: React.EventHandler<React.SyntheticEvent>;
   placeholder?: string;
   rightIcon?: React.ReactNode;
   type: 'text' | 'password' | 'email';
@@ -23,6 +24,7 @@ const InputBase: React.FC<InputProps & Priority> = ({
   leftIcon,
   name,
   onChange,
+  onBlur = () => {},
   placeholder,
   priority = 'secondary',
   rightIcon,
@@ -43,6 +45,7 @@ const InputBase: React.FC<InputProps & Priority> = ({
       disabled={disabled}
       name={name}
       onChange={onChange}
+      onBlur={onBlur}
       placeholder={placeholder}
       type={type}
       value={value}

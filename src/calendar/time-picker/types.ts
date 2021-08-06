@@ -3,11 +3,11 @@ import { Priority } from 'lib/types';
 
 type ReservedProps = 'type' | 'autoComplete' | 'onChange' | 'value';
 
-export type View = 'HH:mm:ss' | 'hh:mm:ss' | 'HH:mm' | 'hh:mm';
+export type Format = 'HH:mm:ss' | 'hh:mm:ss' | 'HH:mm' | 'hh:mm';
 
 export type TimePickerProps = Omit<InputProps, ReservedProps> &
   Priority & {
-    view?: View;
+    format?: Format;
     value: string;
     hourStep?: number;
     minStep?: number;
