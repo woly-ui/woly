@@ -1,11 +1,6 @@
 import * as React from 'react';
-import {
-  CellProps,
-  DataTableProps,
-  HeadGroupProps,
-  HeadProps,
-} from 'ui/molecules/data-table/types';
 
+import { CellProps, DataTableProps, HeadGroupProps, HeadProps } from './types';
 import { Table, Tbody, Td, Th, Thead, Tr } from '../../atoms/table';
 
 export function DataTable<TValue, TRowKey extends string>({
@@ -73,4 +68,4 @@ const isReactComponent = (value: unknown) => typeof value === 'function';
 const isReactElement = (value: unknown) => typeof value === 'object';
 const isReactEntity = (value: unknown) => isReactComponent(value) || isReactElement(value);
 
-export { DataTableColumn, HeadProps } from './types';
+export { DataTableColumn, HeadProps as DataTableHeadProps } from './types';

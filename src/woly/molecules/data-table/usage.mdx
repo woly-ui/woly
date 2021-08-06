@@ -1,14 +1,172 @@
-import { Playground } from 'lib/playground'
-import { DataTable } from 'ui'
-import { columns, values } from './usage-helpers'
-
 ### Example
 
-<Playground>
-  <block.L style={{ background: '#f5f5f5', padding: '20px' }}>
-    <DataTable rowKey="id" columns={columns} values={values} priority="primary" />
-  </block.L>
-</Playground>
+```tsx playground
+import { DataTable, DataTableHeadProps } from 'woly'
+import { createStore, createEvent, forward, combine } from 'effector'
+import { useStore } from 'effector-react'
+import { Filter } from './filter'
+import { RangeCell } from './range-cell'
+
+const bankNames = [
+  {
+    value: 'ВТБ',
+    name: 'ВТБ',
+  },
+  {
+    value: 'Тинькофф',
+    name: 'Тинькофф',
+  },
+  {
+    value: 'Альфа',
+    name: 'Альфа',
+  },
+  {
+    value: 'Открытие',
+    name: 'Открытие',
+  },
+];
+
+const paymentSystems = [
+  {
+    value: 'Visa/Mastercard',
+    name: 'Visa/Mastercard',
+  },
+  {
+    value: 'МИР',
+    name: 'МИР',
+  },
+];
+
+const $bankFilter = createStore([])
+const bankFilterUpdated = createEvent()
+forward({ from: bankFilterUpdated, to: $bankFilter })
+
+const $paymentSystemFilter = createStore([])
+const paymentSystemFilterUpdated = createEvent()
+forward({ from: paymentSystemFilterUpdated, to: $paymentSystemFilter })
+
+const columns = [
+  {
+    title: 'ID Дебет',
+    property: 'id-debet',
+  },
+  {
+    title: 'ID Кредит',
+    property: 'id-credit',
+  },
+  {
+    title: 'Название банка',
+    property: 'bank-name',
+    head: ({ title }: DataTableHeadProps) => (
+      <Filter value={useStore($bankFilter)} onChange={bankFilterUpdated} options={bankNames} title={title} />
+    ),
+  },
+  {
+    title: 'Платежная система',
+    property: 'payment-system',
+    head: ({ title }: DataTableHeadProps) => (
+      <Filter value={useStore($paymentSystemFilter)} onChange={paymentSystemFilterUpdated} options={paymentSystems} title={title} />
+    ),
+  },
+  {
+    title: 'Диапазон',
+    property: 'range',
+    cell: RangeCell,
+  },
+];
+
+const values = [
+  {
+    id: 1,
+    'id-debet': 798172,
+    'id-credit': null,
+    'bank-name': 'ВТБ',
+    'payment-system': 'Visa/Mastercard',
+    range: {
+      from: 1,
+      to: 4,
+    },
+  },
+  {
+    id: 2,
+    'id-debet': 798173,
+    'id-credit': null,
+    'bank-name': 'Альфа-банк',
+    'payment-system': 'Visa/Mastercard',
+    range: {
+      from: 4,
+      to: 6,
+    },
+  },
+  {
+    id: 3,
+    'id-debet': 798174,
+    'id-credit': null,
+    'bank-name': 'ВТБ',
+    'payment-system': 'МИР',
+    range: {
+      from: 4,
+      to: 6,
+    },
+  },
+  {
+    id: 4,
+    'id-debet': 798175,
+    'id-credit': null,
+    'bank-name': 'Тинькофф',
+    'payment-system': 'Visa/Mastercard',
+    range: {
+      from: 3,
+      to: 6,
+    },
+  },
+  {
+    id: 5,
+    'id-debet': 798176,
+    'id-credit': null,
+    'bank-name': 'Открытие',
+    'payment-system': 'МИР',
+    range: {
+      from: 4,
+      to: 6,
+    },
+  },
+  {
+    id: 6,
+    'id-debet': 798177,
+    'id-credit': null,
+    'bank-name': 'Альфа-банк',
+    'payment-system': 'МИР',
+    range: {
+      from: 4,
+      to: 9,
+    },
+  },
+];
+
+const $filteredValues = combine(
+  $bankFilter,
+  $paymentSystemFilter,
+  (banks, paymentSystems) => {
+    return values.filter(value => {
+      const bankMatches = banks.length === 0 || banks.includes(value['bank-name'])
+      const paymentSystemMatches = paymentSystems.length === 0 || paymentSystems.includes(value['payment-system'])
+      console.log(banks, value['bank-name'])
+      return bankMatches && paymentSystemMatches
+    })
+  }
+)
+
+export function Example() {
+  const values = useStore($filteredValues)
+
+  return <Playground>
+    <block.L style={{ minHeight: 300, background: '#f5f5f5', padding: '20px' }}>
+      <DataTable rowKey="id" columns={columns} values={values} priority="primary" />
+    </block.L>
+  </Playground>
+}
+```
 
 ### Components
 

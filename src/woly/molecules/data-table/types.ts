@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Priority } from 'lib';
+import { Priority } from 'lib/types';
 
 export type CellType<TValue, TRowKey extends string> = {
   [key in TRowKey]: string;

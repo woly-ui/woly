@@ -61,7 +61,6 @@ export const Filter: React.FC<FilterProps> = ({
                   priority="primary"
                 />
               ))}
-              <Button priority="primary" outlined text="Применить" />
             </Dropdown>
           </ListContainer>
         }
