@@ -2,6 +2,7 @@ import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
 import { Priority } from 'lib/types';
 import { box } from 'ui/elements/box';
+
 interface TabElementProps {
   iconLeft?: React.ReactNode;
   iconAction?: React.ReactNode;
@@ -60,9 +61,17 @@ const TabBase: React.FC<TabProps & TabElementProps & Priority> = ({
     onClick={onClick}
     tabIndex={0}
   >
-    {iconLeft && <span data-icon="link-icon">{iconLeft}</span>}
+    {iconLeft && (
+      <span data-element="link-icon" data-box-role="icon">
+        {iconLeft}
+      </span>
+    )}
     <span data-element="link-text">{text}</span>
-    {iconAction && <span data-icon="tab-action">{iconAction}</span>}
+    {iconAction && (
+      <span data-element="action-icon" data-box-role="icon">
+        {iconAction}
+      </span>
+    )}
   </div>
 );
 
@@ -103,7 +112,8 @@ export const Tab = styled(TabBase)`
     text-align: center;
   }
 
-  [data-icon] {
+  [data-element='link-icon'],
+  [data-element='action-icon'] {
     --woly-component-level: 0;
 
     display: flex;
@@ -167,7 +177,7 @@ export const Tab = styled(TabBase)`
     background: var(--local-background);
     border-right-color: var(--local-border-color);
 
-    [data-icon='link-icon'] > svg > path {
+    [data-element='link-icon'] > svg > path {
       fill: var(--local-text-color);
     }
 
@@ -215,7 +225,7 @@ export const Tab = styled(TabBase)`
       background-color: var(--local-background);
     }
 
-    [data-icon='link-icon'] > svg > path {
+    [data-element='link-icon'] > svg > path {
       fill: var(--local-text-color);
     }
 

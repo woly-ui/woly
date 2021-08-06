@@ -19,7 +19,11 @@ const ToastBase: React.FC<ToastProps & Priority> = ({
   priority = 'secondary',
 }) => (
   <div className={className} data-weight={weight} data-priority={priority}>
-    {icon && <span data-icon="toast">{icon}</span>}
+    {icon && (
+      <span data-element="icon" data-box-role="icon">
+        {icon}
+      </span>
+    )}
     <div data-element="content">{children}</div>
     {action && <span data-element="action">{action}</span>}
   </div>
@@ -53,7 +57,7 @@ export const Toast = styled(ToastBase)`
     flex-wrap: nowrap;
   }
 
-  [data-icon='toast'] {
+  [data-element='icon'] {
     --woly-component-level: 0;
     display: flex;
     align-items: center;
@@ -82,11 +86,11 @@ export const Toast = styled(ToastBase)`
     background-color: var(--local-shape-color);
     border-color: var(--local-border-color);
 
-    [data-icon='toast'] > svg > path {
+    [data-element='icon'] > svg > path {
       fill: var(--local-text-color);
     }
 
-    [data-icon='toast'] > svg > g {
+    [data-element='icon'] > svg > g {
       stroke: var(--local-text-color);
     }
   }
@@ -101,11 +105,11 @@ export const Toast = styled(ToastBase)`
     background-color: transparent;
     border-color: var(--local-text-color);
 
-    [data-icon='toast'] > svg > path {
+    [data-element='icon'] > svg > path {
       fill: var(--local-text-color);
     }
 
-    [data-icon='toast'] > svg > g {
+    [data-element='icon'] > svg > g {
       stroke: var(--local-text-color);
     }
   }
@@ -124,11 +128,11 @@ export const Toast = styled(ToastBase)`
 
     box-shadow: var(--local-shadow);
 
-    [data-icon='toast'] > svg > path {
+    [data-element='icon'] > svg > path {
       fill: var(--local-text-color);
     }
 
-    [data-icon='toast'] > svg > g {
+    [data-element='icon'] > svg > g {
       stroke: var(--local-text-color);
     }
   }
@@ -143,11 +147,11 @@ export const Toast = styled(ToastBase)`
     background-color: var(--local-shape-color);
     border-color: var(--local-shape-color);
 
-    [data-icon='toast'] > svg > path {
+    [data-element='icon'] > svg > path {
       fill: var(--local-text-color);
     }
 
-    [data-icon='toast'] > svg > g {
+    [data-element='icon'] > svg > g {
       stroke: var(--local-text-color);
     }
   }
