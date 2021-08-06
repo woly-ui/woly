@@ -53,46 +53,55 @@ export const Global = styled(WolyGlobalStyles)`
   --woly-backdrop: hsla(var(--bw-0), 0.3);
   --woly-shadow: 3px 3px 9px hsla(0, 0%, 22%, 12%);
 
+  [data-priority='white'] {
+    --woly-shape-default: hsla(var(--bw-0), 1);
+    --woly-shape-disabled: hsla(var(--bw-200), 1);
+    --woly-shape-hover: hsla(var(--bw-400), 1);
+    --woly-shape-active: hsla(var(--bw-600), 1);
+
+    --woly-shape-text-default: hsla(var(--bw-1000), 1);
+    --woly-shape-text-disabled: hsla(var(--bw-300), 1);
+    --woly-shape-text-hover: hsla(var(--bw-1000), 1);
+    --woly-shape-text-active: hsla(var(--bw-1000), 1);
+
+    --woly-canvas-default: transparent;
+    --woly-canvas-disabled: hsla(var(--bw-200), 1);
+    --woly-canvas-hover: transparent;
+    --woly-canvas-active: transparent;
+
+    --woly-canvas-text-default: hsla(var(--bw-1000), 1);
+    --woly-canvas-text-disabled: hsla(var(--bw-300), 1);
+    --woly-canvas-text-hover: hsla(var(--bw-600), 1);
+    --woly-canvas-text-active: hsla(var(--bw-700), 1);
+  }
+
   ${createPriority({
     priorityName: 'default',
     paletteName: 'bw',
     bwPaletteName: 'bw',
-    weight: 'fill',
-  })}
-
-  ${createPriority({
-    priorityName: 'white',
-    paletteName: 'bw',
-    bwPaletteName: 'bw',
-    weight: 'transparent',
   })}
 
   ${createPriority({
     priorityName: 'primary',
     paletteName: 'primary',
     bwPaletteName: 'bw',
-    weight: 'fill',
   })}
 
   ${createPriority({
     priorityName: 'secondary',
     paletteName: 'secondary',
     bwPaletteName: 'bw',
-    weight: 'fill',
   })}
-
 
   ${createPriority({
     priorityName: 'danger',
     paletteName: 'danger',
     bwPaletteName: 'bw',
-    weight: 'fill',
   })}
 
   ${createPriority({
     priorityName: 'success',
     paletteName: 'success',
     bwPaletteName: 'bw',
-    weight: 'fill',
   })}
 `;
