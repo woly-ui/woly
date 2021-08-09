@@ -34,7 +34,7 @@ export const Th = styled.th`
   max-width: var(--local-cell-max-width);
   padding: var(--local-vertical) var(--local-horizontal);
 
-  color: var(--woly-neutral);
+  color: var(--woly-canvas-text-disabled);
   font-weight: normal;
 
   line-height: var(--woly-line-height);
