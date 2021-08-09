@@ -36,7 +36,7 @@ const AvatarBase: React.FC<AvatarProps> = ({
 
 const Fallback = styled(IconProfile)`
   > circle:first-of-type {
-    fill: var(--woly-text);
+    fill: var(--woly-canvas-text-default);
     fill-opacity: 0.1;
   }
 `;

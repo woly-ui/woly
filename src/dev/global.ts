@@ -52,14 +52,6 @@ export const Global = styled(WolyGlobalStyles)`
   --woly-backdrop: hsla(var(--bw-0), 0.3);
   --woly-shadow: 3px 3px 9px hsla(0, 0%, 22%, 12%);
 
-  [data-coloring='inversed'] {
-    --woly-text: white;
-  }
-
-  [data-coloring='default'] {
-    --woly-text: black;
-  }
-
   [data-priority='default'] {
     --woly-shape-default: hsla(var(--bw-500), 1);
     --woly-shape-disabled: hsla(var(--bw-200), 1);
