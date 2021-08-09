@@ -39,13 +39,18 @@ const ButtonBase: React.FC<ButtonProps & Priority> = ({
     data-priority={priority}
     {...p}
   >
-    {icon && <span data-icon="button">{icon}</span>}
+    {icon && (
+      <span data-element="icon" data-box-role="icon">
+        {icon}
+      </span>
+    )}
     <span data-element="text">{text}</span>
   </button>
 );
 
 export const Button = styled(ButtonBase)`
   ${box}
+
   --local-text-color: var(--woly-shape-text-default);
   --local-shape-color: var(--woly-shape-default);
   --local-border-color: var(--woly-shape-default);
@@ -80,7 +85,7 @@ export const Button = styled(ButtonBase)`
     width: 100%;
   }
 
-  [data-icon='button'] {
+  [data-element='icon'] {
     --local-icon-size: var(--woly-line-height);
     display: flex;
     align-items: center;

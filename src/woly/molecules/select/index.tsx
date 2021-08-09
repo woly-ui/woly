@@ -82,7 +82,9 @@ export const SelectBase: React.FC<SelectProps & Priority> = ({
     >
       <div data-selected={true}>
         <div data-element="text">{select}</div>
-        <span data-icon={isOpen}>{icon}</span>
+        <div data-box-role="icon">
+          <span data-element="icon">{icon}</span>
+        </div>
       </div>
       {/* В дальнейшем использовать Popover и List для создания выпадающего списка элементов */}
       <ul
@@ -141,10 +143,6 @@ export const Select = styled(SelectBase)`
     }
   }
 
-  [data-icon='true'] {
-    transform: rotate(180deg);
-  }
-
   [data-element='icon'] {
     display: flex;
     flex-shrink: 1;
@@ -160,6 +158,10 @@ export const Select = styled(SelectBase)`
 
       fill: var(--local-shape-color);
     }
+  }
+
+  &[data-open='true'] [data-element='icon'] {
+    transform: rotate(180deg);
   }
 
   ul {

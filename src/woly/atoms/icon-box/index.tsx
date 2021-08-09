@@ -16,12 +16,15 @@ const IconBoxBase: React.FC<IconBoxProps & Priority> = ({
   weight = 'transparent',
 }) => (
   <div className={className} data-weight={weight} data-priority={priority}>
-    <span data-icon="icon-component">{children}</span>
+    <span data-element="icon-component" data-box-role="icon">
+      {children}
+    </span>
   </div>
 );
 
 export const IconBox = styled(IconBoxBase)`
   ${box}
+
   --local-icon-size: var(--woly-line-height);
 
   display: flex;
@@ -38,7 +41,7 @@ export const IconBox = styled(IconBoxBase)`
   border-radius: var(--woly-rounding);
   outline: none;
 
-  [data-element='icon'] {
+  [data-element='icon-component'] {
     display: flex;
     flex-shrink: 0;
     align-items: center;
@@ -60,7 +63,7 @@ export const IconBox = styled(IconBoxBase)`
     background-color: var(--local-shape-color);
     border-color: var(--local-border-color);
 
-    [data-icon='icon-component'] > svg > path {
+    [data-element='icon-component'] > svg > path {
       fill: var(--local-fill-color);
     }
   }
@@ -73,7 +76,7 @@ export const IconBox = styled(IconBoxBase)`
     background-color: var(--local-shape-color);
     border-color: var(--local-border-color);
 
-    [data-icon='icon-component'] > svg > path {
+    [data-element='icon-component'] > svg > path {
       fill: var(--local-fill-color);
     }
   }
@@ -86,7 +89,7 @@ export const IconBox = styled(IconBoxBase)`
     background-color: var(--local-shape-color);
     border-color: var(--local-border-color);
 
-    [data-icon='icon-component'] > svg > path {
+    [data-element='icon-component'] > svg > path {
       fill: var(--local-fill-color);
     }
   }
@@ -99,7 +102,7 @@ export const IconBox = styled(IconBoxBase)`
     background-color: var(--local-shape-color);
     border-color: var(--local-border-color);
 
-    [data-icon='icon-component'] > svg > path {
+    [data-element='icon-component'] > svg > path {
       fill: var(--local-fill-color);
     }
   }

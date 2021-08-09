@@ -25,7 +25,9 @@ const ButtonIconBase: React.FC<Props & Priority> = ({
     type="button"
     {...p}
   >
-    <span data-icon="button-icon">{icon}</span>
+    <span data-element="icon" data-box-role="icon">
+      {icon}
+    </span>
   </button>
 );
 
@@ -47,7 +49,7 @@ export const ButtonIcon = styled(ButtonIconBase)`
   border-radius: var(--woly-rounding);
   outline: none;
 
-  [data-icon='button-icon'] {
+  [data-element='icon'] {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -74,6 +76,7 @@ export const ButtonIcon = styled(ButtonIconBase)`
     [data-element='icon'] > svg > path {
       fill: var(--local-icon-color);
     }
+
     [data-element='icon'] > svg > g {
       stroke: var(--local-icon-color);
     }
@@ -105,6 +108,7 @@ export const ButtonIcon = styled(ButtonIconBase)`
     [data-element='icon'] > svg > path {
       fill: var(--local-icon-color);
     }
+
     [data-element='icon'] > svg > g {
       stroke: var(--local-icon-color);
     }
@@ -141,6 +145,7 @@ export const ButtonIcon = styled(ButtonIconBase)`
     [data-element='icon'] > svg > path {
       fill: var(--local-icon-color);
     }
+
     [data-element='icon'] > svg > g {
       stroke: var(--local-icon-color);
     }
@@ -175,6 +180,7 @@ export const ButtonIcon = styled(ButtonIconBase)`
     [data-element='icon'] > svg > path {
       fill: var(--local-icon-color);
     }
+
     [data-element='icon'] > svg > g {
       stroke: var(--local-icon-color);
     }
