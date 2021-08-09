@@ -32,6 +32,7 @@ export const Th = styled.th`
   align-items: center;
   box-sizing: border-box;
   max-width: var(--local-cell-max-width);
+  /* TODO: Replace with box [09.08.2020] */
   padding: var(--local-vertical) var(--local-horizontal);
 
   color: var(--woly-canvas-text-disabled);
