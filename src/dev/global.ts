@@ -82,7 +82,9 @@ export const Global = styled(WolyGlobalStyles)`
     --woly-canvas-text-active: hsla(var(--bw-0), 1);
   }
 
-  [data-coloring='inversed'] [data-priority='primary'] {
+  [data-coloring='inversed'][data-priority='primary'],
+  [data-coloring='inversed'] > [data-priority='primary'],
+  [data-coloring='inversed'] :not(:is([data-coloring='default'])) [data-priority='primary'] {
     --woly-shape-default: white;
     --woly-shape-disabled: white;
     --woly-shape-hover: white;
@@ -93,7 +95,7 @@ export const Global = styled(WolyGlobalStyles)`
     --woly-shape-text-hover: hsla(var(--primary-500), 1);
     --woly-shape-text-active: hsla(var(--primary-500), 1);
 
-    --woly-canvas-default: transparent;
+    --woly-canvas-default: hsla(var(--primary-500), 1);
     --woly-canvas-disabled: hsla(var(--bw-200), 1);
     --woly-canvas-hover: hsla(var(--primary-600), 1);
     --woly-canvas-active: hsla(var(--primary-700), 1);
@@ -104,7 +106,9 @@ export const Global = styled(WolyGlobalStyles)`
     --woly-canvas-text-active: white;
   }
 
-  [data-coloring] [data-priority='primary'] {
+  [data-coloring='default'][data-priority='primary'],
+  [data-coloring='default'] > [data-priority='primary'],
+  [data-coloring='default'] :not(:is([data-coloring='inversed'])) [data-priority='primary'] {
     --woly-shape-default: hsla(var(--primary-500), 1);
     --woly-shape-disabled: hsla(var(--primary-200), 1);
     --woly-shape-hover: hsla(var(--primary-600), 1);
@@ -126,7 +130,33 @@ export const Global = styled(WolyGlobalStyles)`
     --woly-canvas-text-active: hsla(var(--bw-0), 1);
   }
 
-  [data-priority='secondary'] {
+  [data-coloring='inversed'][data-priority='secondary'],
+  [data-coloring='inversed'] > [data-priority='secondary'],
+  [data-coloring='inversed'] :not(:is([data-coloring='default'])) [data-priority='secondary'] {
+    --woly-shape-default: white;
+    --woly-shape-disabled: white;
+    --woly-shape-hover: white;
+    --woly-shape-active: white;
+
+    --woly-shape-text-default: hsla(var(--primary-500), 1);
+    --woly-shape-text-disabled: hsla(var(--primary-500), 1);
+    --woly-shape-text-hover: hsla(var(--primary-500), 1);
+    --woly-shape-text-active: hsla(var(--primary-500), 1);
+
+    --woly-canvas-default: hsla(var(--secondary-500), 1);
+    --woly-canvas-disabled: hsla(var(--bw-200), 1);
+    --woly-canvas-hover: hsla(var(--primary-600), 1);
+    --woly-canvas-active: hsla(var(--primary-700), 1);
+
+    --woly-canvas-text-default: white;
+    --woly-canvas-text-disabled: white;
+    --woly-canvas-text-hover: white;
+    --woly-canvas-text-active: white;
+  }
+
+  [data-coloring='default'][data-priority='secondary'],
+  [data-coloring='default'] > [data-priority='secondary'],
+  [data-coloring='default'] :not(:is([data-coloring='inversed'])) [data-priority='secondary'] {
     --woly-shape-default: hsla(var(--secondary-500), 1);
     --woly-shape-disabled: hsla(var(--secondary-200), 1);
     --woly-shape-hover: hsla(var(--secondary-600), 1);

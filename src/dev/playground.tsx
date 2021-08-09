@@ -106,8 +106,8 @@ const Frame = styled.div`
   resize: both;
 
   &[data-coloring='inversed'] {
-    background-color: var(--woly-shape-default);
-    border-color: var(--woly-shape-default);
+    background-color: var(--woly-canvas-default);
+    border-color: var(--woly-canvas-default);
   }
 `;
 
