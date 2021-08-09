@@ -108,6 +108,8 @@
   "dependencies": {
     "@tippyjs/react": "^4.2.5",
     "color-rgba": "^2.2.3",
+    "effector": "^21.8.12",
+    "effector-react": "^21.3.3",
     "nanoid": "^3.1.23",
     "react": "16.14.0",
     "react-colorful": "^5.2.3",

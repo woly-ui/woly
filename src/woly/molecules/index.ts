@@ -1,5 +1,6 @@
 export { Accordion } from './accordion';
 export { Checkbox } from './checkbox';
+export { DataTable, DataTableColumn, HeadProps as DataTableHeadProps } from './data-table';
 export { Field } from './field';
 export { InputPassword } from './input-password';
 export { Notification } from './notification';
