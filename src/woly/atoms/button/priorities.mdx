@@ -1,0 +1,174 @@
+import {Button, Input, Table, Tbody, Td, Th, Thead, Tr} from 'ui'
+import {Playground} from 'dev/playground'
+
+### Priorities
+
+<Playground>
+  <block.L style={{ background: '#f5f5f5', padding: '20px' }}>
+    <Table columns={4} priority="primary">
+      <Thead>
+        <Tr>
+          <Th>Colors/Weight</Th>
+          <Th>Primary</Th>
+          <Th>Secondary</Th>
+          <Th>Default</Th>
+        </Tr>
+      </Thead>
+      <Tbody>
+        <Tr>
+          <Th>Filled</Th>
+          <Td style={{ display: 'flex', flexDirection: 'column' }}>
+            <div style={{ padding: '10px 0' }}>
+              <Button onClick={() => console.log('Hi')} text="Button" priority="primary" />
+            </div>
+            <div style={{ padding: '10px 0' }}>
+              <Button onClick={() => console.log('Hi')} text="Button" priority="primary" disabled />
+            </div>
+            <div style={{ padding: '10px 0' }}>
+              <Button onClick={() => console.log('Hi')} text="Button" priority="danger" />
+            </div>
+            <div style={{ padding: '10px 0' }}>
+              <Button onClick={() => console.log('Hi')} text="Button" priority="danger" disabled />
+            </div>
+          </Td>
+          <Td style={{ display: 'flex', flexDirection: 'column' }}>
+            <div style={{ padding: '10px 0' }}>
+              <Button onClick={() => console.log('Hi')} text="Button" priority="secondary" />
+            </div>
+            <div style={{ padding: '10px 0' }}>
+              <Button
+                onClick={() => console.log('Hi')}
+                text="Button"
+                priority="secondary"
+                disabled
+              />
+            </div>
+          </Td>
+          <Td>
+            <div>
+              <div style={{ padding: '10px 0' }}>
+                <Button onClick={() => console.log('Hi')} text="Button" priority="default" />
+              </div>
+              <div style={{ padding: '10px 0' }}>
+                <Button
+                  onClick={() => console.log('Hi')}
+                  text="Button"
+                  priority="default"
+                  disabled
+                />
+              </div>
+            </div>
+          </Td>
+        </Tr>
+        <Tr>
+          <Th>Outlined</Th>
+          <Td style={{ display: 'flex', flexDirection: 'column' }}>
+            <div style={{ padding: '10px 0' }}>
+              <Button onClick={() => console.log('Hi')} text="Button" priority="primary" outlined />
+            </div>
+            <div style={{ padding: '10px 0' }}>
+              <Button
+                onClick={() => console.log('Hi')}
+                text="Button"
+                priority="primary"
+                outlined
+                disabled
+              />
+            </div>
+            <div style={{ padding: '10px 0' }}>
+              <Button onClick={() => console.log('Hi')} text="Button" priority="danger" outlined />
+            </div>
+            <div style={{ padding: '10px 0' }}>
+              <Button
+                onClick={() => console.log('Hi')}
+                text="Button"
+                priority="danger"
+                outlined
+                disabled
+              />
+            </div>
+          </Td>
+          <Td style={{ display: 'flex', flexDirection: 'column' }}>
+            <div style={{ padding: '10px 0' }}>
+              <Button
+                onClick={() => console.log('Hi')}
+                text="Button"
+                priority="secondary"
+                outlined
+              />
+            </div>
+            <div style={{ padding: '10px 0' }}>
+              <Button
+                onClick={() => console.log('Hi')}
+                text="Button"
+                priority="secondary"
+                disabled
+                outlined
+              />
+            </div>
+          </Td>
+          <Td>
+            <div>
+              <div style={{ padding: '10px 0' }}>
+                <Button
+                  onClick={() => console.log('Hi')}
+                  text="Button"
+                  priority="default"
+                  outlined
+                />
+              </div>
+              <div style={{ padding: '10px 0' }}>
+                <Button
+                  onClick={() => console.log('Hi')}
+                  text="Button"
+                  priority="default"
+                  outlined
+                  disabled
+                />
+              </div>
+            </div>
+          </Td>
+        </Tr>
+        <Tr>
+          <Th>None</Th>
+          <Td style={{ display: 'flex', flexDirection: 'column' }}>
+            <div style={{ padding: '10px 0' }}>
+              <Button onClick={() => console.log('Hi')} text="Button" priority="primary-goast" />
+            </div>
+            <div style={{ padding: '10px 0' }}>
+              <Button
+                onClick={() => console.log('Hi')}
+                text="Button"
+                priority="primary-goast"
+                disabled
+              />
+            </div>
+          </Td>
+          <Td style={{ display: 'flex', flexDirection: 'column' }}>
+            <div style={{ padding: '10px 0' }}>
+              <Button onClick={() => console.log('Hi')} text="Button" priority="secondary-goast" />
+            </div>
+            <div style={{ padding: '10px 0' }}>
+              <Button
+                onClick={() => console.log('Hi')}
+                text="Button"
+                priority="secondary-goast"
+                disabled
+              />
+            </div>
+          </Td>
+          <Td>
+            <div>
+              <div style={{ padding: '10px 0' }}>
+                <Button onClick={() => console.log('Hi')} text="Button" priority="goast" />
+              </div>
+              <div style={{ padding: '10px 0' }}>
+                <Button onClick={() => console.log('Hi')} text="Button" priority="goast" disabled />
+              </div>
+            </div>
+          </Td>
+        </Tr>
+      </Tbody>
+    </Table>
+  </block.L>
+</Playground>

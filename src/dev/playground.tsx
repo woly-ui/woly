@@ -10,9 +10,9 @@ import { block } from './block';
 export { block };
 
 interface Props {
-  size: keyof typeof block;
-  direction: 'vertical' | 'horizontal';
-  configurators: ConfiguratorName[];
+  size?: keyof typeof block;
+  direction?: 'vertical' | 'horizontal';
+  configurators?: ConfiguratorName[];
 }
 
 export const Playground: React.FC<Props> = ({
