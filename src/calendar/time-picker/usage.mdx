@@ -1,56 +1,62 @@
-import {block, Playground, StateEvent} from 'dev/playground'
-import {TimePicker} from 'calendar';
-
 ### Example
 
-<Playground>
-  <block.M>
-    <div style={{ paddingBottom: '200px', display: 'flex' }}>
-      <StateEvent initial="" change={(v) => v}>
-        {(value, onChange) => (
-          <TimePicker priority="default" name="time" value={value} onChange={onChange} />
-        )}
-      </StateEvent>
-    </div>
-  </block.M>
-</Playground>
+```tsx playground
+import { TimePicker } from 'calendar';
+
+export function Example() {
+  const [value, onChange] = React.useState('')
+  return (
+    <Playground>
+      <div style={{ paddingBottom: '200px', display: 'flex' }}>
+        <TimePicker priority="default" name="time" value={value} onChange={onChange} />
+      </div>
+    </Playground>
+  )
+}
+```
 
 ### Custom steps
 
-<Playground>
-  <block.M>
-    <div style={{ paddingBottom: '200px', display: 'flex' }}>
-      <StateEvent initial="" change={(v) => v}>
-        {(value, onChange) => (
-          <TimePicker
-            format="HH:mm:ss"
-            priority="default"
-            name="time"
-            value={value}
-            onChange={onChange}
-            hourStep={2}
-            minStep={5}
-            secStep={10}
-          />
-        )}
-      </StateEvent>
-    </div>
-  </block.M>
-</Playground>
+```tsx playground
+import { TimePicker } from 'calendar';
+
+export function Example() {
+  const [value, onChange] = React.useState('')
+  return (
+    <Playground>
+      <div style={{ paddingBottom: '200px', display: 'flex' }}>
+        <TimePicker
+          format="HH:mm:ss"
+          priority="default"
+          name="time"
+          value={value}
+          onChange={onChange}
+          hourStep={2}
+          minStep={5}
+          secStep={10}
+        />
+      </div>
+    </Playground>
+  )
+}
+```
 
 ### Disabled
 
-<Playground>
-  <block.M>
-    <div style={{ paddingBottom: '200px', display: 'flex' }}>
-      <StateEvent initial="" change={(v) => v}>
-        {(value, onChange) => (
-          <TimePicker priority="default" name="time" value={value} disabled onChange={onChange} />
-        )}
-      </StateEvent>
-    </div>
-  </block.M>
-</Playground>
+```tsx playground
+import { TimePicker } from 'calendar';
+
+export function Example() {
+  const [value, onChange] = React.useState('')
+  return (
+    <Playground>
+      <div style={{ paddingBottom: '200px', display: 'flex' }}>
+        <TimePicker priority="default" name="time" value={value} disabled onChange={onChange} />
+      </div>
+    </Playground>
+  )
+}
+```
 
 ### Props
 
