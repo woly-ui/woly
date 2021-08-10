@@ -1,8 +1,7 @@
 import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
 import { Priority } from 'lib/types';
-import { keyboardEventHandle } from 'lib/keyboard';
-import { lineBox } from 'ui/elements/box';
+import { lineBox, visuallyHidden } from 'ui/elements';
 
 interface RadioButtonProps {
   className?: string;
@@ -27,39 +26,26 @@ const RadioButtonBase: React.FC<RadioButtonProps & Priority> = ({
 }) => {
   const tabIndex = disabled ? -1 : 0;
 
-  const onKeyDown = React.useCallback(
-    (event: React.KeyboardEvent) => {
-      if (event.key === 'Enter') {
-        event.preventDefault();
-      }
-      const keyHandler = {
-        enter: (event: React.SyntheticEvent<Element, Event>) => {
-          onChange(event);
-        },
-      };
-
-      keyboardEventHandle({
-        event,
-        keyHandler,
-      });
-    },
-    [onChange],
-  );
-
   return (
     <label
       htmlFor={id}
       className={className}
       data-disabled={disabled}
       data-priority={priority}
-      onKeyDown={onKeyDown}
-      tabIndex={tabIndex}
+      tabIndex={-1}
     >
-      <span data-element="container" data-disabled={disabled} tabIndex={-1}>
-        <input type="radio" checked={checked} id={id} name={name} onChange={onChange} {...p} />
-        <span data-element="checkbox" />
-        {text && <span data-element="text">{text}</span>}
-      </span>
+      <input
+        type="radio"
+        id={id}
+        name={name}
+        tabIndex={tabIndex}
+        checked={checked}
+        onChange={onChange}
+        disabled={disabled}
+        {...p}
+      />
+      <span data-element="checkbox" />
+      {text && <span data-element="text">{text}</span>}
     </label>
   );
 };
@@ -78,13 +64,17 @@ export const RadioButton = styled(RadioButtonBase)`
   --local-border-color: var(--woly-canvas-hover);
   --local-border-rounding: 50%;
 
-  display: block;
+  align-items: center;
 
   outline: none;
 
   user-select: none;
 
-  &:focus [data-element='checkbox'] {
+  input {
+    ${visuallyHidden}
+  }
+
+  input:focus ~ [data-element='checkbox'] {
     box-shadow: 0 0 0 var(--woly-border-width) var(--woly-focus-color);
   }
 
@@ -94,18 +84,6 @@ export const RadioButton = styled(RadioButtonBase)`
 
   &:hover {
     --local-border-color: var(--woly-shape-hover);
-  }
-
-  input {
-    display: none;
-
-    outline: none;
-  }
-
-  [data-element='container'] {
-    display: flex;
-
-    outline: none;
   }
 
   [data-element='text'] {
@@ -122,14 +100,12 @@ export const RadioButton = styled(RadioButtonBase)`
     width: var(--local-radio-size);
     height: var(--local-radio-size);
 
-    margin-right: var(--local-gap);
-
     background: var(--local-background);
     border: var(--woly-border-width) solid var(--local-border-color);
     border-radius: var(--local-border-rounding);
   }
 
-  input:checked + [data-element='checkbox'] {
+  input:checked ~ [data-element='checkbox'] {
     --local-border-color: var(--woly-shape-default);
 
     &:before {
@@ -160,7 +136,7 @@ export const RadioButton = styled(RadioButtonBase)`
       --local-border-color: var(--woly-shape-disabled);
     }
 
-    input:checked + [data-element='checkbox'] {
+    input:checked ~ [data-element='checkbox'] {
       --local-border-color: var(--woly-shape-disabled);
       --local-icon-fill: var(--woly-shape-disabled);
     }

@@ -6,9 +6,7 @@ export const Box = styled.div`
 ` as StyledComponent<'div', Record<string, unknown>>;
 
 export const LineBox = styled.div`
-  > * {
-    ${lineBox}
-  }
+  ${lineBox}
 ` as StyledComponent<'div', Record<string, unknown>>;
 
 export const BoxVertical = styled.div`

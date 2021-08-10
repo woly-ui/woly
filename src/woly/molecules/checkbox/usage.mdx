@@ -22,11 +22,11 @@ export function Example () {
   const [values, setValues] = React.useState({})
 
   const handleChange = (e) => {
-    const { checked, id } = e.currentTarget;
+    const { id } = e.target;
 
     setValues({
       ...values,
-      [id]: checked
+      [id]: !values[id]
     })
   }
 
@@ -55,7 +55,7 @@ export function Example () {
 
     setValues({
       ...values,
-      [id]: checked
+      [id]: !values[id]
     })
   }
 
@@ -85,7 +85,7 @@ export function Example () {
       />
     </block.XL>
     <block.H>
-      <Checkbox checked={values['ex2-huge'] ?? false} id="ex3-huge" onChange={handleChange} text="Huge" priority="primary" />
+      <Checkbox checked={values['ex2-huge'] ?? false} id="ex2-huge" onChange={handleChange} text="Huge" priority="primary" />
     </block.H>
   </Playground>
 }
@@ -106,7 +106,7 @@ export function Example () {
 
     setValues({
       ...values,
-      [id]: checked
+      [id]: !values[id]
     })
   }
 

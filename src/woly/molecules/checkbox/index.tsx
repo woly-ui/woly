@@ -3,7 +3,7 @@ import styled, { StyledComponent } from 'styled-components';
 import { IconCheckFilled, IconFilledUnchecked } from 'static/icons';
 import { Priority } from 'lib/types';
 import { keyboardEventHandle } from 'lib/keyboard';
-import { lineBox } from 'ui/elements/box';
+import { lineBox, visuallyHidden } from 'ui/elements';
 
 interface CheckboxProps {
   className?: string;
@@ -30,6 +30,7 @@ const CheckboxBase: React.FC<CheckboxProps & Priority> = ({
       if (event.key === 'Enter') {
         event.preventDefault();
       }
+
       const keyHandler = {
         enter: (event: React.SyntheticEvent<Element, Event>) => {
           onChange(event);
@@ -49,28 +50,27 @@ const CheckboxBase: React.FC<CheckboxProps & Priority> = ({
       htmlFor={id}
       className={className}
       data-priority={priority}
-      onKeyDown={onKeyDown}
-      tabIndex={tabIndex}
       data-disabled={disabled}
+      tabIndex={-1}
     >
-      <span data-element="container" tabIndex={-1}>
-        <span data-element="checkbox">
-          <input
-            type="checkbox"
-            id={id}
-            checked={checked}
-            onChange={onChange}
-            disabled={disabled}
-          />
-          <span data-element="checkbox-unchecked">
-            <IconFilledUnchecked />
-          </span>
-          <span data-element="checkbox-checked">
-            <IconCheckFilled />
-          </span>
+      <span data-element="checkbox">
+        <input
+          type="checkbox"
+          id={id}
+          tabIndex={tabIndex}
+          checked={checked}
+          onChange={onChange}
+          onKeyDown={onKeyDown}
+          disabled={disabled}
+        />
+        <span data-element="checkbox-unchecked">
+          <IconFilledUnchecked />
         </span>
-        {text && <span data-element="text">{text}</span>}
+        <span data-element="checkbox-checked">
+          <IconCheckFilled />
+        </span>
       </span>
+      {text && <span data-element="text">{text}</span>}
     </label>
   );
 };
@@ -84,27 +84,16 @@ export const Checkbox = styled(CheckboxBase)`
   --local-text-color: var(--woly-canvas-text-default);
   --local-background-color: var(--woly-shape-default);
 
-  display: block;
-
   outline: none;
 
   user-select: none;
 
-  &:focus [data-element^='checkbox-'] > svg,
-  &:active [data-element^='checkbox-'] > svg {
-    box-shadow: 0 0 0 var(--woly-border-width) var(--woly-focus);
-  }
-
   input {
-    display: none;
-
-    outline: none;
+    ${visuallyHidden}
   }
 
-  [data-element='container'] {
-    display: flex;
-
-    outline: none;
+  input:focus ~ [data-element^='checkbox'] > svg {
+    box-shadow: 0 0 0 var(--woly-border-width) var(--woly-focus-color);
   }
 
   [data-element='text'] {
@@ -113,7 +102,8 @@ export const Checkbox = styled(CheckboxBase)`
     line-height: var(--woly-line-height);
   }
 
-  [data-element='checkbox'] {
+  [data-element='checkbox-unchecked'],
+  input:checked ~ [data-element='checkbox-checked'] {
     display: flex;
     flex-shrink: 0;
     align-items: center;
@@ -121,18 +111,9 @@ export const Checkbox = styled(CheckboxBase)`
     width: var(--local-icon-size);
     height: var(--local-icon-size);
 
-    margin-right: var(--local-gap);
-
     svg {
       border-radius: var(--woly-rounding);
     }
-  }
-
-  [data-element='checkbox-unchecked'],
-  input:checked ~ [data-element='checkbox-checked'] {
-    display: flex;
-    align-items: center;
-    justify-content: center;
   }
 
   input:checked ~ [data-element='checkbox-checked'] {
@@ -156,10 +137,8 @@ export const Checkbox = styled(CheckboxBase)`
   }
 
   [data-element='checkbox-unchecked'] {
-    &:hover {
-      svg > rect {
-        stroke: var(--local-icon-stroke);
-      }
+    &:hover svg > rect {
+      stroke: var(--local-icon-stroke);
     }
 
     &:focus,
@@ -177,7 +156,7 @@ export const Checkbox = styled(CheckboxBase)`
       --local-text-color: var(--woly-shape-disabled);
     }
 
-    [data-element^='checkbox-'] > svg {
+    [data-element^='checkbox'] > svg {
       box-shadow: none;
     }
 
