@@ -2,27 +2,45 @@ import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
 
 interface InputElementProps extends React.InputHTMLAttributes<HTMLInputElement> {
+  autoFocus?: boolean;
   className?: string;
   name: string;
+  onBlur?: React.EventHandler<React.SyntheticEvent>;
   onChange: React.EventHandler<React.SyntheticEvent>;
+  onClick?: React.EventHandler<React.SyntheticEvent>;
+  onFocus?: React.EventHandler<React.SyntheticEvent>;
+  onKeyDown?: React.EventHandler<React.SyntheticEvent>;
+  onKeyUp?: React.EventHandler<React.SyntheticEvent>;
   placeholder?: string;
   type: 'text' | 'password' | 'email';
   value?: HTMLInputElement['value'];
 }
 
 const InputElementBase: React.FC<InputElementProps> = ({
+  autoFocus = false,
   className,
   name,
+  onBlur,
   onChange,
+  onClick,
+  onFocus,
+  onKeyDown,
+  onKeyUp,
   placeholder,
   type = 'text',
   value,
   ...p
 }) => (
   <input
+    autoFocus={autoFocus}
     className={className}
     name={name}
+    onBlur={onBlur}
     onChange={onChange}
+    onClick={onClick}
+    onFocus={onFocus}
+    onKeyDown={onKeyDown}
+    onKeyUp={onKeyUp}
     placeholder={placeholder}
     type={type}
     value={value}
