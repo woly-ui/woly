@@ -111,29 +111,24 @@ export const Popover = styled(PopoverBase)<PopoverProps>`
   );
   --popover-position: calc(100% + 4px + var(--woly-gap, 10px));
   position: relative;
-
   [data-element='popover'] {
     position: absolute;
     z-index: 1;
 
     width: max-content;
-
     min-width: 100%;
 
     visibility: hidden;
     opacity: 0;
   }
-
   [data-full-width='false'] {
     width: auto;
     min-width: unset;
   }
-
   & > [data-open='true'] {
     visibility: visible;
     opacity: 1;
   }
-
   & > [data-position='top'] {
     bottom: var(--popover-position);
   }
