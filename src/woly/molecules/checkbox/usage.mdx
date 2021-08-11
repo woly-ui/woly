@@ -47,6 +47,8 @@ Size controlled by the `component-level` block property not from the props.
 ```tsx playground
 import {Checkbox} from 'ui';
 
+const filler = 'lorem ipsum dolor sit amet'
+
 export function Example () {
   const [values, setValues] = React.useState({})
 
@@ -59,33 +61,33 @@ export function Example () {
     })
   }
 
-  return <Playground>
+  return <Playground direction="vertical">
     <block.S>
-      <Checkbox checked={values['ex2-small'] ?? false} id="ex2-small" onChange={handleChange} text="Small" priority="primary" />
+      <Checkbox checked={values['ex2-small'] ?? false} id="ex2-small" onChange={handleChange} text={`Small ${filler}`} priority="primary" />
     </block.S>
     <block.M>
       <Checkbox
         checked={values['e2-medium'] ?? false}
         id="e2-medium"
         onChange={handleChange}
-        text="Medium"
+        text={`Medium ${filler}`}
         priority="primary"
       />
     </block.M>
     <block.L>
-      <Checkbox checked={values['ex2-large'] ?? false} id="ex2-large" onChange={handleChange} text="Large" priority="primary" />
+      <Checkbox checked={values['ex2-large'] ?? false} id="ex2-large" onChange={handleChange} text={`Large ${filler}`} priority="primary" />
     </block.L>
     <block.XL>
       <Checkbox
         checked={values['e2-extra'] ?? false}
         id="e2-extra"
         onChange={handleChange}
-        text="Extra large"
+        text={`Extra Large ${filler}`}
         priority="primary"
       />
     </block.XL>
     <block.H>
-      <Checkbox checked={values['ex2-huge'] ?? false} id="ex2-huge" onChange={handleChange} text="Huge" priority="primary" />
+      <Checkbox checked={values['ex2-huge'] ?? false} id="ex2-huge" onChange={handleChange} text={`Huge ${filler}`} priority="primary" />
     </block.H>
   </Playground>
 }
