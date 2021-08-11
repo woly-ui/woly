@@ -78,18 +78,18 @@ const PopoverBase: React.FC<Props & Priority> = ({
 
     document.addEventListener('scroll', onScroll);
     document.addEventListener('click', onClickOutside);
+    document.addEventListener('keydown', onKeyDown);
 
     return () => {
       document.removeEventListener('scroll', onScroll);
       document.removeEventListener('click', onClickOutside);
+      document.removeEventListener('keydown', onKeyDown);
     };
   }, [onScroll, onClickOutside]);
 
   return (
     <div className={className} ref={ref}>
-      <div onClick={setVisibility} onKeyDown={onKeyDown}>
-        {children}
-      </div>
+      <div onClick={setVisibility}>{children}</div>
       <Surface
         data-element="popover"
         data-full-width={fullWidth}
