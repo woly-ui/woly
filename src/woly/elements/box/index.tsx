@@ -37,7 +37,7 @@ export const lineBox = css`
   --local-vertical: calc(1px * var(--woly-component-level) * var(--woly-main-level));
   --local-gap: max(
     var(--woly-const-m),
-    calc((1px * var(--woly-component-level) * var(--woly-main-level)) / 2)
+    calc((1px * var(--woly-component-level) * var(--woly-main-level)))
   );
   display: flex;
   padding: var(--local-vertical) 0;
