@@ -127,7 +127,7 @@ export const Checkbox = styled(CheckboxBase)`
 
     &:focus,
     &:active {
-      --local-icon-fill: var(--woly-focus);
+      --local-icon-fill: var(--woly-focus-color);
     }
   }
 
