@@ -105,11 +105,13 @@ const Content = styled.div`
 
 const RangeSelectContainer = styled(ListContainer)`
   --local-height: 150px;
+  --local-item-height: var(--woly-line-height);
+  --local-gap: calc(var(--woly-border-width) * 2);
   height: var(--local-height);
   overflow-y: scroll;
 
-  [data-stub] {
-    height: calc(var(--local-height) - var(--woly-line-height));
+  [data-element='stub'] {
+    height: calc(var(--local-height) - var(--local-item-height) - var(--local-gap));
   }
 `;
 
@@ -147,7 +149,7 @@ function RangeSelect({
           onClick={() => onChange(optionValue)}
         />
       ))}
-      <li data-stub={true} />
+      <li data-element="stub" />
     </RangeSelectContainer>
   );
 }
