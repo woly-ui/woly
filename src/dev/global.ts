@@ -103,7 +103,7 @@ export const Global = styled(WolyGlobalStyles)`
     --woly-shape-active: hsla(var(--secondary-700), 1);
 
     --woly-shape-text-default: hsla(var(--bw-1000), 1);
-    --woly-canvas-text-disabled: hsla(var(--bw-300), 1);
+    --woly-shape-text-disabled: hsla(var(--bw-300), 1);
     --woly-shape-text-hover: hsla(var(--bw-1000), 1);
     --woly-shape-text-active: hsla(var(--bw-1000), 1);
 

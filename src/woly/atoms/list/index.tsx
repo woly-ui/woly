@@ -12,8 +12,11 @@ interface ListElementsProps {
 interface ListItemProps {
   as?: 'a' | 'li';
   disabled?: boolean;
+  selected?: boolean;
   href?: string;
   tabIndex?: number;
+  onClick?: (e: React.SyntheticEvent<HTMLElement>) => void;
+  className?: string;
 }
 
 const mapContainer = (properties: { columns: number } & Priority) => ({
@@ -24,6 +27,7 @@ const mapItem = (properties: ListItemProps & Priority) => ({
   'data-disabled': properties.disabled,
   'data-priority': properties.priority || 'secondary',
   'data-type': properties.as,
+  'data-selected': properties.selected,
 });
 
 export const ListContainer = styled.div.attrs(mapContainer)`
@@ -47,13 +51,19 @@ export const ListItem: React.FC<ListItemProps & ListElementsProps & Priority> = 
   priority = 'secondary',
   tabIndex,
   text,
+  selected = false,
+  className = '',
+  onClick,
 }) => (
   <ListItemContainer
     as={as}
     href={href}
     disabled={disabled}
+    selected={selected}
     tabIndex={disabled ? -1 : tabIndex}
     priority={priority}
+    className={className}
+    onClick={onClick}
   >
     {iconLeft && <span data-element="icon">{iconLeft}</span>}
     <span>{text}</span>
@@ -98,6 +108,12 @@ const ListItemContainer = styled.div.attrs(mapItem)`
 
     outline: none;
     box-shadow: 0 0 0 var(--woly-border-width) var(--woly-focus);
+  }
+
+  &[data-selected='true'] {
+    --local-icon-color: var(--woly-shape-text-active);
+    --local-backgound: var(--woly-shape-active);
+    --local-color: var(--woly-shape-text-active);
   }
 
   &[data-disabled='true'] {
