@@ -1,0 +1,233 @@
+### Multiselect examples
+
+Simple multiselect.
+
+```tsx playground
+import { Multiselect, Text } from 'woly';
+import { IconInfo } from 'static/icons';
+import { sortById } from './sort';
+import { block } from 'dev/playground'
+import { daysOfWeek } from './constants'
+
+export function Example() {
+
+  const [options, setOptions] = React.useState(daysOfWeek);
+
+  const value = options.filter((option) => option.selected);
+
+  const onChange = (event) => {
+    event.preventDefault();
+
+    const id = event.currentTarget.id || event.currentTarget.dataset.id;
+
+    if (!id) {
+      return;
+    }
+
+    const index = options.findIndex((option) => parseInt(option.id, 10) === parseInt(id, 10));
+
+    if (index > -1) {
+      const element = options.splice(index, 1)[0];
+      element.selected = !element.selected;
+
+      const newValue = sortById([...options, element], "text");
+
+      setOptions(newValue);
+    }
+  };
+
+  return <Playground>
+    <div style={{padding: '300px 0', width: '100%', display: 'flex', flexDirection: 'column'}}>
+      <block.L style={{padding: '10px'}}>
+        <Multiselect
+          onChange={onChange}
+          options={options}
+          placeholder="Choose an option"
+          priority="primary"
+          value={value}
+          leftIcon={<IconInfo/>}
+          rightIcon={<IconInfo/>}
+        />
+      </block.L>
+      </div>
+  </Playground>
+}
+```
+
+### Example with checkboxes
+
+```tsx playground
+import { Multiselect, Text } from 'woly';
+import { IconInfo } from 'static/icons';
+import { sortById } from './sort';
+import { block } from 'dev/playground'
+import { schoolStuff } from './constants'
+
+export function Example() {
+
+  const [options, setOptions] = React.useState(schoolStuff);
+
+  const value = options.filter((option) => option.selected);
+
+  const onChange = (event) => {
+    event.preventDefault();
+
+    const id = event.currentTarget.id || event.currentTarget.dataset.id;
+
+    if (!id) {
+      return;
+    }
+
+    const index = options.findIndex((option) => parseInt(option.id, 10) === parseInt(id, 10));
+
+    if (index > -1) {
+      const element = options.splice(index, 1)[0];
+      element.selected = !element.selected;
+
+      const newValue = sortById([...options, element]);
+
+      setOptions(newValue);
+    }
+  };
+
+  return <Playground>
+    <div style={{padding: '300px 0', width: '100%', display: 'flex', flexDirection: 'column'}}>
+      <block.L>
+        <Multiselect
+          onChange={onChange}
+          options={options}
+          placeholder="Choose an option"
+          value={value}
+          isCheckbox
+        />
+      </block.L>
+    </div>
+  </Playground>
+}
+```
+
+### Multiselect sizes
+
+```tsx playground
+import { Multiselect, Text } from 'woly';
+import { IconInfo } from 'static/icons';
+import { sortById } from './sort';
+import { block } from 'dev/playground'
+import { daysOfWeek } from './constants'
+
+export function Example() {
+
+  const [options, setOptions] = React.useState(daysOfWeek);
+
+  const value = options.filter((option) => option.selected);
+
+  const onChange = (event) => {
+    event.preventDefault();
+
+    const id = event.currentTarget.id || event.currentTarget.dataset.id;
+
+    if (!id) {
+      return;
+    }
+
+    const index = options.findIndex((option) => parseInt(option.id, 10) === parseInt(id, 10));
+
+    if (index > -1) {
+      const element = options.splice(index, 1)[0];
+      element.selected = !element.selected;
+
+      const newValue = sortById([...options, element]);
+
+      setOptions(newValue);
+    }
+  };
+
+  return <Playground>
+    <div style={{padding: '300px 0', width: '100%', display: 'flex', flexDirection: 'column'}}>
+      <block.N style={{padding: '10px'}}>
+      <Text>Size N</Text>
+        <Multiselect
+          onChange={onChange}
+          options={options}
+          placeholder="Choose an option"
+          priority="primary"
+          value={value}
+          leftIcon={<IconInfo/>}
+          rightIcon={<IconInfo/>}
+        />
+      </block.N>
+      <block.XS  style={{padding: '10px'}}>
+      <Text>Size XS</Text>
+        <Multiselect
+          onChange={onChange}
+          options={options}
+          placeholder="Choose an option"
+          priority="primary"
+          value={value}
+          leftIcon={<IconInfo/>}
+          rightIcon={<IconInfo/>}
+        />
+      </block.XS>
+      <block.S style={{padding: '10px'}}>
+      <Text>Size S</Text>
+        <Multiselect
+          onChange={onChange}
+          options={options}
+          placeholder="Choose an option"
+          priority="primary"
+          value={value}
+          leftIcon={<IconInfo/>}
+          rightIcon={<IconInfo/>}
+        />
+      </block.S>
+      <block.M style={{padding: '10px'}}>
+      <Text>Size M</Text>
+        <Multiselect
+          onChange={onChange}
+          options={options}
+          placeholder="Choose an option"
+          priority="primary"
+          value={value}
+          leftIcon={<IconInfo/>}
+          rightIcon={<IconInfo/>}
+        />
+      </block.M>
+      <block.L style={{padding: '10px'}}>
+      <Text>Size L</Text>
+        <Multiselect
+          onChange={onChange}
+          options={options}
+          placeholder="Choose an option"
+          priority="primary"
+          value={value}
+          leftIcon={<IconInfo/>}
+          rightIcon={<IconInfo/>}
+        />
+      </block.L>
+      <block.XL style={{padding: '10px'}}>
+      <Text>Size XL</Text>
+        <Multiselect
+          onChange={onChange}
+          options={options}
+          placeholder="Choose an option"
+          priority="primary"
+          value={value}
+          leftIcon={<IconInfo/>}
+          rightIcon={<IconInfo/>}
+        />
+      </block.XL>
+      <block.H style={{padding: '10px'}}> <Text>Size H</Text>
+        <Multiselect
+          onChange={onChange}
+          options={options}
+          placeholder="Choose an option"
+          priority="primary"
+          value={value}
+          leftIcon={<IconInfo/>}
+          rightIcon={<IconInfo/>}
+        />
+      </block.H>
+      </div>
+  </Playground>
+}
+```

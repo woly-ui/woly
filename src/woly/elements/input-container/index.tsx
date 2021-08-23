@@ -5,26 +5,29 @@ import { levelDowngrade } from 'lib/level-downgrade';
 
 import { box } from '../box';
 
-interface InputContainerProps extends React.InputHTMLAttributes<HTMLInputElement> {
+export interface InputContainerProps extends React.InputHTMLAttributes<HTMLInputElement> {
   className?: string;
   disabled?: boolean;
   leftIcon?: React.ReactNode;
+  onClick?: React.EventHandler<React.SyntheticEvent>;
   rightIcon?: React.ReactNode;
 }
 
-const InputContainerBase: React.FC<InputContainerProps & Priority> = ({
+export const InputContainerBase: React.FC<InputContainerProps & Priority> = ({
   children,
   className,
   disabled = 'false',
   leftIcon,
+  onClick,
   priority = 'secondary',
   rightIcon,
 }) => (
-  <div
+  <InputContainerStyle
     {...levelDowngrade.setup()}
     className={className}
     data-disabled={disabled}
     data-priority={priority}
+    onClick={onClick}
   >
     {leftIcon && (
       <span data-element="icon" data-box-role="icon">
@@ -37,15 +40,17 @@ const InputContainerBase: React.FC<InputContainerProps & Priority> = ({
         {rightIcon}
       </span>
     )}
-  </div>
+  </InputContainerStyle>
 );
 
 export const InputContainer = styled(InputContainerBase)`
+  ${box}
+` as StyledComponent<'div', Record<string, unknown>, InputContainerProps & Priority>;
+
+export const InputContainerStyle = styled.div`
   --local-background-color: var(--woly-canvas-default);
   --local-border-color: var(--woly-shape-default);
   --local-icon-fill: var(--woly-canvas-text-default);
-
-  ${box}
 
   display: flex;
   align-items: center;
@@ -108,4 +113,4 @@ export const InputContainer = styled(InputContainerBase)`
     --local-border-color: var(--woly-canvas-disabled);
     --local-icon-fill: var(--woly-canvas-text-disabled);
   }
-` as StyledComponent<'div', Record<string, unknown>, InputContainerProps & Priority>;
+`;

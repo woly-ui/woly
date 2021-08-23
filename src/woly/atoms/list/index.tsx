@@ -62,9 +62,9 @@ export const BaseListItem = forwardRef<HTMLLIElement, ListItemProps>(
         onClick={onClick}
         {...rest}
       >
-        {iconLeft && <span data-element="icon">{iconLeft}</span>}
-        <span>{text}</span>
-        {iconRight && <span data-element="icon">{iconRight}</span>}
+        {iconLeft && <div data-element="icon">{iconLeft}</div>}
+        <div>{text}</div>
+        {iconRight && <div data-element="icon">{iconRight}</div>}
       </li>
     );
   },
