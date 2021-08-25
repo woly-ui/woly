@@ -6,7 +6,6 @@ import { useUniqueID } from 'lib/hooks';
 import { ConfiguratorName, Configurators } from './configurators';
 import { Global } from './global';
 import { block } from './block';
-import { mapColoring } from '../lib/coloring';
 
 export { block };
 
@@ -28,14 +27,10 @@ export const Playground: React.FC<Props> = ({
 
   const Wrapper = block[size];
 
-  const coloring = mapColoring({
-    inversed: filled,
-  });
-
   return (
     <PlaygroundWrapper>
-      <Global data-scope={scopeId} data-coloring="default">
-        <Frame data-coloring={coloring} data-priority="primary">
+      <Global data-scope={scopeId}>
+        <Frame data-priority="primary">
           <Wrapper>
             <Container data-dir={direction}>{children}</Container>
           </Wrapper>
@@ -104,11 +99,6 @@ const Frame = styled.div`
   border-radius: 4px 4px 0 0;
 
   resize: both;
-
-  &[data-coloring='inversed'] {
-    background-color: var(--woly-canvas-default);
-    border-color: var(--woly-canvas-default);
-  }
 `;
 
 const Container = styled.div`

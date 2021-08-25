@@ -115,6 +115,7 @@ export const Popover = styled(PopoverBase)`
     z-index: 1;
 
     min-width: 100%;
+    width: max-content;
 
     visibility: hidden;
     opacity: 0;

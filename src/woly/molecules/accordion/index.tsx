@@ -26,15 +26,10 @@ const AccordionBase: React.FC<AccordionProps & Priority> = ({
     },
     [isContentVisible],
   );
+
   return (
-    <div className={className} data-priority={priority}>
-      <div
-        data-element="header"
-        data-open={isContentVisible}
-        onClick={setContentVisible}
-        onKeyDown={onKeyDown}
-        tabIndex={0}
-      >
+    <div className={className} data-priority={priority} data-open={isContentVisible}>
+      <div data-element="header" onClick={setContentVisible} onKeyDown={onKeyDown} tabIndex={0}>
         <div data-element="title">{title}</div>
         <div data-element="icon">
           <IconArrowDown />
@@ -72,10 +67,11 @@ export const Accordion = styled(AccordionBase)`
   }
 
   [data-element='header'] {
+    position: relative;
     display: flex;
     align-items: center;
 
-    margin-bottom: var(--woly-border-width);
+    margin-bottom: calc(var(--woly-border-width) * -1);
 
     padding: var(--local-vertical) var(--local-horizontal);
 
@@ -118,16 +114,18 @@ export const Accordion = styled(AccordionBase)`
     display: none;
   }
 
-  [data-open='true'] {
+  &[data-open='true'] > [data-element='header'] {
     --local-background-color: var(--woly-canvas-disabled);
     --local-border-color: var(--woly-canvas-default);
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
   }
 
-  [data-open='true'] > [data-element='icon'] {
+  &[data-open='true'] > [data-element='header'] > [data-element='icon'] {
     transform: rotate(180deg);
   }
 
-  [data-open='true'] ~ [data-element='content'] {
+  &[data-open='true'] > [data-element='content'] {
     display: inline-block;
     width: 100%;
 

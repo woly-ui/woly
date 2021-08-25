@@ -70,6 +70,7 @@ const TextAreaBase: React.FC<TextAreaProps & Priority> = ({
         rows={rows}
         value={value}
         wrap={wrap}
+        disabled={disabled}
         {...p}
       />
     </div>
@@ -98,7 +99,7 @@ export const TextArea = styled(TextAreaBase)`
     resize: none;
 
     &::placeholder {
-      color: var(--woly-neutral);
+      color: var(--woly-canvas-text-transparent);
     }
   }
 

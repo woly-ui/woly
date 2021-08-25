@@ -37,17 +37,14 @@ If you scroll to the bottom of page and there is no place for Popover to show it
 <Playground>
   <div style={{ padding: '150px 0', display: 'flex' }}>
     <div style={{ padding: '0 10px' }}>
-      <Popover
-        isOpen={false}
-        content={<div style={{ padding: '30px 50px' }}>Hello! This is Popover!</div>}
-      >
+      <Popover isOpen={false} content={<div style={{ padding: 12 }}>Hello! This is Popover!</div>}>
         <Button text="Open Popover" onClick={() => {}} priority="primary" />
       </Popover>
     </div>
     <Popover
       isOpen={false}
       position="top"
-      content={<div style={{ padding: '30px 50px' }}>This is top Popover!</div>}
+      content={<div style={{ padding: 12 }}>This is top Popover!</div>}
     >
       <ButtonIcon icon={<IconSearch />} onClick={() => {}} priority="primary" />
     </Popover>

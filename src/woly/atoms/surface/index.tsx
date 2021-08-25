@@ -1,7 +1,6 @@
 import React from 'react';
 import styled, { StyledComponent } from 'styled-components';
 import { Priority } from 'lib/types';
-import { mapColoring } from 'lib/coloring';
 
 interface SurfaceProps {
   weight?: string;
@@ -10,9 +9,6 @@ interface SurfaceProps {
 const map = (properties: SurfaceProps & Priority) => ({
   'data-priority': properties.priority || 'secondary',
   'data-weight': properties.weight || 'goast',
-  'data-coloring': mapColoring({
-    inversed: properties.weight === 'fill',
-  }),
 });
 
 export const Surface = styled.div.attrs(map)`
@@ -23,14 +19,15 @@ export const Surface = styled.div.attrs(map)`
   border-radius: var(--woly-rounding);
 
   &[data-weight='fill'] {
+    color: var(--woly-shape-text-default);
     background-color: var(--woly-shape-default);
     border-color: var(--woly-shape-default);
-    box-shadow: 3px 3px 8px var(--woly-shape-default);
+    box-shadow: var(--woly-shadow);
   }
 
   &[data-weight='goast'] {
     background-color: var(--woly-background);
     border-color: var(--woly-background);
-    box-shadow: 3px 3px 8px var(--woly-shape-text-disabled);
+    box-shadow: var(--woly-shadow);
   }
 ` as StyledComponent<'div', Record<string, unknown>, SurfaceProps & Priority>;

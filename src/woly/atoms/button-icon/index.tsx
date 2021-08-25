@@ -69,9 +69,10 @@ export const ButtonIcon = styled(ButtonIconBase)`
   &[data-weight='fill'] {
     --local-shape-color: var(--woly-shape-default);
     --local-icon-color: var(--woly-shape-text-default);
+    --local-border-color: transparent;
 
     background: var(--local-shape-color);
-    border-color: var(--local-shape-color);
+    border-color: var(--local-border-color);
 
     [data-element='icon'] > svg > path {
       fill: var(--local-icon-color);
@@ -93,17 +94,18 @@ export const ButtonIcon = styled(ButtonIconBase)`
 
     &:disabled {
       pointer-events: none;
-      --local-shape-color: var(--woly-canvas-disabled);
-      --local-icon-color: var(--woly-shape-text-disabled);
+      --local-shape-color: var(--woly-shape-disabled);
+      --local-icon-color: var(--woly-shape-text-default);
     }
   }
 
   &[data-weight='outline'] {
     --local-shape-color: transparent;
     --local-icon-color: var(--woly-shape-default);
+    --local-border-color: var(--local-icon-color);
 
     background: var(--local-shape-color);
-    border-color: var(--local-icon-color);
+    border-color: var(--local-border-color);
 
     [data-element='icon'] > svg > path {
       fill: var(--local-icon-color);
@@ -125,15 +127,15 @@ export const ButtonIcon = styled(ButtonIconBase)`
 
     &:disabled {
       pointer-events: none;
-      --local-shape-color: var(--woly-shape-text-disabled);
-      --local-icon-color: var(--woly-canvas-text-disabled);
+      --local-shape-color: transparent;
+      --local-icon-color: var(--woly-shape-text-disabled);
     }
   }
 
   &[data-weight='goast'] {
     --local-shape-color: transparent;
     --local-icon-color: var(--woly-shape-default);
-    --local-border-color: var(--woly-shape-default);
+    --local-border-color: transparent;
 
     --local-shadow: var(--woly-border-width) var(--woly-border-width)
       calc(var(--woly-border-width) * 4) hsla(0, 0%, 100%, 50%);
@@ -164,8 +166,8 @@ export const ButtonIcon = styled(ButtonIconBase)`
 
     &:disabled {
       pointer-events: none;
-      --local-shape-color: var(--woly-shape-text-disabled);
-      --local-icon-color: var(--woly-shape-disabled);
+      --local-shape-color: var(--woly-shape-disabled);
+      --local-icon-color: var(--woly-shape-text-disabled);
     }
   }
 
