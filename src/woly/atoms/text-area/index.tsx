@@ -145,4 +145,4 @@ export const TextArea = styled(TextAreaBase)`
   &[data-resize='true'] {
     resize: both;
   }
-` as StyledComponent<'textarea', Record<string, unknown>, TextAreaProps & Priority>;
+` as StyledComponent<'div', Record<string, unknown>, TextAreaProps & Priority>;

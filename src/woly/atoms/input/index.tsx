@@ -3,13 +3,14 @@ import styled, { StyledComponent } from 'styled-components';
 import { InputContainer, InputElement } from 'ui/elements';
 import { Priority } from 'lib/types';
 
-interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   autoComplete?: 'on' | 'off';
   className?: string;
   disabled?: boolean;
   leftIcon?: React.ReactNode;
   name: string;
   onChange: React.EventHandler<React.SyntheticEvent>;
+  onBlur?: React.EventHandler<React.SyntheticEvent>;
   placeholder?: string;
   rightIcon?: React.ReactNode;
   type: 'text' | 'password' | 'email';
@@ -23,6 +24,7 @@ const InputBase: React.FC<InputProps & Priority> = ({
   leftIcon,
   name,
   onChange,
+  onBlur = () => {},
   placeholder,
   priority = 'secondary',
   rightIcon,
@@ -43,6 +45,7 @@ const InputBase: React.FC<InputProps & Priority> = ({
       disabled={disabled}
       name={name}
       onChange={onChange}
+      onBlur={onBlur}
       placeholder={placeholder}
       type={type}
       value={value}

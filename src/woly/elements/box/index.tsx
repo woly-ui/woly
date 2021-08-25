@@ -33,12 +33,17 @@ export const box = css`
   }
 `;
 
-export const boxInline = css`
+export const lineBox = css`
   --local-vertical: calc(1px * var(--woly-component-level) * var(--woly-main-level));
+  --local-gap: max(
+    var(--woly-const-m),
+    calc((1px * var(--woly-component-level) * var(--woly-main-level)))
+  );
+  display: flex;
+  padding: var(--local-vertical) 0;
 
-  & > * {
-    padding-top: var(--local-vertical);
-    padding-bottom: var(--local-vertical);
+  > *:not(:only-child):not(:last-child) {
+    margin-right: var(--local-gap);
   }
 `;
 

@@ -1,0 +1,70 @@
+### Example
+
+```tsx playground
+import { TimePicker } from 'calendar';
+
+export function Example() {
+  const [value, onChange] = React.useState('')
+  return (
+    <Playground>
+      <div style={{ paddingBottom: '200px', display: 'flex' }}>
+        <TimePicker priority="default" name="time" value={value} onChange={onChange} />
+      </div>
+    </Playground>
+  )
+}
+```
+
+### Custom steps
+
+```tsx playground
+import { TimePicker } from 'calendar';
+
+export function Example() {
+  const [value, onChange] = React.useState('')
+  return (
+    <Playground>
+      <div style={{ paddingBottom: '200px', display: 'flex' }}>
+        <TimePicker
+          format="HH:mm:ss"
+          priority="default"
+          name="time"
+          value={value}
+          onChange={onChange}
+          hourStep={2}
+          minStep={5}
+          secStep={10}
+        />
+      </div>
+    </Playground>
+  )
+}
+```
+
+### Disabled
+
+```tsx playground
+import { TimePicker } from 'calendar';
+
+export function Example() {
+  const [value, onChange] = React.useState('')
+  return (
+    <Playground>
+      <div style={{ paddingBottom: '200px', display: 'flex' }}>
+        <TimePicker priority="default" name="time" value={value} disabled onChange={onChange} />
+      </div>
+    </Playground>
+  )
+}
+```
+
+### Props
+
+| Name       | Type                                          | Default   | Description                                                                           |
+| ---------- | --------------------------------------------- | --------- | ------------------------------------------------------------------------------------- |
+| `format`   | `'HH:mm:ss' l 'hh:mm:ss' l 'HH:mm' l 'hh:mm'` | `'HH:mm'` | time format                                                                           |
+| `hourStep` | `number`                                      | `1`       | define set of available values for hour (eg. hourStep = 3, options = [0, 3, 6, 9...]) |
+| `minStep`  | `number`                                      | `1`       | define set of available values for min                                                |
+| `secStep`  | `number`                                      | `1`       | define set of available values for sec                                                |
+| `onChange` | `(newValue: string) => void`                  |           | change callback                                                                       |
+| `...`      | `InputProps`                                  | `{}`      | Props from Input component                                                            |
