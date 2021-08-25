@@ -1,6 +1,3 @@
-import {RadioButton} from 'ui';
-import {Playground, State} from 'dev/playground';
-
 The `RadioButton` component lets you add a radio button and assign it to a radio group.
 Users can select only one radio button at a time within a radio group.
 
@@ -12,123 +9,131 @@ When a user chooses a new item, the previous choice is automatically deselected.
 
 ### Example
 
-<Playground direction="vertical">
-  <State initial="no" change={(i) => !i}>
-    {(value, change) => (
-      <>
-        <RadioButton
-          name="my-input"
-          id="yes"
-          checked={value}
-          onChange={change}
-          priority="primary"
-          text="yes"
-        />
-        <RadioButton
-          name="my-input"
-          id="no"
-          checked={value}
-          onChange={change}
-          priority="primary"
-          text="no"
-        />
-      </>
-    )}
-  </State>
-</Playground>
+```tsx playground
+import {RadioButton, Heading} from 'ui';
+
+export function Example () {
+  const [checked, setChecked] = React.useState('no');
+
+  const handleChange = (e) => {
+    setChecked(e.target.value)
+  }
+
+  return <Playground direction="vertical">
+    <Heading size="3">Are you a programmer?</Heading>
+    <div>
+      <RadioButton
+        name="example-1"
+        id="e1-yes"
+        checked={checked === 'yes'}
+        onChange={handleChange}
+        priority="primary"
+        text="yes"
+        value="yes"
+      />
+      <RadioButton
+        name="example-1"
+        id="e1-no"
+        checked={checked === 'no'}
+        onChange={handleChange}
+        priority="primary"
+        text="no"
+        value="no"
+      />
+    </div>
+  </Playground>;
+}
+```
 
 ### Disabled
 
 Disabled radio button are uneditable. They have less opacity so that they appear less tappable.
 
-<Playground>
-  <State initial={false} change={(i) => !i}>
-    {(value, change) => (
-      <RadioButton id="one" checked disabled priority="primary" text="disabled" onChange={change} />
-    )}
-  </State>
-</Playground>
+```tsx playground
+import {RadioButton} from 'ui';
+
+export function Example () {
+  return <Playground>
+    <RadioButton checked disabled priority="primary" text="disabled" onChange={console.log} />
+  </Playground>;
+}
+```
 
 ### Priorities
 
 Primary and danger priorities are should be used to focus user attention.
 
-<Playground direction="vertical">
-  <State initial="no" change={(i) => !i}>
-    {(value, change) => (
-      <>
-        <RadioButton
-          name="my-input"
-          id="yes"
-          checked={value}
-          onChange={change}
-          priority="primary"
-          text="yes"
-        />
-        <RadioButton
-          name="my-input"
-          id="no"
-          checked={value}
-          onChange={change}
-          priority="primary"
-          text="no"
-        />
-      </>
-    )}
-  </State>
-</Playground>
+```tsx playground
+import {RadioButton, Heading} from 'ui';
 
-<Playground direction="vertical">
-  <State initial="no" change={(i) => !i}>
-    {(value, change) => (
-      <>
-        <RadioButton
-          name="my-input"
-          id="yes"
-          checked={value}
-          onChange={change}
-          priority="danger"
-          text="yes"
-        />
-        <RadioButton
-          name="my-input"
-          id="no"
-          checked={value}
-          onChange={change}
-          priority="danger"
-          text="no"
-        />
-      </>
-    )}
-  </State>
-</Playground>
+export function Example () {
+  const [checked, setChecked] = React.useState('no');
+
+  const handleChange = (e) => {
+    setChecked(e.target.value)
+  }
+
+  return <Playground direction="vertical">
+    <Heading size="3">Do you smoke?</Heading>
+    <div>
+      <RadioButton
+        name="example-2"
+        id="e2-yes"
+        checked={checked === 'yes'}
+        onChange={handleChange}
+        priority="danger"
+        text="yes"
+        value="yes"
+      />
+      <RadioButton
+        name="example-2"
+        id="e2-no"
+        checked={checked === 'no'}
+        onChange={handleChange}
+        priority="primary"
+        text="no"
+        value="no"
+      />
+    </div>
+  </Playground>;
+}
+```
 
 Secondary priority should be used as default priority
 
-<Playground direction="vertical">
-  <State initial="no" change={(i) => !i}>
-    {(value, change) => (
-      <>
-        <RadioButton
-          name="my-input"
-          id="yes"
-          checked={value}
-          onChange={change}
-          priority="secondary"
-          text="yes"
-        />
-        <RadioButton
-          name="my-input"
-          id="no"
-          checked={value}
-          onChange={change}
-          priority="secondary"
-          text="no"
-        />
-      </>
-    )}
-  </State>
-</Playground>
+```tsx playground
+import {RadioButton, Heading} from 'ui';
+
+export function Example () {
+  const [checked, setChecked] = React.useState('m');
+
+  const handleChange = (e) => {
+    setChecked(e.target.value)
+  }
+
+  return <Playground direction="vertical">
+    <Heading size="3">Sex</Heading>
+    <div>
+      <RadioButton
+        name="example-3"
+        id="e3-male"
+        checked={checked === 'm'}
+        onChange={handleChange}
+        text="male"
+        value="m"
+      />
+      <RadioButton
+        name="example-3"
+        id="e3-female"
+        checked={checked === 'f'}
+        onChange={handleChange}
+        text="female"
+        value="f"
+      />
+    </div>
+  </Playground>;
+}
+```
 
 ### Props
 

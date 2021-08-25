@@ -15,75 +15,116 @@ Use a checkbox when the user has to stop before performing an action. Checkbox w
 
 ### Example
 
-<Playground>
-  <State initial={false} change={(i) => !i}>
-    {(value, change) => (
-      <Checkbox checked={value} id="simple" onChange={change} text="Simple" priority="primary" />
-    )}
-  </State>
-</Playground>
+```tsx playground
+import {Checkbox} from 'ui';
+
+export function Example () {
+  const [values, setValues] = React.useState({})
+
+  const handleChange = (e) => {
+    const { id } = e.target;
+
+    setValues({
+      ...values,
+      [id]: !values[id]
+    })
+  }
+
+  return <Playground direction="vertical">
+    <div style={{ width: '240px' }}>
+      <Checkbox checked={values['ex1-simple1'] ?? false} id="ex1-simple1" onChange={handleChange} text="Option 1" priority="primary" />
+      <Checkbox checked={values['ex1-simple2'] ?? false} id="ex1-simple2" onChange={handleChange} text="Option 2" priority="primary" />
+      <Checkbox checked={values['ex1-simple3'] ?? false} id="ex1-simple3" onChange={handleChange} text="Option 3 with long text that will go to next line for sure" priority="primary" />
+    </div>
+  </Playground>
+}
+```
 
 ### Size
 
 Size controlled by the `component-level` block property not from the props.
 
-<Playground>
-  <State initial={false} change={(i) => !i}>
-    {(value, change) => (
-      <>
-        <block.S>
-          <Checkbox checked={value} id="small" onChange={change} text="Small" priority="primary" />
-        </block.S>
-        <block.M>
-          <Checkbox
-            checked={value}
-            id="medium"
-            onChange={change}
-            text="Medium"
-            priority="primary"
-          />
-        </block.M>
-        <block.L>
-          <Checkbox checked={value} id="large" onChange={change} text="Large" priority="primary" />
-        </block.L>
-        <block.XL>
-          <Checkbox
-            checked={value}
-            id="extra"
-            onChange={change}
-            text="Extra large"
-            priority="primary"
-          />
-        </block.XL>
-        <block.H>
-          <Checkbox checked={value} id="huge" onChange={change} text="Huge" priority="primary" />
-        </block.H>
-      </>
-    )}
-  </State>
-</Playground>
+```tsx playground
+import {Checkbox} from 'ui';
+
+const filler = 'lorem ipsum dolor sit amet'
+
+export function Example () {
+  const [values, setValues] = React.useState({})
+
+  const handleChange = (e) => {
+    const { checked, id } = e.currentTarget;
+
+    setValues({
+      ...values,
+      [id]: !values[id]
+    })
+  }
+
+  return <Playground direction="vertical">
+    <block.S>
+      <Checkbox checked={values['ex2-small'] ?? false} id="ex2-small" onChange={handleChange} text={`Small ${filler}`} priority="primary" />
+    </block.S>
+    <block.M>
+      <Checkbox
+        checked={values['e2-medium'] ?? false}
+        id="e2-medium"
+        onChange={handleChange}
+        text={`Medium ${filler}`}
+        priority="primary"
+      />
+    </block.M>
+    <block.L>
+      <Checkbox checked={values['ex2-large'] ?? false} id="ex2-large" onChange={handleChange} text={`Large ${filler}`} priority="primary" />
+    </block.L>
+    <block.XL>
+      <Checkbox
+        checked={values['e2-extra'] ?? false}
+        id="e2-extra"
+        onChange={handleChange}
+        text={`Extra Large ${filler}`}
+        priority="primary"
+      />
+    </block.XL>
+    <block.H>
+      <Checkbox checked={values['ex2-huge'] ?? false} id="ex2-huge" onChange={handleChange} text={`Huge ${filler}`} priority="primary" />
+    </block.H>
+  </Playground>
+}
+```
 
 ### Priorities
 
 Primary priority should be used to focus user attention. The disabled checkbox is unusable and un-clickable.
 
-<Playground size="S">
-  <State initial={false} change={(i) => !i}>
-    {(value, change) => (
-      <>
-        <Checkbox checked onChange={change} id="primary" text="Primary" priority="primary" />
-        <Checkbox
-          checked
-          onChange={change}
-          disabled
-          id="disabled"
-          text="Disabled"
-          priority="primary"
-        />
-      </>
-    )}
-  </State>
-</Playground>
+```tsx playground
+import {Checkbox} from 'ui';
+
+export function Example () {
+  const [values, setValues] = React.useState({})
+
+  const handleChange = (e) => {
+    const { checked, id } = e.currentTarget;
+
+    setValues({
+      ...values,
+      [id]: !values[id]
+    })
+  }
+
+  return <Playground>
+    <Checkbox checked onChange={handleChange} id="primary" text="Primary" priority="primary" />
+    <Checkbox
+      checked
+      onChange={handleChange}
+      disabled
+      id="disabled"
+      text="Disabled"
+      priority="primary"
+    />
+  </Playground>
+}
+```
 
 ### Props
 
