@@ -2,8 +2,8 @@ import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
 import { IconCheckFilled, IconFilledUnchecked } from 'static/icons';
 import { Priority } from 'lib/types';
-import { boxInline } from 'ui/elements/box';
 import { keyboardEventHandle } from 'lib/keyboard';
+import { lineBox, visuallyHidden } from 'ui/elements';
 
 interface CheckboxProps {
   className?: string;
@@ -30,6 +30,7 @@ const CheckboxBase: React.FC<CheckboxProps & Priority> = ({
       if (event.key === 'Enter') {
         event.preventDefault();
       }
+
       const keyHandler = {
         enter: (event: React.SyntheticEvent<Element, Event>) => {
           onChange(event);
@@ -49,131 +50,118 @@ const CheckboxBase: React.FC<CheckboxProps & Priority> = ({
       htmlFor={id}
       className={className}
       data-priority={priority}
-      onKeyDown={onKeyDown}
-      tabIndex={tabIndex}
+      data-disabled={disabled}
+      tabIndex={-1}
     >
-      <span data-element="container" data-disabled={disabled} tabIndex={-1}>
-        <span data-element="icon">
-          <input type="checkbox" id={id} checked={checked} onChange={onChange} />
-          <span data-unchecked>
-            <IconFilledUnchecked />
-          </span>
-          <span data-checked>
-            <IconCheckFilled />
-          </span>
+      <span data-element="checkbox">
+        <input
+          type="checkbox"
+          id={id}
+          tabIndex={tabIndex}
+          checked={checked}
+          onChange={onChange}
+          onKeyDown={onKeyDown}
+          disabled={disabled}
+        />
+        <span data-element="checkbox-unchecked">
+          <IconFilledUnchecked />
         </span>
-        {text && <span data-element="text">{text}</span>}
+        <span data-element="checkbox-checked">
+          <IconCheckFilled />
+        </span>
       </span>
+      {text && <span data-element="text">{text}</span>}
     </label>
   );
 };
 
 export const Checkbox = styled(CheckboxBase)`
-  ${boxInline}
+  ${lineBox}
 
   --local-icon-size: var(--woly-line-height);
   --local-icon-fill: var(--local-background-color);
   --local-icon-stroke: var(--woly-shape-default);
   --local-text-color: var(--woly-canvas-text-default);
   --local-background-color: var(--woly-shape-default);
-  /* TODO: rewrite to actual formula */
-  --local-gap: var(--woly-const-m);
 
   outline: none;
 
   user-select: none;
 
-  &:focus [data-element='checkmark'] > svg,
-  &:active [data-element='checkmark'] > svg {
-    box-shadow: 0 0 0 var(--woly-border-width) var(--woly-focus);
+  input {
+    ${visuallyHidden}
   }
 
-  [data-element='container'] {
+  input:focus ~ [data-element^='checkbox'] > svg {
+    box-shadow: 0 0 0 var(--woly-border-width) var(--woly-focus-color);
+  }
+
+  [data-element='text'] {
+    color: var(--local-text-color);
+    font-size: var(--woly-font-size);
+    line-height: var(--woly-line-height);
+  }
+
+  [data-element='checkbox-unchecked'],
+  input:checked ~ [data-element='checkbox-checked'] {
     display: flex;
+    flex-shrink: 0;
     align-items: center;
+    justify-content: center;
+    width: var(--local-icon-size);
+    height: var(--local-icon-size);
 
-    outline: none;
+    svg {
+      border-radius: var(--woly-rounding);
+    }
+  }
 
-    [data-element='text'] {
-      margin-left: var(--local-gap);
-
-      color: var(--local-text-color);
-      font-size: var(--woly-font-size);
-      line-height: var(--woly-line-height);
+  input:checked ~ [data-element='checkbox-checked'] {
+    svg > rect {
+      fill: var(--local-icon-fill);
     }
 
-    input {
-      display: none;
+    &:hover {
+      --local-icon-fill: var(--woly-shape-hover);
     }
 
-    [data-checkmark] {
-      width: var(--local-icon-size);
-      height: var(--local-icon-size);
+    &:focus,
+    &:active {
+      --local-icon-fill: var(--woly-focus-color);
+    }
+  }
 
-      margin-right: var(--local-gap);
+  [data-element='checkbox-checked'],
+  input:checked ~ [data-element='checkbox-unchecked'] {
+    display: none;
+  }
 
-      svg {
-        border-radius: var(--woly-rounding);
-      }
+  [data-element='checkbox-unchecked'] {
+    &:hover svg > rect {
+      stroke: var(--local-icon-stroke);
     }
 
-    [data-unchecked],
-    input:checked ~ [data-checked] {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    input:checked ~ [data-checked] {
+    &:focus,
+    &:active {
       svg > rect {
-        fill: var(--local-icon-fill);
-      }
-
-      &:hover {
-        --local-icon-fill: var(--woly-shape-hover);
-      }
-
-      &:focus,
-      &:active {
-        --local-icon-fill: var(--woly-focus);
-      }
-    }
-
-    [data-checked],
-    input:checked ~ [data-unchecked] {
-      display: none;
-    }
-
-    [data-unchecked] {
-      &:hover {
-        svg > rect {
-          stroke: var(--local-icon-stroke);
-        }
-      }
-
-      &:focus,
-      &:active {
-        svg > rect {
-          --local-icon-stroke: var(--woly-focus);
-        }
+        --local-icon-stroke: var(--woly-focus-color);
       }
     }
   }
 
-  [data-disabled='true'] {
+  &[data-disabled='true'] {
     pointer-events: none;
 
-    [data-block='text'] {
+    [data-element='text'] {
       --local-text-color: var(--woly-shape-disabled);
     }
 
-    [data-unchecked] > svg,
-    [data-checked] > svg {
+    [data-element^='checkbox'] > svg {
       box-shadow: none;
     }
 
-    [data-unchecked],
-    input:checked ~ [data-checked] {
+    [data-element='checkbox-unchecked'],
+    input:checked ~ [data-element='checkbox-checked'] {
       display: flex;
       align-items: center;
       justify-content: center;
@@ -183,8 +171,8 @@ export const Checkbox = styled(CheckboxBase)`
       }
     }
 
-    [data-checked],
-    input:checked ~ [data-unchecked] {
+    [data-element='checkbox-checked'],
+    input:checked ~ [data-element='checkbox-unchecked'] {
       display: none;
     }
   }
