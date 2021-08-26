@@ -99,7 +99,8 @@ export const TextArea = styled(TextAreaBase)`
     resize: none;
 
     &::placeholder {
-      color: var(--woly-canvas-text-transparent);
+      color: var(--woly-canvas-text-default);
+      opacity: 50%;
     }
   }
 
@@ -132,11 +133,16 @@ export const TextArea = styled(TextAreaBase)`
   }
 
   &[data-disabled='true'] {
-    pointer-events: none;
-
     --local-background-color: var(--woly-canvas-disabled);
     --local-border-color: var(--woly-canvas-disabled);
-    --local-text-color: var(--woly-canvas-text-disabled);
+    --local-text-color: var(--woly-canvas-text-default);
+
+    opacity: 50%;
+    pointer-events: none;
+
+    &::placeholder {
+      color: var(--woly-canvas-text-disabled);
+    }
   }
 
   &[data-overflow='true'] > textarea {
