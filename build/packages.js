@@ -79,7 +79,11 @@ const woly = {
   ...getModules('woly'),
   files: getFiles('woly'),
   keywords,
-  dependencies: {},
+  dependencies: {
+    'react-dropzone': '^11.3.4',
+    'react-resize-detector': '^6.7.4',
+    '@tippyjs/react': '^4.2.5',
+  },
   peerDependencies: {
     ...dependsPeer,
   },

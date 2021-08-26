@@ -25,7 +25,11 @@
     "ui",
     "woly"
   ],
-  "dependencies": {},
+  "dependencies": {
+    "react-dropzone": "^11.3.4",
+    "react-resize-detector": "^6.7.4",
+    "@tippyjs/react": "^4.2.5"
+  },
   "peerDependencies": {
     "react": "^16.14.0",
     "styled-components": "^5.2.1"

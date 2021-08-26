@@ -1,5 +1,6 @@
 {
   "name": "@woly/upload",
+  "version": "0.1.0",
   "description": "Upload components for Woly React library",
   "main": "upload.js",
   "types": "upload.d.ts",
