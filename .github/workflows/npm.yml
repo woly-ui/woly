@@ -11,6 +11,10 @@ on:
         description: '[calendar] Set "yes" to run publish'
         required: true
         default: 'no'
+      upload:
+        description: '[upload] Set "yes" to run publish'
+        required: true
+        default: 'no'
 
 jobs:
   publish:
@@ -48,4 +52,9 @@ jobs:
       - name: Publish calendar to NPM
         if: github.event.inputs.calendar == 'yes'
         working-directory: 'dist/calendar'
+        run: npm publish
+
+      - name: Publish upload to NPM
+        if: github.event.inputs.upload == 'yes'
+        working-directory: 'dist/upload'
         run: npm publish
