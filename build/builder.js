@@ -50,6 +50,9 @@ const externals = [
   'styled-components',
   'woly',
   'react-dropzone',
+  'react-resize-detector',
+  'react-colorful',
+  'color-rgba'
 ];
 
 const extensions = ['.js', '.mjs', '.ts', '.tsx'];
