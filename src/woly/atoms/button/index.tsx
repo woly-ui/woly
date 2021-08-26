@@ -115,7 +115,7 @@ export const Button = styled(ButtonBase)`
   }
 
   &:disabled {
-    --local-text-color: var(--woly-shape-text-disabled);
+    --local-text-color: var(--woly-shape-text-default);
     --local-shape-color: var(--woly-shape-disabled);
   }
 ` as StyledComponent<'button', Record<string, unknown>, ButtonProps & Priority>;
