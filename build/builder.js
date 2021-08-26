@@ -52,7 +52,7 @@ const externals = [
   'react-dropzone',
   'react-resize-detector',
   'react-colorful',
-  'color-rgba'
+  'color-rgba',
 ];
 
 const extensions = ['.js', '.mjs', '.ts', '.tsx'];
