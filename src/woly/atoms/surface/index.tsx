@@ -20,6 +20,7 @@ export const Surface = styled.div.attrs(map)`
 
   &[data-weight='fill'] {
     color: var(--woly-shape-text-default);
+
     background-color: var(--woly-shape-default);
     border-color: var(--woly-shape-default);
     box-shadow: var(--woly-shadow);

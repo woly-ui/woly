@@ -68,6 +68,7 @@ export const Accordion = styled(AccordionBase)`
 
   [data-element='header'] {
     position: relative;
+
     display: flex;
     align-items: center;
 
@@ -117,8 +118,8 @@ export const Accordion = styled(AccordionBase)`
   &[data-open='true'] > [data-element='header'] {
     --local-background-color: var(--woly-canvas-disabled);
     --local-border-color: var(--woly-canvas-default);
-    border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
   }
 
   &[data-open='true'] > [data-element='header'] > [data-element='icon'] {
