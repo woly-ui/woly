@@ -69,7 +69,7 @@ export const Chip = styled(ChipBase)`
   --local-shape-color: var(--woly-shape-default);
   --local-icon-size: var(--woly-line-height);
   --local-text-color: var(--woly-shape-text-default);
-  --local-border-color: var(--woly-shape-default);
+  --local-border-color: transparent;
 
   display: flex;
   align-items: center;
@@ -117,10 +117,7 @@ export const Chip = styled(ChipBase)`
   &[data-outlined='true'] {
     --local-shape-color: transparent;
     --local-text-color: var(--woly-shape-default);
-
-    [data-element='icon'] > svg > path {
-      fill: var(--woly-shape-default);
-    }
+    --local-border-color: var(--woly-shape-default);
 
     &:hover {
       --local-shape-color: transparent;
@@ -136,26 +133,22 @@ export const Chip = styled(ChipBase)`
 
   &[role='button']:focus-within {
     --local-shape-color: var(--woly-shape-active);
-    --local-border-color: var(--woly-shape-active);
     box-shadow: 0 0 0 var(--woly-border-width) var(--woly-focus);
   }
 
   &[role='button']:hover {
     --local-text-color: var(--woly-shape-text-hover);
     --local-shape-color: var(--woly-shape-hover);
-    --local-border-color: var(--woly-shape-hover);
   }
 
   &[role='button']:active {
     --local-text-color: var(--woly-shape-text-active);
     --local-shape-color: var(--woly-shape-active);
-    --local-border-color: var(--woly-shape-active);
   }
 
   &[data-disabled='true'] {
     --local-shape-color: var(--woly-shape-disabled);
-    --local-text-color: var(--woly-shape-text-disabled);
-    --local-border-color: var(--woly-shape-disabled);
+    --local-text-color: var(--woly-shape-text-default);
 
     pointer-events: none;
   }

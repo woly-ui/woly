@@ -12,12 +12,14 @@ export { block };
 interface Props {
   size: keyof typeof block;
   direction: 'vertical' | 'horizontal';
+  filled: boolean;
   configurators: ConfiguratorName[];
 }
 
 export const Playground: React.FC<Props> = ({
   size = 'M',
   direction = 'horizontal',
+  filled = true,
   configurators = ['color'],
   children,
 }) => {
@@ -27,13 +29,13 @@ export const Playground: React.FC<Props> = ({
 
   return (
     <PlaygroundWrapper>
-      <Frame>
-        <Global data-scope={scopeId}>
+      <Global data-scope={scopeId}>
+        <Frame data-priority="primary">
           <Wrapper>
             <Container data-dir={direction}>{children}</Container>
           </Wrapper>
-        </Global>
-      </Frame>
+        </Frame>
+      </Global>
       <Configurators id={scopeId} for={configurators} />
     </PlaygroundWrapper>
   );

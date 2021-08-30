@@ -54,17 +54,18 @@ export const Global = styled(WolyGlobalStyles)`
 
   [data-priority='default'] {
     --woly-shape-default: hsla(var(--bw-500), 1);
-    --woly-shape-disabled: hsla(var(--bw-200), 1);
+    --woly-shape-disabled: hsla(var(--bw-500), 0.5);
     --woly-shape-hover: hsla(var(--bw-600), 1);
     --woly-shape-active: hsla(var(--bw-700), 1);
 
     --woly-shape-text-default: hsla(var(--bw-1000), 1);
-    --woly-shape-text-disabled: hsla(var(--bw-300), 1);
+    --woly-shape-text-disabled: hsla(var(--bw-300), 0.5);
     --woly-shape-text-hover: hsla(var(--bw-1000), 1);
     --woly-shape-text-active: hsla(var(--bw-1000), 1);
+    --woly-shape-text-transparent: hsla(var(--bw-1000), 0.5);
 
     --woly-canvas-default: transparent;
-    --woly-canvas-disabled: hsla(var(--bw-200), 1);
+    --woly-canvas-disabled: hsla(var(--bw-100), 1);
     --woly-canvas-hover: hsla(var(--bw-600), 1);
     --woly-canvas-active: hsla(var(--bw-700), 1);
 
@@ -72,11 +73,12 @@ export const Global = styled(WolyGlobalStyles)`
     --woly-canvas-text-disabled: hsla(var(--bw-300), 1);
     --woly-canvas-text-hover: hsla(var(--bw-0), 1);
     --woly-canvas-text-active: hsla(var(--bw-0), 1);
+    --woly-canvas-text-transparent: hsla(var(--bw-0), 0.5);
   }
 
   [data-priority='primary'] {
     --woly-shape-default: hsla(var(--primary-500), 1);
-    --woly-shape-disabled: hsla(var(--primary-200), 1);
+    --woly-shape-disabled: hsla(var(--primary-500), 0.5);
     --woly-shape-hover: hsla(var(--primary-600), 1);
     --woly-shape-active: hsla(var(--primary-700), 1);
 
@@ -84,9 +86,10 @@ export const Global = styled(WolyGlobalStyles)`
     --woly-shape-text-disabled: hsla(var(--bw-300), 1);
     --woly-shape-text-hover: hsla(var(--bw-1000), 1);
     --woly-shape-text-active: hsla(var(--bw-1000), 1);
+    --woly-shape-text-transparent: hsla(var(--bw-1000), 0.5);
 
     --woly-canvas-default: transparent;
-    --woly-canvas-disabled: hsla(var(--bw-200), 1);
+    --woly-canvas-disabled: hsla(var(--bw-100), 1);
     --woly-canvas-hover: hsla(var(--primary-600), 1);
     --woly-canvas-active: hsla(var(--primary-700), 1);
 
@@ -94,11 +97,12 @@ export const Global = styled(WolyGlobalStyles)`
     --woly-canvas-text-disabled: hsla(var(--bw-300), 1);
     --woly-canvas-text-hover: hsla(var(--bw-0), 1);
     --woly-canvas-text-active: hsla(var(--bw-0), 1);
+    --woly-canvas-text-transparent: hsla(var(--bw-0), 0.5);
   }
 
   [data-priority='secondary'] {
     --woly-shape-default: hsla(var(--secondary-500), 1);
-    --woly-shape-disabled: hsla(var(--secondary-200), 1);
+    --woly-shape-disabled: hsla(var(--secondary-500), 0.5);
     --woly-shape-hover: hsla(var(--secondary-600), 1);
     --woly-shape-active: hsla(var(--secondary-700), 1);
 
@@ -106,9 +110,10 @@ export const Global = styled(WolyGlobalStyles)`
     --woly-shape-text-disabled: hsla(var(--bw-300), 1);
     --woly-shape-text-hover: hsla(var(--bw-1000), 1);
     --woly-shape-text-active: hsla(var(--bw-1000), 1);
+    --woly-shape-text-transparent: hsla(var(--bw-1000), 0.5);
 
     --woly-canvas-default: transparent;
-    --woly-canvas-disabled: hsla(var(--bw-200), 1);
+    --woly-canvas-disabled: hsla(var(--bw-100), 1);
     --woly-canvas-hover: hsla(var(--secondary-600), 1);
     --woly-canvas-active: hsla(var(--secondary-700), 1);
 
@@ -116,11 +121,12 @@ export const Global = styled(WolyGlobalStyles)`
     --woly-canvas-text-disabled: hsla(var(--bw-300), 1);
     --woly-canvas-text-hover: hsla(var(--bw-0), 1);
     --woly-canvas-text-active: hsla(var(--bw-0), 1);
+    --woly-canvas-text-transparent: hsla(var(--bw-0), 0.5);
   }
 
   [data-priority='white'] {
     --woly-shape-default: hsla(var(--bw-1000), 1);
-    --woly-shape-disabled: hsla(var(--bw-200), 1);
+    --woly-shape-disabled: hsla(var(--bw-1000), 0.5);
     --woly-shape-hover: hsla(var(--bw-400), 1);
     --woly-shape-active: hsla(var(--bw-600), 1);
 
@@ -128,9 +134,10 @@ export const Global = styled(WolyGlobalStyles)`
     --woly-shape-text-disabled: hsla(var(--bw-300), 1);
     --woly-shape-text-hover: hsla(var(--bw-0), 1);
     --woly-shape-text-active: hsla(var(--bw-0), 1);
+    --woly-shape-text-transparent: hsla(var(--bw-0), 0.5);
 
     --woly-canvas-default: transparent;
-    --woly-canvas-disabled: hsla(var(--bw-200), 1);
+    --woly-canvas-disabled: hsla(var(--bw-100), 1);
     --woly-canvas-hover: transparent;
     --woly-canvas-active: transparent;
 
@@ -138,11 +145,12 @@ export const Global = styled(WolyGlobalStyles)`
     --woly-canvas-text-disabled: hsla(var(--bw-300), 1);
     --woly-canvas-text-hover: hsla(var(--bw-600), 1);
     --woly-canvas-text-active: hsla(var(--bw-700), 1);
+    --woly-canvas-text-transparent: hsla(var(--bw-0), 0.5);
   }
 
   [data-priority='danger'] {
     --woly-shape-default: hsla(var(--danger-500), 1);
-    --woly-shape-disabled: hsla(var(--danger-200), 1);
+    --woly-shape-disabled: hsla(var(--danger-500), 0.5);
     --woly-shape-hover: hsla(var(--danger-600), 1);
     --woly-shape-active: hsla(var(--danger-700), 1);
 
@@ -150,6 +158,7 @@ export const Global = styled(WolyGlobalStyles)`
     --woly-shape-text-disabled: hsla(var(--bw-300), 1);
     --woly-shape-text-hover: hsla(var(--bw-1000), 1);
     --woly-shape-text-active: hsla(var(--bw-1000), 1);
+    --woly-shape-text-transparent: hsla(var(--bw-1000), 0.5);
 
     --woly-canvas-default: transparent;
     --woly-canvas-disabled: hsla(var(--danger-200), 1);
@@ -160,5 +169,6 @@ export const Global = styled(WolyGlobalStyles)`
     --woly-canvas-text-disabled: hsla(var(--danger-300), 1);
     --woly-canvas-text-hover: hsla(var(--danger-600), 1);
     --woly-canvas-text-active: hsla(var(--danger-700), 1);
+    --woly-canvas-text-transparent: hsla(var(--danger-700), 0.5);
   }
 `;

@@ -121,6 +121,10 @@ export const Checkbox = styled(CheckboxBase)`
       fill: var(--local-icon-fill);
     }
 
+    svg > path {
+      stroke: var(--woly-shape-text-default);
+    }
+
     &:hover {
       --local-icon-fill: var(--woly-shape-hover);
     }
@@ -151,10 +155,6 @@ export const Checkbox = styled(CheckboxBase)`
 
   &[data-disabled='true'] {
     pointer-events: none;
-
-    [data-element='text'] {
-      --local-text-color: var(--woly-shape-disabled);
-    }
 
     [data-element^='checkbox'] > svg {
       box-shadow: none;

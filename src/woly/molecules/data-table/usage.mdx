@@ -151,7 +151,6 @@ const $filteredValues = combine(
     return values.filter(value => {
       const bankMatches = banks.length === 0 || banks.includes(value['bank-name'])
       const paymentSystemMatches = paymentSystems.length === 0 || paymentSystems.includes(value['payment-system'])
-      console.log(banks, value['bank-name'])
       return bankMatches && paymentSystemMatches
     })
   }

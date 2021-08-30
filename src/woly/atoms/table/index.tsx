@@ -7,12 +7,12 @@ const map = (properties: { columns: number } & Priority) => ({
 });
 
 export const Table = styled.table.attrs(map)`
+  --local-gap: calc(var(--woly-const-m) / 2);
   --local-vertical: calc(1px * var(--woly-component-level) * var(--woly-main-level));
   --local-horizontal: calc(
     var(--woly-const-m) + (1px * var(--woly-main-level)) + var(--local-vertical)
   );
   --local-cell-max-width: 240px;
-  --local-gap: calc(var(--woly-const-m) / 2);
 
   display: grid;
   grid-template-columns: repeat(var(--local-columns), auto);

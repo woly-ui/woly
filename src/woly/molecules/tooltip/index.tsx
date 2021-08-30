@@ -119,6 +119,8 @@ export const Tooltip = styled(TooltipBase)`
   }
 
   &[data-weight='fill'] {
+    --local-color: var(--woly-shape-text-default);
+
     [role='tooltip'] [data-element='triangle'] {
       border-color: var(--woly-shape-default) transparent transparent transparent;
     }

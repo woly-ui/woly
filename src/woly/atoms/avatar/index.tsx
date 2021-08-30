@@ -28,11 +28,18 @@ const AvatarBase: React.FC<AvatarProps> = ({
     children = childrenProp;
   } else {
     // render fallback if image loading failed or no src attributes / children provided
-    children = <IconProfile />;
+    children = <Fallback />;
   }
 
   return <div {...props}>{children}</div>;
 };
+
+const Fallback = styled(IconProfile)`
+  > circle:first-of-type {
+    fill: var(--woly-canvas-text-default);
+    fill-opacity: 0.1;
+  }
+`;
 
 export const Avatar = styled(AvatarBase)`
   --local-size: calc((var(--woly-component-level) + 2) * 2 * var(--woly-const-m));

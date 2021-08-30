@@ -9,7 +9,8 @@ import {
   TextArea,
   Th,
   Thead,
-  Tr
+  Tr,
+  BoxVertical
 } from 'ui';
 
 The accordion component delivers large amounts of content in a small space through progressive disclosure.
@@ -67,58 +68,64 @@ Accordion`s content and title can be manadged for our own.
       isOpen={false}
       title={<Text type="L">Short recomendation when to use accordion&nbsp;</Text>}
     >
-      <ul style={{ margin: '0 0 10px 0', paddingLeft: '20px' }}>
-        <li>
-          <Text type="S">To organize related information&nbsp;</Text>
-        </li>
-        <li>
-          <Text type="S">
-            To shorten pages and reduce scrolling when content is not crucial to read in full.&nbsp;
-          </Text>
-        </li>
-        <li>
-          <Text type="S">
-            When space is at a premium and long content cannot be displayed all at once, like on a
-            mobile interface or in a side panel.&nbsp;
-          </Text>
-        </li>
-      </ul>
-      <TextArea
-        name="name"
-        placeholder="TextArea"
-        onChange={() => console.info('On textarea change')}
-        priority="primary"
-        overflow="hidden"
-      />
+      <BoxVertical>
+        <ul style={{ paddingLeft: '20px' }}>
+          <li>
+            <Text type="S">To organize related information&nbsp;</Text>
+          </li>
+          <li>
+            <Text type="S">
+              To shorten pages and reduce scrolling when content is not crucial to read in
+              full.&nbsp;
+            </Text>
+          </li>
+          <li>
+            <Text type="S">
+              When space is at a premium and long content cannot be displayed all at once, like on a
+              mobile interface or in a side panel.&nbsp;
+            </Text>
+          </li>
+        </ul>
+        <TextArea
+          name="name"
+          placeholder="TextArea"
+          onChange={() => console.info('On textarea change')}
+          priority="primary"
+          overflow="hidden"
+        />
+      </BoxVertical>
     </Accordion>
     <Accordion
       priority="primary"
       isOpen={false}
       title={<Text type="L">Short recomendation when to use accordion&nbsp;</Text>}
     >
-      <ul style={{ margin: '0 0 10px 0', paddingLeft: '20px' }}>
-        <li>
-          <Text type="S">To organize related information&nbsp;</Text>
-        </li>
-        <li>
-          <Text type="S">
-            To shorten pages and reduce scrolling when content is not crucial to read in full.&nbsp;
-          </Text>
-        </li>
-        <li>
-          <Text type="S">
-            When space is at a premium and long content cannot be displayed all at once, like on a
-            mobile interface or in a side panel.&nbsp;
-          </Text>
-        </li>
-      </ul>
-      <TextArea
-        name="name"
-        placeholder="TextArea"
-        onChange={() => console.info('On textarea change')}
-        priority="primary"
-        overflow="hidden"
-      />
+      <BoxVertical>
+        <ul style={{ paddingLeft: '20px' }}>
+          <li>
+            <Text type="S">To organize related information&nbsp;</Text>
+          </li>
+          <li>
+            <Text type="S">
+              To shorten pages and reduce scrolling when content is not crucial to read in
+              full.&nbsp;
+            </Text>
+          </li>
+          <li>
+            <Text type="S">
+              When space is at a premium and long content cannot be displayed all at once, like on a
+              mobile interface or in a side panel.&nbsp;
+            </Text>
+          </li>
+        </ul>
+        <TextArea
+          name="name"
+          placeholder="TextArea"
+          onChange={() => console.info('On textarea change')}
+          priority="primary"
+          overflow="hidden"
+        />
+      </BoxVertical>
     </Accordion>
   </>
 </Playground>
@@ -152,7 +159,7 @@ or open
 
 <Playground>
   <>
-    <Accordion priority="primary" isOpen={true} title={<span>Some text</span>}>
+    <Accordion priority="primary" isOpen={true} title={<Text>Some text</Text>}>
       <Table columns={tableHead.length} priority="primary">
         <Thead>
           <Tr>
@@ -172,7 +179,7 @@ or open
         </Tbody>
       </Table>
     </Accordion>
-    <Accordion priority="primary" isOpen={true} title={<span>Some text</span>}>
+    <Accordion priority="primary" isOpen={true} title={<Text>Some text</Text>}>
       <Table columns={tableHead.length} priority="primary">
         <Thead>
           <Tr>

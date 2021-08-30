@@ -19,14 +19,17 @@ export const Surface = styled.div.attrs(map)`
   border-radius: var(--woly-rounding);
 
   &[data-weight='fill'] {
+    --local-color: var(--woly-shape-text-default);
+    color: var(--local-color);
+
     background-color: var(--woly-shape-default);
     border-color: var(--woly-shape-default);
-    box-shadow: 3px 3px 8px var(--woly-shape-default);
+    box-shadow: var(--woly-shadow);
   }
 
   &[data-weight='goast'] {
     background-color: var(--woly-background);
     border-color: var(--woly-background);
-    box-shadow: 3px 3px 8px var(--woly-shape-text-disabled);
+    box-shadow: var(--woly-shadow);
   }
 ` as StyledComponent<'div', Record<string, unknown>, SurfaceProps & Priority>;

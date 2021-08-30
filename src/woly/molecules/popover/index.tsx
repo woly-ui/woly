@@ -114,6 +114,8 @@ export const Popover = styled(PopoverBase)`
     position: absolute;
     z-index: 1;
 
+    width: max-content;
+
     min-width: 100%;
 
     visibility: hidden;

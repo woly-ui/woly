@@ -40,14 +40,6 @@ const TextAreaBase: React.FC<TextAreaProps & Priority> = ({
 }) => {
   const textAreaRef = React.useRef<HTMLDivElement>(null);
 
-  React.useEffect(() => {
-    if (textAreaRef && textAreaRef.current) {
-      textAreaRef.current.style.height = '0px';
-      const scrollHeight = textAreaRef.current.scrollHeight;
-      textAreaRef.current.style.height = scrollHeight + 'px';
-    }
-  }, [value]);
-
   const tabIndex = disabled ? -1 : 0;
 
   return (
@@ -70,6 +62,7 @@ const TextAreaBase: React.FC<TextAreaProps & Priority> = ({
         rows={rows}
         value={value}
         wrap={wrap}
+        disabled={disabled}
         {...p}
       />
     </div>
@@ -98,7 +91,9 @@ export const TextArea = styled(TextAreaBase)`
     resize: none;
 
     &::placeholder {
-      color: var(--woly-neutral);
+      color: var(--woly-canvas-text-default);
+
+      opacity: 50%;
     }
   }
 
@@ -131,11 +126,17 @@ export const TextArea = styled(TextAreaBase)`
   }
 
   &[data-disabled='true'] {
-    pointer-events: none;
-
     --local-background-color: var(--woly-canvas-disabled);
     --local-border-color: var(--woly-canvas-disabled);
-    --local-text-color: var(--woly-canvas-text-disabled);
+    --local-text-color: var(--woly-canvas-text-default);
+
+    opacity: 50%;
+
+    pointer-events: none;
+
+    &::placeholder {
+      color: var(--woly-canvas-text-disabled);
+    }
   }
 
   &[data-overflow='true'] > textarea {

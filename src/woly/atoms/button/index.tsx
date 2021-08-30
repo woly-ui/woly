@@ -53,7 +53,7 @@ export const Button = styled(ButtonBase)`
 
   --local-text-color: var(--woly-shape-text-default);
   --local-shape-color: var(--woly-shape-default);
-  --local-border-color: var(--woly-shape-default);
+  --local-border-color: transparent;
 
   display: flex;
   flex-wrap: nowrap;
@@ -72,6 +72,8 @@ export const Button = styled(ButtonBase)`
   outline: none;
 
   &[data-outlined='true'] {
+    --local-border-color: var(--local-shape-color);
+
     color: var(--local-shape-color);
 
     background: transparent;
@@ -100,13 +102,11 @@ export const Button = styled(ButtonBase)`
 
   &:hover {
     --local-text-color: var(--woly-shape-text-hover);
-    --local-border-color: var(--woly-shape-hover);
     --local-shape-color: var(--woly-shape-hover);
   }
 
   &:active {
     --local-text-color: var(--woly-shape-text-active);
-    --local-border-color: var(--woly-shape-active);
     --local-shape-color: var(--woly-shape-active);
   }
 
@@ -115,8 +115,7 @@ export const Button = styled(ButtonBase)`
   }
 
   &:disabled {
-    --local-text-color: var(--woly-shape-text-disabled);
-    --local-border-color: var(--woly-shape-disabled);
+    --local-text-color: var(--woly-shape-text-default);
     --local-shape-color: var(--woly-shape-disabled);
   }
 ` as StyledComponent<'button', Record<string, unknown>, ButtonProps & Priority>;
