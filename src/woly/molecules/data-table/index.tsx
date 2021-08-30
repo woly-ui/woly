@@ -1,7 +1,9 @@
 import * as React from 'react';
 
-import { CellProps, DataTableProps, HeadGroupProps, HeadProps } from './types';
+import type { CellProps, DataTableProps, HeadGroupProps, HeadProps } from './types';
 import { Table, Tbody, Td, Th, Thead, Tr } from '../../atoms/table';
+
+export type { DataTableColumn, HeadProps as DataTableHeadProps } from './types';
 
 export function DataTable<TValue, TRowKey extends string>({
   rowKey,
@@ -67,5 +69,3 @@ function TableHeadGroup<T>({ columns }: HeadGroupProps<T>) {
 const isReactComponent = (value: unknown) => typeof value === 'function';
 const isReactElement = (value: unknown) => typeof value === 'object';
 const isReactEntity = (value: unknown) => isReactComponent(value) || isReactElement(value);
-
-export { DataTableColumn, HeadProps as DataTableHeadProps } from './types';

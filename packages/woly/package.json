@@ -1,6 +1,6 @@
 {
   "name": "woly",
-  "version": "0.10.0",
+  "version": "0.11.2",
   "description": "Exhaustive component library for React",
   "main": "woly.js",
   "types": "woly.d.ts",
@@ -25,7 +25,11 @@
     "ui",
     "woly"
   ],
-  "dependencies": {},
+  "dependencies": {
+    "react-dropzone": "^11.3.4",
+    "react-resize-detector": "^6.7.4",
+    "@tippyjs/react": "^4.2.5"
+  },
   "peerDependencies": {
     "react": "^16.14.0",
     "styled-components": "^5.2.1"

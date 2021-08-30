@@ -1,6 +1,6 @@
 {
   "name": "@woly/calendar",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "Date and time components for Woly React library",
   "main": "calendar.js",
   "types": "calendar.d.ts",
@@ -32,7 +32,7 @@
   "peerDependencies": {
     "react": "^16.14.0",
     "styled-components": "^5.2.1",
-    "woly": "^0.10.0"
+    "woly": "^0.11.2"
   },
   "repository": {
     "type": "git",

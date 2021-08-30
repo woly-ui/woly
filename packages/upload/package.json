@@ -1,5 +1,6 @@
 {
   "name": "@woly/upload",
+  "version": "0.1.0",
   "description": "Upload components for Woly React library",
   "main": "upload.js",
   "types": "upload.d.ts",
@@ -29,7 +30,7 @@
   "peerDependencies": {
     "react": "^16.14.0",
     "styled-components": "^5.2.1",
-    "woly": "^0.10.0"
+    "woly": "^0.11.2"
   },
   "repository": {
     "type": "git",
