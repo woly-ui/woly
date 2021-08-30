@@ -92,6 +92,7 @@ export const TextArea = styled(TextAreaBase)`
 
     &::placeholder {
       color: var(--woly-canvas-text-default);
+
       opacity: 50%;
     }
   }
@@ -130,6 +131,7 @@ export const TextArea = styled(TextAreaBase)`
     --local-text-color: var(--woly-canvas-text-default);
 
     opacity: 50%;
+
     pointer-events: none;
 
     &::placeholder {
