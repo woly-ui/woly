@@ -127,7 +127,7 @@ export const Accordion = styled(AccordionBase)`
   }
 
   &[data-open='true'] > [data-element='content'] {
-    display: inline-block;
+    display: block;
     width: 100%;
 
     height: auto;

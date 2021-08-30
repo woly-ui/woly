@@ -40,14 +40,6 @@ const TextAreaBase: React.FC<TextAreaProps & Priority> = ({
 }) => {
   const textAreaRef = React.useRef<HTMLDivElement>(null);
 
-  React.useEffect(() => {
-    if (textAreaRef && textAreaRef.current) {
-      textAreaRef.current.style.height = '0px';
-      const scrollHeight = textAreaRef.current.scrollHeight;
-      textAreaRef.current.style.height = scrollHeight + 'px';
-    }
-  }, [value]);
-
   const tabIndex = disabled ? -1 : 0;
 
   return (
