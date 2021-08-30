@@ -19,7 +19,8 @@ export const Surface = styled.div.attrs(map)`
   border-radius: var(--woly-rounding);
 
   &[data-weight='fill'] {
-    color: var(--woly-shape-text-default);
+    --local-color: var(--woly-shape-text-default);
+    color: var(--local-color);
 
     background-color: var(--woly-shape-default);
     border-color: var(--woly-shape-default);

@@ -15,11 +15,9 @@ const map = (properties: TextProps & Priority) => ({
 });
 
 export const Text = styled.p.attrs(map)`
-  --local-color: var(--woly-canvas-text-default);
-
   margin: 0;
 
-  color: var(--local-color);
+  color: var(--local-color, var(--woly-canvas-text-default));
   font-weight: 400;
   font-size: 15px;
   line-height: 21px;
