@@ -57,7 +57,7 @@ const spinnerAnimation = keyframes`
 `;
 
 export const Loader = styled(LoaderBase)<LoaderProps>`
-  ${box};
+  ${box}
 
   --local-track-size: 42px;
   --local-vertical-gap: 12px;

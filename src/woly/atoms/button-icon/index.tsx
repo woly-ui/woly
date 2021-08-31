@@ -31,7 +31,7 @@ const ButtonIconBase = forwardRef<HTMLButtonElement, ButtonIconProps>(
 );
 
 export const ButtonIcon = styled(ButtonIconBase)<ButtonIconProps>`
-  ${box};
+  ${box}
 
   --local-icon-size: var(--woly-line-height);
 

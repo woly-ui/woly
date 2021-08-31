@@ -74,7 +74,7 @@ export const BaseListItem = forwardRef<HTMLLIElement, ListItemProps>(
  * Fix ListItemContainer after implementing box element
  */
 export const ListItem = styled(BaseListItem)<ListItemProps>`
-  ${box};
+  ${box}
 
   --local-icon-color: var(--woly-canvas-text-default);
   --local-backgound: var(--woly-canvas-default);

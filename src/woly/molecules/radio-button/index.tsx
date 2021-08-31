@@ -60,7 +60,7 @@ const RadioButtonBase = forwardRef<HTMLLabelElement, RadioButtonProps>(
 );
 
 export const RadioButton = styled(RadioButtonBase)<RadioButtonProps>`
-  ${lineBox};
+  ${lineBox}
 
   --local-radio-size: 17px;
   --local-ellipse-size: 10px;

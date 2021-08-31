@@ -129,7 +129,7 @@ export const Select = styled(SelectBase)<SelectProps>`
   cursor: pointer;
 
   [data-selected] {
-    ${box};
+    ${box}
 
     display: flex;
     align-items: center;
@@ -196,7 +196,7 @@ export const Select = styled(SelectBase)<SelectProps>`
   }
 
   li {
-    ${box};
+    ${box}
 
     display: flex;
 

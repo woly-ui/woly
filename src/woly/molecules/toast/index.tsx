@@ -27,7 +27,7 @@ const ToastBase = forwardRef<HTMLDivElement, ToastProps>(
 );
 
 export const Toast = styled(ToastBase)<ToastProps>`
-  ${box};
+  ${box}
 
   --local-toast-gap: max(
     var(--woly-const-m),

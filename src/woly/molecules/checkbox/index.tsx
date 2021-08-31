@@ -78,7 +78,7 @@ const CheckboxBase = forwardRef<HTMLLabelElement, CheckboxProps>(
 );
 
 export const Checkbox = styled(CheckboxBase)<CheckboxProps>`
-  ${lineBox};
+  ${lineBox}
 
   --local-icon-size: var(--woly-line-height);
   --local-icon-fill: var(--local-background-color);

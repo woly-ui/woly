@@ -96,7 +96,7 @@ const Shape = styled(Surface)`
 `;
 
 export const Modal = styled(ModalBase)<ModalProps>`
-  ${box};
+  ${box}
 
   /* TODO: rewrite formulas [13.07.21]*/
   --local-gap: calc(3px * var(--woly-component-level) * var(--woly-main-level));

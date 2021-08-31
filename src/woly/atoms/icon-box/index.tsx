@@ -22,7 +22,7 @@ const IconBoxBase = forwardRef<HTMLDivElement, IconBoxProps>(
 );
 
 export const IconBox = styled(IconBoxBase)<IconBoxProps>`
-  ${box};
+  ${box}
 
   --local-icon-size: var(--woly-line-height);
 

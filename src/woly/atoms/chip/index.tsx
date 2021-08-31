@@ -65,7 +65,7 @@ const ChipBase = forwardRef<HTMLDivElement, ChipProps>(
 );
 
 export const Chip = styled(ChipBase)<ChipProps>`
-  ${box};
+  ${box}
 
   --local-shape-color: var(--woly-shape-default);
   --local-icon-size: var(--woly-line-height);

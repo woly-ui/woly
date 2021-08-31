@@ -88,7 +88,7 @@ export const Tab = styled(TabBase)<TabProps>`
   --local-tab-max-size: 201px;
   --local-tab-min-size: 67px;
 
-  ${box};
+  ${box}
 
   display: flex;
   flex: 1;

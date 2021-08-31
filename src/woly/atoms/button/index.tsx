@@ -57,7 +57,7 @@ const ButtonBase = forwardRef<HTMLButtonElement, ButtonProps>(
 );
 
 export const Button = styled(ButtonBase)<ButtonProps>`
-  ${box};
+  ${box}
 
   --local-text-color: var(--woly-shape-text-default);
   --local-shape-color: var(--woly-shape-default);
