@@ -1,8 +1,9 @@
 /* eslint-disable react/button-has-type */
 import * as React from 'react';
-import styled, { StyledComponent } from 'styled-components';
+import styled from 'styled-components';
 import { Priority } from 'lib/types';
 import { box } from 'ui/elements/box';
+import { forwardRef } from 'react';
 
 export type ButtonPriorities =
   | 'secondary'
@@ -14,42 +15,49 @@ export type ButtonPriorities =
   | 'success';
 export type ButtonSizes = 'default' | 'small';
 
-export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+type BaseButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & Priority;
+
+export type ButtonProps = BaseButtonProps & {
   children?: never;
-  className?: string;
   fullWidth?: boolean;
   icon?: React.ReactNode;
   outlined?: boolean;
   text: React.ReactNode;
-}
+};
 
-const ButtonBase: React.FC<ButtonProps & Priority> = ({
-  fullWidth = false,
-  icon,
-  outlined = false,
-  priority = 'secondary',
-  text,
-  type = 'button',
-  ...p
-}) => (
-  <button
-    type={type}
-    data-full-width={fullWidth}
-    data-outlined={outlined}
-    data-priority={priority}
-    {...p}
-  >
-    {icon && (
-      <span data-element="icon" data-box-role="icon">
-        {icon}
-      </span>
-    )}
-    <span data-element="text">{text}</span>
-  </button>
+const ButtonBase = forwardRef<HTMLButtonElement, ButtonProps>(
+  (
+    {
+      fullWidth = false,
+      icon,
+      outlined = false,
+      priority = 'secondary',
+      text,
+      type = 'button',
+      ...rest
+    },
+    buttonRef,
+  ) => (
+    <button
+      ref={buttonRef}
+      type={type}
+      data-full-width={fullWidth}
+      data-outlined={outlined}
+      data-priority={priority}
+      {...rest}
+    >
+      {icon && (
+        <span data-element="icon" data-box-role="icon">
+          {icon}
+        </span>
+      )}
+      <span data-element="text">{text}</span>
+    </button>
+  ),
 );
 
-export const Button = styled(ButtonBase)`
-  ${box}
+export const Button = styled(ButtonBase)<ButtonProps>`
+  ${box};
 
   --local-text-color: var(--woly-shape-text-default);
   --local-shape-color: var(--woly-shape-default);
@@ -118,4 +126,4 @@ export const Button = styled(ButtonBase)`
     --local-text-color: var(--woly-shape-text-default);
     --local-shape-color: var(--woly-shape-disabled);
   }
-` as StyledComponent<'button', Record<string, unknown>, ButtonProps & Priority>;
+`;

@@ -1,20 +1,22 @@
 import * as React from 'react';
-import styled, { StyledComponent } from 'styled-components';
+import styled from 'styled-components';
 import { Priority } from 'lib/types';
 
-interface TextProps extends React.LabelHTMLAttributes<HTMLLabelElement> {
+type BaseTextProps = React.BaseHTMLAttributes<HTMLParagraphElement> & Priority;
+
+export type TextProps = BaseTextProps & {
   children: React.ReactNode;
   type?: 'L' | 'S' | 'XS' | 'M' | 'subtitle' | 'hint';
   weight?: 'medium' | 'regular' | 'light';
-}
+};
 
-const map = (properties: TextProps & Priority) => ({
-  'data-priority': properties.priority || 'primary',
-  'data-type': properties.type || 'subtitle',
-  'data-weight': properties.weight || 'regular',
+const map = (props: TextProps) => ({
+  'data-priority': props.priority || 'primary',
+  'data-type': props.type || 'subtitle',
+  'data-weight': props.weight || 'regular',
 });
 
-export const Text = styled.p.attrs(map)`
+export const Text = styled.p.attrs(map)<TextProps>`
   margin: 0;
 
   color: var(--local-color, var(--woly-canvas-text-default));
@@ -55,4 +57,4 @@ export const Text = styled.p.attrs(map)`
   &[data-type='hint'][data-weight='light'] {
     font-weight: 300;
   }
-` as StyledComponent<'span', Record<string, unknown>, TextProps & Priority>;
+`;

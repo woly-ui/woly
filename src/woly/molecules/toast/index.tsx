@@ -1,37 +1,38 @@
 import * as React from 'react';
-import styled, { StyledComponent } from 'styled-components';
+import styled from 'styled-components';
 import { Priority } from 'lib/types';
 import { box } from 'ui/elements/box';
+import { forwardRef } from 'react';
 
-interface ToastProps {
+type BaseToastProps = React.BaseHTMLAttributes<HTMLDivElement> & Priority;
+
+export type ToastProps = BaseToastProps & {
   action?: React.ReactNode;
-  className?: string;
   icon?: React.ReactNode;
   weight?: string;
-}
+};
 
-const ToastBase: React.FC<ToastProps & Priority> = ({
-  action,
-  children,
-  className,
-  icon,
-  weight = 'fill',
-  priority = 'secondary',
-}) => (
-  <div className={className} data-weight={weight} data-priority={priority}>
-    {icon && (
-      <span data-element="icon" data-box-role="icon">
-        {icon}
-      </span>
-    )}
-    <div data-element="content">{children}</div>
-    {action && <span data-element="action">{action}</span>}
-  </div>
+const ToastBase = forwardRef<HTMLDivElement, ToastProps>(
+  ({ action, children, icon, weight = 'fill', priority = 'secondary', ...rest }, toastRef) => (
+    <div ref={toastRef} data-weight={weight} data-priority={priority} {...rest}>
+      {icon && (
+        <span data-element="icon" data-box-role="icon">
+          {icon}
+        </span>
+      )}
+      <div data-element="content">{children}</div>
+      {action && <span data-element="action">{action}</span>}
+    </div>
+  ),
 );
 
-export const Toast = styled(ToastBase)`
-  ${box}
-  --local-toast-gap: max(var(--woly-const-m), calc(1px * var(--woly-component-level) * var(--woly-main-level)));
+export const Toast = styled(ToastBase)<ToastProps>`
+  ${box};
+
+  --local-toast-gap: max(
+    var(--woly-const-m),
+    calc(1px * var(--woly-component-level) * var(--woly-main-level))
+  );
   --local-icon-size: var(--woly-line-height);
 
   display: flex;
@@ -155,4 +156,4 @@ export const Toast = styled(ToastBase)`
       stroke: var(--local-text-color);
     }
   }
-` as StyledComponent<'div', Record<string, unknown>, ToastProps & Priority>;
+`;

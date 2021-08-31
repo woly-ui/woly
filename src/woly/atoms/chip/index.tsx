@@ -1,71 +1,72 @@
 import * as React from 'react';
-import styled, { StyledComponent } from 'styled-components';
+import styled from 'styled-components';
 import { Priority } from 'lib/types';
 import { box } from 'ui/elements/box';
+import { forwardRef } from 'react';
 
-interface ChipProps {
+type BaseChipProps = React.BaseHTMLAttributes<HTMLDivElement> & Priority;
+
+export type ChipProps = BaseChipProps & {
   text?: string;
-  className?: string;
   disabled?: boolean;
   leftIcon?: React.ReactNode;
   onClick?: React.EventHandler<React.SyntheticEvent>;
   outlined?: boolean;
   rightIcon?: React.ReactNode;
-}
-
-const ChipBase: React.FC<ChipProps & Priority> = ({
-  className,
-  disabled,
-  leftIcon,
-  onClick,
-  outlined,
-  priority = 'secondary',
-  rightIcon,
-  text,
-}) => {
-  const chipRole = onClick ? 'button' : 'div';
-  const chipTabIndex = onClick ? 0 : -1;
-
-  const onKeyDown = React.useCallback(
-    (event) => {
-      if (event.key === 'Enter' && onClick) {
-        onClick(event);
-      }
-    },
-    [onClick],
-  );
-  return (
-    <div
-      className={className}
-      data-disabled={disabled}
-      data-outlined={outlined}
-      data-priority={priority}
-    >
-      {leftIcon && (
-        <div data-element="icon" data-box-role="icon" onClick={onClick} onKeyDown={onKeyDown}>
-          {leftIcon}
-        </div>
-      )}
-      <div
-        data-text="chip-text-content"
-        onClick={onClick}
-        onKeyDown={onKeyDown}
-        role={chipRole}
-        tabIndex={chipTabIndex}
-      >
-        {text}
-      </div>
-      {rightIcon && (
-        <div data-element="action-icon" data-box-role="icon">
-          {rightIcon}
-        </div>
-      )}
-    </div>
-  );
 };
 
-export const Chip = styled(ChipBase)`
-  ${box}
+const ChipBase = forwardRef<HTMLDivElement, ChipProps>(
+  (
+    { disabled, leftIcon, onClick, outlined, priority = 'secondary', rightIcon, text, ...rest },
+    chipRef,
+  ) => {
+    const chipRole = onClick ? 'button' : 'div';
+    const chipTabIndex = onClick ? 0 : -1;
+
+    const onKeyDown = React.useCallback(
+      (event) => {
+        if (event.key === 'Enter' && onClick) {
+          onClick(event);
+        }
+      },
+      [onClick],
+    );
+
+    return (
+      <div
+        ref={chipRef}
+        data-disabled={disabled}
+        data-outlined={outlined}
+        data-priority={priority}
+        {...rest}
+      >
+        {leftIcon && (
+          <div data-element="icon" data-box-role="icon" onClick={onClick} onKeyDown={onKeyDown}>
+            {leftIcon}
+          </div>
+        )}
+        <div
+          data-text="chip-text-content"
+          onClick={onClick}
+          onKeyDown={onKeyDown}
+          role={chipRole}
+          tabIndex={chipTabIndex}
+        >
+          {text}
+        </div>
+        {rightIcon && (
+          <div data-element="action-icon" data-box-role="icon">
+            {rightIcon}
+          </div>
+        )}
+      </div>
+    );
+  },
+);
+
+export const Chip = styled(ChipBase)<ChipProps>`
+  ${box};
+
   --local-shape-color: var(--woly-shape-default);
   --local-icon-size: var(--woly-line-height);
   --local-text-color: var(--woly-shape-text-default);
@@ -152,4 +153,4 @@ export const Chip = styled(ChipBase)`
 
     pointer-events: none;
   }
-` as StyledComponent<'div', Record<string, unknown>, ChipProps & Priority>;
+`;

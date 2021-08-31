@@ -1,25 +1,28 @@
 import * as React from 'react';
-import styled, { StyledComponent } from 'styled-components';
+import styled from 'styled-components';
 import { Priority } from 'lib/types';
 import { Surface } from 'ui/atoms';
 import { positionRelativeGet } from 'lib/position-relative';
 
 type TooltipPosition = 'bottom' | 'left' | 'right' | 'top';
 
-interface TooltipProps {
-  className?: string;
+type BaseTooltipProps = React.BaseHTMLAttributes<HTMLDivElement> & Priority;
+
+export type TooltipProps = BaseTooltipProps & {
   content?: string | React.ReactNode;
   position?: TooltipPosition;
   weight?: string;
-}
+};
 
-const TooltipBase: React.FC<TooltipProps & Priority> = ({
+// TODO: solve the ref forwarding problem [31-08-2021]
+const TooltipBase: React.FC<TooltipProps> = ({
   children,
   className,
   content,
   position = 'top',
   priority = 'secondary',
   weight = 'goast',
+  ...rest
 }) => {
   const [tooltipPosition, setPosition] = React.useState<TooltipPosition>('top');
   const ref = React.useRef<HTMLDivElement>(null);
@@ -41,6 +44,7 @@ const TooltipBase: React.FC<TooltipProps & Priority> = ({
       document.removeEventListener('scroll', onScroll);
     };
   }, [position, ref]);
+
   return (
     <div
       className={className}
@@ -49,6 +53,7 @@ const TooltipBase: React.FC<TooltipProps & Priority> = ({
       data-weight={weight}
       ref={ref}
       tabIndex={0}
+      {...rest}
     >
       <div data-element="notifications" aria-labelledby="notifications-desc">
         {children}
@@ -63,7 +68,7 @@ const TooltipBase: React.FC<TooltipProps & Priority> = ({
   );
 };
 
-export const Tooltip = styled(TooltipBase)`
+export const Tooltip = styled(TooltipBase)<TooltipProps>`
   --local-gap: min(
     calc(1px * var(--woly-main-level) + var(--woly-const-m)),
     calc(
@@ -171,4 +176,4 @@ export const Tooltip = styled(TooltipBase)`
       transform: rotate(90deg);
     }
   }
-` as StyledComponent<'div', Record<string, unknown>, TooltipProps & Priority>;
+`;

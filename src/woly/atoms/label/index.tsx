@@ -2,12 +2,14 @@ import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
 import { Priority } from 'lib/types';
 
-interface LabelProps extends React.LabelHTMLAttributes<HTMLLabelElement> {
-  children: React.ReactNode;
-}
+type BaseLabelProps = React.LabelHTMLAttributes<HTMLLabelElement> & Priority;
 
-const map = (properties: LabelProps & Priority) => ({
-  'data-priority': properties.priority || 'secondary',
+export type LabelProps = BaseLabelProps & {
+  children: React.ReactNode;
+};
+
+const map = (props: LabelProps) => ({
+  'data-priority': props.priority || 'secondary',
 });
 
 export const Label = styled.label.attrs(map)`
@@ -23,4 +25,4 @@ export const Label = styled.label.attrs(map)`
   color: var(--local-color);
   font-size: var(--woly-font-size, 15px);
   line-height: var(--woly-line-height, 24px);
-` as StyledComponent<'label', Record<string, unknown>, LabelProps & Priority>;
+` as StyledComponent<'label', Record<string, unknown>, LabelProps>;

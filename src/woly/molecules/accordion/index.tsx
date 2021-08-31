@@ -1,46 +1,44 @@
 import * as React from 'react';
-import styled, { StyledComponent } from 'styled-components';
+import styled from 'styled-components';
 import { IconArrowDown } from 'static/icons';
 import { Priority } from 'lib/types';
+import { forwardRef } from 'react';
 
-interface AccordionProps {
-  className?: string;
+type BaseAccordionProps = React.BaseHTMLAttributes<HTMLDivElement> & Priority;
+
+export type AccordionProps = BaseAccordionProps & {
   isOpen: boolean;
   title?: React.ReactNode;
-}
-
-const AccordionBase: React.FC<AccordionProps & Priority> = ({
-  children,
-  className,
-  isOpen = true,
-  priority = 'secondary',
-  title,
-}) => {
-  const [isContentVisible, setContentVisible] = React.useReducer((is) => !is, isOpen);
-
-  const onKeyDown = React.useCallback(
-    ({ key }) => {
-      if ((isContentVisible && key === 'Escape') || key === 'Enter') {
-        setContentVisible();
-      }
-    },
-    [isContentVisible],
-  );
-
-  return (
-    <div className={className} data-priority={priority} data-open={isContentVisible}>
-      <div data-element="header" onClick={setContentVisible} onKeyDown={onKeyDown} tabIndex={0}>
-        <div data-element="title">{title}</div>
-        <div data-element="icon">
-          <IconArrowDown />
-        </div>
-      </div>
-      <div data-element="content">{children}</div>
-    </div>
-  );
 };
 
-export const Accordion = styled(AccordionBase)`
+const AccordionBase = forwardRef<HTMLDivElement, AccordionProps>(
+  ({ children, isOpen = true, priority = 'secondary', title, ...rest }, accordionRef) => {
+    const [isContentVisible, setContentVisible] = React.useReducer((is) => !is, isOpen);
+
+    const onKeyDown = React.useCallback(
+      ({ key }) => {
+        if ((isContentVisible && key === 'Escape') || key === 'Enter') {
+          setContentVisible();
+        }
+      },
+      [isContentVisible],
+    );
+
+    return (
+      <div ref={accordionRef} data-priority={priority} data-open={isContentVisible} {...rest}>
+        <div data-element="header" onClick={setContentVisible} onKeyDown={onKeyDown} tabIndex={0}>
+          <div data-element="title">{title}</div>
+          <div data-element="icon">
+            <IconArrowDown />
+          </div>
+        </div>
+        <div data-element="content">{children}</div>
+      </div>
+    );
+  },
+);
+
+export const Accordion = styled(AccordionBase)<AccordionProps>`
   --local-vertical: calc(
     1px * var(--woly-component-level) * var(--woly-main-level) - var(--woly-border-width)
   );
@@ -132,4 +130,4 @@ export const Accordion = styled(AccordionBase)`
 
     height: auto;
   }
-` as StyledComponent<'div', Record<string, unknown>, AccordionProps & Priority>;
+`;

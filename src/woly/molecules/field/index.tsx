@@ -1,30 +1,28 @@
 import * as React from 'react';
-import styled, { StyledComponent } from 'styled-components';
+import styled from 'styled-components';
 import { Label } from 'ui/atoms';
 import { Priority } from 'lib/types';
 import { boxVertical } from 'ui/elements/box';
+import { forwardRef } from 'react';
 
-interface FieldProps {
-  className?: string;
+type BaseFieldProps = React.LabelHTMLAttributes<HTMLLabelElement> & Priority;
+
+export type FieldProps = BaseFieldProps & {
   id?: string;
   row?: boolean;
   label?: React.ReactNode;
-}
+};
 
-const FieldBase: React.FC<FieldProps & Priority> = ({
-  children,
-  className,
-  label,
-  priority = 'secondary',
-  row = false,
-}) => (
-  <Label className={className} data-row={row} data-priority={priority} data-element="label">
-    <span>{label}</span>
-    <div data-element="content">{children}</div>
-  </Label>
+const FieldBase = forwardRef<HTMLLabelElement, FieldProps>(
+  ({ children, label, priority = 'secondary', row = false, ...rest }, labelRef) => (
+    <Label ref={labelRef} data-row={row} data-priority={priority} data-element="label" {...rest}>
+      <span>{label}</span>
+      <div data-element="content">{children}</div>
+    </Label>
+  ),
 );
 
-export const Field = styled(FieldBase)`
+export const Field = styled(FieldBase)<FieldProps>`
   --local-gap: calc(1px * var(--woly-component-level) * var(--woly-main-level));
 
   display: block;
@@ -43,4 +41,4 @@ export const Field = styled(FieldBase)`
       padding-left: var(--local-gap);
     }
   }
-` as StyledComponent<'label', Record<string, unknown>, FieldProps & Priority>;
+`;

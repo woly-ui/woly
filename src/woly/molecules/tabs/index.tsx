@@ -1,28 +1,17 @@
 import * as React from 'react';
-import styled, { StyledComponent } from 'styled-components';
+import styled from 'styled-components';
 import { Priority } from 'lib/types';
 import { box } from 'ui/elements/box';
+import { forwardRef } from 'react';
 
-interface TabElementProps {
-  iconLeft?: React.ReactNode;
-  iconAction?: React.ReactNode;
-  onClick?: React.EventHandler<React.SyntheticEvent>;
-  text: React.ReactNode;
-}
+type BaseTabsProps = React.BaseHTMLAttributes<HTMLDivElement> & Priority;
+export type TabsProps = BaseTabsProps;
 
-interface TabProps {
-  active?: boolean;
-  className?: string;
-  disabled?: boolean;
-  path?: string;
-  weight?: string;
-}
-
-const mapTabs = (properties: Priority) => ({
-  'data-priority': properties.priority ?? 'secondary',
+const mapTabs = (props: TabsProps) => ({
+  'data-priority': props.priority ?? 'secondary',
 });
 
-export const Tabs = styled.div.attrs(mapTabs)`
+export const Tabs = styled.div.attrs(mapTabs)<TabsProps>`
   --local-border-color: var(--woly-shape-default);
 
   display: flex;
@@ -37,50 +26,69 @@ export const Tabs = styled.div.attrs(mapTabs)`
 
   border-top: var(--woly-border-width) solid var(--local-border-color);
   border-bottom: var(--woly-border-width) solid var(--local-border-color);
-` as StyledComponent<'div', Record<string, unknown>, Priority>;
+`;
 
-const TabBase: React.FC<TabProps & TabElementProps & Priority> = ({
-  active,
-  className,
-  disabled = false,
-  iconAction,
-  iconLeft,
-  onClick,
-  path,
-  priority,
-  text,
-  weight = 'outline',
-}) => (
-  <div
-    className={className}
-    data-active={active}
-    data-disabled={disabled}
-    data-path={path}
-    data-priority={priority}
-    data-weight={weight}
-    onClick={onClick}
-    tabIndex={0}
-  >
-    {iconLeft && (
-      <span data-element="link-icon" data-box-role="icon">
-        {iconLeft}
-      </span>
-    )}
-    <span data-element="link-text">{text}</span>
-    {iconAction && (
-      <span data-element="action-icon" data-box-role="icon">
-        {iconAction}
-      </span>
-    )}
-  </div>
+type BaseTabProps = React.BaseHTMLAttributes<HTMLDivElement> & Priority;
+
+export type TabProps = BaseTabProps & {
+  iconLeft?: React.ReactNode;
+  iconAction?: React.ReactNode;
+  onClick?: React.EventHandler<React.SyntheticEvent>;
+  text: React.ReactNode;
+  active?: boolean;
+  disabled?: boolean;
+  path?: string;
+  weight?: string;
+};
+
+const TabBase: React.FC<TabProps> = forwardRef<HTMLDivElement, TabProps>(
+  (
+    {
+      active,
+      disabled = false,
+      iconAction,
+      iconLeft,
+      onClick,
+      path,
+      priority,
+      text,
+      weight = 'outline',
+      ...rest
+    },
+    tabRef,
+  ) => (
+    <div
+      ref={tabRef}
+      data-active={active}
+      data-disabled={disabled}
+      data-path={path}
+      data-priority={priority}
+      data-weight={weight}
+      onClick={onClick}
+      tabIndex={0}
+      {...rest}
+    >
+      {iconLeft && (
+        <span data-element="link-icon" data-box-role="icon">
+          {iconLeft}
+        </span>
+      )}
+      <span data-element="link-text">{text}</span>
+      {iconAction && (
+        <span data-element="action-icon" data-box-role="icon">
+          {iconAction}
+        </span>
+      )}
+    </div>
+  ),
 );
 
-export const Tab = styled(TabBase)`
+export const Tab = styled(TabBase)<TabProps>`
   --local-icon-size: var(--woly-line-height);
   --local-tab-max-size: 201px;
   --local-tab-min-size: 67px;
 
-  ${box}
+  ${box};
 
   display: flex;
   flex: 1;
@@ -252,4 +260,4 @@ export const Tab = styled(TabBase)`
       pointer-events: none;
     }
   }
-` as StyledComponent<'div', Record<string, unknown>, TabProps & TabElementProps & Priority>;
+`;

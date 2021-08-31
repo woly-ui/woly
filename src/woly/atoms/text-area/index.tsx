@@ -1,10 +1,11 @@
-import React from 'react';
-import styled, { StyledComponent } from 'styled-components';
+import styled from 'styled-components';
+import React, { forwardRef } from 'react';
 import { Priority } from 'lib/types';
 import { box } from 'ui/elements/box';
 
-interface TextAreaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
-  className?: string;
+type BaseTextAreaProps = React.BaseHTMLAttributes<HTMLDivElement> & Priority;
+
+export type TextAreaProps = BaseTextAreaProps & {
   cols?: number;
   disabled?: boolean;
   maxLength?: number;
@@ -13,63 +14,65 @@ interface TextAreaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement
   onChange: React.EventHandler<React.SyntheticEvent>;
   overflow?: boolean;
   placeholder?: string;
-  ref?: any;
   resize?: boolean;
   rows?: number;
   value?: string;
   wrap?: string;
-}
-
-const TextAreaBase: React.FC<TextAreaProps & Priority> = ({
-  className,
-  cols,
-  disabled,
-  maxLength,
-  minlength,
-  name,
-  onChange,
-  overflow,
-  placeholder,
-  priority = 'secondary',
-  ref,
-  resize,
-  rows,
-  value,
-  wrap,
-  ...p
-}) => {
-  const textAreaRef = React.useRef<HTMLDivElement>(null);
-
-  const tabIndex = disabled ? -1 : 0;
-
-  return (
-    <div
-      className={className}
-      data-disabled={disabled}
-      data-priority={priority}
-      data-overflow={overflow}
-      data-resize={resize}
-      ref={textAreaRef}
-    >
-      <textarea
-        cols={cols}
-        maxLength={maxLength}
-        minLength={minlength}
-        name={name}
-        tabIndex={tabIndex}
-        onChange={onChange}
-        placeholder={placeholder}
-        rows={rows}
-        value={value}
-        wrap={wrap}
-        disabled={disabled}
-        {...p}
-      />
-    </div>
-  );
+  inputRef?: React.RefObject<HTMLTextAreaElement>;
 };
 
-export const TextArea = styled(TextAreaBase)`
+const TextAreaBase = forwardRef<HTMLDivElement, TextAreaProps>(
+  (
+    {
+      cols,
+      disabled,
+      maxLength,
+      minlength,
+      name,
+      onChange,
+      overflow,
+      placeholder,
+      priority = 'secondary',
+      inputRef,
+      resize,
+      rows,
+      value,
+      wrap,
+      ...rest
+    },
+    textAreaRef,
+  ) => {
+    const tabIndex = disabled ? -1 : 0;
+
+    return (
+      <div
+        ref={textAreaRef}
+        data-disabled={disabled}
+        data-priority={priority}
+        data-overflow={overflow}
+        data-resize={resize}
+        {...rest}
+      >
+        <textarea
+          ref={inputRef}
+          cols={cols}
+          maxLength={maxLength}
+          minLength={minlength}
+          name={name}
+          tabIndex={tabIndex}
+          onChange={onChange}
+          placeholder={placeholder}
+          rows={rows}
+          value={value}
+          wrap={wrap}
+          disabled={disabled}
+        />
+      </div>
+    );
+  },
+);
+
+export const TextArea = styled(TextAreaBase)<TextAreaProps>`
   --local-border-color: var(--woly-shape-default);
   --local-background-color: var(--woly-canvas-default);
   --local-text-color: var(--woly-canvas-text-default);
@@ -146,4 +149,4 @@ export const TextArea = styled(TextAreaBase)`
   &[data-resize='true'] {
     resize: both;
   }
-` as StyledComponent<'div', Record<string, unknown>, TextAreaProps & Priority>;
+`;
