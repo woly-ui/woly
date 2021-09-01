@@ -20,7 +20,7 @@
     "access": "public"
   },
   "name": "woly",
-  "version": "0.11.5",
+  "version": "0.11.6",
   "description": "Exhaustive component library for React",
   "main": "woly.js",
   "types": "woly.d.ts",

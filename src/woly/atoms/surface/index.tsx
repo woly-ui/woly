@@ -9,8 +9,8 @@ export type SurfaceProps = BaseSurfaceProps & {
 };
 
 const map = (props: SurfaceProps) => ({
-  'data-priority': props.priority || 'secondary',
-  'data-weight': props.weight || 'default',
+  'data-priority': props.priority || 'white',
+  'data-weight': props.weight || 'fill',
 });
 
 export const Surface = styled.div.attrs(map)<SurfaceProps>`
