@@ -8,7 +8,7 @@ type BaseIconBoxProps = React.HTMLProps<HTMLDivElement> & Priority;
 
 export type IconBoxProps = BaseIconBoxProps & {
   children: React.ReactNode;
-  weight?: string;
+  weight?: 'fill' | 'ghost' | 'transparent' | 'outline';
 };
 
 const IconBoxBase = forwardRef<HTMLDivElement, IconBoxProps>(
@@ -80,7 +80,7 @@ export const IconBox = styled(IconBoxBase)<IconBoxProps>`
     }
   }
 
-  &[data-weight='goast'] {
+  &[data-weight='ghost'] {
     --local-shape-color: transparent;
     --local-fill-color: var(--woly-base-black);
     --local-border-color: transparent;
