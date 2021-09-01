@@ -73,6 +73,7 @@ const getModules = (name) => ({
 });
 
 const woly = {
+  ...common,
   name: 'woly',
   version: versions.woly,
   description: 'Exhaustive component library for React',
@@ -88,10 +89,10 @@ const woly = {
     ...dependsPeer,
   },
   repository: getRepo('woly'),
-  ...common,
 };
 
 const calendar = {
+  ...common,
   name: '@woly/calendar',
   version: versions.calendar,
   description: 'Date and time components for Woly React library',
@@ -104,10 +105,10 @@ const calendar = {
     ...dependsOnWoly,
   },
   repository: getRepo('calendar'),
-  ...common,
 };
 
 const upload = {
+  ...common,
   name: '@woly/upload',
   version: versions.upload,
   description: 'Upload components for Woly React library',
@@ -120,7 +121,6 @@ const upload = {
     ...dependsOnWoly,
   },
   repository: getRepo('upload'),
-  ...common,
 };
 
 module.exports = { woly, calendar, upload };

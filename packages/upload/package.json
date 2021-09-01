@@ -1,6 +1,26 @@
 {
+  "scripts": {},
+  "author": {
+    "name": "Sergey Sova",
+    "email": "mail@sergeysova.com",
+    "url": "https://sova.dev"
+  },
+  "engines": {
+    "node": ">=8.0.0"
+  },
+  "sideEffects": false,
+  "contributors": [],
+  "homepage": "https://github.com/woly-ui/woly",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/woly-ui/woly/issues",
+    "email": "woly@sergeysova.com"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
   "name": "@woly/upload",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Upload components for Woly React library",
   "main": "upload.js",
   "types": "upload.d.ts",
@@ -30,31 +50,11 @@
   "peerDependencies": {
     "react": "^16.14.0",
     "styled-components": "^5.2.1",
-    "woly": "^0.11.3"
+    "woly": "^0.11.5"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/woly-ui/woly",
     "directory": "packages/upload"
-  },
-  "scripts": {},
-  "author": {
-    "name": "Sergey Sova",
-    "email": "mail@sergeysova.com",
-    "url": "https://sova.dev"
-  },
-  "engines": {
-    "node": ">=8.0.0"
-  },
-  "sideEffects": false,
-  "contributors": [],
-  "homepage": "https://github.com/woly-ui/woly",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/woly-ui/woly/issues",
-    "email": "woly@sergeysova.com"
-  },
-  "publishConfig": {
-    "access": "public"
   }
 }
