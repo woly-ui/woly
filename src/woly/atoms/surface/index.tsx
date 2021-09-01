@@ -5,12 +5,12 @@ import { Priority } from 'lib/types';
 type BaseSurfaceProps = React.BaseHTMLAttributes<HTMLDivElement> & Priority;
 
 export type SurfaceProps = BaseSurfaceProps & {
-  weight?: string;
+  weight?: 'ghost' | 'fill' | 'default';
 };
 
 const map = (props: SurfaceProps) => ({
   'data-priority': props.priority || 'secondary',
-  'data-weight': props.weight || 'goast',
+  'data-weight': props.weight || 'default',
 });
 
 export const Surface = styled.div.attrs(map)<SurfaceProps>`
@@ -29,7 +29,7 @@ export const Surface = styled.div.attrs(map)<SurfaceProps>`
     box-shadow: var(--woly-shadow);
   }
 
-  &[data-weight='goast'] {
+  &[data-weight='ghost'] {
     background-color: var(--woly-background);
     border-color: var(--woly-background);
     box-shadow: var(--woly-shadow);
