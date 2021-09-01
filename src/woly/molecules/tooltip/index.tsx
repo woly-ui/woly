@@ -11,7 +11,7 @@ type BaseTooltipProps = React.BaseHTMLAttributes<HTMLDivElement> & Priority;
 export type TooltipProps = BaseTooltipProps & {
   content?: string | React.ReactNode;
   position?: TooltipPosition;
-  weight?: string;
+  weight?: 'ghost' | 'fill';
 };
 
 // TODO: solve the ref forwarding problem [31-08-2021]
@@ -21,7 +21,7 @@ const TooltipBase: React.FC<TooltipProps> = ({
   content,
   position = 'top',
   priority = 'secondary',
-  weight = 'goast',
+  weight = 'ghost',
   ...rest
 }) => {
   const [tooltipPosition, setPosition] = React.useState<TooltipPosition>('top');
@@ -117,7 +117,7 @@ export const Tooltip = styled(TooltipBase)<TooltipProps>`
     }
   }
 
-  &[data-weight='goast'] {
+  &[data-weight='ghost'] {
     [role='tooltip'] [data-element='triangle'] {
       border-color: var(--woly-background) transparent transparent transparent;
     }
