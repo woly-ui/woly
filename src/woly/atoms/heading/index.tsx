@@ -1,20 +1,22 @@
 import * as React from 'react';
-import styled, { StyledComponent } from 'styled-components';
+import styled from 'styled-components';
 import { Priority } from 'lib/types';
 
-interface HeadingProps extends React.LabelHTMLAttributes<HTMLLabelElement> {
+type BaseHeadingProps = React.LabelHTMLAttributes<HTMLLabelElement> & Priority;
+
+export type HeadingProps = BaseHeadingProps & {
   children: React.ReactNode;
   size?: 1 | 2 | 3;
   weight?: 'regular' | 'medium';
-}
+};
 
-const map = (properties: HeadingProps & Priority) => ({
-  'data-priority': properties.priority || 'primary',
-  'data-size': properties.size || 1,
-  'data-weight': properties.weight || 'medium',
+const map = (props: HeadingProps) => ({
+  'data-priority': props.priority || 'primary',
+  'data-size': props.size || 1,
+  'data-weight': props.weight || 'medium',
 });
 
-export const Heading = styled.span.attrs(map)`
+export const Heading = styled.span.attrs(map)<HeadingProps>`
   --local-color: var(--woly-canvas-text-default);
 
   color: var(--local-color);
@@ -33,4 +35,4 @@ export const Heading = styled.span.attrs(map)`
   &[data-weight='regular'] {
     font-weight: 400;
   }
-` as StyledComponent<'label', Record<string, unknown>, HeadingProps & Priority>;
+`;

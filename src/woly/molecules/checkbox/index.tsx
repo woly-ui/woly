@@ -1,81 +1,83 @@
 import * as React from 'react';
-import styled, { StyledComponent } from 'styled-components';
+import styled from 'styled-components';
 import { IconCheckFilled, IconFilledUnchecked } from 'static/icons';
 import { Priority } from 'lib/types';
+import { forwardRef } from 'react';
 import { keyboardEventHandle } from 'lib/keyboard';
 import { lineBox, visuallyHidden } from 'ui/elements';
 
-interface CheckboxProps {
-  className?: string;
+type BaseCheckboxProps = React.LabelHTMLAttributes<HTMLLabelElement> & Priority;
+
+export type CheckboxProps = BaseCheckboxProps & {
   disabled?: boolean;
   id: string;
   checked: boolean;
   onChange: React.EventHandler<React.SyntheticEvent>;
   text?: string;
-}
-
-const CheckboxBase: React.FC<CheckboxProps & Priority> = ({
-  checked,
-  className,
-  disabled,
-  id,
-  onChange,
-  priority = 'secondary',
-  text,
-}) => {
-  const tabIndex = disabled ? -1 : 0;
-
-  const onKeyDown = React.useCallback(
-    (event: React.KeyboardEvent) => {
-      if (event.key === 'Enter') {
-        event.preventDefault();
-      }
-
-      const keyHandler = {
-        enter: (event: React.SyntheticEvent<Element, Event>) => {
-          onChange(event);
-        },
-      };
-
-      keyboardEventHandle({
-        event,
-        keyHandler,
-      });
-    },
-    [onChange],
-  );
-
-  return (
-    <label
-      htmlFor={id}
-      className={className}
-      data-priority={priority}
-      data-disabled={disabled}
-      tabIndex={-1}
-    >
-      <span data-element="checkbox">
-        <input
-          type="checkbox"
-          id={id}
-          tabIndex={tabIndex}
-          checked={checked}
-          onChange={onChange}
-          onKeyDown={onKeyDown}
-          disabled={disabled}
-        />
-        <span data-element="checkbox-unchecked">
-          <IconFilledUnchecked />
-        </span>
-        <span data-element="checkbox-checked">
-          <IconCheckFilled />
-        </span>
-      </span>
-      {text && <span data-element="text">{text}</span>}
-    </label>
-  );
+  inputRef?: React.RefObject<HTMLInputElement>;
 };
 
-export const Checkbox = styled(CheckboxBase)`
+const CheckboxBase = forwardRef<HTMLLabelElement, CheckboxProps>(
+  (
+    { checked, disabled, id, onChange, priority = 'secondary', text, inputRef, ...rest },
+    labelRef,
+  ) => {
+    const tabIndex = disabled ? -1 : 0;
+
+    const onKeyDown = React.useCallback(
+      (event: React.KeyboardEvent) => {
+        if (event.key === 'Enter') {
+          event.preventDefault();
+        }
+
+        const keyHandler = {
+          enter: (event: React.SyntheticEvent<Element, Event>) => {
+            onChange(event);
+          },
+        };
+
+        keyboardEventHandle({
+          event,
+          keyHandler,
+        });
+      },
+      [onChange],
+    );
+
+    return (
+      <label
+        ref={labelRef}
+        htmlFor={id}
+        data-priority={priority}
+        data-disabled={disabled}
+        tabIndex={-1}
+        {...rest}
+      >
+        <span data-element="checkbox">
+          <input
+            ref={inputRef}
+            type="checkbox"
+            id={id}
+            tabIndex={tabIndex}
+            checked={checked}
+            onChange={onChange}
+            onKeyDown={onKeyDown}
+            disabled={disabled}
+          />
+          <span data-element="checkbox-unchecked">
+            <IconFilledUnchecked />
+          </span>
+          <span data-element="checkbox-checked">
+            <IconCheckFilled />
+          </span>
+        </span>
+        {text && <span data-element="text">{text}</span>}
+      </label>
+    );
+  },
+);
+
+export const Checkbox = styled(CheckboxBase)<CheckboxProps>`
   ${lineBox}
 
   --local-icon-size: var(--woly-line-height);
@@ -176,4 +178,4 @@ export const Checkbox = styled(CheckboxBase)`
       display: none;
     }
   }
-` as StyledComponent<'div', Record<string, unknown>, CheckboxProps & Priority>;
+`;

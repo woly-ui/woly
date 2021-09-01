@@ -44,8 +44,6 @@ It does not need to be a direct child of the List component.
       {links.map(({ id, content, disabled }) => (
         <ListItem
           key={id}
-          as="a"
-          href={`#${id}`}
           disabled={disabled}
           text={content}
           iconRight={<IconInfo />}
@@ -63,7 +61,6 @@ It does not need to be a direct child of the List component.
     <ListContainer priority="primary" style={{ width: '100%' }} as="ul">
       {links.map(({ id, content }) => (
         <ListItem
-          as="li"
           tabIndex={1}
           key={id}
           onClick={() => {
@@ -126,14 +123,14 @@ List items can have an icon on the left or/and the right side. To use icons on b
   <Surface priority="primary">
     <ListContainer style={{ width: '100%' }}>
       {links.map(({ id, content, disabled }) => (
-        <ListItem
-          key={id}
-          as="a"
-          href={`#${id}`}
-          disabled={disabled}
-          text={content}
-          iconLeft={<IconInfo />}
-        />
+        <ListItem key={id} disabled={disabled} text={content} iconLeft={<IconInfo />} />
+      ))}
+    </ListContainer>
+  </Surface>
+  <Surface priority="primary">
+    <ListContainer style={{ width: '100%' }}>
+      {links.map(({ id, content, disabled }) => (
+        <ListItem key={id} disabled={disabled} text={content} iconRight={<IconInfo />} />
       ))}
     </ListContainer>
   </Surface>
@@ -142,22 +139,6 @@ List items can have an icon on the left or/and the right side. To use icons on b
       {links.map(({ id, content, disabled }) => (
         <ListItem
           key={id}
-          as="a"
-          href={`#${id}`}
-          disabled={disabled}
-          text={content}
-          iconRight={<IconInfo />}
-        />
-      ))}
-    </ListContainer>
-  </Surface>
-  <Surface priority="primary">
-    <ListContainer style={{ width: '100%' }}>
-      {links.map(({ id, content, disabled }) => (
-        <ListItem
-          key={id}
-          as="a"
-          href={`#${id}`}
           disabled={disabled}
           text={content}
           iconRight={<IconInfo />}
@@ -178,8 +159,6 @@ Size of list item is controlled by the `component-level` block property not from
       {links.map(({ id, content, disabled }) => (
         <ListItem
           key={id}
-          as="a"
-          href={`#${id}`}
           disabled={disabled}
           text={content}
           iconRight={<IconInfo />}
@@ -193,8 +172,6 @@ Size of list item is controlled by the `component-level` block property not from
       {links.map(({ id, content, disabled }) => (
         <ListItem
           key={id}
-          as="a"
-          href={`#${id}`}
           disabled={disabled}
           text={content}
           iconRight={<IconInfo />}
@@ -208,8 +185,6 @@ Size of list item is controlled by the `component-level` block property not from
       {links.map(({ id, content, disabled }) => (
         <ListItem
           key={id}
-          as="a"
-          href={`#${id}`}
           disabled={disabled}
           text={content}
           iconRight={<IconInfo />}
@@ -222,9 +197,7 @@ Size of list item is controlled by the `component-level` block property not from
     <ListContainer priority="primary" style={{ width: '100%' }} as="ul">
       {links.map(({ id, content, disabled }) => (
         <ListItem
-          as="a"
           disabled={disabled}
-          href={`#${id}`}
           iconLeft={<IconInfo />}
           iconRight={<IconInfo />}
           key={id}
@@ -238,9 +211,7 @@ Size of list item is controlled by the `component-level` block property not from
     <ListContainer priority="primary" style={{ width: '100%' }} as="ul">
       {links.map(({ id, content, disabled }) => (
         <ListItem
-          as="a"
           disabled={disabled}
-          href={`#${id}`}
           iconLeft={<IconInfo />}
           iconRight={<IconInfo />}
           key={id}

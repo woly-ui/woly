@@ -1,28 +1,27 @@
 import * as React from 'react';
-import styled, { StyledComponent } from 'styled-components';
+import styled from 'styled-components';
 import { Priority } from 'lib/types';
 import { box } from 'ui/elements/box';
+import { forwardRef } from 'react';
 
-interface IconBoxProps {
-  className?: string;
+type BaseIconBoxProps = React.HTMLProps<HTMLDivElement> & Priority;
+
+export type IconBoxProps = BaseIconBoxProps & {
   children: React.ReactNode;
   weight?: string;
-}
+};
 
-const IconBoxBase: React.FC<IconBoxProps & Priority> = ({
-  className,
-  children,
-  priority = 'secondary',
-  weight = 'transparent',
-}) => (
-  <div className={className} data-weight={weight} data-priority={priority}>
-    <span data-element="icon-component" data-box-role="icon">
-      {children}
-    </span>
-  </div>
+const IconBoxBase = forwardRef<HTMLDivElement, IconBoxProps>(
+  ({ children, priority = 'secondary', weight = 'transparent', ...rest }, iconBoxRef) => (
+    <div ref={iconBoxRef} data-weight={weight} data-priority={priority} {...rest}>
+      <span data-element="icon-component" data-box-role="icon">
+        {children}
+      </span>
+    </div>
+  ),
 );
 
-export const IconBox = styled(IconBoxBase)`
+export const IconBox = styled(IconBoxBase)<IconBoxProps>`
   ${box}
 
   --local-icon-size: var(--woly-line-height);
@@ -106,4 +105,4 @@ export const IconBox = styled(IconBoxBase)`
       fill: var(--local-fill-color);
     }
   }
-` as StyledComponent<'div', Record<string, unknown>, IconBoxProps & Priority>;
+`;

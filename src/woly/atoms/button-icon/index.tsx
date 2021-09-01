@@ -1,37 +1,36 @@
 import * as React from 'react';
-import styled, { StyledComponent } from 'styled-components';
+import styled from 'styled-components';
 import { Priority } from 'lib/types';
 import { box } from 'ui/elements/box';
+import { forwardRef } from 'react';
 
-interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  className?: string;
+type BaseButtonIconProps = React.ButtonHTMLAttributes<HTMLButtonElement> & Priority;
+
+export type ButtonIconProps = BaseButtonIconProps & {
   icon: React.ReactNode;
   onClick: React.MouseEventHandler<HTMLButtonElement>;
   weight?: string;
-}
+};
 
-const ButtonIconBase: React.FC<Props & Priority> = ({
-  icon,
-  onClick,
-  priority = 'secondary',
-  weight = 'fill',
-  ...p
-}) => (
-  <button
-    data-priority={priority}
-    data-weight={weight}
-    onClick={onClick}
-    role="button"
-    type="button"
-    {...p}
-  >
-    <span data-element="icon" data-box-role="icon">
-      {icon}
-    </span>
-  </button>
+const ButtonIconBase = forwardRef<HTMLButtonElement, ButtonIconProps>(
+  ({ icon, onClick, priority = 'secondary', weight = 'fill', ...rest }, buttonIconRef) => (
+    <button
+      ref={buttonIconRef}
+      data-priority={priority}
+      data-weight={weight}
+      onClick={onClick}
+      role="button"
+      type="button"
+      {...rest}
+    >
+      <span data-element="icon" data-box-role="icon">
+        {icon}
+      </span>
+    </button>
+  ),
 );
 
-export const ButtonIcon = styled(ButtonIconBase)`
+export const ButtonIcon = styled(ButtonIconBase)<ButtonIconProps>`
   ${box}
 
   --local-icon-size: var(--woly-line-height);
@@ -203,4 +202,4 @@ export const ButtonIcon = styled(ButtonIconBase)`
       --local-icon-color: var(--woly-canvas-text-disabled);
     }
   }
-` as StyledComponent<'button', Record<string, unknown>, Props & Priority>;
+`;

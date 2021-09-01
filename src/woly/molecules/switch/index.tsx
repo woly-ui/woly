@@ -1,63 +1,64 @@
 import * as React from 'react';
-import styled, { StyledComponent } from 'styled-components';
+import styled from 'styled-components';
 import { Priority } from 'lib/types';
+import { forwardRef } from 'react';
 import { keyboardEventHandle } from 'lib/keyboard';
 
-interface SwitchProps extends React.InputHTMLAttributes<HTMLInputElement> {
-  className?: string;
+type BaseSwitchProps = React.BaseHTMLAttributes<HTMLDivElement> & Priority;
+
+export type SwitchProps = BaseSwitchProps & {
   id: string;
   checked: boolean;
   disabled?: boolean;
   onChange: React.EventHandler<React.SyntheticEvent>;
-}
-
-const SwitchBase: React.FC<SwitchProps & Priority> = ({
-  className,
-  id,
-  checked,
-  disabled = false,
-  onChange,
-  priority = 'secondary',
-  ...p
-}) => {
-  const tabIndex = disabled ? -1 : 0;
-
-  const onKeyDown = React.useCallback(
-    (event: React.KeyboardEvent) => {
-      if (event.key === 'Enter') {
-        event.preventDefault();
-      }
-      const keyHandler = {
-        enter: (event: React.SyntheticEvent<Element, Event>) => {
-          onChange(event);
-        },
-      };
-
-      keyboardEventHandle({
-        event,
-        keyHandler,
-      });
-    },
-    [onChange],
-  );
-
-  return (
-    <div
-      className={className}
-      data-disabled={disabled}
-      data-priority={priority}
-      onKeyDown={onKeyDown}
-      tabIndex={tabIndex}
-    >
-      <label htmlFor={id}>
-        <input checked={checked} id={id} onChange={onChange} type="checkbox" {...p} />
-        <span data-element="checkbox" />
-      </label>
-    </div>
-  );
+  inputRef?: React.RefObject<HTMLInputElement>;
 };
 
-export const Switch = styled(SwitchBase)`
+const SwitchBase: React.FC<SwitchProps & Priority> = forwardRef<HTMLDivElement, SwitchProps>(
+  (
+    { id, checked, disabled = false, onChange, priority = 'secondary', inputRef, ...rest },
+    wrapperRef,
+  ) => {
+    const tabIndex = disabled ? -1 : 0;
+
+    const onKeyDown = React.useCallback(
+      (event: React.KeyboardEvent) => {
+        if (event.key === 'Enter') {
+          event.preventDefault();
+        }
+        const keyHandler = {
+          enter: (event: React.SyntheticEvent<Element, Event>) => {
+            onChange(event);
+          },
+        };
+
+        keyboardEventHandle({
+          event,
+          keyHandler,
+        });
+      },
+      [onChange],
+    );
+
+    return (
+      <div
+        ref={wrapperRef}
+        data-disabled={disabled}
+        data-priority={priority}
+        onKeyDown={onKeyDown}
+        tabIndex={tabIndex}
+        {...rest}
+      >
+        <label htmlFor={id}>
+          <input ref={inputRef} checked={checked} id={id} onChange={onChange} type="checkbox" />
+          <span data-element="checkbox" />
+        </label>
+      </div>
+    );
+  },
+);
+
+export const Switch = styled(SwitchBase)<SwitchProps>`
   --local-shape: var(--woly-canvas-hover);
   --local-border: var(--woly-focus);
   --local-tumbler-background: var(--woly-shape-text-default);
@@ -153,4 +154,4 @@ export const Switch = styled(SwitchBase)`
       box-shadow: none;
     }
   }
-` as StyledComponent<'div', Record<string, unknown>, SwitchProps & Priority>;
+`;

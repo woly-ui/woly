@@ -1,25 +1,26 @@
 import * as React from 'react';
-import styled, { StyledComponent } from 'styled-components';
+import styled from 'styled-components';
 import { Priority } from 'lib/types';
 import { Surface } from 'ui/atoms';
 import { positionRelativeGet } from 'lib/position-relative';
 import { useUpdateEffect } from 'lib/hooks';
 
-interface Props {
-  className?: string;
+type BasePopoverProps = React.BaseHTMLAttributes<HTMLDivElement> & Priority;
+
+export type PopoverProps = BasePopoverProps & {
   content: React.ReactNode;
   isOpen: boolean;
   position?: PopoverPositionType;
   onClose?: () => void;
   fullWidth?: boolean;
   disabled?: boolean;
-}
+};
 
 type PopoverPositionType = 'top' | 'bottom';
 
-const PopoverBase: React.FC<Props & Priority> = ({
+// TODO: solve the ref forwarding problem [31-08-2021]
+const PopoverBase: React.FC<PopoverProps> = ({
   children,
-  className,
   content,
   isOpen,
   position = 'bottom',
@@ -27,6 +28,7 @@ const PopoverBase: React.FC<Props & Priority> = ({
   onClose = () => {},
   fullWidth = true,
   disabled = false,
+  ...rest
 }) => {
   const ref = React.useRef<HTMLDivElement>(null);
 
@@ -88,7 +90,7 @@ const PopoverBase: React.FC<Props & Priority> = ({
   }, [onScroll, onClickOutside]);
 
   return (
-    <div className={className} ref={ref}>
+    <div ref={ref} {...rest}>
       <div onClick={setVisibility}>{children}</div>
       <Surface
         data-element="popover"
@@ -103,7 +105,7 @@ const PopoverBase: React.FC<Props & Priority> = ({
   );
 };
 
-export const Popover = styled(PopoverBase)`
+export const Popover = styled(PopoverBase)<PopoverProps>`
   --woly-gap: calc(
     (1px * var(--woly-main-level)) + (1px * var(--woly-main-level) * var(--woly-component-level))
   );
@@ -138,4 +140,4 @@ export const Popover = styled(PopoverBase)`
   & > [data-position='bottom'] {
     top: var(--popover-position);
   }
-` as StyledComponent<'div', Record<string, unknown>, Props & Priority>;
+`;

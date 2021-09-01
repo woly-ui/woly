@@ -1,5 +1,5 @@
 import * as React from 'react';
-import styled, { StyledComponent } from 'styled-components';
+import styled from 'styled-components';
 import { Priority } from 'lib/types';
 import { box } from 'ui/elements/box';
 import { keyHandlerGet, keyboardEventHandle } from 'lib/keyboard';
@@ -9,8 +9,9 @@ interface SelectOptionProps {
   value: string;
 }
 
-interface SelectProps {
-  className?: string;
+type BaseSelectProps = React.BaseHTMLAttributes<HTMLDivElement> & Priority;
+
+export type SelectProps = BaseSelectProps & {
   disabled?: boolean;
   icon?: React.ReactNode;
   onBlur?: React.FocusEventHandler<HTMLElement>;
@@ -19,10 +20,10 @@ interface SelectProps {
   options: SelectOptionProps[];
   placeholder?: string;
   selected: string | null;
-}
+};
 
-export const SelectBase: React.FC<SelectProps & Priority> = ({
-  className,
+// TODO: solve the ref forwarding problem [31-08-2021]
+export const SelectBase: React.FC<SelectProps> = ({
   disabled = false,
   icon,
   onBlur,
@@ -32,6 +33,7 @@ export const SelectBase: React.FC<SelectProps & Priority> = ({
   placeholder = '',
   priority = 'secondary',
   selected,
+  ...rest
 }) => {
   const [isOpen, setIsOpen] = React.useReducer((is) => !is, false);
   const selectRef = React.useRef(null);
@@ -66,9 +68,10 @@ export const SelectBase: React.FC<SelectProps & Priority> = ({
     },
     [selectRef, dropdownRef, isOpen, onChange],
   );
+
   return (
     <div
-      className={className}
+      ref={selectRef}
       data-disabled={disabled}
       data-open={isOpen}
       data-element="select"
@@ -77,8 +80,8 @@ export const SelectBase: React.FC<SelectProps & Priority> = ({
       onClick={setIsOpen}
       onFocus={onFocus}
       onKeyDown={onKeyDown}
-      ref={selectRef}
       tabIndex={tabIndex}
+      {...rest}
     >
       <div data-selected={true}>
         <div data-element="text">{select}</div>
@@ -104,7 +107,7 @@ export const SelectBase: React.FC<SelectProps & Priority> = ({
   );
 };
 
-export const Select = styled(SelectBase)`
+export const Select = styled(SelectBase)<SelectProps>`
   --local-gap: var(--woly-const-m);
 
   --local-background: var(--woly-canvas-default);
@@ -127,6 +130,7 @@ export const Select = styled(SelectBase)`
 
   [data-selected] {
     ${box}
+
     display: flex;
     align-items: center;
     box-sizing: border-box;
@@ -234,4 +238,4 @@ export const Select = styled(SelectBase)`
     --local-background: var(--woly-canvas-disabled);
     --local-border-input-color: var(--woly-canvas-text-disabled);
   }
-` as StyledComponent<'div', Record<string, unknown>, SelectProps & Priority>;
+`;

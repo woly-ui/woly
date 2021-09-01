@@ -37,6 +37,7 @@
     }
   },
   "rules": {
-    "import/order": "off"
+    "import/order": "off",
+    "react/jsx-props-no-spreading": "off"
   }
 }

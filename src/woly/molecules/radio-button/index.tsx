@@ -1,56 +1,65 @@
 import * as React from 'react';
-import styled, { StyledComponent } from 'styled-components';
+import styled from 'styled-components';
 import { Priority } from 'lib/types';
+import { forwardRef } from 'react';
 import { lineBox, visuallyHidden } from 'ui/elements';
 
-interface RadioButtonProps {
-  className?: string;
+type BaseRadioButtonProps = React.LabelHTMLAttributes<HTMLLabelElement> & Priority;
+
+export type RadioButtonProps = BaseRadioButtonProps & {
   disabled?: boolean;
   id: string;
   checked: boolean;
   onChange: React.EventHandler<React.SyntheticEvent>;
   text?: string;
   name: string;
-}
-
-const RadioButtonBase: React.FC<RadioButtonProps & Priority> = ({
-  checked,
-  className,
-  disabled = false,
-  id,
-  name,
-  onChange,
-  priority = 'secondary',
-  text,
-  ...p
-}) => {
-  const tabIndex = disabled ? -1 : 0;
-
-  return (
-    <label
-      htmlFor={id}
-      className={className}
-      data-disabled={disabled}
-      data-priority={priority}
-      tabIndex={-1}
-    >
-      <input
-        type="radio"
-        id={id}
-        name={name}
-        tabIndex={tabIndex}
-        checked={checked}
-        onChange={onChange}
-        disabled={disabled}
-        {...p}
-      />
-      <span data-element="checkbox" />
-      {text && <span data-element="text">{text}</span>}
-    </label>
-  );
+  inputRef?: React.RefObject<HTMLInputElement>;
 };
 
-export const RadioButton = styled(RadioButtonBase)`
+const RadioButtonBase = forwardRef<HTMLLabelElement, RadioButtonProps>(
+  (
+    {
+      checked,
+      disabled = false,
+      id,
+      name,
+      onChange,
+      priority = 'secondary',
+      text,
+      inputRef,
+      ...rest
+    },
+    labelRef,
+  ) => {
+    const tabIndex = disabled ? -1 : 0;
+
+    return (
+      <label
+        ref={labelRef}
+        htmlFor={id}
+        data-disabled={disabled}
+        data-priority={priority}
+        tabIndex={-1}
+        {...rest}
+      >
+        <input
+          ref={inputRef}
+          type="radio"
+          id={id}
+          name={name}
+          tabIndex={tabIndex}
+          checked={checked}
+          onChange={onChange}
+          disabled={disabled}
+        />
+        <span data-element="checkbox" />
+        {text && <span data-element="text">{text}</span>}
+      </label>
+    );
+  },
+);
+
+export const RadioButton = styled(RadioButtonBase)<RadioButtonProps>`
   ${lineBox}
 
   --local-radio-size: 17px;
@@ -145,4 +154,4 @@ export const RadioButton = styled(RadioButtonBase)`
       --local-color-text: var(--woly-canvas-text-disabled);
     }
   }
-` as StyledComponent<'div', Record<string, unknown>, RadioButtonProps & Priority>;
+`;

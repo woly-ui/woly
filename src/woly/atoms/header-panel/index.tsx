@@ -1,11 +1,14 @@
-import styled, { StyledComponent } from 'styled-components';
+import styled from 'styled-components';
 import { Priority } from 'lib/types';
 
-const map = (properties: Priority) => ({
-  'data-priority': properties.priority || 'secondary',
+type BaseHeaderPanelProps = Priority;
+export type HeaderPanelProps = BaseHeaderPanelProps;
+
+const map = (props: HeaderPanelProps) => ({
+  'data-priority': props.priority || 'secondary',
 });
 
-export const HeaderPanel = styled.div.attrs(map)`
+export const HeaderPanel = styled.div.attrs(map)<HeaderPanelProps>`
   display: flex;
   align-items: center;
   width: 100%;
@@ -23,4 +26,4 @@ export const HeaderPanel = styled.div.attrs(map)`
   --local-horizontal: calc(
     var(--woly-const-m) + (1px * var(--woly-main-level)) + var(--local-vertical)
   );
-` as StyledComponent<'div', Record<string, unknown>, Priority>;
+`;

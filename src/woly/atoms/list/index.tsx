@@ -1,36 +1,30 @@
 import * as React from 'react';
-import styled, { StyledComponent } from 'styled-components';
+import styled from 'styled-components';
 import { Priority } from 'lib/types';
 import { box } from 'ui/elements/box';
+import { forwardRef } from 'react';
 
-interface ListElementsProps {
-  iconLeft?: React.ReactNode;
-  iconRight?: React.ReactNode;
-  text: React.ReactNode;
-}
+type BaseListContainerProps = React.BaseHTMLAttributes<HTMLDivElement> & Priority;
+export type ListContainerProps = BaseListContainerProps;
 
-interface ListItemProps {
-  as?: 'a' | 'li';
+type BaseListItemProps = React.BaseHTMLAttributes<HTMLElement> & Priority;
+
+export type ListItemProps = BaseListItemProps & {
   disabled?: boolean;
   selected?: boolean;
   href?: string;
   tabIndex?: number;
   onClick?: (e: React.SyntheticEvent<HTMLElement>) => void;
-  className?: string;
-}
+  iconLeft?: React.ReactNode;
+  iconRight?: React.ReactNode;
+  text: React.ReactNode;
+};
 
-const mapContainer = (properties: { columns: number } & Priority) => ({
-  'data-priority': properties.priority || 'secondary',
+const mapContainer = (props: ListContainerProps) => ({
+  'data-priority': props.priority || 'secondary',
 });
 
-const mapItem = (properties: ListItemProps & Priority) => ({
-  'data-disabled': properties.disabled,
-  'data-priority': properties.priority || 'secondary',
-  'data-type': properties.as,
-  'data-selected': properties.selected,
-});
-
-export const ListContainer = styled.div.attrs(mapContainer)`
+export const ListContainer = styled.ul.attrs(mapContainer)<ListContainerProps>`
   --local-gap: calc(var(--woly-border-width) * 2);
 
   display: grid;
@@ -40,42 +34,48 @@ export const ListContainer = styled.div.attrs(mapContainer)`
   padding: 0;
 
   background-color: var(--woly-shape-text-default);
-` as StyledComponent<'div', Record<string, unknown>, Priority>;
+`;
 
-export const ListItem: React.FC<ListItemProps & ListElementsProps & Priority> = ({
-  as,
-  disabled = false,
-  href,
-  iconLeft,
-  iconRight,
-  priority = 'secondary',
-  tabIndex,
-  text,
-  selected = false,
-  className = '',
-  onClick,
-}) => (
-  <ListItemContainer
-    as={as}
-    href={href}
-    disabled={disabled}
-    selected={selected}
-    tabIndex={disabled ? -1 : tabIndex}
-    priority={priority}
-    className={className}
-    onClick={onClick}
-  >
-    {iconLeft && <span data-element="icon">{iconLeft}</span>}
-    <span>{text}</span>
-    {iconRight && <span data-element="icon">{iconRight}</span>}
-  </ListItemContainer>
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const BaseListItem = forwardRef<HTMLLIElement, ListItemProps>(
+  (
+    {
+      disabled = false,
+      iconLeft,
+      iconRight,
+      priority = 'secondary',
+      tabIndex,
+      text,
+      selected = false,
+      onClick,
+      ...rest
+    },
+    listItemRef,
+  ) => {
+    return (
+      <li
+        ref={listItemRef}
+        data-disabled={disabled}
+        data-selected={selected}
+        tabIndex={disabled ? -1 : tabIndex}
+        data-priority={priority}
+        onClick={onClick}
+        {...rest}
+      >
+        {iconLeft && <span data-element="icon">{iconLeft}</span>}
+        <span>{text}</span>
+        {iconRight && <span data-element="icon">{iconRight}</span>}
+      </li>
+    );
+  },
 );
 
 /**
  * Fix ListItemContainer after implementing box element
  */
-const ListItemContainer = styled.div.attrs(mapItem)`
+export const ListItem = styled(BaseListItem)<ListItemProps>`
   ${box}
+
   --local-icon-color: var(--woly-canvas-text-default);
   --local-backgound: var(--woly-canvas-default);
   --local-color: var(--woly-canvas-text-default);
@@ -122,4 +122,4 @@ const ListItemContainer = styled.div.attrs(mapItem)`
 
     pointer-events: none;
   }
-` as StyledComponent<'div', Record<string, unknown>, ListItemProps & Priority>;
+`;

@@ -1,17 +1,19 @@
 import React from 'react';
-import styled, { StyledComponent } from 'styled-components';
+import styled from 'styled-components';
 import { Priority } from 'lib/types';
 
-interface SurfaceProps {
-  weight?: string;
-}
+type BaseSurfaceProps = React.BaseHTMLAttributes<HTMLDivElement> & Priority;
 
-const map = (properties: SurfaceProps & Priority) => ({
-  'data-priority': properties.priority || 'secondary',
-  'data-weight': properties.weight || 'goast',
+export type SurfaceProps = BaseSurfaceProps & {
+  weight?: string;
+};
+
+const map = (props: SurfaceProps) => ({
+  'data-priority': props.priority || 'secondary',
+  'data-weight': props.weight || 'goast',
 });
 
-export const Surface = styled.div.attrs(map)`
+export const Surface = styled.div.attrs(map)<SurfaceProps>`
   z-index: 1;
 
   width: 100%;
@@ -32,4 +34,4 @@ export const Surface = styled.div.attrs(map)`
     border-color: var(--woly-background);
     box-shadow: var(--woly-shadow);
   }
-` as StyledComponent<'div', Record<string, unknown>, SurfaceProps & Priority>;
+`;

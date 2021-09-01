@@ -1,28 +1,28 @@
 import * as React from 'react';
-import styled, { StyledComponent, keyframes } from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { IconSpinner } from 'static/icons';
 import { Priority } from 'lib/types';
 import { box } from 'ui/elements/box';
+import { forwardRef } from 'react';
 
-interface LoaderProps {
-  className?: string;
+type BaseLoaderProps = React.BaseHTMLAttributes<HTMLDivElement> & Priority;
+
+export type LoaderProps = BaseLoaderProps & {
   description?: React.ReactChild;
-}
-
-const LoaderBase = ({
-  className,
-  description = 'Loading...',
-  priority = 'secondary',
-}: LoaderProps & Priority) => {
-  return (
-    <div className={className} data-priority={priority}>
-      <div data-element="loader">
-        <IconSpinner data-element="track" />
-        <div data-element="description">{description}</div>
-      </div>
-    </div>
-  );
 };
+
+const LoaderBase = forwardRef<HTMLDivElement, LoaderProps>(
+  ({ description = 'Loading...', priority = 'secondary', ...rest }, loaderRef) => {
+    return (
+      <div ref={loaderRef} data-priority={priority} {...rest}>
+        <div data-element="loader">
+          <IconSpinner data-element="track" />
+          <div data-element="description">{description}</div>
+        </div>
+      </div>
+    );
+  },
+);
 
 const trackAnimation = keyframes`
   0% {
@@ -56,8 +56,9 @@ const spinnerAnimation = keyframes`
   }
 `;
 
-export const Loader = styled(LoaderBase)`
+export const Loader = styled(LoaderBase)<LoaderProps>`
   ${box}
+
   --local-track-size: 42px;
   --local-vertical-gap: 12px;
   --local-track-color: var(--woly-canvas-default);
@@ -108,4 +109,4 @@ export const Loader = styled(LoaderBase)`
     line-height: 21px;
     text-align: center;
   }
-` as StyledComponent<'div', Record<string, unknown>, LoaderProps & Priority>;
+`;

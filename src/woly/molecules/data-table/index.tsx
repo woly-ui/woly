@@ -5,6 +5,7 @@ import { Table, Tbody, Td, Th, Thead, Tr } from '../../atoms/table';
 
 export type { DataTableColumn, HeadProps as DataTableHeadProps } from './types';
 
+// TODO: solve the ref forwarding problem [31-08-2021]
 export function DataTable<TValue, TRowKey extends string>({
   rowKey,
   columns,

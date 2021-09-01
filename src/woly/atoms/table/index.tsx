@@ -1,12 +1,22 @@
-import styled, { StyledComponent } from 'styled-components';
+import React from 'react';
+import styled from 'styled-components';
 import { Priority } from 'lib/types';
 
-const map = (properties: { columns: number } & Priority) => ({
-  'data-priority': properties.priority || 'secondary',
-  style: { '--local-columns': properties.columns },
+type BaseTableProps = React.TableHTMLAttributes<HTMLTableElement> & Priority;
+
+export type TableProps = BaseTableProps & {
+  columns: number;
+};
+
+const map = ({ style = {}, columns, priority }: TableProps) => ({
+  'data-priority': priority || 'secondary',
+  style: {
+    ...style,
+    '--local-columns': columns,
+  } as React.CSSProperties,
 });
 
-export const Table = styled.table.attrs(map)`
+export const Table = styled.table.attrs(map)<TableProps>`
   --local-gap: calc(var(--woly-const-m) / 2);
   --local-vertical: calc(1px * var(--woly-component-level) * var(--woly-main-level));
   --local-horizontal: calc(
@@ -17,7 +27,7 @@ export const Table = styled.table.attrs(map)`
   display: grid;
   grid-template-columns: repeat(var(--local-columns), auto);
   gap: var(--local-gap);
-` as StyledComponent<'table', Record<string, unknown>, { columns: number } & Priority>;
+`;
 
 export const Thead = styled.thead`
   display: contents;

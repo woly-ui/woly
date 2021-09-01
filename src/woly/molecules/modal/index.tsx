@@ -1,5 +1,5 @@
 import * as React from 'react';
-import styled, { StyledComponent } from 'styled-components';
+import styled from 'styled-components';
 import { Backdrop, ButtonIcon, Heading, Surface } from 'ui/atoms';
 import { IconClose } from 'static/icons';
 import { Priority } from 'lib/types';
@@ -7,21 +7,23 @@ import { box } from 'ui/elements/box';
 
 import { useScrollLock } from './use-scroll-lock';
 
-interface ModalProps {
-  className?: string;
+type BaseModalProps = React.BaseHTMLAttributes<HTMLDivElement> & Priority;
+
+export type ModalProps = BaseModalProps & {
   onClose?: React.EventHandler<React.SyntheticEvent>;
   title?: string;
   visible: boolean;
-}
+};
 
-const ModalBase: React.FC<ModalProps & Priority> = ({
+// TODO: solve the ref forwarding problem [31-08-2021]
+const ModalBase = ({
   children,
-  className,
   onClose,
   priority = 'secondary',
   title,
   visible = false,
-}) => {
+  ...rest
+}: ModalProps) => {
   const modalRef = React.useRef<HTMLDivElement | null>(null);
 
   const { disableScroll, enableScroll } = useScrollLock();
@@ -53,13 +55,7 @@ const ModalBase: React.FC<ModalProps & Priority> = ({
   }, [onKeyDown]);
 
   return (
-    <div
-      className={className}
-      data-priority={priority}
-      data-visible={visible}
-      tabIndex={-1}
-      ref={modalRef}
-    >
+    <div ref={modalRef} data-priority={priority} data-visible={visible} tabIndex={-1} {...rest}>
       <Backdrop onClick={onClose} />
       <Shape data-priority={priority}>
         <div data-element="header">
@@ -99,7 +95,7 @@ const Shape = styled(Surface)`
   max-height: 100%;
 `;
 
-export const Modal = styled(ModalBase)`
+export const Modal = styled(ModalBase)<ModalProps>`
   ${box}
 
   /* TODO: rewrite formulas [13.07.21]*/
@@ -152,4 +148,4 @@ export const Modal = styled(ModalBase)`
     padding-top: var(--local-gap);
     overflow: auto;
   }
-` as StyledComponent<'div', Record<string, unknown>, ModalProps & Priority>;
+`;

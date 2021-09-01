@@ -1,14 +1,20 @@
 import * as React from 'react';
-import styled, { StyledComponent } from 'styled-components';
+import styled from 'styled-components';
 import { Priority } from 'lib/types';
+import { forwardRef } from 'react';
 
-const SeparatorBase: React.FC<{ className: string } & Priority> = ({ className, priority }) => (
-  <div className={className} data-priority={priority}>
-    <div data-element="line" />
-  </div>
+type BaseSeparatorProps = React.BaseHTMLAttributes<HTMLDivElement> & Priority;
+export type SeparatorProps = BaseSeparatorProps;
+
+const SeparatorBase = forwardRef<HTMLDivElement, SeparatorProps>(
+  ({ priority, ...rest }, separatorRef) => (
+    <div ref={separatorRef} data-priority={priority} {...rest}>
+      <div data-element="line" />
+    </div>
+  ),
 );
 
-export const Separator = styled(SeparatorBase)`
+export const Separator = styled(SeparatorBase)<SeparatorProps>`
   --local-padding: calc(var(--woly-const-m) / 2);
 
   width: 100%;
@@ -19,4 +25,4 @@ export const Separator = styled(SeparatorBase)`
 
     background: var(--woly-canvas-disabled);
   }
-` as StyledComponent<'div', Record<string, unknown>, Priority>;
+`;

@@ -2,10 +2,12 @@ import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
 import { InputContainer, InputElement } from 'ui/elements';
 import { Priority } from 'lib/types';
+import { forwardRef } from 'react';
 
-export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+type BaseInputProps = React.InputHTMLAttributes<HTMLInputElement> & Priority;
+
+export type InputProps = BaseInputProps & {
   autoComplete?: 'on' | 'off';
-  className?: string;
   disabled?: boolean;
   leftIcon?: React.ReactNode;
   name: string;
@@ -15,42 +17,47 @@ export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> 
   rightIcon?: React.ReactNode;
   type: 'text' | 'password' | 'email';
   value?: HTMLInputElement['value'];
-}
+};
 
-const InputBase: React.FC<InputProps & Priority> = ({
-  autoComplete = 'off',
-  className,
-  disabled = false,
-  leftIcon,
-  name,
-  onChange,
-  onBlur = () => {},
-  placeholder,
-  priority = 'secondary',
-  rightIcon,
-  type = 'text',
-  value,
-}) => (
-  <InputContainer
-    className={className}
-    disabled={disabled}
-    leftIcon={leftIcon}
-    onChange={onChange}
-    rightIcon={rightIcon}
-    priority={priority}
-  >
-    <InputElement
-      autoComplete={autoComplete}
-      className={className}
+const InputBase = forwardRef<HTMLInputElement, InputProps>(
+  (
+    {
+      autoComplete = 'off',
+      disabled = false,
+      leftIcon,
+      name,
+      onChange,
+      onBlur = () => {},
+      placeholder,
+      priority = 'secondary',
+      rightIcon,
+      type = 'text',
+      value,
+      ...rest
+    },
+    inputRef,
+  ) => (
+    <InputContainer
+      ref={inputRef}
       disabled={disabled}
-      name={name}
+      leftIcon={leftIcon}
       onChange={onChange}
-      onBlur={onBlur}
-      placeholder={placeholder}
-      type={type}
-      value={value}
-    />
-  </InputContainer>
+      rightIcon={rightIcon}
+      priority={priority}
+      {...rest}
+    >
+      <InputElement
+        autoComplete={autoComplete}
+        disabled={disabled}
+        name={name}
+        onChange={onChange}
+        onBlur={onBlur}
+        placeholder={placeholder}
+        type={type}
+        value={value}
+      />
+    </InputContainer>
+  ),
 );
 
 export const Input = styled(InputBase)`
@@ -60,4 +67,4 @@ export const Input = styled(InputBase)`
   &[data-disabled='true'] {
     pointer-events: none;
   }
-` as StyledComponent<'div', Record<string, unknown>, InputProps & Priority>;
+` as StyledComponent<'div', Record<string, unknown>, InputProps>;

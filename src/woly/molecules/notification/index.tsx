@@ -1,23 +1,23 @@
 import * as React from 'react';
-import styled, { StyledComponent } from 'styled-components';
+import styled from 'styled-components';
 import { Priority } from 'lib/types';
+import { forwardRef } from 'react';
 
-interface NotificationProps {
-  className?: string;
+type BaseNotificationProps = React.BaseHTMLAttributes<HTMLDivElement> & Priority;
+
+export type NotificationProps = BaseNotificationProps & {
   message: React.ReactNode;
-}
+};
 
-const NotificationBase: React.FC<NotificationProps & Priority> = ({
-  className,
-  message,
-  priority = 'secondary',
-}) => (
-  <div className={className} data-priority={priority}>
-    <div>{message}</div>
-  </div>
+const NotificationBase = forwardRef<HTMLDivElement, NotificationProps>(
+  ({ message, priority = 'secondary', ...rest }, wrapperRef) => (
+    <div ref={wrapperRef} data-priority={priority} {...rest}>
+      <div>{message}</div>
+    </div>
+  ),
 );
 
-export const Notification = styled(NotificationBase)`
+export const Notification = styled(NotificationBase)<NotificationProps>`
   --local-text-color: var(--woly-shape-text-default);
   --local-background: var(--woly-shape-default);
   --local-border-color: var(--woly-shape-default);
@@ -51,4 +51,4 @@ export const Notification = styled(NotificationBase)`
     border: var(--woly-border-width) solid var(--local-border-color);
     border-radius: var(--woly-rounding);
   }
-` as StyledComponent<'div', Record<string, unknown>, NotificationProps & Priority>;
+`;
