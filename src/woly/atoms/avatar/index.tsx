@@ -44,6 +44,10 @@ const Fallback = styled(IconProfile)`
 `;
 
 export const Avatar = styled(AvatarBase)<AvatarProps>`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   --local-size: calc((var(--woly-component-level) + 2) * 2 * var(--woly-const-m));
 
   width: var(--local-size);
