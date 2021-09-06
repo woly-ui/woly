@@ -31,7 +31,6 @@ const PopoverBase: React.FC<PopoverProps> = ({
   ...rest
 }) => {
   const ref = React.useRef<HTMLDivElement>(null);
-
   const [isVisible, setVisibility] = React.useReducer((is) => !is, isOpen);
   const [popoverPosition, setPosition] = React.useState<PopoverPositionType>('bottom');
 
@@ -48,8 +47,7 @@ const PopoverBase: React.FC<PopoverProps> = ({
     (event) => {
       if (isVisible && ref.current === null) return;
 
-      const trigger = ref.current;
-      if (isVisible && !trigger?.contains(event.target)) {
+      if (isVisible && !ref.current?.contains(event.target)) {
         setVisibility();
       }
     },
@@ -69,6 +67,12 @@ const PopoverBase: React.FC<PopoverProps> = ({
     setPosition(position);
   }, [position]);
 
+  React.useEffect(() => {
+    if (isOpen !== isVisible) {
+      setVisibility();
+    }
+  }, [isOpen]);
+
   useUpdateEffect(() => {
     if (!isVisible) {
       onClose();
@@ -79,12 +83,12 @@ const PopoverBase: React.FC<PopoverProps> = ({
     if (typeof window === 'undefined' || !window.document) return;
 
     document.addEventListener('scroll', onScroll);
-    document.addEventListener('click', onClickOutside);
+    document.addEventListener('mousedown', onClickOutside);
     document.addEventListener('keydown', onKeyDown);
 
     return () => {
       document.removeEventListener('scroll', onScroll);
-      document.removeEventListener('click', onClickOutside);
+      document.removeEventListener('mousedown', onClickOutside);
       document.removeEventListener('keydown', onKeyDown);
     };
   }, [onScroll, onClickOutside]);
@@ -111,29 +115,24 @@ export const Popover = styled(PopoverBase)<PopoverProps>`
   );
   --popover-position: calc(100% + 4px + var(--woly-gap, 10px));
   position: relative;
-
   [data-element='popover'] {
     position: absolute;
     z-index: 1;
 
     width: max-content;
-
     min-width: 100%;
 
     visibility: hidden;
     opacity: 0;
   }
-
   [data-full-width='false'] {
     width: auto;
     min-width: unset;
   }
-
   & > [data-open='true'] {
     visibility: visible;
     opacity: 1;
   }
-
   & > [data-position='top'] {
     bottom: var(--popover-position);
   }

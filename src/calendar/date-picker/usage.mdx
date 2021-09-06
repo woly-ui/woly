@@ -1,0 +1,282 @@
+import {Playground, StateEvent} from 'dev/playground'
+import {Input} from 'ui';
+import {IconInfo} from 'static/icons';
+import {DatePicker} from './index';
+import dayjs from 'dayjs';
+
+import 'dayjs/locale/ru';
+import 'dayjs/locale/ja';
+
+# DatePicker
+
+DatePicker is used to select or input the date.
+You can type the date in the input field or select it from the calendar that appears near the input.
+
+### Mouse actions
+
+By clicking on the input, the field calendar window shows up.
+By clicking on the date in the calendar, you set the chosen date in the input field.
+
+### Keyboard actions
+
+Pressing Enter on the selected input field will trigger the appearance of the calendar.
+When the calendar is opened, pressing Tab will focus inside calendar.
+You can navigate between dates/month/years of the calendar by pressing tab/shift+tab on the keyboard.
+Pressing Enter key will set the chosen date inside input field.
+To close calendar press Esc.
+
+### Examples
+
+By using property isDayDisabled choosen dates in calendar can be disabled.
+Property format sets a format of displayed date. By default it is 'YYYY-MM-DD'.
+
+### Example
+
+```tsx playground
+import {Playground} from 'dev/playground'
+import { DatePicker } from './index';
+import {IconInfo} from 'static/icons';
+
+export function Example() {
+  const [simpleDP, setSimpleDP] = React.useState('13.10.2013');
+  const [value, setValue] = React.useState(new Date());
+
+  return (<Playground>
+   <div style={{ padding: '350px 0', display: 'flex' }}>
+   <div>
+    <div style={{ padding: 10 }}>
+      <div style={{ paddingBottom: 10 }}>DD/MM/YYYY format of date</div>
+      <DatePicker
+        format="DD/MM/YYYY"
+        name="format-two-datepicker"
+        onChange={setValue}
+        priority="primary"
+        value={value}
+      />
+    </div>
+    <div style={{ padding: 10 }}>
+      <div style={{ paddingBottom: 10 }}>DD-MM-YYYY format of date</div>
+      <DatePicker
+        format="DD-MM-YYYY"
+        name="format-one-datepicker"
+        onChange={setValue}
+        placeholder="13-10-2013"
+        priority="primary"
+        value={value}
+      />
+    </div>
+    <div style={{ padding: 10 }}>
+      <div style={{ paddingBottom: 10 }}>DD MMMM YYYY format of date</div>
+      <DatePicker
+        format="DD MMMM YYYY"
+        name="format-one-datepicker"
+        onChange={setValue}
+        placeholder="13 10 2013"
+        priority="primary"
+        value={value}
+      />
+    </div>
+  </div>
+  <div>
+    <div style={{ padding: 10 }}>
+      <div style={{ paddingBottom: 10 }}>Simple DatePicker</div>
+      <DatePicker
+        autoFocus
+        format="DD.MM.YYYY"
+        name="simple-datepicker"
+        onChange={setSimpleDP}
+        placeholder="13.10.2013"
+        priority="primary"
+        value={simpleDP}
+      />
+    </div>
+    <div style={{ padding: 10 }}>
+      <div style={{ paddingBottom: 10 }}>DatePicker with disabled weekends</div>
+        <DatePicker
+          format="DD.MM.YYYY"
+          icon={<IconInfo />}
+          isDayDisabled={({ activeStartDate, date, view }) =>
+            view === 'month' && (date.getDay() === 0 || date.getDay() === 6)
+          }
+          name="weekends-disabled-datepicker"
+          onChange={setSimpleDP}
+          placeholder="Enter or choose the date"
+          priority="primary"
+          value={simpleDP}
+        />
+      </div>
+      <div style={{ padding: 10 }}>
+        <div style={{ paddingBottom: 10 }}>Disabled DatePicker</div>
+        <DatePicker
+          disabled
+          format="DD.MM.YYYY"
+          icon={<IconInfo />}
+          name="disabled-datepicker"
+          onChange={setSimpleDP}
+          placeholder="13.10.2013"
+          priority="primary"
+          value={simpleDP}
+        />
+      </div>
+    </div>
+  </div>
+  </Playground>);
+}
+```
+
+### Choose another calendar view
+
+Change calendar view by setting property view
+
+```tsx playground
+import {Playground} from 'dev/playground'
+import { DatePicker } from './index';
+
+export function Example() {
+  const [centuryDP, setCenturyDP] = React.useState(new Date());
+  const [decadeDP, setDecadeDP] = React.useState(new Date());
+  const [yearDP, setYearDP] = React.useState(new Date());
+
+  return (<Playground>
+   <div style={{ padding: '350px 0', display: 'flex' }}>
+    <div style={{ padding: 10 }}>
+      <div style={{ paddingBottom: 10 }}>Choose decade from century DatePicker</div>
+      <DatePicker
+        format="YYYY-YYYY"
+        name="century-datepicker"
+        onChange={setCenturyDP}
+        priority="secondary"
+        value={centuryDP}
+        view="century"
+      />
+    </div>
+    <div style={{ padding: 10 }}>
+      <div style={{ paddingBottom: 10 }}>Choose year from decade DatePicker</div>
+      <DatePicker
+        format="YYYY"
+        locale="ru"
+        name="decade-datepicker"
+        onChange={setDecadeDP}
+        priority="secondary"
+        value={decadeDP}
+        view="decade"
+      />
+    </div>
+    <div style={{ padding: '10px' }}>
+      <div style={{ paddingBottom: '10px' }}>Choose month from year DatePicker</div>
+      <DatePicker
+        format="MMMM"
+        locale="ru"
+        name="year-datepicker"
+        onChange={setYearDP}
+        priority="secondary"
+        value={yearDP}
+        view="year"
+      />
+    </div>
+  </div>
+  </Playground>);
+}
+```
+
+### Choose min or max date
+
+To prevent user to choose a date from/before a specific date set property maxDate or minDate.
+
+```tsx playground
+import {Playground} from 'dev/playground'
+import { DatePicker } from './index';
+import {IconInfo} from 'static/icons';
+
+export function Example() {
+  const [maxDP, setMaxDP] = React.useState(new Date());
+  const [minDP, setMinDP] = React.useState(new Date());
+
+  return (<Playground>
+   <div style={{ padding: '350px 0', display: 'flex' }}>
+    <div style={{ padding: '10px' }}>
+      <div style={{ paddingBottom: '10px' }}>Can choose date until today</div>
+      <DatePicker
+        calendarType="US"
+        maxDate={new Date()}
+        name="start-today"
+        onChange={setMaxDP}
+        priority="secondary"
+        value={maxDP}
+      />
+    </div>
+      <div style={{ padding: '10px' }}>
+      <div style={{ paddingBottom: '10px' }}>Can choose date from today</div>
+      <DatePicker
+        calendarType="US"
+        minDate={new Date()}
+        name="start-today"
+        onChange={setMinDP}
+        priority="secondary"
+        value={minDP}
+      />
+    </div>
+  </div>
+  </Playground>);
+}
+```
+
+### Localization
+
+```tsx playground
+import {Playground} from 'dev/playground'
+import { DatePicker } from './index';
+
+export function Example() {
+  const [japDP, setJapDP] = React.useState(new Date());
+  const [rusDP, setRusDP] = React.useState(new Date());
+
+  return (<Playground>
+   <div style={{ padding: '350px 0', display: 'flex' }}>
+    <div style={{ padding: '10px' }}>
+      <div style={{ padding: '10px' }}>
+        <div style={{ paddingBottom: '10px' }}>Japanese calendar</div>
+        <DatePicker
+          format="DD MMMM YYYY"
+          locale="ja"
+          name="japanese-datepicker"
+          onChange={setJapDP}
+          priority="secondary"
+          value={japDP}
+        />
+      </div>
+      <div style={{ padding: '10px' }}>
+        <div style={{ paddingBottom: '10px' }}>Russian calendar</div>
+        <DatePicker
+          format="DD MMMM YYYY"
+          locale="ru"
+          name="russain-datepicker"
+          onChange={setRusDP}
+          priority="secondary"
+          value={rusDP}
+        />
+      </div>
+    </div>
+  </div>
+  </Playground>);
+}
+```
+
+| Name            | Type                                      | Default        | Description                                     |
+| --------------- | ----------------------------------------- | -------------- | ----------------------------------------------- |
+| `autoFocus`     | `boolean`                                 | `false`        | Autofocus on input field of DatePicker          |
+| `calendarType`  | `'ISO 8601'ӏ 'US' ӏ 'Arabic' ӏ 'Hebrew'`  | `ISO 8601`     | Type of calendar that should be used            |
+| `disabled`      | `boolean`                                 | `false`        | Disable DatePicker                              |
+| `format`        | `string`                                  | `'DD.MM.YYYY'` | Format of the date                              |
+| `icon`          | `React.ReactNode`                         |                | Icon on the right side of input field           |
+| `isDayDisabled` | `fn`                                      |                | Callback to set disabled date                   |
+| `isOpen`        | `boolean`                                 | `'false'`      | Whether the calendar dropdown is visible or not |
+| `locale`        | `string`                                  | `'ru'`         | Locale of calendar                              |
+| `maxDate`       | `Date ӏ string`                           |                | Maximum date that the user can select           |
+| `minDate`       | `Date ӏ string`                           |                | Minimum date that the user can select           |
+| `name`          | `string`                                  |                | Name attribute                                  |
+| `onChange`      | `(date: Date) => void`                    |                | On calendar change                              |
+| `placeholder`   | `string`                                  |                | Placeholder attribute                           |
+| `priority`      | `string`                                  | `'secondary'`  | Priority prop to style Popover component        |
+| `value`         | `Date ӏ string`                           |                | Value of field                                  |
+| `view`          | `'month' ӏ 'year' ӏ 'decade' ӏ 'century'` | `'year'`       | Determines which calendar view shall be opened. |

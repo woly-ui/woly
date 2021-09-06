@@ -5,7 +5,8 @@ import {
   FormBlock,
   Menu,
   Playground,
-  State
+  State,
+  StateEvent
 } from 'dev/playground'
 import {Button, ButtonIcon, Input, Label, Surface, Popover, ListContainer, ListItem, Text} from 'ui';
 import {IconClose, Threebars} from 'static/icons';
@@ -52,11 +53,10 @@ Simple text inside `Surface`.
 Sign in form based on `Surface`.
 
 <Playground>
-  <State initial={false} change={(i) => !i}>
+  <StateEvent initial={false} change={(i) => i}>
     {(value, change) => (
       <block.L style={{ width: '300px', padding: '350px 0' }}>
         <Popover
-          isOpen={false}
           content={
             <Surface priority="primary">
               <FormBlock>
@@ -85,12 +85,14 @@ Sign in form based on `Surface`.
               </FormBlock>
             </Surface>
           }
+          isOpen={false}
+          onClickOutside={() => change(false)}
         >
-          <Button onClick={change} text="Sign in" priority="primary" />
+          <Button onClick={() => change(!value)} text="Sign in" priority="primary" />
         </Popover>
       </block.L>
     )}
-  </State>
+  </StateEvent>
 </Playground>
 
 ### Aside menu
