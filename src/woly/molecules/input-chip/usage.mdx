@@ -1,0 +1,49 @@
+import {InputChip} from 'ui';
+import {Playground, StateEvent} from 'dev/playground';
+import {IconArrowDown} from 'static/icons';
+
+export const fruits = [
+  {
+    id: 2,
+    text: "orange",
+    selected: false
+  },
+  {
+    id: 1,
+    text: "apple",
+    selected: false
+  },
+  {
+    id: 3,
+    text: "lemon",
+    selected: false
+  }
+];
+
+### Example
+
+<Playground>
+  <div style={{ height: '250px' }}>
+    <StateEvent initial={null} change={(event) => event?.target?.dataset.value}>
+      {(value, change) => (
+        <div style={{ width: '100%' }}>
+          <InputChip options={fruits} isInput={false} onChipClose={change} />
+        </div>
+      )}
+    </StateEvent>
+  </div>
+</Playground>
+
+### Example 2
+
+<Playground>
+  <div style={{ height: '250px' }}>
+    <StateEvent initial={null} change={(event) => event?.target?.dataset.value}>
+      {(value, change) => (
+        <div style={{ width: '100%' }}>
+          <InputChip options={fruits} isInput={true} onChipClose={change} />
+        </div>
+      )}
+    </StateEvent>
+  </div>
+</Playground>
